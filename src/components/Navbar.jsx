@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import logo from '../assets/mi-logo.png.jpg';
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
@@ -11,7 +12,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo y nombre */}
           <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-smooth">
-            <span className="text-2xl">🤝</span>
+            <img src={logo} alt="Red UC Logo" className="h-10 rounded" />
             <span className="text-xl font-bold">Red UC</span>
           </Link>
 
