@@ -65,17 +65,17 @@ const Registro = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-mint to-mint-light py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl w-full bg-white rounded-2xl shadow-2xl p-8 animate-fade-in">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl w-full bg-white rounded-lg shadow-md border border-gray-200 p-8 animate-fade-in">
         {/* Header */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-uc-blue mb-2">Crear Cuenta</h2>
-          <p className="text-gray-600">Únete a la comunidad de Red UC</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Crear Cuenta</h2>
+          <p className="text-gray-600 text-base">Únete a la comunidad de Red UC</p>
         </div>
 
         {/* Error message */}
         {error && (
-          <div className="mb-4 p-4 bg-red-50 border border-red-200 text-red-600 rounded-lg">
+          <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm">
             {error}
           </div>
         )}
@@ -86,7 +86,7 @@ const Registro = () => {
           <div className="grid md:grid-cols-2 gap-4">
             {/* Nombre */}
             <div>
-              <label htmlFor="nombre" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="nombre" className="block text-sm font-semibold text-gray-800 mb-2">
                 Nombre Completo *
               </label>
               <input
@@ -97,13 +97,13 @@ const Registro = () => {
                 value={formData.nombre}
                 onChange={handleChange}
                 placeholder="Juan Pérez"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mint focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               />
             </div>
 
             {/* Correo */}
             <div>
-              <label htmlFor="correo" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="correo" className="block text-sm font-semibold text-gray-800 mb-2">
                 Correo UC *
               </label>
               <input
@@ -114,7 +114,7 @@ const Registro = () => {
                 value={formData.correo}
                 onChange={handleChange}
                 placeholder="tunombre@uc.cl"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mint focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               />
             </div>
           </div>
@@ -122,7 +122,7 @@ const Registro = () => {
           <div className="grid md:grid-cols-2 gap-4">
             {/* Contraseña */}
             <div>
-              <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-semibold text-gray-800 mb-2">
                 Contraseña *
               </label>
               <input
@@ -133,13 +133,13 @@ const Registro = () => {
                 value={formData.password}
                 onChange={handleChange}
                 placeholder="Mínimo 6 caracteres"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mint focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               />
             </div>
 
             {/* Confirmar contraseña */}
             <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="confirmPassword" className="block text-sm font-semibold text-gray-800 mb-2">
                 Confirmar Contraseña *
               </label>
               <input
@@ -150,7 +150,7 @@ const Registro = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 placeholder="Repite tu contraseña"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mint focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               />
             </div>
           </div>
@@ -158,7 +158,7 @@ const Registro = () => {
           <div className="grid md:grid-cols-2 gap-4">
             {/* Carrera */}
             <div>
-              <label htmlFor="carrera" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="carrera" className="block text-sm font-semibold text-gray-800 mb-2">
                 Carrera *
               </label>
               <input
@@ -169,13 +169,13 @@ const Registro = () => {
                 value={formData.carrera}
                 onChange={handleChange}
                 placeholder="Ej: Ingeniería, Derecho"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mint focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               />
             </div>
 
             {/* Año */}
             <div>
-              <label htmlFor="año" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="año" className="block text-sm font-semibold text-gray-800 mb-2">
                 Año *
               </label>
               <select
@@ -184,7 +184,7 @@ const Registro = () => {
                 required
                 value={formData.año}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mint focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               >
                 <option value="">Selecciona</option>
                 <option value="1">1° año</option>
@@ -199,7 +199,7 @@ const Registro = () => {
 
           {/* Intereses */}
           <div>
-            <label htmlFor="intereses" className="block text-sm font-semibold text-gray-700 mb-2">
+            <label htmlFor="intereses" className="block text-sm font-semibold text-gray-800 mb-2">
               Intereses (separados por comas)
             </label>
             <input
@@ -209,13 +209,13 @@ const Registro = () => {
               value={formData.intereses}
               onChange={handleChange}
               placeholder="Ej: Matemáticas, Programación, Deportes"
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mint focus:border-transparent transition-smooth"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
             />
           </div>
 
           {/* Descripción */}
           <div>
-            <label htmlFor="descripcion" className="block text-sm font-semibold text-gray-700 mb-2">
+            <label htmlFor="descripcion" className="block text-sm font-semibold text-gray-800 mb-2">
               Breve descripción
             </label>
             <textarea
@@ -225,14 +225,14 @@ const Registro = () => {
               value={formData.descripcion}
               onChange={handleChange}
               placeholder="Cuéntanos un poco sobre ti..."
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-mint focus:border-transparent transition-smooth"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth resize-none"
             />
           </div>
 
           {/* Botón de submit */}
           <button
             type="submit"
-            className="w-full py-3 bg-mint text-white rounded-lg font-semibold hover:bg-mint-light transition-smooth shadow-lg"
+            className="w-full py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-smooth shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
           >
             Crear Cuenta
           </button>
@@ -240,9 +240,9 @@ const Registro = () => {
 
         {/* Enlace a login */}
         <div className="mt-6 text-center">
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-sm">
             ¿Ya tienes cuenta?{' '}
-            <Link to="/login" className="text-uc-blue font-semibold hover:underline">
+            <Link to="/login" className="text-blue-600 font-semibold hover:text-blue-700 hover:underline">
               Inicia sesión aquí
             </Link>
           </p>

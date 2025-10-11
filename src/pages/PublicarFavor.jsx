@@ -52,20 +52,20 @@ const PublicarFavor = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-xl p-8 animate-fade-in">
+        <div className="bg-white rounded-lg shadow-md border border-gray-200 p-8 animate-fade-in">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-uc-blue mb-2">Publicar un Favor</h1>
-            <p className="text-gray-600">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Publicar un Favor</h1>
+            <p className="text-gray-600 text-base">
               Comparte lo que necesitas o lo que puedes ofrecer a la comunidad UC
             </p>
           </div>
 
           {/* Error message */}
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-600 rounded-lg">
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm">
               {error}
             </div>
           )}
@@ -74,7 +74,7 @@ const PublicarFavor = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Título */}
             <div>
-              <label htmlFor="titulo" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="titulo" className="block text-sm font-semibold text-gray-800 mb-2">
                 Título del favor *
               </label>
               <input
@@ -85,7 +85,7 @@ const PublicarFavor = () => {
                 value={formData.titulo}
                 onChange={handleChange}
                 placeholder="Ej: Ayuda con Cálculo II, Presto apuntes de Programación"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-uc-blue focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               />
               <p className="mt-1 text-sm text-gray-500">
                 Sé claro y específico sobre lo que ofreces o necesitas
@@ -94,7 +94,7 @@ const PublicarFavor = () => {
 
             {/* Descripción */}
             <div>
-              <label htmlFor="descripcion" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="descripcion" className="block text-sm font-semibold text-gray-800 mb-2">
                 Descripción *
               </label>
               <textarea
@@ -105,13 +105,13 @@ const PublicarFavor = () => {
                 value={formData.descripcion}
                 onChange={handleChange}
                 placeholder="Describe los detalles del favor: qué incluye, requisitos, expectativas, etc."
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-uc-blue focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth resize-none"
               />
             </div>
 
             {/* Categoría */}
             <div>
-              <label htmlFor="categoria" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="categoria" className="block text-sm font-semibold text-gray-800 mb-2">
                 Categoría *
               </label>
               <select
@@ -120,7 +120,7 @@ const PublicarFavor = () => {
                 required
                 value={formData.categoria}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-uc-blue focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               >
                 <option value="">Selecciona una categoría</option>
                 {categories.map(cat => (
@@ -133,7 +133,7 @@ const PublicarFavor = () => {
 
             {/* Disponibilidad horaria */}
             <div>
-              <label htmlFor="disponibilidad" className="block text-sm font-semibold text-gray-700 mb-2">
+              <label htmlFor="disponibilidad" className="block text-sm font-semibold text-gray-800 mb-2">
                 Disponibilidad horaria (opcional)
               </label>
               <input
@@ -143,13 +143,13 @@ const PublicarFavor = () => {
                 value={formData.disponibilidad}
                 onChange={handleChange}
                 placeholder="Ej: Lunes a viernes por la tarde, Fines de semana"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-uc-blue focus:border-transparent transition-smooth"
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
               />
             </div>
 
             {/* Información adicional */}
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-              <h3 className="font-semibold text-blue-900 mb-2">💡 Consejos para publicar:</h3>
+            <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+              <h3 className="font-semibold text-blue-900 mb-2 text-sm">💡 Consejos para publicar:</h3>
               <ul className="text-sm text-blue-800 space-y-1 list-disc list-inside">
                 <li>Sé específico sobre lo que ofreces o necesitas</li>
                 <li>Indica claramente tu disponibilidad</li>
@@ -163,13 +163,13 @@ const PublicarFavor = () => {
               <button
                 type="button"
                 onClick={() => navigate('/favores')}
-                className="flex-1 py-3 border-2 border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-smooth"
+                className="flex-1 py-2 border border-gray-300 text-gray-700 rounded-md font-medium hover:bg-gray-50 transition-smooth focus:outline-none focus:ring-2 focus:ring-blue-200"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
-                className="flex-1 py-3 bg-mint text-white rounded-lg font-semibold hover:bg-mint-light transition-smooth shadow-lg"
+                className="flex-1 py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-smooth shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
               >
                 Publicar Favor
               </button>
@@ -177,7 +177,7 @@ const PublicarFavor = () => {
           </form>
 
           {/* Información de privacidad */}
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
+          <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-md">
             <p className="text-xs text-gray-600 text-center">
               Al publicar un favor, tu nombre y correo serán visibles para otros usuarios.
               Los datos se almacenan localmente en tu navegador.
