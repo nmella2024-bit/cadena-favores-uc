@@ -1,19 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: light;
+  --bg-canvas: 248 250 252;
+  --bg-card: 255 255 255;
+  --text-primary: 15 23 42;
+  --text-muted: 71 85 105;
+  --border: 226 232 240;
+  --brand: 29 78 216;
+  --brand-hover: 30 64 175;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --bg-canvas: 15 23 42;
+  --bg-card: 30 41 59;
+  --text-primary: 241 245 249;
+  --text-muted: 148 163 184;
+  --border: 71 85 105;
+  --brand: 96 165 250;
+  --brand-hover: 59 130 246;
+}
+
 @layer base {
-  * {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  html {
+    @apply scroll-smooth;
   }
 
   body {
     margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    @apply text-gray-800 bg-gray-50;
+    min-height: 100vh;
+    @apply font-sans antialiased bg-[rgb(var(--bg-canvas))] text-[rgb(var(--text-primary))];
+  }
+
+  * {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))];
+  }
+
+  ::selection {
+    background-color: rgba(29, 78, 216, 0.12);
   }
 }
 
@@ -36,6 +63,30 @@
 /* Smooth transitions */
 .transition-smooth {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skip-link {
+  clip: rect(0 0 0 0);
+  border: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.skip-link:focus {
+  clip: auto;
+  width: auto;
+  height: auto;
+  margin: 1rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+  background-color: rgb(var(--brand));
+  color: #fff;
+  z-index: 1000;
+  box-shadow: 0 10px 30px -12px rgb(15 23 42 / 0.3);
 }
 
 /* Custom scrollbar */

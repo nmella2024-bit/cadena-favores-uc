@@ -1,67 +1,136 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { Disclosure } from '@headlessui/react';
+import { Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/mi-logo.png.jpg';
+import ThemeToggle from './ui/ThemeToggle';
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
 
-  return (
-    <nav className="bg-white border-b border-gray-200 shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo y nombre */}
-          <Link to="/" className="flex items-center space-x-3 hover:opacity-75 transition-smooth">
-            <img src={logo} alt="Red UC Logo" className="h-10 rounded" />
-            <span className="text-xl font-bold text-gray-800">Red UC</span>
-          </Link>
+  const navigation = currentUser
+    ? [
+        { label: 'Ver favores', to: '/favores' },
+        { label: 'Publicar favor', to: '/publicar' },
+        { label: 'Mi perfil', to: '/perfil' },
+      ]
+    : [
+        { label: 'Ver favores', to: '/favores' },
+        { label: 'Publicar favor', to: '/publicar' },
+        { label: 'Ingresar', to: '/login' },
+      ];
 
-          {/* Menú de navegación */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            {currentUser ? (
-              <>
-                <Link
-                  to="/favores"
-                  className="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 hover:text-gray-900 transition-smooth"
-                >
-                  Ver Favores
-                </Link>
-                <Link
-                  to="/perfil"
-                  className="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 hover:text-gray-900 transition-smooth"
-                >
-                  Mi Perfil
-                </Link>
-                <span className="hidden sm:inline text-sm text-gray-600">
-                  Hola, <span className="font-semibold text-gray-800">{currentUser.nombre.split(' ')[0]}</span>
+  const renderLink = (item, isMobile = false) => (
+    <NavLink
+      key={item.to}
+      to={item.to}
+      className={({ isActive }) =>
+        [
+          'inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:ring-offset-2',
+          isMobile ? 'w-full justify-start' : 'justify-center',
+          isActive
+            ? 'bg-slate-100 text-brand underline decoration-2 underline-offset-4'
+            : 'text-[rgb(var(--text-muted))] hover:text-[rgb(var(--text-primary))] hover:bg-slate-100',
+        ].join(' ')
+      }
+    >
+      {item.label}
+    </NavLink>
+  );
+
+  return (
+    <Disclosure
+      as="nav"
+      className="sticky top-0 z-50 border-b border-[rgb(var(--border))] bg-white/80 backdrop-blur px-4 sm:px-6"
+    >
+      {({ open }) => (
+        <>
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4">
+            <Link
+              to="/"
+              className="flex items-center gap-3 rounded-lg px-2 py-1 transition-colors hover:bg-slate-100"
+            >
+              <img src={logo} alt="Red UC" className="h-10 w-10 rounded object-cover" />
+              <div className="flex flex-col">
+                <span className="text-base font-semibold leading-tight text-[rgb(var(--text-primary))]">
+                  Red UC
                 </span>
+                <span className="text-xs font-medium uppercase tracking-wide text-[rgb(var(--text-muted))]">
+                  Comunidad solidaria
+                </span>
+              </div>
+            </Link>
+
+            <div className="hidden items-center gap-2 md:flex">
+              {navigation.map((item) => renderLink(item))}
+              <ThemeToggle />
+              {currentUser ? (
                 <button
+                  type="button"
                   onClick={logout}
-                  className="px-4 py-2 text-sm font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 transition-smooth focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  className="inline-flex items-center rounded-lg border border-[rgb(var(--border))] px-3 py-2 text-sm font-medium text-[rgb(var(--text-muted))] transition-colors hover:bg-slate-100 hover:text-[rgb(var(--text-primary))]"
                 >
-                  Cerrar Sesión
+                  Cerrar sesión
                 </button>
-              </>
-            ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="px-3 sm:px-4 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100 hover:text-gray-900 transition-smooth"
-                >
-                  Iniciar Sesión
-                </Link>
+              ) : (
                 <Link
                   to="/registro"
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-smooth shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+                  className="inline-flex items-center rounded-lg bg-[rgb(var(--brand))] px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[rgb(var(--brand-hover))]"
                 >
                   Registrarse
                 </Link>
-              </>
-            )}
+              )}
+            </div>
+
+            <div className="md:hidden">
+              <Disclosure.Button
+                className="inline-flex items-center justify-center rounded-lg border border-[rgb(var(--border))] p-2 text-[rgb(var(--text-muted))] transition-colors hover:bg-slate-100 hover:text-[rgb(var(--text-primary))]"
+                aria-label="Abrir menú de navegación"
+              >
+                {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+              </Disclosure.Button>
+            </div>
           </div>
-        </div>
-      </div>
-    </nav>
+
+          <Disclosure.Panel className="md:hidden">
+            <div className="space-y-1 border-t border-[rgb(var(--border))] py-3">
+              {navigation.map((item) => renderLink(item, true))}
+              {currentUser ? (
+                <div className="flex items-center justify-between gap-3 px-3 pt-2">
+                  <div className="flex items-center gap-3">
+                    <ThemeToggle />
+                    <span className="text-sm text-[rgb(var(--text-muted))]">
+                      Hola,{' '}
+                      <span className="font-semibold text-[rgb(var(--text-primary))]">
+                        {currentUser.nombre.split(' ')[0]}
+                      </span>
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={logout}
+                    className="inline-flex items-center rounded-lg bg-slate-100 px-3 py-2 text-sm font-medium text-[rgb(var(--text-primary))] transition-colors hover:bg-slate-200"
+                  >
+                    Cerrar sesión
+                  </button>
+                </div>
+              ) : (
+                <div className="flex flex-col gap-3 px-3 pt-2">
+                  <ThemeToggle className="self-start" />
+                  <Link
+                    to="/registro"
+                    className="inline-flex items-center justify-center rounded-lg bg-[rgb(var(--brand))] px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[rgb(var(--brand-hover))]"
+                  >
+                    Registrarse
+                  </Link>
+                </div>
+              )}
+            </div>
+          </Disclosure.Panel>
+        </>
+      )}
+    </Disclosure>
   );
 };
 

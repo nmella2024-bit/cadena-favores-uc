@@ -1,18 +1,24 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { CalendarDays, Link2, Tag, UserRound } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
+import PrimaryButton from './ui/PrimaryButton';
+import GhostButton from './ui/GhostButton';
+import { cn } from '../utils/cn';
 
-const FavorCard = ({ favor }) => {
+const FavorCard = ({ favor, className }) => {
   const { currentUser, respondToFavor, deleteFavor } = useAuth();
 
-  const category = categories.find(c => c.id === favor.categoria);
+  const category = categories.find((c) => c.id === favor.categoria);
   const isOwnFavor = currentUser && favor.solicitanteId === currentUser.id;
   const canRespond = currentUser && !isOwnFavor && favor.estado === 'activo';
+  const isCompleted = favor.estado === 'completado';
 
   const handleRespond = () => {
     if (window.confirm('¿Deseas ofrecer ayuda con este favor?')) {
       respondToFavor(favor.id);
-      alert('¡Gracias por tu ayuda! El solicitante fue notificado.');
+      alert('¡Gracias por tu ayuda! La persona solicitante fue notificada.');
     }
   };
 
@@ -23,68 +29,81 @@ const FavorCard = ({ favor }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 p-6 border border-gray-200">
-      {/* Header con título y categoría */}
-      <div className="flex justify-between items-start mb-3">
-        <h3 className="text-xl font-bold text-gray-900 flex-grow">{favor.titulo}</h3>
-        {favor.estado === 'completado' && (
-          <span className="ml-2 px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">
-            ✓ Completado
+    <article
+      className={cn(
+        'rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] p-5 shadow-sm transition hover:shadow-md',
+        className,
+      )}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <h3 className="line-clamp-2 text-xl font-semibold tracking-tight" data-testid="favor-title">
+          {favor.titulo}
+        </h3>
+        {isCompleted && (
+          <span className="inline-flex shrink-0 items-center rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+            Completado
           </span>
         )}
       </div>
 
-      {/* Categoría */}
-      {category && (
-        <div className="mb-3">
-          <span className="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
-            <span className="mr-1">{category.icon}</span>
+      <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-[rgb(var(--text-muted))]">
+        {category && (
+          <span
+            data-testid="favor-category"
+            className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--border))] bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[rgb(var(--text-muted))]"
+          >
+            <Tag className="h-4 w-4" aria-hidden="true" />
             {category.name}
           </span>
-        </div>
-      )}
+        )}
+        <span className="inline-flex items-center gap-2">
+          <UserRound className="h-4 w-4" aria-hidden="true" />
+          <span>{favor.solicitante}</span>
+        </span>
+        <span className="inline-flex items-center gap-2">
+          <CalendarDays className="h-4 w-4" aria-hidden="true" />
+          <time dateTime={favor.fecha}>{favor.fecha}</time>
+        </span>
+      </div>
 
-      {/* Descripción */}
-      <p className="text-gray-600 mb-4 line-clamp-3 text-base">{favor.descripcion}</p>
+      <p className="mt-4 line-clamp-3 text-[rgb(var(--text-muted))]">{favor.descripcion}</p>
 
-      {/* Disponibilidad */}
       {favor.disponibilidad && (
-        <p className="text-sm text-gray-600 mb-4">
-          <span className="font-semibold">Disponibilidad:</span> {favor.disponibilidad}
+        <p className="mt-3 text-sm text-[rgb(var(--text-muted))]">
+          <span className="font-medium text-[rgb(var(--text-primary))]">Disponibilidad:</span> {favor.disponibilidad}
         </p>
       )}
 
-      {/* Footer con solicitante y acciones */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center pt-4 border-t border-gray-200 gap-3">
-        <div className="flex items-center space-x-2">
-          <span className="text-2xl">👤</span>
-          <div>
-            <p className="text-sm font-semibold text-gray-800">{favor.solicitante}</p>
-            <p className="text-xs text-gray-500">{favor.fecha}</p>
-          </div>
+      <div className="mt-6 flex flex-col gap-3 border-t border-[rgb(var(--border))] pt-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-sm text-[rgb(var(--text-muted))]">
+          <span className="font-medium text-[rgb(var(--text-primary))]">Estado:</span>{' '}
+          {isCompleted ? 'Completado' : 'Disponible'}
         </div>
-
-        {/* Botones de acción */}
-        <div className="flex space-x-2">
+        <div className="flex flex-wrap gap-2">
           {canRespond && (
-            <button
+            <PrimaryButton
+              data-testid="cta-offer"
+              type="button"
               onClick={handleRespond}
-              className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-smooth shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
+              className="px-4 py-2 text-sm"
             >
-              Ofrecer Ayuda
-            </button>
+              Ofrecer ayuda
+            </PrimaryButton>
           )}
           {isOwnFavor && favor.estado === 'activo' && (
-            <button
-              onClick={handleDelete}
-              className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-smooth shadow-sm focus:outline-none focus:ring-2 focus:ring-red-200"
-            >
+            <GhostButton type="button" onClick={handleDelete} className="px-4 py-2 text-sm text-red-600 hover:text-red-700">
               Eliminar
-            </button>
+            </GhostButton>
           )}
+          <GhostButton as={Link} to={`/favores?id=${favor.id}`} className="px-4 py-2 text-sm">
+            <span className="inline-flex items-center gap-2">
+              <Link2 className="h-4 w-4" aria-hidden="true" />
+              Detalles
+            </span>
+          </GhostButton>
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

@@ -1,173 +1,199 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Briefcase, Inbox, Search } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import FavorCard from '../components/FavorCard';
+import PrimaryButton from '../components/ui/PrimaryButton';
+import GhostButton from '../components/ui/GhostButton';
+import TextField from '../components/ui/TextField';
+import SelectField from '../components/ui/SelectField';
+import Toggle from '../components/ui/Toggle';
 import { categories } from '../data/mockData';
+
+const SkeletonCard = () => (
+  <div
+    className="animate-pulse rounded-xl border border-[rgb(var(--border))] bg-white/60 p-5 shadow-sm"
+    data-testid="favor-skeleton"
+  >
+    <div className="h-6 w-2/3 rounded bg-slate-200" />
+    <div className="mt-4 flex gap-3">
+      <div className="h-4 w-24 rounded-full bg-slate-200" />
+      <div className="h-4 w-20 rounded-full bg-slate-200" />
+    </div>
+    <div className="mt-4 space-y-2">
+      <div className="h-4 w-full rounded bg-slate-200" />
+      <div className="h-4 w-5/6 rounded bg-slate-200" />
+      <div className="h-4 w-2/3 rounded bg-slate-200" />
+    </div>
+    <div className="mt-6 flex gap-3">
+      <div className="h-9 w-32 rounded-lg bg-slate-200" />
+      <div className="h-9 w-24 rounded-lg bg-slate-200" />
+    </div>
+  </div>
+);
 
 const Favores = () => {
   const { favors, currentUser } = useAuth();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [onlyAvailable, setOnlyAvailable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Filtrar favores
-  const filteredFavors = favors.filter(favor => {
-    // Filtro por categoría
-    const categoryMatch = selectedCategory === 'all' || favor.categoria === selectedCategory;
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => setIsLoading(false), 400);
+    return () => clearTimeout(timer);
+  }, [selectedCategory, searchQuery, onlyAvailable, favors.length]);
 
-    // Filtro por búsqueda
-    const searchMatch =
-      searchQuery === '' ||
-      favor.titulo.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      favor.descripcion.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredFavors = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
 
-    return categoryMatch && searchMatch;
-  });
+    return favors.filter((favor) => {
+      const matchesCategory = selectedCategory === 'all' || favor.categoria === selectedCategory;
+      const matchesAvailability = !onlyAvailable || favor.estado === 'activo';
+      const matchesSearch =
+        normalizedQuery.length === 0 ||
+        favor.titulo.toLowerCase().includes(normalizedQuery) ||
+        favor.descripcion.toLowerCase().includes(normalizedQuery);
 
-  // Separar favores activos y completados
-  const activeFavors = filteredFavors.filter(f => f.estado === 'activo');
-  const completedFavors = filteredFavors.filter(f => f.estado === 'completado');
+      return matchesCategory && matchesAvailability && matchesSearch;
+    });
+  }, [favors, onlyAvailable, searchQuery, selectedCategory]);
+
+  const activeFavors = filteredFavors.filter((favor) => favor.estado === 'activo');
+  const completedFavors = filteredFavors.filter((favor) => favor.estado === 'completado');
+
+  const showEmptyState = !isLoading && activeFavors.length === 0;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 sm:py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header con título y botón de publicar */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
+    <div className="bg-[rgb(var(--bg-canvas))] py-12 sm:py-16">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Favores Publicados</h1>
-            <p className="text-gray-600 text-base">
-              {activeFavors.length} {activeFavors.length === 1 ? 'favor activo' : 'favores activos'}
+            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Favores publicados</h1>
+            <p className="mt-2 text-[rgb(var(--text-muted))]">
+              {activeFavors.length} {activeFavors.length === 1 ? 'favor activo' : 'favores activos'} disponibles para
+              ayudar hoy.
             </p>
           </div>
-          {currentUser && (
-            <Link
-              to="/publicar"
-              className="px-5 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-smooth shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
-            >
-              + Publicar Favor
-            </Link>
-          )}
-        </div>
-
-        {/* Barra de filtros */}
-        <div className="bg-white rounded-lg shadow-md border border-gray-200 p-6 mb-8">
-          <div className="flex flex-col lg:flex-row gap-4">
-            {/* Buscador */}
-            <div className="flex-grow">
-              <label htmlFor="search" className="block text-sm font-semibold text-gray-800 mb-2">
-                Buscar por palabra clave
-              </label>
-              <input
-                id="search"
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Buscar en título o descripción..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
-              />
-            </div>
-
-            {/* Filtro por categoría */}
-            <div className="lg:w-64">
-              <label htmlFor="category" className="block text-sm font-semibold text-gray-800 mb-2">
-                Categoría
-              </label>
-              <select
-                id="category"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
-              >
-                <option value="all">Todas las categorías</option>
-                {categories.map(cat => (
-                  <option key={cat.id} value={cat.id}>
-                    {cat.icon} {cat.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {/* Tags de categorías (alternativa visual) */}
-          <div className="mt-4 flex flex-wrap gap-2">
-            <button
-              onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-smooth focus:outline-none focus:ring-2 focus:ring-blue-200 ${
-                selectedCategory === 'all'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              Todas
-            </button>
-            {categories.map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-smooth focus:outline-none focus:ring-2 focus:ring-blue-200 ${
-                  selectedCategory === cat.id
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-              >
-                {cat.icon} {cat.name}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Lista de favores activos */}
-        {!currentUser && (
-          <div className="bg-blue-50 border border-blue-200 rounded-md p-4 mb-6">
-            <p className="text-blue-800 text-center text-sm sm:text-base">
-              <Link to="/login" className="font-semibold underline hover:text-blue-900">
-                Inicia sesión
-              </Link>{' '}
-              para poder responder a los favores publicados
-            </p>
-          </div>
-        )}
-
-        {activeFavors.length > 0 ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            {activeFavors.map(favor => (
-              <FavorCard key={favor.id} favor={favor} />
-            ))}
-          </div>
-        ) : (
-          <div className="bg-white rounded-lg shadow-md border border-gray-200 p-12 text-center mb-8">
-            <div className="text-5xl sm:text-6xl mb-4">🔍</div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2">
-              No se encontraron favores
-            </h3>
-            <p className="text-gray-600 text-base mb-6">
-              {searchQuery || selectedCategory !== 'all'
-                ? 'Intenta ajustar los filtros de búsqueda'
-                : '¡Sé el primero en publicar un favor!'}
-            </p>
-            {currentUser && (
-              <Link
-                to="/publicar"
-                className="inline-block px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-smooth shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
-              >
-                Publicar Favor
-              </Link>
+          <div className="flex flex-wrap gap-3">
+            {currentUser ? (
+              <PrimaryButton as={Link} to="/publicar" className="px-4 py-2">
+                Publicar favor
+              </PrimaryButton>
+            ) : (
+              <GhostButton as={Link} to="/login" className="px-4 py-2">
+                Inicia sesión para ayudar
+              </GhostButton>
             )}
           </div>
-        )}
+        </header>
 
-        {/* Favores completados (opcional, colapsable) */}
-        {completedFavors.length > 0 && (
-          <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              Favores Completados ({completedFavors.length})
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-60">
-              {completedFavors.map(favor => (
-                <FavorCard key={favor.id} favor={favor} />
+        <section className="mt-10 grid gap-6 lg:grid-cols-[320px,1fr] lg:items-start">
+          <aside className="space-y-6 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] p-6 shadow-sm lg:sticky lg:top-24">
+            <h2 className="text-lg font-semibold tracking-tight">Filtrar búsqueda</h2>
+            <TextField
+              id="search"
+              label="Buscar"
+              placeholder="Título, descripción o palabra clave"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              hint="Atajo: Ctrl + K"
+              icon={Search}
+            />
+            <SelectField
+              id="category"
+              label="Categoría"
+              value={selectedCategory}
+              onChange={(event) => setSelectedCategory(event.target.value)}
+            >
+              <option value="all">Todas las categorías</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.icon} {category.name}
+                </option>
               ))}
-            </div>
+            </SelectField>
+            <Toggle
+              label="Solo favores disponibles"
+              description="Oculta los que ya están completados"
+              checked={onlyAvailable}
+              onChange={setOnlyAvailable}
+            />
+          </aside>
+
+          <div className="space-y-8">
+            {!currentUser && (
+              <div className="rounded-xl border border-blue-100 bg-blue-50/60 p-5 text-sm text-blue-900 shadow-sm">
+                <p>
+                  <Link to="/login" className="font-semibold underline hover:text-blue-700">
+                    Inicia sesión
+                  </Link>{' '}
+                  o{' '}
+                  <Link to="/registro" className="font-semibold underline hover:text-blue-700">
+                    crea una cuenta
+                  </Link>{' '}
+                  para ofrecer ayuda y marcar tus favores como completados.
+                </p>
+              </div>
+            )}
+
+            {isLoading ? (
+              <div className="grid gap-6 md:grid-cols-2">
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <SkeletonCard key={`skeleton-${index}`} />
+                ))}
+              </div>
+            ) : showEmptyState ? (
+              <div className="mx-auto max-w-xl rounded-3xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] p-12 text-center shadow-card">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-[rgb(var(--text-muted))]">
+                  <Inbox className="h-7 w-7" aria-hidden="true" />
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold tracking-tight">No encontramos favores</h3>
+                <p className="mt-3 text-sm text-[rgb(var(--text-muted))]">
+                  Ajusta los filtros o publica el primer favor para que otros estudiantes puedan ayudarte.
+                </p>
+                {currentUser ? (
+                  <PrimaryButton as={Link} to="/publicar" className="mt-6">
+                    Publicar el primero
+                  </PrimaryButton>
+                ) : (
+                  <GhostButton as={Link} to="/publicar" className="mt-6">
+                    Publicar el primero
+                  </GhostButton>
+                )}
+              </div>
+            ) : (
+              <div className="space-y-12">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--text-muted))]">
+                    <Briefcase className="h-4 w-4" aria-hidden="true" />
+                    Favores activos
+                  </div>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    {activeFavors.map((favor) => (
+                      <FavorCard key={favor.id} favor={favor} />
+                    ))}
+                  </div>
+                </div>
+
+                {completedFavors.length > 0 && (
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--text-muted))]">
+                      <Briefcase className="h-4 w-4" aria-hidden="true" />
+                      Favores completados ({completedFavors.length})
+                    </div>
+                    <div className="grid gap-6 md:grid-cols-2">
+                      {completedFavors.map((favor) => (
+                        <FavorCard key={favor.id} favor={favor} className="opacity-80" />
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
-        )}
+        </section>
       </div>
     </div>
   );
