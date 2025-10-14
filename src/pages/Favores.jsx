@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Briefcase, Inbox, Search } from 'lucide-react';
+import { Link, useSearchParams } from 'react-router-dom';
+import { Briefcase, Inbox, Search, X, CalendarDays, UserRound, Tag } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { obtenerFavores } from '../services/favorService';
+import { obtenerFavores, responderFavor, eliminarFavor } from '../services/favorService';
 import FavorCard from '../components/FavorCard';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import GhostButton from '../components/ui/GhostButton';
@@ -34,13 +34,18 @@ const SkeletonCard = () => (
 );
 
 const Favores = () => {
-  const { currentUser } = useAuth();
+  const { currentUser, firebaseUser } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [favors, setFavors] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [onlyAvailable, setOnlyAvailable] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
+
+  // Modal state
+  const favorId = searchParams.get('id');
+  const selectedFavor = favors.find(f => f.id === favorId);
 
   // Cargar favores desde Firestore al montar el componente
   useEffect(() => {
@@ -89,6 +94,43 @@ const Favores = () => {
   const completedFavors = filteredFavors.filter((favor) => favor.estado === 'completado');
 
   const showEmptyState = !isLoading && activeFavors.length === 0;
+
+  // Modal functions
+  const closeModal = () => {
+    setSearchParams({});
+  };
+
+  const handleRespond = async () => {
+    if (!firebaseUser || !selectedFavor) return;
+
+    if (window.confirm('¿Deseas ofrecer ayuda con este favor?')) {
+      try {
+        await responderFavor(selectedFavor.id, firebaseUser);
+        alert('¡Gracias por tu ayuda! La persona solicitante fue notificada.');
+        closeModal();
+        window.location.reload();
+      } catch (error) {
+        console.error('Error al responder favor:', error);
+        alert('Error al responder al favor. Intenta nuevamente.');
+      }
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!firebaseUser || !selectedFavor) return;
+
+    if (window.confirm('¿Estás seguro de eliminar este favor?')) {
+      try {
+        await eliminarFavor(selectedFavor.id);
+        alert('Favor eliminado exitosamente');
+        closeModal();
+        window.location.reload();
+      } catch (error) {
+        console.error('Error al eliminar favor:', error);
+        alert('Error al eliminar el favor. Intenta nuevamente.');
+      }
+    }
+  };
 
   return (
     <div className="bg-[rgb(var(--bg-canvas))] py-12 sm:py-16">
@@ -233,6 +275,124 @@ const Favores = () => {
           </div>
         </section>
       </div>
+
+      {/* Modal de detalles del favor */}
+      {selectedFavor && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          onClick={closeModal}
+        >
+          <div
+            className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto bg-card rounded-2xl border border-border shadow-2xl dark:bg-card/95"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="sticky top-0 bg-card border-b border-border px-6 py-4 flex items-start justify-between dark:bg-card/95">
+              <div className="flex-1 pr-8">
+                <h2 className="text-2xl font-bold text-text-primary">{selectedFavor.titulo}</h2>
+                {selectedFavor.estado === 'completado' && (
+                  <span className="inline-flex mt-2 items-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-500">
+                    Completado
+                  </span>
+                )}
+              </div>
+              <button
+                onClick={closeModal}
+                className="shrink-0 rounded-lg p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors dark:hover:bg-card/60"
+                aria-label="Cerrar modal"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="px-6 py-6 space-y-6">
+              {/* Metadata */}
+              <div className="flex flex-wrap items-center gap-4 text-sm text-text-muted">
+                {(() => {
+                  const category = categories.find((c) => c.id === selectedFavor.categoria);
+                  return category ? (
+                    <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide dark:bg-card/50">
+                      <Tag className="h-4 w-4" />
+                      {category.name}
+                    </span>
+                  ) : null;
+                })()}
+                <span className="inline-flex items-center gap-2">
+                  <UserRound className="h-4 w-4" />
+                  <span>{selectedFavor.solicitante || selectedFavor.nombreUsuario}</span>
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <CalendarDays className="h-4 w-4" />
+                  <time dateTime={selectedFavor.fecha}>{selectedFavor.fecha}</time>
+                </span>
+              </div>
+
+              {/* Description */}
+              <div>
+                <h3 className="text-lg font-semibold text-text-primary mb-2">Descripción</h3>
+                <p className="text-text-muted whitespace-pre-wrap">{selectedFavor.descripcion}</p>
+              </div>
+
+              {/* Availability */}
+              {selectedFavor.disponibilidad && (
+                <div>
+                  <h3 className="text-lg font-semibold text-text-primary mb-2">Disponibilidad</h3>
+                  <p className="text-text-muted">{selectedFavor.disponibilidad}</p>
+                </div>
+              )}
+
+              {/* Estado */}
+              <div>
+                <h3 className="text-lg font-semibold text-text-primary mb-2">Estado</h3>
+                <p className="text-text-muted">
+                  {selectedFavor.estado === 'completado' ? 'Completado' : 'Disponible'}
+                </p>
+              </div>
+
+              {/* Respuestas */}
+              {selectedFavor.respuestas && selectedFavor.respuestas.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-semibold text-text-primary mb-2">
+                    Personas que ofrecieron ayuda ({selectedFavor.respuestas.length})
+                  </h3>
+                  <div className="space-y-2">
+                    {selectedFavor.respuestas.map((respuesta, index) => (
+                      <div
+                        key={index}
+                        className="rounded-lg border border-border bg-card/50 p-3 text-sm dark:bg-card/30"
+                      >
+                        <p className="font-medium text-text-primary">{respuesta.nombreUsuario}</p>
+                        <p className="text-xs text-text-muted">{respuesta.emailUsuario}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Actions */}
+            <div className="sticky bottom-0 bg-card border-t border-border px-6 py-4 flex flex-wrap gap-3 justify-end dark:bg-card/95">
+              <GhostButton onClick={closeModal} className="px-4 py-2">
+                Cerrar
+              </GhostButton>
+              {currentUser && selectedFavor.usuarioId !== currentUser.uid && selectedFavor.estado === 'activo' && (
+                <PrimaryButton onClick={handleRespond} className="px-4 py-2">
+                  Ofrecer ayuda
+                </PrimaryButton>
+              )}
+              {currentUser && selectedFavor.usuarioId === currentUser.uid && selectedFavor.estado === 'activo' && (
+                <GhostButton
+                  onClick={handleDelete}
+                  className="px-4 py-2 text-red-500 hover:bg-red-500/10 hover:text-red-400 focus-visible:ring-red-500/40"
+                >
+                  Eliminar favor
+                </GhostButton>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
