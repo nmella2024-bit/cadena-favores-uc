@@ -27,7 +27,7 @@ const ThemeToggle = ({ className }) => {
     <button
       type="button"
       className={cn(
-        'inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[rgb(var(--border))] bg-white/80 text-[rgb(var(--text-muted))] transition hover:bg-slate-100 hover:text-[rgb(var(--text-primary))] dark:bg-slate-900/70 dark:hover:bg-slate-800 dark:text-slate-300',
+        'inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-card/70 text-text-muted transition hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))] dark:bg-card/50',
         className,
       )}
       onClick={() => setIsDark((prev) => !prev)}

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import PrimaryButton from '../components/ui/PrimaryButton';
+import TextField from '../components/ui/TextField';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,15 +14,15 @@ const Login = () => {
   });
   const [error, setError] = useState('');
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (event) => {
+    setFormData((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
     setError('');
 
     try {
@@ -32,83 +34,66 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md border border-gray-200 p-8 animate-fade-in">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Iniciar Sesión</h2>
-          <p className="text-gray-600 text-base">Bienvenido de vuelta a Red UC</p>
+    <div className="flex min-h-screen items-center justify-center bg-[rgb(var(--bg-canvas))] py-12 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-[rgb(var(--bg-card))] p-8 shadow-card animate-fade-in dark:bg-card/80">
+        <div className="mb-8 text-center">
+          <h2 className="mb-2 text-3xl font-bold text-text-primary">Iniciar SesiA3n</h2>
+          <p className="text-base text-text-muted">Bienvenido de vuelta a Red UC</p>
         </div>
 
-        {/* Error message */}
         {error && (
-          <div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-700 rounded-md text-sm">
+          <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-500">
             {error}
           </div>
         )}
 
-        {/* Formulario */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Correo */}
-          <div>
-            <label htmlFor="correo" className="block text-sm font-semibold text-gray-800 mb-2">
-              Correo UC
-            </label>
-            <input
-              id="correo"
-              name="correo"
-              type="email"
-              required
-              value={formData.correo}
-              onChange={handleChange}
-              placeholder="tunombre@uc.cl"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
-            />
-          </div>
+          <TextField
+            id="correo"
+            name="correo"
+            label="Correo UC"
+            type="email"
+            placeholder="tunombre@uc.cl"
+            value={formData.correo}
+            onChange={handleChange}
+            required
+          />
 
-          {/* Contraseña */}
-          <div>
-            <label htmlFor="password" className="block text-sm font-semibold text-gray-800 mb-2">
-              Contraseña
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              value={formData.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 transition-smooth"
-            />
-          </div>
+          <TextField
+            id="password"
+            name="password"
+            label="ContraseA�a"
+            type="password"
+            placeholder="�?��?��?��?��?��?��?��?�"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
 
-          {/* Botón de submit */}
-          <button
-            type="submit"
-            className="w-full py-2 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition-smooth shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-200"
-          >
+          <PrimaryButton type="submit" className="w-full justify-center py-2 text-base font-semibold">
             Ingresar
-          </button>
+          </PrimaryButton>
         </form>
 
-        {/* Enlace a registro */}
         <div className="mt-6 text-center">
-          <p className="text-gray-600 text-sm">
-            ¿No tienes cuenta?{' '}
-            <Link to="/registro" className="text-blue-600 font-semibold hover:text-blue-700 hover:underline">
-              Regístrate aquí
+          <p className="text-sm text-text-muted">
+            A�No tienes cuenta?{' '}
+            <Link to="/registro" className="font-semibold text-brand hover:text-brand/80 hover:underline">
+              RegA-strate aquA-
             </Link>
           </p>
         </div>
 
-        {/* Nota informativa */}
-        <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-md">
-          <p className="text-sm text-gray-700 text-center">
-            <span className="font-semibold">Demo:</span> Usa{' '}
-            <code className="bg-white px-2 py-1 rounded text-xs border border-gray-300">mgonzalez@uc.cl</code>
-            {' '}/{' '}
-            <code className="bg-white px-2 py-1 rounded text-xs border border-gray-300">demo123</code>
+        <div className="mt-6 rounded-xl border border-border bg-card/70 p-4 text-center text-sm text-text-muted dark:bg-card/60">
+          <p>
+            <span className="font-semibold text-text-primary">Demo:</span> Usa{' '}
+            <code className="rounded-md border border-border bg-card px-2 py-1 text-xs text-text-primary dark:bg-card/70">
+              mgonzalez@uc.cl
+            </code>{' '}
+            /{' '}
+            <code className="rounded-md border border-border bg-card px-2 py-1 text-xs text-text-primary dark:bg-card/70">
+              demo123
+            </code>
           </p>
         </div>
       </div>

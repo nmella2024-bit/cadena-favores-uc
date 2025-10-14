@@ -5,14 +5,14 @@ const TextField = React.forwardRef(
   ({ id, label, hint, error, icon: Icon, className, inputClassName, ...props }, ref) => (
     <div className={cn('space-y-2', className)}>
       {label && (
-        <label htmlFor={id} className="block text-sm font-semibold text-[rgb(var(--text-primary))]">
+        <label htmlFor={id} className="block text-sm font-semibold text-text-primary">
           {label}
         </label>
       )}
       <div className="relative">
         {Icon && (
           <Icon
-            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[rgb(var(--text-muted))]"
+            className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-text-muted"
             aria-hidden="true"
           />
         )}
@@ -20,7 +20,7 @@ const TextField = React.forwardRef(
           ref={ref}
           id={id}
           className={cn(
-            'w-full rounded-lg border border-[rgb(var(--border))] bg-white px-3 py-2 text-sm text-[rgb(var(--text-primary))] placeholder:text-[rgb(var(--text-muted))] focus:border-blue-500 focus:ring-2 focus:ring-blue-200',
+            'w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-text-primary placeholder:text-text-muted shadow-sm transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30 focus:ring-offset-2 focus:ring-offset-[rgb(var(--bg-canvas))]',
             Icon && 'pl-10',
             inputClassName,
           )}
@@ -32,7 +32,7 @@ const TextField = React.forwardRef(
       {(hint || error) && (
         <p
           id={`${id}-description`}
-          className={cn('text-sm', error ? 'text-red-600' : 'text-[rgb(var(--text-muted))]')}
+          className={cn('text-sm', error ? 'text-red-500' : 'text-text-muted')}
         >
           {error ?? hint}
         </p>

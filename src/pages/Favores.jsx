@@ -12,22 +12,22 @@ import { categories } from '../data/mockData';
 
 const SkeletonCard = () => (
   <div
-    className="animate-pulse rounded-xl border border-[rgb(var(--border))] bg-white/60 p-5 shadow-sm"
+    className="animate-pulse rounded-xl border border-border bg-card/70 p-5 shadow-sm dark:bg-card/60"
     data-testid="favor-skeleton"
   >
-    <div className="h-6 w-2/3 rounded bg-slate-200" />
+    <div className="h-6 w-2/3 rounded bg-border/80 dark:bg-border/40" />
     <div className="mt-4 flex gap-3">
-      <div className="h-4 w-24 rounded-full bg-slate-200" />
-      <div className="h-4 w-20 rounded-full bg-slate-200" />
+      <div className="h-4 w-24 rounded-full bg-border/80 dark:bg-border/40" />
+      <div className="h-4 w-20 rounded-full bg-border/80 dark:bg-border/40" />
     </div>
     <div className="mt-4 space-y-2">
-      <div className="h-4 w-full rounded bg-slate-200" />
-      <div className="h-4 w-5/6 rounded bg-slate-200" />
-      <div className="h-4 w-2/3 rounded bg-slate-200" />
+      <div className="h-4 w-full rounded bg-border/80 dark:bg-border/40" />
+      <div className="h-4 w-5/6 rounded bg-border/80 dark:bg-border/40" />
+      <div className="h-4 w-2/3 rounded bg-border/80 dark:bg-border/40" />
     </div>
     <div className="mt-6 flex gap-3">
-      <div className="h-9 w-32 rounded-lg bg-slate-200" />
-      <div className="h-9 w-24 rounded-lg bg-slate-200" />
+      <div className="h-9 w-32 rounded-lg bg-border/80 dark:bg-border/40" />
+      <div className="h-9 w-24 rounded-lg bg-border/80 dark:bg-border/40" />
     </div>
   </div>
 );
@@ -71,7 +71,7 @@ const Favores = () => {
         <header className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Favores publicados</h1>
-            <p className="mt-2 text-[rgb(var(--text-muted))]">
+            <p className="mt-2 text-text-muted">
               {activeFavors.length} {activeFavors.length === 1 ? 'favor activo' : 'favores activos'} disponibles para
               ayudar hoy.
             </p>
@@ -90,7 +90,7 @@ const Favores = () => {
         </header>
 
         <section className="mt-10 grid gap-6 lg:grid-cols-[320px,1fr] lg:items-start">
-          <aside className="space-y-6 rounded-2xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] p-6 shadow-sm lg:sticky lg:top-24">
+          <aside className="space-y-6 rounded-2xl border border-border bg-card p-6 shadow-sm lg:sticky lg:top-24 dark:bg-card/80">
             <h2 className="text-lg font-semibold tracking-tight">Filtrar búsqueda</h2>
             <TextField
               id="search"
@@ -124,13 +124,13 @@ const Favores = () => {
 
           <div className="space-y-8">
             {!currentUser && (
-              <div className="rounded-xl border border-blue-100 bg-blue-50/60 p-5 text-sm text-blue-900 shadow-sm">
+              <div className="rounded-xl border border-brand/30 bg-brand/10 p-5 text-sm text-brand shadow-sm dark:border-brand/20 dark:bg-brand/15">
                 <p>
-                  <Link to="/login" className="font-semibold underline hover:text-blue-700">
+                  <Link to="/login" className="font-semibold underline hover:text-brand/80">
                     Inicia sesión
                   </Link>{' '}
                   o{' '}
-                  <Link to="/registro" className="font-semibold underline hover:text-blue-700">
+                  <Link to="/registro" className="font-semibold underline hover:text-brand/80">
                     crea una cuenta
                   </Link>{' '}
                   para ofrecer ayuda y marcar tus favores como completados.
@@ -145,12 +145,12 @@ const Favores = () => {
                 ))}
               </div>
             ) : showEmptyState ? (
-              <div className="mx-auto max-w-xl rounded-3xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] p-12 text-center shadow-card">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 text-[rgb(var(--text-muted))]">
+              <div className="mx-auto max-w-xl rounded-3xl border border-border bg-card p-12 text-center shadow-card dark:bg-card/80">
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand/10 text-brand">
                   <Inbox className="h-7 w-7" aria-hidden="true" />
                 </div>
                 <h3 className="mt-6 text-2xl font-semibold tracking-tight">No encontramos favores</h3>
-                <p className="mt-3 text-sm text-[rgb(var(--text-muted))]">
+                <p className="mt-3 text-sm text-text-muted">
                   Ajusta los filtros o publica el primer favor para que otros estudiantes puedan ayudarte.
                 </p>
                 {currentUser ? (
@@ -166,7 +166,7 @@ const Favores = () => {
             ) : (
               <div className="space-y-12">
                 <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--text-muted))]">
+                  <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-muted">
                     <Briefcase className="h-4 w-4" aria-hidden="true" />
                     Favores activos
                   </div>
@@ -179,7 +179,7 @@ const Favores = () => {
 
                 {completedFavors.length > 0 && (
                   <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-[rgb(var(--text-muted))]">
+                    <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-muted">
                       <Briefcase className="h-4 w-4" aria-hidden="true" />
                       Favores completados ({completedFavors.length})
                     </div>

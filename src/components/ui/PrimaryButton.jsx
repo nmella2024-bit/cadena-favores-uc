@@ -5,7 +5,7 @@ const PrimaryButton = React.forwardRef(({ as: Component = 'button', className, c
   <Component
     ref={ref}
     className={cn(
-      'inline-flex items-center justify-center rounded-lg bg-[rgb(var(--brand))] px-5 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[rgb(var(--brand-hover))] focus-visible:ring-blue-300 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60',
+      'inline-flex items-center justify-center rounded-lg bg-[rgb(var(--brand))] px-5 py-3 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[rgb(var(--brand-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))] disabled:cursor-not-allowed disabled:opacity-60',
       className,
     )}
     {...props}

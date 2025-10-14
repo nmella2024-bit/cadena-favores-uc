@@ -31,7 +31,7 @@ const FavorCard = ({ favor, className }) => {
   return (
     <article
       className={cn(
-        'rounded-xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] p-5 shadow-sm transition hover:shadow-md',
+        'rounded-xl border border-border bg-card p-5 shadow-sm transition hover:shadow-md dark:bg-card/80',
         className,
       )}
     >
@@ -40,17 +40,17 @@ const FavorCard = ({ favor, className }) => {
           {favor.titulo}
         </h3>
         {isCompleted && (
-          <span className="inline-flex shrink-0 items-center rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+          <span className="inline-flex shrink-0 items-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-500">
             Completado
           </span>
         )}
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-[rgb(var(--text-muted))]">
+      <div className="mt-4 flex flex-wrap items-center gap-3 text-sm text-text-muted">
         {category && (
           <span
             data-testid="favor-category"
-            className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--border))] bg-slate-50 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-[rgb(var(--text-muted))]"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-text-muted dark:bg-card/50"
           >
             <Tag className="h-4 w-4" aria-hidden="true" />
             {category.name}
@@ -66,17 +66,17 @@ const FavorCard = ({ favor, className }) => {
         </span>
       </div>
 
-      <p className="mt-4 line-clamp-3 text-[rgb(var(--text-muted))]">{favor.descripcion}</p>
+      <p className="mt-4 line-clamp-3 text-text-muted">{favor.descripcion}</p>
 
       {favor.disponibilidad && (
-        <p className="mt-3 text-sm text-[rgb(var(--text-muted))]">
-          <span className="font-medium text-[rgb(var(--text-primary))]">Disponibilidad:</span> {favor.disponibilidad}
+        <p className="mt-3 text-sm text-text-muted">
+          <span className="font-medium text-text-primary">Disponibilidad:</span> {favor.disponibilidad}
         </p>
       )}
 
-      <div className="mt-6 flex flex-col gap-3 border-t border-[rgb(var(--border))] pt-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="text-sm text-[rgb(var(--text-muted))]">
-          <span className="font-medium text-[rgb(var(--text-primary))]">Estado:</span>{' '}
+      <div className="mt-6 flex flex-col gap-3 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="text-sm text-text-muted">
+          <span className="font-medium text-text-primary">Estado:</span>{' '}
           {isCompleted ? 'Completado' : 'Disponible'}
         </div>
         <div className="flex flex-wrap gap-2">
@@ -91,7 +91,11 @@ const FavorCard = ({ favor, className }) => {
             </PrimaryButton>
           )}
           {isOwnFavor && favor.estado === 'activo' && (
-            <GhostButton type="button" onClick={handleDelete} className="px-4 py-2 text-sm text-red-600 hover:text-red-700">
+            <GhostButton
+              type="button"
+              onClick={handleDelete}
+              className="px-4 py-2 text-sm text-red-500 hover:bg-red-500/10 hover:text-red-400 focus-visible:ring-red-500/40"
+            >
               Eliminar
             </GhostButton>
           )}
