@@ -50,14 +50,11 @@ export const AuthProvider = ({ children }) => {
               emailVerified: user.emailVerified,
             });
           } else {
-            // Si no hay datos en Firestore, usar solo datos de Firebase Auth
-            setCurrentUser({
-              id: user.uid,
-              uid: user.uid,
-              nombre: user.displayName || 'Usuario',
-              correo: user.email,
-              email: user.email,
-            });
+            // Si no hay datos en Firestore, el usuario no está registrado en Red UC
+            // Cerrar sesión automáticamente
+            console.warn('Usuario autenticado pero no registrado en Firestore. Cerrando sesión.');
+            await logoutUser();
+            setCurrentUser(null);
           }
         } catch (error) {
           console.error('Error al obtener datos del usuario:', error);

@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
-import { createUserDocument } from './userService';
+import { createUserDocument, getUserData } from './userService';
 
 /**
  * Registra un nuevo usuario con email y contraseña
@@ -51,10 +51,41 @@ export const registerUser = async (email, password, userData) => {
  */
 export const loginUser = async (email, password) => {
   try {
+    // Primero intentar autenticar con Firebase Auth
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return userCredential.user;
+    const user = userCredential.user;
+
+    // Verificar que el usuario exista en Firestore (fue registrado en la app)
+    const userData = await getUserData(user.uid);
+
+    if (!userData) {
+      // Si no existe en Firestore, cerrar sesión y lanzar error
+      await signOut(auth);
+      throw new Error('Esta cuenta no está registrada en Red UC. Por favor regístrate primero.');
+    }
+
+    return user;
   } catch (error) {
     console.error('Error al iniciar sesión:', error);
+
+    // Si es el error personalizado, lanzarlo tal cual
+    if (error.message.includes('no está registrada')) {
+      throw error;
+    }
+
+    // Para otros errores de Firebase, mostrar mensaje apropiado
+    if (error.code === 'auth/user-not-found') {
+      throw new Error('No existe una cuenta con este correo.');
+    } else if (error.code === 'auth/wrong-password') {
+      throw new Error('Contraseña incorrecta.');
+    } else if (error.code === 'auth/invalid-email') {
+      throw new Error('El correo electrónico no es válido.');
+    } else if (error.code === 'auth/user-disabled') {
+      throw new Error('Esta cuenta ha sido deshabilitada.');
+    } else if (error.code === 'auth/too-many-requests') {
+      throw new Error('Demasiados intentos fallidos. Intenta más tarde.');
+    }
+
     throw error;
   }
 };

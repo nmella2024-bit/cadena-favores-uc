@@ -43,7 +43,16 @@ const Login = () => {
 
         {error && (
           <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-500">
-            {error}
+            <p className="font-semibold mb-1">Error al iniciar sesión</p>
+            <p>{error}</p>
+            {error.includes('no está registrada') && (
+              <Link
+                to="/registro"
+                className="mt-3 inline-block font-semibold underline hover:text-red-400"
+              >
+                → Ir a registro
+              </Link>
+            )}
           </div>
         )}
 
