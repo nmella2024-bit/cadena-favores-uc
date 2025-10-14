@@ -133,29 +133,35 @@ const FavorCard = ({ favor, className }) => {
     }
   };
 
-  const handleFinalizar = async () => {
+  const handleFinalizarYCalificar = async () => {
     if (!firebaseUser) {
       alert('Debes iniciar sesión para finalizar este favor');
       return;
     }
 
-    const mensaje = favor.ayudanteId
-      ? '¿Confirmas que este favor se ha completado? Podrás calificar al usuario que te ayudó.'
-      : '¿Confirmas que este favor se ha completado?';
-
-    if (window.confirm(mensaje)) {
-      try {
-        await finalizarFavor(favor.id, currentUser.uid);
-        const respuesta = favor.ayudanteId
-          ? '✅ Favor marcado como finalizado. Ahora puedes calificar al usuario.'
-          : '✅ Favor marcado como finalizado.';
-        alert(respuesta);
-        // Recargar para ver los cambios
-        window.location.reload();
-      } catch (error) {
-        console.error('Error al finalizar favor:', error);
-        alert('Error al finalizar el favor. ' + (error.message || 'Intenta nuevamente.'));
+    // Si no hay ayudante, solo finalizar
+    if (!favor.ayudanteId) {
+      if (window.confirm('¿Confirmas que este favor se ha completado?')) {
+        try {
+          await finalizarFavor(favor.id, currentUser.uid);
+          alert('✅ Favor marcado como finalizado.');
+          window.location.reload();
+        } catch (error) {
+          console.error('Error al finalizar favor:', error);
+          alert('Error al finalizar el favor. ' + (error.message || 'Intenta nuevamente.'));
+        }
       }
+      return;
+    }
+
+    // Si hay ayudante, finalizar y abrir modal de calificación
+    try {
+      await finalizarFavor(favor.id, currentUser.uid);
+      // Abrir modal de calificación inmediatamente
+      setShowCalificarModal(true);
+    } catch (error) {
+      console.error('Error al finalizar favor:', error);
+      alert('Error al finalizar el favor. ' + (error.message || 'Intenta nuevamente.'));
     }
   };
 
@@ -237,19 +243,19 @@ const FavorCard = ({ favor, className }) => {
             </PrimaryButton>
           )}
 
-          {/* Botón MARCAR COMO FINALIZADO - solo creador cuando está activo */}
+          {/* Botón FINALIZAR Y CALIFICAR - solo creador cuando está activo */}
           {isOwnFavor && favor.estado === 'activo' && (
             <PrimaryButton
               type="button"
-              onClick={handleFinalizar}
+              onClick={handleFinalizarYCalificar}
               className="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-700"
             >
               <CheckCircle className="h-4 w-4 mr-1 inline" />
-              Marcar como finalizado
+              {favor.ayudanteId ? 'Finalizar y calificar' : 'Marcar como finalizado'}
             </PrimaryButton>
           )}
 
-          {/* Botón CALIFICAR USUARIO - solo creador, solo si está finalizado y no ha calificado */}
+          {/* Botón CALIFICAR USUARIO - solo si está finalizado pero no ha calificado */}
           {isOwnFavor && isFinalizado && favor.ayudanteId && (
             <PrimaryButton
               type="button"
@@ -370,8 +376,8 @@ const FavorCard = ({ favor, className }) => {
         onClose={() => setShowCalificarModal(false)}
         favor={favor}
         onCalificacionExitosa={() => {
-          alert('Calificación enviada exitosamente');
-          setShowCalificarModal(false);
+          alert('✅ Favor finalizado y calificación enviada exitosamente');
+          window.location.reload(); // Recargar para ver los cambios
         }}
       />
     </article>
