@@ -1,0 +1,49 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Función auxiliar para verificar si el usuario está autenticado
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Función para verificar si el usuario es el dueño del documento
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Reglas para la colección de favores
+    match /favores/{favorId} {
+      // Todos pueden leer los favores (incluso sin autenticación)
+      allow read: if true;
+
+      // Solo usuarios autenticados pueden crear favores
+      allow create: if isAuthenticated()
+                    && request.resource.data.usuarioId == request.auth.uid
+                    && request.resource.data.keys().hasAll(['titulo', 'descripcion', 'categoria', 'usuarioId']);
+
+      // Solo el creador puede actualizar su favor
+      allow update: if isOwner(resource.data.usuarioId);
+
+      // Solo el creador puede eliminar su favor
+      allow delete: if isOwner(resource.data.usuarioId);
+    }
+
+    // Reglas para la colección de usuarios
+    match /usuarios/{userId} {
+      // Los usuarios pueden leer su propio perfil
+      // Los usuarios autenticados pueden leer perfiles de otros (para mostrar información)
+      allow read: if isAuthenticated();
+
+      // Solo el propio usuario puede crear su documento
+      allow create: if isOwner(userId);
+
+      // Solo el propio usuario puede actualizar su documento
+      allow update: if isOwner(userId);
+
+      // No permitir eliminar usuarios
+      allow delete: if false;
+    }
+  }
+}

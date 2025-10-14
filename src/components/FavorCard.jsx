@@ -3,28 +3,54 @@ import { Link } from 'react-router-dom';
 import { CalendarDays, Link2, Tag, UserRound } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
+import { responderFavor, eliminarFavor } from '../services/favorService';
 import PrimaryButton from './ui/PrimaryButton';
 import GhostButton from './ui/GhostButton';
 import { cn } from '../utils/cn';
 
 const FavorCard = ({ favor, className }) => {
-  const { currentUser, respondToFavor, deleteFavor } = useAuth();
+  const { currentUser, firebaseUser } = useAuth();
 
   const category = categories.find((c) => c.id === favor.categoria);
-  const isOwnFavor = currentUser && favor.solicitanteId === currentUser.id;
+  const isOwnFavor = currentUser && favor.usuarioId === currentUser.uid;
   const canRespond = currentUser && !isOwnFavor && favor.estado === 'activo';
   const isCompleted = favor.estado === 'completado';
 
-  const handleRespond = () => {
+  const handleRespond = async () => {
+    if (!firebaseUser) {
+      alert('Debes iniciar sesión para responder a este favor');
+      return;
+    }
+
     if (window.confirm('¿Deseas ofrecer ayuda con este favor?')) {
-      respondToFavor(favor.id);
-      alert('¡Gracias por tu ayuda! La persona solicitante fue notificada.');
+      try {
+        await responderFavor(favor.id, firebaseUser);
+        alert('¡Gracias por tu ayuda! La persona solicitante fue notificada.');
+        // Recargar la página para ver los cambios
+        window.location.reload();
+      } catch (error) {
+        console.error('Error al responder favor:', error);
+        alert('Error al responder al favor. Intenta nuevamente.');
+      }
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
+    if (!firebaseUser) {
+      alert('Debes iniciar sesión para eliminar este favor');
+      return;
+    }
+
     if (window.confirm('¿Estás seguro de eliminar este favor?')) {
-      deleteFavor(favor.id);
+      try {
+        await eliminarFavor(favor.id);
+        alert('Favor eliminado exitosamente');
+        // Recargar la página para ver los cambios
+        window.location.reload();
+      } catch (error) {
+        console.error('Error al eliminar favor:', error);
+        alert('Error al eliminar el favor. Intenta nuevamente.');
+      }
     }
   };
 

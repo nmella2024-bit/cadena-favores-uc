@@ -16,7 +16,7 @@ const Registro = () => {
     password: '',
     confirmPassword: '',
     carrera: '',
-    aA�o: '',
+    año: '',
     intereses: '',
     descripcion: '',
   });
@@ -30,17 +30,17 @@ const Registro = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
 
     if (formData.password !== formData.confirmPassword) {
-      setError('Las contraseA�as no coinciden');
+      setError('Las contraseñas no coinciden');
       return;
     }
 
     if (formData.password.length < 6) {
-      setError('La contraseA�a debe tener al menos 6 caracteres');
+      setError('La contraseña debe tener al menos 6 caracteres');
       return;
     }
 
@@ -50,17 +50,17 @@ const Registro = () => {
         .map((interest) => interest.trim())
         .filter((interest) => interest.length > 0);
 
-      register({
+      await register({
         nombre: formData.nombre,
         correo: formData.correo,
         password: formData.password,
         carrera: formData.carrera,
-        aA�o: parseInt(formData.aA�o, 10),
+        año: parseInt(formData.año, 10),
         intereses: interesesArray,
         descripcion: formData.descripcion,
       });
 
-      alert('A�Cuenta creada exitosamente!');
+      alert('¡Cuenta creada exitosamente!');
       navigate('/favores');
     } catch (err) {
       setError(err.message);
@@ -72,7 +72,13 @@ const Registro = () => {
       <div className="w-full max-w-4xl rounded-2xl border border-border bg-[rgb(var(--bg-card))] p-8 shadow-card animate-fade-in dark:bg-card/80">
         <div className="mb-8 text-center">
           <h2 className="mb-2 text-3xl font-bold text-text-primary">Crear Cuenta</h2>
-          <p className="text-base text-text-muted">Asnete a la comunidad de Red UC</p>
+          <p className="text-base text-text-muted">Únete a la comunidad de Red UC</p>
+        </div>
+
+        <div className="mb-6 rounded-xl border border-brand/30 bg-brand/10 p-4 text-sm text-brand dark:border-brand/20 dark:bg-brand/15">
+          <p>
+            <strong>Correos UC válidos:</strong> @uc.cl, @estudiante.uc.cl, @puc.cl, @docente.uc.cl
+          </p>
         </div>
 
         {error && (
@@ -87,7 +93,7 @@ const Registro = () => {
               id="nombre"
               name="nombre"
               label="Nombre Completo *"
-              placeholder="Juan PAcrez"
+              placeholder="Juan Pérez"
               value={formData.nombre}
               onChange={handleChange}
               required
@@ -98,7 +104,7 @@ const Registro = () => {
               name="correo"
               type="email"
               label="Correo UC *"
-              placeholder="tunombre@uc.cl"
+              placeholder="tunombre@uc.cl o @estudiante.uc.cl"
               value={formData.correo}
               onChange={handleChange}
               required
@@ -110,8 +116,8 @@ const Registro = () => {
               id="password"
               name="password"
               type="password"
-              label="ContraseA�a *"
-              placeholder="MA-nimo 6 caracteres"
+              label="Contraseña *"
+              placeholder="Mínimo 6 caracteres"
               value={formData.password}
               onChange={handleChange}
               required
@@ -121,8 +127,8 @@ const Registro = () => {
               id="confirmPassword"
               name="confirmPassword"
               type="password"
-              label="Confirmar ContraseA�a *"
-              placeholder="Repite tu contraseA�a"
+              label="Confirmar Contraseña *"
+              placeholder="Repite tu contraseña"
               value={formData.confirmPassword}
               onChange={handleChange}
               required
@@ -134,19 +140,19 @@ const Registro = () => {
               id="carrera"
               name="carrera"
               label="Carrera *"
-              placeholder="Ej: IngenierA-a, Derecho"
+              placeholder="Ej: Ingeniería, Derecho"
               value={formData.carrera}
               onChange={handleChange}
               required
             />
 
-            <SelectField id="aA�o" name="aA�o" label="AA�o *" value={formData.aA�o} onChange={handleChange} required>
+            <SelectField id="año" name="año" label="Año *" value={formData.año} onChange={handleChange} required>
               <option value="">Selecciona</option>
-              <option value="1">1A� aA�o</option>
-              <option value="2">2A� aA�o</option>
-              <option value="3">3A� aA�o</option>
-              <option value="4">4A� aA�o</option>
-              <option value="5">5A� aA�o</option>
+              <option value="1">1º año</option>
+              <option value="2">2º año</option>
+              <option value="3">3º año</option>
+              <option value="4">4º año</option>
+              <option value="5">5º año</option>
               <option value="6">Postgrado</option>
             </SelectField>
           </div>
@@ -155,7 +161,7 @@ const Registro = () => {
             id="intereses"
             name="intereses"
             label="Intereses (separados por comas)"
-            placeholder="Ej: MatemA�ticas, ProgramaciA3n, Deportes"
+            placeholder="Ej: Matemáticas, Programación, Deportes"
             value={formData.intereses}
             onChange={handleChange}
           />
@@ -163,8 +169,8 @@ const Registro = () => {
           <TextareaField
             id="descripcion"
             name="descripcion"
-            label="Breve descripciA3n"
-            placeholder="CuAcntanos un poco sobre ti..."
+            label="Breve descripción"
+            placeholder="Cuéntanos un poco sobre ti..."
             rows={3}
             value={formData.descripcion}
             onChange={handleChange}
@@ -177,9 +183,9 @@ const Registro = () => {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-text-muted">
-            A�Ya tienes cuenta?{' '}
+            ¿Ya tienes cuenta?{' '}
             <Link to="/login" className="font-semibold text-brand hover:text-brand/80 hover:underline">
-              Inicia sesiA3n aquA-
+              Inicia sesión aquí
             </Link>
           </p>
         </div>

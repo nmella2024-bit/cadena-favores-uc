@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { mockUsers, mockFavors } from '../data/mockData';
+import { onAuthChange, registerUser, loginUser, logoutUser } from '../services/authService';
+import { getUserData } from '../services/userService';
 
 export const AuthContext = createContext();
 
@@ -14,160 +15,171 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   // Estado de autenticación
   const [currentUser, setCurrentUser] = useState(null);
-  const [users, setUsers] = useState(mockUsers);
-  const [favors, setFavors] = useState(mockFavors);
+  const [loading, setLoading] = useState(true);
+  const [firebaseUser, setFirebaseUser] = useState(null);
 
-  // Cargar datos del localStorage al iniciar
+  // Escuchar cambios de autenticación de Firebase
   useEffect(() => {
-    const savedUser = localStorage.getItem('reduc_currentUser');
-    const savedUsers = localStorage.getItem('reduc_users');
-    const savedFavors = localStorage.getItem('reduc_favors');
+    const unsubscribe = onAuthChange(async (user) => {
+      setFirebaseUser(user);
 
-    if (savedUser) {
-      setCurrentUser(JSON.parse(savedUser));
-    }
-    if (savedUsers) {
-      setUsers(JSON.parse(savedUsers));
-    }
-    if (savedFavors) {
-      setFavors(JSON.parse(savedFavors));
-    }
+      if (user) {
+        try {
+          // Obtener datos completos del usuario desde Firestore
+          const userData = await getUserData(user.uid);
+
+          if (userData) {
+            // Combinar datos de Firebase Auth con datos de Firestore
+            setCurrentUser({
+              id: user.uid,
+              uid: user.uid,
+              nombre: userData.nombre || user.displayName || 'Usuario',
+              correo: user.email,
+              email: user.email,
+              carrera: userData.carrera || '',
+              año: userData.año || 1,
+              intereses: userData.intereses || [],
+              descripcion: userData.descripcion || '',
+              reputacion: userData.reputacion || 5.0,
+              favoresPublicados: userData.favoresPublicados || [],
+              favoresCompletados: userData.favoresCompletados || [],
+              fechaRegistro: userData.fechaRegistro,
+              // Propiedades de Firebase Auth
+              photoURL: user.photoURL,
+              emailVerified: user.emailVerified,
+            });
+          } else {
+            // Si no hay datos en Firestore, usar solo datos de Firebase Auth
+            setCurrentUser({
+              id: user.uid,
+              uid: user.uid,
+              nombre: user.displayName || 'Usuario',
+              correo: user.email,
+              email: user.email,
+            });
+          }
+        } catch (error) {
+          console.error('Error al obtener datos del usuario:', error);
+          setCurrentUser(null);
+        }
+      } else {
+        setCurrentUser(null);
+      }
+
+      setLoading(false);
+    });
+
+    // Cleanup subscription
+    return () => unsubscribe();
   }, []);
 
-  // Guardar en localStorage cuando cambian los datos
-  useEffect(() => {
-    if (currentUser) {
-      localStorage.setItem('reduc_currentUser', JSON.stringify(currentUser));
-    } else {
-      localStorage.removeItem('reduc_currentUser');
-    }
-  }, [currentUser]);
-
-  useEffect(() => {
-    localStorage.setItem('reduc_users', JSON.stringify(users));
-  }, [users]);
-
-  useEffect(() => {
-    localStorage.setItem('reduc_favors', JSON.stringify(favors));
-  }, [favors]);
-
   // Función de registro
-  const register = (userData) => {
-    // Verificar si el correo ya existe
-    const existingUser = users.find(u => u.correo === userData.correo);
-    if (existingUser) {
-      throw new Error('Ya existe una cuenta con este correo');
+  const register = async (userData) => {
+    try {
+      // Validar que sea correo UC (acepta @uc.cl, @estudiante.uc.cl, etc.)
+      if (!userData.correo.toLowerCase().includes('uc.cl')) {
+        throw new Error('Debes usar un correo UC (debe contener uc.cl)');
+      }
+
+      // Registrar usuario en Firebase
+      await registerUser(userData.correo, userData.password, {
+        nombre: userData.nombre,
+        carrera: userData.carrera || '',
+        año: userData.año || 1,
+        intereses: userData.intereses || [],
+        descripcion: userData.descripcion || '',
+      });
+
+      // El listener de onAuthChange se encargará de actualizar currentUser
+      return true;
+    } catch (error) {
+      console.error('Error en registro:', error);
+
+      // Mensajes de error más amigables
+      if (error.code === 'auth/email-already-in-use') {
+        throw new Error('Ya existe una cuenta con este correo');
+      } else if (error.code === 'auth/weak-password') {
+        throw new Error('La contraseña debe tener al menos 6 caracteres');
+      } else if (error.code === 'auth/invalid-email') {
+        throw new Error('El correo electrónico no es válido');
+      }
+
+      throw error;
     }
-
-    // Validar que sea correo UC
-    if (!userData.correo.endsWith('@uc.cl')) {
-      throw new Error('Debes usar un correo UC (@uc.cl)');
-    }
-
-    const newUser = {
-      id: Date.now(),
-      ...userData,
-      favoresPublicados: [],
-      favoresRespondidos: [],
-    };
-
-    setUsers([...users, newUser]);
-    setCurrentUser(newUser);
-    return newUser;
   };
 
   // Función de login
-  const login = (correo, password) => {
-    // TODO: In production, this should be a secure API call
-    const user = users.find(
-      u => u.correo === correo && u.password === password
-    );
+  const login = async (correo, password) => {
+    try {
+      await loginUser(correo, password);
+      // El listener de onAuthChange se encargará de actualizar currentUser
+      return true;
+    } catch (error) {
+      console.error('Error en login:', error);
 
-    if (!user) {
-      throw new Error('Correo o contraseña incorrectos');
+      // Mensajes de error más amigables
+      if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        throw new Error('Correo o contraseña incorrectos');
+      } else if (error.code === 'auth/invalid-email') {
+        throw new Error('El correo electrónico no es válido');
+      } else if (error.code === 'auth/too-many-requests') {
+        throw new Error('Demasiados intentos fallidos. Intenta más tarde');
+      }
+
+      throw new Error('Error al iniciar sesión. Verifica tus credenciales');
     }
-
-    setCurrentUser(user);
-    return user;
   };
 
   // Función de logout
-  const logout = () => {
-    setCurrentUser(null);
+  const logout = async () => {
+    try {
+      await logoutUser();
+      // El listener de onAuthChange se encargará de limpiar currentUser
+    } catch (error) {
+      console.error('Error en logout:', error);
+      throw error;
+    }
   };
 
-  // Función para publicar un favor
-  const publishFavor = (favorData) => {
-    if (!currentUser) {
+  // NOTA: Las siguientes funciones (publishFavor, respondToFavor, deleteFavor)
+  // se mantendrán aquí por compatibilidad, pero ahora llamarán a los servicios de Firebase
+  // Se actualizarán en los siguientes pasos
+
+  // Función para publicar un favor (wrapper)
+  const publishFavor = async (favorData) => {
+    if (!currentUser || !firebaseUser) {
       throw new Error('Debes iniciar sesión para publicar un favor');
     }
 
-    const newFavor = {
-      id: Date.now(),
-      ...favorData,
-      solicitante: currentUser.nombre,
-      solicitanteId: currentUser.id,
-      fecha: new Date().toISOString().split('T')[0],
-      estado: 'activo',
-    };
-
-    setFavors([...favors, newFavor]);
-
-    // Actualizar favores del usuario
-    const updatedUser = {
-      ...currentUser,
-      favoresPublicados: [...currentUser.favoresPublicados, newFavor.id],
-    };
-    setCurrentUser(updatedUser);
-
-    // Actualizar en la lista de usuarios
-    setUsers(users.map(u => u.id === currentUser.id ? updatedUser : u));
-
-    return newFavor;
+    // Esta función se actualizará para usar publicarFavor de favorService
+    // Por ahora, lanza un error indicando que debe usarse directamente el servicio
+    throw new Error('Usa el servicio publicarFavor de favorService directamente');
   };
 
-  // Función para responder a un favor
-  const respondToFavor = (favorId) => {
-    if (!currentUser) {
+  // Función para responder a un favor (wrapper)
+  const respondToFavor = async (favorId) => {
+    if (!currentUser || !firebaseUser) {
       throw new Error('Debes iniciar sesión para responder a un favor');
     }
 
-    // Actualizar el favor
-    setFavors(favors.map(f =>
-      f.id === favorId
-        ? { ...f, estado: 'completado', respondidoPor: currentUser.id }
-        : f
-    ));
-
-    // Actualizar usuario actual
-    const updatedUser = {
-      ...currentUser,
-      favoresRespondidos: [...currentUser.favoresRespondidos, favorId],
-    };
-    setCurrentUser(updatedUser);
-
-    // Actualizar en la lista de usuarios
-    setUsers(users.map(u => u.id === currentUser.id ? updatedUser : u));
+    // Esta función se actualizará para usar responderFavor de favorService
+    throw new Error('Usa el servicio responderFavor de favorService directamente');
   };
 
-  // Función para eliminar un favor
-  const deleteFavor = (favorId) => {
-    if (!currentUser) {
+  // Función para eliminar un favor (wrapper)
+  const deleteFavor = async (favorId) => {
+    if (!currentUser || !firebaseUser) {
       throw new Error('Debes iniciar sesión');
     }
 
-    const favor = favors.find(f => f.id === favorId);
-    if (favor && favor.solicitanteId !== currentUser.id) {
-      throw new Error('Solo puedes eliminar tus propios favores');
-    }
-
-    setFavors(favors.filter(f => f.id !== favorId));
+    // Esta función se actualizará para usar eliminarFavor de favorService
+    throw new Error('Usa el servicio eliminarFavor de favorService directamente');
   };
 
   const value = {
     currentUser,
-    users,
-    favors,
+    firebaseUser,
+    loading,
     register,
     login,
     logout,
@@ -175,6 +187,18 @@ export const AuthProvider = ({ children }) => {
     respondToFavor,
     deleteFavor,
   };
+
+  // Mostrar un loader mientras se verifica la autenticación
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <div className="text-center">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
+          <p className="mt-4 text-text-muted">Cargando...</p>
+        </div>
+      </div>
+    );
+  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

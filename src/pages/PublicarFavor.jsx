@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AlertCircle, CheckCircle2, Info } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
+import { publicarFavor } from '../services/favorService';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import GhostButton from '../components/ui/GhostButton';
 import TextField from '../components/ui/TextField';
@@ -38,7 +39,7 @@ const validateForm = ({ titulo, descripcion, categoria }) => {
 
 const PublicarFavor = () => {
   const navigate = useNavigate();
-  const { currentUser, publishFavor } = useAuth();
+  const { currentUser, firebaseUser } = useAuth();
 
   const [formData, setFormData] = useState(initialFormState);
   const [errors, setErrors] = useState({});
@@ -72,13 +73,22 @@ const PublicarFavor = () => {
       return;
     }
 
+    if (!firebaseUser) {
+      setFormError('Debes iniciar sesión para publicar un favor');
+      return;
+    }
+
     try {
       setIsSubmitting(true);
-      publishFavor(formData);
+
+      // Publicar favor usando el servicio de Firebase
+      await publicarFavor(formData, firebaseUser);
+
       setShowSuccess(true);
       setFormData(initialFormState);
     } catch (error) {
-      setFormError(error.message);
+      console.error('Error al publicar favor:', error);
+      setFormError(error.message || 'Error al publicar el favor. Intenta nuevamente.');
     } finally {
       setIsSubmitting(false);
     }
@@ -89,19 +99,19 @@ const PublicarFavor = () => {
       <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         <header className="mb-10 space-y-4 text-center sm:mb-12">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Publicar un favor</h1>
-          <p className="mx-auto max-w-2xl text-[rgb(var(--text-muted))]">
+          <p className="mx-auto max-w-2xl text-text-muted">
             Comparte con la comunidad UC qué necesitas o en qué puedes ayudar. Mientras más claro seas, más rápido
             conectará contigo la persona indicada.
           </p>
         </header>
 
         {showSuccess && (
-          <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-green-200 bg-green-50 p-6 text-green-900 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+          <div className="mb-8 flex flex-col gap-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-emerald-400 shadow-sm sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-start gap-3">
               <CheckCircle2 className="mt-1 h-5 w-5" aria-hidden="true" />
               <div>
                 <h2 className="text-lg font-semibold">Tu favor fue publicado.</h2>
-                <p className="text-sm text-green-800">
+                <p className="text-sm text-emerald-300">
                   Puedes revisar cómo luce en el feed y responder a quienes ofrezcan ayuda.
                 </p>
               </div>
@@ -118,7 +128,7 @@ const PublicarFavor = () => {
         )}
 
         {formError && (
-          <div className="mb-6 flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 p-4 text-red-800">
+          <div className="mb-6 flex items-start gap-3 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-red-500">
             <AlertCircle className="mt-1 h-5 w-5 shrink-0" aria-hidden="true" />
             <p className="text-sm">{formError}</p>
           </div>
@@ -126,7 +136,7 @@ const PublicarFavor = () => {
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-8 rounded-3xl border border-[rgb(var(--border))] bg-[rgb(var(--bg-card))] p-8 shadow-card"
+          className="space-y-8 rounded-3xl border border-border bg-card dark:bg-card/80 p-8 shadow-card"
           noValidate
         >
           <TextField
@@ -180,7 +190,7 @@ const PublicarFavor = () => {
             hint="Si ofreces apoyo, describe horarios sugeridos para coordinar."
           />
 
-          <div className="rounded-2xl border border-blue-100 bg-blue-50 p-4 text-blue-900">
+          <div className="rounded-2xl border border-brand/30 bg-brand/10 p-4 text-brand">
             <div className="flex items-start gap-3">
               <Info className="mt-1 h-5 w-5" aria-hidden="true" />
               <div className="space-y-2 text-sm">
@@ -210,7 +220,7 @@ const PublicarFavor = () => {
           </div>
         </form>
 
-        <p className="mt-6 text-center text-xs text-[rgb(var(--text-muted))]">
+        <p className="mt-6 text-center text-xs text-text-muted">
           Tus datos se almacenan localmente en tu navegador. Puedes editar o eliminar tus favores desde tu perfil.
         </p>
       </div>

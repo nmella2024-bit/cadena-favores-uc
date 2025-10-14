@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="mt-auto border-t border-[rgb(var(--border))] bg-[rgb(var(--bg-card))]">
+  <footer className="mt-auto border-t border-border bg-[rgb(var(--bg-card))]">
     <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-3">
@@ -37,7 +37,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="mt-12 border-t border-[rgb(var(--border))] pt-6 text-center text-sm text-[rgb(var(--text-muted))]">
+      <div className="mt-12 border-t border-border pt-6 text-center text-sm text-[rgb(var(--text-muted))]">
         <p>© {new Date().getFullYear()} Red UC. Todos los derechos reservados.</p>
         <p className="mt-2 italic">
           “Nadie lo sabe todo, pero todos sabemos algo que puede ayudar a alguien.”

@@ -21,12 +21,12 @@ const Login = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
 
     try {
-      login(formData.correo, formData.password);
+      await login(formData.correo, formData.password);
       navigate('/favores');
     } catch (err) {
       setError(err.message);
@@ -37,7 +37,7 @@ const Login = () => {
     <div className="flex min-h-screen items-center justify-center bg-[rgb(var(--bg-canvas))] py-12 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-md rounded-2xl border border-border bg-[rgb(var(--bg-card))] p-8 shadow-card animate-fade-in dark:bg-card/80">
         <div className="mb-8 text-center">
-          <h2 className="mb-2 text-3xl font-bold text-text-primary">Iniciar SesiA3n</h2>
+          <h2 className="mb-2 text-3xl font-bold text-text-primary">Iniciar Sesión</h2>
           <p className="text-base text-text-muted">Bienvenido de vuelta a Red UC</p>
         </div>
 
@@ -62,9 +62,9 @@ const Login = () => {
           <TextField
             id="password"
             name="password"
-            label="ContraseA�a"
+            label="Contraseña"
             type="password"
-            placeholder="�?��?��?��?��?��?��?��?�"
+            placeholder="••••••••"
             value={formData.password}
             onChange={handleChange}
             required
@@ -77,23 +77,10 @@ const Login = () => {
 
         <div className="mt-6 text-center">
           <p className="text-sm text-text-muted">
-            A�No tienes cuenta?{' '}
+            ¿No tienes cuenta?{' '}
             <Link to="/registro" className="font-semibold text-brand hover:text-brand/80 hover:underline">
-              RegA-strate aquA-
+              Regístrate aquí
             </Link>
-          </p>
-        </div>
-
-        <div className="mt-6 rounded-xl border border-border bg-card/70 p-4 text-center text-sm text-text-muted dark:bg-card/60">
-          <p>
-            <span className="font-semibold text-text-primary">Demo:</span> Usa{' '}
-            <code className="rounded-md border border-border bg-card px-2 py-1 text-xs text-text-primary dark:bg-card/70">
-              mgonzalez@uc.cl
-            </code>{' '}
-            /{' '}
-            <code className="rounded-md border border-border bg-card px-2 py-1 text-xs text-text-primary dark:bg-card/70">
-              demo123
-            </code>
           </p>
         </div>
       </div>

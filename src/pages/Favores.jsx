@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Briefcase, Inbox, Search } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { obtenerFavores } from '../services/favorService';
 import FavorCard from '../components/FavorCard';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import GhostButton from '../components/ui/GhostButton';
@@ -33,17 +34,41 @@ const SkeletonCard = () => (
 );
 
 const Favores = () => {
-  const { favors, currentUser } = useAuth();
+  const { currentUser } = useAuth();
+  const [favors, setFavors] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [onlyAvailable, setOnlyAvailable] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState('');
 
+  // Cargar favores desde Firestore al montar el componente
   useEffect(() => {
-    setIsLoading(true);
-    const timer = setTimeout(() => setIsLoading(false), 400);
-    return () => clearTimeout(timer);
-  }, [selectedCategory, searchQuery, onlyAvailable, favors.length]);
+    const cargarFavores = async () => {
+      try {
+        setIsLoading(true);
+        setError('');
+        const favoresData = await obtenerFavores();
+        setFavors(favoresData);
+      } catch (err) {
+        console.error('Error al cargar favores:', err);
+        setError('Error al cargar los favores. Intenta recargar la página.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    cargarFavores();
+  }, []);
+
+  // Efecto para simular carga cuando cambian los filtros
+  useEffect(() => {
+    if (favors.length > 0) {
+      setIsLoading(true);
+      const timer = setTimeout(() => setIsLoading(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [selectedCategory, searchQuery, onlyAvailable]);
 
   const filteredFavors = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -135,6 +160,19 @@ const Favores = () => {
                   </Link>{' '}
                   para ofrecer ayuda y marcar tus favores como completados.
                 </p>
+              </div>
+            )}
+
+            {error && (
+              <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-5 text-sm text-red-500">
+                <p className="font-semibold">Error al cargar favores</p>
+                <p className="mt-1">{error}</p>
+                <button
+                  onClick={() => window.location.reload()}
+                  className="mt-3 text-xs font-semibold underline hover:text-red-400"
+                >
+                  Recargar página
+                </button>
               </div>
             )}
 
