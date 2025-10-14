@@ -29,6 +29,9 @@ export const registerUser = async (email, password, userData) => {
       displayName: userData.nombre,
     });
 
+    // Esperar a que el token de autenticación se sincronice con Firestore
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     // Crear documento del usuario en Firestore
     await createUserDocument(createdUser.uid, {
       nombre: userData.nombre,
