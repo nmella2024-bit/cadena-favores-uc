@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CalendarDays, Link2, Tag, UserRound, MessageCircle, X, CheckCircle, Star } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
-import { eliminarFavor, asociarAyudante } from '../services/favorService';
+import { eliminarFavor, asociarAyudante, finalizarFavor } from '../services/favorService';
 import { getUserData } from '../services/userService';
 import { obtenerEstadoConfirmacion } from '../services/ratingService';
 import PrimaryButton from './ui/PrimaryButton';
@@ -28,6 +28,7 @@ const FavorCard = ({ favor, className }) => {
   const canRespond = currentUser && !isOwnFavor && favor.estado === 'activo';
   const isCompleted = favor.estado === 'completado';
   const isConfirmado = favor.estado === 'confirmado';
+  const isFinalizado = favor.estado === 'finalizado';
 
   // Verificar si el usuario es parte del favor (solicitante o ayudante)
   const esParteDelFavor = currentUser && (
@@ -132,6 +133,30 @@ const FavorCard = ({ favor, className }) => {
     }
   };
 
+  const handleFinalizar = async () => {
+    if (!firebaseUser) {
+      alert('Debes iniciar sesión para finalizar este favor');
+      return;
+    }
+
+    if (!favor.ayudanteId) {
+      alert('No puedes finalizar un favor que nadie ha aceptado ayudar aún.');
+      return;
+    }
+
+    if (window.confirm('¿Confirmas que este favor se ha completado? Podrás calificar al usuario que te ayudó.')) {
+      try {
+        await finalizarFavor(favor.id, currentUser.uid);
+        alert('✅ Favor marcado como finalizado. Ahora puedes calificar al usuario.');
+        // Recargar para ver los cambios
+        window.location.reload();
+      } catch (error) {
+        console.error('Error al finalizar favor:', error);
+        alert('Error al finalizar el favor. ' + (error.message || 'Intenta nuevamente.'));
+      }
+    }
+  };
+
   return (
     <article
       className={cn(
@@ -143,7 +168,12 @@ const FavorCard = ({ favor, className }) => {
         <h3 className="line-clamp-2 text-xl font-semibold tracking-tight" data-testid="favor-title">
           {favor.titulo}
         </h3>
-        {isCompleted && (
+        {isFinalizado && (
+          <span className="inline-flex shrink-0 items-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-500">
+            Finalizado
+          </span>
+        )}
+        {isCompleted && !isFinalizado && (
           <span className="inline-flex shrink-0 items-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-500">
             Completado
           </span>
@@ -190,9 +220,10 @@ const FavorCard = ({ favor, className }) => {
       <div className="mt-6 flex flex-col gap-3 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="text-sm text-text-muted">
           <span className="font-medium text-text-primary">Estado:</span>{' '}
-          {isConfirmado ? 'Confirmado' : isCompleted ? 'Completado' : 'Disponible'}
+          {isFinalizado ? 'Finalizado' : isConfirmado ? 'Confirmado' : isCompleted ? 'Completado' : 'Disponible'}
         </div>
         <div className="flex flex-wrap gap-2">
+          {/* Botón ofrecer ayuda - solo si no es propio y está activo */}
           {canRespond && (
             <PrimaryButton
               data-testid="cta-offer"
@@ -204,30 +235,31 @@ const FavorCard = ({ favor, className }) => {
             </PrimaryButton>
           )}
 
-          {/* Botón para confirmar finalización */}
-          {esParteDelFavor && favor.ayudanteId && !estadoConfirmacion?.yoConfirme && (
+          {/* Botón MARCAR COMO FINALIZADO - solo creador, solo si hay ayudante y está activo */}
+          {isOwnFavor && favor.estado === 'activo' && favor.ayudanteId && (
             <PrimaryButton
               type="button"
-              onClick={() => setShowCompletarModal(true)}
+              onClick={handleFinalizar}
               className="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-700"
             >
               <CheckCircle className="h-4 w-4 mr-1 inline" />
-              Confirmar finalización
+              Marcar como finalizado
             </PrimaryButton>
           )}
 
-          {/* Botón para calificar */}
-          {esParteDelFavor && estadoConfirmacion?.ambosConfirmaron && (
+          {/* Botón CALIFICAR USUARIO - solo creador, solo si está finalizado y no ha calificado */}
+          {isOwnFavor && isFinalizado && favor.ayudanteId && (
             <PrimaryButton
               type="button"
               onClick={() => setShowCalificarModal(true)}
               className="px-4 py-2 text-sm bg-yellow-600 hover:bg-yellow-700"
             >
               <Star className="h-4 w-4 mr-1 inline" />
-              Calificar
+              Calificar usuario
             </PrimaryButton>
           )}
 
+          {/* Botón eliminar - solo si es propio y está activo */}
           {isOwnFavor && favor.estado === 'activo' && (
             <GhostButton
               type="button"
@@ -237,6 +269,8 @@ const FavorCard = ({ favor, className }) => {
               Eliminar
             </GhostButton>
           )}
+
+          {/* Botón ver detalles - siempre visible */}
           <GhostButton as={Link} to={`/favores?id=${favor.id}`} className="px-4 py-2 text-sm">
             <span className="inline-flex items-center gap-2">
               <Link2 className="h-4 w-4" aria-hidden="true" />

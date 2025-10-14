@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Dialog } from '@headlessui/react';
 import { X, Star, AlertCircle } from 'lucide-react';
-import { calificarUsuario, verificarPuedeCalificar } from '../services/ratingService';
+import { calificarUsuario, verificarPuedeCalificar, verificarPuedeCalificarFinalizado } from '../services/ratingService';
 import { useAuth } from '../context/AuthContext';
 import StarRating from './StarRating';
 import PrimaryButton from './ui/PrimaryButton';
@@ -29,7 +29,11 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
     try {
       setLoadingInfo(true);
       setError(null);
-      const info = await verificarPuedeCalificar(favor.id, currentUser.uid);
+
+      // Usar la función simplificada para favores finalizados
+      const info = favor.estado === 'finalizado'
+        ? await verificarPuedeCalificarFinalizado(favor.id, currentUser.uid)
+        : await verificarPuedeCalificar(favor.id, currentUser.uid);
 
       if (!info.puedeCalificar) {
         setError(info.razon);

@@ -281,6 +281,81 @@ export const verificarPuedeCalificar = async (favorId, userId) => {
 };
 
 /**
+ * Verifica si un usuario puede calificar en un favor FINALIZADO (flujo simplificado)
+ * Solo el creador puede calificar al ayudante después de finalizar
+ * @param {string} favorId - ID del favor
+ * @param {string} userId - ID del usuario
+ * @returns {Promise<Object>} Información sobre si puede calificar y a quién
+ */
+export const verificarPuedeCalificarFinalizado = async (favorId, userId) => {
+  try {
+    const favorRef = doc(db, 'favores', favorId);
+    const favorDoc = await getDoc(favorRef);
+
+    if (!favorDoc.exists()) {
+      throw new Error('El favor no existe');
+    }
+
+    const favorData = favorDoc.data();
+
+    // Verificar que el favor esté finalizado
+    if (favorData.estado !== 'finalizado') {
+      return {
+        puedeCalificar: false,
+        razon: 'El favor debe estar marcado como finalizado primero',
+      };
+    }
+
+    // Verificar que hay un ayudante
+    if (!favorData.ayudanteId) {
+      return {
+        puedeCalificar: false,
+        razon: 'No hay un ayudante asociado a este favor',
+      };
+    }
+
+    // Solo el creador puede calificar
+    if (favorData.usuarioId !== userId) {
+      return {
+        puedeCalificar: false,
+        razon: 'Solo el creador del favor puede calificar',
+      };
+    }
+
+    // Verificar si ya calificó
+    const calificacionesRef = collection(db, 'calificaciones');
+    const q = query(
+      calificacionesRef,
+      where('favorId', '==', favorId),
+      where('calificadorId', '==', userId)
+    );
+    const existentes = await getDocs(q);
+
+    if (!existentes.empty) {
+      return {
+        puedeCalificar: false,
+        razon: 'Ya has calificado en este favor',
+        yaCalificado: true,
+      };
+    }
+
+    // Obtener nombre del ayudante
+    const ayudanteDoc = await getDoc(doc(db, 'usuarios', favorData.ayudanteId));
+    const ayudanteNombre = ayudanteDoc.exists() ? ayudanteDoc.data()?.nombre || 'Usuario' : 'Usuario';
+
+    return {
+      puedeCalificar: true,
+      rolUsuario: 'solicitante',
+      usuarioACalificarId: favorData.ayudanteId,
+      usuarioACalificarNombre: ayudanteNombre,
+    };
+  } catch (error) {
+    console.error('Error al verificar si puede calificar:', error);
+    throw error;
+  }
+};
+
+/**
  * Obtiene el estado de confirmación de un favor
  * @param {string} favorId - ID del favor
  * @param {string} userId - ID del usuario actual

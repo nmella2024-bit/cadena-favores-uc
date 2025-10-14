@@ -233,7 +233,7 @@ export const responderFavor = async (favorId, user) => {
 };
 
 /**
- * Marca un favor como completado
+ * Marca un favor como completado (DEPRECATED - usar finalizarFavor)
  * @param {string} favorId - ID del favor
  * @param {string} userId - ID del usuario que completa el favor
  * @returns {Promise<void>}
@@ -251,6 +251,42 @@ export const completarFavor = async (favorId, userId) => {
     console.log('Favor marcado como completado');
   } catch (error) {
     console.error('Error al completar favor:', error);
+    throw error;
+  }
+};
+
+/**
+ * Finaliza un favor (solo puede hacerlo el creador)
+ * @param {string} favorId - ID del favor
+ * @param {string} solicitanteId - ID del usuario solicitante
+ * @returns {Promise<void>}
+ */
+export const finalizarFavor = async (favorId, solicitanteId) => {
+  try {
+    const favorRef = doc(db, 'favores', favorId);
+    const favorDoc = await getDoc(favorRef);
+
+    if (!favorDoc.exists()) {
+      throw new Error('El favor no existe');
+    }
+
+    const favorData = favorDoc.data();
+
+    // Verificar que quien finaliza es el creador
+    if (favorData.usuarioId !== solicitanteId) {
+      throw new Error('Solo el creador del favor puede marcarlo como finalizado');
+    }
+
+    // Actualizar estado a finalizado
+    await updateDoc(favorRef, {
+      estado: 'finalizado',
+      fechaFinalizacion: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    });
+
+    console.log('Favor finalizado exitosamente');
+  } catch (error) {
+    console.error('Error al finalizar favor:', error);
     throw error;
   }
 };
