@@ -16,5 +16,13 @@ service cloud.firestore {
       allow read: if true;
       allow write: if true;
     }
+
+    // Reglas para la colección de feedback
+    match /feedback/{feedbackId} {
+      allow read: if false;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
+    }
   }
 }

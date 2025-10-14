@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, MessageSquare } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/mi_logo_actualizado.png.jpg';
 import ThemeToggle from './ui/ThemeToggle';
+import FeedbackModal from './FeedbackModal';
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   const navigation = currentUser
     ? [
@@ -40,6 +42,7 @@ const Navbar = () => {
   );
 
   return (
+    <>
     <Disclosure
       as="nav"
       className="sticky top-0 z-50 border-b border-border bg-card/80 px-4 backdrop-blur sm:px-6 supports-[backdrop-filter]:bg-card/60 dark:bg-card/60"
@@ -64,6 +67,14 @@ const Navbar = () => {
 
             <div className="hidden items-center gap-2 md:flex">
               {navigation.map((item) => renderLink(item))}
+              <button
+                type="button"
+                onClick={() => setIsFeedbackOpen(true)}
+                className="inline-flex items-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
+              >
+                <MessageSquare className="h-4 w-4" />
+                Danos tu feedback
+              </button>
               <ThemeToggle />
               {currentUser ? (
                 <button
@@ -96,6 +107,14 @@ const Navbar = () => {
           <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 border-t border-border bg-card/70 py-3 dark:bg-card/60">
               {navigation.map((item) => renderLink(item, true))}
+              <button
+                type="button"
+                onClick={() => setIsFeedbackOpen(true)}
+                className="w-full inline-flex items-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
+              >
+                <MessageSquare className="h-4 w-4" />
+                Danos tu feedback
+              </button>
               {currentUser ? (
                 <div className="flex items-center justify-between gap-3 px-3 pt-2">
                   <div className="flex items-center gap-3">
@@ -131,6 +150,8 @@ const Navbar = () => {
         </>
       )}
     </Disclosure>
+    <FeedbackModal isOpen={isFeedbackOpen} onClose={() => setIsFeedbackOpen(false)} />
+    </>
   );
 };
 
