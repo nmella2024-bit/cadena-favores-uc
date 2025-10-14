@@ -378,7 +378,11 @@ export const obtenerEstadoConfirmacion = async (favorId, userId) => {
     let rolUsuario = null;
     if (favorData.usuarioId === userId) {
       rolUsuario = 'solicitante';
+    } else if (favorData.ayudanteId === userId) {
+      // Verificar por ayudanteId en el favor (más confiable)
+      rolUsuario = 'ayudante';
     } else if (confirmaciones.ayudante?.usuarioId === userId) {
+      // También verificar en confirmaciones por compatibilidad
       rolUsuario = 'ayudante';
     }
 
