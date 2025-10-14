@@ -90,8 +90,16 @@ const FavorCard = ({ favor, className }) => {
           return;
         }
 
-        // Asociar al ayudante con el favor
-        await asociarAyudante(favor.id, currentUser.uid, currentUser.nombre || currentUser.displayName);
+        // Intentar asociar al ayudante con el favor (no crítico si falla)
+        try {
+          // Solo asociar si aún no hay ayudante
+          if (!favor.ayudanteId) {
+            await asociarAyudante(favor.id, currentUser.uid, currentUser.nombre || currentUser.displayName);
+          }
+        } catch (asociarError) {
+          console.error('Error al asociar ayudante (no crítico):', asociarError);
+          // Continuar aunque falle la asociación
+        }
 
         // Mostrar modal con la información de contacto
         setContactInfo(solicitanteData);
