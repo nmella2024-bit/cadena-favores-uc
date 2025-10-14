@@ -198,14 +198,23 @@ export const responderFavor = async (favorId, user) => {
         throw new Error('No se pudo obtener información de los usuarios');
       }
 
+      // Validar que ambos usuarios tengan teléfono
+      if (!respondienteData.telefono) {
+        throw new Error('Debes agregar un número de WhatsApp a tu perfil para poder responder a favores');
+      }
+
+      if (!solicitanteData.telefono) {
+        throw new Error('El solicitante aún no ha agregado un número de WhatsApp. No se puede establecer contacto en este momento.');
+      }
+
       respuestas.push({
         usuarioId: user.uid,
         nombreUsuario: user.displayName || 'Anónimo',
         emailUsuario: user.email,
-        telefonoUsuario: respondienteData.telefono, // Teléfono del que responde
+        telefonoUsuario: respondienteData.telefono || '', // Teléfono del que responde
         fecha: new Date(),
         // Información del solicitante para el que responde
-        solicitanteTelefono: solicitanteData.telefono,
+        solicitanteTelefono: solicitanteData.telefono || '',
         solicitanteNombre: solicitanteData.nombre,
         solicitanteEmail: solicitanteData.email,
       });

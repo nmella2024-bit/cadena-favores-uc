@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { obtenerFavoresPorUsuario, obtenerFavoresConContactos } from '../services/favorService';
+import { updateUserData } from '../services/userService';
 
 const Perfil = () => {
   const navigate = useNavigate();
@@ -9,6 +10,8 @@ const Perfil = () => {
   const [userFavors, setUserFavors] = useState([]);
   const [favoresConContactos, setFavoresConContactos] = useState({ publicados: [], respondidos: [] });
   const [loading, setLoading] = useState(true);
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
 
   // Redirigir si no está autenticado
   useEffect(() => {
@@ -47,6 +50,24 @@ const Perfil = () => {
   // Calcular estadísticas
   const activeFavors = userFavors.filter(f => f.estado === 'activo');
   const completedFavors = userFavors.filter(f => f.estado === 'completado');
+
+  // Función para guardar el teléfono
+  const handleSavePhone = async () => {
+    if (!phoneNumber.trim()) {
+      alert('Por favor ingresa un número de teléfono');
+      return;
+    }
+
+    try {
+      await updateUserData(currentUser.uid, { telefono: phoneNumber });
+      alert('Número de WhatsApp guardado exitosamente');
+      setShowPhoneModal(false);
+      window.location.reload(); // Recargar para actualizar los datos
+    } catch (error) {
+      console.error('Error al guardar teléfono:', error);
+      alert('Error al guardar el número. Intenta nuevamente.');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[rgb(var(--bg-canvas))] py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
@@ -107,6 +128,29 @@ const Perfil = () => {
             )}
           </div>
         </div>
+
+        {/* Alerta de WhatsApp faltante */}
+        {!currentUser.telefono && (
+          <div className="mb-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-6 shadow-sm dark:border-orange-500/20 dark:bg-orange-500/15">
+            <div className="flex items-start gap-4">
+              <div className="text-3xl">⚠️</div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold text-orange-600 dark:text-orange-400 mb-2">
+                  Agrega tu número de WhatsApp
+                </h3>
+                <p className="text-sm text-text-muted mb-4">
+                  Necesitas agregar un número de WhatsApp para poder responder a favores y recibir contacto de quienes ayuden con los tuyos.
+                </p>
+                <button
+                  onClick={() => setShowPhoneModal(true)}
+                  className="px-4 py-2 text-sm font-semibold text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors shadow-sm"
+                >
+                  Agregar WhatsApp
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Estadísticas */}
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
@@ -281,6 +325,47 @@ const Perfil = () => {
           </button>
         </div>
       </div>
+
+      {/* Modal para agregar WhatsApp */}
+      {showPhoneModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          onClick={() => setShowPhoneModal(false)}
+        >
+          <div
+            className="bg-card rounded-2xl border border-border shadow-2xl dark:bg-card/95 max-w-md w-full p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h3 className="text-xl font-bold text-text-primary mb-4">
+              Agregar Número de WhatsApp
+            </h3>
+            <p className="text-sm text-text-muted mb-4">
+              Este número solo será visible para personas con las que te conectes a través de favores.
+            </p>
+            <input
+              type="tel"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="+56912345678"
+              className="w-full px-4 py-2 rounded-lg border border-border bg-canvas text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 mb-4"
+            />
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowPhoneModal(false)}
+                className="flex-1 px-4 py-2 text-sm font-semibold text-text-muted border border-border rounded-lg hover:bg-card/80 transition-colors"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleSavePhone}
+                className="flex-1 px-4 py-2 text-sm font-semibold text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors shadow-sm"
+              >
+                Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }) => {
               email: user.email,
               carrera: userData.carrera || '',
               año: userData.año || 1,
+              telefono: userData.telefono || '',
               intereses: userData.intereses || [],
               descripcion: userData.descripcion || '',
               reputacion: userData.reputacion || 5.0,
@@ -84,8 +85,10 @@ export const AuthProvider = ({ children }) => {
       // Registrar usuario en Firebase
       await registerUser(userData.correo, userData.password, {
         nombre: userData.nombre,
+        email: userData.correo,
         carrera: userData.carrera || '',
         año: userData.año || 1,
+        telefono: userData.telefono || '',
         intereses: userData.intereses || [],
         descripcion: userData.descripcion || '',
       });
