@@ -32,8 +32,12 @@ service cloud.firestore {
 
     // Reglas para la colección de usuarios
     match /usuarios/{userId} {
-      // Los usuarios pueden leer su propio perfil
-      // Los usuarios autenticados pueden leer perfiles de otros (para mostrar información)
+      // Los usuarios autenticados pueden leer perfiles de otros
+      // NOTA: El campo 'telefono' es privado y solo se comparte cuando:
+      //   1. El usuario publica un favor Y alguien lo acepta
+      //   2. El usuario acepta un favor de otra persona
+      // La lógica de privacidad se maneja en la aplicación mediante
+      // la función responderFavor() que intercambia contactos entre participantes
       allow read: if isAuthenticated();
 
       // Solo el propio usuario puede crear su documento

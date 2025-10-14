@@ -17,6 +17,7 @@ const Registro = () => {
     confirmPassword: '',
     carrera: '',
     año: '',
+    telefono: '',
     intereses: '',
     descripcion: '',
   });
@@ -44,6 +45,11 @@ const Registro = () => {
       return;
     }
 
+    if (!formData.telefono) {
+      setError('El número de WhatsApp es requerido para conectar con otros estudiantes');
+      return;
+    }
+
     try {
       const interesesArray = formData.intereses
         .split(',')
@@ -56,6 +62,7 @@ const Registro = () => {
         password: formData.password,
         carrera: formData.carrera,
         año: parseInt(formData.año, 10),
+        telefono: formData.telefono,
         intereses: interesesArray,
         descripcion: formData.descripcion,
       });
@@ -156,6 +163,18 @@ const Registro = () => {
               <option value="6">Postgrado</option>
             </SelectField>
           </div>
+
+          <TextField
+            id="telefono"
+            name="telefono"
+            type="tel"
+            label="Número de WhatsApp *"
+            placeholder="+56912345678"
+            value={formData.telefono}
+            onChange={handleChange}
+            hint="Solo visible para quienes acepten tus favores o cuyos favores aceptes"
+            required
+          />
 
           <TextField
             id="intereses"

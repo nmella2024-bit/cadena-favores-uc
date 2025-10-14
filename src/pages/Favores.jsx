@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Briefcase, Inbox, Search, X, CalendarDays, UserRound, Tag } from 'lucide-react';
+import { Briefcase, Inbox, Search, X, CalendarDays, UserRound, Tag, MessageCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { obtenerFavores, responderFavor, eliminarFavor } from '../services/favorService';
 import FavorCard from '../components/FavorCard';
@@ -350,22 +350,66 @@ const Favores = () => {
                 </p>
               </div>
 
-              {/* Respuestas */}
+              {/* Respuestas con información de contacto */}
               {selectedFavor.respuestas && selectedFavor.respuestas.length > 0 && (
                 <div>
                   <h3 className="text-lg font-semibold text-text-primary mb-2">
                     Personas que ofrecieron ayuda ({selectedFavor.respuestas.length})
                   </h3>
-                  <div className="space-y-2">
-                    {selectedFavor.respuestas.map((respuesta, index) => (
-                      <div
-                        key={index}
-                        className="rounded-lg border border-border bg-card/50 p-3 text-sm dark:bg-card/30"
-                      >
-                        <p className="font-medium text-text-primary">{respuesta.nombreUsuario}</p>
-                        <p className="text-xs text-text-muted">{respuesta.emailUsuario}</p>
-                      </div>
-                    ))}
+                  <div className="space-y-3">
+                    {selectedFavor.respuestas.map((respuesta, index) => {
+                      // Determinar si el usuario actual puede ver el contacto
+                      const esCreadorDelFavor = currentUser && selectedFavor.usuarioId === currentUser.uid;
+                      const esQuienRespondio = currentUser && respuesta.usuarioId === currentUser.uid;
+                      const puedeVerContacto = esCreadorDelFavor || esQuienRespondio;
+
+                      return (
+                        <div
+                          key={index}
+                          className="rounded-lg border border-border bg-card/50 p-4 text-sm dark:bg-card/30"
+                        >
+                          <div className="flex items-start justify-between gap-3">
+                            <div className="flex-1">
+                              <p className="font-semibold text-text-primary">{respuesta.nombreUsuario}</p>
+                              <p className="text-xs text-text-muted mt-1">{respuesta.emailUsuario}</p>
+
+                              {/* Mostrar contacto WhatsApp solo si corresponde */}
+                              {puedeVerContacto && (
+                                <div className="mt-3 space-y-2">
+                                  {esCreadorDelFavor && respuesta.telefonoUsuario && (
+                                    <a
+                                      href={`https://wa.me/${respuesta.telefonoUsuario.replace(/[^0-9]/g, '')}`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
+                                    >
+                                      <MessageCircle className="h-4 w-4" />
+                                      Contactar por WhatsApp
+                                    </a>
+                                  )}
+
+                                  {esQuienRespondio && respuesta.solicitanteTelefono && (
+                                    <div className="rounded-lg bg-brand/10 p-3 border border-brand/20">
+                                      <p className="text-xs font-semibold text-brand mb-2">Contacto del solicitante:</p>
+                                      <p className="text-xs text-text-primary mb-1">{respuesta.solicitanteNombre}</p>
+                                      <a
+                                        href={`https://wa.me/${respuesta.solicitanteTelefono.replace(/[^0-9]/g, '')}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
+                                      >
+                                        <MessageCircle className="h-4 w-4" />
+                                        Contactar por WhatsApp
+                                      </a>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}

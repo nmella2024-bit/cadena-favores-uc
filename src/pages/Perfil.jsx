@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { obtenerFavoresPorUsuario } from '../services/favorService';
+import { obtenerFavoresPorUsuario, obtenerFavoresConContactos } from '../services/favorService';
 
 const Perfil = () => {
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [userFavors, setUserFavors] = useState([]);
+  const [favoresConContactos, setFavoresConContactos] = useState({ publicados: [], respondidos: [] });
   const [loading, setLoading] = useState(true);
 
   // Redirigir si no está autenticado
@@ -25,6 +26,10 @@ const Perfil = () => {
         setLoading(true);
         const favores = await obtenerFavoresPorUsuario(currentUser.uid);
         setUserFavors(favores);
+
+        // Cargar también los favores con información de contacto
+        const favoresContactos = await obtenerFavoresConContactos(currentUser.uid);
+        setFavoresConContactos(favoresContactos);
       } catch (error) {
         console.error('Error al cargar favores del usuario:', error);
       } finally {
@@ -219,6 +224,52 @@ const Perfil = () => {
             </>
           )}
         </div>
+
+        {/* Mis Contactos - Favores donde respondí */}
+        {!loading && favoresConContactos.respondidos.length > 0 && (
+          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-text-primary mb-6">
+              Mis Contactos de WhatsApp
+            </h2>
+            <p className="text-sm text-text-muted mb-4">
+              Favores donde ofreciste ayuda. Aquí puedes contactar a las personas que publicaron estos favores.
+            </p>
+            <div className="space-y-4">
+              {favoresConContactos.respondidos.map((favor) => (
+                <div
+                  key={favor.id}
+                  className="border border-border rounded-lg p-4 bg-emerald-500/5 dark:bg-emerald-500/10"
+                >
+                  <h4 className="text-base sm:text-lg font-semibold text-text-primary mb-2">
+                    {favor.titulo}
+                  </h4>
+                  <p className="text-xs text-text-muted mb-3">Ofreciste ayuda el {favor.fecha}</p>
+
+                  {favor.miContacto && favor.miContacto.solicitanteTelefono && (
+                    <div className="rounded-lg bg-card/70 dark:bg-card/50 border border-border p-3">
+                      <p className="text-xs font-semibold text-brand mb-2">Contacto del solicitante:</p>
+                      <p className="text-sm font-medium text-text-primary mb-1">
+                        {favor.miContacto.solicitanteNombre}
+                      </p>
+                      <p className="text-xs text-text-muted mb-3">{favor.miContacto.solicitanteEmail}</p>
+                      <a
+                        href={`https://wa.me/${favor.miContacto.solicitanteTelefono.replace(/[^0-9]/g, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-600 transition-colors shadow-sm"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Contactar por WhatsApp
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Botón de acción */}
         <div className="text-center">

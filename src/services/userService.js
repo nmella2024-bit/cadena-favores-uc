@@ -24,6 +24,7 @@ export const createUserDocument = async (userId, userData) => {
       email: userData.email,
       carrera: userData.carrera || '',
       año: userData.año || 1,
+      telefono: userData.telefono || '', // Número de WhatsApp privado
       intereses: userData.intereses || [],
       descripcion: userData.descripcion || '',
       reputacion: 5.0,

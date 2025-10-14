@@ -13,7 +13,7 @@ import {
   serverTimestamp,
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
-import { addFavorToUser, markFavorAsCompleted } from './userService';
+import { addFavorToUser, markFavorAsCompleted, getUserData } from './userService';
 
 /**
  * Publica un nuevo favor en Firestore
@@ -174,7 +174,7 @@ export const obtenerFavoresPorCategoria = async (categoria) => {
 };
 
 /**
- * Responde a un favor
+ * Responde a un favor e intercambia información de contacto
  * @param {string} favorId - ID del favor
  * @param {Object} user - Usuario que responde
  * @returns {Promise<void>}
@@ -185,12 +185,29 @@ export const responderFavor = async (favorId, user) => {
     const favorDoc = await getDoc(favorRef);
 
     if (favorDoc.exists()) {
-      const respuestas = favorDoc.data().respuestas || [];
+      const favorData = favorDoc.data();
+      const respuestas = favorData.respuestas || [];
+
+      // Obtener datos completos del usuario que responde (incluye teléfono)
+      const respondienteData = await getUserData(user.uid);
+
+      // Obtener datos completos del usuario que publicó el favor
+      const solicitanteData = await getUserData(favorData.usuarioId);
+
+      if (!respondienteData || !solicitanteData) {
+        throw new Error('No se pudo obtener información de los usuarios');
+      }
+
       respuestas.push({
         usuarioId: user.uid,
         nombreUsuario: user.displayName || 'Anónimo',
         emailUsuario: user.email,
+        telefonoUsuario: respondienteData.telefono, // Teléfono del que responde
         fecha: new Date(),
+        // Información del solicitante para el que responde
+        solicitanteTelefono: solicitanteData.telefono,
+        solicitanteNombre: solicitanteData.nombre,
+        solicitanteEmail: solicitanteData.email,
       });
 
       await updateDoc(favorRef, {
@@ -198,7 +215,7 @@ export const responderFavor = async (favorId, user) => {
         updatedAt: serverTimestamp(),
       });
 
-      console.log('Respuesta agregada al favor');
+      console.log('Respuesta agregada al favor con información de contacto');
     }
   } catch (error) {
     console.error('Error al responder favor:', error);
@@ -282,6 +299,49 @@ export const buscarFavores = async (searchTerm) => {
     );
   } catch (error) {
     console.error('Error al buscar favores:', error);
+    throw error;
+  }
+};
+
+/**
+ * Obtiene favores donde el usuario ha participado (publicado o respondido)
+ * con información de contacto si corresponde
+ * @param {string} userId - ID del usuario
+ * @returns {Promise<Object>} Objeto con favores publicados y respondidos con contactos
+ */
+export const obtenerFavoresConContactos = async (userId) => {
+  try {
+    // Obtener todos los favores
+    const todosFavores = await obtenerFavores();
+
+    // Favores publicados por el usuario
+    const favoresPublicados = todosFavores.filter(f => f.usuarioId === userId);
+
+    // Favores donde el usuario respondió (con información de contacto)
+    const favoresRespondidos = [];
+
+    for (const favor of todosFavores) {
+      if (favor.respuestas && favor.respuestas.length > 0) {
+        const miRespuesta = favor.respuestas.find(r => r.usuarioId === userId);
+        if (miRespuesta) {
+          favoresRespondidos.push({
+            ...favor,
+            miContacto: {
+              solicitanteNombre: miRespuesta.solicitanteNombre,
+              solicitanteEmail: miRespuesta.solicitanteEmail,
+              solicitanteTelefono: miRespuesta.solicitanteTelefono,
+            }
+          });
+        }
+      }
+    }
+
+    return {
+      publicados: favoresPublicados,
+      respondidos: favoresRespondidos,
+    };
+  } catch (error) {
+    console.error('Error al obtener favores con contactos:', error);
     throw error;
   }
 };
