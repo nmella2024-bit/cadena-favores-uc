@@ -6,6 +6,7 @@ export const categories = [
   { id: 'material', name: 'Material', icon: '📝' },
   { id: 'tramite', name: 'Trámite', icon: '📋' },
   { id: 'tutoria', name: 'Tutoría', icon: '🎓' },
+  { id: 'compra-venta', name: 'Compra y venta', icon: '🛒' },
   { id: 'otro', name: 'Otro', icon: '🔧' },
 ];
 
