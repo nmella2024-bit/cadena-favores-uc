@@ -13,7 +13,18 @@ service cloud.firestore {
     match /favores/{favorId} {
       allow read: if true;
       allow create: if request.auth != null && request.resource.data.usuarioId == request.auth.uid;
-      allow update: if request.auth != null && request.auth.uid == resource.data.usuarioId;
+
+      // Permitir actualizar si:
+      // 1. Eres el creador del favor, O
+      // 2. Estás agregándote como ayudante (solo puedes agregar ayudanteId y confirmaciones)
+      allow update: if request.auth != null && (
+        // Creador puede actualizar todo
+        request.auth.uid == resource.data.usuarioId ||
+        // Cualquier usuario autenticado puede agregarse como ayudante
+        (request.resource.data.ayudanteId == request.auth.uid &&
+         resource.data.ayudanteId == null)
+      );
+
       allow delete: if request.auth != null && request.auth.uid == resource.data.usuarioId;
     }
 

@@ -91,15 +91,15 @@ const FavorCard = ({ favor, className }) => {
           return;
         }
 
-        // Intentar asociar al ayudante con el favor (no crítico si falla)
-        try {
-          // Solo asociar si aún no hay ayudante
-          if (!favor.ayudanteId) {
+        // Asociar al ayudante con el favor (IMPORTANTE para poder calificar después)
+        if (!favor.ayudanteId) {
+          try {
             await asociarAyudante(favor.id, currentUser.uid, currentUser.nombre || currentUser.displayName);
+            console.log('✅ Ayudante asociado correctamente');
+          } catch (asociarError) {
+            console.error('Error al asociar ayudante:', asociarError);
+            alert('⚠️ No se pudo registrar tu ayuda en el sistema (pero puedes contactar igual). El creador no podrá calificarte después.');
           }
-        } catch (asociarError) {
-          console.error('Error al asociar ayudante (no crítico):', asociarError);
-          // Continuar aunque falle la asociación
         }
 
         // Mostrar modal con la información de contacto
