@@ -32,6 +32,7 @@ export const registerUser = async (email, password, userData) => {
       email: email,
       carrera: userData.carrera || '',
       año: userData.año || 1,
+      telefono: userData.telefono || '',
       intereses: userData.intereses || [],
       descripcion: userData.descripcion || '',
     });
@@ -39,6 +40,16 @@ export const registerUser = async (email, password, userData) => {
     return user;
   } catch (error) {
     console.error('Error al registrar usuario:', error);
+
+    // Mensajes de error más claros
+    if (error.code === 'auth/email-already-in-use') {
+      throw new Error('Ya existe una cuenta con este correo. Si borraste tu cuenta recientemente, debes eliminarla también desde Firebase Authentication en la consola de Firebase.');
+    } else if (error.code === 'auth/weak-password') {
+      throw new Error('La contraseña debe tener al menos 6 caracteres.');
+    } else if (error.code === 'auth/invalid-email') {
+      throw new Error('El correo electrónico no es válido.');
+    }
+
     throw error;
   }
 };

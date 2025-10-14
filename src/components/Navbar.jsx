@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react';
 import { Menu, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import logo from '../assets/mi-logo.png.jpg';
+import logo from '../assets/mi_logo_actualizado.png.jpg';
 import ThemeToggle from './ui/ThemeToggle';
 
 const Navbar = () => {

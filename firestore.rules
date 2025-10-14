@@ -41,7 +41,8 @@ service cloud.firestore {
       allow read: if isAuthenticated();
 
       // Solo el propio usuario puede crear su documento
-      allow create: if isOwner(userId);
+      // Se verifica que el userId del documento coincida con el uid del usuario autenticado
+      allow create: if isAuthenticated() && request.auth.uid == userId;
 
       // Solo el propio usuario puede actualizar su documento
       allow update: if isOwner(userId);
