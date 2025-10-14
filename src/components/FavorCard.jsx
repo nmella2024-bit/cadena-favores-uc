@@ -139,15 +139,17 @@ const FavorCard = ({ favor, className }) => {
       return;
     }
 
-    if (!favor.ayudanteId) {
-      alert('No puedes finalizar un favor que nadie ha aceptado ayudar aún.');
-      return;
-    }
+    const mensaje = favor.ayudanteId
+      ? '¿Confirmas que este favor se ha completado? Podrás calificar al usuario que te ayudó.'
+      : '¿Confirmas que este favor se ha completado?';
 
-    if (window.confirm('¿Confirmas que este favor se ha completado? Podrás calificar al usuario que te ayudó.')) {
+    if (window.confirm(mensaje)) {
       try {
         await finalizarFavor(favor.id, currentUser.uid);
-        alert('✅ Favor marcado como finalizado. Ahora puedes calificar al usuario.');
+        const respuesta = favor.ayudanteId
+          ? '✅ Favor marcado como finalizado. Ahora puedes calificar al usuario.'
+          : '✅ Favor marcado como finalizado.';
+        alert(respuesta);
         // Recargar para ver los cambios
         window.location.reload();
       } catch (error) {
@@ -235,8 +237,8 @@ const FavorCard = ({ favor, className }) => {
             </PrimaryButton>
           )}
 
-          {/* Botón MARCAR COMO FINALIZADO - solo creador, solo si hay ayudante y está activo */}
-          {isOwnFavor && favor.estado === 'activo' && favor.ayudanteId && (
+          {/* Botón MARCAR COMO FINALIZADO - solo creador cuando está activo */}
+          {isOwnFavor && favor.estado === 'activo' && (
             <PrimaryButton
               type="button"
               onClick={handleFinalizar}

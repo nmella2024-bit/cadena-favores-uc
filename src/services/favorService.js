@@ -278,6 +278,7 @@ export const finalizarFavor = async (favorId, solicitanteId) => {
     }
 
     // Actualizar estado a finalizado
+    // No requiere que haya ayudante, puede finalizar de todas formas
     await updateDoc(favorRef, {
       estado: 'finalizado',
       fechaFinalizacion: serverTimestamp(),
