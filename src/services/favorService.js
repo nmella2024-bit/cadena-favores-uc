@@ -301,17 +301,28 @@ export const finalizarFavor = async (favorId, solicitanteId) => {
  */
 export const asociarAyudante = async (favorId, ayudanteId, ayudanteNombre) => {
   try {
+    console.log('[DEBUG] Iniciando asociarAyudante:', { favorId, ayudanteId, ayudanteNombre });
+
     const favorRef = doc(db, 'favores', favorId);
     const favorDoc = await getDoc(favorRef);
 
     if (!favorDoc.exists()) {
+      console.error('[DEBUG] El favor no existe');
       throw new Error('El favor no existe');
     }
 
+    console.log('[DEBUG] Favor encontrado:', favorDoc.data());
+
     // Verificar que no haya ayudante previo
     if (favorDoc.data().ayudanteId) {
+      console.warn('[DEBUG] Ya hay un ayudante:', favorDoc.data().ayudanteId);
       throw new Error('Este favor ya tiene un ayudante asociado');
     }
+
+    console.log('[DEBUG] Intentando updateDoc con:', {
+      ayudanteId,
+      ayudanteNombre,
+    });
 
     // Solo actualizar los campos esenciales
     await updateDoc(favorRef, {
@@ -320,9 +331,11 @@ export const asociarAyudante = async (favorId, ayudanteId, ayudanteNombre) => {
       updatedAt: serverTimestamp(),
     });
 
-    console.log('Ayudante asociado al favor');
+    console.log('✅ [DEBUG] Ayudante asociado exitosamente');
   } catch (error) {
-    console.error('Error al asociar ayudante:', error);
+    console.error('❌ [DEBUG] Error al asociar ayudante:', error);
+    console.error('❌ [DEBUG] Error code:', error.code);
+    console.error('❌ [DEBUG] Error message:', error.message);
     throw error;
   }
 };

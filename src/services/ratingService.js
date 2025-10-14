@@ -310,7 +310,8 @@ export const verificarPuedeCalificarFinalizado = async (favorId, userId) => {
     if (!favorData.ayudanteId) {
       return {
         puedeCalificar: false,
-        razon: 'No hay un ayudante asociado a este favor',
+        razon: 'No se registró quién ayudó con este favor. Esto ocurre cuando el sistema no pudo guardar la información del ayudante al presionar "Ofrecer ayuda". Lamentablemente no podrás calificar este favor.',
+        sinAyudante: true,
       };
     }
 
