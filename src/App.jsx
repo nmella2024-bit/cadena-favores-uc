@@ -10,6 +10,7 @@ import Registro from './pages/Registro';
 import Favores from './pages/Favores';
 import PublicarFavor from './pages/PublicarFavor';
 import Perfil from './pages/Perfil';
+import Anuncios from './pages/Anuncios';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
             {/* Favores */}
             <Route path="/favores" element={<Favores />} />
             <Route path="/publicar" element={<PublicarFavor />} />
+
+            {/* Anuncios */}
+            <Route path="/anuncios" element={<Anuncios />} />
 
             {/* Perfil */}
             <Route path="/perfil" element={<Perfil />} />

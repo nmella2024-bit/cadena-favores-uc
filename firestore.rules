@@ -3,6 +3,12 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
+    // Función para verificar si el usuario tiene rol exclusivo
+    function esUsuarioExclusivo() {
+      return request.auth != null &&
+             get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == 'exclusivo';
+    }
+
     // Reglas para la colección de favores
     match /favores/{favorId} {
       allow read: if true;
@@ -23,6 +29,22 @@ service cloud.firestore {
       allow create: if true;
       allow update: if false;
       allow delete: if false;
+    }
+
+    // Reglas para la colección de anuncios
+    match /anuncios/{anuncioId} {
+      // Todos pueden leer anuncios
+      allow read: if true;
+
+      // Solo usuarios con rol "exclusivo" pueden crear anuncios
+      allow create: if esUsuarioExclusivo() &&
+                    request.resource.data.autor == request.auth.uid;
+
+      // Solo usuarios con rol "exclusivo" pueden actualizar anuncios
+      allow update: if esUsuarioExclusivo();
+
+      // Solo usuarios con rol "exclusivo" pueden eliminar anuncios
+      allow delete: if esUsuarioExclusivo();
     }
   }
 }

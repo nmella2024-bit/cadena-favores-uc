@@ -27,6 +27,7 @@ export const createUserDocument = async (userId, userData) => {
       telefono: userData.telefono || '',
       intereses: userData.intereses || [],
       descripcion: userData.descripcion || '',
+      rol: userData.rol || 'normal', // Por defecto, rol normal
       reputacion: 5.0,
       favoresPublicados: [],
       favoresCompletados: [],
