@@ -4,6 +4,7 @@ import {
   signOut,
   updateProfile,
   onAuthStateChanged,
+  deleteUser,
 } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { createUserDocument, getUserData } from './userService';
@@ -16,18 +17,32 @@ import { createUserDocument, getUserData } from './userService';
  * @returns {Promise<Object>} Usuario creado
  */
 export const registerUser = async (email, password, userData) => {
+  let userCreated = null;
+
   try {
+    console.log('Iniciando registro de usuario...');
+
     // Crear usuario en Firebase Auth
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
+    userCreated = userCredential.user;
+    console.log('Usuario creado en Firebase Auth:', userCreated.uid);
 
     // Actualizar el perfil con el nombre
-    await updateProfile(user, {
+    await updateProfile(userCreated, {
       displayName: userData.nombre,
     });
+    console.log('Perfil actualizado');
+
+    // Esperar un momento para asegurar que el token se haya sincronizado
+    await new Promise(resolve => setTimeout(resolve, 1500));
+
+    // Forzar actualización del token
+    await userCreated.reload();
+    const token = await userCreated.getIdToken(true);
+    console.log('Token obtenido y actualizado, creando documento en Firestore...');
 
     // Crear documento del usuario en Firestore
-    await createUserDocument(user.uid, {
+    await createUserDocument(userCreated.uid, {
       nombre: userData.nombre,
       email: email,
       carrera: userData.carrera || '',
@@ -37,17 +52,33 @@ export const registerUser = async (email, password, userData) => {
       descripcion: userData.descripcion || '',
     });
 
-    return user;
+    console.log('Registro completado exitosamente');
+    return userCreated;
   } catch (error) {
     console.error('Error al registrar usuario:', error);
 
+    // Si el usuario fue creado en Auth pero falló algo después, eliminarlo
+    if (userCreated) {
+      console.log('Eliminando usuario de Firebase Auth debido al error...');
+      try {
+        await deleteUser(userCreated);
+        console.log('Usuario eliminado de Firebase Auth');
+      } catch (deleteError) {
+        console.error('Error al eliminar usuario de Auth:', deleteError);
+        // Si no se puede eliminar automáticamente, informar al usuario
+        throw new Error('Error al crear tu cuenta. El correo ' + email + ' quedó registrado parcialmente. Por favor, contacta al administrador o intenta con otro correo.');
+      }
+    }
+
     // Mensajes de error más claros
     if (error.code === 'auth/email-already-in-use') {
-      throw new Error('Ya existe una cuenta con este correo. Si borraste tu cuenta recientemente, debes eliminarla también desde Firebase Authentication en la consola de Firebase.');
+      throw new Error('Ya existe una cuenta con este correo. Si no puedes ingresar, contacta al administrador para limpiar la cuenta.');
     } else if (error.code === 'auth/weak-password') {
       throw new Error('La contraseña debe tener al menos 6 caracteres.');
     } else if (error.code === 'auth/invalid-email') {
       throw new Error('El correo electrónico no es válido.');
+    } else if (error.code === 'permission-denied' || error.message?.includes('Missing or insufficient permissions')) {
+      throw new Error('Error de permisos al crear tu perfil en Firestore. Verifica que las reglas de seguridad estén correctamente configuradas.');
     }
 
     throw error;

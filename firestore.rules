@@ -40,9 +40,10 @@ service cloud.firestore {
       // la función responderFavor() que intercambia contactos entre participantes
       allow read: if isAuthenticated();
 
-      // Solo el propio usuario puede crear su documento
+      // TEMPORALMENTE ABIERTO PARA DEBUGGING - Solo el propio usuario puede crear su documento
       // Se verifica que el userId del documento coincida con el uid del usuario autenticado
-      allow create: if isAuthenticated() && request.auth.uid == userId;
+      // IMPORTANTE: Esta regla está temporalmente permisiva para diagnosticar el problema
+      allow create: if request.auth != null && request.auth.uid == userId;
 
       // Solo el propio usuario puede actualizar su documento
       allow update: if isOwner(userId);

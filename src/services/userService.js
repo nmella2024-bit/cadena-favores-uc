@@ -19,7 +19,10 @@ import { db } from '../firebaseConfig';
  */
 export const createUserDocument = async (userId, userData) => {
   try {
-    await setDoc(doc(db, 'usuarios', userId), {
+    console.log('Intentando crear documento para usuario:', userId);
+    const userDocRef = doc(db, 'usuarios', userId);
+
+    const documentData = {
       nombre: userData.nombre,
       email: userData.email,
       carrera: userData.carrera || '',
@@ -31,10 +34,16 @@ export const createUserDocument = async (userId, userData) => {
       favoresPublicados: [],
       favoresCompletados: [],
       fechaRegistro: serverTimestamp(),
-    });
+    };
+
+    console.log('Datos del documento a crear:', documentData);
+
+    await setDoc(userDocRef, documentData);
     console.log('Documento de usuario creado exitosamente');
   } catch (error) {
     console.error('Error al crear documento de usuario:', error);
+    console.error('Código de error:', error.code);
+    console.error('Mensaje de error:', error.message);
     throw error;
   }
 };
