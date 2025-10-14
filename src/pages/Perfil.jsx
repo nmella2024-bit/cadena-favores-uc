@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { obtenerFavoresPorUsuario, obtenerFavoresConContactos } from '../services/favorService';
 import { updateUserData } from '../services/userService';
+import { obtenerCalificacionesUsuario } from '../services/ratingService';
+import StarRating from '../components/StarRating';
 
 const Perfil = () => {
   const navigate = useNavigate();
@@ -12,6 +14,8 @@ const Perfil = () => {
   const [loading, setLoading] = useState(true);
   const [showPhoneModal, setShowPhoneModal] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [calificaciones, setCalificaciones] = useState([]);
+  const [loadingCalificaciones, setLoadingCalificaciones] = useState(true);
 
   // Redirigir si no está autenticado
   useEffect(() => {
@@ -41,6 +45,25 @@ const Perfil = () => {
     };
 
     cargarFavores();
+  }, [currentUser]);
+
+  // Cargar calificaciones del usuario
+  useEffect(() => {
+    const cargarCalificaciones = async () => {
+      if (!currentUser) return;
+
+      try {
+        setLoadingCalificaciones(true);
+        const cals = await obtenerCalificacionesUsuario(currentUser.uid);
+        setCalificaciones(cals);
+      } catch (error) {
+        console.error('Error al cargar calificaciones:', error);
+      } finally {
+        setLoadingCalificaciones(false);
+      }
+    };
+
+    cargarCalificaciones();
   }, [currentUser]);
 
   if (!currentUser) {
@@ -87,6 +110,24 @@ const Perfil = () => {
               <div className="sm:ml-6 text-center sm:text-left">
                 <h1 className="text-2xl font-bold text-text-primary sm:text-3xl">{currentUser.nombre}</h1>
                 <p className="text-sm text-text-muted sm:text-base">{currentUser.correo}</p>
+
+                {/* Calificación promedio */}
+                <div className="mt-3 flex flex-col sm:flex-row items-center sm:items-start gap-2">
+                  <div className="flex items-center gap-2">
+                    <StarRating
+                      rating={currentUser.reputacion || 5.0}
+                      interactive={false}
+                      size="md"
+                      showNumber={true}
+                    />
+                  </div>
+                  {currentUser.totalCalificaciones > 0 && (
+                    <span className="text-xs text-text-muted">
+                      ({currentUser.totalCalificaciones} {currentUser.totalCalificaciones === 1 ? 'calificación' : 'calificaciones'})
+                    </span>
+                  )}
+                </div>
+
                 <div className="mt-2 flex flex-wrap justify-center gap-2 sm:justify-start">
                   {currentUser.carrera && (
                     <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand sm:text-sm">
@@ -268,6 +309,34 @@ const Perfil = () => {
             </>
           )}
         </div>
+
+        {/* Calificaciones recibidas */}
+        {!loadingCalificaciones && calificaciones.length > 0 && (
+          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 mb-8">
+            <h2 className="text-xl sm:text-2xl font-bold text-text-primary mb-6">
+              Calificaciones Recibidas
+            </h2>
+            <div className="space-y-4">
+              {calificaciones.map((cal) => (
+                <div
+                  key={cal.id}
+                  className="border border-border rounded-lg p-4 bg-yellow-500/5 dark:bg-yellow-500/10"
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <div>
+                      <p className="font-semibold text-text-primary">{cal.calificadorNombre}</p>
+                      <p className="text-xs text-text-muted">{cal.fecha}</p>
+                    </div>
+                    <StarRating rating={cal.estrellas} interactive={false} size="sm" />
+                  </div>
+                  {cal.comentario && (
+                    <p className="text-sm text-text-muted mt-2 italic">"{cal.comentario}"</p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Mis Contactos - Favores donde respondí */}
         {!loading && favoresConContactos.respondidos.length > 0 && (

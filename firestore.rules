@@ -46,5 +46,20 @@ service cloud.firestore {
       // Solo usuarios con rol "exclusivo" pueden eliminar anuncios
       allow delete: if esUsuarioExclusivo();
     }
+
+    // Reglas para la colección de calificaciones
+    match /calificaciones/{calificacionId} {
+      // Cualquier usuario autenticado puede leer calificaciones
+      allow read: if request.auth != null;
+
+      // Solo usuarios autenticados pueden crear calificaciones
+      // y solo pueden calificar si son el calificador
+      allow create: if request.auth != null &&
+                    request.resource.data.calificadorId == request.auth.uid;
+
+      // No se permite actualizar o eliminar calificaciones
+      allow update: if false;
+      allow delete: if false;
+    }
   }
 }

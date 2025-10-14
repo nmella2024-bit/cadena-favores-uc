@@ -256,6 +256,48 @@ export const completarFavor = async (favorId, userId) => {
 };
 
 /**
+ * Asocia un ayudante a un favor cuando responde
+ * @param {string} favorId - ID del favor
+ * @param {string} ayudanteId - ID del usuario ayudante
+ * @param {string} ayudanteNombre - Nombre del ayudante
+ * @returns {Promise<void>}
+ */
+export const asociarAyudante = async (favorId, ayudanteId, ayudanteNombre) => {
+  try {
+    const favorRef = doc(db, 'favores', favorId);
+    const favorDoc = await getDoc(favorRef);
+
+    if (!favorDoc.exists()) {
+      throw new Error('El favor no existe');
+    }
+
+    const confirmaciones = {
+      solicitante: {
+        usuarioId: favorDoc.data().usuarioId,
+        confirmado: false,
+      },
+      ayudante: {
+        usuarioId: ayudanteId,
+        nombreUsuario: ayudanteNombre,
+        confirmado: false,
+      },
+    };
+
+    await updateDoc(favorRef, {
+      ayudanteId,
+      ayudanteNombre,
+      confirmaciones,
+      updatedAt: serverTimestamp(),
+    });
+
+    console.log('Ayudante asociado al favor');
+  } catch (error) {
+    console.error('Error al asociar ayudante:', error);
+    throw error;
+  }
+};
+
+/**
  * Elimina un favor
  * @param {string} favorId - ID del favor a eliminar
  * @returns {Promise<void>}
