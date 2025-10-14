@@ -16,13 +16,17 @@ service cloud.firestore {
 
       // Permitir actualizar si:
       // 1. Eres el creador del favor, O
-      // 2. Estás agregándote como ayudante (solo puedes agregar ayudanteId y confirmaciones)
+      // 2. Estás agregándote como ayudante
       allow update: if request.auth != null && (
         // Creador puede actualizar todo
         request.auth.uid == resource.data.usuarioId ||
-        // Cualquier usuario autenticado puede agregarse como ayudante
+        // Cualquier usuario autenticado puede agregarse como ayudante SI:
+        // - El ayudanteId en el nuevo documento es tu uid
+        // - Actualmente no hay ayudante (resource.data.ayudanteId es null o no existe)
+        // - El creador (usuarioId) no cambia
         (request.resource.data.ayudanteId == request.auth.uid &&
-         resource.data.ayudanteId == null)
+         (!('ayudanteId' in resource.data) || resource.data.ayudanteId == null) &&
+         request.resource.data.usuarioId == resource.data.usuarioId)
       );
 
       allow delete: if request.auth != null && request.auth.uid == resource.data.usuarioId;

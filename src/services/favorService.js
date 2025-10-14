@@ -308,22 +308,15 @@ export const asociarAyudante = async (favorId, ayudanteId, ayudanteNombre) => {
       throw new Error('El favor no existe');
     }
 
-    const confirmaciones = {
-      solicitante: {
-        usuarioId: favorDoc.data().usuarioId,
-        confirmado: false,
-      },
-      ayudante: {
-        usuarioId: ayudanteId,
-        nombreUsuario: ayudanteNombre,
-        confirmado: false,
-      },
-    };
+    // Verificar que no haya ayudante previo
+    if (favorDoc.data().ayudanteId) {
+      throw new Error('Este favor ya tiene un ayudante asociado');
+    }
 
+    // Solo actualizar los campos esenciales
     await updateDoc(favorRef, {
-      ayudanteId,
-      ayudanteNombre,
-      confirmaciones,
+      ayudanteId: ayudanteId,
+      ayudanteNombre: ayudanteNombre,
       updatedAt: serverTimestamp(),
     });
 
