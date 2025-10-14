@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }) => {
               telefono: userData.telefono || '',
               intereses: userData.intereses || [],
               descripcion: userData.descripcion || '',
+              rol: userData.rol || 'normal', // Campo rol agregado
               reputacion: userData.reputacion || 5.0,
               favoresPublicados: userData.favoresPublicados || [],
               favoresCompletados: userData.favoresCompletados || [],
