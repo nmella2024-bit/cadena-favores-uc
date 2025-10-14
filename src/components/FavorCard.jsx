@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CalendarDays, Link2, Tag, UserRound } from 'lucide-react';
+import { CalendarDays, Link2, Tag, UserRound, MessageCircle, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
-import { responderFavor, eliminarFavor } from '../services/favorService';
+import { eliminarFavor } from '../services/favorService';
+import { getUserData } from '../services/userService';
 import PrimaryButton from './ui/PrimaryButton';
 import GhostButton from './ui/GhostButton';
 import { cn } from '../utils/cn';
 
 const FavorCard = ({ favor, className }) => {
   const { currentUser, firebaseUser } = useAuth();
+  const [showContactModal, setShowContactModal] = useState(false);
+  const [contactInfo, setContactInfo] = useState(null);
+  const [loadingContact, setLoadingContact] = useState(false);
 
   const category = categories.find((c) => c.id === favor.categoria);
   const isOwnFavor = currentUser && favor.usuarioId === currentUser.uid;
@@ -22,15 +26,36 @@ const FavorCard = ({ favor, className }) => {
       return;
     }
 
-    if (window.confirm('¿Deseas ofrecer ayuda con este favor?')) {
+    // Verificar que el usuario actual tenga teléfono
+    if (!currentUser.telefono) {
+      alert('Debes agregar un número de WhatsApp a tu perfil para poder contactar al solicitante. Ve a "Mi Perfil" para agregarlo.');
+      return;
+    }
+
+    if (window.confirm('¿Deseas ofrecer ayuda con este favor? Se mostrará la información de contacto del solicitante.')) {
       try {
-        await responderFavor(favor.id, firebaseUser);
-        alert('¡Gracias por tu ayuda! La persona solicitante fue notificada.');
-        // Recargar la página para ver los cambios
-        window.location.reload();
+        setLoadingContact(true);
+        // Obtener información del solicitante
+        const solicitanteData = await getUserData(favor.usuarioId);
+
+        if (!solicitanteData) {
+          alert('No se pudo obtener la información del solicitante.');
+          return;
+        }
+
+        if (!solicitanteData.telefono) {
+          alert('El solicitante aún no ha agregado un número de WhatsApp. No se puede establecer contacto en este momento.');
+          return;
+        }
+
+        // Mostrar modal con la información de contacto
+        setContactInfo(solicitanteData);
+        setShowContactModal(true);
       } catch (error) {
-        console.error('Error al responder favor:', error);
-        alert('Error al responder al favor. Intenta nuevamente.');
+        console.error('Error al obtener contacto:', error);
+        alert('Error al obtener la información de contacto. Intenta nuevamente.');
+      } finally {
+        setLoadingContact(false);
       }
     }
   };
@@ -133,6 +158,77 @@ const FavorCard = ({ favor, className }) => {
           </GhostButton>
         </div>
       </div>
+
+      {/* Modal de información de contacto */}
+      {showContactModal && contactInfo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          onClick={() => setShowContactModal(false)}
+        >
+          <div
+            className="bg-card rounded-2xl border border-border shadow-2xl dark:bg-card/95 max-w-md w-full p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h3 className="text-xl font-bold text-text-primary">
+                  Información de Contacto
+                </h3>
+                <p className="text-sm text-text-muted mt-1">
+                  Contacta al solicitante por WhatsApp
+                </p>
+              </div>
+              <button
+                onClick={() => setShowContactModal(false)}
+                className="rounded-lg p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors"
+                aria-label="Cerrar"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* Información del favor */}
+            <div className="mb-6 p-4 rounded-lg bg-brand/10 border border-brand/20">
+              <h4 className="font-semibold text-text-primary mb-1">{favor.titulo}</h4>
+              <p className="text-xs text-text-muted">Favor publicado</p>
+            </div>
+
+            {/* Información de contacto */}
+            <div className="space-y-4 mb-6">
+              <div>
+                <p className="text-xs font-semibold text-text-muted uppercase mb-1">Nombre</p>
+                <p className="text-base font-medium text-text-primary">{contactInfo.nombre}</p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold text-text-muted uppercase mb-1">Email</p>
+                <p className="text-sm text-text-primary">{contactInfo.email}</p>
+              </div>
+              {contactInfo.carrera && (
+                <div>
+                  <p className="text-xs font-semibold text-text-muted uppercase mb-1">Carrera</p>
+                  <p className="text-sm text-text-primary">{contactInfo.carrera}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Botón de WhatsApp */}
+            <a
+              href={`https://wa.me/${contactInfo.telefono.replace(/[^0-9]/g, '')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full rounded-lg bg-emerald-500 px-4 py-3 text-base font-semibold text-white hover:bg-emerald-600 transition-colors shadow-sm"
+            >
+              <MessageCircle className="h-5 w-5" />
+              Contactar por WhatsApp
+            </a>
+
+            <p className="text-xs text-text-muted text-center mt-4">
+              Se abrirá WhatsApp para que puedas coordinar directamente
+            </p>
+          </div>
+        </div>
+      )}
     </article>
   );
 };
