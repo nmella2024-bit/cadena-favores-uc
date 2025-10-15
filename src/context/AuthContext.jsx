@@ -179,6 +179,7 @@ export const AuthProvider = ({ children }) => {
 
   const value = {
     currentUser,
+    usuario: currentUser, // Alias para compatibilidad
     firebaseUser,
     loading,
     register,
