@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
-import { Calendar, User, Trash2, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Calendar, User, Trash2, Mail, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 import { esProductoNuevo, formatearPrecio } from '../services/marketplaceService';
+import { getUserData } from '../services/userService';
 
 const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
   const esNuevo = esProductoNuevo(producto.fecha);
   const [imagenActual, setImagenActual] = useState(0);
+  const [autorTelefono, setAutorTelefono] = useState(null);
+
+  useEffect(() => {
+    // Obtener teléfono del autor del producto
+    const obtenerTelefonoAutor = async () => {
+      if (producto.autor && !esAutor) {
+        try {
+          const datosAutor = await getUserData(producto.autor);
+          if (datosAutor?.telefono) {
+            setAutorTelefono(datosAutor.telefono);
+          }
+        } catch (error) {
+          console.error('Error al obtener teléfono del autor:', error);
+        }
+      }
+    };
+
+    obtenerTelefonoAutor();
+  }, [producto.autor, esAutor]);
 
   const formatFecha = (fecha) => {
     return new Date(fecha).toLocaleDateString('es-CL', {
@@ -93,14 +113,29 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
               <Calendar className="h-4 w-4" />
               <span>{formatFecha(producto.fecha)}</span>
             </div>
-            {producto.autorEmail && producto.autor !== currentUserId && (
-              <a
-                href={`mailto:${producto.autorEmail}`}
-                className="flex items-center gap-1 text-brand hover:underline"
-              >
-                <Mail className="h-4 w-4" />
-                <span>Contactar</span>
-              </a>
+            {producto.autor !== currentUserId && (
+              <div className="flex flex-wrap items-center gap-3">
+                {producto.autorEmail && (
+                  <a
+                    href={`mailto:${producto.autorEmail}`}
+                    className="flex items-center gap-1 text-brand hover:underline"
+                  >
+                    <Mail className="h-4 w-4" />
+                    <span>Email</span>
+                  </a>
+                )}
+                {autorTelefono && (
+                  <a
+                    href={`https://wa.me/${autorTelefono.replace(/[^0-9]/g, '')}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
+                  >
+                    <MessageCircle className="h-4 w-4" />
+                    WhatsApp
+                  </a>
+                )}
+              </div>
             )}
           </div>
 
