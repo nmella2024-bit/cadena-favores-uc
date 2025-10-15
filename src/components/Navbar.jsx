@@ -64,7 +64,7 @@ const Navbar = () => {
                   Red UC
                 </span>
                 <span className="text-xs font-medium uppercase tracking-wide text-text-muted">
-                  Comunidad solidaria
+                  Tu Espacio UC
                 </span>
               </div>
             </Link>

@@ -375,7 +375,7 @@ export const actualizarFavor = async (favorId, updates) => {
 };
 
 /**
- * Busca favores por texto en título o descripción
+ * Busca favores por texto en título, descripción o disponibilidad
  * @param {string} searchTerm - Término de búsqueda
  * @returns {Promise<Array>} Lista de favores que coinciden
  */
@@ -389,7 +389,8 @@ export const buscarFavores = async (searchTerm) => {
     return favores.filter(
       (favor) =>
         favor.titulo.toLowerCase().includes(searchLower) ||
-        favor.descripcion.toLowerCase().includes(searchLower)
+        favor.descripcion.toLowerCase().includes(searchLower) ||
+        (favor.disponibilidad && favor.disponibilidad.toLowerCase().includes(searchLower))
     );
   } catch (error) {
     console.error('Error al buscar favores:', error);

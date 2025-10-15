@@ -84,7 +84,8 @@ const Favores = () => {
       const matchesSearch =
         normalizedQuery.length === 0 ||
         favor.titulo.toLowerCase().includes(normalizedQuery) ||
-        favor.descripcion.toLowerCase().includes(normalizedQuery);
+        favor.descripcion.toLowerCase().includes(normalizedQuery) ||
+        (favor.disponibilidad && favor.disponibilidad.toLowerCase().includes(normalizedQuery));
 
       return matchesCategory && matchesAvailability && matchesSearch;
     });
@@ -162,7 +163,7 @@ const Favores = () => {
             <TextField
               id="search"
               label="Buscar"
-              placeholder="Título, descripción o palabra clave"
+              placeholder="Título, descripción, disponibilidad o palabra clave"
               value={searchQuery}
               onChange={(event) => setSearchQuery(event.target.value)}
               hint="Atajo: Ctrl + K"
