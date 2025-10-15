@@ -81,6 +81,13 @@ const Perfil = () => {
       return;
     }
 
+    // Validar formato de teléfono chileno (+569 + 8 dígitos)
+    const telefonoRegex = /^\+569\d{8}$/;
+    if (!telefonoRegex.test(phoneNumber)) {
+      alert('El número de WhatsApp debe tener el formato +569 seguido de 8 dígitos (Ej: +56912345678)');
+      return;
+    }
+
     try {
       await updateUserData(currentUser.uid, { telefono: phoneNumber });
       alert('Número de WhatsApp guardado exitosamente');
@@ -414,10 +421,19 @@ const Perfil = () => {
             <input
               type="tel"
               value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-              placeholder="+56912345678"
+              onChange={(e) => {
+                const cleaned = e.target.value.replace(/[^\d+]/g, '');
+                if (cleaned.length <= 12) {
+                  setPhoneNumber(cleaned);
+                }
+              }}
+              placeholder="+56912345678 (11 dígitos)"
+              maxLength={12}
               className="w-full px-4 py-2 rounded-lg border border-border bg-canvas text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 mb-4"
             />
+            <p className="text-xs text-text-muted mb-4">
+              Formato: +569 seguido de 8 dígitos
+            </p>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowPhoneModal(false)}

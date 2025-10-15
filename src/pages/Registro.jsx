@@ -25,10 +25,25 @@ const Registro = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+
+    // Validación especial para el campo de teléfono
+    if (name === 'telefono') {
+      // Solo permitir números, el símbolo + y limitar a 12 caracteres (+56912345678)
+      const cleaned = value.replace(/[^\d+]/g, '');
+
+      // Limitar a 12 caracteres máximo
+      if (cleaned.length <= 12) {
+        setFormData((prev) => ({
+          ...prev,
+          [name]: cleaned,
+        }));
+      }
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (event) => {
@@ -47,6 +62,13 @@ const Registro = () => {
 
     if (!formData.telefono) {
       setError('El número de WhatsApp es requerido para conectar con otros estudiantes');
+      return;
+    }
+
+    // Validar formato de teléfono chileno (+569 + 8 dígitos)
+    const telefonoRegex = /^\+569\d{8}$/;
+    if (!telefonoRegex.test(formData.telefono)) {
+      setError('El número de WhatsApp debe tener el formato +569 seguido de 8 dígitos (Ej: +56912345678)');
       return;
     }
 
@@ -169,11 +191,12 @@ const Registro = () => {
             name="telefono"
             type="tel"
             label="Número de WhatsApp *"
-            placeholder="+56912345678"
+            placeholder="+56912345678 (11 dígitos)"
             value={formData.telefono}
             onChange={handleChange}
-            hint="Solo visible para quienes acepten tus favores o cuyos favores aceptes"
+            hint="Formato: +569 seguido de 8 dígitos. Solo visible para quienes conectes."
             required
+            maxLength={12}
           />
 
           <TextField
