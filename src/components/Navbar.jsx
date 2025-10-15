@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Disclosure } from '@headlessui/react';
-import { Menu, X, MessageSquare } from 'lucide-react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Disclosure, Menu as HeadlessMenu } from '@headlessui/react';
+import { Menu, X, MessageSquare, ChevronDown } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/mi-logo-v2.png';
 import ThemeToggle from './ui/ThemeToggle';
@@ -10,23 +10,37 @@ import FeedbackModal from './FeedbackModal';
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
+  const location = useLocation();
 
+  // Navegación reorganizada con emojis
   const navigation = currentUser
     ? [
-        { label: 'Ver favores', to: '/favores' },
-        { label: 'Publicar favor', to: '/publicar' },
-        { label: 'Anuncios', to: '/anuncios' },
-        { label: 'Marketplace', to: '/marketplace' },
-        { label: 'UCloseMeal', to: '/uclosemeal' },
-        { label: 'Mi perfil', to: '/perfil' },
+        { label: 'Anuncios', to: '/anuncios', emoji: '📣' },
+        { label: 'Marketplace', to: '/marketplace', emoji: '🛒' },
+        {
+          label: 'Favores',
+          emoji: '🙌',
+          submenu: [
+            { label: 'Ver favores', to: '/favores' },
+            { label: 'Publicar favor', to: '/publicar' },
+          ]
+        },
+        { label: 'UCloseMeal', to: '/uclosemeal', emoji: '🍔' },
+        { label: 'Mi perfil', to: '/perfil', emoji: '👤' },
       ]
     : [
-        { label: 'Ver favores', to: '/favores' },
-        { label: 'Publicar favor', to: '/publicar' },
-        { label: 'Anuncios', to: '/anuncios' },
-        { label: 'Marketplace', to: '/marketplace' },
-        { label: 'UCloseMeal', to: '/uclosemeal' },
-        { label: 'Ingresar', to: '/login' },
+        { label: 'Anuncios', to: '/anuncios', emoji: '📣' },
+        { label: 'Marketplace', to: '/marketplace', emoji: '🛒' },
+        {
+          label: 'Favores',
+          emoji: '🙌',
+          submenu: [
+            { label: 'Ver favores', to: '/favores' },
+            { label: 'Publicar favor', to: '/publicar' },
+          ]
+        },
+        { label: 'UCloseMeal', to: '/uclosemeal', emoji: '🍔' },
+        { label: 'Ingresar', to: '/login', emoji: '👤' },
       ];
 
   const renderLink = (item, isMobile = false) => (
@@ -35,7 +49,7 @@ const Navbar = () => {
       to={item.to}
       className={({ isActive }) =>
         [
-          'inline-flex items-center rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
+          'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
           isMobile ? 'w-full justify-start' : 'justify-center',
           isActive
             ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4 dark:bg-brand/20'
@@ -43,6 +57,7 @@ const Navbar = () => {
         ].join(' ')
       }
     >
+      <span className="text-base leading-none">{item.emoji}</span>
       {item.label}
     </NavLink>
   );
@@ -72,7 +87,59 @@ const Navbar = () => {
             </Link>
 
             <div className="hidden items-center gap-2 md:flex">
-              {navigation.map((item) => renderLink(item))}
+              {navigation.map((item) => {
+                // Si tiene submenú, renderizar dropdown
+                if (item.submenu) {
+                  const isActive = item.submenu.some(sub => location.pathname.startsWith(sub.to));
+
+                  return (
+                    <HeadlessMenu as="div" className="relative" key={item.label}>
+                      {({ open }) => (
+                        <>
+                          <HeadlessMenu.Button
+                            className={[
+                              'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
+                              isActive
+                                ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4 dark:bg-brand/20'
+                                : 'text-text-muted hover:text-text-primary hover:bg-card/80 dark:hover:bg-card/60',
+                            ].join(' ')}
+                          >
+                            <span className="text-base leading-none">{item.emoji}</span>
+                            {item.label}
+                            <ChevronDown className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+                          </HeadlessMenu.Button>
+                          <HeadlessMenu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-lg border border-border bg-card shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <div className="py-1">
+                              {item.submenu.map((subItem) => (
+                                <HeadlessMenu.Item key={subItem.to}>
+                                  {({ active }) => (
+                                    <Link
+                                      to={subItem.to}
+                                      className={[
+                                        'block px-4 py-2 text-sm transition-colors',
+                                        location.pathname === subItem.to
+                                          ? 'bg-brand/10 text-brand font-medium'
+                                          : active
+                                          ? 'bg-card/80 text-text-primary'
+                                          : 'text-text-muted',
+                                      ].join(' ')}
+                                    >
+                                      {subItem.label}
+                                    </Link>
+                                  )}
+                                </HeadlessMenu.Item>
+                              ))}
+                            </div>
+                          </HeadlessMenu.Items>
+                        </>
+                      )}
+                    </HeadlessMenu>
+                  );
+                }
+
+                // Link normal
+                return renderLink(item);
+              })}
               <button
                 type="button"
                 onClick={() => setIsFeedbackOpen(true)}
@@ -112,7 +179,49 @@ const Navbar = () => {
 
           <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 border-t border-border bg-card/70 py-3 dark:bg-card/60">
-              {navigation.map((item) => renderLink(item, true))}
+              {navigation.map((item) => {
+                // Si tiene submenú, renderizar items expandidos
+                if (item.submenu) {
+                  const isActive = item.submenu.some(sub => location.pathname.startsWith(sub.to));
+
+                  return (
+                    <div key={item.label} className="space-y-1">
+                      <div
+                        className={[
+                          'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium w-full',
+                          isActive
+                            ? 'bg-brand/10 text-brand'
+                            : 'text-text-muted',
+                        ].join(' ')}
+                      >
+                        <span className="text-base leading-none">{item.emoji}</span>
+                        {item.label}
+                      </div>
+                      <div className="ml-8 space-y-1">
+                        {item.submenu.map((subItem) => (
+                          <NavLink
+                            key={subItem.to}
+                            to={subItem.to}
+                            className={({ isActive }) =>
+                              [
+                                'block rounded-lg px-3 py-2 text-sm font-medium transition-colors',
+                                isActive
+                                  ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4'
+                                  : 'text-text-muted hover:text-text-primary hover:bg-card/80',
+                              ].join(' ')
+                            }
+                          >
+                            {subItem.label}
+                          </NavLink>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                }
+
+                // Link normal
+                return renderLink(item, true);
+              })}
               <button
                 type="button"
                 onClick={() => setIsFeedbackOpen(true)}
