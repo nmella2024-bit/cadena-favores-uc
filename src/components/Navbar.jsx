@@ -58,7 +58,7 @@ const Navbar = () => {
               to="/"
               className="flex items-center gap-3 rounded-lg px-2 py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60"
             >
-              <img src={logo} alt="Red UC" className="h-10 w-10 rounded object-cover" />
+              <img src={logo} alt="Red UC" className="h-10 w-10 rounded object-cover dark:invert" />
               <div className="flex flex-col">
                 <span className="text-base font-semibold leading-tight text-text-primary">
                   Red UC
