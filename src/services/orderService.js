@@ -486,8 +486,7 @@ export const obtenerMisPedidosActivos = async (userId) => {
 export const escucharPedidosPendientes = (callback) => {
   const q = query(
     collection(db, 'pedidos'),
-    where('estado', '==', 'pendiente'),
-    orderBy('fecha', 'desc')
+    where('estado', '==', 'pendiente')
   );
 
   return onSnapshot(
@@ -502,10 +501,13 @@ export const escucharPedidosPendientes = (callback) => {
           fecha: data.fecha || Date.now(),
         });
       });
+      // Ordenar manualmente por fecha en memoria
+      pedidos.sort((a, b) => (b.fecha || 0) - (a.fecha || 0));
       callback(pedidos);
     },
     (error) => {
       console.error('Error escuchando pedidos pendientes:', error);
+      callback([]); // Enviar array vacío en caso de error
     }
   );
 };
@@ -520,8 +522,7 @@ export const escucharMisPedidosActivos = (userId, callback) => {
   const q = query(
     collection(db, 'pedidos'),
     where('repartidorId', '==', userId),
-    where('estado', 'in', ['aceptado', 'en-camino', 'entregado']),
-    orderBy('fecha', 'desc')
+    where('estado', 'in', ['aceptado', 'en-camino', 'entregado'])
   );
 
   return onSnapshot(
@@ -536,10 +537,13 @@ export const escucharMisPedidosActivos = (userId, callback) => {
           fecha: data.fecha || Date.now(),
         });
       });
+      // Ordenar manualmente por fecha en memoria
+      pedidos.sort((a, b) => (b.fecha || 0) - (a.fecha || 0));
       callback(pedidos);
     },
     (error) => {
       console.error('Error escuchando pedidos activos:', error);
+      callback([]); // Enviar array vacío en caso de error
     }
   );
 };
@@ -553,8 +557,7 @@ export const escucharMisPedidosActivos = (userId, callback) => {
 export const escucharMisPedidosCreados = (userId, callback) => {
   const q = query(
     collection(db, 'pedidos'),
-    where('solicitanteId', '==', userId),
-    orderBy('fecha', 'desc')
+    where('solicitanteId', '==', userId)
   );
 
   return onSnapshot(
@@ -569,10 +572,13 @@ export const escucharMisPedidosCreados = (userId, callback) => {
           fecha: data.fecha || Date.now(),
         });
       });
+      // Ordenar manualmente por fecha en memoria
+      pedidos.sort((a, b) => (b.fecha || 0) - (a.fecha || 0));
       callback(pedidos);
     },
     (error) => {
       console.error('Error escuchando mis pedidos creados:', error);
+      callback([]); // Enviar array vacío en caso de error
     }
   );
 };
