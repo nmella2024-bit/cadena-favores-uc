@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Disclosure, Menu as HeadlessMenu } from '@headlessui/react';
-import { Menu, X, MessageSquare, ChevronDown } from 'lucide-react';
+import { Menu, X, MessageSquare, ChevronDown, Megaphone, ShoppingCart, HandHeart, UtensilsCrossed, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/mi-logo-v2.png';
 import ThemeToggle from './ui/ThemeToggle';
@@ -12,55 +12,58 @@ const Navbar = () => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const location = useLocation();
 
-  // Navegación reorganizada con emojis
+  // Navegación reorganizada con iconos minimalistas
   const navigation = currentUser
     ? [
-        { label: 'Anuncios', to: '/anuncios', emoji: '📣' },
-        { label: 'Marketplace', to: '/marketplace', emoji: '🛒' },
+        { label: 'Anuncios', to: '/anuncios', icon: Megaphone },
+        { label: 'Marketplace', to: '/marketplace', icon: ShoppingCart },
         {
           label: 'Favores',
-          emoji: '🙌',
+          icon: HandHeart,
           submenu: [
             { label: 'Ver favores', to: '/favores' },
             { label: 'Publicar favor', to: '/publicar' },
           ]
         },
-        { label: 'UCloseMeal', to: '/uclosemeal', emoji: '🍔' },
-        { label: 'Mi perfil', to: '/perfil', emoji: '👤' },
+        { label: 'UCloseMeal', to: '/uclosemeal', icon: UtensilsCrossed },
+        { label: 'Mi perfil', to: '/perfil', icon: User },
       ]
     : [
-        { label: 'Anuncios', to: '/anuncios', emoji: '📣' },
-        { label: 'Marketplace', to: '/marketplace', emoji: '🛒' },
+        { label: 'Anuncios', to: '/anuncios', icon: Megaphone },
+        { label: 'Marketplace', to: '/marketplace', icon: ShoppingCart },
         {
           label: 'Favores',
-          emoji: '🙌',
+          icon: HandHeart,
           submenu: [
             { label: 'Ver favores', to: '/favores' },
             { label: 'Publicar favor', to: '/publicar' },
           ]
         },
-        { label: 'UCloseMeal', to: '/uclosemeal', emoji: '🍔' },
-        { label: 'Ingresar', to: '/login', emoji: '👤' },
+        { label: 'UCloseMeal', to: '/uclosemeal', icon: UtensilsCrossed },
+        { label: 'Ingresar', to: '/login', icon: User },
       ];
 
-  const renderLink = (item, isMobile = false) => (
-    <NavLink
-      key={item.to}
-      to={item.to}
-      className={({ isActive }) =>
-        [
-          'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
-          isMobile ? 'w-full justify-start' : 'justify-center',
-          isActive
-            ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4 dark:bg-brand/20'
-            : 'text-text-muted hover:text-text-primary hover:bg-card/80 dark:hover:bg-card/60',
-        ].join(' ')
-      }
-    >
-      <span className="text-base leading-none">{item.emoji}</span>
-      {item.label}
-    </NavLink>
-  );
+  const renderLink = (item, isMobile = false) => {
+    const Icon = item.icon;
+    return (
+      <NavLink
+        key={item.to}
+        to={item.to}
+        className={({ isActive }) =>
+          [
+            'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
+            isMobile ? 'w-full justify-start' : 'justify-center',
+            isActive
+              ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4 dark:bg-brand/20'
+              : 'text-text-muted hover:text-text-primary hover:bg-card/80 dark:hover:bg-card/60',
+          ].join(' ')
+        }
+      >
+        <Icon className="h-4 w-4" strokeWidth={2} />
+        {item.label}
+      </NavLink>
+    );
+  };
 
   return (
     <>
@@ -91,6 +94,7 @@ const Navbar = () => {
                 // Si tiene submenú, renderizar dropdown
                 if (item.submenu) {
                   const isActive = item.submenu.some(sub => location.pathname.startsWith(sub.to));
+                  const Icon = item.icon;
 
                   return (
                     <HeadlessMenu as="div" className="relative" key={item.label}>
@@ -104,7 +108,7 @@ const Navbar = () => {
                                 : 'text-text-muted hover:text-text-primary hover:bg-card/80 dark:hover:bg-card/60',
                             ].join(' ')}
                           >
-                            <span className="text-base leading-none">{item.emoji}</span>
+                            <Icon className="h-4 w-4" strokeWidth={2} />
                             {item.label}
                             <ChevronDown className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`} />
                           </HeadlessMenu.Button>
@@ -183,6 +187,7 @@ const Navbar = () => {
                 // Si tiene submenú, renderizar items expandidos
                 if (item.submenu) {
                   const isActive = item.submenu.some(sub => location.pathname.startsWith(sub.to));
+                  const Icon = item.icon;
 
                   return (
                     <div key={item.label} className="space-y-1">
@@ -194,7 +199,7 @@ const Navbar = () => {
                             : 'text-text-muted',
                         ].join(' ')}
                       >
-                        <span className="text-base leading-none">{item.emoji}</span>
+                        <Icon className="h-4 w-4" strokeWidth={2} />
                         {item.label}
                       </div>
                       <div className="ml-8 space-y-1">
