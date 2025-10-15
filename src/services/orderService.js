@@ -217,10 +217,10 @@ export const aceptarPedido = async (pedidoId, user) => {
 /**
  * Marca un pedido como "en camino"
  * @param {string} pedidoId - ID del pedido
- * @param {string} userId - ID del repartidor
+ * @param {string} userId - ID del repartidor (opcional, se validará contra el pedido)
  * @returns {Promise<void>}
  */
-export const marcarEnCamino = async (pedidoId, userId) => {
+export const marcarEnCamino = async (pedidoId, userId = null) => {
   try {
     const pedidoRef = doc(db, 'pedidos', pedidoId);
     const pedidoDoc = await getDoc(pedidoRef);
@@ -231,7 +231,8 @@ export const marcarEnCamino = async (pedidoId, userId) => {
 
     const pedidoData = pedidoDoc.data();
 
-    if (pedidoData.repartidorId !== userId) {
+    // Si se proporciona userId, validar que sea el repartidor asignado
+    if (userId && pedidoData.repartidorId !== userId) {
       throw new Error('No tienes permiso para actualizar este pedido');
     }
 
@@ -377,6 +378,24 @@ export const crearPedidoConCarrito = async (orderData, user) => {
       throw new Error('Usuario no válido. Debes iniciar sesión.');
     }
 
+    // Obtener datos completos del usuario desde Firestore
+    let whatsappUsuario = user.whatsapp || user.telefono || null;
+
+    if (!whatsappUsuario) {
+      try {
+        const userDocRef = doc(db, 'usuarios', user.uid);
+        const userDoc = await getDoc(userDocRef);
+
+        if (userDoc.exists()) {
+          const userData = userDoc.data();
+          whatsappUsuario = userData.telefono || userData.whatsapp || null;
+          console.log('WhatsApp obtenido de Firestore:', whatsappUsuario);
+        }
+      } catch (error) {
+        console.warn('No se pudo obtener datos adicionales del usuario:', error);
+      }
+    }
+
     const pedidoData = {
       restaurante: orderData.restaurante,
       restauranteId: orderData.restauranteId,
@@ -390,6 +409,7 @@ export const crearPedidoConCarrito = async (orderData, user) => {
       solicitanteId: user.uid || user.id,
       solicitanteNombre: user.displayName || user.nombre || 'Usuario',
       solicitanteEmail: user.email || user.correo,
+      solicitanteWhatsapp: whatsappUsuario, // Agregar WhatsApp del comprador
       estado: 'pendiente', // pendiente, aceptado, en-camino, entregado, cancelado
       repartidorId: null,
       repartidorNombre: null,

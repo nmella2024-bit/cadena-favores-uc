@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Package, Clock, MapPin, DollarSign, CheckCircle, Bike, AlertCircle } from 'lucide-react';
+import { Package, Clock, MapPin, DollarSign, CheckCircle, Bike, AlertCircle, MessageCircle } from 'lucide-react';
 import { escucharPedidosPendientes, escucharMisPedidosActivos, aceptarPedido, marcarEnCamino, marcarEntregado, marcarComoCompletado } from '../services/orderService';
 import { formatearPrecio } from '../services/marketplaceService';
 import { useAuth } from '../context/AuthContext';
@@ -59,13 +59,30 @@ const RepartidorDashboard = () => {
   const handleMarcarEnCamino = async (pedidoId) => {
     try {
       setProcessingId(pedidoId);
-      await marcarEnCamino(pedidoId);
+      await marcarEnCamino(pedidoId, usuario.uid);
     } catch (error) {
       console.error('Error marcando en camino:', error);
       alert(error.message || 'Error al actualizar el pedido');
     } finally {
       setProcessingId(null);
     }
+  };
+
+  const abrirWhatsApp = (telefono, pedidoId, restaurante) => {
+    if (!telefono) {
+      alert('Este comprador no tiene WhatsApp registrado');
+      return;
+    }
+
+    // Limpiar el número (remover caracteres no numéricos)
+    const numeroLimpio = telefono.replace(/\D/g, '');
+
+    // Mensaje predefinido
+    const mensaje = `Hola! Soy tu repartidor de UCloseMeal. He aceptado tu pedido de ${restaurante} (ID: ${pedidoId.slice(0, 8)}). ¿En qué punto de entrega nos vemos?`;
+
+    // Abrir WhatsApp con el mensaje
+    const url = `https://wa.me/${numeroLimpio}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
   };
 
   const handleMarcarEntregado = async (pedidoId) => {
@@ -191,13 +208,25 @@ const RepartidorDashboard = () => {
         )}
 
         {!isDisponible && pedido.estado === 'aceptado' && (
-          <button
-            onClick={() => handleMarcarEnCamino(pedido.id)}
-            disabled={isProcessing}
-            className="w-full py-2.5 px-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium disabled:opacity-50"
-          >
-            {isProcessing ? 'Actualizando...' : 'Marcar En Camino'}
-          </button>
+          <div className="space-y-2">
+            {/* Botón de WhatsApp */}
+            {pedido.solicitanteWhatsapp && (
+              <button
+                onClick={() => abrirWhatsApp(pedido.solicitanteWhatsapp, pedido.id, pedido.restaurante)}
+                className="w-full py-2.5 px-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium flex items-center justify-center gap-2"
+              >
+                <MessageCircle className="h-4 w-4" />
+                Contactar Comprador
+              </button>
+            )}
+            <button
+              onClick={() => handleMarcarEnCamino(pedido.id)}
+              disabled={isProcessing}
+              className="w-full py-2.5 px-4 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors font-medium disabled:opacity-50"
+            >
+              {isProcessing ? 'Actualizando...' : 'Marcar En Camino'}
+            </button>
+          </div>
         )}
 
         {!isDisponible && pedido.estado === 'en-camino' && (
