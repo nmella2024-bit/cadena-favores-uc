@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, User, Trash2, Mail, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
+import { Calendar, User, Trash2, Mail, ChevronLeft, ChevronRight, MessageCircle, Maximize2 } from 'lucide-react';
 import { esProductoNuevo, formatearPrecio } from '../services/marketplaceService';
 import { getUserData } from '../services/userService';
+import ImageModal from './ImageModal';
 
 const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
   const esNuevo = esProductoNuevo(producto.fecha);
   const [imagenActual, setImagenActual] = useState(0);
   const [autorTelefono, setAutorTelefono] = useState(null);
+  const [modalAbierto, setModalAbierto] = useState(false);
 
   useEffect(() => {
     // Obtener teléfono del autor del producto
@@ -72,34 +74,54 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
         </div>
 
         {producto.imagenesURL && producto.imagenesURL.length > 0 && (
-          <div className="rounded-lg overflow-hidden relative group">
-            <img
-              src={producto.imagenesURL[imagenActual]}
-              alt={`${producto.titulo} - imagen ${imagenActual + 1}`}
-              className="w-full max-h-96 object-cover"
-            />
+          <div className="rounded-lg overflow-hidden relative group cursor-pointer">
+            {/* Thumbnail con altura limitada */}
+            <div className="relative">
+              <img
+                src={producto.imagenesURL[imagenActual]}
+                alt={`${producto.titulo} - imagen ${imagenActual + 1}`}
+                className="w-full h-64 object-cover"
+                onClick={() => setModalAbierto(true)}
+              />
 
-            {producto.imagenesURL.length > 1 && (
-              <>
-                <button
-                  onClick={imagenAnterior}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                  aria-label="Imagen anterior"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={siguienteImagen}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
-                  aria-label="Siguiente imagen"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-2 py-1 rounded">
-                  {imagenActual + 1} / {producto.imagenesURL.length}
-                </div>
-              </>
-            )}
+              {/* Botón para ampliar */}
+              <button
+                onClick={() => setModalAbierto(true)}
+                className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                aria-label="Ver imagen completa"
+              >
+                <Maximize2 className="h-5 w-5" />
+              </button>
+
+              {/* Navegación entre imágenes */}
+              {producto.imagenesURL.length > 1 && (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      imagenAnterior();
+                    }}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Imagen anterior"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      siguienteImagen();
+                    }}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                    aria-label="Siguiente imagen"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                  <div className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-2 py-1 rounded">
+                    {imagenActual + 1} / {producto.imagenesURL.length}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         )}
 
@@ -150,6 +172,16 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
           )}
         </div>
       </div>
+
+      {/* Modal para ver imagen completa */}
+      <ImageModal
+        isOpen={modalAbierto}
+        onClose={() => setModalAbierto(false)}
+        imagenes={producto.imagenesURL}
+        imagenActual={imagenActual}
+        onSiguiente={siguienteImagen}
+        onAnterior={imagenAnterior}
+      />
     </div>
   );
 };

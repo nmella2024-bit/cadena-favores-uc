@@ -1,9 +1,11 @@
-import React from 'react';
-import { Calendar, User, Trash2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { Calendar, User, Trash2, Maximize2 } from 'lucide-react';
 import { esAnuncioNuevo } from '../services/anuncioService';
+import ImageModal from './ImageModal';
 
 const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
   const esNuevo = esAnuncioNuevo(anuncio.fecha);
+  const [modalAbierto, setModalAbierto] = useState(false);
 
   const formatFecha = (fecha) => {
     return new Date(fecha).toLocaleDateString('es-CL', {
@@ -34,12 +36,23 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
         </div>
 
         {anuncio.imagenURL && (
-          <div className="rounded-lg overflow-hidden">
+          <div className="rounded-lg overflow-hidden relative group cursor-pointer">
+            {/* Thumbnail con altura limitada */}
             <img
               src={anuncio.imagenURL}
               alt={anuncio.titulo}
-              className="w-full max-h-96 object-cover"
+              className="w-full h-64 object-cover"
+              onClick={() => setModalAbierto(true)}
             />
+
+            {/* Botón para ampliar */}
+            <button
+              onClick={() => setModalAbierto(true)}
+              className="absolute top-2 right-2 bg-black/50 hover:bg-black/70 text-white rounded-lg p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+              aria-label="Ver imagen completa"
+            >
+              <Maximize2 className="h-5 w-5" />
+            </button>
           </div>
         )}
 
@@ -66,6 +79,14 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
           )}
         </div>
       </div>
+
+      {/* Modal para ver imagen completa */}
+      <ImageModal
+        isOpen={modalAbierto}
+        onClose={() => setModalAbierto(false)}
+        imagenes={anuncio.imagenURL}
+        imagenActual={0}
+      />
     </div>
   );
 };
