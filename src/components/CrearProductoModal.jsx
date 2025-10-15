@@ -15,45 +15,55 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
 
-  const handleImagenesChange = (e) => {
+  const handleImagenesChange = async (e) => {
     const files = Array.from(e.target.files);
 
     if (imagenes.length + files.length > 5) {
       setError('Máximo 5 imágenes permitidas');
+      e.target.value = ''; // Resetear el input
       return;
     }
 
     const nuevasImagenes = [];
-    const nuevosPreviews = [];
+    const nuevosPreviewsPromises = [];
 
-    files.forEach((file) => {
+    for (const file of files) {
       // Validar tamaño (máximo 5MB por imagen)
       if (file.size > 5 * 1024 * 1024) {
         setError('Cada imagen no puede superar los 5MB');
+        e.target.value = ''; // Resetear el input
         return;
       }
 
       // Validar tipo
       if (!file.type.startsWith('image/')) {
         setError('Solo se permiten archivos de imagen');
+        e.target.value = ''; // Resetear el input
         return;
       }
 
       nuevasImagenes.push(file);
 
-      // Crear preview
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        nuevosPreviews.push(reader.result);
-        if (nuevosPreviews.length === files.length) {
-          setImagenesPreviews([...imagenesPreviews, ...nuevosPreviews]);
-        }
-      };
-      reader.readAsDataURL(file);
-    });
+      // Crear preview de forma asíncrona pero ordenada
+      const previewPromise = new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          resolve(reader.result);
+        };
+        reader.readAsDataURL(file);
+      });
+      nuevosPreviewsPromises.push(previewPromise);
+    }
+
+    // Esperar a que todos los previews estén listos
+    const nuevosPreviews = await Promise.all(nuevosPreviewsPromises);
 
     setImagenes([...imagenes, ...nuevasImagenes]);
+    setImagenesPreviews([...imagenesPreviews, ...nuevosPreviews]);
     setError('');
+
+    // Resetear el input para permitir seleccionar las mismas imágenes nuevamente si es necesario
+    e.target.value = '';
   };
 
   const eliminarImagen = (index) => {

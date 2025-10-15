@@ -20,12 +20,14 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
       // Validar tamaño (máximo 5MB)
       if (file.size > 5 * 1024 * 1024) {
         setError('La imagen no puede superar los 5MB');
+        e.target.value = ''; // Resetear el input
         return;
       }
 
       // Validar tipo
       if (!file.type.startsWith('image/')) {
         setError('Solo se permiten archivos de imagen');
+        e.target.value = ''; // Resetear el input
         return;
       }
 
@@ -38,6 +40,9 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
         setImagenPreview(reader.result);
       };
       reader.readAsDataURL(file);
+
+      // Resetear el input para permitir seleccionar la misma imagen nuevamente si es necesario
+      e.target.value = '';
     }
   };
 
