@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { ShoppingBag, Plus, Inbox, AlertCircle } from 'lucide-react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { ShoppingBag, Plus, Inbox, AlertCircle, Search } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { obtenerProductos, eliminarProducto } from '../services/marketplaceService';
 import MarketplaceCard from '../components/MarketplaceCard';
 import CrearProductoModal from '../components/CrearProductoModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
+import TextField from '../components/ui/TextField';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -25,6 +26,7 @@ const SkeletonCard = () => (
 const Marketplace = () => {
   const { currentUser } = useAuth();
   const [productos, setProductos] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,6 +49,29 @@ const Marketplace = () => {
   useEffect(() => {
     cargarProductos();
   }, []);
+
+  // Efecto para simular carga cuando cambia el filtro
+  useEffect(() => {
+    if (productos.length > 0) {
+      setIsLoading(true);
+      const timer = setTimeout(() => setIsLoading(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [searchQuery]);
+
+  // Filtrar productos por búsqueda
+  const filteredProductos = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+
+    return productos.filter((producto) => {
+      const matchesSearch =
+        normalizedQuery.length === 0 ||
+        producto.titulo.toLowerCase().includes(normalizedQuery) ||
+        producto.descripcion.toLowerCase().includes(normalizedQuery);
+
+      return matchesSearch;
+    });
+  }, [productos, searchQuery]);
 
   const handleEliminarProducto = async (productoId) => {
     if (!window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
@@ -74,7 +99,7 @@ const Marketplace = () => {
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <ShoppingBag className="h-8 w-8 text-brand" />
@@ -97,6 +122,18 @@ const Marketplace = () => {
               </PrimaryButton>
             )}
           </div>
+
+          {/* Buscador */}
+          <div className="max-w-md">
+            <TextField
+              id="search-marketplace"
+              label="Buscar productos"
+              placeholder="Buscar por título o descripción..."
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              icon={Search}
+            />
+          </div>
         </div>
 
         {/* Error Message */}
@@ -117,7 +154,7 @@ const Marketplace = () => {
         )}
 
         {/* Empty State */}
-        {!isLoading && productos.length === 0 && (
+        {!isLoading && filteredProductos.length === 0 && (
           <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 p-12 text-center dark:bg-card/30">
             <Inbox className="mb-4 h-16 w-16 text-text-muted/50" />
             <h3 className="mb-2 text-lg font-semibold text-text-primary">
@@ -141,9 +178,9 @@ const Marketplace = () => {
         )}
 
         {/* Productos List */}
-        {!isLoading && productos.length > 0 && (
+        {!isLoading && filteredProductos.length > 0 && (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {productos.map((producto) => (
+            {filteredProductos.map((producto) => (
               <MarketplaceCard
                 key={producto.id}
                 producto={producto}

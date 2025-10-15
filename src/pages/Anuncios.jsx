@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { Megaphone, Plus, Inbox, AlertCircle } from 'lucide-react';
+import React, { useEffect, useState, useMemo } from 'react';
+import { Megaphone, Plus, Inbox, AlertCircle, Search } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { obtenerAnuncios, eliminarAnuncio } from '../services/anuncioService';
 import AnuncioCard from '../components/AnuncioCard';
 import CrearAnuncioModal from '../components/CrearAnuncioModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
+import TextField from '../components/ui/TextField';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -21,6 +22,7 @@ const SkeletonCard = () => (
 const Anuncios = () => {
   const { currentUser } = useAuth();
   const [anuncios, setAnuncios] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -45,6 +47,29 @@ const Anuncios = () => {
   useEffect(() => {
     cargarAnuncios();
   }, []);
+
+  // Efecto para simular carga cuando cambia el filtro
+  useEffect(() => {
+    if (anuncios.length > 0) {
+      setIsLoading(true);
+      const timer = setTimeout(() => setIsLoading(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [searchQuery]);
+
+  // Filtrar anuncios por búsqueda
+  const filteredAnuncios = useMemo(() => {
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+
+    return anuncios.filter((anuncio) => {
+      const matchesSearch =
+        normalizedQuery.length === 0 ||
+        anuncio.titulo.toLowerCase().includes(normalizedQuery) ||
+        anuncio.descripcion.toLowerCase().includes(normalizedQuery);
+
+      return matchesSearch;
+    });
+  }, [anuncios, searchQuery]);
 
   const handleEliminarAnuncio = async (anuncioId) => {
     if (!window.confirm('¿Estás seguro de que deseas eliminar este anuncio?')) {
@@ -72,7 +97,7 @@ const Anuncios = () => {
       <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8 sm:mb-12">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <Megaphone className="h-8 w-8 text-brand" />
@@ -95,6 +120,18 @@ const Anuncios = () => {
               </PrimaryButton>
             )}
           </div>
+
+          {/* Buscador */}
+          <div className="max-w-md">
+            <TextField
+              id="search-anuncios"
+              label="Buscar anuncios"
+              placeholder="Buscar por título o descripción..."
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.target.value)}
+              icon={Search}
+            />
+          </div>
         </div>
 
         {/* Error Message */}
@@ -115,7 +152,7 @@ const Anuncios = () => {
         )}
 
         {/* Empty State */}
-        {!isLoading && anuncios.length === 0 && (
+        {!isLoading && filteredAnuncios.length === 0 && (
           <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 p-12 text-center dark:bg-card/30">
             <Inbox className="mb-4 h-16 w-16 text-text-muted/50" />
             <h3 className="mb-2 text-lg font-semibold text-text-primary">
@@ -139,9 +176,9 @@ const Anuncios = () => {
         )}
 
         {/* Anuncios List */}
-        {!isLoading && anuncios.length > 0 && (
+        {!isLoading && filteredAnuncios.length > 0 && (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {anuncios.map((anuncio) => (
+            {filteredAnuncios.map((anuncio) => (
               <AnuncioCard
                 key={anuncio.id}
                 anuncio={anuncio}
