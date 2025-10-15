@@ -1,0 +1,21 @@
+{
+  "fechaExportacion": "2025-10-15T15:44:09.225Z",
+  "proyecto": "red-uc-eeuu",
+  "colecciones": [
+    "favores",
+    "usuarios",
+    "feedback",
+    "anuncios",
+    "calificaciones",
+    "marketplace"
+  ],
+  "totalDocumentos": 0,
+  "estadisticas": {
+    "favores": 0,
+    "usuarios": 0,
+    "feedback": 0,
+    "anuncios": 0,
+    "calificaciones": 0,
+    "marketplace": 0
+  }
+}

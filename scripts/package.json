@@ -1,0 +1,13 @@
+{
+  "name": "firebase-migration-scripts",
+  "version": "1.0.0",
+  "description": "Scripts para migración de Firebase",
+  "type": "module",
+  "scripts": {
+    "exportar": "node exportar-datos.js",
+    "importar": "node importar-datos.js"
+  },
+  "dependencies": {
+    "firebase": "^10.7.1"
+  }
+}

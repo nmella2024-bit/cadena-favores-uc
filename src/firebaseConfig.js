@@ -6,15 +6,16 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
+// NUEVO PROYECTO: red-uc-eeuu (región US)
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAKoXS4QXnf-7MtCQk_pnNaa3anfsJ3dSU",
-  authDomain: "red-uc-8c043.firebaseapp.com",
-  projectId: "red-uc-8c043",
-  storageBucket: "red-uc-8c043.firebasestorage.app",
-  messagingSenderId: "164069116151",
-  appId: "1:164069116151:web:5564c7bc858ee678d96bf2",
-  measurementId: "G-VBRSLB5Q5V"
+  apiKey: "AIzaSyD4ZjQw7PQ1fPSA2P9axFobTPkZmBAnKss",
+  authDomain: "red-uc-eeuu.firebaseapp.com",
+  projectId: "red-uc-eeuu",
+  storageBucket: "red-uc-eeuu.firebasestorage.app",
+  messagingSenderId: "705871614487",
+  appId: "1:705871614487:web:aab5ec45d47db1f7d44252",
+  measurementId: "G-8RV5170JWM"
 };
 
 // Initialize Firebase

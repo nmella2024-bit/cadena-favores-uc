@@ -1,0 +1,56 @@
+{"users": [
+{
+  "localId": "7dxK8bynt1aNK3G9jbG0Gq5rMEz2",
+  "email": "santiagomuzzo@uc.cl",
+  "emailVerified": false,
+  "passwordHash": "5QofXi55Y1FE/R8rvpuDAUrHMWC+JzmhrC6Z8FXa7tCd8Mnk3LZN+XY7PEtmVTRTbPgIyrWIEe0a5GyPdtN8jw==",
+  "salt": "mZurCkQGMEE1OA==",
+  "displayName": "santiago",
+  "lastSignedInAt": "1760482738885",
+  "createdAt": "1760482738885",
+  "providerUserInfo": []
+},
+{
+  "localId": "EewBQW7iaePb13ZGk2m1SBbamoZ2",
+  "email": "clara.muzzo@estudiante.uc.cl",
+  "emailVerified": false,
+  "passwordHash": "gISzOk0DTdyUH3eZYF5F6JEP3foC5/R52vyYqH3fCFUNJTzJYk3uKPnBwH4jGjA53SPY3IfKHVj3CqMoPvWrrw==",
+  "salt": "5HQ8Mgtd015LLA==",
+  "displayName": "Clara Muzzo",
+  "lastSignedInAt": "1760470696384",
+  "createdAt": "1760470696384",
+  "providerUserInfo": []
+},
+{
+  "localId": "eV5nINHbZDWX9SU8rXh3WAHIjm53",
+  "email": "jeronimo.muzzo@estudiante.uc.cl",
+  "emailVerified": false,
+  "passwordHash": "gkVBGKARi5YE0+Mq7WqqhPqRxn2Qn22J8PDrVU5plNPW0EpQ60IypkqWhlF/YGKCafRHwkV1lhrV5MY1wFayvw==",
+  "salt": "QBl8k521GkrG2w==",
+  "displayName": "Jeronimo Muzzo ",
+  "lastSignedInAt": "1760541488219",
+  "createdAt": "1760474953633",
+  "providerUserInfo": []
+},
+{
+  "localId": "lkMZ7KgrbwPRzos2OqEsut5jHxm2",
+  "email": "nmellaq@estudiante.uc.cl",
+  "emailVerified": false,
+  "passwordHash": "GUSp9ZmijRB2D5AUUt9Z434+kBQYxgUXZ/bvWEQQkkZtG6XvN9o7EwcB5HhyrHxTZXXcHj4g4LERU9Wrb3/tMQ==",
+  "salt": "YS0dNF8eSvjJUQ==",
+  "displayName": "Nicolás Mella Quezada",
+  "lastSignedInAt": "1760489801570",
+  "createdAt": "1760474023546",
+  "providerUserInfo": []
+},
+{
+  "localId": "v41L1B0K0LZd6IRGiDW8Fu6aq3J3",
+  "email": "mrodriguezb653@estudiante.uc.cl",
+  "emailVerified": false,
+  "passwordHash": "WTj//I6zGpjrhg8esbzcb6/BucvQKaUHkMC7AVJNXPaO6/WwZX1jpTNZo/s8IIBpY4MJMYoiSddLXN8v+jmC5g==",
+  "salt": "O2uC8Bos8CsdsQ==",
+  "displayName": "Matias Rodríguez ",
+  "lastSignedInAt": "1760537924250",
+  "createdAt": "1760537924250",
+  "providerUserInfo": []
+}]}
