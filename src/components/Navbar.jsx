@@ -17,6 +17,7 @@ const Navbar = () => {
         { label: 'Publicar favor', to: '/publicar' },
         { label: 'Anuncios', to: '/anuncios' },
         { label: 'Marketplace', to: '/marketplace' },
+        { label: 'UCloseMeal', to: '/uclosemeal' },
         { label: 'Mi perfil', to: '/perfil' },
       ]
     : [
@@ -24,6 +25,7 @@ const Navbar = () => {
         { label: 'Publicar favor', to: '/publicar' },
         { label: 'Anuncios', to: '/anuncios' },
         { label: 'Marketplace', to: '/marketplace' },
+        { label: 'UCloseMeal', to: '/uclosemeal' },
         { label: 'Ingresar', to: '/login' },
       ];
 

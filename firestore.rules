@@ -102,5 +102,35 @@ service cloud.firestore {
       allow delete: if request.auth != null &&
                     request.auth.uid == resource.data.autor;
     }
+
+    // Reglas para la colección de pedidos (UCloseMeal)
+    match /pedidos/{pedidoId} {
+      // Todos pueden leer pedidos
+      allow read: if true;
+
+      // Cualquier usuario autenticado puede crear pedidos
+      allow create: if request.auth != null &&
+                    request.resource.data.solicitanteId == request.auth.uid;
+
+      // Permitir actualizar si:
+      // 1. Eres el solicitante (para cancelar), O
+      // 2. Cualquier usuario puede aceptar un pedido pendiente, O
+      // 3. Eres el repartidor (para actualizar estado o cancelar)
+      allow update: if request.auth != null && (
+        // Solicitante puede actualizar (principalmente cancelar)
+        request.auth.uid == resource.data.solicitanteId ||
+        // Cualquier usuario puede aceptar un pedido pendiente
+        (resource.data.estado == 'pendiente' &&
+         request.resource.data.repartidorId == request.auth.uid) ||
+        // Repartidor puede actualizar estado del pedido
+        request.auth.uid == resource.data.repartidorId
+      );
+
+      // Solo el solicitante o el repartidor pueden eliminar
+      allow delete: if request.auth != null && (
+        request.auth.uid == resource.data.solicitanteId ||
+        request.auth.uid == resource.data.repartidorId
+      );
+    }
   }
 }
