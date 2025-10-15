@@ -135,7 +135,7 @@ const CompradorConfirmacion = () => {
         {/* Actions */}
         <div className="space-y-3">
           <PrimaryButton
-            onClick={() => navigate('/perfil')}
+            onClick={() => navigate('/uclosemeal/mis-pedidos')}
             className="w-full"
           >
             Ver mis pedidos
@@ -145,7 +145,7 @@ const CompradorConfirmacion = () => {
             onClick={() => navigate('/uclosemeal/comprador')}
             className="w-full py-2.5 px-4 bg-card border border-border text-text-primary rounded-lg hover:bg-background transition-colors font-medium"
           >
-            Volver a restaurantes
+            Hacer otro pedido
           </button>
         </div>
       </div>

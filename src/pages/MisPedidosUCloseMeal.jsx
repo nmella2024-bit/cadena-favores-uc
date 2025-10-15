@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Package, Clock, MapPin, DollarSign, CheckCircle, ArrowLeft } from 'lucide-react';
-import { escucharMisPedidosCreados } from '../services/orderService';
+import { escucharMisPedidosCreados, marcarComoCompletado } from '../services/orderService';
 import { formatearPrecio } from '../services/marketplaceService';
 import { useAuth } from '../context/AuthContext';
 
@@ -10,6 +10,7 @@ const MisPedidosUCloseMeal = () => {
   const navigate = useNavigate();
   const [pedidos, setPedidos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [processingId, setProcessingId] = useState(null);
 
   useEffect(() => {
     if (!usuario) {
@@ -30,12 +31,25 @@ const MisPedidosUCloseMeal = () => {
     return () => unsubscribe();
   }, [usuario, navigate]);
 
+  const handleMarcarCompletado = async (pedidoId) => {
+    try {
+      setProcessingId(pedidoId);
+      await marcarComoCompletado(pedidoId, usuario.uid);
+    } catch (error) {
+      console.error('Error marcando como completado:', error);
+      alert(error.message || 'Error al marcar el pedido como completado');
+    } finally {
+      setProcessingId(null);
+    }
+  };
+
   const getEstadoBadge = (estado) => {
     const badges = {
       pendiente: { color: 'bg-yellow-500/10 text-yellow-600 border-yellow-500/30', label: 'Pendiente', desc: 'Esperando repartidor' },
       aceptado: { color: 'bg-blue-500/10 text-blue-600 border-blue-500/30', label: 'Aceptado', desc: 'Repartidor asignado' },
       'en-camino': { color: 'bg-purple-500/10 text-purple-600 border-purple-500/30', label: 'En Camino', desc: 'Tu pedido va en camino' },
-      entregado: { color: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/30', label: 'Entregado', desc: 'Pedido completado' },
+      entregado: { color: 'bg-emerald-500/10 text-emerald-600 border-emerald-500/30', label: 'Entregado', desc: 'Confirma recepción del pedido' },
+      completado: { color: 'bg-gray-500/10 text-gray-600 border-gray-500/30', label: 'Completado', desc: 'Pedido finalizado' },
       cancelado: { color: 'bg-red-500/10 text-red-600 border-red-500/30', label: 'Cancelado', desc: 'Pedido cancelado' },
     };
     return badges[estado] || badges.pendiente;
@@ -84,6 +98,7 @@ const MisPedidosUCloseMeal = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {pedidos.map((pedido) => {
               const estadoBadge = getEstadoBadge(pedido.estado);
+              const isProcessing = processingId === pedido.id;
 
               return (
                 <div key={pedido.id} className="bg-card border border-border rounded-xl p-6">
@@ -146,7 +161,7 @@ const MisPedidosUCloseMeal = () => {
                   </div>
 
                   {/* Delivery Info */}
-                  <div className="space-y-2 text-xs">
+                  <div className="space-y-2 text-xs mb-4">
                     <div className="flex items-start gap-2">
                       <MapPin className="h-3 w-3 text-text-muted mt-0.5 flex-shrink-0" />
                       <span className="text-text-muted">{pedido.puntoEntrega}</span>
@@ -161,10 +176,29 @@ const MisPedidosUCloseMeal = () => {
 
                   {/* QR Code if delivered */}
                   {pedido.estado === 'entregado' && pedido.codigoQR && (
-                    <div className="mt-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-3 text-center">
+                    <div className="mt-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg p-3 text-center mb-3">
                       <CheckCircle className="h-5 w-5 text-emerald-600 mx-auto mb-1" />
                       <p className="text-xs text-emerald-600 font-semibold">Código de confirmación</p>
                       <p className="text-xs text-text-muted mt-1 font-mono">{pedido.codigoQR}</p>
+                    </div>
+                  )}
+
+                  {/* Completion Button */}
+                  {pedido.estado === 'entregado' && (
+                    <button
+                      onClick={() => handleMarcarCompletado(pedido.id)}
+                      disabled={isProcessing}
+                      className="w-full py-2.5 px-4 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isProcessing ? 'Marcando...' : 'Confirmar Recepción'}
+                    </button>
+                  )}
+
+                  {/* Completed Status */}
+                  {pedido.estado === 'completado' && (
+                    <div className="bg-gray-500/10 border border-gray-500/30 rounded-lg p-3 text-center">
+                      <CheckCircle className="h-5 w-5 text-gray-600 mx-auto mb-1" />
+                      <p className="text-xs text-gray-600 font-semibold">Pedido Finalizado</p>
                     </div>
                   )}
                 </div>

@@ -582,3 +582,45 @@ export const escucharMisPedidosCreados = (userId, callback) => {
     }
   );
 };
+
+/**
+ * Marca un pedido como completado/finalizado
+ * Tanto el comprador como el repartidor pueden marcar como completado
+ * @param {string} pedidoId - ID del pedido
+ * @param {string} userId - ID del usuario (solicitante o repartidor)
+ * @returns {Promise<void>}
+ */
+export const marcarComoCompletado = async (pedidoId, userId) => {
+  try {
+    const pedidoRef = doc(db, 'pedidos', pedidoId);
+    const pedidoDoc = await getDoc(pedidoRef);
+
+    if (!pedidoDoc.exists()) {
+      throw new Error('El pedido no existe');
+    }
+
+    const pedidoData = pedidoDoc.data();
+
+    // Verificar que el pedido está entregado
+    if (pedidoData.estado !== 'entregado') {
+      throw new Error('Solo se pueden marcar como completados los pedidos entregados');
+    }
+
+    // Verificar que el usuario es el solicitante o el repartidor
+    if (pedidoData.solicitanteId !== userId && pedidoData.repartidorId !== userId) {
+      throw new Error('No tienes permiso para marcar este pedido como completado');
+    }
+
+    // Actualizar el estado a completado
+    await updateDoc(pedidoRef, {
+      estado: 'completado',
+      fechaCompletado: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    });
+
+    console.log('Pedido marcado como completado');
+  } catch (error) {
+    console.error('Error al marcar pedido como completado:', error);
+    throw error;
+  }
+};
