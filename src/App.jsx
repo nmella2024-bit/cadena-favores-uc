@@ -20,6 +20,7 @@ import CompradorMenu from './pages/CompradorMenu';
 import CompradorCheckout from './pages/CompradorCheckout';
 import CompradorConfirmacion from './pages/CompradorConfirmacion';
 import RepartidorDashboard from './pages/RepartidorDashboard';
+import MisPedidosUCloseMeal from './pages/MisPedidosUCloseMeal';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
             <Route path="/uclosemeal/comprador/checkout" element={<CompradorCheckout />} />
             <Route path="/uclosemeal/comprador/confirmacion" element={<CompradorConfirmacion />} />
             <Route path="/uclosemeal/repartidor" element={<RepartidorDashboard />} />
+            <Route path="/uclosemeal/mis-pedidos" element={<MisPedidosUCloseMeal />} />
 
             {/* Perfil */}
             <Route path="/perfil" element={<Perfil />} />

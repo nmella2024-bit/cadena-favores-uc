@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Package, Clock, MapPin, DollarSign, CheckCircle, Bike, AlertCircle } from 'lucide-react';
-import { obtenerPedidosPendientes, obtenerMisPedidosActivos, aceptarPedido, marcarEnCamino, marcarEntregado } from '../services/orderService';
+import { escucharPedidosPendientes, escucharMisPedidosActivos, aceptarPedido, marcarEnCamino, marcarEntregado } from '../services/orderService';
 import { formatearPrecio } from '../services/marketplaceService';
 import { useAuth } from '../context/AuthContext';
 import PrimaryButton from '../components/ui/PrimaryButton';
@@ -9,7 +9,7 @@ import PrimaryButton from '../components/ui/PrimaryButton';
 const RepartidorDashboard = () => {
   const { usuario } = useAuth();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('disponibles'); // disponibles | activos
+  const [activeTab, setActiveTab] = useState('disponibles');
   const [pedidosDisponibles, setPedidosDisponibles] = useState([]);
   const [pedidosActivos, setPedidosActivos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -21,41 +21,32 @@ const RepartidorDashboard = () => {
       return;
     }
 
-    const loadPedidos = async () => {
-      try {
-        setLoading(true);
-        const [disponibles, activos] = await Promise.all([
-          obtenerPedidosPendientes(),
-          obtenerMisPedidosActivos(usuario.uid),
-        ]);
-        setPedidosDisponibles(disponibles);
-        setPedidosActivos(activos);
-      } catch (error) {
-        console.error('Error cargando pedidos:', error);
-      } finally {
-        setLoading(false);
-      }
+    setLoading(true);
+
+    // Suscribirse a pedidos pendientes en tiempo real
+    const unsubscribeDisponibles = escucharPedidosPendientes((pedidos) => {
+      console.log('Pedidos disponibles actualizados:', pedidos);
+      setPedidosDisponibles(pedidos);
+      setLoading(false);
+    });
+
+    // Suscribirse a pedidos activos del repartidor en tiempo real
+    const unsubscribeActivos = escucharMisPedidosActivos(usuario.uid, (pedidos) => {
+      console.log('Pedidos activos actualizados:', pedidos);
+      setPedidosActivos(pedidos);
+    });
+
+    // Cleanup: cancelar suscripciones cuando el componente se desmonte
+    return () => {
+      unsubscribeDisponibles();
+      unsubscribeActivos();
     };
-
-    loadPedidos();
-
-    // Escuchar cambios en tiempo real
-    const interval = setInterval(loadPedidos, 5000);
-    return () => clearInterval(interval);
   }, [usuario, navigate]);
 
   const handleAceptarPedido = async (pedidoId) => {
     try {
       setProcessingId(pedidoId);
       await aceptarPedido(pedidoId, usuario);
-
-      // Recargar pedidos
-      const [disponibles, activos] = await Promise.all([
-        obtenerPedidosPendientes(),
-        obtenerMisPedidosActivos(usuario.uid),
-      ]);
-      setPedidosDisponibles(disponibles);
-      setPedidosActivos(activos);
       setActiveTab('activos');
     } catch (error) {
       console.error('Error aceptando pedido:', error);
@@ -69,9 +60,6 @@ const RepartidorDashboard = () => {
     try {
       setProcessingId(pedidoId);
       await marcarEnCamino(pedidoId);
-
-      const activos = await obtenerMisPedidosActivos(usuario.uid);
-      setPedidosActivos(activos);
     } catch (error) {
       console.error('Error marcando en camino:', error);
       alert(error.message || 'Error al actualizar el pedido');
@@ -84,9 +72,6 @@ const RepartidorDashboard = () => {
     try {
       setProcessingId(pedidoId);
       await marcarEntregado(pedidoId);
-
-      const activos = await obtenerMisPedidosActivos(usuario.uid);
-      setPedidosActivos(activos);
     } catch (error) {
       console.error('Error marcando entregado:', error);
       alert(error.message || 'Error al actualizar el pedido');

@@ -10,6 +10,7 @@ import {
   where,
   orderBy,
   serverTimestamp,
+  onSnapshot,
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
@@ -475,4 +476,103 @@ export const obtenerMisPedidosActivos = async (userId) => {
     console.error('Error al obtener pedidos activos:', error);
     throw error;
   }
+};
+
+/**
+ * Escucha pedidos pendientes en tiempo real
+ * @param {Function} callback - Función callback con los pedidos actualizados
+ * @returns {Function} Función para cancelar la suscripción
+ */
+export const escucharPedidosPendientes = (callback) => {
+  const q = query(
+    collection(db, 'pedidos'),
+    where('estado', '==', 'pendiente'),
+    orderBy('fecha', 'desc')
+  );
+
+  return onSnapshot(
+    q,
+    (querySnapshot) => {
+      const pedidos = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        pedidos.push({
+          id: doc.id,
+          ...data,
+          fecha: data.fecha || Date.now(),
+        });
+      });
+      callback(pedidos);
+    },
+    (error) => {
+      console.error('Error escuchando pedidos pendientes:', error);
+    }
+  );
+};
+
+/**
+ * Escucha pedidos activos de un repartidor en tiempo real
+ * @param {string} userId - ID del repartidor
+ * @param {Function} callback - Función callback con los pedidos actualizados
+ * @returns {Function} Función para cancelar la suscripción
+ */
+export const escucharMisPedidosActivos = (userId, callback) => {
+  const q = query(
+    collection(db, 'pedidos'),
+    where('repartidorId', '==', userId),
+    where('estado', 'in', ['aceptado', 'en-camino', 'entregado']),
+    orderBy('fecha', 'desc')
+  );
+
+  return onSnapshot(
+    q,
+    (querySnapshot) => {
+      const pedidos = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        pedidos.push({
+          id: doc.id,
+          ...data,
+          fecha: data.fecha || Date.now(),
+        });
+      });
+      callback(pedidos);
+    },
+    (error) => {
+      console.error('Error escuchando pedidos activos:', error);
+    }
+  );
+};
+
+/**
+ * Escucha los pedidos creados por un usuario en tiempo real
+ * @param {string} userId - ID del usuario solicitante
+ * @param {Function} callback - Función callback con los pedidos actualizados
+ * @returns {Function} Función para cancelar la suscripción
+ */
+export const escucharMisPedidosCreados = (userId, callback) => {
+  const q = query(
+    collection(db, 'pedidos'),
+    where('solicitanteId', '==', userId),
+    orderBy('fecha', 'desc')
+  );
+
+  return onSnapshot(
+    q,
+    (querySnapshot) => {
+      const pedidos = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        pedidos.push({
+          id: doc.id,
+          ...data,
+          fecha: data.fecha || Date.now(),
+        });
+      });
+      callback(pedidos);
+    },
+    (error) => {
+      console.error('Error escuchando mis pedidos creados:', error);
+    }
+  );
 };
