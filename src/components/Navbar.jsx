@@ -16,12 +16,14 @@ const Navbar = () => {
         { label: 'Ver favores', to: '/favores' },
         { label: 'Publicar favor', to: '/publicar' },
         { label: 'Anuncios', to: '/anuncios' },
+        { label: 'Marketplace', to: '/marketplace' },
         { label: 'Mi perfil', to: '/perfil' },
       ]
     : [
         { label: 'Ver favores', to: '/favores' },
         { label: 'Publicar favor', to: '/publicar' },
         { label: 'Anuncios', to: '/anuncios' },
+        { label: 'Marketplace', to: '/marketplace' },
         { label: 'Ingresar', to: '/login' },
       ];
 

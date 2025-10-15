@@ -11,6 +11,7 @@ import Favores from './pages/Favores';
 import PublicarFavor from './pages/PublicarFavor';
 import Perfil from './pages/Perfil';
 import Anuncios from './pages/Anuncios';
+import Marketplace from './pages/Marketplace';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
 
             {/* Anuncios */}
             <Route path="/anuncios" element={<Anuncios />} />
+
+            {/* Marketplace */}
+            <Route path="/marketplace" element={<Marketplace />} />
 
             {/* Perfil */}
             <Route path="/perfil" element={<Perfil />} />

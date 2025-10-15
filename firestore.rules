@@ -84,5 +84,23 @@ service cloud.firestore {
       allow update: if false;
       allow delete: if false;
     }
+
+    // Reglas para la colección de marketplace
+    match /marketplace/{productoId} {
+      // Todos pueden leer productos
+      allow read: if true;
+
+      // Cualquier usuario autenticado puede crear productos
+      allow create: if request.auth != null &&
+                    request.resource.data.autor == request.auth.uid;
+
+      // Solo el autor puede actualizar su producto
+      allow update: if request.auth != null &&
+                    request.auth.uid == resource.data.autor;
+
+      // Solo el autor puede eliminar su producto
+      allow delete: if request.auth != null &&
+                    request.auth.uid == resource.data.autor;
+    }
   }
 }
