@@ -49,7 +49,7 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
   };
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden">
+    <div className="rounded-xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden flex flex-col h-full">
       {esNuevo && (
         <div className="absolute top-0 right-0 z-10">
           <div className="bg-brand text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
@@ -58,17 +58,17 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-3 flex flex-col flex-1">
         <div>
-          <div className="flex items-start justify-between gap-4 mb-2">
-            <h3 className="text-xl font-semibold text-text-primary">
+          <div className="flex items-start justify-between gap-2 mb-1">
+            <h3 className="text-lg font-semibold text-text-primary line-clamp-2">
               {producto.titulo}
             </h3>
-            <div className="text-xl font-bold text-brand whitespace-nowrap">
+            <div className="text-lg font-bold text-brand whitespace-nowrap">
               {formatearPrecio(producto.precio)}
             </div>
           </div>
-          <p className="text-text-muted whitespace-pre-wrap">
+          <p className="text-sm text-text-muted line-clamp-3">
             {producto.descripcion}
           </p>
         </div>
@@ -80,7 +80,7 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
               <img
                 src={producto.imagenesURL[imagenActual]}
                 alt={`${producto.titulo} - imagen ${imagenActual + 1}`}
-                className="w-full h-64 object-cover"
+                className="w-full h-48 object-cover"
                 onClick={() => setModalAbierto(true)}
               />
 
@@ -125,49 +125,50 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
           </div>
         )}
 
-        <div className="flex items-center justify-between pt-4 border-t border-border">
-          <div className="flex flex-col gap-2 text-sm text-text-muted">
+        <div className="flex flex-col gap-2 pt-3 mt-auto border-t border-border">
+          <div className="flex flex-col gap-1 text-xs text-text-muted">
             <div className="flex items-center gap-1">
-              <User className="h-4 w-4" />
-              <span>{producto.autorNombre}</span>
+              <User className="h-3 w-3" />
+              <span className="truncate">{producto.autorNombre}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
+              <Calendar className="h-3 w-3" />
               <span>{formatFecha(producto.fecha)}</span>
             </div>
-            {producto.autor !== currentUserId && (
-              <div className="flex flex-wrap items-center gap-3">
-                {producto.autorEmail && (
-                  <a
-                    href={`mailto:${producto.autorEmail}`}
-                    className="flex items-center gap-1 text-brand hover:underline"
-                  >
-                    <Mail className="h-4 w-4" />
-                    <span>Email</span>
-                  </a>
-                )}
-                {autorTelefono && (
-                  <a
-                    href={`https://wa.me/${autorTelefono.replace(/[^0-9]/g, '')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
-                  >
-                    <MessageCircle className="h-4 w-4" />
-                    WhatsApp
-                  </a>
-                )}
-              </div>
-            )}
           </div>
+
+          {producto.autor !== currentUserId && (
+            <div className="flex flex-wrap items-center gap-2">
+              {producto.autorEmail && (
+                <a
+                  href={`mailto:${producto.autorEmail}`}
+                  className="flex items-center gap-1 text-xs text-brand hover:underline"
+                >
+                  <Mail className="h-3 w-3" />
+                  <span>Email</span>
+                </a>
+              )}
+              {autorTelefono && (
+                <a
+                  href={`https://wa.me/${autorTelefono.replace(/[^0-9]/g, '')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/10 px-2 py-1 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
+                >
+                  <MessageCircle className="h-3 w-3" />
+                  <span>WhatsApp</span>
+                </a>
+              )}
+            </div>
+          )}
 
           {esAutor && onEliminar && (
             <button
               onClick={() => onEliminar(producto.id)}
-              className="inline-flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/20"
+              className="inline-flex items-center gap-1 justify-center rounded-lg border border-red-500/30 bg-red-500/10 px-2 py-1 text-xs font-medium text-red-500 transition-colors hover:bg-red-500/20"
             >
-              <Trash2 className="h-4 w-4" />
-              Eliminar
+              <Trash2 className="h-3 w-3" />
+              <span>Eliminar</span>
             </button>
           )}
         </div>

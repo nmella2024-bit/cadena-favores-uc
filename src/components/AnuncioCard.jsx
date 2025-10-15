@@ -16,7 +16,7 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
   };
 
   return (
-    <div className="rounded-xl border border-border bg-card p-6 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden">
+    <div className="rounded-xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden flex flex-col h-full">
       {esNuevo && (
         <div className="absolute top-0 right-0">
           <div className="bg-brand text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
@@ -25,12 +25,12 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
         </div>
       )}
 
-      <div className="space-y-4">
+      <div className="space-y-3 flex flex-col flex-1">
         <div>
-          <h3 className="text-xl font-semibold text-text-primary mb-2">
+          <h3 className="text-lg font-semibold text-text-primary mb-1 line-clamp-2">
             {anuncio.titulo}
           </h3>
-          <p className="text-text-muted whitespace-pre-wrap">
+          <p className="text-sm text-text-muted line-clamp-3">
             {anuncio.descripcion}
           </p>
         </div>
@@ -41,7 +41,7 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
             <img
               src={anuncio.imagenURL}
               alt={anuncio.titulo}
-              className="w-full h-64 object-cover"
+              className="w-full h-48 object-cover"
               onClick={() => setModalAbierto(true)}
             />
 
@@ -56,14 +56,14 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
           </div>
         )}
 
-        <div className="flex items-center justify-between pt-4 border-t border-border">
-          <div className="flex items-center gap-4 text-sm text-text-muted">
+        <div className="flex items-center justify-between pt-3 mt-auto border-t border-border">
+          <div className="flex flex-col gap-1 text-xs text-text-muted">
             <div className="flex items-center gap-1">
-              <User className="h-4 w-4" />
+              <User className="h-3 w-3" />
               <span>{anuncio.autorNombre}</span>
             </div>
             <div className="flex items-center gap-1">
-              <Calendar className="h-4 w-4" />
+              <Calendar className="h-3 w-3" />
               <span>{formatFecha(anuncio.fecha)}</span>
             </div>
           </div>

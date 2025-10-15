@@ -107,8 +107,8 @@ const Anuncios = () => {
 
         {/* Loading State */}
         {isLoading && (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-1">
-            {[1, 2, 3].map((i) => (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
               <SkeletonCard key={i} />
             ))}
           </div>
@@ -140,7 +140,7 @@ const Anuncios = () => {
 
         {/* Anuncios List */}
         {!isLoading && anuncios.length > 0 && (
-          <div className="grid gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {anuncios.map((anuncio) => (
               <AnuncioCard
                 key={anuncio.id}
