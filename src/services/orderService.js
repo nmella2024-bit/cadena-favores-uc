@@ -370,6 +370,12 @@ export const generarCodigoQR = (pedidoId) => {
  */
 export const crearPedidoConCarrito = async (orderData, user) => {
   try {
+    console.log('Usuario recibido en crearPedidoConCarrito:', user);
+
+    if (!user || !user.uid) {
+      throw new Error('Usuario no válido. Debes iniciar sesión.');
+    }
+
     const pedidoData = {
       restaurante: orderData.restaurante,
       restauranteId: orderData.restauranteId,
@@ -380,9 +386,9 @@ export const crearPedidoConCarrito = async (orderData, user) => {
       puntoEntrega: orderData.puntoEntrega,
       instrucciones: orderData.instrucciones || '',
       metodoPago: orderData.metodoPago,
-      solicitanteId: user.uid,
+      solicitanteId: user.uid || user.id,
       solicitanteNombre: user.displayName || user.nombre || 'Usuario',
-      solicitanteEmail: user.email,
+      solicitanteEmail: user.email || user.correo,
       estado: 'pendiente', // pendiente, aceptado, en-camino, entregado, cancelado
       repartidorId: null,
       repartidorNombre: null,
@@ -394,12 +400,15 @@ export const crearPedidoConCarrito = async (orderData, user) => {
       updatedAt: serverTimestamp(),
     };
 
+    console.log('Datos del pedido a crear:', pedidoData);
+
     const docRef = await addDoc(collection(db, 'pedidos'), pedidoData);
     console.log('Pedido con carrito creado con ID:', docRef.id);
 
     return docRef.id;
   } catch (error) {
     console.error('Error al crear pedido con carrito:', error);
+    console.error('Error completo:', error.message);
     throw error;
   }
 };
