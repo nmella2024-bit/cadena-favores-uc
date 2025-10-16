@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { obtenerFavoresPorUsuario, obtenerFavoresConContactos } from '../services/favorService';
 import { updateUserData } from '../services/userService';
 import { obtenerCalificacionesUsuario } from '../services/ratingService';
+import { obtenerMisPedidos } from '../services/orderService';
 import StarRating from '../components/StarRating';
 
 const Perfil = () => {
@@ -16,6 +17,8 @@ const Perfil = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [calificaciones, setCalificaciones] = useState([]);
   const [loadingCalificaciones, setLoadingCalificaciones] = useState(true);
+  const [pedidos, setPedidos] = useState([]);
+  const [loadingPedidos, setLoadingPedidos] = useState(true);
 
   // Redirigir si no está autenticado
   useEffect(() => {
@@ -66,6 +69,25 @@ const Perfil = () => {
     cargarCalificaciones();
   }, [currentUser]);
 
+  // Cargar pedidos del usuario
+  useEffect(() => {
+    const cargarPedidos = async () => {
+      if (!currentUser) return;
+
+      try {
+        setLoadingPedidos(true);
+        const misPedidos = await obtenerMisPedidos(currentUser.uid);
+        setPedidos(misPedidos);
+      } catch (error) {
+        console.error('Error al cargar pedidos:', error);
+      } finally {
+        setLoadingPedidos(false);
+      }
+    };
+
+    cargarPedidos();
+  }, [currentUser]);
+
   if (!currentUser) {
     return null;
   }
@@ -73,6 +95,10 @@ const Perfil = () => {
   // Calcular estadísticas
   const activeFavors = userFavors.filter(f => f.estado === 'activo');
   const completedFavors = userFavors.filter(f => f.estado === 'completado');
+
+  // Estadísticas de pedidos
+  const pedidosActivos = pedidos.filter(p => ['pendiente', 'aceptado', 'en-camino', 'entregado'].includes(p.estado));
+  const pedidosCompletados = pedidos.filter(p => p.estado === 'completado');
 
   // Función para guardar el teléfono
   const handleSavePhone = async () => {
@@ -201,7 +227,7 @@ const Perfil = () => {
         )}
 
         {/* Estadísticas */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-8">
           <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 text-center hover:shadow-lg transition-shadow duration-200">
             <div className="text-4xl mb-2">📝</div>
             <div className="text-2xl sm:text-3xl font-bold text-text-primary mb-1">
@@ -225,7 +251,85 @@ const Perfil = () => {
             </div>
             <div className="text-text-muted text-sm">Favores Respondidos</div>
           </div>
+
+          <div
+            onClick={() => navigate('/uclosemeal/mis-pedidos')}
+            className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 text-center hover:shadow-lg transition-shadow duration-200 cursor-pointer hover:scale-105 transition-transform"
+          >
+            <div className="text-4xl mb-2">🍔</div>
+            <div className="text-2xl sm:text-3xl font-bold text-orange-400 mb-1">
+              {loadingPedidos ? '...' : pedidosActivos.length}
+            </div>
+            <div className="text-text-muted text-sm">Pedidos Activos</div>
+          </div>
         </div>
+
+        {/* Mis Pedidos UCloseMeal */}
+        {!loadingPedidos && pedidos.length > 0 && (
+          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 mb-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold text-text-primary">Mis Pedidos UCloseMeal</h2>
+                <p className="text-sm text-text-muted mt-1">
+                  {pedidosActivos.length} {pedidosActivos.length === 1 ? 'pedido activo' : 'pedidos activos'}
+                </p>
+              </div>
+              <button
+                onClick={() => navigate('/uclosemeal/mis-pedidos')}
+                className="w-full sm:w-auto px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 transition-smooth shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
+              >
+                Ver Todos Mis Pedidos
+              </button>
+            </div>
+
+            {/* Mostrar últimos 3 pedidos activos */}
+            {pedidosActivos.length > 0 ? (
+              <div className="space-y-4">
+                {pedidosActivos.slice(0, 3).map(pedido => (
+                  <div
+                    key={pedido.id}
+                    onClick={() => navigate('/uclosemeal/mis-pedidos')}
+                    className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow duration-200 cursor-pointer bg-orange-500/5 dark:bg-orange-500/10"
+                  >
+                    <div className="flex justify-between items-start">
+                      <div className="flex-grow">
+                        <h4 className="text-base sm:text-lg font-semibold text-text-primary mb-1">
+                          {pedido.restaurante}
+                        </h4>
+                        <p className="text-text-muted text-sm mb-2">
+                          {pedido.items?.length > 0
+                            ? `${pedido.items.length} ${pedido.items.length === 1 ? 'producto' : 'productos'} - $${pedido.total?.toLocaleString()}`
+                            : `$${pedido.precio?.toLocaleString()}`
+                          }
+                        </p>
+                        <div className="flex items-center gap-3 text-xs sm:text-sm text-text-muted">
+                          <span>
+                            {pedido.estado === 'pendiente' && '⏳ Pendiente'}
+                            {pedido.estado === 'aceptado' && '✅ Aceptado'}
+                            {pedido.estado === 'en-camino' && '🚗 En camino'}
+                            {pedido.estado === 'entregado' && '📦 Entregado'}
+                          </span>
+                          <span>📍 {pedido.puntoEntrega}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-8 text-text-muted">
+                <div className="text-4xl sm:text-5xl mb-3">🍔</div>
+                <p className="text-sm sm:text-base">No tienes pedidos activos</p>
+                <button
+                  onClick={() => navigate('/uclosemeal')}
+                  className="mt-4 text-sm text-orange-500 hover:underline"
+                >
+                  Hacer un pedido
+                </button>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Favores publicados */}
         <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 mb-8">
