@@ -150,7 +150,7 @@ const Navbar = () => {
                 className="inline-flex items-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
               >
                 <MessageSquare className="h-4 w-4" />
-                Danos tu feedback
+                Feedback
               </button>
               <ThemeToggle />
               {currentUser ? (
@@ -233,7 +233,7 @@ const Navbar = () => {
                 className="w-full inline-flex items-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
               >
                 <MessageSquare className="h-4 w-4" />
-                Danos tu feedback
+                Feedback
               </button>
               {currentUser ? (
                 <div className="flex items-center justify-between gap-3 px-3 pt-2">
