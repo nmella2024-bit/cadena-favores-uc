@@ -5,10 +5,8 @@ import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
 import { eliminarFavor, asociarAyudante, finalizarFavor } from '../services/favorService';
 import { getUserData } from '../services/userService';
-import { obtenerEstadoConfirmacion } from '../services/ratingService';
 import PrimaryButton from './ui/PrimaryButton';
 import GhostButton from './ui/GhostButton';
-import CompletarFavorModal from './CompletarFavorModal';
 import CalificarUsuarioModal from './CalificarUsuarioModal';
 import StarRating from './StarRating';
 import { cn } from '../utils/cn';
@@ -18,11 +16,8 @@ const FavorCard = ({ favor, className }) => {
   const [showContactModal, setShowContactModal] = useState(false);
   const [contactInfo, setContactInfo] = useState(null);
   const [loadingContact, setLoadingContact] = useState(false);
-  const [showCompletarModal, setShowCompletarModal] = useState(false);
   const [showCalificarModal, setShowCalificarModal] = useState(false);
-  const [estadoConfirmacion, setEstadoConfirmacion] = useState(null);
   const [solicitanteData, setSolicitanteData] = useState(null);
-  const [yaVioContacto, setYaVioContacto] = useState(false); // Nuevo: para Usuario B
 
   const category = categories.find((c) => c.id === favor.categoria);
   const isOwnFavor = currentUser && favor.usuarioId === currentUser.uid;
@@ -30,29 +25,6 @@ const FavorCard = ({ favor, className }) => {
   const isCompleted = favor.estado === 'completado';
   const isConfirmado = favor.estado === 'confirmado';
   const isFinalizado = favor.estado === 'finalizado';
-
-  // Verificar si el usuario es parte del favor (solicitante o ayudante)
-  const esParteDelFavor = currentUser && (
-    favor.usuarioId === currentUser.uid ||
-    favor.ayudanteId === currentUser.uid
-  );
-
-  // Cargar estado de confirmación si es parte del favor
-  useEffect(() => {
-    const verificarYCargarEstado = async () => {
-      if (esParteDelFavor && currentUser) {
-        await cargarEstadoConfirmacion();
-
-        // Si ambos confirmaron y el favor sigue activo, abrir modal de calificación
-        const estadoActual = await obtenerEstadoConfirmacion(favor.id, currentUser.uid);
-        if (estadoActual && estadoActual.ambosConfirmaron && favor.estado === 'activo') {
-          setShowCalificarModal(true);
-        }
-      }
-    };
-
-    verificarYCargarEstado();
-  }, [favor.id, currentUser, esParteDelFavor]);
 
   // Cargar datos del solicitante para mostrar calificación
   useEffect(() => {
@@ -64,15 +36,6 @@ const FavorCard = ({ favor, className }) => {
     };
     cargarSolicitante();
   }, [favor.usuarioId]);
-
-  const cargarEstadoConfirmacion = async () => {
-    try {
-      const estado = await obtenerEstadoConfirmacion(favor.id, currentUser.uid);
-      setEstadoConfirmacion(estado);
-    } catch (error) {
-      console.error('Error al cargar estado de confirmación:', error);
-    }
-  };
 
   const handleRespond = async () => {
     if (!firebaseUser) {
@@ -86,7 +49,7 @@ const FavorCard = ({ favor, className }) => {
       return;
     }
 
-    if (window.confirm('¿Deseas ofrecer ayuda con este favor? Se mostrará la información de contacto del solicitante.')) {
+    if (window.confirm('¿Deseas ofrecer ayuda con este favor? Se mostrará la información de contacto del solicitante para que puedas coordinar por WhatsApp.')) {
       try {
         setLoadingContact(true);
         // Obtener información del solicitante
@@ -103,6 +66,7 @@ const FavorCard = ({ favor, className }) => {
         }
 
         // Asociar al ayudante con el favor (IMPORTANTE para poder calificar después)
+        // Solo si no hay ayudante previo
         if (!favor.ayudanteId) {
           try {
             await asociarAyudante(favor.id, currentUser.uid, currentUser.nombre || currentUser.displayName);
@@ -113,10 +77,9 @@ const FavorCard = ({ favor, className }) => {
           }
         }
 
-        // Mostrar modal con la información de contacto y marcar que ya vio el contacto
+        // Mostrar modal con la información de contacto
         setContactInfo(solicitanteData);
         setShowContactModal(true);
-        setYaVioContacto(true); // Marcar que Usuario B ya vio el contacto
       } catch (error) {
         console.error('Error al obtener contacto:', error);
         alert('Error al obtener la información de contacto. Intenta nuevamente.');
@@ -145,13 +108,17 @@ const FavorCard = ({ favor, className }) => {
     }
   };
 
-  const handleFinalizarSinAyudante = async () => {
+  const handleFinalizar = async () => {
     if (!firebaseUser) {
       alert('Debes iniciar sesión para finalizar este favor');
       return;
     }
 
-    if (window.confirm('¿Confirmas que este favor se ha completado?')) {
+    const mensaje = favor.ayudanteId
+      ? '¿Confirmas que este favor se ha completado? Después podrás calificar al ayudante.'
+      : '¿Confirmas que este favor se ha completado?';
+
+    if (window.confirm(mensaje)) {
       try {
         await finalizarFavor(favor.id, currentUser.uid);
         alert('✅ Favor marcado como finalizado.');
@@ -241,43 +208,19 @@ const FavorCard = ({ favor, className }) => {
             </PrimaryButton>
           )}
 
-          {/* Botón CONFIRMAR FINALIZACIÓN para Usuario B - después de ver contacto */}
-          {!isOwnFavor && yaVioContacto && favor.ayudanteId === currentUser.uid && favor.estado === 'activo' && (
+          {/* Botón FINALIZAR para el solicitante (Usuario A) - cuando está activo */}
+          {isOwnFavor && favor.estado === 'activo' && (
             <PrimaryButton
               type="button"
-              onClick={() => setShowCompletarModal(true)}
+              onClick={handleFinalizar}
               className="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-700"
             >
               <CheckCircle className="h-4 w-4 mr-1 inline" />
-              Confirmar finalización
+              Finalizar favor
             </PrimaryButton>
           )}
 
-          {/* Botón CONFIRMAR FINALIZACIÓN para Usuario A - cuando hay ayudante */}
-          {isOwnFavor && favor.estado === 'activo' && favor.ayudanteId && (
-            <PrimaryButton
-              type="button"
-              onClick={() => setShowCompletarModal(true)}
-              className="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-700"
-            >
-              <CheckCircle className="h-4 w-4 mr-1 inline" />
-              Confirmar finalización
-            </PrimaryButton>
-          )}
-
-          {/* Botón MARCAR COMO FINALIZADO - solo cuando NO hay ayudante */}
-          {isOwnFavor && favor.estado === 'activo' && !favor.ayudanteId && (
-            <PrimaryButton
-              type="button"
-              onClick={handleFinalizarSinAyudante}
-              className="px-4 py-2 text-sm bg-emerald-600 hover:bg-emerald-700"
-            >
-              <CheckCircle className="h-4 w-4 mr-1 inline" />
-              Marcar como finalizado
-            </PrimaryButton>
-          )}
-
-          {/* Botón CALIFICAR USUARIO - solo si está finalizado pero no ha calificado */}
+          {/* Botón CALIFICAR para el solicitante - después de finalizar y si hay ayudante */}
           {isOwnFavor && isFinalizado && favor.ayudanteId && (
             <PrimaryButton
               type="button"
@@ -285,7 +228,19 @@ const FavorCard = ({ favor, className }) => {
               className="px-4 py-2 text-sm bg-yellow-600 hover:bg-yellow-700"
             >
               <Star className="h-4 w-4 mr-1 inline" />
-              Calificar usuario
+              Calificar ayudante
+            </PrimaryButton>
+          )}
+
+          {/* Botón CALIFICAR para el ayudante - después de que el solicitante finalizó */}
+          {!isOwnFavor && favor.ayudanteId === currentUser?.uid && isFinalizado && (
+            <PrimaryButton
+              type="button"
+              onClick={() => setShowCalificarModal(true)}
+              className="px-4 py-2 text-sm bg-yellow-600 hover:bg-yellow-700"
+            >
+              <Star className="h-4 w-4 mr-1 inline" />
+              Calificar solicitante
             </PrimaryButton>
           )}
 
@@ -380,29 +335,6 @@ const FavorCard = ({ favor, className }) => {
           </div>
         </div>
       )}
-
-      {/* Modal para confirmar finalización */}
-      <CompletarFavorModal
-        isOpen={showCompletarModal}
-        onClose={() => setShowCompletarModal(false)}
-        favor={favor}
-        onConfirmacionExitosa={async () => {
-          // Recargar estado de confirmación
-          await cargarEstadoConfirmacion();
-
-          // Verificar si ambos confirmaron
-          const estadoActual = await obtenerEstadoConfirmacion(favor.id, currentUser.uid);
-
-          if (estadoActual && estadoActual.ambosConfirmaron) {
-            // Si ambos confirmaron, abrir modal de calificación
-            setShowCompletarModal(false);
-            setShowCalificarModal(true);
-          } else {
-            // Si solo confirmó uno, recargar la página
-            window.location.reload();
-          }
-        }}
-      />
 
       {/* Modal para calificar usuario */}
       <CalificarUsuarioModal
