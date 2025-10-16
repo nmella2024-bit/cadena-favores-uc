@@ -12,36 +12,25 @@ const Navbar = () => {
   const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
   const location = useLocation();
 
-  // Navegación reorganizada con iconos minimalistas
-  const navigation = currentUser
-    ? [
-        { label: 'Anuncios', to: '/anuncios', icon: Megaphone },
-        { label: 'Marketplace', to: '/marketplace', icon: ShoppingCart },
-        {
-          label: 'Favores',
-          icon: HandHeart,
-          submenu: [
-            { label: 'Ver favores', to: '/favores' },
-            { label: 'Publicar favor', to: '/publicar' },
-          ]
-        },
-        { label: 'UCloseMeal', to: '/uclosemeal', icon: UtensilsCrossed },
-        { label: 'Mi perfil', to: '/perfil', icon: User },
+  // Navegación principal (sin perfil/ingresar)
+  const mainNavigation = [
+    { label: 'Anuncios', to: '/anuncios', icon: Megaphone },
+    { label: 'Marketplace', to: '/marketplace', icon: ShoppingCart },
+    {
+      label: 'Favores',
+      icon: HandHeart,
+      submenu: [
+        { label: 'Ver favores', to: '/favores' },
+        { label: 'Publicar favor', to: '/publicar' },
       ]
-    : [
-        { label: 'Anuncios', to: '/anuncios', icon: Megaphone },
-        { label: 'Marketplace', to: '/marketplace', icon: ShoppingCart },
-        {
-          label: 'Favores',
-          icon: HandHeart,
-          submenu: [
-            { label: 'Ver favores', to: '/favores' },
-            { label: 'Publicar favor', to: '/publicar' },
-          ]
-        },
-        { label: 'UCloseMeal', to: '/uclosemeal', icon: UtensilsCrossed },
-        { label: 'Ingresar', to: '/login', icon: User },
-      ];
+    },
+    { label: 'UCloseMeal', to: '/uclosemeal', icon: UtensilsCrossed },
+  ];
+
+  // Botón de perfil/ingresar (separado para ponerlo al final)
+  const profileButton = currentUser
+    ? { label: 'Mi perfil', to: '/perfil', icon: User }
+    : { label: 'Ingresar', to: '/login', icon: User };
 
   const renderLink = (item, isMobile = false) => {
     const Icon = item.icon;
@@ -90,7 +79,8 @@ const Navbar = () => {
             </Link>
 
             <div className="hidden items-center gap-2 md:flex">
-              {navigation.map((item) => {
+              {/* Navegación principal */}
+              {mainNavigation.map((item) => {
                 // Si tiene submenú, renderizar dropdown
                 if (item.submenu) {
                   const isActive = item.submenu.some(sub => location.pathname.startsWith(sub.to));
@@ -144,6 +134,8 @@ const Navbar = () => {
                 // Link normal
                 return renderLink(item);
               })}
+
+              {/* Botones de acción centrales */}
               <button
                 type="button"
                 onClick={() => setIsFeedbackOpen(true)}
@@ -153,6 +145,8 @@ const Navbar = () => {
                 Feedback
               </button>
               <ThemeToggle />
+
+              {/* Botones de autenticación */}
               {currentUser ? (
                 <button
                   type="button"
@@ -169,6 +163,9 @@ const Navbar = () => {
                   Registrarse
                 </Link>
               )}
+
+              {/* Botón de perfil/ingresar - SIEMPRE AL FINAL */}
+              {renderLink(profileButton)}
             </div>
 
             <div className="md:hidden">
@@ -183,7 +180,8 @@ const Navbar = () => {
 
           <Disclosure.Panel className="md:hidden">
             <div className="space-y-1 border-t border-border bg-card/70 py-3 dark:bg-card/60">
-              {navigation.map((item) => {
+              {/* Navegación principal */}
+              {mainNavigation.map((item) => {
                 // Si tiene submenú, renderizar items expandidos
                 if (item.submenu) {
                   const isActive = item.submenu.some(sub => location.pathname.startsWith(sub.to));
@@ -227,6 +225,9 @@ const Navbar = () => {
                 // Link normal
                 return renderLink(item, true);
               })}
+
+              {/* Botón de perfil/ingresar */}
+              {renderLink(profileButton, true)}
               <button
                 type="button"
                 onClick={() => setIsFeedbackOpen(true)}
