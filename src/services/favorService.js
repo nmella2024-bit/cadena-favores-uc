@@ -416,6 +416,8 @@ export const buscarFavores = async (searchTerm) => {
  */
 export const ofrecerAyuda = async (favorId, user) => {
   try {
+    console.log('🔵 [ofrecerAyuda] Iniciando...', { favorId, userId: user.uid });
+
     const favorRef = doc(db, 'favores', favorId);
     const favorDoc = await getDoc(favorRef);
 
@@ -424,6 +426,12 @@ export const ofrecerAyuda = async (favorId, user) => {
     }
 
     const favorData = favorDoc.data();
+    console.log('🔵 [ofrecerAyuda] Favor encontrado:', {
+      favorId,
+      creadorId: favorData.usuarioId,
+      estadoActual: favorData.estado,
+      ayudantesActuales: favorData.ayudantes?.length || 0
+    });
 
     // No permitir que el creador del favor se ofrezca a ayudarse a sí mismo
     if (favorData.usuarioId === user.uid) {
@@ -444,22 +452,30 @@ export const ofrecerAyuda = async (favorId, user) => {
       throw new Error('Ya te has ofrecido a ayudar en este favor');
     }
 
+    const nuevoAyudante = {
+      idUsuario: user.uid,
+      nombre: user.nombre || 'Usuario',
+      carrera: user.carrera || '',
+      fotoPerfil: user.fotoPerfil || null,
+      telefono: user.telefono,
+      fechaOferta: Timestamp.now(),
+    };
+
+    console.log('🔵 [ofrecerAyuda] Intentando agregar ayudante:', nuevoAyudante);
+
     // Agregar al array con arrayUnion (evita duplicados automáticamente)
     await updateDoc(favorRef, {
-      ayudantes: arrayUnion({
-        idUsuario: user.uid,
-        nombre: user.nombre || 'Usuario',
-        carrera: user.carrera || '',
-        fotoPerfil: user.fotoPerfil || null,
-        telefono: user.telefono,
-        fechaOferta: Timestamp.now(),
-      }),
+      ayudantes: arrayUnion(nuevoAyudante),
       updatedAt: serverTimestamp(),
     });
 
-    console.log('Oferta de ayuda agregada exitosamente');
+    console.log('✅ [ofrecerAyuda] Oferta de ayuda agregada exitosamente');
   } catch (error) {
-    console.error('Error al ofrecer ayuda:', error);
+    console.error('❌ [ofrecerAyuda] Error:', {
+      message: error.message,
+      code: error.code,
+      stack: error.stack
+    });
     throw error;
   }
 };
