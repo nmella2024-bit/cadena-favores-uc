@@ -13,6 +13,7 @@ import {
   serverTimestamp,
   arrayUnion,
   Timestamp,
+  runTransaction,
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import { addFavorToUser, markFavorAsCompleted, getUserData } from './userService';
@@ -410,7 +411,7 @@ export const buscarFavores = async (searchTerm) => {
 /**
  * Ofrece ayuda para un favor
  * @param {string} favorId - ID del favor
- * @param {Object} user - Usuario que ofrece ayuda
+ * @param {Object} user - Usuario que ofrece ayuda (currentUser completo con todos los campos)
  * @returns {Promise<void>}
  */
 export const ofrecerAyuda = async (favorId, user) => {
@@ -429,33 +430,28 @@ export const ofrecerAyuda = async (favorId, user) => {
       throw new Error('No puedes ofrecerte ayuda en tu propio favor');
     }
 
-    // Obtener datos completos del usuario
-    const userData = await getUserData(user.uid);
-
-    if (!userData) {
-      throw new Error('No se pudo obtener información del usuario');
-    }
-
     // Validar que el usuario tenga teléfono
-    if (!userData.telefono) {
+    if (!user.telefono) {
       throw new Error('Debes agregar un número de WhatsApp a tu perfil para poder ofrecer ayuda');
     }
 
+    // Leer el array actual de ayudantes
     const ayudantes = favorData.ayudantes || [];
 
     // Verificar que no se haya ofrecido antes
-    if (ayudantes.some(a => a.idUsuario === user.uid)) {
+    const yaOfrecido = ayudantes.some(a => a.idUsuario === user.uid);
+    if (yaOfrecido) {
       throw new Error('Ya te has ofrecido a ayudar en este favor');
     }
 
-    // Usar arrayUnion para agregar el ayudante de forma atómica
+    // Agregar al array con arrayUnion (evita duplicados automáticamente)
     await updateDoc(favorRef, {
       ayudantes: arrayUnion({
         idUsuario: user.uid,
-        nombre: userData.nombre || user.displayName || 'Usuario',
-        carrera: userData.carrera || '',
-        fotoPerfil: userData.fotoPerfil || null,
-        telefono: userData.telefono,
+        nombre: user.nombre || 'Usuario',
+        carrera: user.carrera || '',
+        fotoPerfil: user.fotoPerfil || null,
+        telefono: user.telefono,
         fechaOferta: Timestamp.now(),
       }),
       updatedAt: serverTimestamp(),
