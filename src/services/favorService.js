@@ -11,6 +11,8 @@ import {
   orderBy,
   limit,
   serverTimestamp,
+  arrayUnion,
+  Timestamp,
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import { addFavorToUser, markFavorAsCompleted, getUserData } from './userService';
@@ -446,18 +448,16 @@ export const ofrecerAyuda = async (favorId, user) => {
       throw new Error('Ya te has ofrecido a ayudar en este favor');
     }
 
-    // Agregar oferta de ayuda
-    ayudantes.push({
-      idUsuario: user.uid,
-      nombre: userData.nombre || user.displayName || 'Usuario',
-      carrera: userData.carrera || '',
-      fotoPerfil: userData.fotoPerfil || null,
-      telefono: userData.telefono,
-      fechaOferta: serverTimestamp(),
-    });
-
+    // Usar arrayUnion para agregar el ayudante de forma atómica
     await updateDoc(favorRef, {
-      ayudantes,
+      ayudantes: arrayUnion({
+        idUsuario: user.uid,
+        nombre: userData.nombre || user.displayName || 'Usuario',
+        carrera: userData.carrera || '',
+        fotoPerfil: userData.fotoPerfil || null,
+        telefono: userData.telefono,
+        fechaOferta: Timestamp.now(),
+      }),
       updatedAt: serverTimestamp(),
     });
 

@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { doc, onSnapshot } from 'firebase/firestore';
+import { db } from '../firebaseConfig';
 import {
   obtenerFavor,
   aceptarAyudante,
@@ -29,12 +31,49 @@ const FavorDetalle = () => {
   const [mostrarRating, setMostrarRating] = useState(false);
 
   useEffect(() => {
-    cargarFavor();
-  }, [id]);
+    if (!currentUser || !id) return;
+
+    setLoading(true);
+
+    // Suscribirse a cambios en tiempo real del favor
+    const favorRef = doc(db, 'favores', id);
+    const unsubscribe = onSnapshot(
+      favorRef,
+      (docSnapshot) => {
+        if (!docSnapshot.exists()) {
+          setError('Favor no encontrado');
+          setLoading(false);
+          return;
+        }
+
+        const favorData = {
+          id: docSnapshot.id,
+          ...docSnapshot.data(),
+        };
+
+        // Verificar que el usuario actual sea el creador del favor
+        if (favorData.usuarioId !== currentUser.uid) {
+          setError('No tienes permiso para ver esta página');
+          setLoading(false);
+          return;
+        }
+
+        setFavor(favorData);
+        setLoading(false);
+      },
+      (err) => {
+        console.error('Error al cargar favor:', err);
+        setError('Error al cargar el favor');
+        setLoading(false);
+      }
+    );
+
+    // Cleanup: desuscribirse cuando el componente se desmonte
+    return () => unsubscribe();
+  }, [id, currentUser]);
 
   const cargarFavor = async () => {
     try {
-      setLoading(true);
       const favorData = await obtenerFavor(id);
 
       if (!favorData) {
@@ -52,8 +91,6 @@ const FavorDetalle = () => {
     } catch (err) {
       console.error('Error al cargar favor:', err);
       setError('Error al cargar el favor');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -65,7 +102,7 @@ const FavorDetalle = () => {
     try {
       setProcesando(true);
       await aceptarAyudante(id, currentUser.uid, ayudanteId);
-      await cargarFavor(); // Recargar para ver cambios
+      // No necesitamos recargar manualmente, onSnapshot se encargará
       alert('¡Ayudante aceptado! Ahora puedes contactarlo por WhatsApp.');
     } catch (err) {
       console.error('Error al aceptar ayudante:', err);
