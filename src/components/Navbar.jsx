@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Disclosure, Menu as HeadlessMenu } from '@headlessui/react';
 import { Menu, X, MessageSquare, ChevronDown, Megaphone, ShoppingCart, HandHeart, UtensilsCrossed, BookOpen, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import logo from '../assets/mi-logo-v2.png';
+import logo from '../assets/mi-logo-v4.png';
 import ThemeToggle from './ui/ThemeToggle';
 import FeedbackModal from './FeedbackModal';
 
@@ -68,7 +68,7 @@ const Navbar = () => {
               to="/"
               className="flex items-center gap-3 rounded-lg px-2 py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60"
             >
-              <img src={logo} alt="Red UC" className="h-10 w-10 rounded object-cover dark:invert" />
+              <img src={logo} alt="Red UC" className="h-16 w-16 rounded object-cover dark:invert" />
               <div className="flex flex-col">
                 <span className="text-base font-semibold leading-tight text-text-primary">
                   Red UC
