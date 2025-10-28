@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
-import { Search, BookOpen, Calendar, User, ExternalLink, Filter, X } from 'lucide-react';
+import { obtenerMateriales, eliminarMaterial } from '../services/materialService';
+import { useAuth } from '../context/AuthContext';
+import { Search, BookOpen, Calendar, User, ExternalLink, Filter, X, Plus, Trash2 } from 'lucide-react';
+import SubirMaterialModal from '../components/SubirMaterialModal';
+import PrimaryButton from '../components/ui/PrimaryButton';
 
 const Material = () => {
+  const { currentUser } = useAuth();
   const [materiales, setMateriales] = useState([]);
   const [filteredMateriales, setFilteredMateriales] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [eliminando, setEliminando] = useState(null);
 
   // Estados para filtros
   const [searchTerm, setSearchTerm] = useState('');
@@ -65,41 +70,36 @@ const Material = () => {
 
   const ramosDisponibles = carreraSeleccionada ? ramosPorCarrera[carreraSeleccionada] || [] : [];
 
-  // Cargar materiales desde Firestore
-  useEffect(() => {
-    const fetchMateriales = async () => {
-      try {
-        setLoading(true);
-        const materialRef = collection(db, 'material');
-        let q = query(materialRef);
+  // Cargar materiales
+  const cargarMateriales = async () => {
+    try {
+      setLoading(true);
+      const materialesData = await obtenerMateriales();
 
-        // Aplicar filtros de Firestore
-        if (carreraSeleccionada) {
-          q = query(q, where('carrera', '==', carreraSeleccionada));
-        }
-        if (anioSeleccionado) {
-          q = query(q, where('anio', '==', parseInt(anioSeleccionado)));
-        }
-        if (ramoSeleccionado) {
-          q = query(q, where('ramo', '==', ramoSeleccionado));
-        }
+      // Aplicar filtros client-side
+      let materialesFiltrados = materialesData;
 
-        const snapshot = await getDocs(q);
-        const materialesData = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }));
-
-        setMateriales(materialesData);
-        setFilteredMateriales(materialesData);
-      } catch (error) {
-        console.error('Error al cargar materiales:', error);
-      } finally {
-        setLoading(false);
+      if (carreraSeleccionada) {
+        materialesFiltrados = materialesFiltrados.filter(m => m.carrera === carreraSeleccionada);
       }
-    };
+      if (anioSeleccionado) {
+        materialesFiltrados = materialesFiltrados.filter(m => m.anio === parseInt(anioSeleccionado));
+      }
+      if (ramoSeleccionado) {
+        materialesFiltrados = materialesFiltrados.filter(m => m.ramo === ramoSeleccionado);
+      }
 
-    fetchMateriales();
+      setMateriales(materialesFiltrados);
+      setFilteredMateriales(materialesFiltrados);
+    } catch (error) {
+      console.error('Error al cargar materiales:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    cargarMateriales();
   }, [carreraSeleccionada, anioSeleccionado, ramoSeleccionado]);
 
   // Filtrado por búsqueda de texto (client-side)
@@ -138,20 +138,58 @@ const Material = () => {
     setRamoSeleccionado('');
   }, [carreraSeleccionada]);
 
+  // Manejar eliminación de material
+  const handleEliminarMaterial = async (materialId) => {
+    if (!window.confirm('¿Estás seguro de que deseas eliminar este material?')) {
+      return;
+    }
+
+    try {
+      setEliminando(materialId);
+      await eliminarMaterial(materialId);
+      // Recargar materiales
+      cargarMateriales();
+    } catch (err) {
+      console.error('Error al eliminar material:', err);
+      alert('Error al eliminar el material. Intenta nuevamente.');
+    } finally {
+      setEliminando(null);
+    }
+  };
+
+  // Manejar cuando se sube un nuevo material
+  const handleMaterialSubido = () => {
+    cargarMateriales();
+  };
+
   return (
     <div className="min-h-screen bg-background pt-8 pb-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <BookOpen className="h-10 w-10 text-brand" />
-            <h1 className="text-4xl font-bold text-text-primary">
-              Material de Estudio UC
-            </h1>
+        <div className="mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+            <div className="text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-3 mb-2">
+                <BookOpen className="h-10 w-10 text-brand" />
+                <h1 className="text-4xl font-bold text-text-primary">
+                  Material de Estudio UC
+                </h1>
+              </div>
+              <p className="text-lg text-text-muted">
+                Encuentra resúmenes, guías y material según tu carrera, año o ramo
+              </p>
+            </div>
+
+            {currentUser && (
+              <PrimaryButton
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex items-center gap-2 whitespace-nowrap"
+              >
+                <Plus className="h-5 w-5" />
+                Subir Material
+              </PrimaryButton>
+            )}
           </div>
-          <p className="text-lg text-text-muted">
-            Encuentra resúmenes, guías y material según tu carrera, año o ramo
-          </p>
         </div>
 
         {/* Buscador */}
@@ -269,11 +307,21 @@ const Material = () => {
                     key={material.id}
                     className="bg-card border border-border rounded-xl p-6 hover:border-brand transition-all hover:shadow-lg group"
                   >
-                    {/* Tipo de archivo badge */}
+                    {/* Tipo de archivo badge y botón eliminar */}
                     <div className="flex items-start justify-between mb-3">
                       <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-brand/10 text-brand">
                         {material.tipo || 'PDF'}
                       </span>
+                      {currentUser && currentUser.uid === material.autorId && (
+                        <button
+                          onClick={() => handleEliminarMaterial(material.id)}
+                          disabled={eliminando === material.id}
+                          className="p-1.5 text-text-muted hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-colors disabled:opacity-50"
+                          title="Eliminar material"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      )}
                     </div>
 
                     {/* Título */}
@@ -329,6 +377,16 @@ const Material = () => {
             </>
           )}
         </div>
+
+        {/* Modal para subir material */}
+        {currentUser && (
+          <SubirMaterialModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            usuario={currentUser}
+            onMaterialSubido={handleMaterialSubido}
+          />
+        )}
       </div>
     </div>
   );
