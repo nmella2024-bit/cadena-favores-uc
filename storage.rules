@@ -45,6 +45,19 @@ service firebase.storage {
                     request.resource.contentType == 'application/msword');
     }
 
+    // Reglas para la carpeta de fotos de perfil
+    match /profile-pictures/{userId}/{fileName} {
+      // Permitir lectura pública de todas las fotos de perfil
+      allow read: if true;
+
+      // Cualquier usuario autenticado puede subir su foto de perfil
+      // solo a su propia carpeta
+      allow write: if request.auth != null &&
+                   request.auth.uid == userId &&
+                   request.resource.size < 3 * 1024 * 1024 && // Máximo 3MB
+                   request.resource.contentType.matches('image/.*');
+    }
+
     // Denegar acceso a cualquier otra ubicación
     match /{allPaths=**} {
       allow read, write: if false;

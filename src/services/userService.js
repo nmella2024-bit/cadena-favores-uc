@@ -9,7 +9,8 @@ import {
   where,
   getDocs,
 } from 'firebase/firestore';
-import { db } from '../firebaseConfig';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
+import { db, storage } from '../firebaseConfig';
 
 /**
  * Crea un documento de usuario en Firestore
@@ -145,6 +146,70 @@ export const getUsersByCarrera = async (carrera) => {
     return usuarios;
   } catch (error) {
     console.error('Error al buscar usuarios por carrera:', error);
+    throw error;
+  }
+};
+
+/**
+ * Sube una foto de perfil para el usuario
+ * @param {string} userId - ID del usuario
+ * @param {File} imageFile - Archivo de imagen
+ * @returns {Promise<string>} URL de la foto subida
+ */
+export const uploadProfilePicture = async (userId, imageFile) => {
+  try {
+    // Validar que sea una imagen
+    if (!imageFile.type.startsWith('image/')) {
+      throw new Error('El archivo debe ser una imagen');
+    }
+
+    // Validar tamaño (máximo 3MB)
+    if (imageFile.size > 3 * 1024 * 1024) {
+      throw new Error('La imagen no puede superar los 3MB');
+    }
+
+    // Crear referencia al archivo en Storage
+    const timestamp = Date.now();
+    const extension = imageFile.name.split('.').pop();
+    const fileName = `profile_${timestamp}.${extension}`;
+    const storageRef = ref(storage, `profile-pictures/${userId}/${fileName}`);
+
+    // Subir archivo
+    const snapshot = await uploadBytes(storageRef, imageFile);
+
+    // Obtener URL de descarga
+    const downloadURL = await getDownloadURL(snapshot.ref);
+
+    // Actualizar documento del usuario con la URL de la foto
+    await updateUserData(userId, {
+      fotoPerfil: downloadURL,
+    });
+
+    return downloadURL;
+  } catch (error) {
+    console.error('Error al subir foto de perfil:', error);
+    throw error;
+  }
+};
+
+/**
+ * Elimina la foto de perfil del usuario
+ * @param {string} userId - ID del usuario
+ * @param {string} photoURL - URL de la foto a eliminar
+ * @returns {Promise<void>}
+ */
+export const deleteProfilePicture = async (userId, photoURL) => {
+  try {
+    // Extraer el path del archivo desde la URL
+    // Esto es opcional, ya que Firebase Storage permite tener archivos antiguos
+    // pero si quieres limpiar el storage, puedes implementar la eliminación
+
+    // Actualizar documento del usuario para quitar la foto
+    await updateUserData(userId, {
+      fotoPerfil: null,
+    });
+  } catch (error) {
+    console.error('Error al eliminar foto de perfil:', error);
     throw error;
   }
 };

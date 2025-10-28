@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { obtenerFavoresPorUsuario, obtenerFavoresConContactos } from '../services/favorService';
-import { updateUserData } from '../services/userService';
+import { updateUserData, uploadProfilePicture } from '../services/userService';
 import { obtenerCalificacionesUsuario } from '../services/ratingService';
 import { obtenerMisPedidos } from '../services/orderService';
 import StarRating from '../components/StarRating';
-import { Plus, ExternalLink, Star, AlertCircle, TrendingUp } from 'lucide-react';
+import { Plus, ExternalLink, Star, AlertCircle, TrendingUp, Camera, User } from 'lucide-react';
 
 const Perfil = () => {
   const navigate = useNavigate();
@@ -20,6 +20,7 @@ const Perfil = () => {
   const [loadingCalificaciones, setLoadingCalificaciones] = useState(true);
   const [pedidos, setPedidos] = useState([]);
   const [loadingPedidos, setLoadingPedidos] = useState(true);
+  const [uploadingPhoto, setUploadingPhoto] = useState(false);
 
   // Redirigir si no está autenticado
   useEffect(() => {
@@ -125,13 +126,81 @@ const Perfil = () => {
     }
   };
 
+  // Función para manejar la subida de foto de perfil
+  const handlePhotoUpload = async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    // Validar que sea imagen
+    if (!file.type.startsWith('image/')) {
+      alert('Por favor selecciona una imagen válida');
+      return;
+    }
+
+    // Validar tamaño (3MB)
+    if (file.size > 3 * 1024 * 1024) {
+      alert('La imagen no puede superar los 3MB');
+      return;
+    }
+
+    try {
+      setUploadingPhoto(true);
+      await uploadProfilePicture(currentUser.uid, file);
+      alert('Foto de perfil actualizada exitosamente');
+      window.location.reload(); // Recargar para mostrar la nueva foto
+    } catch (error) {
+      console.error('Error al subir foto:', error);
+      alert(error.message || 'Error al subir la foto. Intenta nuevamente.');
+    } finally {
+      setUploadingPhoto(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
         {/* Header Section - Minimalista */}
         <div className="mb-12">
-          <div className="flex items-start justify-between mb-6">
-            <div>
+          <div className="flex items-start gap-6 mb-6">
+            {/* Foto de perfil */}
+            <div className="relative group flex-shrink-0">
+              <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-full overflow-hidden bg-card border-2 border-border">
+                {currentUser.fotoPerfil ? (
+                  <img
+                    src={currentUser.fotoPerfil}
+                    alt={currentUser.nombre}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-brand/20 to-brand/5">
+                    <User className="h-12 w-12 sm:h-14 sm:w-14 text-brand/40" />
+                  </div>
+                )}
+              </div>
+
+              {/* Botón para cambiar foto */}
+              <label
+                htmlFor="profile-photo-upload"
+                className={`absolute inset-0 flex items-center justify-center rounded-full bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer ${uploadingPhoto ? 'opacity-100' : ''}`}
+              >
+                {uploadingPhoto ? (
+                  <div className="h-6 w-6 animate-spin rounded-full border-4 border-solid border-white border-r-transparent" />
+                ) : (
+                  <Camera className="h-6 w-6 text-white" />
+                )}
+              </label>
+              <input
+                id="profile-photo-upload"
+                type="file"
+                accept="image/*"
+                onChange={handlePhotoUpload}
+                disabled={uploadingPhoto}
+                className="hidden"
+              />
+            </div>
+
+            {/* Información del usuario */}
+            <div className="flex-1 min-w-0">
               <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">
                 {currentUser.nombre}
               </h1>
