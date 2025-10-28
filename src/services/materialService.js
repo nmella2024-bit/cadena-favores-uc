@@ -22,8 +22,9 @@ import { db, storage } from '../firebaseConfig';
 export const subirMaterial = async (materialData, usuario, archivo) => {
   try {
     let archivoUrl = '';
+    let tipo = 'Enlace';
 
-    // Subir archivo a Firebase Storage
+    // Si hay archivo, subirlo a Firebase Storage
     if (archivo) {
       const timestamp = Date.now();
       const random = Math.random().toString(36).substring(7);
@@ -34,6 +35,18 @@ export const subirMaterial = async (materialData, usuario, archivo) => {
       );
       const snapshot = await uploadBytes(archivoRef, archivo);
       archivoUrl = await getDownloadURL(snapshot.ref);
+
+      // Determinar tipo de archivo
+      tipo = archivo.type.includes('pdf') ? 'PDF' :
+             archivo.type.includes('word') || archivo.name.endsWith('.docx') ? 'DOCX' :
+             'Otro';
+    }
+
+    // Si hay enlace externo, usarlo como URL
+    if (materialData.enlaceExterno) {
+      archivoUrl = materialData.enlaceExterno;
+      // Si solo hay enlace y no archivo, mantener tipo como 'Enlace'
+      // Si hay ambos, el archivo toma prioridad en el tipo
     }
 
     // Crear el documento en Firestore
@@ -44,13 +57,12 @@ export const subirMaterial = async (materialData, usuario, archivo) => {
       anio: parseInt(materialData.anio),
       ramo: materialData.ramo,
       archivoUrl: archivoUrl,
+      enlaceExterno: materialData.enlaceExterno || null,
       autorId: usuario.uid,
       autorNombre: usuario.nombre || usuario.displayName || 'Usuario',
       fechaSubida: serverTimestamp(),
       tags: materialData.tags || [],
-      tipo: archivo.type.includes('pdf') ? 'PDF' :
-            archivo.type.includes('word') || archivo.name.endsWith('.docx') ? 'DOCX' :
-            'Otro',
+      tipo: tipo,
     });
 
     return docRef.id;

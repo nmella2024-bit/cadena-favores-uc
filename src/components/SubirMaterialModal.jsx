@@ -15,6 +15,7 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
   const [tags, setTags] = useState('');
   const [archivo, setArchivo] = useState(null);
   const [archivoNombre, setArchivoNombre] = useState('');
+  const [enlaceExterno, setEnlaceExterno] = useState('');
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
 
@@ -134,9 +135,20 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
       return;
     }
 
-    if (!archivo) {
-      setError('Debes subir un archivo');
+    // Validar que haya archivo O enlace externo
+    if (!archivo && !enlaceExterno.trim()) {
+      setError('Debes subir un archivo o proporcionar un enlace externo');
       return;
+    }
+
+    // Validar formato de URL si hay enlace externo
+    if (enlaceExterno.trim()) {
+      try {
+        new URL(enlaceExterno.trim());
+      } catch {
+        setError('El enlace externo no es una URL válida');
+        return;
+      }
     }
 
     setEnviando(true);
@@ -156,6 +168,7 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
           anio,
           ramo,
           tags: tagsArray,
+          enlaceExterno: enlaceExterno.trim() || null,
         },
         usuario,
         archivo
@@ -170,6 +183,7 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
       setTags('');
       setArchivo(null);
       setArchivoNombre('');
+      setEnlaceExterno('');
 
       // Notificar que se subió el material
       if (onMaterialSubido) {
@@ -195,6 +209,7 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
       setTags('');
       setArchivo(null);
       setArchivoNombre('');
+      setEnlaceExterno('');
       setError('');
       onClose();
     }
@@ -336,10 +351,28 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
                     helperText="Separa las etiquetas con comas"
                   />
 
+                  {/* Enlace externo */}
+                  <div>
+                    <TextField
+                      id="enlaceExterno"
+                      name="enlaceExterno"
+                      label="Enlace externo (opcional)"
+                      placeholder="https://drive.google.com/... o https://dropbox.com/..."
+                      value={enlaceExterno}
+                      onChange={(e) => setEnlaceExterno(e.target.value)}
+                      helperText="Link a Google Drive, Dropbox, OneDrive, etc."
+                    />
+                    {enlaceExterno && (
+                      <p className="mt-2 text-xs text-amber-600 dark:text-amber-400">
+                        ℹ️ Si proporcionas un enlace externo, el archivo adjunto es opcional
+                      </p>
+                    )}
+                  </div>
+
                   {/* Subir archivo */}
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-2">
-                      Archivo *
+                      Archivo {enlaceExterno.trim() ? '(opcional)' : '*'}
                     </label>
                     <div className="flex items-center gap-4">
                       <label className="cursor-pointer inline-flex items-center gap-2 rounded-lg border border-border bg-card/70 px-4 py-2.5 text-sm font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary">
