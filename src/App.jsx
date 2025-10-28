@@ -10,6 +10,7 @@ import Registro from './pages/Registro';
 import Favores from './pages/Favores';
 import PublicarFavor from './pages/PublicarFavor';
 import Perfil from './pages/Perfil';
+import PerfilPublico from './pages/PerfilPublico';
 import FavorDetalle from './pages/FavorDetalle';
 import Anuncios from './pages/Anuncios';
 import Marketplace from './pages/Marketplace';
@@ -62,6 +63,7 @@ function App() {
 
             {/* Perfil */}
             <Route path="/perfil" element={<Perfil />} />
+            <Route path="/perfil/:userId" element={<PerfilPublico />} />
 
             {/* Ruta por defecto - redirige a home */}
             <Route path="*" element={<Navigate to="/" replace />} />
