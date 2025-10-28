@@ -10,6 +10,7 @@ import Registro from './pages/Registro';
 import Favores from './pages/Favores';
 import PublicarFavor from './pages/PublicarFavor';
 import Perfil from './pages/Perfil';
+import FavorDetalle from './pages/FavorDetalle';
 import Anuncios from './pages/Anuncios';
 import Marketplace from './pages/Marketplace';
 import Material from './pages/Material';
@@ -39,6 +40,7 @@ function App() {
             {/* Favores */}
             <Route path="/favores" element={<Favores />} />
             <Route path="/publicar" element={<PublicarFavor />} />
+            <Route path="/favor/:id" element={<FavorDetalle />} />
 
             {/* Anuncios */}
             <Route path="/anuncios" element={<Anuncios />} />

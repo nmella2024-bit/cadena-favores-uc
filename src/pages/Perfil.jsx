@@ -339,7 +339,8 @@ const Perfil = () => {
                 {activeFavors.slice(0, 3).map(favor => (
                   <div
                     key={favor.id}
-                    className="p-4 rounded-lg border border-border hover:border-brand/50 transition-colors"
+                    onClick={() => navigate(`/favor/${favor.id}`)}
+                    className="p-4 rounded-lg border border-border hover:border-brand/50 transition-colors cursor-pointer"
                   >
                     <h3 className="font-medium text-text-primary mb-1 line-clamp-1">
                       {favor.titulo}
@@ -349,9 +350,22 @@ const Perfil = () => {
                     </p>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-text-muted">{favor.fecha}</span>
-                      <span className="px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-600 text-xs font-medium">
-                        Activo
-                      </span>
+                      <div className="flex items-center gap-2">
+                        {favor.ayudantes && favor.ayudantes.length > 0 && (
+                          <span className="px-2 py-1 rounded-md bg-blue-500/10 text-blue-600 text-xs font-medium">
+                            {favor.ayudantes.length} {favor.ayudantes.length === 1 ? 'oferta' : 'ofertas'}
+                          </span>
+                        )}
+                        <span className={`px-2 py-1 rounded-md text-xs font-medium ${
+                          favor.estado === 'pendiente' || favor.estado === 'activo'
+                            ? 'bg-yellow-500/10 text-yellow-600'
+                            : favor.estado === 'en_proceso'
+                            ? 'bg-green-500/10 text-green-600'
+                            : 'bg-gray-500/10 text-gray-600'
+                        }`}>
+                          {favor.estado === 'pendiente' || favor.estado === 'activo' ? 'Pendiente' : favor.estado === 'en_proceso' ? 'En proceso' : 'Completado'}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -506,7 +520,8 @@ const Perfil = () => {
               {completedFavors.map(favor => (
                 <div
                   key={favor.id}
-                  className="p-3 rounded-lg border border-border bg-card/50"
+                  onClick={() => navigate(`/favor/${favor.id}`)}
+                  className="p-3 rounded-lg border border-border bg-card/50 hover:border-brand/50 transition-colors cursor-pointer"
                 >
                   <p className="text-sm font-medium text-text-primary line-clamp-1 mb-1">
                     {favor.titulo}

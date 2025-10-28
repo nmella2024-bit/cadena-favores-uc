@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Briefcase, Inbox, Search, X, CalendarDays, UserRound, Tag, MessageCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { obtenerFavores, responderFavor, eliminarFavor } from '../services/favorService';
+import { obtenerFavores, responderFavor, eliminarFavor, ofrecerAyuda } from '../services/favorService';
 import FavorCard from '../components/FavorCard';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import GhostButton from '../components/ui/GhostButton';
@@ -102,17 +102,31 @@ const Favores = () => {
   };
 
   const handleRespond = async () => {
-    if (!firebaseUser || !selectedFavor) return;
+    if (!currentUser || !selectedFavor) return;
+
+    // Verificar que no sea el creador
+    if (selectedFavor.usuarioId === currentUser.uid) {
+      alert('No puedes ofrecer ayuda en tu propio favor');
+      return;
+    }
+
+    // Verificar que tenga teléfono
+    if (!currentUser.telefono) {
+      alert('Necesitas agregar tu número de WhatsApp en tu perfil para ofrecer ayuda');
+      return;
+    }
 
     if (window.confirm('¿Deseas ofrecer ayuda con este favor?')) {
       try {
-        await responderFavor(selectedFavor.id, firebaseUser);
-        alert('¡Gracias por tu ayuda! La persona solicitante fue notificada.');
+        await ofrecerAyuda(selectedFavor.id, currentUser);
+        alert('¡Gracias por tu ayuda! El solicitante podrá ver tu oferta.');
         closeModal();
-        window.location.reload();
+        // Recargar los favores
+        const favoresData = await obtenerFavores();
+        setFavors(favoresData);
       } catch (error) {
-        console.error('Error al responder favor:', error);
-        alert('Error al responder al favor. Intenta nuevamente.');
+        console.error('Error al ofrecer ayuda:', error);
+        alert(error.message || 'Error al ofrecer ayuda. Intenta nuevamente.');
       }
     }
   };
@@ -351,66 +365,49 @@ const Favores = () => {
                 </p>
               </div>
 
-              {/* Respuestas con información de contacto */}
-              {selectedFavor.respuestas && selectedFavor.respuestas.length > 0 && (
+              {/* Mostrar información sobre ofertas de ayuda */}
+              {selectedFavor.ayudantes && selectedFavor.ayudantes.length > 0 && (
                 <div>
                   <h3 className="text-lg font-semibold text-text-primary mb-2">
-                    Personas que ofrecieron ayuda ({selectedFavor.respuestas.length})
+                    Ofertas de ayuda
                   </h3>
-                  <div className="space-y-3">
-                    {selectedFavor.respuestas.map((respuesta, index) => {
-                      // Determinar si el usuario actual puede ver el contacto
-                      const esCreadorDelFavor = currentUser && selectedFavor.usuarioId === currentUser.uid;
-                      const esQuienRespondio = currentUser && respuesta.usuarioId === currentUser.uid;
-                      const puedeVerContacto = esCreadorDelFavor || esQuienRespondio;
+                  {currentUser && selectedFavor.usuarioId === currentUser.uid ? (
+                    <p className="text-sm text-text-muted">
+                      {selectedFavor.ayudantes.length} {selectedFavor.ayudantes.length === 1 ? 'persona ha ofrecido' : 'personas han ofrecido'} ayuda.
+                      <Link to={`/favor/${selectedFavor.id}`} className="text-brand hover:underline ml-1">
+                        Ver detalles →
+                      </Link>
+                    </p>
+                  ) : (
+                    <p className="text-sm text-text-muted">
+                      {selectedFavor.ayudantes.length} {selectedFavor.ayudantes.length === 1 ? 'persona ha ofrecido' : 'personas han ofrecido'} ayuda
+                    </p>
+                  )}
+                </div>
+              )}
 
-                      return (
-                        <div
-                          key={index}
-                          className="rounded-lg border border-border bg-card/50 p-4 text-sm dark:bg-card/30"
-                        >
-                          <div className="flex items-start justify-between gap-3">
-                            <div className="flex-1">
-                              <p className="font-semibold text-text-primary">{respuesta.nombreUsuario}</p>
-                              <p className="text-xs text-text-muted mt-1">{respuesta.emailUsuario}</p>
+              {/* Mostrar ayudante seleccionado */}
+              {selectedFavor.ayudanteSeleccionado && (
+                <div>
+                  <h3 className="text-lg font-semibold text-text-primary mb-2">
+                    Ayudante seleccionado
+                  </h3>
+                  <div className="rounded-lg border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm">
+                    <p className="font-semibold text-text-primary">{selectedFavor.ayudanteSeleccionado.nombre}</p>
+                    <p className="text-xs text-text-muted mt-1">{selectedFavor.ayudanteSeleccionado.carrera}</p>
 
-                              {/* Mostrar contacto WhatsApp solo si corresponde */}
-                              {puedeVerContacto && (
-                                <div className="mt-3 space-y-2">
-                                  {esCreadorDelFavor && respuesta.telefonoUsuario && (
-                                    <a
-                                      href={`https://wa.me/${respuesta.telefonoUsuario.replace(/[^0-9]/g, '')}`}
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                      className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
-                                    >
-                                      <MessageCircle className="h-4 w-4" />
-                                      Contactar por WhatsApp
-                                    </a>
-                                  )}
-
-                                  {esQuienRespondio && respuesta.solicitanteTelefono && (
-                                    <div className="rounded-lg bg-brand/10 p-3 border border-brand/20">
-                                      <p className="text-xs font-semibold text-brand mb-2">Contacto del solicitante:</p>
-                                      <p className="text-xs text-text-primary mb-1">{respuesta.solicitanteNombre}</p>
-                                      <a
-                                        href={`https://wa.me/${respuesta.solicitanteTelefono.replace(/[^0-9]/g, '')}`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
-                                      >
-                                        <MessageCircle className="h-4 w-4" />
-                                        Contactar por WhatsApp
-                                      </a>
-                                    </div>
-                                  )}
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
+                    {/* Mostrar WhatsApp si eres parte del favor */}
+                    {currentUser && (currentUser.uid === selectedFavor.usuarioId || currentUser.uid === selectedFavor.ayudanteSeleccionado.idUsuario) && (
+                      <a
+                        href={`https://wa.me/${selectedFavor.ayudanteSeleccionado.telefono.replace(/[^0-9]/g, '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 rounded-lg bg-emerald-500/10 px-3 py-2 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400 mt-3"
+                      >
+                        <MessageCircle className="h-4 w-4" />
+                        Contactar por WhatsApp
+                      </a>
+                    )}
                   </div>
                 </div>
               )}
@@ -421,9 +418,13 @@ const Favores = () => {
               <GhostButton onClick={closeModal} className="px-4 py-2">
                 Cerrar
               </GhostButton>
-              {currentUser && selectedFavor.usuarioId !== currentUser.uid && selectedFavor.estado === 'activo' && (
-                <PrimaryButton onClick={handleRespond} className="px-4 py-2">
-                  Ofrecer ayuda
+              {currentUser && selectedFavor.usuarioId !== currentUser.uid && selectedFavor.estado === 'activo' && !selectedFavor.ayudanteSeleccionado && (
+                <PrimaryButton
+                  onClick={handleRespond}
+                  className="px-4 py-2"
+                  disabled={selectedFavor.ayudantes?.some(a => a.idUsuario === currentUser.uid)}
+                >
+                  {selectedFavor.ayudantes?.some(a => a.idUsuario === currentUser.uid) ? 'Ya ofreciste ayuda' : 'Ofrecer ayuda'}
                 </PrimaryButton>
               )}
               {currentUser && selectedFavor.usuarioId === currentUser.uid && selectedFavor.estado === 'activo' && (

@@ -15,26 +15,20 @@ service cloud.firestore {
       allow create: if request.auth != null && request.resource.data.usuarioId == request.auth.uid;
 
       // Permitir actualizar si:
-      // 1. Eres el creador del favor, O
-      // 2. Estás agregándote como ayudante, O
-      // 3. Eres el ayudante y estás confirmando la finalización
+      // 1. Eres el creador del favor (puede actualizar todo, incluyendo aceptar ayudantes y completar)
+      // 2. Estás ofreciendo ayuda (agregándote al array ayudantes)
       allow update: if request.auth != null && (
-        // Creador puede actualizar todo
+        // Creador puede actualizar todo: estado, ayudanteSeleccionado, etc.
         request.auth.uid == resource.data.usuarioId ||
-        // Cualquier usuario autenticado puede agregarse como ayudante SI:
-        // - El ayudanteId en el nuevo documento es tu uid
-        // - Actualmente no hay ayudante (resource.data.ayudanteId es null o no existe)
-        // - El creador (usuarioId) no cambia
-        (request.resource.data.ayudanteId == request.auth.uid &&
-         (!('ayudanteId' in resource.data) || resource.data.ayudanteId == null) &&
-         request.resource.data.usuarioId == resource.data.usuarioId) ||
-        // El ayudante puede actualizar confirmaciones SI:
-        // - Ya está registrado como ayudante
-        // - Solo está modificando el campo confirmaciones
-        // - Los demás campos importantes no cambian
-        (request.auth.uid == resource.data.ayudanteId &&
+        // Cualquier usuario autenticado puede agregarse al array de ayudantes SI:
+        // - No es el creador del favor
+        // - Solo está agregando su información al array ayudantes
+        // - El usuarioId no cambia
+        (request.auth.uid != resource.data.usuarioId &&
          request.resource.data.usuarioId == resource.data.usuarioId &&
-         request.resource.data.ayudanteId == resource.data.ayudanteId)
+         // Verificar que solo se está agregando al array ayudantes
+         request.resource.data.keys().hasAll(resource.data.keys()) &&
+         ('ayudantes' in request.resource.data))
       );
 
       allow delete: if request.auth != null && request.auth.uid == resource.data.usuarioId;

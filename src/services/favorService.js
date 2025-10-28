@@ -399,6 +399,166 @@ export const buscarFavores = async (searchTerm) => {
 };
 
 /**
+ * Ofrece ayuda para un favor
+ * @param {string} favorId - ID del favor
+ * @param {Object} user - Usuario que ofrece ayuda
+ * @returns {Promise<void>}
+ */
+export const ofrecerAyuda = async (favorId, user) => {
+  try {
+    const favorRef = doc(db, 'favores', favorId);
+    const favorDoc = await getDoc(favorRef);
+
+    if (!favorDoc.exists()) {
+      throw new Error('El favor no existe');
+    }
+
+    const favorData = favorDoc.data();
+
+    // No permitir que el creador del favor se ofrezca a ayudarse a sí mismo
+    if (favorData.usuarioId === user.uid) {
+      throw new Error('No puedes ofrecerte ayuda en tu propio favor');
+    }
+
+    // Obtener datos completos del usuario
+    const userData = await getUserData(user.uid);
+
+    if (!userData) {
+      throw new Error('No se pudo obtener información del usuario');
+    }
+
+    // Validar que el usuario tenga teléfono
+    if (!userData.telefono) {
+      throw new Error('Debes agregar un número de WhatsApp a tu perfil para poder ofrecer ayuda');
+    }
+
+    const ayudantes = favorData.ayudantes || [];
+
+    // Verificar que no se haya ofrecido antes
+    if (ayudantes.some(a => a.idUsuario === user.uid)) {
+      throw new Error('Ya te has ofrecido a ayudar en este favor');
+    }
+
+    // Agregar oferta de ayuda
+    ayudantes.push({
+      idUsuario: user.uid,
+      nombre: userData.nombre || user.displayName || 'Usuario',
+      carrera: userData.carrera || '',
+      fotoPerfil: userData.fotoPerfil || null,
+      telefono: userData.telefono,
+      fechaOferta: new Date().toISOString(),
+    });
+
+    await updateDoc(favorRef, {
+      ayudantes,
+      updatedAt: serverTimestamp(),
+    });
+
+    console.log('Oferta de ayuda agregada exitosamente');
+  } catch (error) {
+    console.error('Error al ofrecer ayuda:', error);
+    throw error;
+  }
+};
+
+/**
+ * Acepta a un ayudante específico para un favor
+ * @param {string} favorId - ID del favor
+ * @param {string} solicitanteId - ID del usuario solicitante
+ * @param {string} ayudanteId - ID del usuario ayudante seleccionado
+ * @returns {Promise<void>}
+ */
+export const aceptarAyudante = async (favorId, solicitanteId, ayudanteId) => {
+  try {
+    const favorRef = doc(db, 'favores', favorId);
+    const favorDoc = await getDoc(favorRef);
+
+    if (!favorDoc.exists()) {
+      throw new Error('El favor no existe');
+    }
+
+    const favorData = favorDoc.data();
+
+    // Verificar que quien acepta es el creador
+    if (favorData.usuarioId !== solicitanteId) {
+      throw new Error('Solo el creador del favor puede aceptar ayudantes');
+    }
+
+    // Verificar que el estado sea pendiente
+    if (favorData.estado !== 'activo' && favorData.estado !== 'pendiente') {
+      throw new Error('Este favor ya no está disponible');
+    }
+
+    // Verificar que el ayudante esté en la lista de ofertas
+    const ayudantes = favorData.ayudantes || [];
+    const ayudante = ayudantes.find(a => a.idUsuario === ayudanteId);
+
+    if (!ayudante) {
+      throw new Error('El ayudante seleccionado no se ha ofrecido para este favor');
+    }
+
+    // Actualizar favor con ayudante seleccionado y cambiar estado
+    await updateDoc(favorRef, {
+      ayudanteSeleccionado: {
+        idUsuario: ayudante.idUsuario,
+        nombre: ayudante.nombre,
+        carrera: ayudante.carrera,
+        fotoPerfil: ayudante.fotoPerfil,
+        telefono: ayudante.telefono,
+        fechaAceptacion: new Date().toISOString(),
+      },
+      estado: 'en_proceso',
+      updatedAt: serverTimestamp(),
+    });
+
+    console.log('Ayudante aceptado exitosamente');
+  } catch (error) {
+    console.error('Error al aceptar ayudante:', error);
+    throw error;
+  }
+};
+
+/**
+ * Completa un favor y lo marca como finalizado
+ * @param {string} favorId - ID del favor
+ * @param {string} solicitanteId - ID del usuario solicitante
+ * @returns {Promise<void>}
+ */
+export const completarFavorConAyudante = async (favorId, solicitanteId) => {
+  try {
+    const favorRef = doc(db, 'favores', favorId);
+    const favorDoc = await getDoc(favorRef);
+
+    if (!favorDoc.exists()) {
+      throw new Error('El favor no existe');
+    }
+
+    const favorData = favorDoc.data();
+
+    // Verificar que quien completa es el creador
+    if (favorData.usuarioId !== solicitanteId) {
+      throw new Error('Solo el creador del favor puede marcarlo como completado');
+    }
+
+    // Verificar que esté en proceso
+    if (favorData.estado !== 'en_proceso') {
+      throw new Error('El favor debe estar en proceso para completarlo');
+    }
+
+    await updateDoc(favorRef, {
+      estado: 'completado',
+      fechaCompletado: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    });
+
+    console.log('Favor completado exitosamente');
+  } catch (error) {
+    console.error('Error al completar favor:', error);
+    throw error;
+  }
+};
+
+/**
  * Obtiene favores donde el usuario ha participado (publicado o respondido)
  * con información de contacto si corresponde
  * @param {string} userId - ID del usuario
