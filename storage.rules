@@ -30,6 +30,21 @@ service firebase.storage {
                    request.resource.contentType.matches('image/.*');
     }
 
+    // Reglas para la carpeta de material
+    match /material/{userId}/{fileName} {
+      // Permitir lectura pública de todos los archivos de material
+      allow read: if true;
+
+      // Cualquier usuario autenticado puede subir archivos de material
+      // a su propia carpeta
+      allow write: if request.auth != null &&
+                   request.auth.uid == userId &&
+                   request.resource.size < 10 * 1024 * 1024 && // Máximo 10MB
+                   (request.resource.contentType == 'application/pdf' ||
+                    request.resource.contentType == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+                    request.resource.contentType == 'application/msword');
+    }
+
     // Denegar acceso a cualquier otra ubicación
     match /{allPaths=**} {
       allow read, write: if false;

@@ -117,5 +117,19 @@ service cloud.firestore {
       // Solo el solicitante o el repartidor pueden eliminar
       allow delete: if request.auth != null;
     }
+
+    // Reglas para la colección de material
+    match /material/{materialId} {
+      // Todos pueden leer material
+      allow read: if true;
+
+      // Cualquier usuario autenticado puede crear material
+      allow create: if request.auth != null &&
+                    request.resource.data.autorId == request.auth.uid;
+
+      // Solo el autor puede eliminar su material
+      allow delete: if request.auth != null &&
+                    request.auth.uid == resource.data.autorId;
+    }
   }
 }
