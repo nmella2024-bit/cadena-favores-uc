@@ -213,3 +213,43 @@ export const deleteProfilePicture = async (userId, photoURL) => {
     throw error;
   }
 };
+
+/**
+ * Califica a un usuario después de completar un favor
+ * @param {string} usuarioId - ID del usuario a calificar
+ * @param {number} calificacion - Calificación de 1 a 5
+ * @param {string} comentario - Comentario opcional
+ * @returns {Promise<void>}
+ */
+export const calificarUsuario = async (usuarioId, calificacion, comentario = '') => {
+  try {
+    // Validar calificación
+    if (calificacion < 1 || calificacion > 5) {
+      throw new Error('La calificación debe estar entre 1 y 5');
+    }
+
+    // Obtener datos actuales del usuario
+    const userData = await getUserData(usuarioId);
+
+    if (!userData) {
+      throw new Error('Usuario no encontrado');
+    }
+
+    // Calcular nueva reputación
+    const totalCalificaciones = userData.totalCalificaciones || 0;
+    const reputacionActual = userData.reputacion || 5.0;
+
+    const nuevaReputacion = ((reputacionActual * totalCalificaciones) + calificacion) / (totalCalificaciones + 1);
+
+    // Actualizar usuario
+    await updateUserData(usuarioId, {
+      reputacion: parseFloat(nuevaReputacion.toFixed(2)),
+      totalCalificaciones: totalCalificaciones + 1,
+    });
+
+    console.log('Usuario calificado exitosamente');
+  } catch (error) {
+    console.error('Error al calificar usuario:', error);
+    throw error;
+  }
+};

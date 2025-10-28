@@ -109,6 +109,13 @@ export const obtenerFavorPorId = async (favorId) => {
 };
 
 /**
+ * Obtiene un favor específico por ID (alias de obtenerFavorPorId)
+ * @param {string} favorId - ID del favor
+ * @returns {Promise<Object|null>} Datos del favor o null si no existe
+ */
+export const obtenerFavor = obtenerFavorPorId;
+
+/**
  * Obtiene los favores de un usuario específico
  * @param {string} userId - ID del usuario
  * @returns {Promise<Array>} Lista de favores del usuario
