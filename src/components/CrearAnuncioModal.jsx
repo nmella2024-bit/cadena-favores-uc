@@ -9,10 +9,23 @@ import TextareaField from './ui/TextareaField';
 const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
+  const [carrera, setCarrera] = useState('');
+  const [anio, setAnio] = useState('');
   const [imagen, setImagen] = useState(null);
   const [imagenPreview, setImagenPreview] = useState('');
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
+
+  // Opciones de filtros
+  const carreras = [
+    'Ingeniería',
+    'Arquitectura',
+    'Economía',
+    'College',
+    'Todas'
+  ];
+
+  const anios = [1, 2, 3, 4, 5];
 
   const handleImagenChange = (e) => {
     const file = e.target.files[0];
@@ -64,7 +77,12 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
 
     try {
       await publicarAnuncio(
-        { titulo: titulo.trim(), descripcion: descripcion.trim() },
+        {
+          titulo: titulo.trim(),
+          descripcion: descripcion.trim(),
+          carrera: carrera || 'Todas',
+          anio: anio ? parseInt(anio) : null
+        },
         usuario,
         imagen
       );
@@ -72,6 +90,8 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
       // Limpiar formulario
       setTitulo('');
       setDescripcion('');
+      setCarrera('');
+      setAnio('');
       setImagen(null);
       setImagenPreview('');
 
@@ -93,6 +113,8 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
     if (!enviando) {
       setTitulo('');
       setDescripcion('');
+      setCarrera('');
+      setAnio('');
       setImagen(null);
       setImagenPreview('');
       setError('');
@@ -168,6 +190,42 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                     onChange={(e) => setDescripcion(e.target.value)}
                     required
                   />
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Carrera */}
+                    <div>
+                      <label className="block text-sm font-medium text-text-primary mb-2">
+                        Carrera (opcional)
+                      </label>
+                      <select
+                        value={carrera}
+                        onChange={(e) => setCarrera(e.target.value)}
+                        className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                      >
+                        <option value="">Todas las carreras</option>
+                        {carreras.map(c => (
+                          <option key={c} value={c}>{c}</option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* Año */}
+                    <div>
+                      <label className="block text-sm font-medium text-text-primary mb-2">
+                        Año (opcional)
+                      </label>
+                      <select
+                        value={anio}
+                        onChange={(e) => setAnio(e.target.value)}
+                        className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                      >
+                        <option value="">Todos los años</option>
+                        {anios.map(a => (
+                          <option key={a} value={a}>{a}º año</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
 
                   <div>
                     <label className="block text-sm font-medium text-text-primary mb-2">

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { Megaphone, Plus, Inbox, AlertCircle, Search } from 'lucide-react';
+import { Megaphone, Plus, Inbox, AlertCircle, Search, Filter, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { obtenerAnuncios, eliminarAnuncio } from '../services/anuncioService';
 import AnuncioCard from '../components/AnuncioCard';
@@ -23,10 +23,23 @@ const Anuncios = () => {
   const { currentUser } = useAuth();
   const [anuncios, setAnuncios] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [carreraSeleccionada, setCarreraSeleccionada] = useState('');
+  const [anioSeleccionado, setAnioSeleccionado] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [eliminando, setEliminando] = useState(null);
+
+  // Opciones de filtros
+  const carreras = [
+    'Ingeniería',
+    'Arquitectura',
+    'Economía',
+    'College',
+    'Todas'
+  ];
+
+  const anios = [1, 2, 3, 4, 5];
 
   const esUsuarioExclusivo = currentUser?.rol === 'exclusivo';
 
@@ -57,7 +70,7 @@ const Anuncios = () => {
     }
   }, [searchQuery]);
 
-  // Filtrar anuncios por búsqueda
+  // Filtrar anuncios por búsqueda, carrera y año
   const filteredAnuncios = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
@@ -67,9 +80,25 @@ const Anuncios = () => {
         anuncio.titulo.toLowerCase().includes(normalizedQuery) ||
         anuncio.descripcion.toLowerCase().includes(normalizedQuery);
 
-      return matchesSearch;
+      const matchesCarrera =
+        !carreraSeleccionada ||
+        carreraSeleccionada === 'Todas' ||
+        anuncio.carrera === carreraSeleccionada;
+
+      const matchesAnio =
+        !anioSeleccionado ||
+        anuncio.anio === parseInt(anioSeleccionado);
+
+      return matchesSearch && matchesCarrera && matchesAnio;
     });
-  }, [anuncios, searchQuery]);
+  }, [anuncios, searchQuery, carreraSeleccionada, anioSeleccionado]);
+
+  // Limpiar filtros
+  const limpiarFiltros = () => {
+    setSearchQuery('');
+    setCarreraSeleccionada('');
+    setAnioSeleccionado('');
+  };
 
   const handleEliminarAnuncio = async (anuncioId) => {
     if (!window.confirm('¿Estás seguro de que deseas eliminar este anuncio?')) {
@@ -122,7 +151,7 @@ const Anuncios = () => {
           </div>
 
           {/* Buscador */}
-          <div className="max-w-md">
+          <div className="max-w-md mb-6">
             <TextField
               id="search-anuncios"
               label="Buscar anuncios"
@@ -131,6 +160,61 @@ const Anuncios = () => {
               onChange={(event) => setSearchQuery(event.target.value)}
               icon={Search}
             />
+          </div>
+
+          {/* Filtros */}
+          <div className="bg-card border border-border rounded-xl p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-2">
+                <Filter className="h-5 w-5 text-brand" />
+                <h2 className="text-lg font-semibold text-text-primary">Filtros</h2>
+              </div>
+              {(carreraSeleccionada || anioSeleccionado || searchQuery) && (
+                <button
+                  onClick={limpiarFiltros}
+                  className="flex items-center gap-2 px-3 py-1.5 text-sm text-text-muted hover:text-brand transition-colors"
+                >
+                  <X className="h-4 w-4" />
+                  Limpiar filtros
+                </button>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Filtro Carrera */}
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-2">
+                  Carrera
+                </label>
+                <select
+                  value={carreraSeleccionada}
+                  onChange={(e) => setCarreraSeleccionada(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                >
+                  <option value="">Todas las carreras</option>
+                  {carreras.map(carrera => (
+                    <option key={carrera} value={carrera}>{carrera}</option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Filtro Año */}
+              <div>
+                <label className="block text-sm font-medium text-text-primary mb-2">
+                  Año
+                </label>
+                <select
+                  value={anioSeleccionado}
+                  onChange={(e) => setAnioSeleccionado(e.target.value)}
+                  className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                >
+                  <option value="">Todos los años</option>
+                  {anios.map(anio => (
+                    <option key={anio} value={anio}>{anio}º año</option>
+                  ))}
+                </select>
+              </div>
+            </div>
           </div>
         </div>
 
