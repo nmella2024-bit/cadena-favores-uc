@@ -453,7 +453,7 @@ export const ofrecerAyuda = async (favorId, user) => {
       carrera: userData.carrera || '',
       fotoPerfil: userData.fotoPerfil || null,
       telefono: userData.telefono,
-      fechaOferta: new Date().toISOString(),
+      fechaOferta: serverTimestamp(),
     });
 
     await updateDoc(favorRef, {
@@ -512,7 +512,7 @@ export const aceptarAyudante = async (favorId, solicitanteId, ayudanteId) => {
         carrera: ayudante.carrera,
         fotoPerfil: ayudante.fotoPerfil,
         telefono: ayudante.telefono,
-        fechaAceptacion: new Date().toISOString(),
+        fechaAceptacion: serverTimestamp(),
       },
       estado: 'en_proceso',
       updatedAt: serverTimestamp(),
