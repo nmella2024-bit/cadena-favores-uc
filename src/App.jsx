@@ -12,6 +12,7 @@ import PublicarFavor from './pages/PublicarFavor';
 import Perfil from './pages/Perfil';
 import Anuncios from './pages/Anuncios';
 import Marketplace from './pages/Marketplace';
+import Material from './pages/Material';
 
 // UCloseMeal Pages
 import UCloseMealRoleSelect from './pages/UCloseMealRoleSelect';
@@ -44,6 +45,9 @@ function App() {
 
             {/* Marketplace */}
             <Route path="/marketplace" element={<Marketplace />} />
+
+            {/* Material */}
+            <Route path="/material" element={<Material />} />
 
             {/* UCloseMeal */}
             <Route path="/uclosemeal" element={<UCloseMealRoleSelect />} />

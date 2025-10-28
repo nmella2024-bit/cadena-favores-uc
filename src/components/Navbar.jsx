@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Disclosure, Menu as HeadlessMenu } from '@headlessui/react';
-import { Menu, X, MessageSquare, ChevronDown, Megaphone, ShoppingCart, HandHeart, UtensilsCrossed, User } from 'lucide-react';
+import { Menu, X, MessageSquare, ChevronDown, Megaphone, ShoppingCart, HandHeart, UtensilsCrossed, BookOpen, User } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/mi-logo-v2.png';
 import ThemeToggle from './ui/ThemeToggle';
@@ -25,6 +25,7 @@ const Navbar = () => {
       ]
     },
     { label: 'UCloseMeal', to: '/uclosemeal', icon: UtensilsCrossed },
+    { label: 'Material', to: '/material', icon: BookOpen },
   ];
 
   // Botón de perfil/ingresar (separado para ponerlo al final)
