@@ -56,7 +56,7 @@ const Home = () => {
             Conecta, enseña y aprende dentro de la comunidad UC
           </h1>
           <p className="mt-4 text-lg text-text-muted">
-            Red UC es un puente entre estudiantes que quieren pedir un favor y quienes pueden ofrecer ayuda.
+            NexUC es un puente entre estudiantes que quieren pedir un favor y quienes pueden ofrecer ayuda.
             Comparte conocimiento, apoya proyectos y fortalece tus redes con empatía.
           </p>
           <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">

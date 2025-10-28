@@ -38,7 +38,7 @@ const Login = () => {
       <div className="w-full max-w-md rounded-2xl border border-border bg-[rgb(var(--bg-card))] p-8 shadow-card animate-fade-in dark:bg-card/80">
         <div className="mb-8 text-center">
           <h2 className="mb-2 text-3xl font-bold text-text-primary">Iniciar Sesión</h2>
-          <p className="text-base text-text-muted">Bienvenido de vuelta a Red UC</p>
+          <p className="text-base text-text-muted">Bienvenido de vuelta a NexUC</p>
         </div>
 
         {error && (

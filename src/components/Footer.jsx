@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold tracking-tight text-[rgb(var(--text-primary))]">Red UC</h3>
+          <h3 className="text-lg font-semibold tracking-tight text-[rgb(var(--text-primary))]">NexUC</h3>
           <p className="text-sm text-[rgb(var(--text-muted))]">
             Plataforma colaborativa creada por estudiantes de la Pontificia Universidad Católica de Chile para
             fortalecer la ayuda entre pares.
@@ -38,7 +38,7 @@ const Footer = () => (
       </div>
 
       <div className="mt-12 border-t border-border pt-6 text-center text-sm text-[rgb(var(--text-muted))]">
-        <p>© {new Date().getFullYear()} Red UC. Todos los derechos reservados.</p>
+        <p>© {new Date().getFullYear()} NexUC. Todos los derechos reservados.</p>
         <p className="mt-2 italic">
           “Nadie lo sabe todo, pero todos sabemos algo que puede ayudar a alguien.”
         </p>
