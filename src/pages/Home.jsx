@@ -50,7 +50,7 @@ const Home = () => {
         <div className="container mx-auto max-w-3xl px-4 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 dark:bg-card/50 px-4 py-1 text-sm font-medium text-text-muted shadow-sm">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
-            Red universitaria de favores
+            Red social universitaria
           </span>
           <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">
             Conecta, enseña y aprende dentro de la comunidad UC
