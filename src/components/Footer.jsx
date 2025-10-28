@@ -10,7 +10,6 @@ const Footer = () => (
             Plataforma colaborativa creada por estudiantes de la Pontificia Universidad Católica de Chile para
             fortalecer la ayuda entre pares.
           </p>
-          <p className="text-xs text-[rgb(var(--text-muted))]">Proyecto estudiantil sin fines de lucro.</p>
         </div>
 
         <div className="space-y-3">

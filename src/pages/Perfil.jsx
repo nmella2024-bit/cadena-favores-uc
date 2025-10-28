@@ -6,6 +6,7 @@ import { updateUserData } from '../services/userService';
 import { obtenerCalificacionesUsuario } from '../services/ratingService';
 import { obtenerMisPedidos } from '../services/orderService';
 import StarRating from '../components/StarRating';
+import { Plus, ExternalLink, Star, AlertCircle, TrendingUp } from 'lucide-react';
 
 const Perfil = () => {
   const navigate = useNavigate();
@@ -98,7 +99,6 @@ const Perfil = () => {
 
   // Estadísticas de pedidos
   const pedidosActivos = pedidos.filter(p => ['pendiente', 'aceptado', 'en-camino', 'entregado'].includes(p.estado));
-  const pedidosCompletados = pedidos.filter(p => p.estado === 'completado');
 
   // Función para guardar el teléfono
   const handleSavePhone = async () => {
@@ -126,401 +126,344 @@ const Perfil = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[rgb(var(--bg-canvas))] py-8 px-4 sm:py-12 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
-        {/* Tarjeta principal de perfil */}
-        <div className="mb-8 overflow-hidden rounded-2xl border border-border bg-card shadow-card animate-fade-in dark:bg-card/80">
-          {/* Header con fondo colorido */}
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 h-24 sm:h-32"></div>
-
-          {/* Información del usuario */}
-          <div className="px-6 sm:px-8 pb-8">
-            {/* Avatar */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-end -mt-12 sm:-mt-16 mb-6">
-              <div className="mb-4 flex h-24 w-24 items-center justify-center rounded-full border-4 border-card bg-card text-5xl shadow-lg sm:mb-0 sm:h-32 sm:w-32 sm:text-6xl dark:border-border dark:bg-card/70">
-                👤
-              </div>
-              <div className="sm:ml-6 text-center sm:text-left">
-                <h1 className="text-2xl font-bold text-text-primary sm:text-3xl">{currentUser.nombre}</h1>
-                <p className="text-sm text-text-muted sm:text-base">{currentUser.correo}</p>
-
-                {/* Calificación promedio */}
-                <div className="mt-3 flex flex-col sm:flex-row items-center sm:items-start gap-2">
-                  <div className="flex items-center gap-2">
-                    <StarRating
-                      rating={currentUser.reputacion || 5.0}
-                      interactive={false}
-                      size="md"
-                      showNumber={true}
-                    />
-                  </div>
-                  {currentUser.totalCalificaciones > 0 && (
-                    <span className="text-xs text-text-muted">
-                      ({currentUser.totalCalificaciones} {currentUser.totalCalificaciones === 1 ? 'calificación' : 'calificaciones'})
-                    </span>
-                  )}
-                </div>
-
-                <div className="mt-2 flex flex-wrap justify-center gap-2 sm:justify-start">
-                  {currentUser.carrera && (
-                    <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand sm:text-sm">
-                      {currentUser.carrera}
-                    </span>
-                  )}
-                  {currentUser.año && (
-                    <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold text-brand sm:text-sm">
-                      {currentUser.año}° año
-                    </span>
-                  )}
-                </div>
-              </div>
+    <div className="min-h-screen bg-background">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        {/* Header Section - Minimalista */}
+        <div className="mb-12">
+          <div className="flex items-start justify-between mb-6">
+            <div>
+              <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">
+                {currentUser.nombre}
+              </h1>
+              <p className="text-text-muted">{currentUser.correo}</p>
             </div>
 
-            {/* Descripción */}
-            {currentUser.descripcion && (
-              <div className="mb-6">
-                <h3 className="text-base sm:text-lg font-semibold text-text-primary mb-2">Sobre mí</h3>
-                <p className="text-text-muted text-sm sm:text-base">{currentUser.descripcion}</p>
+            {/* Rating en el header */}
+            <div className="flex flex-col items-end gap-1">
+              <div className="flex items-center gap-2">
+                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                <span className="text-2xl font-bold text-text-primary">
+                  {currentUser.reputacion?.toFixed(1) || '5.0'}
+                </span>
               </div>
-            )}
+              {currentUser.totalCalificaciones > 0 && (
+                <span className="text-xs text-text-muted">
+                  {currentUser.totalCalificaciones} {currentUser.totalCalificaciones === 1 ? 'calificación' : 'calificaciones'}
+                </span>
+              )}
+            </div>
+          </div>
 
-            {/* Intereses */}
+          {/* Info badges - Limpia y horizontal */}
+          <div className="flex flex-wrap gap-2">
+            {currentUser.carrera && (
+              <span className="inline-flex items-center px-3 py-1 rounded-md bg-card border border-border text-sm text-text-muted">
+                {currentUser.carrera}
+              </span>
+            )}
+            {currentUser.año && (
+              <span className="inline-flex items-center px-3 py-1 rounded-md bg-card border border-border text-sm text-text-muted">
+                {currentUser.año}° año
+              </span>
+            )}
             {currentUser.intereses && currentUser.intereses.length > 0 && (
-              <div className="mb-6">
-                <h3 className="text-base sm:text-lg font-semibold text-text-primary mb-2">Intereses</h3>
-                <div className="flex flex-wrap gap-2">
-                  {currentUser.intereses.map((interes, index) => (
-                    <span
-                      key={index}
-                      className="rounded-md bg-card/70 px-3 py-1 text-xs font-medium text-text-muted sm:text-sm dark:bg-card/50"
-                    >
-                      {interes}
-                    </span>
-                  ))}
-                </div>
-              </div>
+              currentUser.intereses.slice(0, 3).map((interes, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center px-3 py-1 rounded-md bg-card border border-border text-sm text-text-muted"
+                >
+                  {interes}
+                </span>
+              ))
             )}
           </div>
         </div>
 
-        {/* Alerta de WhatsApp faltante */}
+        {/* Alerta de WhatsApp - Más sutil */}
         {!currentUser.telefono && (
-          <div className="mb-8 rounded-xl border border-orange-500/30 bg-orange-500/10 p-6 shadow-sm dark:border-orange-500/20 dark:bg-orange-500/15">
-            <div className="flex items-start gap-4">
-              <div className="text-3xl">⚠️</div>
+          <div className="mb-8 rounded-lg border border-orange-500/30 bg-orange-500/5 p-4">
+            <div className="flex items-start gap-3">
+              <AlertCircle className="h-5 w-5 text-orange-500 flex-shrink-0 mt-0.5" />
               <div className="flex-1">
-                <h3 className="text-lg font-semibold text-orange-600 dark:text-orange-400 mb-2">
-                  Agrega tu número de WhatsApp
-                </h3>
-                <p className="text-sm text-text-muted mb-4">
-                  Necesitas agregar un número de WhatsApp para poder responder a favores y recibir contacto de quienes ayuden con los tuyos.
+                <p className="text-sm text-text-primary mb-2 font-medium">
+                  Agrega tu número de WhatsApp para conectar con otros usuarios
                 </p>
                 <button
                   onClick={() => setShowPhoneModal(true)}
-                  className="px-4 py-2 text-sm font-semibold text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors shadow-sm"
+                  className="text-sm text-orange-600 hover:text-orange-700 font-medium"
                 >
-                  Agregar WhatsApp
+                  Agregar número →
                 </button>
               </div>
             </div>
           </div>
         )}
 
-        {/* Estadísticas */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mb-8">
-          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 text-center hover:shadow-lg transition-shadow duration-200">
-            <div className="text-4xl mb-2">📝</div>
-            <div className="text-2xl sm:text-3xl font-bold text-text-primary mb-1">
-              {loading ? '...' : userFavors.length}
+        {/* Stats Grid - Minimalista y elegante */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-all hover:border-brand/50">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-brand/10 to-transparent rounded-bl-full" />
+            <div className="relative">
+              <p className="text-sm text-text-muted mb-1">Publicados</p>
+              <p className="text-3xl font-bold text-text-primary">
+                {loading ? '—' : userFavors.length}
+              </p>
             </div>
-            <div className="text-text-muted text-sm">Favores Publicados</div>
           </div>
 
-          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 text-center hover:shadow-lg transition-shadow duration-200">
-            <div className="text-4xl mb-2">✅</div>
-            <div className="text-2xl sm:text-3xl font-bold text-emerald-400 mb-1">
-              {loading ? '...' : completedFavors.length}
+          <div className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-all hover:border-emerald-500/50">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-emerald-500/10 to-transparent rounded-bl-full" />
+            <div className="relative">
+              <p className="text-sm text-text-muted mb-1">Completados</p>
+              <p className="text-3xl font-bold text-emerald-500">
+                {loading ? '—' : completedFavors.length}
+              </p>
             </div>
-            <div className="text-text-muted text-sm">Favores Completados</div>
           </div>
 
-          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 text-center hover:shadow-lg transition-shadow duration-200">
-            <div className="text-4xl mb-2">🤝</div>
-            <div className="text-2xl sm:text-3xl font-bold text-brand mb-1">
-              {currentUser.favoresCompletados?.length || 0}
+          <div className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-all hover:border-blue-500/50">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-blue-500/10 to-transparent rounded-bl-full" />
+            <div className="relative">
+              <p className="text-sm text-text-muted mb-1">Ayudados</p>
+              <p className="text-3xl font-bold text-blue-500">
+                {currentUser.favoresCompletados?.length || 0}
+              </p>
             </div>
-            <div className="text-text-muted text-sm">Favores Respondidos</div>
           </div>
 
           <div
             onClick={() => navigate('/uclosemeal/mis-pedidos')}
-            className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 text-center hover:shadow-lg transition-shadow duration-200 cursor-pointer hover:scale-105 transition-transform"
+            className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-all hover:border-orange-500/50 cursor-pointer"
           >
-            <div className="text-4xl mb-2">🍔</div>
-            <div className="text-2xl sm:text-3xl font-bold text-orange-400 mb-1">
-              {loadingPedidos ? '...' : pedidosActivos.length}
+            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-500/10 to-transparent rounded-bl-full" />
+            <div className="relative">
+              <p className="text-sm text-text-muted mb-1">Pedidos</p>
+              <p className="text-3xl font-bold text-orange-500">
+                {loadingPedidos ? '—' : pedidosActivos.length}
+              </p>
             </div>
-            <div className="text-text-muted text-sm">Pedidos Activos</div>
           </div>
         </div>
 
-        {/* Mis Pedidos UCloseMeal */}
-        {!loadingPedidos && pedidos.length > 0 && (
-          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 mb-8">
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-              <div>
-                <h2 className="text-xl sm:text-2xl font-bold text-text-primary">Mis Pedidos UCloseMeal</h2>
-                <p className="text-sm text-text-muted mt-1">
-                  {pedidosActivos.length} {pedidosActivos.length === 1 ? 'pedido activo' : 'pedidos activos'}
-                </p>
-              </div>
+        {/* Secciones en grid */}
+        <div className="grid lg:grid-cols-2 gap-6">
+          {/* Mis Favores */}
+          <div className="rounded-lg border border-border bg-card p-6">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-semibold text-text-primary">Mis Favores</h2>
               <button
-                onClick={() => navigate('/uclosemeal/mis-pedidos')}
-                className="w-full sm:w-auto px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 transition-smooth shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
+                onClick={() => navigate('/publicar')}
+                className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-brand rounded-lg hover:bg-brand-hover transition-colors"
               >
-                Ver Todos Mis Pedidos
+                <Plus className="h-4 w-4" />
+                Nuevo
               </button>
             </div>
 
-            {/* Mostrar últimos 3 pedidos activos */}
-            {pedidosActivos.length > 0 ? (
-              <div className="space-y-4">
-                {pedidosActivos.slice(0, 3).map(pedido => (
+            {loading ? (
+              <div className="flex items-center justify-center py-12">
+                <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent" />
+              </div>
+            ) : activeFavors.length > 0 ? (
+              <div className="space-y-3">
+                {activeFavors.slice(0, 3).map(favor => (
                   <div
-                    key={pedido.id}
-                    onClick={() => navigate('/uclosemeal/mis-pedidos')}
-                    className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow duration-200 cursor-pointer bg-orange-500/5 dark:bg-orange-500/10"
+                    key={favor.id}
+                    className="p-4 rounded-lg border border-border hover:border-brand/50 transition-colors"
                   >
-                    <div className="flex justify-between items-start">
-                      <div className="flex-grow">
-                        <h4 className="text-base sm:text-lg font-semibold text-text-primary mb-1">
-                          {pedido.restaurante}
-                        </h4>
-                        <p className="text-text-muted text-sm mb-2">
-                          {pedido.items?.length > 0
-                            ? `${pedido.items.length} ${pedido.items.length === 1 ? 'producto' : 'productos'} - $${pedido.total?.toLocaleString()}`
-                            : `$${pedido.precio?.toLocaleString()}`
-                          }
-                        </p>
-                        <div className="flex items-center gap-3 text-xs sm:text-sm text-text-muted">
-                          <span>
-                            {pedido.estado === 'pendiente' && '⏳ Pendiente'}
-                            {pedido.estado === 'aceptado' && '✅ Aceptado'}
-                            {pedido.estado === 'en-camino' && '🚗 En camino'}
-                            {pedido.estado === 'entregado' && '📦 Entregado'}
-                          </span>
-                          <span>📍 {pedido.puntoEntrega}</span>
-                        </div>
-                      </div>
+                    <h3 className="font-medium text-text-primary mb-1 line-clamp-1">
+                      {favor.titulo}
+                    </h3>
+                    <p className="text-sm text-text-muted line-clamp-1 mb-2">
+                      {favor.descripcion}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-text-muted">{favor.fecha}</span>
+                      <span className="px-2 py-1 rounded-md bg-emerald-500/10 text-emerald-600 text-xs font-medium">
+                        Activo
+                      </span>
                     </div>
                   </div>
                 ))}
+                {activeFavors.length > 3 && (
+                  <button
+                    onClick={() => navigate('/favores')}
+                    className="w-full py-2 text-sm text-brand hover:text-brand-hover transition-colors"
+                  >
+                    Ver todos ({activeFavors.length})
+                  </button>
+                )}
               </div>
             ) : (
-              <div className="text-center py-8 text-text-muted">
-                <div className="text-4xl sm:text-5xl mb-3">🍔</div>
-                <p className="text-sm sm:text-base">No tienes pedidos activos</p>
+              <div className="text-center py-12">
+                <p className="text-text-muted mb-4">No tienes favores activos</p>
                 <button
-                  onClick={() => navigate('/uclosemeal')}
-                  className="mt-4 text-sm text-orange-500 hover:underline"
+                  onClick={() => navigate('/publicar')}
+                  className="text-sm text-brand hover:underline"
                 >
-                  Hacer un pedido
+                  Publicar tu primer favor
                 </button>
               </div>
             )}
           </div>
-        )}
 
-        {/* Favores publicados */}
-        <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 mb-8">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
-            <h2 className="text-xl sm:text-2xl font-bold text-text-primary">Mis Favores</h2>
-            <button
-              onClick={() => navigate('/publicar')}
-              className="w-full sm:w-auto px-4 py-2 text-sm font-medium text-white bg-[rgb(var(--brand))] rounded-md hover:bg-[rgb(var(--brand-hover))] transition-smooth shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
-            >
-              + Publicar Nuevo
-            </button>
-          </div>
+          {/* Pedidos UCloseMeal */}
+          {!loadingPedidos && pedidos.length > 0 && (
+            <div className="rounded-lg border border-border bg-card p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-semibold text-text-primary">UCloseMeal</h2>
+                <button
+                  onClick={() => navigate('/uclosemeal/mis-pedidos')}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-orange-600 bg-orange-500/10 rounded-lg hover:bg-orange-500/20 transition-colors"
+                >
+                  Ver todos
+                  <ExternalLink className="h-4 w-4" />
+                </button>
+              </div>
 
-          {loading ? (
-            <div className="text-center py-8 text-text-muted">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
-              <p className="mt-4 text-sm">Cargando favores...</p>
-            </div>
-          ) : (
-            <>
-              {/* Favores activos */}
-              {activeFavors.length > 0 ? (
-                <div className="space-y-4 mb-6">
-                  <h3 className="text-base sm:text-lg font-semibold text-text-primary">Activos</h3>
-                  {activeFavors.map(favor => (
+              {pedidosActivos.length > 0 ? (
+                <div className="space-y-3">
+                  {pedidosActivos.slice(0, 3).map(pedido => (
                     <div
-                      key={favor.id}
-                      className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow duration-200"
+                      key={pedido.id}
+                      onClick={() => navigate('/uclosemeal/mis-pedidos')}
+                      className="p-4 rounded-lg border border-border hover:border-orange-500/50 transition-colors cursor-pointer"
                     >
-                      <div className="flex justify-between items-start">
-                        <div className="flex-grow">
-                          <h4 className="text-base sm:text-lg font-semibold text-text-primary mb-1">
-                            {favor.titulo}
-                          </h4>
-                          <p className="text-text-muted text-sm mb-2 line-clamp-2">
-                            {favor.descripcion}
-                          </p>
-                          <div className="flex items-center gap-3 text-xs sm:text-sm text-text-muted">
-                            <span>📅 {favor.fecha}</span>
-                            <span className="px-2 py-1 bg-emerald-500/15 text-emerald-400 rounded text-xs font-semibold">
-                              Activo
-                            </span>
-                          </div>
-                        </div>
+                      <h3 className="font-medium text-text-primary mb-1">
+                        {pedido.restaurante}
+                      </h3>
+                      <p className="text-sm text-text-muted mb-2">
+                        ${pedido.total?.toLocaleString() || pedido.precio?.toLocaleString()}
+                      </p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-text-muted">📍 {pedido.puntoEntrega}</span>
+                        <span className="text-xs text-orange-600">
+                          {pedido.estado === 'pendiente' && '⏳ Pendiente'}
+                          {pedido.estado === 'aceptado' && '✅ Aceptado'}
+                          {pedido.estado === 'en-camino' && '🚗 En camino'}
+                          {pedido.estado === 'entregado' && '📦 Entregado'}
+                        </span>
                       </div>
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-8 text-text-muted">
-                  <div className="text-4xl sm:text-5xl mb-3">📭</div>
-                  <p className="text-sm sm:text-base">No tienes favores activos</p>
+                <div className="text-center py-12">
+                  <p className="text-text-muted mb-4">No tienes pedidos activos</p>
                   <button
-                    onClick={() => navigate('/publicar')}
-                    className="mt-4 text-sm text-brand hover:underline"
+                    onClick={() => navigate('/uclosemeal')}
+                    className="text-sm text-orange-600 hover:underline"
                   >
-                    Publica tu primer favor
+                    Hacer un pedido
                   </button>
                 </div>
               )}
+            </div>
+          )}
 
-              {/* Favores completados */}
-              {completedFavors.length > 0 && (
-                <div className="space-y-4 pt-6 border-t border-border">
-                  <h3 className="text-base sm:text-lg font-semibold text-text-primary">Completados</h3>
-                  {completedFavors.map(favor => (
-                    <div
-                      key={favor.id}
-                      className="border border-border rounded-lg p-4 opacity-60"
-                    >
-                      <div className="flex justify-between items-start">
-                        <div className="flex-grow">
-                          <h4 className="text-base sm:text-lg font-semibold text-text-primary mb-1">
-                            {favor.titulo}
-                          </h4>
-                          <div className="flex items-center gap-3 text-xs sm:text-sm text-text-muted">
-                            <span>📅 {favor.fecha}</span>
-                            <span className="px-2 py-1 bg-card/70 text-text-muted rounded text-xs font-semibold">
-                              ✓ Completado
-                            </span>
-                          </div>
-                        </div>
+          {/* Calificaciones */}
+          {!loadingCalificaciones && calificaciones.length > 0 && (
+            <div className="rounded-lg border border-border bg-card p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-semibold text-text-primary">Calificaciones</h2>
+                <TrendingUp className="h-5 w-5 text-emerald-500" />
+              </div>
+
+              <div className="space-y-3">
+                {calificaciones.slice(0, 3).map((cal) => (
+                  <div key={cal.id} className="p-4 rounded-lg border border-border">
+                    <div className="flex items-start justify-between mb-2">
+                      <div>
+                        <p className="font-medium text-text-primary text-sm">{cal.calificadorNombre}</p>
+                        <p className="text-xs text-text-muted">{cal.fecha}</p>
                       </div>
+                      <StarRating rating={cal.estrellas} interactive={false} size="sm" />
                     </div>
-                  ))}
-                </div>
-              )}
-            </>
+                    {cal.comentario && (
+                      <p className="text-sm text-text-muted italic">"{cal.comentario}"</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Contactos WhatsApp */}
+          {!loading && favoresConContactos.respondidos.length > 0 && (
+            <div className="rounded-lg border border-border bg-card p-6">
+              <h2 className="text-xl font-semibold text-text-primary mb-6">Mis Contactos</h2>
+              <p className="text-sm text-text-muted mb-4">
+                Favores donde ofreciste ayuda
+              </p>
+
+              <div className="space-y-3">
+                {favoresConContactos.respondidos.slice(0, 3).map((favor) => (
+                  <div key={favor.id} className="p-4 rounded-lg border border-border">
+                    <h3 className="font-medium text-text-primary mb-2 text-sm">
+                      {favor.titulo}
+                    </h3>
+
+                    {favor.miContacto && favor.miContacto.solicitanteTelefono && (
+                      <div className="mt-3 pt-3 border-t border-border">
+                        <p className="text-xs text-text-muted mb-2">
+                          {favor.miContacto.solicitanteNombre}
+                        </p>
+                        <a
+                          href={`https://wa.me/${favor.miContacto.solicitanteTelefono.replace(/[^0-9]/g, '')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+                        >
+                          WhatsApp
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           )}
         </div>
 
-        {/* Calificaciones recibidas */}
-        {!loadingCalificaciones && calificaciones.length > 0 && (
-          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 mb-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-text-primary mb-6">
-              Calificaciones Recibidas
+        {/* Favores completados - Lista simple al final */}
+        {completedFavors.length > 0 && (
+          <div className="mt-6 rounded-lg border border-border bg-card p-6">
+            <h2 className="text-xl font-semibold text-text-primary mb-4">
+              Completados ({completedFavors.length})
             </h2>
-            <div className="space-y-4">
-              {calificaciones.map((cal) => (
-                <div
-                  key={cal.id}
-                  className="border border-border rounded-lg p-4 bg-yellow-500/5 dark:bg-yellow-500/10"
-                >
-                  <div className="flex items-start justify-between mb-2">
-                    <div>
-                      <p className="font-semibold text-text-primary">{cal.calificadorNombre}</p>
-                      <p className="text-xs text-text-muted">{cal.fecha}</p>
-                    </div>
-                    <StarRating rating={cal.estrellas} interactive={false} size="sm" />
-                  </div>
-                  {cal.comentario && (
-                    <p className="text-sm text-text-muted mt-2 italic">"{cal.comentario}"</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Mis Contactos - Favores donde respondí */}
-        {!loading && favoresConContactos.respondidos.length > 0 && (
-          <div className="bg-card rounded-lg dark:bg-card/80 shadow-md border border-border p-6 mb-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-text-primary mb-6">
-              Mis Contactos de WhatsApp
-            </h2>
-            <p className="text-sm text-text-muted mb-4">
-              Favores donde ofreciste ayuda. Aquí puedes contactar a las personas que publicaron estos favores.
-            </p>
-            <div className="space-y-4">
-              {favoresConContactos.respondidos.map((favor) => (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {completedFavors.map(favor => (
                 <div
                   key={favor.id}
-                  className="border border-border rounded-lg p-4 bg-emerald-500/5 dark:bg-emerald-500/10"
+                  className="p-3 rounded-lg border border-border bg-card/50"
                 >
-                  <h4 className="text-base sm:text-lg font-semibold text-text-primary mb-2">
+                  <p className="text-sm font-medium text-text-primary line-clamp-1 mb-1">
                     {favor.titulo}
-                  </h4>
-                  <p className="text-xs text-text-muted mb-3">Ofreciste ayuda el {favor.fecha}</p>
-
-                  {favor.miContacto && favor.miContacto.solicitanteTelefono && (
-                    <div className="rounded-lg bg-card/70 dark:bg-card/50 border border-border p-3">
-                      <p className="text-xs font-semibold text-brand mb-2">Contacto del solicitante:</p>
-                      <p className="text-sm font-medium text-text-primary mb-1">
-                        {favor.miContacto.solicitanteNombre}
-                      </p>
-                      <p className="text-xs text-text-muted mb-3">{favor.miContacto.solicitanteEmail}</p>
-                      <a
-                        href={`https://wa.me/${favor.miContacto.solicitanteTelefono.replace(/[^0-9]/g, '')}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-600 transition-colors shadow-sm"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                        Contactar por WhatsApp
-                      </a>
-                    </div>
-                  )}
+                  </p>
+                  <p className="text-xs text-text-muted">{favor.fecha}</p>
                 </div>
               ))}
             </div>
           </div>
         )}
-
-        {/* Botón de acción */}
-        <div className="text-center">
-          <button
-            onClick={() => navigate('/favores')}
-            className="px-6 sm:px-8 py-2 sm:py-3 text-sm sm:text-base font-medium text-white bg-[rgb(var(--brand))] rounded-md hover:bg-[rgb(var(--brand-hover))] transition-smooth shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
-          >
-            Ver Todos los Favores
-          </button>
-        </div>
       </div>
 
-      {/* Modal para agregar WhatsApp */}
+      {/* Modal para agregar WhatsApp - Minimalista */}
       {showPhoneModal && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
           onClick={() => setShowPhoneModal(false)}
         >
           <div
-            className="bg-card rounded-2xl border border-border shadow-2xl dark:bg-card/95 max-w-md w-full p-6"
+            className="bg-card rounded-lg border border-border shadow-2xl max-w-md w-full p-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <h3 className="text-xl font-bold text-text-primary mb-4">
-              Agregar Número de WhatsApp
+            <h3 className="text-xl font-semibold text-text-primary mb-2">
+              Agregar WhatsApp
             </h3>
-            <p className="text-sm text-text-muted mb-4">
-              Este número solo será visible para personas con las que te conectes a través de favores.
+            <p className="text-sm text-text-muted mb-6">
+              Solo será visible para personas con las que te conectes
             </p>
             <input
               type="tel"
@@ -531,23 +474,23 @@ const Perfil = () => {
                   setPhoneNumber(cleaned);
                 }
               }}
-              placeholder="+56912345678 (11 dígitos)"
+              placeholder="+56912345678"
               maxLength={12}
-              className="w-full px-4 py-2 rounded-lg border border-border bg-canvas text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 mb-4"
+              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand mb-2"
             />
-            <p className="text-xs text-text-muted mb-4">
+            <p className="text-xs text-text-muted mb-6">
               Formato: +569 seguido de 8 dígitos
             </p>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowPhoneModal(false)}
-                className="flex-1 px-4 py-2 text-sm font-semibold text-text-muted border border-border rounded-lg hover:bg-card/80 transition-colors"
+                className="flex-1 px-4 py-2 text-sm font-medium text-text-muted border border-border rounded-lg hover:bg-card/80 transition-colors"
               >
                 Cancelar
               </button>
               <button
                 onClick={handleSavePhone}
-                className="flex-1 px-4 py-2 text-sm font-semibold text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors shadow-sm"
+                className="flex-1 px-4 py-2 text-sm font-medium text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors"
               >
                 Guardar
               </button>
