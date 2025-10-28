@@ -43,9 +43,11 @@ export const AuthProvider = ({ children }) => {
               descripcion: userData.descripcion || '',
               rol: userData.rol || 'normal', // Campo rol agregado
               reputacion: userData.reputacion || 5.0,
+              totalCalificaciones: userData.totalCalificaciones || 0,
               favoresPublicados: userData.favoresPublicados || [],
               favoresCompletados: userData.favoresCompletados || [],
               fechaRegistro: userData.fechaRegistro,
+              fotoPerfil: userData.fotoPerfil || null, // Foto de perfil de Firestore
               // Propiedades de Firebase Auth
               photoURL: user.photoURL,
               emailVerified: user.emailVerified,

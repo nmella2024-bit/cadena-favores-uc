@@ -145,9 +145,10 @@ const Perfil = () => {
 
     try {
       setUploadingPhoto(true);
-      await uploadProfilePicture(currentUser.uid, file);
+      const photoURL = await uploadProfilePicture(currentUser.uid, file);
       alert('Foto de perfil actualizada exitosamente');
-      window.location.reload(); // Recargar para mostrar la nueva foto
+      // Recargar para actualizar el AuthContext con la nueva foto
+      window.location.reload();
     } catch (error) {
       console.error('Error al subir foto:', error);
       alert(error.message || 'Error al subir la foto. Intenta nuevamente.');
