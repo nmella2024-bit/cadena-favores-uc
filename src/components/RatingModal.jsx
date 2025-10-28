@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { X, Star, Loader2 } from 'lucide-react';
-import { calificarUsuario } from '../services/userService';
+import { calificarUsuario } from '../services/ratingService';
 
 const RatingModal = ({ isOpen, onClose, ayudanteId, ayudanteNombre, onRatingComplete }) => {
   const [rating, setRating] = useState(0);

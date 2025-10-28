@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { CalendarDays, Link2, Tag, UserRound, MessageCircle, X, CheckCircle, Star } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
-import { eliminarFavor, asociarAyudante, finalizarFavor } from '../services/favorService';
+import { eliminarFavor, ofrecerAyuda, finalizarFavor } from '../services/favorService';
 import { getUserData } from '../services/userService';
 import PrimaryButton from './ui/PrimaryButton';
 import GhostButton from './ui/GhostButton';
@@ -49,40 +49,18 @@ const FavorCard = ({ favor, className }) => {
       return;
     }
 
-    if (window.confirm('¿Deseas ofrecer ayuda con este favor? Se mostrará la información de contacto del solicitante para que puedas coordinar por WhatsApp.')) {
+    if (window.confirm('¿Deseas ofrecer ayuda con este favor? El solicitante podrá ver tu oferta y aceptarte.')) {
       try {
         setLoadingContact(true);
-        // Obtener información del solicitante
-        const solicitanteData = await getUserData(favor.usuarioId);
 
-        if (!solicitanteData) {
-          alert('No se pudo obtener la información del solicitante.');
-          return;
-        }
+        // Registrar oferta de ayuda usando el nuevo sistema
+        await ofrecerAyuda(favor.id, currentUser);
 
-        if (!solicitanteData.telefono) {
-          alert('El solicitante aún no ha agregado un número de WhatsApp. No se puede establecer contacto en este momento.');
-          return;
-        }
-
-        // Asociar al ayudante con el favor (IMPORTANTE para poder calificar después)
-        // Solo si no hay ayudante previo
-        if (!favor.ayudanteId) {
-          try {
-            await asociarAyudante(favor.id, currentUser.uid, currentUser.nombre || currentUser.displayName);
-            console.log('✅ Ayudante asociado correctamente');
-          } catch (asociarError) {
-            console.error('Error al asociar ayudante:', asociarError);
-            alert('⚠️ No se pudo registrar tu ayuda en el sistema (pero puedes contactar igual). El creador no podrá calificarte después.');
-          }
-        }
-
-        // Mostrar modal con la información de contacto
-        setContactInfo(solicitanteData);
-        setShowContactModal(true);
+        alert('¡Gracias por tu ayuda! El solicitante podrá ver tu oferta.');
+        window.location.reload(); // Recargar para ver los cambios
       } catch (error) {
-        console.error('Error al obtener contacto:', error);
-        alert('Error al obtener la información de contacto. Intenta nuevamente.');
+        console.error('Error al ofrecer ayuda:', error);
+        alert(error.message || 'Error al ofrecer ayuda. Intenta nuevamente.');
       } finally {
         setLoadingContact(false);
       }
@@ -203,8 +181,9 @@ const FavorCard = ({ favor, className }) => {
               type="button"
               onClick={handleRespond}
               className="px-4 py-2 text-sm"
+              disabled={favor.ayudantes?.some(a => a.idUsuario === currentUser.uid) || loadingContact}
             >
-              Ofrecer ayuda
+              {favor.ayudantes?.some(a => a.idUsuario === currentUser.uid) ? 'Ya ofreciste ayuda' : loadingContact ? 'Registrando...' : 'Ofrecer ayuda'}
             </PrimaryButton>
           )}
 

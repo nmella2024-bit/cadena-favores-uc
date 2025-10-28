@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import {
-  obtenerFavor,
+  obtenerFavorPorId,
   aceptarAyudante,
   completarFavorConAyudante
 } from '../services/favorService';
@@ -51,13 +51,25 @@ const FavorDetalle = () => {
           ...docSnapshot.data(),
         };
 
+        console.log('🔍 [FavorDetalle] Favor cargado:', {
+          favorId: docSnapshot.id,
+          titulo: favorData.titulo,
+          creadorId: favorData.usuarioId,
+          currentUserId: currentUser.uid,
+          ayudantes: favorData.ayudantes,
+          cantidadAyudantes: favorData.ayudantes?.length || 0,
+          ayudanteSeleccionado: favorData.ayudanteSeleccionado
+        });
+
         // Verificar que el usuario actual sea el creador del favor
         if (favorData.usuarioId !== currentUser.uid) {
+          console.log('❌ [FavorDetalle] Usuario no es el creador');
           setError('No tienes permiso para ver esta página');
           setLoading(false);
           return;
         }
 
+        console.log('✅ [FavorDetalle] Usuario verificado como creador');
         setFavor(favorData);
         setLoading(false);
       },
@@ -74,7 +86,7 @@ const FavorDetalle = () => {
 
   const cargarFavor = async () => {
     try {
-      const favorData = await obtenerFavor(id);
+      const favorData = await obtenerFavorPorId(id);
 
       if (!favorData) {
         setError('Favor no encontrado');
