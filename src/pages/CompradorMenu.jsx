@@ -1,3 +1,8 @@
+/*
+ * TEMPORALMENTE DESHABILITADO: UCloseMeal
+ * Este componente está deshabilitado pero se mantiene para una posible implementación futura.
+ * Para reactivar: descomentar rutas en App.jsx y entrada en Navbar.jsx
+ */
 import React, { useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Plus, Minus, ShoppingCart, Trash2 } from 'lucide-react';

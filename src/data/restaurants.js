@@ -1,4 +1,9 @@
 /**
+ * TEMPORALMENTE DESHABILITADO: UCloseMeal
+ * Datos de restaurantes del campus UC para la funcionalidad UCloseMeal.
+ * Este archivo está deshabilitado pero se mantiene para una posible implementación futura.
+ * Para reactivar: descomentar rutas en App.jsx y entrada en Navbar.jsx
+ *
  * Lista de restaurantes disponibles en el campus UC
  */
 export const restaurants = [

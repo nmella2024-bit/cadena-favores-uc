@@ -1,3 +1,10 @@
+/**
+ * TEMPORALMENTE DESHABILITADO: UCloseMeal
+ * Servicio de gestión de pedidos para la funcionalidad UCloseMeal.
+ * Este archivo está deshabilitado pero se mantiene para una posible implementación futura.
+ * Todas las funciones de backend están intactas y listas para ser utilizadas.
+ * Para reactivar: descomentar rutas en App.jsx y entrada en Navbar.jsx
+ */
 import {
   collection,
   addDoc,

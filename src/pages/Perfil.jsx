@@ -4,7 +4,8 @@ import { useAuth } from '../context/AuthContext';
 import { obtenerFavoresPorUsuario, obtenerFavoresConContactos } from '../services/favorService';
 import { updateUserData, uploadProfilePicture } from '../services/userService';
 import { obtenerCalificacionesUsuario } from '../services/ratingService';
-import { obtenerMisPedidos } from '../services/orderService';
+// TEMPORALMENTE DESHABILITADO: UCloseMeal
+// import { obtenerMisPedidos } from '../services/orderService';
 import StarRating from '../components/StarRating';
 import { Plus, ExternalLink, Star, AlertCircle, TrendingUp, Camera, User } from 'lucide-react';
 
@@ -18,8 +19,9 @@ const Perfil = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [calificaciones, setCalificaciones] = useState([]);
   const [loadingCalificaciones, setLoadingCalificaciones] = useState(true);
-  const [pedidos, setPedidos] = useState([]);
-  const [loadingPedidos, setLoadingPedidos] = useState(true);
+  // TEMPORALMENTE DESHABILITADO: UCloseMeal
+  // const [pedidos, setPedidos] = useState([]);
+  // const [loadingPedidos, setLoadingPedidos] = useState(true);
   const [uploadingPhoto, setUploadingPhoto] = useState(false);
 
   // Redirigir si no está autenticado
@@ -71,24 +73,24 @@ const Perfil = () => {
     cargarCalificaciones();
   }, [currentUser]);
 
-  // Cargar pedidos del usuario
-  useEffect(() => {
-    const cargarPedidos = async () => {
-      if (!currentUser) return;
+  // TEMPORALMENTE DESHABILITADO: UCloseMeal - Cargar pedidos del usuario
+  // useEffect(() => {
+  //   const cargarPedidos = async () => {
+  //     if (!currentUser) return;
 
-      try {
-        setLoadingPedidos(true);
-        const misPedidos = await obtenerMisPedidos(currentUser.uid);
-        setPedidos(misPedidos);
-      } catch (error) {
-        console.error('Error al cargar pedidos:', error);
-      } finally {
-        setLoadingPedidos(false);
-      }
-    };
+  //     try {
+  //       setLoadingPedidos(true);
+  //       const misPedidos = await obtenerMisPedidos(currentUser.uid);
+  //       setPedidos(misPedidos);
+  //     } catch (error) {
+  //       console.error('Error al cargar pedidos:', error);
+  //     } finally {
+  //       setLoadingPedidos(false);
+  //     }
+  //   };
 
-    cargarPedidos();
-  }, [currentUser]);
+  //   cargarPedidos();
+  // }, [currentUser]);
 
   if (!currentUser) {
     return null;
@@ -98,8 +100,8 @@ const Perfil = () => {
   const activeFavors = userFavors.filter(f => f.estado === 'activo');
   const completedFavors = userFavors.filter(f => f.estado === 'completado');
 
-  // Estadísticas de pedidos
-  const pedidosActivos = pedidos.filter(p => ['pendiente', 'aceptado', 'en-camino', 'entregado'].includes(p.estado));
+  // TEMPORALMENTE DESHABILITADO: UCloseMeal - Estadísticas de pedidos
+  // const pedidosActivos = pedidos.filter(p => ['pendiente', 'aceptado', 'en-camino', 'entregado'].includes(p.estado));
 
   // Función para guardar el teléfono
   const handleSavePhone = async () => {
@@ -301,7 +303,8 @@ const Perfil = () => {
             </div>
           </div>
 
-          <div
+          {/* TEMPORALMENTE DESHABILITADO: UCloseMeal - Tarjeta de pedidos */}
+          {/* <div
             onClick={() => navigate('/uclosemeal/mis-pedidos')}
             className="group relative overflow-hidden rounded-lg border border-border bg-card p-6 transition-all hover:border-orange-500/50 cursor-pointer"
           >
@@ -312,7 +315,7 @@ const Perfil = () => {
                 {loadingPedidos ? '—' : pedidosActivos.length}
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Secciones en grid */}
@@ -391,8 +394,8 @@ const Perfil = () => {
             )}
           </div>
 
-          {/* Pedidos UCloseMeal */}
-          {!loadingPedidos && pedidos.length > 0 && (
+          {/* TEMPORALMENTE DESHABILITADO: UCloseMeal - Sección de pedidos */}
+          {/* {!loadingPedidos && pedidos.length > 0 && (
             <div className="rounded-lg border border-border bg-card p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-text-primary">UCloseMeal</h2>
@@ -443,7 +446,7 @@ const Perfil = () => {
                 </div>
               )}
             </div>
-          )}
+          )} */}
 
           {/* Calificaciones */}
           {!loadingCalificaciones && calificaciones.length > 0 && (

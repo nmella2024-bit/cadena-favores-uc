@@ -16,14 +16,14 @@ import Anuncios from './pages/Anuncios';
 import Marketplace from './pages/Marketplace';
 import Material from './pages/Material';
 
-// UCloseMeal Pages
-import UCloseMealRoleSelect from './pages/UCloseMealRoleSelect';
-import CompradorRestaurantes from './pages/CompradorRestaurantes';
-import CompradorMenu from './pages/CompradorMenu';
-import CompradorCheckout from './pages/CompradorCheckout';
-import CompradorConfirmacion from './pages/CompradorConfirmacion';
-import RepartidorDashboard from './pages/RepartidorDashboard';
-import MisPedidosUCloseMeal from './pages/MisPedidosUCloseMeal';
+// UCloseMeal Pages - TEMPORALMENTE DESHABILITADO
+// import UCloseMealRoleSelect from './pages/UCloseMealRoleSelect';
+// import CompradorRestaurantes from './pages/CompradorRestaurantes';
+// import CompradorMenu from './pages/CompradorMenu';
+// import CompradorCheckout from './pages/CompradorCheckout';
+// import CompradorConfirmacion from './pages/CompradorConfirmacion';
+// import RepartidorDashboard from './pages/RepartidorDashboard';
+// import MisPedidosUCloseMeal from './pages/MisPedidosUCloseMeal';
 
 function App() {
   return (
@@ -52,14 +52,14 @@ function App() {
             {/* Material */}
             <Route path="/material" element={<Material />} />
 
-            {/* UCloseMeal */}
-            <Route path="/uclosemeal" element={<UCloseMealRoleSelect />} />
-            <Route path="/uclosemeal/comprador" element={<CompradorRestaurantes />} />
-            <Route path="/uclosemeal/comprador/restaurante/:id" element={<CompradorMenu />} />
-            <Route path="/uclosemeal/comprador/checkout" element={<CompradorCheckout />} />
-            <Route path="/uclosemeal/comprador/confirmacion" element={<CompradorConfirmacion />} />
-            <Route path="/uclosemeal/repartidor" element={<RepartidorDashboard />} />
-            <Route path="/uclosemeal/mis-pedidos" element={<MisPedidosUCloseMeal />} />
+            {/* UCloseMeal - TEMPORALMENTE DESHABILITADO */}
+            {/* <Route path="/uclosemeal" element={<UCloseMealRoleSelect />} /> */}
+            {/* <Route path="/uclosemeal/comprador" element={<CompradorRestaurantes />} /> */}
+            {/* <Route path="/uclosemeal/comprador/restaurante/:id" element={<CompradorMenu />} /> */}
+            {/* <Route path="/uclosemeal/comprador/checkout" element={<CompradorCheckout />} /> */}
+            {/* <Route path="/uclosemeal/comprador/confirmacion" element={<CompradorConfirmacion />} /> */}
+            {/* <Route path="/uclosemeal/repartidor" element={<RepartidorDashboard />} /> */}
+            {/* <Route path="/uclosemeal/mis-pedidos" element={<MisPedidosUCloseMeal />} /> */}
 
             {/* Perfil */}
             <Route path="/perfil" element={<Perfil />} />

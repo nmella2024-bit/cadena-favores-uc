@@ -24,7 +24,8 @@ const Navbar = () => {
         { label: 'Publicar favor', to: '/publicar' },
       ]
     },
-    { label: 'UCloseMeal', to: '/uclosemeal', icon: UtensilsCrossed },
+    // TEMPORALMENTE DESHABILITADO: UCloseMeal
+    // { label: 'UCloseMeal', to: '/uclosemeal', icon: UtensilsCrossed },
     { label: 'Material', to: '/material', icon: BookOpen },
   ];
 
