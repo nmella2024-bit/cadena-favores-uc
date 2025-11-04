@@ -30,10 +30,34 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
       setLoadingInfo(true);
       setError(null);
 
+      console.log('🔍 [CalificarUsuarioModal] Verificando permisos:', {
+        favorId: favor?.id,
+        favorEstado: favor?.estado,
+        userId: currentUser?.uid,
+        favor: favor
+      });
+
+      // Validar que tenemos los datos necesarios
+      if (!favor?.id) {
+        console.error('❌ [CalificarUsuarioModal] No hay ID del favor');
+        setError('No se pudo obtener la información del favor');
+        setLoadingInfo(false);
+        return;
+      }
+
+      if (!currentUser?.uid) {
+        console.error('❌ [CalificarUsuarioModal] No hay UID del usuario');
+        setError('No se pudo obtener la información del usuario');
+        setLoadingInfo(false);
+        return;
+      }
+
       // Usar la función simplificada para favores finalizados
       const info = favor.estado === 'finalizado'
         ? await verificarPuedeCalificarFinalizado(favor.id, currentUser.uid)
         : await verificarPuedeCalificar(favor.id, currentUser.uid);
+
+      console.log('✅ [CalificarUsuarioModal] Resultado de verificación:', info);
 
       if (!info.puedeCalificar) {
         setError(info.razon);
@@ -42,7 +66,7 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
       }
     } catch (error) {
       console.error('Error al verificar:', error);
-      setError('Error al verificar si puedes calificar');
+      setError(error.message || 'Error al verificar si puedes calificar');
     } finally {
       setLoadingInfo(false);
     }

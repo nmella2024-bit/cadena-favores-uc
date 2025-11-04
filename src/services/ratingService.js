@@ -219,6 +219,11 @@ export const obtenerCalificacionesUsuario = async (userId) => {
  */
 export const verificarPuedeCalificar = async (favorId, userId) => {
   try {
+    // Validar parámetros
+    if (!favorId || !userId) {
+      throw new Error('Faltan parámetros necesarios (favorId o userId)');
+    }
+
     const favorRef = doc(db, 'favores', favorId);
     const favorDoc = await getDoc(favorRef);
 
@@ -248,13 +253,22 @@ export const verificarPuedeCalificar = async (favorId, userId) => {
       };
     }
 
+    // Verificar que exista el ID del ayudante
+    const usuarioACalificarId = confirmaciones.ayudante?.usuarioId;
+    if (!usuarioACalificarId) {
+      return {
+        puedeCalificar: false,
+        razon: 'No se pudo obtener la información del ayudante',
+        sinAyudante: true,
+      };
+    }
+
     // El solicitante califica al ayudante
     const rolUsuario = 'solicitante';
-    const usuarioACalificarId = confirmaciones.ayudante?.usuarioId;
 
     // Obtener nombre del ayudante
     const ayudanteDoc = await getDoc(doc(db, 'usuarios', usuarioACalificarId));
-    const usuarioACalificarNombre = ayudanteDoc.data()?.nombre || 'Usuario';
+    const usuarioACalificarNombre = ayudanteDoc.exists() ? ayudanteDoc.data()?.nombre || 'Usuario' : 'Usuario';
 
     // Verificar si ya calificó
     const calificacionesRef = collection(db, 'calificaciones');
@@ -294,14 +308,28 @@ export const verificarPuedeCalificar = async (favorId, userId) => {
  */
 export const verificarPuedeCalificarFinalizado = async (favorId, userId) => {
   try {
+    console.log('🔍 [verificarPuedeCalificarFinalizado] Iniciando verificación:', { favorId, userId });
+
+    // Validar parámetros
+    if (!favorId || !userId) {
+      console.error('❌ [verificarPuedeCalificarFinalizado] Faltan parámetros:', { favorId, userId });
+      throw new Error('Faltan parámetros necesarios (favorId o userId)');
+    }
+
     const favorRef = doc(db, 'favores', favorId);
     const favorDoc = await getDoc(favorRef);
 
     if (!favorDoc.exists()) {
+      console.error('❌ [verificarPuedeCalificarFinalizado] Favor no existe:', favorId);
       throw new Error('El favor no existe');
     }
 
     const favorData = favorDoc.data();
+    console.log('📄 [verificarPuedeCalificarFinalizado] Datos del favor:', {
+      estado: favorData.estado,
+      usuarioId: favorData.usuarioId,
+      ayudanteId: favorData.ayudanteId
+    });
 
     // Verificar que el favor esté finalizado
     if (favorData.estado !== 'finalizado') {
@@ -322,6 +350,7 @@ export const verificarPuedeCalificarFinalizado = async (favorId, userId) => {
 
     // SOLO el solicitante puede calificar
     if (favorData.usuarioId !== userId) {
+      console.log('❌ [verificarPuedeCalificarFinalizado] Usuario no es solicitante');
       return {
         puedeCalificar: false,
         razon: 'Solo el solicitante del favor puede calificar al ayudante',
@@ -329,13 +358,27 @@ export const verificarPuedeCalificarFinalizado = async (favorId, userId) => {
       };
     }
 
+    // Verificar que existe ayudanteId
+    if (!favorData.ayudanteId) {
+      console.error('❌ [verificarPuedeCalificarFinalizado] No hay ayudanteId');
+      return {
+        puedeCalificar: false,
+        razon: 'No se registró quién ayudó con este favor',
+        sinAyudante: true,
+      };
+    }
+
     // El solicitante califica al ayudante
     const rolUsuario = 'solicitante';
     const usuarioACalificarId = favorData.ayudanteId;
 
+    console.log('👤 [verificarPuedeCalificarFinalizado] Obteniendo datos del ayudante:', usuarioACalificarId);
+
     // Obtener nombre del ayudante
-    const ayudanteDoc = await getDoc(doc(db, 'usuarios', favorData.ayudanteId));
+    const ayudanteDoc = await getDoc(doc(db, 'usuarios', usuarioACalificarId));
     const usuarioACalificarNombre = ayudanteDoc.exists() ? ayudanteDoc.data()?.nombre || 'Usuario' : 'Usuario';
+
+    console.log('✅ [verificarPuedeCalificarFinalizado] Nombre del ayudante:', usuarioACalificarNombre);
 
     // Verificar si ya calificó
     const calificacionesRef = collection(db, 'calificaciones');
