@@ -557,7 +557,7 @@ export const aceptarAyudante = async (favorId, solicitanteId, ayudanteId) => {
 };
 
 /**
- * Completa un favor y lo marca como finalizado
+ * Completa un favor y lo marca como finalizado (con ayudante)
  * @param {string} favorId - ID del favor
  * @param {string} solicitanteId - ID del usuario solicitante
  * @returns {Promise<void>}
@@ -573,25 +573,50 @@ export const completarFavorConAyudante = async (favorId, solicitanteId) => {
 
     const favorData = favorDoc.data();
 
+    console.log('🔍 [completarFavorConAyudante] Datos del favor:', {
+      estado: favorData.estado,
+      ayudanteSeleccionado: favorData.ayudanteSeleccionado,
+      ayudanteId: favorData.ayudanteId,
+      ayudantes: favorData.ayudantes
+    });
+
     // Verificar que quien completa es el creador
     if (favorData.usuarioId !== solicitanteId) {
       throw new Error('Solo el creador del favor puede marcarlo como completado');
     }
 
-    // Verificar que esté en proceso
-    if (favorData.estado !== 'en_proceso') {
-      throw new Error('El favor debe estar en proceso para completarlo');
+    // Preparar actualización
+    const updateData = {
+      estado: 'finalizado',
+      fechaFinalizacion: serverTimestamp(),
+      updatedAt: serverTimestamp(),
+    };
+
+    // Si hay ayudanteSeleccionado, usar esos datos
+    if (favorData.ayudanteSeleccionado) {
+      updateData.ayudanteId = favorData.ayudanteSeleccionado.idUsuario;
+      updateData.ayudanteNombre = favorData.ayudanteSeleccionado.nombre;
+      console.log('✅ [completarFavorConAyudante] Usando ayudanteSeleccionado:', {
+        ayudanteId: updateData.ayudanteId,
+        ayudanteNombre: updateData.ayudanteNombre
+      });
+    }
+    // Si no hay ayudanteId pero hay ayudantes en el array, tomar el primero
+    else if (!favorData.ayudanteId && favorData.ayudantes && favorData.ayudantes.length > 0) {
+      const primerAyudante = favorData.ayudantes[0];
+      updateData.ayudanteId = primerAyudante.idUsuario;
+      updateData.ayudanteNombre = primerAyudante.nombre;
+      console.log('✅ [completarFavorConAyudante] Usando primer ayudante:', {
+        ayudanteId: updateData.ayudanteId,
+        ayudanteNombre: updateData.ayudanteNombre
+      });
     }
 
-    await updateDoc(favorRef, {
-      estado: 'completado',
-      fechaCompletado: serverTimestamp(),
-      updatedAt: serverTimestamp(),
-    });
+    await updateDoc(favorRef, updateData);
 
-    console.log('Favor completado exitosamente');
+    console.log('✅ [completarFavorConAyudante] Favor finalizado exitosamente');
   } catch (error) {
-    console.error('Error al completar favor:', error);
+    console.error('❌ [completarFavorConAyudante] Error:', error);
     throw error;
   }
 };
