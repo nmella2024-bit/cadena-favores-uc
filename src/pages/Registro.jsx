@@ -165,15 +165,23 @@ const Registro = () => {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <TextField
+            <SelectField
               id="carrera"
               name="carrera"
               label="Carrera *"
-              placeholder="Ej: Ingeniería, Derecho"
               value={formData.carrera}
               onChange={handleChange}
               required
-            />
+            >
+              <option value="">Selecciona tu carrera</option>
+              <option value="Ingeniería Civil">Ingeniería Civil</option>
+              <option value="Ingeniería Comercial">Ingeniería Comercial</option>
+              <option value="Derecho">Derecho</option>
+              <option value="Medicina">Medicina</option>
+              <option value="Enfermería">Enfermería</option>
+              <option value="College">College</option>
+              <option value="Construcción Civil">Construcción Civil</option>
+            </SelectField>
 
             <SelectField id="año" name="año" label="Año *" value={formData.año} onChange={handleChange} required>
               <option value="">Selecciona</option>

@@ -129,15 +129,21 @@ const Anuncios = () => {
   };
 
   const handleFijarAnuncio = async (anuncioId, nuevoEstado) => {
+    // Validación adicional: verificar que el usuario sea exclusivo
+    if (!esUsuarioExclusivo) {
+      alert('Solo los usuarios con rol exclusivo pueden fijar anuncios.');
+      return;
+    }
+
     try {
-      await fijarAnuncio(anuncioId, nuevoEstado);
+      await fijarAnuncio(anuncioId, nuevoEstado, currentUser);
       // Actualizar el estado local
       setAnuncios(anuncios.map(a =>
         a.id === anuncioId ? { ...a, fijado: nuevoEstado } : a
       ));
     } catch (err) {
       console.error('Error al fijar/desfijar anuncio:', err);
-      alert('Error al actualizar el anuncio. Intenta nuevamente.');
+      alert(err.message || 'Error al actualizar el anuncio. Intenta nuevamente.');
     }
   };
 

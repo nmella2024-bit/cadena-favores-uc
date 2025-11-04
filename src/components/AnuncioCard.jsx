@@ -103,6 +103,7 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
             {/* Botones exclusivos para usuarios con rol exclusivo */}
             {esExclusivo && (
               <>
+                {/* Botón de fijar - solo para usuarios con rol exclusivo */}
                 {onFijar && (
                   <button
                     onClick={() => onFijar(anuncio.id, !anuncio.fijado)}
@@ -111,7 +112,7 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
                         ? 'border-yellow-500/30 bg-yellow-500/10 text-yellow-600 hover:bg-yellow-500/20'
                         : 'border-border bg-background text-text-muted hover:bg-border/50'
                     }`}
-                    title={anuncio.fijado ? 'Desfijar' : 'Fijar'}
+                    title={anuncio.fijado ? 'Desfijar anuncio' : 'Fijar anuncio'}
                   >
                     {anuncio.fijado ? (
                       <PinOff className="h-4 w-4" />
@@ -121,11 +122,12 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
                   </button>
                 )}
 
+                {/* Botón de eliminar - solo para usuarios con rol exclusivo */}
                 {onEliminar && (
                   <button
                     onClick={() => onEliminar(anuncio.id)}
                     className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/20"
-                    title="Eliminar"
+                    title="Eliminar anuncio"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>

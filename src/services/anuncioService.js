@@ -148,12 +148,20 @@ export const eliminarAnuncio = async (anuncioId) => {
 
 /**
  * Fija o desfija un anuncio
+ * NOTA: Esta función debe ser llamada solo por usuarios con rol 'exclusivo'
+ * La validación del rol debe hacerse en el componente antes de llamar esta función
  * @param {string} anuncioId - ID del anuncio
  * @param {boolean} fijado - Estado de fijado
+ * @param {Object} usuario - Usuario que realiza la acción (opcional, para validación)
  * @returns {Promise<void>}
  */
-export const fijarAnuncio = async (anuncioId, fijado) => {
+export const fijarAnuncio = async (anuncioId, fijado, usuario = null) => {
   try {
+    // Validación adicional: solo usuarios con rol 'exclusivo' pueden fijar anuncios
+    if (usuario && usuario.rol !== 'exclusivo') {
+      throw new Error('Solo los usuarios con rol exclusivo pueden fijar anuncios');
+    }
+
     const docRef = doc(db, 'anuncios', anuncioId);
     await updateDoc(docRef, { fijado });
   } catch (error) {
