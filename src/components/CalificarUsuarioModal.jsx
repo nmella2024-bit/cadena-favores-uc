@@ -33,6 +33,17 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
 
     if (isOpen && favor && currentUser) {
       verificarSiPuedeCalificar();
+    } else if (isOpen) {
+      console.warn('⚠️ [CalificarUsuarioModal] Modal abierto pero faltan datos:', {
+        hasFavor: !!favor,
+        hasCurrentUser: !!currentUser
+      });
+      setLoadingInfo(false);
+      if (!favor) {
+        setError('No se encontró información del favor');
+      } else if (!currentUser) {
+        setError('No se encontró información del usuario');
+      }
     }
   }, [isOpen, favor, currentUser]);
 
@@ -164,7 +175,11 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
     }
   };
 
-  if (!favor) return null;
+  // Si no hay favor, no renderizar el modal
+  if (!favor) {
+    console.warn('⚠️ [CalificarUsuarioModal] No hay favor, no se renderiza el modal');
+    return null;
+  }
 
   return (
     <Dialog open={isOpen} onClose={onClose} className="relative z-50">

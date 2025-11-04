@@ -46,9 +46,14 @@ const FavorDetalle = () => {
           return;
         }
 
+        const data = docSnapshot.data();
         const favorData = {
           id: docSnapshot.id,
-          ...docSnapshot.data(),
+          ...data,
+          // Convertir Timestamps a strings para evitar errores de React
+          fecha: data.fecha?.toDate?.()?.toLocaleDateString('es-CL') || 'Fecha desconocida',
+          fechaFinalizacion: data.fechaFinalizacion?.toDate?.()?.toLocaleDateString('es-CL'),
+          fechaCompletado: data.fechaCompletado?.toDate?.()?.toLocaleDateString('es-CL'),
         };
 
         console.log('🔍 [FavorDetalle] Favor cargado:', {
