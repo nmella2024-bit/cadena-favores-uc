@@ -85,6 +85,38 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
       return;
     }
 
+    console.log('📝 [CalificarUsuarioModal] Preparando datos para calificar:', {
+      favorId: favor.id,
+      calificadorId: currentUser.uid,
+      calificadorNombre: currentUser.nombre,
+      calificadoId: infoCalificacion.usuarioACalificarId,
+      calificadoNombre: infoCalificacion.usuarioACalificarNombre,
+      estrellas,
+      rolCalificador: infoCalificacion.rolUsuario,
+      infoCalificacion: infoCalificacion
+    });
+
+    // Validar que tenemos todos los datos necesarios
+    if (!favor?.id) {
+      alert('Error: No se encontró el ID del favor');
+      return;
+    }
+
+    if (!currentUser?.uid) {
+      alert('Error: No se encontró tu información de usuario');
+      return;
+    }
+
+    if (!infoCalificacion.usuarioACalificarId) {
+      alert('Error: No se pudo obtener el ID del usuario a calificar');
+      return;
+    }
+
+    if (!infoCalificacion.usuarioACalificarNombre) {
+      alert('Error: No se pudo obtener el nombre del usuario a calificar');
+      return;
+    }
+
     try {
       setLoading(true);
 
@@ -98,6 +130,8 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
         comentario: comentario.trim(),
         rolCalificador: infoCalificacion.rolUsuario,
       });
+
+      console.log('✅ [CalificarUsuarioModal] Calificación enviada exitosamente');
 
       alert('¡Calificación enviada exitosamente!');
 

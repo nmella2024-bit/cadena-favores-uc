@@ -84,6 +84,31 @@ export const calificarUsuario = async (calificacionData) => {
       rolCalificador, // 'solicitante' o 'ayudante'
     } = calificacionData;
 
+    console.log('🔍 [calificarUsuario] Iniciando calificación:', {
+      favorId,
+      calificadorId,
+      calificadoId,
+      estrellas,
+      rolCalificador
+    });
+
+    // Validar que todos los campos requeridos estén presentes
+    if (!favorId) {
+      throw new Error('El ID del favor es requerido');
+    }
+    if (!calificadorId) {
+      throw new Error('El ID del calificador es requerido');
+    }
+    if (!calificadoId) {
+      throw new Error('El ID del calificado es requerido');
+    }
+    if (!calificadorNombre) {
+      throw new Error('El nombre del calificador es requerido');
+    }
+    if (!calificadoNombre) {
+      throw new Error('El nombre del calificado es requerido');
+    }
+
     // Validar que las estrellas estén entre 1 y 5
     if (estrellas < 1 || estrellas > 5) {
       throw new Error('La calificación debe estar entre 1 y 5 estrellas');
@@ -97,6 +122,8 @@ export const calificarUsuario = async (calificacionData) => {
       where('calificadorId', '==', calificadorId)
     );
     const existentes = await getDocs(q);
+
+    console.log('✅ [calificarUsuario] Verificación de duplicados completada');
 
     if (!existentes.empty) {
       throw new Error('Ya has calificado a este usuario por este favor');

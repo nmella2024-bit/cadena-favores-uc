@@ -282,22 +282,41 @@ export const finalizarFavor = async (favorId, solicitanteId) => {
 
     const favorData = favorDoc.data();
 
+    console.log('🔍 [finalizarFavor] Datos del favor:', {
+      ayudanteId: favorData.ayudanteId,
+      ayudantes: favorData.ayudantes,
+      cantidadAyudantes: favorData.ayudantes?.length || 0
+    });
+
     // Verificar que quien finaliza es el creador
     if (favorData.usuarioId !== solicitanteId) {
       throw new Error('Solo el creador del favor puede marcarlo como finalizado');
     }
 
-    // Actualizar estado a finalizado
-    // No requiere que haya ayudante, puede finalizar de todas formas
-    await updateDoc(favorRef, {
+    // Preparar actualización
+    const updateData = {
       estado: 'finalizado',
       fechaFinalizacion: serverTimestamp(),
       updatedAt: serverTimestamp(),
-    });
+    };
 
-    console.log('Favor finalizado exitosamente');
+    // Si no hay ayudanteId pero hay ayudantes en el array, tomar el primero
+    if (!favorData.ayudanteId && favorData.ayudantes && favorData.ayudantes.length > 0) {
+      const primerAyudante = favorData.ayudantes[0];
+      updateData.ayudanteId = primerAyudante.idUsuario;
+      updateData.ayudanteNombre = primerAyudante.nombre;
+      console.log('✅ [finalizarFavor] Asignando primer ayudante:', {
+        ayudanteId: primerAyudante.idUsuario,
+        ayudanteNombre: primerAyudante.nombre
+      });
+    }
+
+    // Actualizar estado a finalizado
+    await updateDoc(favorRef, updateData);
+
+    console.log('✅ [finalizarFavor] Favor finalizado exitosamente');
   } catch (error) {
-    console.error('Error al finalizar favor:', error);
+    console.error('❌ [finalizarFavor] Error:', error);
     throw error;
   }
 };
