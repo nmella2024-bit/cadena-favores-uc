@@ -44,6 +44,7 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
       console.log('🔍 [CalificarUsuarioModal] Verificando permisos:', {
         favorId: favorId,
         favorEstado: favor?.estado,
+        esFinalizado: favor?.estado === 'finalizado',
         userId: currentUser?.uid,
         favorCompleto: favor
       });
@@ -63,10 +64,10 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
         return;
       }
 
-      // Usar la función simplificada para favores finalizados
-      const info = favor.estado === 'finalizado'
-        ? await verificarPuedeCalificarFinalizado(favorId, currentUser.uid)
-        : await verificarPuedeCalificar(favorId, currentUser.uid);
+      // SIEMPRE usar la función simplificada (solo para solicitantes)
+      // Ya no usamos el sistema de confirmaciones mutuas
+      console.log('🔄 [CalificarUsuarioModal] Usando verificarPuedeCalificarFinalizado');
+      const info = await verificarPuedeCalificarFinalizado(favorId, currentUser.uid);
 
       console.log('✅ [CalificarUsuarioModal] Resultado de verificación:', info);
 
