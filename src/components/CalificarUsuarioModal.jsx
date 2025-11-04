@@ -19,7 +19,18 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
   const [loadingInfo, setLoadingInfo] = useState(true);
   const [error, setError] = useState(null);
 
+  // Guardar el favorId en una constante para evitar problemas de referencia
+  const favorId = favor?.id;
+
   useEffect(() => {
+    console.log('🔍 [CalificarUsuarioModal] useEffect ejecutado:', {
+      isOpen,
+      hasFavor: !!favor,
+      favorKeys: favor ? Object.keys(favor) : [],
+      favorId: favor?.id,
+      hasCurrentUser: !!currentUser
+    });
+
     if (isOpen && favor && currentUser) {
       verificarSiPuedeCalificar();
     }
@@ -31,15 +42,15 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
       setError(null);
 
       console.log('🔍 [CalificarUsuarioModal] Verificando permisos:', {
-        favorId: favor?.id,
+        favorId: favorId,
         favorEstado: favor?.estado,
         userId: currentUser?.uid,
-        favor: favor
+        favorCompleto: favor
       });
 
       // Validar que tenemos los datos necesarios
-      if (!favor?.id) {
-        console.error('❌ [CalificarUsuarioModal] No hay ID del favor');
+      if (!favorId) {
+        console.error('❌ [CalificarUsuarioModal] No hay ID del favor', { favor });
         setError('No se pudo obtener la información del favor');
         setLoadingInfo(false);
         return;
@@ -54,8 +65,8 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
 
       // Usar la función simplificada para favores finalizados
       const info = favor.estado === 'finalizado'
-        ? await verificarPuedeCalificarFinalizado(favor.id, currentUser.uid)
-        : await verificarPuedeCalificar(favor.id, currentUser.uid);
+        ? await verificarPuedeCalificarFinalizado(favorId, currentUser.uid)
+        : await verificarPuedeCalificar(favorId, currentUser.uid);
 
       console.log('✅ [CalificarUsuarioModal] Resultado de verificación:', info);
 
@@ -86,19 +97,20 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
     }
 
     console.log('📝 [CalificarUsuarioModal] Preparando datos para calificar:', {
-      favorId: favor.id,
-      calificadorId: currentUser.uid,
-      calificadorNombre: currentUser.nombre,
-      calificadoId: infoCalificacion.usuarioACalificarId,
-      calificadoNombre: infoCalificacion.usuarioACalificarNombre,
+      favorId: favorId,
+      calificadorId: currentUser?.uid,
+      calificadorNombre: currentUser?.nombre,
+      calificadoId: infoCalificacion?.usuarioACalificarId,
+      calificadoNombre: infoCalificacion?.usuarioACalificarNombre,
       estrellas,
-      rolCalificador: infoCalificacion.rolUsuario,
-      infoCalificacion: infoCalificacion
+      rolCalificador: infoCalificacion?.rolUsuario,
+      infoCalificacionCompleta: infoCalificacion
     });
 
     // Validar que tenemos todos los datos necesarios
-    if (!favor?.id) {
+    if (!favorId) {
       alert('Error: No se encontró el ID del favor');
+      console.error('❌ favor sin ID:', favor);
       return;
     }
 
@@ -107,12 +119,12 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
       return;
     }
 
-    if (!infoCalificacion.usuarioACalificarId) {
+    if (!infoCalificacion?.usuarioACalificarId) {
       alert('Error: No se pudo obtener el ID del usuario a calificar');
       return;
     }
 
-    if (!infoCalificacion.usuarioACalificarNombre) {
+    if (!infoCalificacion?.usuarioACalificarNombre) {
       alert('Error: No se pudo obtener el nombre del usuario a calificar');
       return;
     }
@@ -121,7 +133,7 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
       setLoading(true);
 
       await calificarUsuario({
-        favorId: favor.id,
+        favorId: favorId,
         calificadorId: currentUser.uid,
         calificadorNombre: currentUser.nombre || 'Usuario',
         calificadoId: infoCalificacion.usuarioACalificarId,
