@@ -68,7 +68,7 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
     'Otras': []
   };
 
-  const ramosDisponibles = carrera ? ramosPorCarrera[carrera] || [] : [];
+  const ramosDisponibles = carrera ? ['Todos los ramos', ...(ramosPorCarrera[carrera] || [])] : [];
 
   // Resetear ramo cuando cambia la carrera
   useEffect(() => {
@@ -315,6 +315,7 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
                         className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
                       >
                         <option value="">Selecciona...</option>
+                        <option value="Todos">Todos los años</option>
                         {anios.map(a => (
                           <option key={a} value={a}>{a}º año</option>
                         ))}

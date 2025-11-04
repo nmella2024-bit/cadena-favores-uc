@@ -131,11 +131,13 @@ const Material = () => {
 
       const matchesAnio =
         !anioSeleccionado ||
-        material.anio === parseInt(anioSeleccionado);
+        material.anio === parseInt(anioSeleccionado) ||
+        material.anio === 'Todos';
 
       const matchesRamo =
         !ramoSeleccionado ||
-        material.ramo === ramoSeleccionado;
+        material.ramo === ramoSeleccionado ||
+        material.ramo === 'Todos los ramos';
 
       return matchesSearch && matchesCarrera && matchesAnio && matchesRamo;
     });

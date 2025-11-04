@@ -59,7 +59,7 @@ const MaterialCard = ({ material, esExclusivo, onEliminar, onFijar, currentUser 
             <span className="font-medium">{material.ramo}</span>
           </div>
           <div className="text-text-muted">
-            <span className="font-medium">{material.carrera}</span> - Año {material.anio}
+            <span className="font-medium">{material.carrera}</span> - {material.anio === 'Todos' ? 'Todos los años' : `Año ${material.anio}`}
           </div>
         </div>
 
