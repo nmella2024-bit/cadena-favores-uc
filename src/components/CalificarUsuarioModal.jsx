@@ -164,7 +164,7 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
                       {infoCalificacion.usuarioACalificarNombre}
                     </p>
                     <p className="text-xs text-text-muted mt-1">
-                      {infoCalificacion.rolUsuario === 'solicitante' ? 'Ayudante' : 'Solicitante'}
+                      Ayudante del favor
                     </p>
                   </div>
                 </div>
@@ -216,8 +216,8 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
               {/* Info */}
               <div className="mb-6 p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
                 <p className="text-xs text-blue-600 dark:text-blue-400">
-                  Las calificaciones ayudan a construir confianza en la comunidad.
-                  Tu calificación será visible públicamente.
+                  Como solicitante del favor, puedes calificar a quien te ayudó.
+                  Tu calificación será visible públicamente y ayudará a construir confianza en la comunidad.
                 </p>
               </div>
 
