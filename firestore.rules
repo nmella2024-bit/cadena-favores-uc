@@ -114,6 +114,9 @@ service cloud.firestore {
       allow create: if request.auth != null &&
                     request.resource.data.autorId == request.auth.uid;
 
+      // Solo usuarios con rol "exclusivo" pueden actualizar material (para fijar/desfijar)
+      allow update: if esUsuarioExclusivo();
+
       // Solo el autor puede eliminar su material
       allow delete: if request.auth != null &&
                     request.auth.uid == resource.data.autorId;
