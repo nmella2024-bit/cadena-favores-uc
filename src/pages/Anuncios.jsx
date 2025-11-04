@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { Megaphone, Plus, Inbox, AlertCircle, Search, Filter, X } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { obtenerAnuncios, eliminarAnuncio } from '../services/anuncioService';
+import { obtenerAnuncios, eliminarAnuncio, fijarAnuncio } from '../services/anuncioService';
 import AnuncioCard from '../components/AnuncioCard';
 import CrearAnuncioModal from '../components/CrearAnuncioModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
@@ -70,11 +70,11 @@ const Anuncios = () => {
     }
   }, [searchQuery]);
 
-  // Filtrar anuncios por búsqueda, carrera y año
+  // Filtrar y ordenar anuncios (fijados primero)
   const filteredAnuncios = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
 
-    return anuncios.filter((anuncio) => {
+    const filtered = anuncios.filter((anuncio) => {
       const matchesSearch =
         normalizedQuery.length === 0 ||
         anuncio.titulo.toLowerCase().includes(normalizedQuery) ||
@@ -90,6 +90,13 @@ const Anuncios = () => {
         anuncio.anio === parseInt(anioSeleccionado);
 
       return matchesSearch && matchesCarrera && matchesAnio;
+    });
+
+    // Ordenar: fijados primero, luego por fecha
+    return filtered.sort((a, b) => {
+      if (a.fijado && !b.fijado) return -1;
+      if (!a.fijado && b.fijado) return 1;
+      return new Date(b.fecha) - new Date(a.fecha);
     });
   }, [anuncios, searchQuery, carreraSeleccionada, anioSeleccionado]);
 
@@ -119,6 +126,19 @@ const Anuncios = () => {
 
   const handleAnuncioCreado = () => {
     cargarAnuncios();
+  };
+
+  const handleFijarAnuncio = async (anuncioId, nuevoEstado) => {
+    try {
+      await fijarAnuncio(anuncioId, nuevoEstado);
+      // Actualizar el estado local
+      setAnuncios(anuncios.map(a =>
+        a.id === anuncioId ? { ...a, fijado: nuevoEstado } : a
+      ));
+    } catch (err) {
+      console.error('Error al fijar/desfijar anuncio:', err);
+      alert('Error al actualizar el anuncio. Intenta nuevamente.');
+    }
   };
 
   return (
@@ -268,6 +288,7 @@ const Anuncios = () => {
                 anuncio={anuncio}
                 esExclusivo={esUsuarioExclusivo}
                 onEliminar={handleEliminarAnuncio}
+                onFijar={handleFijarAnuncio}
               />
             ))}
           </div>

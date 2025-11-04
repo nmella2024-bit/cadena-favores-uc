@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Calendar, User, Trash2, Maximize2 } from 'lucide-react';
+import { Calendar, User, Trash2, Maximize2, Eye, Pin, PinOff } from 'lucide-react';
 import { esAnuncioNuevo } from '../services/anuncioService';
 import ImageModal from './ImageModal';
+import AnuncioDetalleModal from './AnuncioDetalleModal';
 
-const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
+const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
   const esNuevo = esAnuncioNuevo(anuncio.fecha);
   const [modalAbierto, setModalAbierto] = useState(false);
+  const [detalleModalAbierto, setDetalleModalAbierto] = useState(false);
 
   const formatFecha = (fecha) => {
     return new Date(fecha).toLocaleDateString('es-CL', {
@@ -17,7 +19,26 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
 
   return (
     <div className="rounded-xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden flex flex-col h-full">
-      {esNuevo && (
+      {/* Badge de fijado */}
+      {anuncio.fijado && (
+        <div className="absolute top-0 left-0">
+          <div className="bg-yellow-500 text-white text-xs font-semibold px-3 py-1 rounded-br-lg flex items-center gap-1">
+            <Pin className="h-3 w-3" />
+            FIJADO
+          </div>
+        </div>
+      )}
+
+      {/* Badge de nuevo */}
+      {esNuevo && !anuncio.fijado && (
+        <div className="absolute top-0 right-0">
+          <div className="bg-brand text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
+            NUEVO
+          </div>
+        </div>
+      )}
+
+      {esNuevo && anuncio.fijado && (
         <div className="absolute top-0 right-0">
           <div className="bg-brand text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
             NUEVO
@@ -56,7 +77,7 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
           </div>
         )}
 
-        <div className="flex items-center justify-between pt-3 mt-auto border-t border-border">
+        <div className="flex flex-col gap-3 pt-3 mt-auto border-t border-border">
           <div className="flex flex-col gap-1 text-xs text-text-muted">
             <div className="flex items-center gap-1">
               <User className="h-3 w-3" />
@@ -68,15 +89,50 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
             </div>
           </div>
 
-          {esExclusivo && onEliminar && (
+          {/* Botones de acción */}
+          <div className="flex flex-wrap gap-2">
+            {/* Botón ver detalles - visible para todos */}
             <button
-              onClick={() => onEliminar(anuncio.id)}
-              className="inline-flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/20"
+              onClick={() => setDetalleModalAbierto(true)}
+              className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-1.5 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
             >
-              <Trash2 className="h-4 w-4" />
-              Eliminar
+              <Eye className="h-4 w-4" />
+              Ver detalles
             </button>
-          )}
+
+            {/* Botones exclusivos para usuarios con rol exclusivo */}
+            {esExclusivo && (
+              <>
+                {onFijar && (
+                  <button
+                    onClick={() => onFijar(anuncio.id, !anuncio.fijado)}
+                    className={`inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
+                      anuncio.fijado
+                        ? 'border-yellow-500/30 bg-yellow-500/10 text-yellow-600 hover:bg-yellow-500/20'
+                        : 'border-border bg-background text-text-muted hover:bg-border/50'
+                    }`}
+                    title={anuncio.fijado ? 'Desfijar' : 'Fijar'}
+                  >
+                    {anuncio.fijado ? (
+                      <PinOff className="h-4 w-4" />
+                    ) : (
+                      <Pin className="h-4 w-4" />
+                    )}
+                  </button>
+                )}
+
+                {onEliminar && (
+                  <button
+                    onClick={() => onEliminar(anuncio.id)}
+                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/20"
+                    title="Eliminar"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                  </button>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -86,6 +142,13 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar }) => {
         onClose={() => setModalAbierto(false)}
         imagenes={anuncio.imagenURL}
         imagenActual={0}
+      />
+
+      {/* Modal para ver detalles completos */}
+      <AnuncioDetalleModal
+        isOpen={detalleModalAbierto}
+        onClose={() => setDetalleModalAbierto(false)}
+        anuncio={anuncio}
       />
     </div>
   );

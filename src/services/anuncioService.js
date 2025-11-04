@@ -41,6 +41,7 @@ export const publicarAnuncio = async (anuncioData, usuario, imagen = null) => {
       autorNombre: usuario.nombre || usuario.displayName || 'Usuario',
       fecha: serverTimestamp(),
       imagenURL: imagenURL,
+      fijado: false,
     });
 
     return docRef.id;
@@ -141,6 +142,22 @@ export const eliminarAnuncio = async (anuncioId) => {
     await deleteDoc(doc(db, 'anuncios', anuncioId));
   } catch (error) {
     console.error('Error al eliminar anuncio:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fija o desfija un anuncio
+ * @param {string} anuncioId - ID del anuncio
+ * @param {boolean} fijado - Estado de fijado
+ * @returns {Promise<void>}
+ */
+export const fijarAnuncio = async (anuncioId, fijado) => {
+  try {
+    const docRef = doc(db, 'anuncios', anuncioId);
+    await updateDoc(docRef, { fijado });
+  } catch (error) {
+    console.error('Error al fijar/desfijar anuncio:', error);
     throw error;
   }
 };
