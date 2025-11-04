@@ -4,6 +4,7 @@ import {
   getDocs,
   deleteDoc,
   doc,
+  updateDoc,
   serverTimestamp,
   query,
   orderBy,
@@ -63,6 +64,7 @@ export const subirMaterial = async (materialData, usuario, archivo) => {
       fechaSubida: serverTimestamp(),
       tags: materialData.tags || [],
       tipo: tipo,
+      fijado: false,
     });
 
     return docRef.id;
@@ -181,4 +183,41 @@ export const obtenerMaterialesUsuario = async (userId) => {
     console.error('Error al obtener materiales del usuario:', error);
     throw error;
   }
+};
+
+/**
+ * Fija o desfija un material
+ * NOTA: Esta función debe ser llamada solo por usuarios con rol 'exclusivo'
+ * La validación del rol debe hacerse en el componente antes de llamar esta función
+ * @param {string} materialId - ID del material
+ * @param {boolean} fijado - Estado de fijado
+ * @param {Object} usuario - Usuario que realiza la acción (opcional, para validación)
+ * @returns {Promise<void>}
+ */
+export const fijarMaterial = async (materialId, fijado, usuario = null) => {
+  try {
+    // Validación adicional: solo usuarios con rol 'exclusivo' pueden fijar materiales
+    if (usuario && usuario.rol !== 'exclusivo') {
+      throw new Error('Solo los usuarios con rol exclusivo pueden fijar materiales');
+    }
+
+    const docRef = doc(db, 'material', materialId);
+    await updateDoc(docRef, { fijado });
+  } catch (error) {
+    console.error('Error al fijar/desfijar material:', error);
+    throw error;
+  }
+};
+
+/**
+ * Verifica si un material es nuevo (subido en las últimas 24 horas)
+ * @param {Date|string} fecha - Fecha del material
+ * @returns {boolean}
+ */
+export const esMaterialNuevo = (fecha) => {
+  const fechaMaterial = typeof fecha === 'string' ? new Date(fecha) : fecha;
+  const ahora = new Date();
+  const diferencia = ahora - fechaMaterial;
+  const unDiaEnMs = 24 * 60 * 60 * 1000;
+  return diferencia < unDiaEnMs;
 };

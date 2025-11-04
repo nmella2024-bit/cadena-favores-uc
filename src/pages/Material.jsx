@@ -1,15 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { obtenerMateriales, eliminarMaterial } from '../services/materialService';
+import React, { useState, useEffect, useMemo } from 'react';
+import { obtenerMateriales, eliminarMaterial, fijarMaterial } from '../services/materialService';
 import { useAuth } from '../context/AuthContext';
-import { Search, BookOpen, Calendar, User, ExternalLink, Filter, X, Plus, Trash2 } from 'lucide-react';
+import { Search, BookOpen, Filter, X, Plus, Inbox, AlertCircle } from 'lucide-react';
 import SubirMaterialModal from '../components/SubirMaterialModal';
+import MaterialCard from '../components/MaterialCard';
 import PrimaryButton from '../components/ui/PrimaryButton';
+
+const SkeletonCard = () => (
+  <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
+    <div className="h-6 w-2/3 rounded bg-border/80 dark:bg-border/40 mb-4" />
+    <div className="space-y-2 mb-4">
+      <div className="h-4 w-full rounded bg-border/80 dark:bg-border/40" />
+      <div className="h-4 w-5/6 rounded bg-border/80 dark:bg-border/40" />
+      <div className="h-4 w-4/6 rounded bg-border/80 dark:bg-border/40" />
+    </div>
+    <div className="h-4 w-32 rounded bg-border/80 dark:bg-border/40" />
+  </div>
+);
 
 const Material = () => {
   const { currentUser } = useAuth();
   const [materiales, setMateriales] = useState([]);
-  const [filteredMateriales, setFilteredMateriales] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [eliminando, setEliminando] = useState(null);
 
@@ -18,6 +31,8 @@ const Material = () => {
   const [carreraSeleccionada, setCarreraSeleccionada] = useState('');
   const [anioSeleccionado, setAnioSeleccionado] = useState('');
   const [ramoSeleccionado, setRamoSeleccionado] = useState('');
+
+  const esUsuarioExclusivo = currentUser?.rol === 'exclusivo';
 
   // Opciones de filtros
   const carreras = [
@@ -74,25 +89,12 @@ const Material = () => {
   const cargarMateriales = async () => {
     try {
       setLoading(true);
+      setError('');
       const materialesData = await obtenerMateriales();
-
-      // Aplicar filtros client-side
-      let materialesFiltrados = materialesData;
-
-      if (carreraSeleccionada) {
-        materialesFiltrados = materialesFiltrados.filter(m => m.carrera === carreraSeleccionada);
-      }
-      if (anioSeleccionado) {
-        materialesFiltrados = materialesFiltrados.filter(m => m.anio === parseInt(anioSeleccionado));
-      }
-      if (ramoSeleccionado) {
-        materialesFiltrados = materialesFiltrados.filter(m => m.ramo === ramoSeleccionado);
-      }
-
-      setMateriales(materialesFiltrados);
-      setFilteredMateriales(materialesFiltrados);
-    } catch (error) {
-      console.error('Error al cargar materiales:', error);
+      setMateriales(materialesData);
+    } catch (err) {
+      console.error('Error al cargar materiales:', err);
+      setError('Error al cargar los materiales. Intenta recargar la página.');
     } finally {
       setLoading(false);
     }
@@ -100,30 +102,51 @@ const Material = () => {
 
   useEffect(() => {
     cargarMateriales();
-  }, [carreraSeleccionada, anioSeleccionado, ramoSeleccionado]);
+  }, []);
 
-  // Filtrado por búsqueda de texto (client-side)
+  // Efecto para simular carga cuando cambia el filtro
   useEffect(() => {
-    if (!searchTerm.trim()) {
-      setFilteredMateriales(materiales);
-      return;
+    if (materiales.length > 0) {
+      setLoading(true);
+      const timer = setTimeout(() => setLoading(false), 300);
+      return () => clearTimeout(timer);
     }
+  }, [searchTerm]);
 
-    const searchLower = searchTerm.toLowerCase();
-    const filtered = materiales.filter(material => {
-      const titulo = material.titulo?.toLowerCase() || '';
-      const descripcion = material.descripcion?.toLowerCase() || '';
-      const ramo = material.ramo?.toLowerCase() || '';
-      const tags = material.tags?.join(' ').toLowerCase() || '';
+  // Filtrar y ordenar materiales (fijados primero)
+  const filteredMateriales = useMemo(() => {
+    const normalizedQuery = searchTerm.trim().toLowerCase();
 
-      return titulo.includes(searchLower) ||
-             descripcion.includes(searchLower) ||
-             ramo.includes(searchLower) ||
-             tags.includes(searchLower);
+    const filtered = materiales.filter((material) => {
+      const matchesSearch =
+        normalizedQuery.length === 0 ||
+        material.titulo?.toLowerCase().includes(normalizedQuery) ||
+        material.descripcion?.toLowerCase().includes(normalizedQuery) ||
+        material.ramo?.toLowerCase().includes(normalizedQuery) ||
+        material.tags?.join(' ').toLowerCase().includes(normalizedQuery);
+
+      const matchesCarrera =
+        !carreraSeleccionada ||
+        material.carrera === carreraSeleccionada;
+
+      const matchesAnio =
+        !anioSeleccionado ||
+        material.anio === parseInt(anioSeleccionado);
+
+      const matchesRamo =
+        !ramoSeleccionado ||
+        material.ramo === ramoSeleccionado;
+
+      return matchesSearch && matchesCarrera && matchesAnio && matchesRamo;
     });
 
-    setFilteredMateriales(filtered);
-  }, [searchTerm, materiales]);
+    // Ordenar: fijados primero, luego por fecha
+    return filtered.sort((a, b) => {
+      if (a.fijado && !b.fijado) return -1;
+      if (!a.fijado && b.fijado) return 1;
+      return new Date(b.fechaSubida) - new Date(a.fechaSubida);
+    });
+  }, [materiales, searchTerm, carreraSeleccionada, anioSeleccionado, ramoSeleccionado]);
 
   // Limpiar todos los filtros
   const limpiarFiltros = () => {
@@ -160,6 +183,26 @@ const Material = () => {
   // Manejar cuando se sube un nuevo material
   const handleMaterialSubido = () => {
     cargarMateriales();
+  };
+
+  // Manejar fijar material
+  const handleFijarMaterial = async (materialId, nuevoEstado) => {
+    // Validación adicional: verificar que el usuario sea exclusivo
+    if (!esUsuarioExclusivo) {
+      alert('Solo los usuarios con rol exclusivo pueden fijar materiales.');
+      return;
+    }
+
+    try {
+      await fijarMaterial(materialId, nuevoEstado, currentUser);
+      // Actualizar el estado local
+      setMateriales(materiales.map(m =>
+        m.id === materialId ? { ...m, fijado: nuevoEstado } : m
+      ));
+    } catch (err) {
+      console.error('Error al fijar/desfijar material:', err);
+      alert(err.message || 'Error al actualizar el material. Intenta nuevamente.');
+    }
   };
 
   return (
@@ -279,104 +322,70 @@ const Material = () => {
           </div>
         </div>
 
-        {/* Resultados */}
-        <div>
-          {loading ? (
-            <div className="text-center py-12">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
-              <p className="mt-4 text-text-muted">Cargando materiales...</p>
-            </div>
-          ) : filteredMateriales.length === 0 ? (
-            <div className="text-center py-12 bg-card border border-border rounded-xl">
-              <BookOpen className="h-16 w-16 text-text-muted mx-auto mb-4 opacity-50" />
-              <p className="text-lg text-text-muted">
-                No se encontraron materiales para esta búsqueda
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6 flex items-start gap-3 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-red-500">
+            <AlertCircle className="mt-1 h-5 w-5 shrink-0" />
+            <p className="text-sm">{error}</p>
+          </div>
+        )}
+
+        {/* Loading State */}
+        {loading && (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <SkeletonCard key={i} />
+            ))}
+          </div>
+        )}
+
+        {/* Empty State */}
+        {!loading && filteredMateriales.length === 0 && (
+          <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 p-12 text-center dark:bg-card/30">
+            <Inbox className="mb-4 h-16 w-16 text-text-muted/50" />
+            <h3 className="mb-2 text-lg font-semibold text-text-primary">
+              No se encontraron materiales
+            </h3>
+            <p className="text-sm text-text-muted max-w-md">
+              {currentUser
+                ? 'No se encontraron materiales para esta búsqueda. Intenta con otros filtros.'
+                : 'No hay materiales disponibles en este momento.'}
+            </p>
+            {currentUser && (
+              <PrimaryButton
+                onClick={() => setIsModalOpen(true)}
+                className="mt-6 inline-flex items-center gap-2"
+              >
+                <Plus className="h-5 w-5" />
+                Subir primer material
+              </PrimaryButton>
+            )}
+          </div>
+        )}
+
+        {/* Materiales List */}
+        {!loading && filteredMateriales.length > 0 && (
+          <>
+            <div className="flex items-center justify-between mb-4">
+              <p className="text-sm text-text-muted">
+                {filteredMateriales.length} {filteredMateriales.length === 1 ? 'resultado' : 'resultados'}
               </p>
             </div>
-          ) : (
-            <>
-              <div className="flex items-center justify-between mb-4">
-                <p className="text-sm text-text-muted">
-                  {filteredMateriales.length} {filteredMateriales.length === 1 ? 'resultado' : 'resultados'}
-                </p>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredMateriales.map(material => (
-                  <div
-                    key={material.id}
-                    className="bg-card border border-border rounded-xl p-6 hover:border-brand transition-all hover:shadow-lg group"
-                  >
-                    {/* Tipo de archivo badge y botón eliminar */}
-                    <div className="flex items-start justify-between mb-3">
-                      <span className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-brand/10 text-brand">
-                        {material.tipo || 'PDF'}
-                      </span>
-                      {currentUser && currentUser.uid === material.autorId && (
-                        <button
-                          onClick={() => handleEliminarMaterial(material.id)}
-                          disabled={eliminando === material.id}
-                          className="p-1.5 text-text-muted hover:text-red-500 hover:bg-red-500/10 rounded-lg transition-colors disabled:opacity-50"
-                          title="Eliminar material"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Título */}
-                    <h3 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-brand transition-colors">
-                      {material.titulo}
-                    </h3>
-
-                    {/* Descripción */}
-                    <p className="text-sm text-text-muted mb-4 line-clamp-2">
-                      {material.descripcion}
-                    </p>
-
-                    {/* Información del ramo */}
-                    <div className="space-y-2 mb-4 text-sm">
-                      <div className="flex items-center gap-2 text-text-muted">
-                        <BookOpen className="h-4 w-4" />
-                        <span className="font-medium">{material.ramo}</span>
-                      </div>
-                      <div className="text-text-muted">
-                        <span className="font-medium">{material.carrera}</span> - Año {material.anio}
-                      </div>
-                    </div>
-
-                    {/* Footer con autor y fecha */}
-                    <div className="flex items-center justify-between pt-4 border-t border-border">
-                      <div className="flex items-center gap-2 text-xs text-text-muted">
-                        {material.autorNombre && (
-                          <>
-                            <User className="h-3 w-3" />
-                            <span>{material.autorNombre}</span>
-                          </>
-                        )}
-                      </div>
-                      {material.fechaSubida && (
-                        <div className="flex items-center gap-1 text-xs text-text-muted">
-                          <Calendar className="h-3 w-3" />
-                          <span>{new Date(material.fechaSubida).toLocaleDateString('es-CL')}</span>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Botón Ver Material */}
-                    <button
-                      onClick={() => window.open(material.archivoUrl, '_blank')}
-                      className="w-full mt-4 flex items-center justify-center gap-2 px-4 py-2.5 bg-brand/10 hover:bg-brand hover:text-white text-brand rounded-lg font-medium transition-all group-hover:bg-brand group-hover:text-white"
-                    >
-                      Ver material
-                      <ExternalLink className="h-4 w-4" />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {filteredMateriales.map((material) => (
+                <MaterialCard
+                  key={material.id}
+                  material={material}
+                  esExclusivo={esUsuarioExclusivo}
+                  onEliminar={handleEliminarMaterial}
+                  onFijar={handleFijarMaterial}
+                  currentUser={currentUser}
+                />
+              ))}
+            </div>
+          </>
+        )}
 
         {/* Modal para subir material */}
         {currentUser && (
