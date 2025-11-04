@@ -18,7 +18,7 @@ import {
   AlertCircle,
   Loader2
 } from 'lucide-react';
-import RatingModal from '../components/RatingModal';
+import CalificarUsuarioModal from '../components/CalificarUsuarioModal';
 
 const FavorDetalle = () => {
   const { id } = useParams();
@@ -362,19 +362,16 @@ const FavorDetalle = () => {
         )}
       </div>
 
-      {/* Modal de rating */}
-      {mostrarRating && favor.ayudanteSeleccionado && (
-        <RatingModal
-          isOpen={mostrarRating}
-          onClose={() => setMostrarRating(false)}
-          ayudanteId={favor.ayudanteSeleccionado.idUsuario}
-          ayudanteNombre={favor.ayudanteSeleccionado.nombre}
-          onRatingComplete={() => {
-            cargarFavor();
-            navigate('/perfil');
-          }}
-        />
-      )}
+      {/* Modal de calificación */}
+      <CalificarUsuarioModal
+        isOpen={mostrarRating}
+        onClose={() => setMostrarRating(false)}
+        favor={favor}
+        onCalificacionExitosa={() => {
+          setMostrarRating(false);
+          navigate('/perfil');
+        }}
+      />
     </div>
   );
 };
