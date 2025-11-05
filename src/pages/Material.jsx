@@ -36,18 +36,25 @@ const Material = () => {
 
   // Opciones de filtros
   const carreras = [
-    'Ingeniería',
+    'Ingeniería Civil',
+    'Ingeniería Comercial',
+    'Derecho',
+    'Medicina',
+    'Psicología',
+    'Diseño',
     'Arquitectura',
-    'Economía',
-    'College',
-    'Otras'
+    'Pedagogía',
+    'Enfermería',
+    'Agronomía',
+    'Periodismo',
+    'Otra'
   ];
 
   const anios = [1, 2, 3, 4, 5];
 
   // Ramos dinámicos según carrera
   const ramosPorCarrera = {
-    'Ingeniería': [
+    'Ingeniería Civil': [
       'Cálculo I',
       'Cálculo II',
       'Cálculo III',
@@ -57,30 +64,102 @@ const Material = () => {
       'Química General',
       'Programación',
       'Estructuras de Datos',
-      'Ecuaciones Diferenciales'
+      'Ecuaciones Diferenciales',
+      'Mecánica de Fluidos',
+      'Resistencia de Materiales'
+    ],
+    'Ingeniería Comercial': [
+      'Microeconomía',
+      'Macroeconomía',
+      'Contabilidad',
+      'Finanzas',
+      'Marketing',
+      'Gestión de Operaciones',
+      'Econometría',
+      'Matemáticas para Economistas'
+    ],
+    'Derecho': [
+      'Derecho Civil',
+      'Derecho Penal',
+      'Derecho Constitucional',
+      'Derecho Laboral',
+      'Derecho Comercial',
+      'Derecho Internacional',
+      'Derecho Administrativo'
+    ],
+    'Medicina': [
+      'Anatomía',
+      'Fisiología',
+      'Bioquímica',
+      'Farmacología',
+      'Patología',
+      'Microbiología',
+      'Medicina Interna',
+      'Cirugía'
+    ],
+    'Psicología': [
+      'Psicología General',
+      'Neuropsicología',
+      'Psicología del Desarrollo',
+      'Psicología Social',
+      'Psicopatología',
+      'Estadística para Psicología',
+      'Psicología Clínica'
+    ],
+    'Diseño': [
+      'Taller de Diseño',
+      'Teoría del Diseño',
+      'Tipografía',
+      'Diseño Gráfico',
+      'Diseño Industrial',
+      'Historia del Diseño',
+      'Metodología de Proyecto'
     ],
     'Arquitectura': [
       'Taller de Arquitectura',
       'Historia de la Arquitectura',
       'Estructuras',
       'Construcción',
-      'Teoría de la Arquitectura'
+      'Teoría de la Arquitectura',
+      'Urbanismo',
+      'Diseño Arquitectónico'
     ],
-    'Economía': [
-      'Microeconomía',
-      'Macroeconomía',
-      'Econometría',
-      'Matemáticas para Economistas',
-      'Finanzas'
+    'Pedagogía': [
+      'Didáctica General',
+      'Psicología Educacional',
+      'Currículum',
+      'Evaluación',
+      'Metodología de la Enseñanza',
+      'Práctica Pedagógica'
     ],
-    'College': [
-      'Antropología',
-      'Filosofía',
-      'Historia',
-      'Biología',
-      'Química'
+    'Enfermería': [
+      'Enfermería Básica',
+      'Anatomía y Fisiología',
+      'Farmacología',
+      'Enfermería Médico-Quirúrgica',
+      'Enfermería Pediátrica',
+      'Salud Pública',
+      'Cuidados Intensivos'
     ],
-    'Otras': []
+    'Agronomía': [
+      'Botánica',
+      'Suelos',
+      'Fisiología Vegetal',
+      'Producción Animal',
+      'Producción Vegetal',
+      'Economía Agrícola',
+      'Manejo de Cultivos'
+    ],
+    'Periodismo': [
+      'Redacción Periodística',
+      'Teoría de la Comunicación',
+      'Periodismo Digital',
+      'Fotografía Periodística',
+      'Ética Periodística',
+      'Periodismo Investigativo',
+      'Radio y Televisión'
+    ],
+    'Otra': []
   };
 
   const ramosDisponibles = carreraSeleccionada ? ramosPorCarrera[carreraSeleccionada] || [] : [];
