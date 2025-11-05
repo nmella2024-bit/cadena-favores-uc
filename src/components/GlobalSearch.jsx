@@ -145,7 +145,7 @@ const GlobalSearch = () => {
     }
 
     return (
-      <div className="divide-y divide-border overflow-y-auto" style={{ maxHeight: '5376px' }}>
+      <div className="divide-y divide-border overflow-y-auto" style={{ maxHeight: '700px' }}>
         {/* Favores */}
         {results.favores.length > 0 && (
           <div className="p-4">
@@ -289,7 +289,7 @@ const GlobalSearch = () => {
   };
 
   return (
-    <div ref={searchRef} className="relative w-full" style={{ maxWidth: '5376px' }}>
+    <div ref={searchRef} className="relative" style={{ width: '700px', maxWidth: '700px' }}>
       {/* Input de búsqueda */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
