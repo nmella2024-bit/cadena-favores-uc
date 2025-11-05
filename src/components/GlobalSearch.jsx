@@ -289,7 +289,7 @@ const GlobalSearch = () => {
   };
 
   return (
-    <div ref={searchRef} className="relative" style={{ width: '700px', maxWidth: '700px' }}>
+    <div ref={searchRef} className="relative transition-all duration-300" style={{ width: isOpen ? '700px' : '117px' }}>
       {/* Input de búsqueda */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
@@ -299,7 +299,7 @@ const GlobalSearch = () => {
           value={searchTerm}
           onChange={handleInputChange}
           onFocus={() => setIsOpen(true)}
-          placeholder="Buscar favores, anuncios, productos..."
+          placeholder={isOpen ? "Buscar favores, anuncios, productos..." : "Buscar..."}
           className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
         />
         {searchTerm && (
@@ -319,7 +319,7 @@ const GlobalSearch = () => {
 
       {/* Dropdown de resultados */}
       {isOpen && searchTerm.trim().length >= 2 && (
-        <div className="absolute top-full mt-2 w-full bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn">
+        <div className="absolute top-full mt-2 bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn" style={{ width: '700px' }}>
           {isLoading && !results ? (
             <div className="p-8 text-center">
               <Loader2 className="w-8 h-8 text-brand animate-spin mx-auto mb-2" />
