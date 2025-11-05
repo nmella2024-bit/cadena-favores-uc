@@ -289,7 +289,7 @@ const GlobalSearch = () => {
   };
 
   return (
-    <div ref={searchRef} className="relative" style={{ width: '300px' }}>
+    <div ref={searchRef} className="relative" style={{ width: '125px' }}>
       {/* Input de búsqueda */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
