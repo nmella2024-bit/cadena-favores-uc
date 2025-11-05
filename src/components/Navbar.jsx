@@ -36,12 +36,13 @@ const Navbar = () => {
     ? { label: 'Mi perfil', to: '/perfil', icon: User }
     : { label: 'Ingresar', to: '/login', icon: User };
 
-  const renderLink = (item, isMobile = false) => {
+  const renderLink = (item, isMobile = false, onClick = null) => {
     const Icon = item.icon;
     return (
       <NavLink
         key={item.to}
         to={item.to}
+        onClick={onClick}
         className={({ isActive }) =>
           [
             'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
@@ -196,6 +197,7 @@ const Navbar = () => {
           </div>
 
           <Disclosure.Panel className="md:hidden">
+            {({ close }) => (
             <div className="space-y-1 border-t border-border bg-card/70 py-3 dark:bg-card/60">
               {/* Navegación principal */}
               {mainNavigation.map((item) => {
@@ -222,6 +224,7 @@ const Navbar = () => {
                           <NavLink
                             key={subItem.to}
                             to={subItem.to}
+                            onClick={() => close()}
                             className={({ isActive }) =>
                               [
                                 'block rounded-lg px-3 py-2 text-sm font-medium transition-colors',
@@ -239,12 +242,30 @@ const Navbar = () => {
                   );
                 }
 
-                // Link normal
-                return renderLink(item, true);
+                // Link normal con close
+                return (
+                  <NavLink
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => close()}
+                    className={({ isActive }) =>
+                      [
+                        'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
+                        'w-full justify-start',
+                        isActive
+                          ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4 dark:bg-brand/20'
+                          : 'text-text-muted hover:text-text-primary hover:bg-card/80 dark:hover:bg-card/60',
+                      ].join(' ')
+                    }
+                  >
+                    {item.icon && <item.icon className="h-4 w-4" strokeWidth={2} />}
+                    {item.label}
+                  </NavLink>
+                );
               })}
 
               {/* Botón de perfil/ingresar */}
-              {renderLink(profileButton, true)}
+              {renderLink(profileButton, true, () => close())}
               <button
                 type="button"
                 onClick={() => setIsFeedbackOpen(true)}
@@ -284,6 +305,7 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+            )}
           </Disclosure.Panel>
         </>
       )}

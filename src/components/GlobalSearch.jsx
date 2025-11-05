@@ -12,10 +12,12 @@ const GlobalSearch = () => {
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
-  // Cerrar al hacer clic fuera
+  // Cerrar al hacer clic fuera (solo desktop)
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
+      // Solo cerrar en desktop, no en móvil (modal tiene su propio botón de cerrar)
+      const isMobile = window.innerWidth < 768;
+      if (!isMobile && searchRef.current && !searchRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
