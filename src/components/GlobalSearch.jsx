@@ -320,7 +320,10 @@ const GlobalSearch = () => {
 
       {/* Versión Móvil - Solo icono */}
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(true);
+        }}
         className="md:hidden p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas"
         aria-label="Buscar"
       >
@@ -329,7 +332,17 @@ const GlobalSearch = () => {
 
       {/* Modal full-screen móvil */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-canvas/95 backdrop-blur-sm">
+        <div
+          className="md:hidden fixed inset-0 z-50 bg-canvas/95 backdrop-blur-sm"
+          onClick={(e) => {
+            // Cerrar si se hace clic en el backdrop
+            if (e.target === e.currentTarget) {
+              setIsOpen(false);
+              setSearchTerm('');
+              setResults(null);
+            }
+          }}
+        >
           <div className="container mx-auto px-4 py-4 h-full flex flex-col">
             {/* Header con barra de búsqueda */}
             <div className="flex items-center gap-3 mb-4">
