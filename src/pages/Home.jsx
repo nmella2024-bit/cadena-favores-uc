@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Sparkles, Users, GraduationCap, HeartHandshake } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Sparkles, Users, GraduationCap, HeartHandshake, Heart, ShoppingBag, Calendar, BookOpen, Plus } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import GhostButton from '../components/ui/GhostButton';
@@ -43,6 +43,59 @@ const steps = [
 
 const Home = () => {
   const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
+  // Acciones rápidas disponibles
+  const accionesRapidas = [
+    {
+      id: 'pedir-favor',
+      titulo: 'Pedir favor',
+      subtitulo: 'Recibe ayuda',
+      icon: Heart,
+      iconBg: 'bg-blue-500/10',
+      iconColor: 'text-blue-500',
+      ruta: '/publicar',
+      requireAuth: true
+    },
+    {
+      id: 'vender-algo',
+      titulo: 'Vender algo',
+      subtitulo: 'Marketplace',
+      icon: ShoppingBag,
+      iconBg: 'bg-green-500/10',
+      iconColor: 'text-green-500',
+      ruta: '/marketplace',
+      requireAuth: false
+    },
+    {
+      id: 'crear-anuncio',
+      titulo: 'Crear anuncio',
+      subtitulo: 'Eventos',
+      icon: Calendar,
+      iconBg: 'bg-purple-500/10',
+      iconColor: 'text-purple-500',
+      ruta: '/eventos',
+      requireAuth: false
+    },
+    {
+      id: 'compartir-material',
+      titulo: 'Compartir material',
+      subtitulo: 'Apuntes',
+      icon: BookOpen,
+      iconBg: 'bg-orange-500/10',
+      iconColor: 'text-orange-500',
+      ruta: '/material',
+      requireAuth: false
+    }
+  ];
+
+  const handleAccionClick = (accion) => {
+    if (accion.requireAuth && !currentUser) {
+      navigate('/login');
+    } else {
+      navigate(accion.ruta);
+    }
+  };
 
   return (
     <div className="space-y-20 sm:space-y-24">
@@ -69,6 +122,47 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Sección de Acciones Rápidas */}
+      {currentUser && (
+        <section className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-border bg-card dark:bg-card/80 p-6 sm:p-8 shadow-sm">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold text-text-primary">Acciones rápidas</h2>
+              <button
+                onClick={() => {/* Aquí se puede agregar funcionalidad para más acciones */}}
+                className="p-2 rounded-lg hover:bg-background transition-colors"
+                aria-label="Más acciones"
+              >
+                <Plus className="h-5 w-5 text-text-muted" />
+              </button>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+              {accionesRapidas.map((accion) => {
+                const Icon = accion.icon;
+                return (
+                  <button
+                    key={accion.id}
+                    onClick={() => handleAccionClick(accion)}
+                    className="group flex flex-col items-center justify-center p-6 rounded-xl border border-border bg-background hover:bg-card hover:border-brand/30 transition-all duration-200 hover:shadow-sm"
+                  >
+                    <div className={`${accion.iconBg} ${accion.iconColor} p-3 rounded-full mb-3 group-hover:scale-110 transition-transform`}>
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <h3 className="text-sm font-semibold text-text-primary mb-0.5">
+                      {accion.titulo}
+                    </h3>
+                    <p className="text-xs text-text-muted">
+                      {accion.subtitulo}
+                    </p>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
