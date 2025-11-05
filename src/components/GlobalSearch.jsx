@@ -289,7 +289,7 @@ const GlobalSearch = () => {
   };
 
   return (
-    <div ref={searchRef} className="relative transition-all duration-300" style={{ width: isOpen ? '700px' : '117px' }}>
+    <div ref={searchRef} className="relative" style={{ width: '300px' }}>
       {/* Input de búsqueda */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
@@ -299,7 +299,7 @@ const GlobalSearch = () => {
           value={searchTerm}
           onChange={handleInputChange}
           onFocus={() => setIsOpen(true)}
-          placeholder={isOpen ? "Buscar favores, anuncios, productos..." : "Buscar..."}
+          placeholder="Buscar favores, anuncios, productos..."
           className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
         />
         {searchTerm && (
