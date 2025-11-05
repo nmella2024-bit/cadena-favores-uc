@@ -8,9 +8,11 @@ import {
   query,
   where,
   getDocs,
+  deleteDoc,
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
-import { db, storage } from '../firebaseConfig';
+import { deleteUser } from 'firebase/auth';
+import { db, storage, auth } from '../firebaseConfig';
 
 /**
  * Crea un documento de usuario en Firestore
@@ -250,6 +252,35 @@ export const calificarUsuario = async (usuarioId, calificacion, comentario = '')
     console.log('Usuario calificado exitosamente');
   } catch (error) {
     console.error('Error al calificar usuario:', error);
+    throw error;
+  }
+};
+
+/**
+ * Elimina completamente el perfil de un usuario
+ * IMPORTANTE: Esta función elimina todos los datos del usuario
+ * @param {string} userId - ID del usuario
+ * @returns {Promise<void>}
+ */
+export const deleteUserProfile = async (userId) => {
+  try {
+    // Obtener referencia al documento del usuario
+    const userRef = doc(db, 'usuarios', userId);
+
+    // Eliminar documento de Firestore
+    await deleteDoc(userRef);
+
+    // Obtener usuario actual de Firebase Auth
+    const currentUser = auth.currentUser;
+
+    // Eliminar cuenta de Firebase Auth
+    if (currentUser && currentUser.uid === userId) {
+      await deleteUser(currentUser);
+    }
+
+    console.log('Perfil de usuario eliminado exitosamente');
+  } catch (error) {
+    console.error('Error al eliminar perfil de usuario:', error);
     throw error;
   }
 };

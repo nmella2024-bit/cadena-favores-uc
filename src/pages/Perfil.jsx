@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { obtenerFavoresPorUsuario, obtenerFavoresConContactos } from '../services/favorService';
-import { updateUserData, uploadProfilePicture } from '../services/userService';
+import { updateUserData, uploadProfilePicture, deleteUserProfile } from '../services/userService';
 import { obtenerCalificacionesUsuario } from '../services/ratingService';
 // TEMPORALMENTE DESHABILITADO: UCloseMeal
 // import { obtenerMisPedidos } from '../services/orderService';
 import StarRating from '../components/StarRating';
-import { Plus, ExternalLink, Star, AlertCircle, TrendingUp, Camera, User } from 'lucide-react';
+import EditarPerfilModal from '../components/EditarPerfilModal';
+import { Plus, ExternalLink, Star, AlertCircle, TrendingUp, Camera, User, Edit2, Trash2 } from 'lucide-react';
 
 const Perfil = () => {
   const navigate = useNavigate();
@@ -23,6 +24,9 @@ const Perfil = () => {
   // const [pedidos, setPedidos] = useState([]);
   // const [loadingPedidos, setLoadingPedidos] = useState(true);
   const [uploadingPhoto, setUploadingPhoto] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [deletingAccount, setDeletingAccount] = useState(false);
 
   // Redirigir si no está autenticado
   useEffect(() => {
@@ -159,6 +163,29 @@ const Perfil = () => {
     }
   };
 
+  // Función para eliminar cuenta
+  const handleDeleteAccount = async () => {
+    try {
+      setDeletingAccount(true);
+      await deleteUserProfile(currentUser.uid);
+      alert('Tu cuenta ha sido eliminada exitosamente');
+      // Redirigir al home
+      navigate('/');
+    } catch (error) {
+      console.error('Error al eliminar cuenta:', error);
+
+      // Si el error es por necesidad de reautenticación
+      if (error.code === 'auth/requires-recent-login') {
+        alert('Por seguridad, necesitas volver a iniciar sesión antes de eliminar tu cuenta. Por favor, cierra sesión e inicia sesión nuevamente, luego intenta eliminar tu cuenta.');
+      } else {
+        alert(error.message || 'Error al eliminar la cuenta. Intenta nuevamente.');
+      }
+    } finally {
+      setDeletingAccount(false);
+      setShowDeleteModal(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
@@ -208,6 +235,24 @@ const Perfil = () => {
                 {currentUser.nombre}
               </h1>
               <p className="text-text-muted">{currentUser.correo}</p>
+
+              {/* Botones de acción */}
+              <div className="flex gap-2 mt-3">
+                <button
+                  onClick={() => setShowEditModal(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-brand bg-brand/10 rounded-lg hover:bg-brand/20 transition-colors"
+                >
+                  <Edit2 className="h-4 w-4" />
+                  Editar perfil
+                </button>
+                <button
+                  onClick={() => setShowDeleteModal(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-600 bg-red-500/10 rounded-lg hover:bg-red-500/20 transition-colors"
+                >
+                  <Trash2 className="h-4 w-4" />
+                  Eliminar cuenta
+                </button>
+              </div>
             </div>
 
             {/* Rating en el header */}
@@ -581,6 +626,83 @@ const Perfil = () => {
                 className="flex-1 px-4 py-2 text-sm font-medium text-white bg-emerald-500 rounded-lg hover:bg-emerald-600 transition-colors"
               >
                 Guardar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Modal para editar perfil */}
+      <EditarPerfilModal
+        isOpen={showEditModal}
+        onClose={() => setShowEditModal(false)}
+        onActualizacionExitosa={() => {
+          // Recargar la página después de actualizar
+          window.location.reload();
+        }}
+      />
+
+      {/* Modal de confirmación para eliminar cuenta */}
+      {showDeleteModal && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          <div
+            className="bg-card rounded-lg border border-border shadow-2xl max-w-md w-full p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start gap-3 mb-4">
+              <div className="p-2 rounded-lg bg-red-500/10">
+                <AlertCircle className="h-6 w-6 text-red-500" />
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold text-text-primary mb-2">
+                  ¿Eliminar cuenta?
+                </h3>
+                <p className="text-sm text-text-muted mb-4">
+                  Esta acción no se puede deshacer. Se eliminarán todos tus datos de forma permanente:
+                </p>
+                <ul className="text-sm text-text-muted space-y-1 mb-4 list-disc list-inside">
+                  <li>Tu perfil y toda tu información personal</li>
+                  <li>Tus favores publicados</li>
+                  <li>Tu historial de calificaciones</li>
+                  <li>Tu cuenta de acceso</li>
+                </ul>
+                <p className="text-sm font-semibold text-red-600">
+                  Para confirmar, por favor escribe "ELIMINAR" en el campo de abajo.
+                </p>
+              </div>
+            </div>
+
+            <input
+              type="text"
+              placeholder="Escribe ELIMINAR para confirmar"
+              id="delete-confirmation-input"
+              className="w-full px-4 py-3 rounded-lg border border-border bg-background text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500 mb-4"
+            />
+
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                disabled={deletingAccount}
+                className="flex-1 px-4 py-2 text-sm font-medium text-text-muted border border-border rounded-lg hover:bg-card/80 transition-colors disabled:opacity-50"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={() => {
+                  const input = document.getElementById('delete-confirmation-input');
+                  if (input.value === 'ELIMINAR') {
+                    handleDeleteAccount();
+                  } else {
+                    alert('Por favor escribe "ELIMINAR" para confirmar');
+                  }
+                }}
+                disabled={deletingAccount}
+                className="flex-1 px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors disabled:opacity-50"
+              >
+                {deletingAccount ? 'Eliminando...' : 'Eliminar permanentemente'}
               </button>
             </div>
           </div>
