@@ -82,11 +82,18 @@ const Navbar = () => {
               </div>
             </Link>
 
-            {/* Búsqueda global - Solo visible en desktop */}
+            {/* Búsqueda global - Desktop */}
             <div className="hidden md:block flex-1 max-w-2xl mx-4">
               <GlobalSearch />
             </div>
 
+            {/* Iconos móviles - Search y Notificaciones */}
+            <div className="flex items-center gap-2 md:hidden">
+              <GlobalSearch />
+              {currentUser && <NotificationBell />}
+            </div>
+
+            {/* Navegación desktop */}
             <div className="hidden items-center gap-2 md:flex">
               {/* Navegación principal */}
               {mainNavigation.map((item) => {
