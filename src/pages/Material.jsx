@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { obtenerMateriales, eliminarMaterial, fijarMaterial } from '../services/materialService';
+import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '../services/materialService';
+import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId } from '../services/folderService';
 import { useAuth } from '../context/AuthContext';
-import { Search, BookOpen, Filter, X, Plus, Inbox, AlertCircle } from 'lucide-react';
+import { Search, BookOpen, Filter, X, Plus, Inbox, AlertCircle, FolderPlus } from 'lucide-react';
 import SubirMaterialModal from '../components/SubirMaterialModal';
 import MaterialCard from '../components/MaterialCard';
+import FolderCard from '../components/FolderCard';
+import Breadcrumb from '../components/Breadcrumb';
+import CreateFolderModal from '../components/CreateFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 
 const SkeletonCard = () => (
@@ -21,9 +25,13 @@ const SkeletonCard = () => (
 const Material = () => {
   const { currentUser } = useAuth();
   const [materiales, setMateriales] = useState([]);
+  const [carpetas, setCarpetas] = useState([]);
+  const [carpetaActual, setCarpetaActual] = useState(null);
+  const [rutaCarpeta, setRutaCarpeta] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
   const [eliminando, setEliminando] = useState(null);
 
   // Estados para filtros
@@ -164,24 +172,57 @@ const Material = () => {
 
   const ramosDisponibles = carreraSeleccionada ? ramosPorCarrera[carreraSeleccionada] || [] : [];
 
-  // Cargar materiales
-  const cargarMateriales = async () => {
+  // Cargar contenido (carpetas y materiales) de la carpeta actual
+  const cargarContenido = async (carpetaId = null) => {
     try {
       setLoading(true);
       setError('');
-      const materialesData = await obtenerMateriales();
-      setMateriales(materialesData);
+
+      // Cargar carpetas del nivel actual
+      try {
+        const carpetasData = await obtenerCarpetasPorNivel(carpetaId);
+        setCarpetas(carpetasData);
+      } catch (carpetasError) {
+        console.warn('Error al cargar carpetas:', carpetasError);
+        setCarpetas([]); // Si no hay carpetas, lista vacía
+      }
+
+      // Cargar materiales de la carpeta actual
+      try {
+        const materialesData = await obtenerMaterialesPorCarpeta(carpetaId);
+        setMateriales(materialesData);
+      } catch (materialesError) {
+        console.warn('Error al cargar materiales:', materialesError);
+        setMateriales([]); // Si no hay materiales, lista vacía
+      }
+
+      // Actualizar la ruta si estamos en una carpeta
+      if (carpetaId) {
+        try {
+          const ruta = await obtenerRutaCarpeta(carpetaId);
+          setRutaCarpeta(ruta);
+          const carpeta = await obtenerCarpetaPorId(carpetaId);
+          setCarpetaActual(carpeta);
+        } catch (rutaError) {
+          console.warn('Error al cargar ruta:', rutaError);
+          setRutaCarpeta([]);
+          setCarpetaActual(null);
+        }
+      } else {
+        setRutaCarpeta([]);
+        setCarpetaActual(null);
+      }
     } catch (err) {
-      console.error('Error al cargar materiales:', err);
-      setError('Error al cargar los materiales. Intenta recargar la página.');
+      console.error('Error al cargar contenido:', err);
+      setError('Error al cargar el contenido. Intenta recargar la página.');
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    cargarMateriales();
-  }, []);
+    cargarContenido(carpetaActual?.id || null);
+  }, [carpetaActual?.id]);
 
   // Efecto para simular carga cuando cambia el filtro
   useEffect(() => {
@@ -263,7 +304,7 @@ const Material = () => {
 
   // Manejar cuando se sube un nuevo material
   const handleMaterialSubido = () => {
-    cargarMateriales();
+    cargarContenido(carpetaActual?.id || null);
   };
 
   // Manejar fijar material
@@ -286,6 +327,61 @@ const Material = () => {
     }
   };
 
+  // Navegación de carpetas
+  const handleAbrirCarpeta = (carpetaId) => {
+    cargarContenido(carpetaId);
+  };
+
+  const handleNavegar = (carpetaId) => {
+    cargarContenido(carpetaId);
+  };
+
+  // Crear carpeta
+  const handleCrearCarpeta = async (nombreCarpeta) => {
+    try {
+      await crearCarpeta({
+        nombre: nombreCarpeta,
+        carpetaPadreId: carpetaActual?.id || null,
+        autorId: currentUser.uid,
+        autorNombre: currentUser.nombre || currentUser.displayName || 'Usuario'
+      });
+      // Recargar contenido
+      cargarContenido(carpetaActual?.id || null);
+    } catch (err) {
+      console.error('Error al crear carpeta:', err);
+      throw err;
+    }
+  };
+
+  // Renombrar carpeta
+  const handleRenombrarCarpeta = async (carpetaId, nuevoNombre) => {
+    try {
+      await renombrarCarpeta(carpetaId, nuevoNombre, currentUser.uid);
+      // Recargar contenido
+      cargarContenido(carpetaActual?.id || null);
+    } catch (err) {
+      console.error('Error al renombrar carpeta:', err);
+      alert(err.message || 'Error al renombrar la carpeta. Intenta nuevamente.');
+    }
+  };
+
+  // Eliminar carpeta
+  const handleEliminarCarpeta = async (carpetaId) => {
+    try {
+      await eliminarCarpeta(carpetaId, currentUser.uid);
+      // Recargar contenido
+      cargarContenido(carpetaActual?.id || null);
+    } catch (err) {
+      console.error('Error al eliminar carpeta:', err);
+      alert(err.message || 'Error al eliminar la carpeta. Intenta nuevamente.');
+    }
+  };
+
+  // Mover carpeta (placeholder para funcionalidad futura)
+  const handleMoverCarpeta = (carpetaId) => {
+    alert('Funcionalidad de mover carpeta próximamente');
+  };
+
   return (
     <div className="min-h-screen bg-background pt-8 pb-12 px-4">
       <div className="max-w-7xl mx-auto">
@@ -305,16 +401,28 @@ const Material = () => {
             </div>
 
             {currentUser && (
-              <PrimaryButton
-                onClick={() => setIsModalOpen(true)}
-                className="inline-flex items-center gap-2 whitespace-nowrap"
-              >
-                <Plus className="h-5 w-5" />
-                Subir Material
-              </PrimaryButton>
+              <div className="flex gap-3">
+                <PrimaryButton
+                  onClick={() => setIsFolderModalOpen(true)}
+                  className="inline-flex items-center gap-2 whitespace-nowrap bg-purple-600 hover:bg-purple-700"
+                >
+                  <FolderPlus className="h-5 w-5" />
+                  Nueva Carpeta
+                </PrimaryButton>
+                <PrimaryButton
+                  onClick={() => setIsModalOpen(true)}
+                  className="inline-flex items-center gap-2 whitespace-nowrap"
+                >
+                  <Plus className="h-5 w-5" />
+                  Subir Material
+                </PrimaryButton>
+              </div>
             )}
           </div>
         </div>
+
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb ruta={rutaCarpeta} onNavigate={handleNavegar} />
 
         {/* Buscador */}
         <div className="mb-6">
@@ -421,61 +529,108 @@ const Material = () => {
         )}
 
         {/* Empty State */}
-        {!loading && filteredMateriales.length === 0 && (
+        {!loading && filteredMateriales.length === 0 && carpetas.length === 0 && (
           <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 p-12 text-center dark:bg-card/30">
             <Inbox className="mb-4 h-16 w-16 text-text-muted/50" />
             <h3 className="mb-2 text-lg font-semibold text-text-primary">
-              No se encontraron materiales
+              {carpetaActual ? 'Carpeta vacía' : 'No hay contenido'}
             </h3>
             <p className="text-sm text-text-muted max-w-md">
               {currentUser
-                ? 'No se encontraron materiales para esta búsqueda. Intenta con otros filtros.'
-                : 'No hay materiales disponibles en este momento.'}
+                ? 'No se encontraron carpetas ni materiales. Crea una carpeta o sube material para comenzar.'
+                : 'No hay contenido disponible en este momento.'}
             </p>
             {currentUser && (
-              <PrimaryButton
-                onClick={() => setIsModalOpen(true)}
-                className="mt-6 inline-flex items-center gap-2"
-              >
-                <Plus className="h-5 w-5" />
-                Subir primer material
-              </PrimaryButton>
+              <div className="flex gap-3 mt-6">
+                <PrimaryButton
+                  onClick={() => setIsFolderModalOpen(true)}
+                  className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700"
+                >
+                  <FolderPlus className="h-5 w-5" />
+                  Crear Carpeta
+                </PrimaryButton>
+                <PrimaryButton
+                  onClick={() => setIsModalOpen(true)}
+                  className="inline-flex items-center gap-2"
+                >
+                  <Plus className="h-5 w-5" />
+                  Subir Material
+                </PrimaryButton>
+              </div>
             )}
           </div>
         )}
 
-        {/* Materiales List */}
-        {!loading && filteredMateriales.length > 0 && (
+        {/* Carpetas y Materiales */}
+        {!loading && (carpetas.length > 0 || filteredMateriales.length > 0) && (
           <>
+            {/* Contador */}
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm text-text-muted">
-                {filteredMateriales.length} {filteredMateriales.length === 1 ? 'resultado' : 'resultados'}
+                {carpetas.length > 0 && `${carpetas.length} ${carpetas.length === 1 ? 'carpeta' : 'carpetas'}`}
+                {carpetas.length > 0 && filteredMateriales.length > 0 && ' • '}
+                {filteredMateriales.length > 0 && `${filteredMateriales.length} ${filteredMateriales.length === 1 ? 'archivo' : 'archivos'}`}
               </p>
             </div>
 
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredMateriales.map((material) => (
-                <MaterialCard
-                  key={material.id}
-                  material={material}
-                  esExclusivo={esUsuarioExclusivo}
-                  onEliminar={handleEliminarMaterial}
-                  onFijar={handleFijarMaterial}
-                  currentUser={currentUser}
-                />
-              ))}
-            </div>
+            {/* Grid de Carpetas */}
+            {carpetas.length > 0 && (
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-text-primary mb-4">Carpetas</h3>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {carpetas.map((carpeta) => (
+                    <FolderCard
+                      key={carpeta.id}
+                      folder={carpeta}
+                      onOpen={handleAbrirCarpeta}
+                      onRename={handleRenombrarCarpeta}
+                      onDelete={handleEliminarCarpeta}
+                      onMove={handleMoverCarpeta}
+                      canEdit={currentUser?.uid === carpeta.autorId}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Grid de Materiales */}
+            {filteredMateriales.length > 0 && (
+              <div>
+                <h3 className="text-lg font-semibold text-text-primary mb-4">Archivos</h3>
+                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {filteredMateriales.map((material) => (
+                    <MaterialCard
+                      key={material.id}
+                      material={material}
+                      esExclusivo={esUsuarioExclusivo}
+                      onEliminar={handleEliminarMaterial}
+                      onFijar={handleFijarMaterial}
+                      currentUser={currentUser}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </>
         )}
 
         {/* Modal para subir material */}
         {currentUser && (
-          <SubirMaterialModal
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
-            usuario={currentUser}
-            onMaterialSubido={handleMaterialSubido}
-          />
+          <>
+            <SubirMaterialModal
+              isOpen={isModalOpen}
+              onClose={() => setIsModalOpen(false)}
+              usuario={currentUser}
+              onMaterialSubido={handleMaterialSubido}
+              carpetaActual={carpetaActual}
+            />
+            <CreateFolderModal
+              isOpen={isFolderModalOpen}
+              onClose={() => setIsFolderModalOpen(false)}
+              onCrear={handleCrearCarpeta}
+              carpetaPadre={carpetaActual}
+            />
+          </>
         )}
       </div>
     </div>

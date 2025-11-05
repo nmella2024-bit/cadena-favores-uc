@@ -17,7 +17,7 @@ import { eliminarReportesDeContenido } from './reportService';
 
 /**
  * Sube un archivo de material a Firebase Storage y crea un documento en Firestore
- * @param {Object} materialData - Datos del material (titulo, descripcion, carrera, anio, ramo, tags)
+ * @param {Object} materialData - Datos del material (titulo, descripcion, carrera, anio, ramo, tags, carpetaId)
  * @param {Object} usuario - Usuario que sube el material
  * @param {File} archivo - Archivo PDF/DOCX
  * @returns {Promise<string>} ID del documento creado
@@ -67,6 +67,7 @@ export const subirMaterial = async (materialData, usuario, archivo) => {
       tags: materialData.tags || [],
       tipo: tipo,
       fijado: false,
+      carpetaId: materialData.carpetaId || null, // ID de la carpeta padre
     });
 
     return docRef.id;
@@ -98,6 +99,40 @@ export const obtenerMateriales = async () => {
     return materiales;
   } catch (error) {
     console.error('Error al obtener materiales:', error);
+    throw error;
+  }
+};
+
+/**
+ * Obtiene materiales de una carpeta específica
+ * @param {string|null} carpetaId - ID de la carpeta (null para raíz)
+ * @returns {Promise<Array>} Lista de materiales
+ */
+export const obtenerMaterialesPorCarpeta = async (carpetaId = null) => {
+  try {
+    // Consulta simple sin orderBy para evitar necesidad de índice compuesto
+    const q = query(
+      collection(db, 'material'),
+      where('carpetaId', '==', carpetaId)
+    );
+    const querySnapshot = await getDocs(q);
+
+    const materiales = [];
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      materiales.push({
+        id: doc.id,
+        ...data,
+        fechaSubida: data.fechaSubida?.toDate ? data.fechaSubida.toDate().toISOString() : new Date().toISOString(),
+      });
+    });
+
+    // Ordenar en el cliente por fecha descendente
+    materiales.sort((a, b) => new Date(b.fechaSubida) - new Date(a.fechaSubida));
+
+    return materiales;
+  } catch (error) {
+    console.error('Error al obtener materiales por carpeta:', error);
     throw error;
   }
 };

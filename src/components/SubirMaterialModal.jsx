@@ -6,7 +6,7 @@ import PrimaryButton from './ui/PrimaryButton';
 import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
 
-const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
+const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpetaActual }) => {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [carrera, setCarrera] = useState('');
@@ -247,6 +247,7 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
           anio,
           ramo,
           tags: tagsArray,
+          carpetaId: carpetaActual?.id || null,
           enlaceExterno: enlaceExterno.trim() || null,
         },
         usuario,
@@ -337,6 +338,12 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido }) => {
                 {error && (
                   <div className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-500">
                     {error}
+                  </div>
+                )}
+
+                {carpetaActual && (
+                  <div className="mb-4 rounded-xl border border-purple-500/30 bg-purple-500/10 p-3 text-sm text-purple-700">
+                    Se guardará en: <span className="font-semibold">{carpetaActual.nombre}</span>
                   </div>
                 )}
 

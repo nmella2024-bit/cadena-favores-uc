@@ -15,6 +15,9 @@ import FavorDetalle from './pages/FavorDetalle';
 import Anuncios from './pages/Anuncios';
 import Marketplace from './pages/Marketplace';
 import Material from './pages/Material';
+import AdminSeedFolders from './components/AdminSeedFolders';
+import MigrarMaterialesExistentes from './components/MigrarMaterialesExistentes';
+import DiagnosticoMaterial from './components/DiagnosticoMaterial';
 
 // UCloseMeal Pages - TEMPORALMENTE DESHABILITADO
 // import UCloseMealRoleSelect from './pages/UCloseMealRoleSelect';
@@ -51,6 +54,9 @@ function App() {
 
             {/* Material */}
             <Route path="/material" element={<Material />} />
+            <Route path="/admin/seed-folders" element={<AdminSeedFolders />} />
+            <Route path="/admin/migrar-materiales" element={<MigrarMaterialesExistentes />} />
+            <Route path="/admin/diagnostico" element={<DiagnosticoMaterial />} />
 
             {/* UCloseMeal - TEMPORALMENTE DESHABILITADO */}
             {/* <Route path="/uclosemeal" element={<UCloseMealRoleSelect />} /> */}

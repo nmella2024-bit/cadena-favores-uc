@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "seed:folders": "node scripts/seed-folders-hierarchy.js",
+    "test:firestore": "node scripts/test-firestore-connection.js"
   },
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",
@@ -28,6 +30,7 @@
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.16",
+    "dotenv": "^17.2.3",
     "jsdom": "^24.0.0",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.3.6",
