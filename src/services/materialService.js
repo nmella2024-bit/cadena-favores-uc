@@ -2,6 +2,7 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
   deleteDoc,
   doc,
   updateDoc,
@@ -10,8 +11,9 @@ import {
   orderBy,
   where,
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
+import { eliminarReportesDeContenido } from './reportService';
 
 /**
  * Sube un archivo de material a Firebase Storage y crea un documento en Firestore
@@ -141,13 +143,64 @@ export const obtenerMaterialesFiltrados = async (filtros) => {
 };
 
 /**
- * Elimina un material
+ * Elimina un material permanentemente de Firestore y Storage
+ * IMPORTANTE: Esta función elimina el material, su archivo de Storage y reportes asociados
  * @param {string} materialId - ID del material
+ * @param {string} userId - ID del usuario que elimina (para validación)
  * @returns {Promise<void>}
  */
-export const eliminarMaterial = async (materialId) => {
+export const eliminarMaterial = async (materialId, userId) => {
   try {
-    await deleteDoc(doc(db, 'material', materialId));
+    // Obtener el material para validar permisos y obtener la URL del archivo
+    const materialRef = doc(db, 'material', materialId);
+    const materialDoc = await getDoc(materialRef);
+
+    if (!materialDoc.exists()) {
+      throw new Error('El material no existe');
+    }
+
+    const materialData = materialDoc.data();
+
+    // Validar que solo el autor pueda eliminar el material
+    if (materialData.autorId !== userId) {
+      throw new Error('No tienes permisos para eliminar este material');
+    }
+
+    // Eliminar archivo de Storage si existe y es un archivo subido (no un enlace externo)
+    if (materialData.archivoUrl && materialData.archivoUrl.includes('firebase')) {
+      try {
+        // Extraer la ruta del archivo desde la URL
+        const storageUrl = materialData.archivoUrl;
+        const baseUrl = 'https://firebasestorage.googleapis.com/v0/b/';
+
+        if (storageUrl.startsWith(baseUrl)) {
+          // Extraer el path después de /o/
+          const pathStart = storageUrl.indexOf('/o/') + 3;
+          const pathEnd = storageUrl.indexOf('?');
+          const filePath = decodeURIComponent(storageUrl.substring(pathStart, pathEnd));
+
+          const fileRef = ref(storage, filePath);
+          await deleteObject(fileRef);
+          console.log('Archivo eliminado de Storage:', filePath);
+        }
+      } catch (storageError) {
+        console.warn('Error al eliminar archivo de Storage (puede que ya no exista):', storageError);
+        // No lanzar error si el archivo ya fue eliminado
+      }
+    }
+
+    // Eliminar reportes asociados al material (en cascada)
+    try {
+      await eliminarReportesDeContenido('material', materialId);
+    } catch (reportError) {
+      console.warn('Error al eliminar reportes del material:', reportError);
+      // No detener la eliminación si falla la eliminación de reportes
+    }
+
+    // Eliminar el documento de Firestore
+    await deleteDoc(materialRef);
+
+    console.log('Material, archivo y reportes asociados eliminados exitosamente');
   } catch (error) {
     console.error('Error al eliminar material:', error);
     throw error;

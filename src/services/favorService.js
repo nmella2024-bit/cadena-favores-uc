@@ -22,6 +22,7 @@ import {
   notificarAyudaAceptada,
   notificarFavorFinalizado
 } from './notificationService';
+import { eliminarReportesDeContenido } from './reportService';
 
 /**
  * Publica un nuevo favor en Firestore
@@ -391,14 +392,41 @@ export const asociarAyudante = async (favorId, ayudanteId, ayudanteNombre) => {
 };
 
 /**
- * Elimina un favor
+ * Elimina un favor permanentemente de Firestore
+ * IMPORTANTE: Esta función elimina el favor y todas sus referencias (incluyendo reportes)
  * @param {string} favorId - ID del favor a eliminar
+ * @param {string} userId - ID del usuario que elimina (para validación)
  * @returns {Promise<void>}
  */
-export const eliminarFavor = async (favorId) => {
+export const eliminarFavor = async (favorId, userId) => {
   try {
-    await deleteDoc(doc(db, 'favores', favorId));
-    console.log('Favor eliminado exitosamente');
+    // Obtener el favor para validar permisos
+    const favorRef = doc(db, 'favores', favorId);
+    const favorDoc = await getDoc(favorRef);
+
+    if (!favorDoc.exists()) {
+      throw new Error('El favor no existe');
+    }
+
+    const favorData = favorDoc.data();
+
+    // Validar que solo el creador pueda eliminar el favor
+    if (favorData.usuarioId !== userId) {
+      throw new Error('No tienes permisos para eliminar este favor');
+    }
+
+    // Eliminar reportes asociados al favor (en cascada)
+    try {
+      await eliminarReportesDeContenido('favor', favorId);
+    } catch (reportError) {
+      console.warn('Error al eliminar reportes del favor:', reportError);
+      // No detener la eliminación si falla la eliminación de reportes
+    }
+
+    // Eliminar el documento del favor de Firestore
+    await deleteDoc(favorRef);
+
+    console.log('Favor y reportes asociados eliminados exitosamente');
   } catch (error) {
     console.error('Error al eliminar favor:', error);
     throw error;

@@ -78,13 +78,13 @@ const FavorCard = ({ favor, className }) => {
 
     if (window.confirm('¿Estás seguro de eliminar este favor?')) {
       try {
-        await eliminarFavor(favor.id);
+        await eliminarFavor(favor.id, currentUser.uid);
         alert('Favor eliminado exitosamente');
         // Recargar la página para ver los cambios
         window.location.reload();
       } catch (error) {
         console.error('Error al eliminar favor:', error);
-        alert('Error al eliminar el favor. Intenta nuevamente.');
+        alert(error.message || 'Error al eliminar el favor. Intenta nuevamente.');
       }
     }
   };

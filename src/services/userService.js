@@ -258,14 +258,42 @@ export const calificarUsuario = async (usuarioId, calificacion, comentario = '')
 
 /**
  * Elimina completamente el perfil de un usuario
- * IMPORTANTE: Esta función elimina todos los datos del usuario
+ * IMPORTANTE: Esta función elimina todos los datos del usuario incluyendo foto de perfil
  * @param {string} userId - ID del usuario
  * @returns {Promise<void>}
  */
 export const deleteUserProfile = async (userId) => {
   try {
-    // Obtener referencia al documento del usuario
+    // Obtener datos del usuario antes de eliminar para acceder a la foto de perfil
     const userRef = doc(db, 'usuarios', userId);
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+
+      // Eliminar foto de perfil de Storage si existe
+      if (userData.fotoPerfil && userData.fotoPerfil.includes('firebase')) {
+        try {
+          // Extraer la ruta del archivo desde la URL
+          const storageUrl = userData.fotoPerfil;
+          const baseUrl = 'https://firebasestorage.googleapis.com/v0/b/';
+
+          if (storageUrl.startsWith(baseUrl)) {
+            // Extraer el path después de /o/
+            const pathStart = storageUrl.indexOf('/o/') + 3;
+            const pathEnd = storageUrl.indexOf('?');
+            const filePath = decodeURIComponent(storageUrl.substring(pathStart, pathEnd));
+
+            const fileRef = ref(storage, filePath);
+            await deleteObject(fileRef);
+            console.log('Foto de perfil eliminada de Storage:', filePath);
+          }
+        } catch (storageError) {
+          console.warn('Error al eliminar foto de perfil de Storage (puede que ya no exista):', storageError);
+          // No lanzar error si la foto ya fue eliminada
+        }
+      }
+    }
 
     // Eliminar documento de Firestore
     await deleteDoc(userRef);
@@ -278,7 +306,7 @@ export const deleteUserProfile = async (userId) => {
       await deleteUser(currentUser);
     }
 
-    console.log('Perfil de usuario eliminado exitosamente');
+    console.log('Perfil de usuario eliminado exitosamente de Firestore, Storage y Auth');
   } catch (error) {
     console.error('Error al eliminar perfil de usuario:', error);
     throw error;

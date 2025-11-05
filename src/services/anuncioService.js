@@ -11,8 +11,9 @@ import {
   serverTimestamp,
   Timestamp,
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
+import { eliminarReportesDeContenido } from './reportService';
 
 /**
  * Publica un nuevo anuncio
@@ -133,13 +134,64 @@ export const actualizarAnuncio = async (anuncioId, datosActualizados, nuevaImage
 };
 
 /**
- * Elimina un anuncio
+ * Elimina un anuncio permanentemente de Firestore y Storage
+ * IMPORTANTE: Esta función elimina el anuncio, su imagen de Storage y reportes asociados
  * @param {string} anuncioId - ID del anuncio
+ * @param {string} userId - ID del usuario que elimina (para validación)
  * @returns {Promise<void>}
  */
-export const eliminarAnuncio = async (anuncioId) => {
+export const eliminarAnuncio = async (anuncioId, userId) => {
   try {
-    await deleteDoc(doc(db, 'anuncios', anuncioId));
+    // Obtener el anuncio para validar permisos y obtener la URL de la imagen
+    const anuncioRef = doc(db, 'anuncios', anuncioId);
+    const anuncioDoc = await getDoc(anuncioRef);
+
+    if (!anuncioDoc.exists()) {
+      throw new Error('El anuncio no existe');
+    }
+
+    const anuncioData = anuncioDoc.data();
+
+    // Validar que solo el autor pueda eliminar el anuncio
+    if (anuncioData.autor !== userId) {
+      throw new Error('No tienes permisos para eliminar este anuncio');
+    }
+
+    // Eliminar imagen de Storage si existe
+    if (anuncioData.imagenURL && anuncioData.imagenURL.includes('firebase')) {
+      try {
+        // Extraer la ruta del archivo desde la URL
+        const storageUrl = anuncioData.imagenURL;
+        const baseUrl = 'https://firebasestorage.googleapis.com/v0/b/';
+
+        if (storageUrl.startsWith(baseUrl)) {
+          // Extraer el path después de /o/
+          const pathStart = storageUrl.indexOf('/o/') + 3;
+          const pathEnd = storageUrl.indexOf('?');
+          const filePath = decodeURIComponent(storageUrl.substring(pathStart, pathEnd));
+
+          const fileRef = ref(storage, filePath);
+          await deleteObject(fileRef);
+          console.log('Imagen eliminada de Storage:', filePath);
+        }
+      } catch (storageError) {
+        console.warn('Error al eliminar imagen de Storage (puede que ya no exista):', storageError);
+        // No lanzar error si la imagen ya fue eliminada
+      }
+    }
+
+    // Eliminar reportes asociados al anuncio (en cascada)
+    try {
+      await eliminarReportesDeContenido('anuncio', anuncioId);
+    } catch (reportError) {
+      console.warn('Error al eliminar reportes del anuncio:', reportError);
+      // No detener la eliminación si falla la eliminación de reportes
+    }
+
+    // Eliminar el documento de Firestore
+    await deleteDoc(anuncioRef);
+
+    console.log('Anuncio, imagen y reportes asociados eliminados exitosamente');
   } catch (error) {
     console.error('Error al eliminar anuncio:', error);
     throw error;

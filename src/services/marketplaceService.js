@@ -11,8 +11,9 @@ import {
   where,
   serverTimestamp,
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
+import { eliminarReportesDeContenido } from './reportService';
 
 /**
  * Publica un nuevo producto en el marketplace
@@ -158,13 +159,68 @@ export const actualizarProducto = async (productoId, datosActualizados) => {
 };
 
 /**
- * Elimina un producto
+ * Elimina un producto permanentemente de Firestore y Storage
+ * IMPORTANTE: Esta función elimina el producto, todas sus imágenes de Storage y reportes asociados
  * @param {string} productoId - ID del producto
+ * @param {string} userId - ID del usuario que elimina (para validación)
  * @returns {Promise<void>}
  */
-export const eliminarProducto = async (productoId) => {
+export const eliminarProducto = async (productoId, userId) => {
   try {
-    await deleteDoc(doc(db, 'marketplace', productoId));
+    // Obtener el producto para validar permisos y obtener las URLs de las imágenes
+    const productoRef = doc(db, 'marketplace', productoId);
+    const productoDoc = await getDoc(productoRef);
+
+    if (!productoDoc.exists()) {
+      throw new Error('El producto no existe');
+    }
+
+    const productoData = productoDoc.data();
+
+    // Validar que solo el autor pueda eliminar el producto
+    if (productoData.autor !== userId) {
+      throw new Error('No tienes permisos para eliminar este producto');
+    }
+
+    // Eliminar todas las imágenes de Storage si existen
+    if (productoData.imagenesURL && Array.isArray(productoData.imagenesURL)) {
+      for (const imagenURL of productoData.imagenesURL) {
+        if (imagenURL && imagenURL.includes('firebase')) {
+          try {
+            // Extraer la ruta del archivo desde la URL
+            const storageUrl = imagenURL;
+            const baseUrl = 'https://firebasestorage.googleapis.com/v0/b/';
+
+            if (storageUrl.startsWith(baseUrl)) {
+              // Extraer el path después de /o/
+              const pathStart = storageUrl.indexOf('/o/') + 3;
+              const pathEnd = storageUrl.indexOf('?');
+              const filePath = decodeURIComponent(storageUrl.substring(pathStart, pathEnd));
+
+              const fileRef = ref(storage, filePath);
+              await deleteObject(fileRef);
+              console.log('Imagen eliminada de Storage:', filePath);
+            }
+          } catch (storageError) {
+            console.warn('Error al eliminar imagen de Storage (puede que ya no exista):', storageError);
+            // Continuar con las demás imágenes
+          }
+        }
+      }
+    }
+
+    // Eliminar reportes asociados al producto (en cascada)
+    try {
+      await eliminarReportesDeContenido('marketplace', productoId);
+    } catch (reportError) {
+      console.warn('Error al eliminar reportes del producto:', reportError);
+      // No detener la eliminación si falla la eliminación de reportes
+    }
+
+    // Eliminar el documento de Firestore
+    await deleteDoc(productoRef);
+
+    console.log('Producto, imágenes y reportes asociados eliminados exitosamente');
   } catch (error) {
     console.error('Error al eliminar producto:', error);
     throw error;

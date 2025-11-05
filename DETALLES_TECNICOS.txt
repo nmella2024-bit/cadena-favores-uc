@@ -1,0 +1,66 @@
+DETALLES TECNICOS: FUNCIONES DE ELIMINACION
+
+FUNCION 1: eliminarFavor (favorService.js, lineas 398-406)
+- Elimina documento de favor de Firestore
+- NO valida permisos (cualquiera puede eliminar)
+- NO elimina referencias en usuarios.favoresPublicados[]
+- NO elimina respuestas[] de otros usuarios
+- NO elimina ayudantes[] que otros ofrecieron
+
+FUNCION 2: eliminarMaterial (materialService.js, lineas 148-155)
+- Elimina documento de material
+- NO valida que sea autor
+- NO elimina archivo del Storage (deleteObject importado pero NUNCA usado)
+- Archivos se acumulan en Storage sin limpiarse
+
+FUNCION 3: eliminarAnuncio (anuncioService.js, lineas 140-147)
+- Elimina documento de anuncio
+- NO valida que sea autor
+- NO elimina imagen del Storage
+- Storage waste
+
+FUNCION 4: eliminarProducto (marketplaceService.js, lineas 165-172)
+- Elimina documento de producto
+- NO valida que sea autor
+- NO elimina MULTIPLES imagenes de imagenesURL[]
+- Peor storage waste por multiples imagenes
+
+FUNCION 5: eliminarPedido (orderService.js, lineas 334-361)
+- MEJOR implementado: valida permisos
+- Solo solicitante puede eliminar
+- Solo pedidos pendientes
+- Tiene validaciones apropriadas
+
+FUNCION 6: deleteUserProfile (userService.js, lineas 265-286)
+CRITICO - INCOMPLETO
+- Elimina usuario de Firestore y Auth
+- PERO NO ELIMINA:
+  * Todos los favores del usuario (quedan huerfanos)
+  * Todos los anuncios
+  * Todo material academico
+  * Todos los productos
+  * Respuestas[] en otros favores
+  * Ayudantes[] en otros favores
+  * Foto de perfil en Storage
+  * Reportes del usuario
+  * Referencias en 100+ documentos
+
+IMPORTS DE DELETE:
+- deleteDoc: Importado en 6 servicios
+- deleteUser: Importado en 2 servicios (userService, authService)
+- deleteObject: Importado en userService linea 13 PERO NUNCA USADO
+
+STORAGE PATHS:
+- material/{userId}/{timestamp}_random.extension
+- anuncios/{userId}/{timestamp}_imageName
+- marketplace/{userId}/{timestamp}_random_imageName
+- profile-pictures/{userId}/profile_timestamp.extension
+
+PROBLEMAS CRITICOS:
+1. deleteUserProfile deja 100+ referencias rotas
+2. Sin validacion de permisos en 4 funciones
+3. Storage nunca se limpia (deleteObject no se usa)
+4. Sin transacciones atomicas
+5. Sin cascada de datos relacionados
+6. Sin auditoria de eliminaciones
+

@@ -1,0 +1,161 @@
+MATRIZ DE COLECCIONES Y RELACIONES EN FIRESTORE
+
+COLECCION: usuarios
+- ID Documento: uid de Firebase Auth
+- Campos Clave:
+  * nombre, email, carrera, telefono, rol, reputacion
+  * favoresPublicados[] = array de favorIds
+  * favoresCompletados[] = array de favorIds
+  * fotoPerfil = URL a Storage profile-pictures/{uid}/...
+- Storage: profile-pictures/{uid}/profile_timestamp
+- Relaciones:
+  * (1) usuarios -> (N) favores.usuarioId
+  * (1) usuarios -> (N) anuncios.autor
+  * (1) usuarios -> (N) material.autorId
+  * (1) usuarios -> (N) marketplace.autor
+  * (1) usuarios -> (N) pedidos.solicitanteId
+  * (1) usuarios -> (N) pedidos.repartidorId
+
+COLECCION: favores
+- ID Documento: ID autogenerado por addDoc
+- Campos Clave:
+  * usuarioId = FK a usuarios (creador)
+  * titulo, descripcion, categoria
+  * estado = 'activo' | 'en_proceso' | 'finalizado' | 'completado'
+  * respuestas[] = array de objetos con usuarioId (respondedores)
+  * ayudantes[] = array de objetos con idUsuario (oferentes)
+  * ayudanteSeleccionado = objeto del ayudante aceptado
+  * ayudanteId, ayudanteNombre = campos desnormalizados
+  * fecha, createdAt, updatedAt
+- Relaciones:
+  * N favores -> 1 usuarios (por usuarioId)
+  * respuestas[].usuarioId -> usuarios (respuesta de quien)
+  * ayudantes[].idUsuario -> usuarios (oferta de quien)
+
+COLECCION: anuncios
+- ID Documento: ID autogenerado
+- Campos Clave:
+  * autor = FK a usuarios
+  * autorNombre = desnormalizado de usuarios.nombre
+  * titulo, descripcion
+  * imagenURL = URL a Storage anuncios/{autor}/{timestamp}
+  * fecha, createdAt
+  * fijado = boolean (solo rol 'exclusivo')
+- Storage: anuncios/{autor}/{timestamp}_imageName
+- Relaciones:
+  * N anuncios -> 1 usuarios (por autor)
+
+COLECCION: material
+- ID Documento: ID autogenerado
+- Campos Clave:
+  * autorId = FK a usuarios
+  * autorNombre = desnormalizado
+  * titulo, descripcion, carrera, anio, ramo
+  * archivoUrl = URL a Storage material/{autorId}/{timestamp}
+  * enlaceExterno = URL externa opcional
+  * tipo = 'PDF' | 'DOCX' | 'Enlace'
+  * tags[] = array de strings
+  * fechaSubida, createdAt
+  * fijado = boolean (solo rol 'exclusivo')
+- Storage: material/{autorId}/{timestamp}_random.extension
+- Relaciones:
+  * N material -> 1 usuarios (por autorId)
+
+COLECCION: marketplace
+- ID Documento: ID autogenerado
+- Campos Clave:
+  * autor = FK a usuarios
+  * autorNombre = desnormalizado
+  * autorEmail = desnormalizado
+  * titulo, descripcion, precio
+  * imagenesURL[] = array de URLs (MULTIPLES)
+  * estado = 'disponible' | 'vendido' | 'reservado'
+  * fecha, createdAt
+- Storage: marketplace/{autor}/{timestamp}_random_imageName (MULTIPLES)
+- Relaciones:
+  * N marketplace -> 1 usuarios (por autor)
+
+COLECCION: pedidos (DESHABILITADO)
+- ID Documento: ID autogenerado
+- Campos Clave:
+  * solicitanteId = FK a usuarios (comprador)
+  * repartidorId = FK a usuarios (repartidor, nullable)
+  * restaurante, items[], total
+  * estado = 'pendiente' | 'aceptado' | 'en-camino' | 'entregado' | 'cancelado' | 'completado'
+  * codigoQR, fecha
+- Relaciones:
+  * N pedidos -> 1 usuarios (por solicitanteId)
+  * N pedidos -> 1 usuarios (por repartidorId, nullable)
+
+COLECCION: reportes
+- ID Documento: ID autogenerado
+- Campos Clave:
+  * reporterId = FK a usuarios (quien reporta)
+  * reporterName = desnormalizado
+  * contentType = 'favor' | 'anuncio' | 'marketplace' | 'material' | 'usuario'
+  * contentId = ID del contenido reportado
+  * contentAuthorId = ID del autor del contenido
+  * contentTitle = desnormalizado
+  * reportType = 'spam' | 'inappropriate' | 'false_info' | 'harassment' | 'other'
+  * description = descripcion del reporte
+  * estado = 'pendiente' | 'revisado' | 'resuelto' | 'descartado'
+  * fechaCreacion, fechaRevision, revisadoPor, notas
+- Relaciones:
+  * N reportes -> 1 usuarios (por reporterId - quien reporta)
+  * N reportes -> X usuarios (por contentAuthorId - autor del contenido)
+
+CAMPOS QUE REFERENCIAN A USUARIOS:
+
+En documentos separados:
+- favores.usuarioId = ID del creador
+- favores.respuestas[].usuarioId = ID de cada respondedor
+- favores.ayudantes[].idUsuario = ID de cada oferente
+- anuncios.autor = ID del autor
+- material.autorId = ID del autor
+- marketplace.autor = ID del autor
+- pedidos.solicitanteId = ID del comprador
+- pedidos.repartidorId = ID del repartidor
+- reportes.reporterId = ID de quien reporta
+- reportes.contentAuthorId = ID del autor del contenido
+
+En arrays dentro de documento usuario:
+- usuarios.favoresPublicados[] = array de favorIds
+- usuarios.favoresCompletados[] = array de favorIds
+
+IMPACTO SI USUARIO SE ELIMINA:
+
+documento usuarios.{uid} -> DESAPARECE
+
+PERO PERMANECEN:
+1. favores.{X}.usuarioId = uid (data huerfana)
+2. favores.{Y}.respuestas[] con usuarioId = uid (referencias rotas)
+3. favores.{Z}.ayudantes[] con idUsuario = uid (referencias rotas)
+4. anuncios.{X}.autor = uid (data huerfana)
+5. material.{X}.autorId = uid (data huerfana)
+6. marketplace.{X}.autor = uid (data huerfana)
+7. pedidos.{X}.solicitanteId = uid (data huerfana)
+8. pedidos.{X}.repartidorId = uid (data huerfana)
+9. reportes.{X}.reporterId = uid (auditoria rota)
+10. reportes.{X}.contentAuthorId = uid (auditoria rota)
+11. Storage files: profile-pictures/{uid}/..., anuncios/{uid}/..., etc.
+
+CASCADA REQUERIDA AL ELIMINAR USUARIO:
+
+1. Obtener todos favores donde usuarioId = uid -> deleteDoc(x N)
+2. Obtener todos anuncios donde autor = uid -> deleteDoc(x N)
+3. Obtener todos material donde autorId = uid -> deleteDoc(x N)
+4. Obtener todos marketplace donde autor = uid -> deleteDoc(x N)
+5. Obtener todos pedidos donde solicitanteId = uid -> deleteDoc(x N)
+6. Obtener todos pedidos donde repartidorId = uid -> updateDoc(repartidorId=null)
+7. Obtener todos favores con uid en respuestas[] -> updateDoc (remover elemento)
+8. Obtener todos favores con uid en ayudantes[] -> updateDoc (remover elemento)
+9. Obtener todos reportes donde reporterId = uid -> deleteDoc(x N)
+10. Obtener todos reportes donde contentAuthorId = uid -> updateDoc (limpiar)
+11. Eliminar todos files de Storage: profile-pictures/{uid}/..., etc.
+12. deleteDoc usuario documento
+13. deleteUser de Firebase Auth
+
+TOTAL OPERACIONES POTENCIALES: 50+ deleteDoc/updateDoc por usuario
+
+PROBLEMA ACTUAL: NINGUNA DE ESTO SE HACE
+

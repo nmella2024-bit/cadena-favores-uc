@@ -114,11 +114,11 @@ const Anuncios = () => {
 
     try {
       setEliminando(anuncioId);
-      await eliminarAnuncio(anuncioId);
+      await eliminarAnuncio(anuncioId, currentUser.uid);
       setAnuncios(anuncios.filter(a => a.id !== anuncioId));
     } catch (err) {
       console.error('Error al eliminar anuncio:', err);
-      alert('Error al eliminar el anuncio. Intenta nuevamente.');
+      alert(err.message || 'Error al eliminar el anuncio. Intenta nuevamente.');
     } finally {
       setEliminando(null);
     }

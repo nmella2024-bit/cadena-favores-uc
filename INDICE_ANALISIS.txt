@@ -1,0 +1,183 @@
+INDICE DE DOCUMENTOS DE ANALISIS
+Generado: 2025-11-05
+Proyecto: red-uc-eeuu (Cadena de Favores UC)
+
+========================================
+DOCUMENTOS GENERADOS
+========================================
+
+1. RESUMEN_EJECUTIVO.txt (6.2 KB)
+   - Entrada principal del analisis
+   - Hallazgos principales
+   - Problemas criticos resumidos
+   - Recomendaciones por urgencia
+   - Matriz de riesgo
+   - LEER PRIMERO
+
+2. ANALISIS_ELIMINACIONES.md (7.6 KB)
+   - Analisis detallado de cada funcion de eliminacion
+   - Matriz de validacion completa
+   - Estructura de colecciones Firestore
+   - Ubicacion exacta de cada funcion
+   - Impacto en integridad de datos
+   - Imports de delete encontrados
+
+3. MATRIZ_COLECCIONES_FIRESTORE.txt (6.1 KB)
+   - Estructura de cada coleccion
+   - Campos y tipos de datos
+   - Almacenamiento en Storage
+   - Relaciones entre documentos
+   - Cascada requerida al eliminar
+   - Total operaciones potenciales
+
+4. DETALLES_TECNICOS.txt (2.3 KB)
+   - Codigo de cada funcion delete
+   - Parametros y retornos
+   - Operaciones Firestore exactas
+   - Validaciones presente/ausentes
+   - Limpieza de Storage
+   - Summary de imports
+
+========================================
+ARCHIVOS AFECTADOS EN EL PROYECTO
+========================================
+
+Archivos con Funciones de Eliminacion:
+
+1. src/services/favorService.js
+   - Linea 398-406: eliminarFavor()
+   - Problema: Sin validacion de permisos
+
+2. src/services/materialService.js
+   - Linea 148-155: eliminarMaterial()
+   - Problema: No limpia Storage
+
+3. src/services/anuncioService.js
+   - Linea 140-147: eliminarAnuncio()
+   - Problema: No limpia Storage
+
+4. src/services/marketplaceService.js
+   - Linea 165-172: eliminarProducto()
+   - Problema: No limpia multiples imagenes
+
+5. src/services/orderService.js
+   - Linea 334-361: eliminarPedido()
+   - Estado: Bien implementado (valida permisos)
+
+6. src/services/userService.js
+   - Linea 265-286: deleteUserProfile()
+   - Problema: CRITICO - Incompleto
+   - Linea 13: deleteObject importado pero NUNCA USADO
+
+Archivo de Configuracion:
+
+7. src/firebaseConfig.js
+   - Inicializa servicios Firebase
+   - Credenciales del proyecto red-uc-eeuu
+   - Exporta instancias de db, auth, storage
+
+========================================
+COLECCIONES FIRESTORE DESCUBIERTAS
+========================================
+
+1. usuarios
+   - ID Documento: uid de Firebase Auth
+   - Campos principales: nombre, email, rol, reputacion, fotoPerfil
+   - Arrays: favoresPublicados[], favoresCompletados[]
+   - Storage: profile-pictures/{uid}/...
+
+2. favores
+   - Arrays complejos: respuestas[], ayudantes[]
+   - Estados: activo, en_proceso, finalizado, completado
+   - FK: usuarioId (creador)
+
+3. anuncios
+   - FK: autor (userId)
+   - Storage: anuncios/{autor}/{timestamp}
+
+4. material
+   - FK: autorId (userId)
+   - Storage: material/{autorId}/{timestamp}
+   - Tipos: PDF, DOCX, Enlace
+
+5. marketplace
+   - FK: autor (userId)
+   - Storage: marketplace/{autor}/{timestamp} (MULTIPLES)
+   - imagenesURL[] = array de URLs
+
+6. pedidos (DESHABILITADO)
+   - FK: solicitanteId, repartidorId (userIds)
+   - Estados: pendiente, aceptado, en-camino, entregado, cancelado, completado
+
+7. reportes
+   - FK: reporterId, contentAuthorId (userIds)
+   - contentType: favor, anuncio, marketplace, material, usuario
+   - Estados: pendiente, revisado, resuelto, descartado
+
+========================================
+PROBLEMAS IDENTIFICADOS
+========================================
+
+[CRITICO]
+- deleteUserProfile no elimina datos relacionados (50+ operaciones faltantes)
+
+[ALTO]
+- 4 funciones sin validacion de permisos
+- Storage nunca se limpia (deleteObject importado pero no usado)
+
+[MEDIO]
+- Sin transacciones atomicas
+- Sin cascada de datos
+- Sin auditoria de eliminaciones
+
+========================================
+COMO USAR ESTOS DOCUMENTOS
+========================================
+
+Para Entender el Problema:
+1. Lee RESUMEN_EJECUTIVO.txt primero
+2. Luego ANALISIS_ELIMINACIONES.md para detalles
+3. Consulta MATRIZ_COLECCIONES_FIRESTORE.txt para entender relaciones
+
+Para Implementar Soluciones:
+1. Usa DETALLES_TECNICOS.txt para codigos exactos
+2. Referencia lineas especificas para modificar
+3. Consulta MATRIZ_COLECCIONES_FIRESTORE.txt para cascada
+
+Para Code Review:
+1. Verifica validaciones en cada funcion
+2. Verifica limpieza de Storage
+3. Verifica operaciones transaccionales
+
+========================================
+ESTADISTICAS
+========================================
+
+Colecciones analizadas: 7
+Funciones de delete encontradas: 6
+Funciones problematicas: 5
+Funciones bien implementadas: 1
+
+Operaciones Firestore:
+- deleteDoc: 6 ubicaciones
+- deleteUser: 2 ubicaciones
+- deleteObject: 1 ubicacion (IMPORTADO, NO USADO)
+
+Archivos servicios analizados: 13
+Storage paths identificados: 4
+
+Documentos generados: 4
+Total lineas de analisis: 1000+
+
+========================================
+SIGUIENTE PASO
+========================================
+
+Leer: RESUMEN_EJECUTIVO.txt
+Tiempo estimado: 5 minutos
+
+Luego: ANALISIS_ELIMINACIONES.md
+Tiempo estimado: 10 minutos
+
+Despues: Consultar DETALLES_TECNICOS.txt durante implementacion
+

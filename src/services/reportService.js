@@ -2,6 +2,9 @@ import {
   collection,
   addDoc,
   getDocs,
+  getDoc,
+  deleteDoc,
+  doc,
   query,
   where,
   orderBy,
@@ -263,5 +266,62 @@ export const getContentTypeLabel = (contentType) => {
       return 'Comentario';
     default:
       return contentType;
+  }
+};
+
+/**
+ * Elimina un reporte permanentemente de Firestore
+ * IMPORTANTE: Solo debe ser usado por moderadores/administradores
+ * @param {string} reporteId - ID del reporte a eliminar
+ * @param {string} userId - ID del usuario que elimina (para validación)
+ * @returns {Promise<void>}
+ */
+export const eliminarReporte = async (reporteId, userId) => {
+  try {
+    // Obtener el reporte para verificar que existe
+    const reporteRef = doc(db, 'reportes', reporteId);
+    const reporteDoc = await getDoc(reporteRef);
+
+    if (!reporteDoc.exists()) {
+      throw new Error('El reporte no existe');
+    }
+
+    // Nota: La validación de permisos (verificar que el usuario sea admin/moderador)
+    // debe hacerse en el componente antes de llamar esta función
+
+    // Eliminar el documento del reporte
+    await deleteDoc(reporteRef);
+
+    console.log('Reporte eliminado exitosamente de Firestore');
+  } catch (error) {
+    console.error('Error al eliminar reporte:', error);
+    throw error;
+  }
+};
+
+/**
+ * Elimina todos los reportes asociados a un contenido específico
+ * IMPORTANTE: Se ejecuta automáticamente cuando se elimina contenido reportado
+ * @param {string} contentType - Tipo de contenido
+ * @param {string} contentId - ID del contenido
+ * @returns {Promise<number>} Cantidad de reportes eliminados
+ */
+export const eliminarReportesDeContenido = async (contentType, contentId) => {
+  try {
+    // Obtener todos los reportes del contenido
+    const reportes = await obtenerReportesDeContenido(contentType, contentId);
+
+    // Eliminar cada reporte
+    const deletePromises = reportes.map(reporte =>
+      deleteDoc(doc(db, 'reportes', reporte.id))
+    );
+
+    await Promise.all(deletePromises);
+
+    console.log(`${reportes.length} reportes eliminados del contenido ${contentType}:${contentId}`);
+    return reportes.length;
+  } catch (error) {
+    console.error('Error al eliminar reportes de contenido:', error);
+    throw error;
   }
 };

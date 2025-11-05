@@ -136,13 +136,13 @@ const Favores = () => {
 
     if (window.confirm('¿Estás seguro de eliminar este favor?')) {
       try {
-        await eliminarFavor(selectedFavor.id);
+        await eliminarFavor(selectedFavor.id, currentUser.uid);
         alert('Favor eliminado exitosamente');
         closeModal();
         window.location.reload();
       } catch (error) {
         console.error('Error al eliminar favor:', error);
-        alert('Error al eliminar el favor. Intenta nuevamente.');
+        alert(error.message || 'Error al eliminar el favor. Intenta nuevamente.');
       }
     }
   };

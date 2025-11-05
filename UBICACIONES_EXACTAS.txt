@@ -1,0 +1,238 @@
+UBICACIONES EXACTAS DE FUNCIONES Y CONFIGURACION
+================================================
+
+CONFIGURACION FIREBASE
+======================
+
+Archivo: c:\Users\nmell\cadena-favores-uc\src\firebaseConfig.js
+
+Servicios Inicializados:
+- initializeApp(firebaseConfig) linea 22
+- getAnalytics(app) linea 23
+- getAuth(app) linea 24
+- getFirestore(app) linea 25
+- getStorage(app) linea 26
+
+Exportados: { app, analytics, auth, db, storage }
+
+---
+
+FUNCIONES DE ELIMINACION
+========================
+
+1. eliminarFavor
+   Archivo: c:\Users\nmell\cadena-favores-uc\src\services\favorService.js
+   Linea: 398-406
+   Codigo: await deleteDoc(doc(db, 'favores', favorId));
+   Imports: deleteDoc de 'firebase/firestore' (linea 8)
+
+2. eliminarMaterial
+   Archivo: c:\Users\nmell\cadena-favores-uc\src\services\materialService.js
+   Linea: 148-155
+   Codigo: await deleteDoc(doc(db, 'material', materialId));
+   Imports: deleteDoc (linea 5), deleteObject (linea 5, NUNCA USADO)
+
+3. eliminarAnuncio
+   Archivo: c:\Users\nmell\cadena-favores-uc\src\services\anuncioService.js
+   Linea: 140-147
+   Codigo: await deleteDoc(doc(db, 'anuncios', anuncioId));
+   Imports: deleteDoc (linea 8)
+
+4. eliminarProducto
+   Archivo: c:\Users\nmell\cadena-favores-uc\src\services\marketplaceService.js
+   Linea: 165-172
+   Codigo: await deleteDoc(doc(db, 'marketplace', productoId));
+   Imports: deleteDoc (linea 8)
+
+5. eliminarPedido
+   Archivo: c:\Users\nmell\cadena-favores-uc\src\services\orderService.js
+   Linea: 334-361
+   Codigo: 
+   - getDoc(pedidoRef) linea 337
+   - Validacion: pedidoData.solicitanteId === userId linea 346
+   - Validacion: pedidoData.estado === 'pendiente' linea 351
+   - deleteDoc(pedidoRef) linea 355
+   Imports: deleteDoc (linea 15)
+
+6. deleteUserProfile
+   Archivo: c:\Users\nmell\cadena-favores-uc\src\services\userService.js
+   Linea: 265-286
+   Codigo:
+   - deleteDoc(userRef) linea 271
+   - deleteUser(currentUser) linea 278
+   Imports: deleteDoc (linea 11), deleteUser (linea 14), deleteObject (linea 13, NUNCA USADO)
+
+---
+
+IMPORTS DE DELETE
+=================
+
+deleteDoc:
+- src/services/favorService.js linea 8
+- src/services/materialService.js linea 5
+- src/services/anuncioService.js linea 8
+- src/services/marketplaceService.js linea 8
+- src/services/orderService.js linea 15
+- src/services/userService.js linea 11
+
+deleteUser:
+- src/services/userService.js linea 14
+- src/services/authService.js linea 7 (solo para rollback en error, linea 51)
+
+deleteObject:
+- src/services/userService.js linea 13
+  STATUS: IMPORTADO PERO NUNCA USADO - NUNCA SE INVOCA
+
+---
+
+FUNCIONES QUE LLAMAN A DELETE
+==============================
+
+favorService.js:
+- eliminarFavor (linea 398) -> deleteDoc
+
+materialService.js:
+- eliminarMaterial (linea 148) -> deleteDoc
+
+anuncioService.js:
+- eliminarAnuncio (linea 140) -> deleteDoc
+
+marketplaceService.js:
+- eliminarProducto (linea 165) -> deleteDoc
+
+orderService.js:
+- eliminarPedido (linea 334) -> deleteDoc
+- cancelarPedido (linea 295) -> updateDoc (cambio estado, no elimina)
+
+userService.js:
+- deleteUserProfile (linea 265) -> deleteDoc + deleteUser
+
+authService.js:
+- registerUser (linea 51, solo en catch) -> deleteUser
+
+---
+
+COLECCIONES FIRESTORE
+=====================
+
+1. usuarios
+   ID: uid de Firebase Auth
+   Documentos Esperados: N usuarios registrados
+
+2. favores
+   ID: Autogenerado por addDoc
+   Documentos Esperados: N favores publicados
+
+3. anuncios
+   ID: Autogenerado
+   Documentos Esperados: N anuncios publicados
+
+4. material
+   ID: Autogenerado
+   Documentos Esperados: N materiales subidos
+
+5. marketplace
+   ID: Autogenerado
+   Documentos Esperados: N productos vendidos
+
+6. pedidos
+   ID: Autogenerado
+   Documentos Esperados: N pedidos (servicio deshabilitado)
+
+7. reportes
+   ID: Autogenerado
+   Documentos Esperados: N reportes creados
+
+---
+
+STORAGE PATHS
+=============
+
+profile-pictures/{userId}/profile_timestamp.extension
+  - Fotos de perfil de usuarios
+  - Eliminadas: NO (deleteObject no se usa)
+
+anuncios/{userId}/{timestamp}_imageName
+  - Imagenes de anuncios
+  - Eliminadas: NO (deleteObject no se usa)
+
+material/{userId}/{timestamp}_random.extension
+  - Archivos de material (PDF, DOCX)
+  - Eliminadas: NO (deleteObject no se usa)
+
+marketplace/{userId}/{timestamp}_random_imageName
+  - Imagenes de productos (MULTIPLES por producto)
+  - Eliminadas: NO (deleteObject no se usa)
+
+---
+
+ARCHIVOS DE SERVICIOS ANALIZADOS
+=================================
+
+1. src/services/favorService.js (715 lineas)
+   - eliminarFavor (linea 398)
+
+2. src/services/materialService.js (224 lineas)
+   - eliminarMaterial (linea 148)
+
+3. src/services/anuncioService.js (184 lineas)
+   - eliminarAnuncio (linea 140)
+
+4. src/services/marketplaceService.js (197 lineas)
+   - eliminarProducto (linea 165)
+
+5. src/services/orderService.js (654 lineas)
+   - eliminarPedido (linea 334)
+
+6. src/services/userService.js (287 lineas)
+   - deleteUserProfile (linea 265)
+
+7. src/services/reportService.js (268 lineas)
+   - Sin funciones delete (solo crear reportes)
+
+8. src/services/authService.js (56 lineas)
+   - deleteUser en catch (linea 51)
+
+9. src/services/ratingService.js
+   - Analizado
+
+10. src/services/notificationService.js
+    - Analizado
+
+11. src/services/feedService.js
+    - Analizado
+
+12. src/services/searchService.js
+    - Analizado
+
+13. src/services/feedbackService.js
+    - Analizado
+
+---
+
+ARCHIVOS DE CONTEXTO
+====================
+
+src/context/AuthContext.jsx
+- Maneja estado de autenticacion
+- Llama a funciones de autenticacion y datos de usuario
+
+---
+
+TOTAL ANALISIS
+===============
+
+Archivos analizados: 13 archivos de servicios + 1 config
+Lineas de codigo analizadas: 4024 lineas
+Funciones de delete encontradas: 6
+Ubicaciones de deleteDoc: 6
+Ubicaciones de deleteUser: 2 (1 en operacion, 1 en rollback)
+Ubicaciones de deleteObject: 1 (IMPORTADO, NO USADO)
+
+Colecciones Firestore: 7
+Storage paths: 4
+
+Problemas criticos: 1 (deleteUserProfile incompleto)
+Problemas altos: 2 (sin validacion de permisos, Storage no limpio)
+Problemas medios: 3 (sin transacciones, sin cascada, sin auditoria)
+

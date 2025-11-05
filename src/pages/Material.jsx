@@ -250,12 +250,12 @@ const Material = () => {
 
     try {
       setEliminando(materialId);
-      await eliminarMaterial(materialId);
+      await eliminarMaterial(materialId, currentUser.uid);
       // Recargar materiales
       cargarMateriales();
     } catch (err) {
       console.error('Error al eliminar material:', err);
-      alert('Error al eliminar el material. Intenta nuevamente.');
+      alert(err.message || 'Error al eliminar el material. Intenta nuevamente.');
     } finally {
       setEliminando(null);
     }
