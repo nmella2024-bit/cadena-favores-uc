@@ -187,8 +187,14 @@ const EditarPerfilModal = ({ isOpen, onClose, onActualizacionExitosa }) => {
               name="carrera"
               value={formData.carrera}
               onChange={handleChange}
-              options={CARRERAS_UC}
-            />
+            >
+              <option value="">Selecciona tu carrera</option>
+              {CARRERAS_UC.map((carrera) => (
+                <option key={carrera} value={carrera}>
+                  {carrera}
+                </option>
+              ))}
+            </SelectField>
 
             {/* Año */}
             <SelectField
@@ -197,8 +203,13 @@ const EditarPerfilModal = ({ isOpen, onClose, onActualizacionExitosa }) => {
               name="año"
               value={formData.año}
               onChange={handleChange}
-              options={[1, 2, 3, 4, 5, 6]}
-            />
+            >
+              {[1, 2, 3, 4, 5, 6].map((año) => (
+                <option key={año} value={año}>
+                  {año}° año
+                </option>
+              ))}
+            </SelectField>
 
             {/* WhatsApp */}
             <TextField
