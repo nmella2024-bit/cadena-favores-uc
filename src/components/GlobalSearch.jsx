@@ -274,55 +274,39 @@ const GlobalSearch = () => {
   };
 
   return (
-    <>
-      {/* Versión Desktop */}
-      <div ref={searchRef} className="hidden md:block relative" style={{ width: '125px' }}>
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
-          <input
-            ref={inputRef}
-            type="text"
-            value={searchTerm}
-            onChange={handleInputChange}
-            onFocus={() => setIsOpen(true)}
-            placeholder="Buscar favores, anuncios, productos..."
-            className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
-          />
-          {searchTerm && (
-            <button
-              onClick={handleClear}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-canvas rounded transition-colors"
-            >
-              <X className="w-4 h-4 text-text-muted" />
-            </button>
-          )}
-          {isLoading && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2">
-              <Loader2 className="w-4 h-4 text-brand animate-spin" />
-            </div>
-          )}
-        </div>
-
-        {/* Dropdown de resultados - Desktop */}
-        {isOpen && searchTerm.trim().length >= 2 && (
-          <div className="absolute top-full mt-2 bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn" style={{ width: '700px' }}>
-            {isLoading && !results ? (
-              <div className="p-8 text-center">
-                <Loader2 className="w-8 h-8 text-brand animate-spin mx-auto mb-2" />
-                <p className="text-sm text-text-muted">Buscando...</p>
-              </div>
-            ) : (
-              renderResults()
-            )}
+    <div ref={searchRef} className="relative">
+      {/* Input de búsqueda - Desktop */}
+      <div className="hidden md:block relative" style={{ width: '125px' }}>
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+        <input
+          ref={inputRef}
+          type="text"
+          value={searchTerm}
+          onChange={handleInputChange}
+          onFocus={() => setIsOpen(true)}
+          placeholder="Buscar favores, anuncios, productos..."
+          className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+        />
+        {searchTerm && (
+          <button
+            onClick={handleClear}
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-canvas rounded transition-colors"
+          >
+            <X className="w-4 h-4 text-text-muted" />
+          </button>
+        )}
+        {isLoading && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2">
+            <Loader2 className="w-4 h-4 text-brand animate-spin" />
           </div>
         )}
       </div>
 
-      {/* Versión Móvil - Solo icono */}
+      {/* Icono de búsqueda - Móvil */}
       <button
         onClick={(e) => {
           e.stopPropagation();
-          setIsOpen(true);
+          setIsOpen(!isOpen);
         }}
         className="md:hidden p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas"
         aria-label="Buscar"
@@ -330,23 +314,27 @@ const GlobalSearch = () => {
         <Search className="w-6 h-6" />
       </button>
 
-      {/* Modal full-screen móvil */}
+      {/* Dropdown de resultados - Desktop */}
+      {isOpen && searchTerm.trim().length >= 2 && (
+        <div className="hidden md:block absolute top-full mt-2 bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn" style={{ width: '700px' }}>
+          {isLoading && !results ? (
+            <div className="p-8 text-center">
+              <Loader2 className="w-8 h-8 text-brand animate-spin mx-auto mb-2" />
+              <p className="text-sm text-text-muted">Buscando...</p>
+            </div>
+          ) : (
+            renderResults()
+          )}
+        </div>
+      )}
+
+      {/* Dropdown de resultados - Móvil */}
       {isOpen && (
-        <div
-          className="md:hidden fixed inset-0 z-50 bg-canvas/95 backdrop-blur-sm"
-          onClick={(e) => {
-            // Cerrar si se hace clic en el backdrop
-            if (e.target === e.currentTarget) {
-              setIsOpen(false);
-              setSearchTerm('');
-              setResults(null);
-            }
-          }}
-        >
-          <div className="container mx-auto px-4 py-4 h-full flex flex-col">
-            {/* Header con barra de búsqueda */}
-            <div className="flex items-center gap-3 mb-4">
-              <div className="relative flex-1">
+        <div className="md:hidden fixed inset-x-4 top-16 z-50 animate-fadeIn">
+          <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden max-h-[calc(100vh-5rem)]">
+            {/* Input de búsqueda móvil */}
+            <div className="p-3 border-b border-border bg-canvas sticky top-0">
+              <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
                 <input
                   type="text"
@@ -354,60 +342,67 @@ const GlobalSearch = () => {
                   onChange={handleInputChange}
                   placeholder="Buscar favores, anuncios, productos..."
                   autoFocus
-                  className="w-full pl-10 pr-10 py-3 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                  className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
                 />
-                {searchTerm && (
+                {searchTerm ? (
                   <button
                     onClick={handleClear}
                     className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-canvas rounded transition-colors"
                   >
                     <X className="w-4 h-4 text-text-muted" />
                   </button>
+                ) : (
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-canvas rounded transition-colors"
+                  >
+                    <X className="w-4 h-4 text-text-muted" />
+                  </button>
                 )}
                 {isLoading && (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                  <div className="absolute right-10 top-1/2 -translate-y-1/2">
                     <Loader2 className="w-4 h-4 text-brand animate-spin" />
                   </div>
                 )}
               </div>
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  setSearchTerm('');
-                  setResults(null);
-                }}
-                className="p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-card"
-              >
-                <X className="w-6 h-6" />
-              </button>
             </div>
 
-            {/* Resultados */}
-            {searchTerm.trim().length >= 2 && (
-              <div className="flex-1 overflow-y-auto bg-card border border-border rounded-xl">
-                {isLoading && !results ? (
+            {/* Resultados móvil */}
+            <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 10rem)' }}>
+              {searchTerm.trim().length >= 2 ? (
+                isLoading && !results ? (
                   <div className="p-8 text-center">
                     <Loader2 className="w-8 h-8 text-brand animate-spin mx-auto mb-2" />
                     <p className="text-sm text-text-muted">Buscando...</p>
                   </div>
                 ) : (
                   renderResults()
-                )}
-              </div>
-            )}
-
-            {searchTerm.trim().length < 2 && (
-              <div className="flex-1 flex items-center justify-center">
-                <div className="text-center">
-                  <Search className="w-16 h-16 text-text-muted/30 mx-auto mb-3" />
-                  <p className="text-text-muted">Escribe al menos 2 caracteres para buscar</p>
+                )
+              ) : (
+                <div className="p-8 text-center">
+                  <Search className="w-12 h-12 text-text-muted/30 mx-auto mb-3" />
+                  <p className="text-text-muted text-sm">
+                    Escribe al menos 2 caracteres para buscar
+                  </p>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       )}
-    </>
+
+      {/* Backdrop móvil para cerrar al hacer clic fuera */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-40"
+          onClick={() => {
+            setIsOpen(false);
+            setSearchTerm('');
+            setResults(null);
+          }}
+        />
+      )}
+    </div>
   );
 };
 
