@@ -145,7 +145,7 @@ const GlobalSearch = () => {
     }
 
     return (
-      <div className="divide-y divide-border max-h-[32rem] overflow-y-auto">
+      <div className="divide-y divide-border overflow-y-auto" style={{ maxHeight: '5376px' }}>
         {/* Favores */}
         {results.favores.length > 0 && (
           <div className="p-4">
