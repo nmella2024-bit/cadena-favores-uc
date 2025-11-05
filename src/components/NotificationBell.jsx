@@ -18,15 +18,30 @@ const NotificationBell = () => {
 
   // Suscribirse a notificaciones en tiempo real
   useEffect(() => {
-    if (!currentUser) return;
+    if (!currentUser) {
+      console.log('❌ NotificationBell: No hay usuario logueado');
+      return;
+    }
 
-    const unsubscribe = suscribirseANotificaciones(currentUser.uid, (notifs) => {
-      setNotificaciones(notifs);
-      const countNoLeidas = notifs.filter(n => !n.leida).length;
-      setNoLeidas(countNoLeidas);
-    });
+    console.log('🔔 NotificationBell: Suscribiéndose a notificaciones para usuario:', currentUser.uid);
 
-    return () => unsubscribe();
+    try {
+      const unsubscribe = suscribirseANotificaciones(currentUser.uid, (notifs) => {
+        console.log('🔔 NotificationBell: Notificaciones recibidas:', notifs.length);
+        console.log('🔔 Notificaciones:', notifs);
+        setNotificaciones(notifs);
+        const countNoLeidas = notifs.filter(n => !n.leida).length;
+        setNoLeidas(countNoLeidas);
+        console.log('🔔 NotificationBell: Notificaciones no leídas:', countNoLeidas);
+      });
+
+      return () => {
+        console.log('🔔 NotificationBell: Desuscribiendo...');
+        unsubscribe();
+      };
+    } catch (error) {
+      console.error('❌ NotificationBell: Error en suscripción:', error);
+    }
   }, [currentUser]);
 
   // Cerrar dropdown al hacer clic fuera

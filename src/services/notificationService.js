@@ -101,6 +101,8 @@ export const obtenerNotificaciones = async (userId, limitCount = 50) => {
  * @returns {Function} Función para desuscribirse
  */
 export const suscribirseANotificaciones = (userId, callback, limitCount = 50) => {
+  console.log('📡 [suscribirseANotificaciones] Iniciando suscripción para userId:', userId);
+
   const notificacionesRef = collection(db, 'notificaciones');
   const q = query(
     notificacionesRef,
@@ -109,13 +111,22 @@ export const suscribirseANotificaciones = (userId, callback, limitCount = 50) =>
     limit(limitCount)
   );
 
-  return onSnapshot(q, (snapshot) => {
-    const notificaciones = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    callback(notificaciones);
-  });
+  return onSnapshot(q,
+    (snapshot) => {
+      console.log('📡 [suscribirseANotificaciones] Snapshot recibido:', snapshot.size, 'docs');
+      const notificaciones = snapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      console.log('📡 [suscribirseANotificaciones] Notificaciones procesadas:', notificaciones);
+      callback(notificaciones);
+    },
+    (error) => {
+      console.error('❌ [suscribirseANotificaciones] Error en snapshot:', error);
+      console.error('❌ Error code:', error.code);
+      console.error('❌ Error message:', error.message);
+    }
+  );
 };
 
 /**

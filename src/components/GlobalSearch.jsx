@@ -148,22 +148,22 @@ const GlobalSearch = () => {
       <div className="divide-y divide-border max-h-[32rem] overflow-y-auto">
         {/* Favores */}
         {results.favores.length > 0 && (
-          <div className="p-3">
-            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-2">
+          <div className="p-4">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
               Favores ({results.favores.length})
             </p>
             {results.favores.map(item => (
               <button
                 key={item.id}
                 onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-2 hover:bg-canvas rounded-lg transition-colors text-left"
+                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
               >
                 {getIconForType(item.type)}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-text-primary truncate">
+                  <p className="text-base font-medium text-text-primary truncate">
                     {item.titulo}
                   </p>
-                  <p className="text-xs text-text-muted truncate">
+                  <p className="text-sm text-text-muted truncate mt-1">
                     {item.descripcion}
                   </p>
                 </div>
@@ -174,22 +174,22 @@ const GlobalSearch = () => {
 
         {/* Anuncios */}
         {results.anuncios.length > 0 && (
-          <div className="p-3">
-            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-2">
+          <div className="p-4">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
               Anuncios ({results.anuncios.length})
             </p>
             {results.anuncios.map(item => (
               <button
                 key={item.id}
                 onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-2 hover:bg-canvas rounded-lg transition-colors text-left"
+                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
               >
                 {getIconForType(item.type)}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-text-primary truncate">
+                  <p className="text-base font-medium text-text-primary truncate">
                     {item.titulo}
                   </p>
-                  <p className="text-xs text-text-muted truncate">
+                  <p className="text-sm text-text-muted truncate mt-1">
                     {item.descripcion}
                   </p>
                 </div>
@@ -200,23 +200,23 @@ const GlobalSearch = () => {
 
         {/* Marketplace */}
         {results.marketplace.length > 0 && (
-          <div className="p-3">
-            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-2">
+          <div className="p-4">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
               Marketplace ({results.marketplace.length})
             </p>
             {results.marketplace.map(item => (
               <button
                 key={item.id}
                 onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-2 hover:bg-canvas rounded-lg transition-colors text-left"
+                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
               >
                 {getIconForType(item.type)}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-text-primary truncate">
+                  <p className="text-base font-medium text-text-primary truncate">
                     {item.titulo}
                   </p>
                   {item.precio && (
-                    <p className="text-xs font-semibold text-green-600">
+                    <p className="text-sm font-semibold text-green-600 mt-1">
                       ${item.precio.toLocaleString('es-CL')}
                     </p>
                   )}
@@ -228,22 +228,22 @@ const GlobalSearch = () => {
 
         {/* Material */}
         {results.material.length > 0 && (
-          <div className="p-3">
-            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-2">
+          <div className="p-4">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
               Material ({results.material.length})
             </p>
             {results.material.map(item => (
               <button
                 key={item.id}
                 onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-2 hover:bg-canvas rounded-lg transition-colors text-left"
+                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
               >
                 {getIconForType(item.type)}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-text-primary truncate">
+                  <p className="text-base font-medium text-text-primary truncate">
                     {item.titulo}
                   </p>
-                  <p className="text-xs text-text-muted truncate">
+                  <p className="text-sm text-text-muted truncate mt-1">
                     {item.carrera} • {item.ramo}
                   </p>
                 </div>
@@ -254,22 +254,22 @@ const GlobalSearch = () => {
 
         {/* Usuarios */}
         {results.usuarios.length > 0 && (
-          <div className="p-3">
-            <p className="text-xs font-semibold text-text-muted uppercase tracking-wide mb-2">
+          <div className="p-4">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
               Usuarios ({results.usuarios.length})
             </p>
             {results.usuarios.map(item => (
               <button
                 key={item.id}
                 onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-2 hover:bg-canvas rounded-lg transition-colors text-left"
+                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
               >
                 {getIconForType(item.type)}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-text-primary truncate">
+                  <p className="text-base font-medium text-text-primary truncate">
                     {item.nombre}
                   </p>
-                  <p className="text-xs text-text-muted truncate">
+                  <p className="text-sm text-text-muted truncate mt-1">
                     {item.carrera}
                   </p>
                 </div>
