@@ -17,6 +17,11 @@ import {
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 import { addFavorToUser, markFavorAsCompleted, getUserData } from './userService';
+import {
+  notificarOfertaAyuda,
+  notificarAyudaAceptada,
+  notificarFavorFinalizado
+} from './notificationService';
 
 /**
  * Publica un nuevo favor en Firestore
@@ -315,6 +320,22 @@ export const finalizarFavor = async (favorId, solicitanteId) => {
     await updateDoc(favorRef, updateData);
 
     console.log('✅ [finalizarFavor] Favor finalizado exitosamente');
+
+    // Crear notificación para el ayudante si existe
+    if (updateData.ayudanteId) {
+      try {
+        const solicitanteData = await getUserData(solicitanteId);
+        await notificarFavorFinalizado(
+          updateData.ayudanteId,
+          solicitanteData?.nombre || 'Un usuario',
+          favorId,
+          favorData.titulo
+        );
+        console.log('✅ [finalizarFavor] Notificación enviada al ayudante');
+      } catch (notifError) {
+        console.error('⚠️ [finalizarFavor] Error al crear notificación:', notifError);
+      }
+    }
   } catch (error) {
     console.error('❌ [finalizarFavor] Error:', error);
     throw error;
@@ -489,6 +510,20 @@ export const ofrecerAyuda = async (favorId, user) => {
     });
 
     console.log('✅ [ofrecerAyuda] Oferta de ayuda agregada exitosamente');
+
+    // Crear notificación para el solicitante
+    try {
+      await notificarOfertaAyuda(
+        favorData.usuarioId,
+        user.nombre || 'Un usuario',
+        favorId,
+        favorData.titulo
+      );
+      console.log('✅ [ofrecerAyuda] Notificación enviada al solicitante');
+    } catch (notifError) {
+      console.error('⚠️ [ofrecerAyuda] Error al crear notificación:', notifError);
+      // No lanzar error, la notificación es secundaria
+    }
   } catch (error) {
     console.error('❌ [ofrecerAyuda] Error:', {
       message: error.message,
@@ -550,6 +585,20 @@ export const aceptarAyudante = async (favorId, solicitanteId, ayudanteId) => {
     });
 
     console.log('Ayudante aceptado exitosamente');
+
+    // Crear notificación para el ayudante
+    try {
+      const solicitanteData = await getUserData(solicitanteId);
+      await notificarAyudaAceptada(
+        ayudanteId,
+        solicitanteData?.nombre || 'Un usuario',
+        favorId,
+        favorData.titulo
+      );
+      console.log('✅ [aceptarAyudante] Notificación enviada al ayudante');
+    } catch (notifError) {
+      console.error('⚠️ [aceptarAyudante] Error al crear notificación:', notifError);
+    }
   } catch (error) {
     console.error('Error al aceptar ayudante:', error);
     throw error;

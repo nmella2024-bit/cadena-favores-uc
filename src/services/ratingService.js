@@ -11,6 +11,7 @@ import {
   runTransaction,
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
+import { notificarNuevaCalificacion } from './notificationService';
 
 /**
  * Marca que un usuario confirma la finalización de un favor
@@ -147,6 +148,19 @@ export const calificarUsuario = async (calificacionData) => {
 
     // Actualizar el promedio del usuario calificado
     await actualizarPromedioUsuario(calificadoId);
+
+    // Crear notificación para el usuario calificado
+    try {
+      await notificarNuevaCalificacion(
+        calificadoId,
+        calificadorNombre,
+        estrellas,
+        favorId
+      );
+      console.log('✅ [calificarUsuario] Notificación enviada al usuario calificado');
+    } catch (notifError) {
+      console.error('⚠️ [calificarUsuario] Error al crear notificación:', notifError);
+    }
 
     return docRef.id;
   } catch (error) {

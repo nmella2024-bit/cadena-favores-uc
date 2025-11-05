@@ -121,5 +121,39 @@ service cloud.firestore {
       allow delete: if request.auth != null &&
                     request.auth.uid == resource.data.autorId;
     }
+
+    // Reglas para la colección de notificaciones
+    match /notificaciones/{notificacionId} {
+      // Solo el destinatario puede leer sus notificaciones
+      allow read: if request.auth != null &&
+                   request.auth.uid == resource.data.userId;
+
+      // Solo el sistema puede crear notificaciones (cualquier usuario autenticado puede crearlas)
+      allow create: if request.auth != null;
+
+      // Solo el destinatario puede actualizar sus notificaciones (marcar como leída)
+      allow update: if request.auth != null &&
+                    request.auth.uid == resource.data.userId;
+
+      // Solo el destinatario puede eliminar sus notificaciones
+      allow delete: if request.auth != null &&
+                    request.auth.uid == resource.data.userId;
+    }
+
+    // Reglas para la colección de reportes
+    match /reportes/{reporteId} {
+      // Solo usuarios con rol "exclusivo" pueden leer reportes (moderadores/admins)
+      allow read: if esUsuarioExclusivo();
+
+      // Cualquier usuario autenticado puede crear reportes
+      allow create: if request.auth != null &&
+                    request.resource.data.reporterId == request.auth.uid;
+
+      // Solo usuarios con rol "exclusivo" pueden actualizar reportes (para cambiar estado)
+      allow update: if esUsuarioExclusivo();
+
+      // Solo usuarios con rol "exclusivo" pueden eliminar reportes
+      allow delete: if esUsuarioExclusivo();
+    }
   }
 }

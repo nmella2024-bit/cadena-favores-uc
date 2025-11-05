@@ -4,6 +4,7 @@ import { Sparkles, Users, GraduationCap, HeartHandshake, Heart, ShoppingBag, Cal
 import { useAuth } from '../context/AuthContext';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import GhostButton from '../components/ui/GhostButton';
+import Feed from '../components/Feed';
 
 const highlights = [
   {
@@ -161,6 +162,19 @@ const Home = () => {
               })}
             </div>
           </div>
+        </section>
+      )}
+
+      {/* Feed de actividad reciente para usuarios logueados */}
+      {currentUser && (
+        <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mb-6">
+            <h2 className="text-3xl font-bold tracking-tight">Actividad reciente</h2>
+            <p className="mt-2 text-lg text-text-muted">
+              Explora lo último en favores, anuncios, marketplace y material académico
+            </p>
+          </div>
+          <Feed />
         </section>
       )}
 

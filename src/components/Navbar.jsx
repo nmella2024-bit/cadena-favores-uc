@@ -6,6 +6,8 @@ import { useAuth } from '../context/AuthContext';
 import logo from '../assets/mi-logo-v4.png';
 import ThemeToggle from './ui/ThemeToggle';
 import FeedbackModal from './FeedbackModal';
+import NotificationBell from './NotificationBell';
+import GlobalSearch from './GlobalSearch';
 
 const Navbar = () => {
   const { currentUser, logout } = useAuth();
@@ -80,6 +82,11 @@ const Navbar = () => {
               </div>
             </Link>
 
+            {/* Búsqueda global - Solo visible en desktop */}
+            <div className="hidden md:block flex-1 max-w-2xl mx-4">
+              <GlobalSearch />
+            </div>
+
             <div className="hidden items-center gap-2 md:flex">
               {/* Navegación principal */}
               {mainNavigation.map((item) => {
@@ -146,6 +153,7 @@ const Navbar = () => {
                 <MessageSquare className="h-4 w-4" />
                 Feedback
               </button>
+              {currentUser && <NotificationBell />}
               <ThemeToggle />
 
               {/* Botones de autenticación */}

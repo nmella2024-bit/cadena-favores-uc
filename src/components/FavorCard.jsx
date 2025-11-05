@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CalendarDays, Link2, Tag, UserRound, MessageCircle, X, CheckCircle, Star } from 'lucide-react';
+import { CalendarDays, Link2, Tag, UserRound, MessageCircle, X, CheckCircle, Star, Flag } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
 import { eliminarFavor, ofrecerAyuda, finalizarFavor } from '../services/favorService';
@@ -10,6 +10,8 @@ import GhostButton from './ui/GhostButton';
 import CalificarUsuarioModal from './CalificarUsuarioModal';
 import StarRating from './StarRating';
 import { cn } from '../utils/cn';
+import ReportModal from './ReportModal';
+import { CONTENT_TYPES } from '../services/reportService';
 
 const FavorCard = ({ favor, className }) => {
   const { currentUser, firebaseUser } = useAuth();
@@ -18,6 +20,7 @@ const FavorCard = ({ favor, className }) => {
   const [loadingContact, setLoadingContact] = useState(false);
   const [showCalificarModal, setShowCalificarModal] = useState(false);
   const [solicitanteData, setSolicitanteData] = useState(null);
+  const [showReportModal, setShowReportModal] = useState(false);
 
   const category = categories.find((c) => c.id === favor.categoria);
   const isOwnFavor = currentUser && favor.usuarioId === currentUser.uid;
@@ -241,6 +244,18 @@ const FavorCard = ({ favor, className }) => {
               Detalles
             </span>
           </GhostButton>
+
+          {/* Botón reportar - visible solo para usuarios logueados que no son el autor */}
+          {currentUser && !isOwnFavor && (
+            <GhostButton
+              type="button"
+              onClick={() => setShowReportModal(true)}
+              className="px-4 py-2 text-sm text-text-muted hover:text-red-500 hover:bg-red-500/10 focus-visible:ring-red-500/40"
+              title="Reportar favor"
+            >
+              <Flag className="h-4 w-4" aria-hidden="true" />
+            </GhostButton>
+          )}
         </div>
       </div>
 
@@ -324,6 +339,16 @@ const FavorCard = ({ favor, className }) => {
           alert('✅ Favor finalizado y calificación enviada exitosamente');
           window.location.reload(); // Recargar para ver los cambios
         }}
+      />
+
+      {/* Modal para reportar favor */}
+      <ReportModal
+        isOpen={showReportModal}
+        onClose={() => setShowReportModal(false)}
+        contentType={CONTENT_TYPES.FAVOR}
+        contentId={favor.id}
+        contentTitle={favor.titulo}
+        contentAuthorId={favor.usuarioId}
       />
     </article>
   );
