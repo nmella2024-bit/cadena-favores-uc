@@ -402,13 +402,15 @@ const Material = () => {
 
             {currentUser && (
               <div className="flex gap-3">
-                <PrimaryButton
-                  onClick={() => setIsFolderModalOpen(true)}
-                  className="inline-flex items-center gap-2 whitespace-nowrap bg-purple-600 hover:bg-purple-700"
-                >
-                  <FolderPlus className="h-5 w-5" />
-                  Nueva Carpeta
-                </PrimaryButton>
+                {esUsuarioExclusivo && (
+                  <PrimaryButton
+                    onClick={() => setIsFolderModalOpen(true)}
+                    className="inline-flex items-center gap-2 whitespace-nowrap bg-purple-600 hover:bg-purple-700"
+                  >
+                    <FolderPlus className="h-5 w-5" />
+                    Nueva Carpeta
+                  </PrimaryButton>
+                )}
                 <PrimaryButton
                   onClick={() => setIsModalOpen(true)}
                   className="inline-flex items-center gap-2 whitespace-nowrap"
@@ -542,13 +544,15 @@ const Material = () => {
             </p>
             {currentUser && (
               <div className="flex gap-3 mt-6">
-                <PrimaryButton
-                  onClick={() => setIsFolderModalOpen(true)}
-                  className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700"
-                >
-                  <FolderPlus className="h-5 w-5" />
-                  Crear Carpeta
-                </PrimaryButton>
+                {esUsuarioExclusivo && (
+                  <PrimaryButton
+                    onClick={() => setIsFolderModalOpen(true)}
+                    className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700"
+                  >
+                    <FolderPlus className="h-5 w-5" />
+                    Crear Carpeta
+                  </PrimaryButton>
+                )}
                 <PrimaryButton
                   onClick={() => setIsModalOpen(true)}
                   className="inline-flex items-center gap-2"
@@ -586,7 +590,7 @@ const Material = () => {
                       onRename={handleRenombrarCarpeta}
                       onDelete={handleEliminarCarpeta}
                       onMove={handleMoverCarpeta}
-                      canEdit={currentUser?.uid === carpeta.autorId}
+                      canEdit={esUsuarioExclusivo}
                     />
                   ))}
                 </div>

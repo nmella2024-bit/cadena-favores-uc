@@ -155,5 +155,23 @@ service cloud.firestore {
       // Solo usuarios con rol "exclusivo" pueden eliminar reportes
       allow delete: if esUsuarioExclusivo();
     }
+
+    // ============================================
+    // Reglas para la colección de CARPETAS (folders)
+    // Solo usuarios EXCLUSIVOS pueden gestionar carpetas
+    // ============================================
+    match /folders/{folderId} {
+      // Todos pueden leer carpetas (para ver la estructura)
+      allow read: if true;
+
+      // Solo usuarios con rol "exclusivo" pueden crear carpetas
+      allow create: if esUsuarioExclusivo();
+
+      // Solo usuarios con rol "exclusivo" pueden modificar carpetas
+      allow update: if esUsuarioExclusivo();
+
+      // Solo usuarios con rol "exclusivo" pueden eliminar carpetas
+      allow delete: if esUsuarioExclusivo();
+    }
   }
 }
