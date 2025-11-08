@@ -123,6 +123,7 @@ export default async function handler(req, res) {
       requestBody: fileMetadata,
       media: media,
       fields: 'id, webViewLink, webContentLink',
+      supportsAllDrives: true, // Importante: soportar archivos en drives compartidos
     });
 
     const fileId = driveResponse.data.id;
@@ -137,6 +138,7 @@ export default async function handler(req, res) {
         role: 'reader',
         type: 'anyone',
       },
+      supportsAllDrives: true, // Importante: soportar archivos en drives compartidos
     });
 
     console.log('🌐 Archivo hecho público');

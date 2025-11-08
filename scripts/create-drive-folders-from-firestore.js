@@ -23,11 +23,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const CREDENTIALS_PATH = path.join(__dirname, '..', 'serviceAccountKey.json');
-const SERVICE_ACCOUNT_EMAIL = 'bot-subida-drive@coherent-flame-475215-f0.iam.gserviceaccount.com';
+const SERVICE_ACCOUNT_EMAIL = 'firebase-adminsdk-fbsvc@red-uc-eeuu.iam.gserviceaccount.com';
 
 // ID de la carpeta raíz en Google Drive donde crearás las carpetas
-// Déjalo null para crear en "My Drive" o pon el ID de una carpeta específica
-const ROOT_FOLDER_ID = null; // Ej: '1ABC123XYZ456'
+// Esta carpeta debe estar compartida con el Service Account como "Editor"
+const ROOT_FOLDER_ID = '1qQwtcpIaEusfGFtXyT7BlrVTLuYWmTyK';
 
 // Inicializar Firebase Admin
 console.log('🔧 Inicializando Firebase Admin...\n');
