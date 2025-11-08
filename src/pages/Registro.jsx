@@ -35,9 +35,9 @@ const Registro = () => {
       }));
 
       // Validar correo UC en tiempo real
-      const ucEmailRegex = /^[a-zA-Z0-9._-]+@uc\.cl$/;
+      const ucEmailRegex = /^[a-zA-Z0-9._-]+@(uc\.cl|estudiante\.uc\.cl)$/;
       if (value && !ucEmailRegex.test(value)) {
-        setEmailError('Debes usar un correo UC válido (@uc.cl)');
+        setEmailError('Debes usar un correo UC válido (@uc.cl o @estudiante.uc.cl)');
       } else {
         setEmailError('');
       }
@@ -67,9 +67,9 @@ const Registro = () => {
     setError('');
 
     // Validar correo UC
-    const ucEmailRegex = /^[a-zA-Z0-9._-]+@uc\.cl$/;
+    const ucEmailRegex = /^[a-zA-Z0-9._-]+@(uc\.cl|estudiante\.uc\.cl)$/;
     if (!ucEmailRegex.test(formData.correo)) {
-      setError('Debes usar un correo UC válido (@uc.cl)');
+      setError('Debes usar un correo UC válido (@uc.cl o @estudiante.uc.cl)');
       return;
     }
 
@@ -129,7 +129,7 @@ const Registro = () => {
 
         <div className="mb-6 rounded-xl border border-brand/30 bg-brand/10 p-4 text-sm text-brand dark:border-brand/20 dark:bg-brand/15">
           <p>
-            <strong>Correo UC válido:</strong> Solo se aceptan correos @uc.cl
+            <strong>Correo UC válido:</strong> Solo se aceptan correos @uc.cl o @estudiante.uc.cl
           </p>
         </div>
 
@@ -162,7 +162,7 @@ const Registro = () => {
               name="correo"
               type="email"
               label="Correo UC *"
-              placeholder="tunombre@uc.cl"
+              placeholder="tunombre@uc.cl o @estudiante.uc.cl"
               value={formData.correo}
               onChange={handleChange}
               required

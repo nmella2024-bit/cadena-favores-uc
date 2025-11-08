@@ -92,9 +92,9 @@ export const AuthProvider = ({ children }) => {
   const register = async (userData) => {
     try {
       // Validar que sea correo UC con regex estricto
-      const ucEmailRegex = /^[a-zA-Z0-9._-]+@uc\.cl$/;
+      const ucEmailRegex = /^[a-zA-Z0-9._-]+@(uc\.cl|estudiante\.uc\.cl)$/;
       if (!ucEmailRegex.test(userData.correo)) {
-        throw new Error('Debes usar un correo UC válido (@uc.cl)');
+        throw new Error('Debes usar un correo UC válido (@uc.cl o @estudiante.uc.cl)');
       }
 
       // Registrar usuario en Firebase
