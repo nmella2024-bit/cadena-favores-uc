@@ -294,7 +294,7 @@ const Material = () => {
       setEliminando(materialId);
       await eliminarMaterial(materialId, currentUser.uid);
       // Recargar materiales
-      cargarMateriales();
+      cargarContenido(carpetaActual?.id || null);
     } catch (err) {
       console.error('Error al eliminar material:', err);
       alert(err.message || 'Error al eliminar el material. Intenta nuevamente.');
