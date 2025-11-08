@@ -31,6 +31,7 @@ const Marketplace = () => {
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [eliminando, setEliminando] = useState(null);
+  const [soloParaMi, setSoloParaMi] = useState(false);
 
   const cargarProductos = async () => {
     try {
@@ -69,9 +70,18 @@ const Marketplace = () => {
         producto.titulo.toLowerCase().includes(normalizedQuery) ||
         producto.descripcion.toLowerCase().includes(normalizedQuery);
 
-      return matchesSearch;
+      // Filtro "Para mí": solo mostrar productos de mi carrera o sin carrera específica
+      const matchesParaMi =
+        !soloParaMi ||
+        !currentUser?.carrera ||
+        !producto.carreras || // Si el producto no tiene carreras específicas, mostrarlo
+        producto.carreras.length === 0 || // Si el array está vacío, mostrarlo
+        producto.carreras.includes('Todas') || // Si incluye "Todas", mostrarlo
+        producto.carreras.includes(currentUser.carrera); // Si incluye mi carrera, mostrarlo
+
+      return matchesSearch && matchesParaMi;
     });
-  }, [productos, searchQuery]);
+  }, [productos, searchQuery, soloParaMi, currentUser?.carrera]);
 
   const handleEliminarProducto = async (productoId) => {
     if (!window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
@@ -124,7 +134,7 @@ const Marketplace = () => {
           </div>
 
           {/* Buscador */}
-          <div className="max-w-md">
+          <div className="max-w-md mb-6">
             <TextField
               id="search-marketplace"
               label="Buscar productos"
@@ -134,6 +144,27 @@ const Marketplace = () => {
               icon={Search}
             />
           </div>
+
+          {/* Toggle "Para mí" */}
+          {currentUser?.carrera && (
+            <div className="mb-6">
+              <label className="flex items-center gap-3 cursor-pointer w-fit">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    checked={soloParaMi}
+                    onChange={(e) => setSoloParaMi(e.target.checked)}
+                    className="sr-only peer"
+                  />
+                  <div className="w-11 h-6 bg-border rounded-full peer peer-checked:bg-brand transition-colors peer-focus:ring-2 peer-focus:ring-brand/30"></div>
+                  <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                </div>
+                <span className="text-sm font-medium text-text-primary">
+                  Para mí ({currentUser.carrera})
+                </span>
+              </label>
+            </div>
+          )}
         </div>
 
         {/* Error Message */}

@@ -29,6 +29,7 @@ const Anuncios = () => {
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [eliminando, setEliminando] = useState(null);
+  const [soloParaMi, setSoloParaMi] = useState(false);
 
   // Opciones de filtros
   const carreras = [
@@ -89,7 +90,16 @@ const Anuncios = () => {
         !anioSeleccionado ||
         anuncio.anio === parseInt(anioSeleccionado);
 
-      return matchesSearch && matchesCarrera && matchesAnio;
+      // Filtro "Para mí": solo mostrar anuncios de mi carrera o sin carrera específica
+      const matchesParaMi =
+        !soloParaMi ||
+        !currentUser?.carrera ||
+        !anuncio.carreras || // Si el anuncio no tiene carreras específicas, mostrarlo
+        anuncio.carreras.length === 0 || // Si el array está vacío, mostrarlo
+        anuncio.carreras.includes('Todas') || // Si incluye "Todas", mostrarlo
+        anuncio.carreras.includes(currentUser.carrera); // Si incluye mi carrera, mostrarlo
+
+      return matchesSearch && matchesCarrera && matchesAnio && matchesParaMi;
     });
 
     // Ordenar: fijados primero, luego por fecha
@@ -98,7 +108,7 @@ const Anuncios = () => {
       if (!a.fijado && b.fijado) return 1;
       return new Date(b.fecha) - new Date(a.fecha);
     });
-  }, [anuncios, searchQuery, carreraSeleccionada, anioSeleccionado]);
+  }, [anuncios, searchQuery, carreraSeleccionada, anioSeleccionado, soloParaMi, currentUser?.carrera]);
 
   // Limpiar filtros
   const limpiarFiltros = () => {
@@ -187,6 +197,27 @@ const Anuncios = () => {
               icon={Search}
             />
           </div>
+
+          {/* Toggle "Para mí" */}
+          {currentUser?.carrera && (
+            <div className="mb-6">
+              <label className="flex items-center gap-3 cursor-pointer w-fit">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    checked={soloParaMi}
+                    onChange={(e) => setSoloParaMi(e.target.checked)}
+                    className="sr-only peer"
+                  />
+                  <div className="w-11 h-6 bg-border rounded-full peer peer-checked:bg-brand transition-colors peer-focus:ring-2 peer-focus:ring-brand/30"></div>
+                  <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                </div>
+                <span className="text-sm font-medium text-text-primary">
+                  Para mí ({currentUser.carrera})
+                </span>
+              </label>
+            </div>
+          )}
 
           {/* Filtros */}
           <div className="bg-card border border-border rounded-xl p-6">

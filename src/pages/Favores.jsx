@@ -40,6 +40,7 @@ const Favores = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [onlyAvailable, setOnlyAvailable] = useState(false);
+  const [soloParaMi, setSoloParaMi] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -73,7 +74,7 @@ const Favores = () => {
       const timer = setTimeout(() => setIsLoading(false), 300);
       return () => clearTimeout(timer);
     }
-  }, [selectedCategory, searchQuery, onlyAvailable]);
+  }, [selectedCategory, searchQuery, onlyAvailable, soloParaMi]);
 
   const filteredFavors = useMemo(() => {
     const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -87,9 +88,18 @@ const Favores = () => {
         favor.descripcion.toLowerCase().includes(normalizedQuery) ||
         (favor.disponibilidad && favor.disponibilidad.toLowerCase().includes(normalizedQuery));
 
-      return matchesCategory && matchesAvailability && matchesSearch;
+      // Filtro "Para mí": solo mostrar favores de mi carrera o sin carrera específica
+      const matchesParaMi =
+        !soloParaMi ||
+        !currentUser?.carrera ||
+        !favor.carreras || // Si el favor no tiene carreras específicas, mostrarlo
+        favor.carreras.length === 0 || // Si el array está vacío, mostrarlo
+        favor.carreras.includes('Todas') || // Si incluye "Todas", mostrarlo
+        favor.carreras.includes(currentUser.carrera); // Si incluye mi carrera, mostrarlo
+
+      return matchesCategory && matchesAvailability && matchesSearch && matchesParaMi;
     });
-  }, [favors, onlyAvailable, searchQuery, selectedCategory]);
+  }, [favors, onlyAvailable, searchQuery, selectedCategory, soloParaMi, currentUser?.carrera]);
 
   const activeFavors = filteredFavors.filter((favor) => favor.estado === 'activo');
   const completedFavors = filteredFavors.filter((favor) => favor.estado === 'completado');
@@ -183,6 +193,28 @@ const Favores = () => {
               hint="Atajo: Ctrl + K"
               icon={Search}
             />
+
+            {/* Toggle "Para mí" */}
+            {currentUser?.carrera && (
+              <div className="mb-6">
+                <label className="flex items-center gap-3 cursor-pointer w-fit">
+                  <div className="relative">
+                    <input
+                      type="checkbox"
+                      checked={soloParaMi}
+                      onChange={(e) => setSoloParaMi(e.target.checked)}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-border rounded-full peer peer-checked:bg-brand transition-colors peer-focus:ring-2 peer-focus:ring-brand/30"></div>
+                    <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+                  </div>
+                  <span className="text-sm font-medium text-text-primary">
+                    Para mí ({currentUser.carrera})
+                  </span>
+                </label>
+              </div>
+            )}
+
             <SelectField
               id="category"
               label="Categoría"

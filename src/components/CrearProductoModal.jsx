@@ -12,6 +12,7 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
   const [precio, setPrecio] = useState('');
   const [imagenes, setImagenes] = useState([]);
   const [imagenesPreviews, setImagenesPreviews] = useState([]);
+  const [carreras, setCarreras] = useState([]);
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
 
@@ -73,6 +74,26 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
     setImagenesPreviews(nuevosPreviews);
   };
 
+  const handleCarreraChange = (carrera) => {
+    if (carrera === 'Todas') {
+      // Si selecciona "Todas", limpiar todo y solo mantener "Todas"
+      if (carreras.includes('Todas')) {
+        setCarreras([]);
+      } else {
+        setCarreras(['Todas']);
+      }
+    } else {
+      // Si selecciona otra carrera
+      if (carreras.includes(carrera)) {
+        // Deseleccionar la carrera
+        setCarreras(carreras.filter(c => c !== carrera));
+      } else {
+        // Seleccionar la carrera y remover "Todas" si estaba seleccionada
+        setCarreras([...carreras.filter(c => c !== 'Todas'), carrera]);
+      }
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
@@ -99,7 +120,8 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
         {
           titulo: titulo.trim(),
           descripcion: descripcion.trim(),
-          precio: parseFloat(precio)
+          precio: parseFloat(precio),
+          carreras: carreras
         },
         usuario,
         imagenes
@@ -111,6 +133,7 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
       setPrecio('');
       setImagenes([]);
       setImagenesPreviews([]);
+      setCarreras([]);
 
       // Notificar que se creó el producto
       if (onProductoCreado) {
@@ -133,6 +156,7 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
       setPrecio('');
       setImagenes([]);
       setImagenesPreviews([]);
+      setCarreras([]);
       setError('');
       onClose();
     }
@@ -263,6 +287,34 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
 
                     <p className="mt-2 text-xs text-text-muted">
                       Tamaño máximo: 5MB por imagen. Formatos: JPG, PNG, GIF.
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-text-primary mb-2">
+                      Carreras relacionadas (opcional)
+                    </label>
+                    <div className="space-y-2">
+                      {['Ingeniería Comercial', 'Ingeniería Civil', 'Arquitectura', 'College', 'Todas'].map((carrera) => (
+                        <label
+                          key={carrera}
+                          className="flex items-center gap-2 cursor-pointer"
+                        >
+                          <input
+                            type="checkbox"
+                            checked={carreras.includes(carrera)}
+                            onChange={() => handleCarreraChange(carrera)}
+                            disabled={enviando || (carrera !== 'Todas' && carreras.includes('Todas'))}
+                            className="h-4 w-4 rounded border-border text-primary focus:ring-primary focus:ring-offset-0 disabled:opacity-50 disabled:cursor-not-allowed"
+                          />
+                          <span className={`text-sm ${carreras.includes('Todas') && carrera !== 'Todas' ? 'text-text-muted' : 'text-text-primary'}`}>
+                            {carrera}
+                          </span>
+                        </label>
+                      ))}
+                    </div>
+                    <p className="mt-2 text-xs text-text-muted">
+                      Selecciona las carreras a las que va dirigido este producto. Si no seleccionas ninguna, será visible para todos.
                     </p>
                   </div>
 

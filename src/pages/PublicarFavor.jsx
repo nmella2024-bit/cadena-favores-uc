@@ -15,6 +15,7 @@ const initialFormState = {
   descripcion: '',
   categoria: '',
   disponibilidad: '',
+  carreras: [],
 };
 
 const validateForm = ({ titulo, descripcion, categoria }) => {
@@ -46,6 +47,7 @@ const PublicarFavor = () => {
   const [formError, setFormError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [carreras, setCarreras] = useState([]);
 
   useEffect(() => {
     if (!currentUser) {
@@ -61,6 +63,21 @@ const PublicarFavor = () => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: undefined }));
+  };
+
+  const handleCarreraChange = (carrera) => {
+    setCarreras((prev) => {
+      if (carrera === 'Todas') {
+        // If "Todas" is checked, clear all other selections
+        return prev.includes('Todas') ? [] : ['Todas'];
+      } else {
+        // If any other option is checked while "Todas" is checked, uncheck "Todas"
+        const newCarreras = prev.includes(carrera)
+          ? prev.filter((c) => c !== carrera)
+          : [...prev.filter((c) => c !== 'Todas'), carrera];
+        return newCarreras;
+      }
+    });
   };
 
   const handleSubmit = async (event) => {
@@ -82,10 +99,11 @@ const PublicarFavor = () => {
       setIsSubmitting(true);
 
       // Publicar favor usando el servicio de Firebase
-      await publicarFavor(formData, firebaseUser);
+      await publicarFavor({ ...formData, carreras }, firebaseUser);
 
       setShowSuccess(true);
       setFormData(initialFormState);
+      setCarreras([]);
     } catch (error) {
       console.error('Error al publicar favor:', error);
       setFormError(error.message || 'Error al publicar el favor. Intenta nuevamente.');
@@ -202,6 +220,34 @@ const PublicarFavor = () => {
                   <li>Actualiza la publicación cuando recibas la ayuda que necesitas.</li>
                 </ul>
               </div>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <label className="block text-sm font-medium text-text">
+              Carreras relacionadas (opcional)
+            </label>
+            <p className="text-sm text-text-muted">
+              Selecciona las carreras a las que va dirigido este favor. Si no seleccionas ninguna, será visible para todos.
+            </p>
+            <div className="space-y-2">
+              {['Ingeniería Comercial', 'Ingeniería Civil', 'Arquitectura', 'College', 'Todas'].map((carrera) => (
+                <label
+                  key={carrera}
+                  className="flex items-center gap-3 rounded-lg border border-border bg-bg-muted p-3 transition-colors hover:bg-bg-muted/80 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    checked={carreras.includes(carrera)}
+                    onChange={() => handleCarreraChange(carrera)}
+                    disabled={carrera !== 'Todas' && carreras.includes('Todas')}
+                    className="h-4 w-4 rounded border-border text-brand focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-bg-canvas disabled:cursor-not-allowed disabled:opacity-50"
+                  />
+                  <span className={`text-sm ${carreras.includes('Todas') && carrera !== 'Todas' ? 'text-text-muted' : 'text-text'}`}>
+                    {carrera}
+                  </span>
+                </label>
+              ))}
             </div>
           </div>
 

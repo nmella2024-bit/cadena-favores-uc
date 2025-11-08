@@ -72,8 +72,7 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
       };
     }
 
-    const searchNormalized = normalizeText(searchTerm.trim());
-    console.log('[buscarGlobal] Término procesado:', searchNormalized);
+    console.log('[buscarGlobal] Término procesado:', searchTerm.trim());
     const results = {
       favores: [],
       anuncios: [],
@@ -371,8 +370,7 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       return [];
     }
 
-    const searchNormalized = normalizeText(searchTerm.trim());
-    console.log('[buscarEnMateriales] Término procesado:', searchNormalized);
+    console.log('[buscarEnMateriales] Término procesado:', searchTerm.trim());
 
     // 1. Cargar materiales
     const materialRef = collection(db, 'material');

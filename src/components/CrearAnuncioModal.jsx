@@ -9,6 +9,7 @@ import TextareaField from './ui/TextareaField';
 const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
+  const [carreras, setCarreras] = useState([]);
   const [carrera, setCarrera] = useState('');
   const [anio, setAnio] = useState('');
   const [imagen, setImagen] = useState(null);
@@ -17,15 +18,35 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [error, setError] = useState('');
 
   // Opciones de filtros
-  const carreras = [
-    'Ingeniería',
+  const opcionesCarreras = [
+    'Ingeniería Comercial',
+    'Ingeniería Civil',
     'Arquitectura',
-    'Economía',
     'College',
     'Todas'
   ];
 
   const anios = [1, 2, 3, 4, 5];
+
+  const handleCarrerasChange = (carreraSeleccionada) => {
+    if (carreraSeleccionada === 'Todas') {
+      // Si se selecciona "Todas", solo mantener "Todas" y limpiar las demás
+      setCarreras(['Todas']);
+    } else {
+      // Si se selecciona otra opción
+      if (carreras.includes('Todas')) {
+        // Si "Todas" estaba seleccionada, deseleccionarla y solo agregar la nueva
+        setCarreras([carreraSeleccionada]);
+      } else {
+        // Toggle: agregar o quitar la carrera seleccionada
+        if (carreras.includes(carreraSeleccionada)) {
+          setCarreras(carreras.filter(c => c !== carreraSeleccionada));
+        } else {
+          setCarreras([...carreras, carreraSeleccionada]);
+        }
+      }
+    }
+  };
 
   const handleImagenChange = (e) => {
     const file = e.target.files[0];
@@ -81,7 +102,8 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
           titulo: titulo.trim(),
           descripcion: descripcion.trim(),
           carrera: carrera || 'Todas',
-          anio: anio ? parseInt(anio) : null
+          anio: anio ? parseInt(anio) : null,
+          carreras: carreras.length > 0 ? carreras : []
         },
         usuario,
         imagen
@@ -90,6 +112,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
       // Limpiar formulario
       setTitulo('');
       setDescripcion('');
+      setCarreras([]);
       setCarrera('');
       setAnio('');
       setImagen(null);
@@ -113,6 +136,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
     if (!enviando) {
       setTitulo('');
       setDescripcion('');
+      setCarreras([]);
       setCarrera('');
       setAnio('');
       setImagen(null);
@@ -191,6 +215,40 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                     required
                   />
 
+                  {/* Carreras relacionadas (multi-select) */}
+                  <div>
+                    <label className="block text-sm font-medium text-text-primary mb-2">
+                      Carreras relacionadas (opcional)
+                    </label>
+                    <div className="space-y-2">
+                      {opcionesCarreras.map((opcion) => {
+                        const isChecked = carreras.includes(opcion);
+                        const isDisabled = carreras.includes('Todas') && opcion !== 'Todas';
+
+                        return (
+                          <label
+                            key={opcion}
+                            className={`flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50 transition-colors cursor-pointer hover:bg-card/70 ${
+                              isDisabled ? 'opacity-50 cursor-not-allowed' : ''
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              disabled={isDisabled}
+                              onChange={() => handleCarrerasChange(opcion)}
+                              className="w-4 h-4 text-brand bg-background border-border rounded focus:ring-2 focus:ring-brand/30 disabled:cursor-not-allowed"
+                            />
+                            <span className="text-sm text-text-primary">{opcion}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                    <p className="mt-2 text-xs text-text-muted">
+                      Selecciona las carreras a las que va dirigido este anuncio. Si no seleccionas ninguna, será visible para todos.
+                    </p>
+                  </div>
+
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Carrera */}
                     <div>
@@ -203,7 +261,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                         className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
                       >
                         <option value="">Todas las carreras</option>
-                        {carreras.map(c => (
+                        {opcionesCarreras.map(c => (
                           <option key={c} value={c}>{c}</option>
                         ))}
                       </select>
