@@ -307,8 +307,20 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpet
 
       onClose();
     } catch (err) {
-      console.error('Error al subir material:', err);
-      setError(err.message || 'Error al subir el material. Intenta nuevamente.');
+      console.error('❌ Error completo al subir material:', err);
+      console.error('❌ Error message:', err.message);
+      console.error('❌ Error stack:', err.stack);
+
+      // Mostrar un mensaje de error más descriptivo
+      let errorMessage = 'Error al subir el material. ';
+
+      if (err.message) {
+        errorMessage += err.message;
+      } else {
+        errorMessage += 'Intenta nuevamente o contacta al administrador.';
+      }
+
+      setError(errorMessage);
     } finally {
       setEnviando(false);
     }

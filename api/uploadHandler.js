@@ -3,19 +3,6 @@ import formidable from 'formidable';
 import fs from 'fs';
 import admin from 'firebase-admin';
 
-// Inicializar Firebase Admin (solo una vez)
-if (!admin.apps.length) {
-  try {
-    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-
-    admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount)
-    });
-  } catch (error) {
-    console.error('Error inicializando Firebase Admin:', error);
-  }
-}
-
 // Configurar para que Vercel no parsee el body automáticamente
 export const config = {
   api: {
@@ -24,6 +11,32 @@ export const config = {
 };
 
 export default async function handler(req, res) {
+  // Inicializar Firebase Admin (solo una vez por request)
+  if (!admin.apps.length) {
+    try {
+      if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
+        console.error('❌ FIREBASE_SERVICE_ACCOUNT no está configurado');
+        return res.status(500).json({
+          error: 'Configuración de servidor incompleta',
+          detalles: 'La variable de entorno FIREBASE_SERVICE_ACCOUNT no está configurada en Vercel'
+        });
+      }
+
+      const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+
+      admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount)
+      });
+
+      console.log('✅ Firebase Admin inicializado correctamente');
+    } catch (error) {
+      console.error('❌ Error inicializando Firebase Admin:', error);
+      return res.status(500).json({
+        error: 'Error de configuración del servidor',
+        detalles: error.message
+      });
+    }
+  }
   // Solo permitir método POST
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Método no permitido' });
@@ -31,12 +44,21 @@ export default async function handler(req, res) {
 
   try {
     // 1. Autenticar con Google Drive usando las credenciales del Service Account
+    if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
+      console.error('❌ FIREBASE_SERVICE_ACCOUNT no está configurado para Google Drive');
+      return res.status(500).json({
+        error: 'Configuración de servidor incompleta',
+        detalles: 'La variable de entorno FIREBASE_SERVICE_ACCOUNT no está configurada'
+      });
+    }
+
     const auth = new google.auth.GoogleAuth({
       credentials: JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT),
       scopes: ['https://www.googleapis.com/auth/drive'],
     });
 
     const drive = google.drive({ version: 'v3', auth });
+    console.log('✅ Google Drive API autenticada correctamente');
 
     // 2. Procesar el formulario para obtener el archivo y los datos
     const form = formidable({

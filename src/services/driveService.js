@@ -49,17 +49,21 @@ export const subirArchivoADrive = async (archivo, googleDriveFolderId, carpetaId
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error || 'Error al subir el archivo');
+      console.error('❌ Error HTTP:', response.status, response.statusText);
+      console.error('❌ Detalles del error:', data);
+      throw new Error(data.detalles || data.error || `Error ${response.status}: ${response.statusText}`);
     }
 
     if (data.success) {
       console.log('✅ Archivo subido exitosamente:', data.link);
       return data;
     } else {
-      throw new Error(data.error || 'Error desconocido al subir archivo');
+      console.error('❌ Respuesta sin éxito:', data);
+      throw new Error(data.detalles || data.error || 'Error desconocido al subir archivo');
     }
   } catch (error) {
     console.error('❌ Error en subirArchivoADrive:', error);
+    console.error('❌ Stack trace:', error.stack);
     throw error;
   }
 };
