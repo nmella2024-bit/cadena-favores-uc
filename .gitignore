@@ -43,6 +43,8 @@ build/
 .firebase/
 firebase-debug.log*
 firestore-debug.log*
+serviceAccountKey.json
+materiales.csv
 
 # Archivos temporales
 *.tmp
@@ -77,3 +79,5 @@ desktop.ini
 *.bak
 *.swp
 *~
+
+coherent-flame-475215-f0-4fff3af9eaec.json

@@ -2,6 +2,7 @@ import React, { useState, Fragment, useEffect } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { X, Upload, Loader2, FileText } from 'lucide-react';
 import { subirMaterial } from '../services/materialService';
+import { subirArchivoADrive } from '../services/driveService';
 import PrimaryButton from './ui/PrimaryButton';
 import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
@@ -239,20 +240,59 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpet
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0);
 
-      await subirMaterial(
-        {
+      // OPCIÓN 1: Si la carpeta tiene googleDriveFolderId, usar el nuevo sistema
+      if (carpetaActual?.googleDriveFolderId && archivo && !enlaceExterno.trim()) {
+        console.log('🚀 Usando Google Drive para subir archivo');
+
+        // Preparar metadatos del material
+        const metadatos = {
           titulo: titulo.trim(),
           descripcion: descripcion.trim(),
           carrera,
           anio,
           ramo,
           tags: tagsArray,
-          carpetaId: carpetaActual?.id || null,
-          enlaceExterno: enlaceExterno.trim() || null,
-        },
-        usuario,
-        archivo
-      );
+        };
+
+        // Subir el archivo a Google Drive con metadatos completos
+        const driveResponse = await subirArchivoADrive(
+          archivo,
+          carpetaActual.googleDriveFolderId,
+          carpetaActual.id,
+          usuario.uid,
+          metadatos
+        );
+
+        console.log('✅ Archivo subido a Drive:', driveResponse.link);
+
+        // El endpoint ya creó el documento en Firestore, solo notificamos
+        if (onMaterialSubido) {
+          onMaterialSubido();
+        }
+      }
+      // OPCIÓN 2: Si hay enlace externo o no hay googleDriveFolderId, usar el método tradicional
+      else {
+        console.log('📁 Usando Firebase Storage (método tradicional)');
+
+        await subirMaterial(
+          {
+            titulo: titulo.trim(),
+            descripcion: descripcion.trim(),
+            carrera,
+            anio,
+            ramo,
+            tags: tagsArray,
+            carpetaId: carpetaActual?.id || null,
+            enlaceExterno: enlaceExterno.trim() || null,
+          },
+          usuario,
+          archivo
+        );
+
+        if (onMaterialSubido) {
+          onMaterialSubido();
+        }
+      }
 
       // Limpiar formulario
       setTitulo('');
@@ -265,15 +305,10 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpet
       setArchivoNombre('');
       setEnlaceExterno('');
 
-      // Notificar que se subió el material
-      if (onMaterialSubido) {
-        onMaterialSubido();
-      }
-
       onClose();
     } catch (err) {
       console.error('Error al subir material:', err);
-      setError('Error al subir el material. Intenta nuevamente.');
+      setError(err.message || 'Error al subir el material. Intenta nuevamente.');
     } finally {
       setEnviando(false);
     }

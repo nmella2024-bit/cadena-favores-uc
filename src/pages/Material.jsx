@@ -9,6 +9,7 @@ import FolderCard from '../components/FolderCard';
 import Breadcrumb from '../components/Breadcrumb';
 import CreateFolderModal from '../components/CreateFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
+import MostrarUserID from '../components/MostrarUserID'; // ⚠️ TEMPORAL - Eliminar después de obtener el User ID
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -636,6 +637,9 @@ const Material = () => {
             />
           </>
         )}
+
+        {/* ⚠️ COMPONENTE TEMPORAL - Eliminar después de obtener el User ID */}
+        <MostrarUserID />
       </div>
     </div>
   );
