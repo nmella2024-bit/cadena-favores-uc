@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '../services/materialService';
 import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId } from '../services/folderService';
-import { buscarEnMateriales } from '../services/searchService';
 import { useAuth } from '../context/AuthContext';
 import { useSearchParams } from 'react-router-dom';
-import { Search, BookOpen, Filter, X, Plus, Inbox, AlertCircle, FolderPlus } from 'lucide-react';
+import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus } from 'lucide-react';
 import SubirMaterialModal from '../components/SubirMaterialModal';
 import MaterialCard from '../components/MaterialCard';
 import FolderCard from '../components/FolderCard';
 import Breadcrumb from '../components/Breadcrumb';
 import CreateFolderModal from '../components/CreateFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
+import MaterialSearch from '../components/MaterialSearch';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -37,12 +37,6 @@ const Material = () => {
   const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
   const [eliminando, setEliminando] = useState(null);
 
-  // Estados para filtros
-  const [searchTerm, setSearchTerm] = useState('');
-  const [carreraSeleccionada, setCarreraSeleccionada] = useState('');
-  const [anioSeleccionado, setAnioSeleccionado] = useState('');
-  const [ramoSeleccionado, setRamoSeleccionado] = useState('');
-
   const esUsuarioExclusivo = currentUser?.rol === 'exclusivo';
 
   // Efecto para navegar a carpeta desde URL
@@ -61,136 +55,6 @@ const Material = () => {
       setSearchParams({});
     }
   }, [searchParams, setSearchParams]);
-
-  // Opciones de filtros
-  const carreras = [
-    'Ingeniería Civil',
-    'Ingeniería Comercial',
-    'Derecho',
-    'Medicina',
-    'Psicología',
-    'Diseño',
-    'Arquitectura',
-    'Pedagogía',
-    'Enfermería',
-    'Agronomía',
-    'Periodismo',
-    'Otra'
-  ];
-
-  const anios = [1, 2, 3, 4, 5];
-
-  // Ramos dinámicos según carrera
-  const ramosPorCarrera = {
-    'Ingeniería Civil': [
-      'Cálculo I',
-      'Cálculo II',
-      'Cálculo III',
-      'Álgebra Lineal',
-      'Física I',
-      'Física II',
-      'Química General',
-      'Programación',
-      'Estructuras de Datos',
-      'Ecuaciones Diferenciales',
-      'Mecánica de Fluidos',
-      'Resistencia de Materiales'
-    ],
-    'Ingeniería Comercial': [
-      'Microeconomía',
-      'Macroeconomía',
-      'Contabilidad',
-      'Finanzas',
-      'Marketing',
-      'Gestión de Operaciones',
-      'Econometría',
-      'Matemáticas para Economistas'
-    ],
-    'Derecho': [
-      'Derecho Civil',
-      'Derecho Penal',
-      'Derecho Constitucional',
-      'Derecho Laboral',
-      'Derecho Comercial',
-      'Derecho Internacional',
-      'Derecho Administrativo'
-    ],
-    'Medicina': [
-      'Anatomía',
-      'Fisiología',
-      'Bioquímica',
-      'Farmacología',
-      'Patología',
-      'Microbiología',
-      'Medicina Interna',
-      'Cirugía'
-    ],
-    'Psicología': [
-      'Psicología General',
-      'Neuropsicología',
-      'Psicología del Desarrollo',
-      'Psicología Social',
-      'Psicopatología',
-      'Estadística para Psicología',
-      'Psicología Clínica'
-    ],
-    'Diseño': [
-      'Taller de Diseño',
-      'Teoría del Diseño',
-      'Tipografía',
-      'Diseño Gráfico',
-      'Diseño Industrial',
-      'Historia del Diseño',
-      'Metodología de Proyecto'
-    ],
-    'Arquitectura': [
-      'Taller de Arquitectura',
-      'Historia de la Arquitectura',
-      'Estructuras',
-      'Construcción',
-      'Teoría de la Arquitectura',
-      'Urbanismo',
-      'Diseño Arquitectónico'
-    ],
-    'Pedagogía': [
-      'Didáctica General',
-      'Psicología Educacional',
-      'Currículum',
-      'Evaluación',
-      'Metodología de la Enseñanza',
-      'Práctica Pedagógica'
-    ],
-    'Enfermería': [
-      'Enfermería Básica',
-      'Anatomía y Fisiología',
-      'Farmacología',
-      'Enfermería Médico-Quirúrgica',
-      'Enfermería Pediátrica',
-      'Salud Pública',
-      'Cuidados Intensivos'
-    ],
-    'Agronomía': [
-      'Botánica',
-      'Suelos',
-      'Fisiología Vegetal',
-      'Producción Animal',
-      'Producción Vegetal',
-      'Economía Agrícola',
-      'Manejo de Cultivos'
-    ],
-    'Periodismo': [
-      'Redacción Periodística',
-      'Teoría de la Comunicación',
-      'Periodismo Digital',
-      'Fotografía Periodística',
-      'Ética Periodística',
-      'Periodismo Investigativo',
-      'Radio y Televisión'
-    ],
-    'Otra': []
-  };
-
-  const ramosDisponibles = carreraSeleccionada ? ramosPorCarrera[carreraSeleccionada] || [] : [];
 
   // Cargar contenido (carpetas y materiales) de la carpeta actual
   const cargarContenido = async (carpetaId = null) => {
@@ -244,118 +108,14 @@ const Material = () => {
     cargarContenido(carpetaActual?.id || null);
   }, [carpetaActual?.id]);
 
-  // Efecto para simular carga cuando cambia el filtro
-  useEffect(() => {
-    if (materiales.length > 0) {
-      setLoading(true);
-      const timer = setTimeout(() => setLoading(false), 300);
-      return () => clearTimeout(timer);
-    }
-  }, [searchTerm]);
-
-  // Estado para resultados de búsqueda avanzada
-  const [searchResults, setSearchResults] = useState(null);
-  const [searching, setSearching] = useState(false);
-
-  // Efecto para búsqueda avanzada (con carpetas)
-  useEffect(() => {
-    const normalizedQuery = searchTerm.trim();
-
-    // Si no hay búsqueda, limpiar resultados
-    if (normalizedQuery.length < 2) {
-      setSearchResults(null);
-      return;
-    }
-
-    // Debounce de 300ms
-    const timeoutId = setTimeout(async () => {
-      try {
-        console.log('[Material] Iniciando búsqueda avanzada:', normalizedQuery);
-        setSearching(true);
-
-        // Buscar en materiales de la carpeta actual o en todas
-        const carpetaIdParaBusqueda = carpetaActual?.id || 'all';
-        const resultados = await buscarEnMateriales(normalizedQuery, carpetaIdParaBusqueda);
-
-        console.log('[Material] Resultados de búsqueda:', resultados.length);
-        setSearchResults(resultados);
-      } catch (error) {
-        console.error('[Material] Error en búsqueda:', error);
-        setSearchResults([]);
-      } finally {
-        setSearching(false);
-      }
-    }, 300);
-
-    return () => clearTimeout(timeoutId);
-  }, [searchTerm, carpetaActual?.id]);
-
-  // Filtrar y ordenar materiales (fijados primero)
-  const filteredMateriales = useMemo(() => {
-    // Si hay búsqueda activa, usar resultados de búsqueda avanzada
-    if (searchTerm.trim().length >= 2 && searchResults !== null) {
-      // Aplicar filtros adicionales sobre los resultados de búsqueda
-      const filtered = searchResults.filter((material) => {
-        const matchesCarrera =
-          !carreraSeleccionada ||
-          material.carrera === carreraSeleccionada;
-
-        const matchesAnio =
-          !anioSeleccionado ||
-          material.anio === parseInt(anioSeleccionado) ||
-          material.anio === 'Todos';
-
-        const matchesRamo =
-          !ramoSeleccionado ||
-          material.ramo === ramoSeleccionado ||
-          material.ramo === 'Todos los ramos';
-
-        return matchesCarrera && matchesAnio && matchesRamo;
-      });
-
-      // Ya vienen ordenados de buscarEnMateriales (fijados primero, match type, fecha)
-      return filtered;
-    }
-
-    // Búsqueda local normal (sin búsqueda de texto o término muy corto)
-    const filtered = materiales.filter((material) => {
-      const matchesCarrera =
-        !carreraSeleccionada ||
-        material.carrera === carreraSeleccionada;
-
-      const matchesAnio =
-        !anioSeleccionado ||
-        material.anio === parseInt(anioSeleccionado) ||
-        material.anio === 'Todos';
-
-      const matchesRamo =
-        !ramoSeleccionado ||
-        material.ramo === ramoSeleccionado ||
-        material.ramo === 'Todos los ramos';
-
-      return matchesCarrera && matchesAnio && matchesRamo;
-    });
-
-    // Ordenar: fijados primero, luego por fecha
-    return filtered.sort((a, b) => {
+  // Ordenar materiales (fijados primero, luego por fecha)
+  const sortedMateriales = useMemo(() => {
+    return [...materiales].sort((a, b) => {
       if (a.fijado && !b.fijado) return -1;
       if (!a.fijado && b.fijado) return 1;
       return new Date(b.fechaSubida) - new Date(a.fechaSubida);
     });
-  }, [materiales, searchResults, searchTerm, carreraSeleccionada, anioSeleccionado, ramoSeleccionado]);
-
-  // Limpiar todos los filtros
-  const limpiarFiltros = () => {
-    setSearchTerm('');
-    setCarreraSeleccionada('');
-    setAnioSeleccionado('');
-    setRamoSeleccionado('');
-  };
-
-  // Cuando cambia la carrera, resetear el ramo
-  useEffect(() => {
-    setRamoSeleccionado('');
-  }, [carreraSeleccionada]);
+  }, [materiales]);
 
   // Manejar eliminación de material
   const handleEliminarMaterial = async (materialId) => {
@@ -500,91 +260,9 @@ const Material = () => {
         {/* Breadcrumb Navigation */}
         <Breadcrumb ruta={rutaCarpeta} onNavigate={handleNavegar} />
 
-        {/* Buscador */}
+        {/* Buscador de Material */}
         <div className="mb-6">
-          <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-text-muted" />
-            <input
-              type="text"
-              placeholder="Buscar por nombre, carpeta, ramo, profesor..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-card border border-border rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
-            />
-          </div>
-        </div>
-
-        {/* Filtros */}
-        <div className="bg-card border border-border rounded-xl p-6 mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-2">
-              <Filter className="h-5 w-5 text-brand" />
-              <h2 className="text-lg font-semibold text-text-primary">Filtros</h2>
-            </div>
-            {(carreraSeleccionada || anioSeleccionado || ramoSeleccionado || searchTerm) && (
-              <button
-                onClick={limpiarFiltros}
-                className="flex items-center gap-2 px-3 py-1.5 text-sm text-text-muted hover:text-brand transition-colors"
-              >
-                <X className="h-4 w-4" />
-                Limpiar filtros
-              </button>
-            )}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Filtro Carrera */}
-            <div>
-              <label className="block text-sm font-medium text-text-primary mb-2">
-                Carrera
-              </label>
-              <select
-                value={carreraSeleccionada}
-                onChange={(e) => setCarreraSeleccionada(e.target.value)}
-                className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
-              >
-                <option value="">Todas las carreras</option>
-                {carreras.map(carrera => (
-                  <option key={carrera} value={carrera}>{carrera}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Filtro Año */}
-            <div>
-              <label className="block text-sm font-medium text-text-primary mb-2">
-                Año
-              </label>
-              <select
-                value={anioSeleccionado}
-                onChange={(e) => setAnioSeleccionado(e.target.value)}
-                className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
-              >
-                <option value="">Todos los años</option>
-                {anios.map(anio => (
-                  <option key={anio} value={anio}>{anio}º año</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Filtro Ramo */}
-            <div>
-              <label className="block text-sm font-medium text-text-primary mb-2">
-                Ramo
-              </label>
-              <select
-                value={ramoSeleccionado}
-                onChange={(e) => setRamoSeleccionado(e.target.value)}
-                disabled={!carreraSeleccionada}
-                className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <option value="">Todos los ramos</option>
-                {ramosDisponibles.map(ramo => (
-                  <option key={ramo} value={ramo}>{ramo}</option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <MaterialSearch carpetaActualId={carpetaActual?.id} />
         </div>
 
         {/* Error Message */}
@@ -605,7 +283,7 @@ const Material = () => {
         )}
 
         {/* Empty State */}
-        {!loading && filteredMateriales.length === 0 && carpetas.length === 0 && (
+        {!loading && sortedMateriales.length === 0 && carpetas.length === 0 && (
           <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-border bg-card/50 p-12 text-center dark:bg-card/30">
             <Inbox className="mb-4 h-16 w-16 text-text-muted/50" />
             <h3 className="mb-2 text-lg font-semibold text-text-primary">
@@ -640,14 +318,14 @@ const Material = () => {
         )}
 
         {/* Carpetas y Materiales */}
-        {!loading && (carpetas.length > 0 || filteredMateriales.length > 0) && (
+        {!loading && (carpetas.length > 0 || sortedMateriales.length > 0) && (
           <>
             {/* Contador */}
             <div className="flex items-center justify-between mb-4">
               <p className="text-sm text-text-muted">
                 {carpetas.length > 0 && `${carpetas.length} ${carpetas.length === 1 ? 'carpeta' : 'carpetas'}`}
-                {carpetas.length > 0 && filteredMateriales.length > 0 && ' • '}
-                {filteredMateriales.length > 0 && `${filteredMateriales.length} ${filteredMateriales.length === 1 ? 'archivo' : 'archivos'}`}
+                {carpetas.length > 0 && sortedMateriales.length > 0 && ' • '}
+                {sortedMateriales.length > 0 && `${sortedMateriales.length} ${sortedMateriales.length === 1 ? 'archivo' : 'archivos'}`}
               </p>
             </div>
 
@@ -672,11 +350,11 @@ const Material = () => {
             )}
 
             {/* Grid de Materiales */}
-            {filteredMateriales.length > 0 && (
+            {sortedMateriales.length > 0 && (
               <div>
                 <h3 className="text-lg font-semibold text-text-primary mb-4">Archivos</h3>
                 <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                  {filteredMateriales.map((material) => (
+                  {sortedMateriales.map((material) => (
                     <MaterialCard
                       key={material.id}
                       material={material}

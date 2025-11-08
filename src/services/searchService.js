@@ -9,6 +9,19 @@ import {
 import { db } from '../firebaseConfig';
 
 /**
+ * Normaliza un texto: elimina tildes y convierte a minúsculas
+ * @param {string} text - Texto a normalizar
+ * @returns {string} Texto normalizado
+ */
+const normalizeText = (text) => {
+  if (!text) return '';
+  return text
+    .toLowerCase()
+    .normalize('NFD') // Descompone caracteres con tildes
+    .replace(/[\u0300-\u036f]/g, ''); // Elimina las marcas diacríticas (tildes)
+};
+
+/**
  * Busca en múltiples colecciones de Firestore
  * @param {string} searchTerm - Término de búsqueda
  * @param {Object} options - Opciones de búsqueda
@@ -40,8 +53,8 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
       };
     }
 
-    const searchLower = searchTerm.toLowerCase().trim();
-    console.log('[buscarGlobal] Término procesado:', searchLower);
+    const searchNormalized = normalizeText(searchTerm.trim());
+    console.log('[buscarGlobal] Término procesado:', searchNormalized);
     const results = {
       favores: [],
       anuncios: [],
@@ -59,9 +72,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
         favoresSnapshot.forEach(doc => {
           const data = doc.data();
-          const searchableText = `${data.titulo} ${data.descripcion} ${data.categoria} ${data.nombreUsuario}`.toLowerCase();
+          const searchableText = normalizeText(`${data.titulo} ${data.descripcion} ${data.categoria} ${data.nombreUsuario}`);
 
-          if (searchableText.includes(searchLower)) {
+          if (searchableText.includes(searchNormalized)) {
             results.favores.push({
               id: doc.id,
               type: 'favor',
@@ -85,9 +98,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
         anunciosSnapshot.forEach(doc => {
           const data = doc.data();
-          const searchableText = `${data.titulo} ${data.descripcion} ${data.autorNombre}`.toLowerCase();
+          const searchableText = normalizeText(`${data.titulo} ${data.descripcion} ${data.autorNombre}`);
 
-          if (searchableText.includes(searchLower)) {
+          if (searchableText.includes(searchNormalized)) {
             results.anuncios.push({
               id: doc.id,
               type: 'anuncio',
@@ -110,9 +123,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
         marketplaceSnapshot.forEach(doc => {
           const data = doc.data();
-          const searchableText = `${data.titulo} ${data.descripcion} ${data.autorNombre}`.toLowerCase();
+          const searchableText = normalizeText(`${data.titulo} ${data.descripcion} ${data.autorNombre}`);
 
-          if (searchableText.includes(searchLower)) {
+          if (searchableText.includes(searchNormalized)) {
             results.marketplace.push({
               id: doc.id,
               type: 'marketplace',
@@ -193,8 +206,8 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
           const ramo = data.ramo || '';
           const autorNombre = data.autorNombre || '';
 
-          const searchableText = `${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre}`.toLowerCase();
-          const matchesMaterial = searchableText.includes(searchLower);
+          const searchableText = normalizeText(`${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre}`);
+          const matchesMaterial = searchableText.includes(searchNormalized);
 
           // Búsqueda por ruta de carpeta
           let matchesFolder = false;
@@ -202,7 +215,7 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
           if (data.carpetaId && folderMap.has(data.carpetaId)) {
             folderPath = buildFolderPath(data.carpetaId);
-            matchesFolder = folderPath.toLowerCase().includes(searchLower);
+            matchesFolder = normalizeText(folderPath).includes(searchNormalized);
           }
 
           if (matchesMaterial || matchesFolder) {
@@ -258,9 +271,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
         usuariosSnapshot.forEach(doc => {
           const data = doc.data();
-          const searchableText = `${data.nombre} ${data.email} ${data.carrera}`.toLowerCase();
+          const searchableText = normalizeText(`${data.nombre} ${data.email} ${data.carrera}`);
 
-          if (searchableText.includes(searchLower)) {
+          if (searchableText.includes(searchNormalized)) {
             results.usuarios.push({
               id: doc.id,
               type: 'usuario',
@@ -339,8 +352,8 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       return [];
     }
 
-    const searchLower = searchTerm.toLowerCase().trim();
-    console.log('[buscarEnMateriales] Término procesado:', searchLower);
+    const searchNormalized = normalizeText(searchTerm.trim());
+    console.log('[buscarEnMateriales] Término procesado:', searchNormalized);
 
     // 1. Cargar materiales
     const materialRef = collection(db, 'material');
@@ -411,8 +424,8 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       const autorNombre = data.autorNombre || '';
       const tags = Array.isArray(data.tags) ? data.tags.join(' ') : '';
 
-      const searchableText = `${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre} ${tags}`.toLowerCase();
-      const matchesMaterial = searchableText.includes(searchLower);
+      const searchableText = normalizeText(`${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre} ${tags}`);
+      const matchesMaterial = searchableText.includes(searchNormalized);
 
       // Búsqueda por ruta de carpeta
       let matchesFolder = false;
@@ -420,7 +433,7 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
 
       if (data.carpetaId && folderMap.has(data.carpetaId)) {
         folderPath = buildFolderPath(data.carpetaId);
-        matchesFolder = folderPath.toLowerCase().includes(searchLower);
+        matchesFolder = normalizeText(folderPath).includes(searchNormalized);
       }
 
       if (matchesMaterial || matchesFolder) {
