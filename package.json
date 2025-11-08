@@ -23,7 +23,10 @@
     "folders:status": "node scripts/list-folders-status.js",
     "folders:migrate": "node scripts/migrate-folders-to-drive.js",
     "folders:create-drive": "node scripts/create-drive-folders-from-firestore.js",
-    "test:drive": "node scripts/test-drive-connection.js"
+    "test:drive": "node scripts/test-drive-connection.js",
+    "comercial:fix-csv": "node scripts/fix-comercial-csv.js",
+    "comercial:create-folders": "node scripts/create-folders-from-comercial.js",
+    "comercial:import": "node scripts/import-materiales-from-comercial.js"
   },
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",

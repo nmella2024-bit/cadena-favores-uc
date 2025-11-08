@@ -120,26 +120,103 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
       }
     }
 
-    // Búsqueda en Material
+    // Búsqueda en Material (incluye búsqueda por carpetas)
     if (collections.includes('material')) {
       try {
-        const materialRef = collection(db, 'material');
-        const materialSnapshot = await getDocs(query(materialRef, limit(100)));
+        // 1. Buscar carpetas que coincidan
+        const foldersRef = collection(db, 'folders');
+        const foldersSnapshot = await getDocs(foldersRef);
 
-        materialSnapshot.forEach(doc => {
-          const data = doc.data();
-          const searchableText = `${data.titulo} ${data.descripcion} ${data.carrera} ${data.ramo} ${data.autorNombre}`.toLowerCase();
+        const matchingFolders = [];
+        const folderMap = new Map(); // Para construir rutas completas
+
+        // Crear mapa de carpetas con sus padres
+        foldersSnapshot.forEach(doc => {
+          const folderData = doc.data();
+          folderMap.set(doc.id, {
+            id: doc.id,
+            nombre: folderData.nombre,
+            carpetaPadreId: folderData.carpetaPadreId,
+            ...folderData
+          });
+        });
+
+        // Función para construir la ruta completa de una carpeta
+        const buildFolderPath = (folderId) => {
+          const path = [];
+          let currentId = folderId;
+
+          while (currentId) {
+            const folder = folderMap.get(currentId);
+            if (!folder) break;
+            path.unshift(folder.nombre);
+            currentId = folder.carpetaPadreId;
+          }
+
+          return path.join(' / ');
+        };
+
+        // Buscar carpetas que coincidan con el término de búsqueda
+        folderMap.forEach((folder, folderId) => {
+          const folderPath = buildFolderPath(folderId);
+          const searchableText = `${folder.nombre} ${folderPath}`.toLowerCase();
 
           if (searchableText.includes(searchLower)) {
-            results.material.push({
-              id: doc.id,
-              type: 'material',
-              ...data
+            matchingFolders.push({
+              id: folderId,
+              ...folder,
+              rutaCompleta: folderPath
             });
           }
         });
 
-        results.material = results.material.slice(0, limitPerCollection);
+        // 2. Buscar materiales en las carpetas coincidentes
+        const materialRef = collection(db, 'material');
+        const materialSnapshot = await getDocs(query(materialRef, limit(200)));
+
+        const materialesEncontrados = [];
+
+        materialSnapshot.forEach(doc => {
+          const data = doc.data();
+
+          // Búsqueda directa en el material
+          const searchableText = `${data.titulo} ${data.descripcion} ${data.carrera} ${data.ramo} ${data.autorNombre}`.toLowerCase();
+          const matchesMaterial = searchableText.includes(searchLower);
+
+          // Búsqueda por carpeta
+          const matchesFolder = matchingFolders.some(folder => folder.id === data.carpetaId);
+
+          if (matchesMaterial || matchesFolder) {
+            // Obtener información de la carpeta
+            let folderInfo = null;
+            if (data.carpetaId) {
+              const folder = folderMap.get(data.carpetaId);
+              if (folder) {
+                folderInfo = {
+                  nombre: folder.nombre,
+                  rutaCompleta: buildFolderPath(data.carpetaId)
+                };
+              }
+            }
+
+            materialesEncontrados.push({
+              id: doc.id,
+              type: 'material',
+              ...data,
+              carpetaInfo: folderInfo,
+              matchType: matchesMaterial ? 'material' : 'folder'
+            });
+          }
+        });
+
+        // Ordenar: primero los que coinciden directamente, luego por carpeta
+        materialesEncontrados.sort((a, b) => {
+          if (a.matchType === 'material' && b.matchType === 'folder') return -1;
+          if (a.matchType === 'folder' && b.matchType === 'material') return 1;
+          return 0;
+        });
+
+        results.material = materialesEncontrados.slice(0, limitPerCollection);
       } catch (error) {
         console.error('Error buscando en material:', error);
       }

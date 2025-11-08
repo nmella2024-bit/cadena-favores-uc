@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '../services/materialService';
 import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId } from '../services/folderService';
 import { useAuth } from '../context/AuthContext';
+import { useSearchParams } from 'react-router-dom';
 import { Search, BookOpen, Filter, X, Plus, Inbox, AlertCircle, FolderPlus } from 'lucide-react';
 import SubirMaterialModal from '../components/SubirMaterialModal';
 import MaterialCard from '../components/MaterialCard';
@@ -24,6 +25,7 @@ const SkeletonCard = () => (
 
 const Material = () => {
   const { currentUser } = useAuth();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [materiales, setMateriales] = useState([]);
   const [carpetas, setCarpetas] = useState([]);
   const [carpetaActual, setCarpetaActual] = useState(null);
@@ -41,6 +43,23 @@ const Material = () => {
   const [ramoSeleccionado, setRamoSeleccionado] = useState('');
 
   const esUsuarioExclusivo = currentUser?.rol === 'exclusivo';
+
+  // Efecto para navegar a carpeta desde URL
+  useEffect(() => {
+    const folderId = searchParams.get('folder');
+    if (folderId) {
+      // Navegar a la carpeta especificada
+      obtenerCarpetaPorId(folderId).then(carpeta => {
+        if (carpeta) {
+          setCarpetaActual(carpeta);
+        }
+      }).catch(error => {
+        console.error('Error al cargar carpeta desde URL:', error);
+      });
+      // Limpiar el parámetro de la URL
+      setSearchParams({});
+    }
+  }, [searchParams, setSearchParams]);
 
   // Opciones de filtros
   const carreras = [

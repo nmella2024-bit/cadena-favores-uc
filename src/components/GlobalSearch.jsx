@@ -84,7 +84,12 @@ const GlobalSearch = () => {
         navigate('/marketplace');
         break;
       case 'material':
-        navigate('/material');
+        // Si tiene carpeta, navegar a la carpeta específica
+        if (item.carpetaId) {
+          navigate(`/material?folder=${item.carpetaId}`);
+        } else {
+          navigate('/material');
+        }
         break;
       case 'usuario':
         navigate(`/perfil/${item.id}`);
@@ -228,9 +233,15 @@ const GlobalSearch = () => {
                   <p className="text-base font-medium text-text-primary truncate">
                     {item.titulo}
                   </p>
-                  <p className="text-sm text-text-muted truncate mt-1">
-                    {item.carrera} • {item.ramo}
-                  </p>
+                  {item.carpetaInfo ? (
+                    <p className="text-sm text-text-muted truncate mt-1">
+                      📁 {item.carpetaInfo.rutaCompleta}
+                    </p>
+                  ) : (
+                    <p className="text-sm text-text-muted truncate mt-1">
+                      {item.carrera && item.ramo ? `${item.carrera} • ${item.ramo}` : 'Sin categoría'}
+                    </p>
+                  )}
                 </div>
               </button>
             ))}
