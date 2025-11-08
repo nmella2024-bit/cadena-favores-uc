@@ -43,6 +43,7 @@ export const publicarProducto = async (productoData, usuario, imagenes = []) => 
       titulo: productoData.titulo,
       descripcion: productoData.descripcion,
       precio: productoData.precio,
+      carreras: productoData.carreras || [], // Carreras para las que está disponible
       autor: usuario.uid,
       autorNombre: usuario.nombre || usuario.displayName || 'Usuario',
       autorEmail: usuario.email || '',

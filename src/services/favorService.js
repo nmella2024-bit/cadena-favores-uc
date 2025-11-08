@@ -37,6 +37,7 @@ export const publicarFavor = async (favor, user) => {
       descripcion: favor.descripcion,
       categoria: favor.categoria,
       disponibilidad: favor.disponibilidad || '',
+      carreras: favor.carreras || [], // Carreras para las que está dirigido
       usuarioId: user.uid,
       nombreUsuario: user.displayName || 'Anónimo',
       emailUsuario: user.email,

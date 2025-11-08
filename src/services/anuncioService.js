@@ -38,6 +38,7 @@ export const publicarAnuncio = async (anuncioData, usuario, imagen = null) => {
     const docRef = await addDoc(collection(db, 'anuncios'), {
       titulo: anuncioData.titulo,
       descripcion: anuncioData.descripcion,
+      carreras: anuncioData.carreras || [], // Carreras para las que está dirigido
       autor: usuario.uid,
       autorNombre: usuario.nombre || usuario.displayName || 'Usuario',
       fecha: serverTimestamp(),
