@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
+import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages
 import Home from './pages/Home';
@@ -15,6 +16,7 @@ import FavorDetalle from './pages/FavorDetalle';
 import Anuncios from './pages/Anuncios';
 import Marketplace from './pages/Marketplace';
 import Material from './pages/Material';
+import EmailVerificationPending from './pages/EmailVerificationPending';
 import AdminSeedFolders from './components/AdminSeedFolders';
 import MigrarMaterialesExistentes from './components/MigrarMaterialesExistentes';
 import DiagnosticoMaterial from './components/DiagnosticoMaterial';
@@ -40,23 +42,87 @@ function App() {
             {/* Autenticación */}
             <Route path="/login" element={<Login />} />
             <Route path="/registro" element={<Registro />} />
+            <Route path="/verificar-email" element={<EmailVerificationPending />} />
 
-            {/* Favores */}
-            <Route path="/favores" element={<Favores />} />
-            <Route path="/publicar" element={<PublicarFavor />} />
-            <Route path="/favor/:id" element={<FavorDetalle />} />
+            {/* Favores - Protegidas */}
+            <Route
+              path="/favores"
+              element={
+                <ProtectedRoute>
+                  <Favores />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/publicar"
+              element={
+                <ProtectedRoute>
+                  <PublicarFavor />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/favor/:id"
+              element={
+                <ProtectedRoute>
+                  <FavorDetalle />
+                </ProtectedRoute>
+              }
+            />
 
-            {/* Anuncios */}
-            <Route path="/anuncios" element={<Anuncios />} />
+            {/* Anuncios - Protegidas */}
+            <Route
+              path="/anuncios"
+              element={
+                <ProtectedRoute>
+                  <Anuncios />
+                </ProtectedRoute>
+              }
+            />
 
-            {/* Marketplace */}
-            <Route path="/marketplace" element={<Marketplace />} />
+            {/* Marketplace - Protegidas */}
+            <Route
+              path="/marketplace"
+              element={
+                <ProtectedRoute>
+                  <Marketplace />
+                </ProtectedRoute>
+              }
+            />
 
-            {/* Material */}
-            <Route path="/material" element={<Material />} />
-            <Route path="/admin/seed-folders" element={<AdminSeedFolders />} />
-            <Route path="/admin/migrar-materiales" element={<MigrarMaterialesExistentes />} />
-            <Route path="/admin/diagnostico" element={<DiagnosticoMaterial />} />
+            {/* Material - Protegidas */}
+            <Route
+              path="/material"
+              element={
+                <ProtectedRoute>
+                  <Material />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/seed-folders"
+              element={
+                <ProtectedRoute>
+                  <AdminSeedFolders />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/migrar-materiales"
+              element={
+                <ProtectedRoute>
+                  <MigrarMaterialesExistentes />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/diagnostico"
+              element={
+                <ProtectedRoute>
+                  <DiagnosticoMaterial />
+                </ProtectedRoute>
+              }
+            />
 
             {/* UCloseMeal - TEMPORALMENTE DESHABILITADO */}
             {/* <Route path="/uclosemeal" element={<UCloseMealRoleSelect />} /> */}
@@ -67,9 +133,23 @@ function App() {
             {/* <Route path="/uclosemeal/repartidor" element={<RepartidorDashboard />} /> */}
             {/* <Route path="/uclosemeal/mis-pedidos" element={<MisPedidosUCloseMeal />} /> */}
 
-            {/* Perfil */}
-            <Route path="/perfil" element={<Perfil />} />
-            <Route path="/perfil/:userId" element={<PerfilPublico />} />
+            {/* Perfil - Protegidas */}
+            <Route
+              path="/perfil"
+              element={
+                <ProtectedRoute>
+                  <Perfil />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/perfil/:userId"
+              element={
+                <ProtectedRoute>
+                  <PerfilPublico />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Ruta por defecto - redirige a home */}
             <Route path="*" element={<Navigate to="/" replace />} />

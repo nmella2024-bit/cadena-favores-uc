@@ -22,12 +22,28 @@ const Registro = () => {
     descripcion: '',
   });
   const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
+    // Validación especial para el campo de correo
+    if (name === 'correo') {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+
+      // Validar correo UC en tiempo real
+      const ucEmailRegex = /^[a-zA-Z0-9._-]+@uc\.cl$/;
+      if (value && !ucEmailRegex.test(value)) {
+        setEmailError('Debes usar un correo UC válido (@uc.cl)');
+      } else {
+        setEmailError('');
+      }
+    }
     // Validación especial para el campo de teléfono
-    if (name === 'telefono') {
+    else if (name === 'telefono') {
       // Solo permitir números, el símbolo + y limitar a 12 caracteres (+56912345678)
       const cleaned = value.replace(/[^\d+]/g, '');
 
@@ -49,6 +65,13 @@ const Registro = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setError('');
+
+    // Validar correo UC
+    const ucEmailRegex = /^[a-zA-Z0-9._-]+@uc\.cl$/;
+    if (!ucEmailRegex.test(formData.correo)) {
+      setError('Debes usar un correo UC válido (@uc.cl)');
+      return;
+    }
 
     if (formData.password !== formData.confirmPassword) {
       setError('Las contraseñas no coinciden');
@@ -89,8 +112,8 @@ const Registro = () => {
         descripcion: formData.descripcion,
       });
 
-      alert('¡Cuenta creada exitosamente!');
-      navigate('/favores');
+      // No redirigir automáticamente - el AuthContext manejará la redirección
+      // a la página de verificación de email
     } catch (err) {
       setError(err.message);
     }
@@ -106,13 +129,19 @@ const Registro = () => {
 
         <div className="mb-6 rounded-xl border border-brand/30 bg-brand/10 p-4 text-sm text-brand dark:border-brand/20 dark:bg-brand/15">
           <p>
-            <strong>Correos UC válidos:</strong> @uc.cl, @estudiante.uc.cl, @puc.cl, @docente.uc.cl
+            <strong>Correo UC válido:</strong> Solo se aceptan correos @uc.cl
           </p>
         </div>
 
         {error && (
           <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-500">
             {error}
+          </div>
+        )}
+
+        {emailError && (
+          <div className="mb-6 rounded-xl border border-yellow-500/30 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-500">
+            {emailError}
           </div>
         )}
 
@@ -133,7 +162,7 @@ const Registro = () => {
               name="correo"
               type="email"
               label="Correo UC *"
-              placeholder="tunombre@uc.cl o @estudiante.uc.cl"
+              placeholder="tunombre@uc.cl"
               value={formData.correo}
               onChange={handleChange}
               required

@@ -54,10 +54,24 @@ export const AuthProvider = ({ children }) => {
             });
           } else {
             // Si no hay datos en Firestore, el usuario no está registrado en Red UC
-            // Cerrar sesión automáticamente
-            console.warn('Usuario autenticado pero no registrado en Firestore. Cerrando sesión.');
-            await logoutUser();
-            setCurrentUser(null);
+            // Pero si el usuario tiene email no verificado, permitir que vea la página de verificación
+            if (!user.emailVerified) {
+              // Crear un usuario temporal solo con datos de Auth para mostrar la página de verificación
+              setCurrentUser({
+                id: user.uid,
+                uid: user.uid,
+                nombre: user.displayName || 'Usuario',
+                correo: user.email,
+                email: user.email,
+                emailVerified: false,
+                isTemporary: true, // Flag para indicar que es temporal
+              });
+            } else {
+              // Si el email está verificado pero no hay datos en Firestore, cerrar sesión
+              console.warn('Usuario autenticado pero no registrado en Firestore. Cerrando sesión.');
+              await logoutUser();
+              setCurrentUser(null);
+            }
           }
         } catch (error) {
           console.error('Error al obtener datos del usuario:', error);
@@ -77,9 +91,10 @@ export const AuthProvider = ({ children }) => {
   // Función de registro
   const register = async (userData) => {
     try {
-      // Validar que sea correo UC (acepta @uc.cl, @estudiante.uc.cl, etc.)
-      if (!userData.correo.toLowerCase().includes('uc.cl')) {
-        throw new Error('Debes usar un correo UC (debe contener uc.cl)');
+      // Validar que sea correo UC con regex estricto
+      const ucEmailRegex = /^[a-zA-Z0-9._-]+@uc\.cl$/;
+      if (!ucEmailRegex.test(userData.correo)) {
+        throw new Error('Debes usar un correo UC válido (@uc.cl)');
       }
 
       // Registrar usuario en Firebase

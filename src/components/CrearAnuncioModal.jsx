@@ -17,7 +17,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
 
-  // Opciones de filtros
+  // Opciones de carreras disponibles
   const opcionesCarreras = [
     'Ingeniería Comercial',
     'Ingeniería Civil',

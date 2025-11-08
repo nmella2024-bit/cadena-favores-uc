@@ -27,6 +27,8 @@ const Login = () => {
 
     try {
       await login(formData.correo, formData.password);
+      // No redirigir manualmente - el ProtectedRoute manejará la redirección
+      // basándose en el estado de verificación del email
       navigate('/favores');
     } catch (err) {
       setError(err.message);

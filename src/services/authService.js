@@ -5,6 +5,7 @@ import {
   updateProfile,
   onAuthStateChanged,
   deleteUser,
+  sendEmailVerification,
 } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { createUserDocument, getUserData } from './userService';
@@ -27,6 +28,12 @@ export const registerUser = async (email, password, userData) => {
     // Actualizar el perfil con el nombre
     await updateProfile(createdUser, {
       displayName: userData.nombre,
+    });
+
+    // Enviar correo de verificación
+    await sendEmailVerification(createdUser, {
+      url: window.location.origin + '/favores', // URL de redirección después de verificar
+      handleCodeInApp: false,
     });
 
     // Esperar a que el token de autenticación se sincronice con Firestore
@@ -142,4 +149,35 @@ export const onAuthChange = (callback) => {
  */
 export const getCurrentUser = () => {
   return auth.currentUser;
+};
+
+/**
+ * Reenvía el correo de verificación al usuario actual
+ * @returns {Promise<void>}
+ */
+export const resendVerificationEmail = async () => {
+  const user = auth.currentUser;
+
+  if (!user) {
+    throw new Error('No hay un usuario autenticado');
+  }
+
+  if (user.emailVerified) {
+    throw new Error('El correo ya está verificado');
+  }
+
+  try {
+    await sendEmailVerification(user, {
+      url: window.location.origin + '/favores',
+      handleCodeInApp: false,
+    });
+  } catch (error) {
+    console.error('Error al reenviar correo de verificación:', error);
+
+    if (error.code === 'auth/too-many-requests') {
+      throw new Error('Demasiados intentos. Por favor espera unos minutos antes de volver a intentar.');
+    }
+
+    throw new Error('Error al enviar el correo de verificación. Por favor intenta más tarde.');
+  }
 };
