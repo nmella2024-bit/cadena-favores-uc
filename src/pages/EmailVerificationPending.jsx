@@ -1,65 +1,76 @@
-import { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { resendVerificationEmail } from '../services/authService';
 import PrimaryButton from '../components/ui/PrimaryButton';
 
 const EmailVerificationPending = () => {
-  const { currentUser, firebaseUser, logout } = useAuth();
+  const navigate = useNavigate();
+  const { currentUser, logout, firebaseUser } = useAuth();
+  const [resending, setResending] = useState(false);
+  const [checking, setChecking] = useState(false);
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
-  const [isResending, setIsResending] = useState(false);
-  const [canResend, setCanResend] = useState(true);
   const [countdown, setCountdown] = useState(0);
 
-  useEffect(() => {
-    // Countdown para habilitar el botón de reenvío
-    if (countdown > 0) {
-      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
-      return () => clearTimeout(timer);
-    } else {
-      setCanResend(true);
-    }
-  }, [countdown]);
-
+  // Función para reenviar el correo de verificación
   const handleResendEmail = async () => {
-    if (!canResend) return;
-
-    setIsResending(true);
     setError('');
     setMessage('');
+    setResending(true);
 
     try {
       await resendVerificationEmail();
-      setMessage('¡Correo de verificación reenviado! Revisa tu bandeja de entrada y spam.');
-      setCanResend(false);
-      setCountdown(60); // 60 segundos antes de poder reenviar nuevamente
+      setMessage('Correo de verificación reenviado. Por favor revisa tu bandeja de entrada.');
+
+      // Iniciar countdown de 60 segundos
+      setCountdown(60);
+      const interval = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev <= 1) {
+            clearInterval(interval);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
     } catch (err) {
       setError(err.message);
     } finally {
-      setIsResending(false);
+      setResending(false);
     }
   };
 
-  const handleRefreshStatus = async () => {
+  // Función para verificar el estado de verificación
+  const handleCheckVerification = async () => {
+    setError('');
+    setMessage('');
+    setChecking(true);
+
     try {
       // Recargar el usuario de Firebase para obtener el estado actualizado
       await firebaseUser.reload();
 
       if (firebaseUser.emailVerified) {
-        setMessage('¡Email verificado! Recargando...');
-        // El AuthContext detectará el cambio y actualizará automáticamente
-        window.location.reload();
+        setMessage('¡Email verificado! Redirigiendo...');
+        setTimeout(() => {
+          window.location.reload(); // Recargar para actualizar el estado en AuthContext
+        }, 1000);
       } else {
-        setError('El correo aún no ha sido verificado. Por favor revisa tu email.');
+        setError('Tu email aún no ha sido verificado. Por favor revisa tu correo y haz clic en el enlace.');
       }
     } catch (err) {
-      setError('Error al verificar el estado. Por favor intenta nuevamente.');
+      setError('Error al verificar el estado. Intenta más tarde.');
+    } finally {
+      setChecking(false);
     }
   };
 
+  // Función para cerrar sesión
   const handleLogout = async () => {
     try {
       await logout();
+      navigate('/login');
     } catch (err) {
       setError('Error al cerrar sesión');
     }
@@ -67,9 +78,9 @@ const EmailVerificationPending = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-[rgb(var(--bg-canvas))] py-12 px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-2xl rounded-2xl border border-border bg-[rgb(var(--bg-card))] p-8 shadow-card animate-fade-in dark:bg-card/80">
+      <div className="w-full max-w-md rounded-2xl border border-border bg-[rgb(var(--bg-card))] p-8 shadow-card animate-fade-in dark:bg-card/80">
         <div className="mb-8 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand/10">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-brand/20">
             <svg
               className="h-8 w-8 text-brand"
               fill="none"
@@ -84,20 +95,20 @@ const EmailVerificationPending = () => {
               />
             </svg>
           </div>
-          <h2 className="mb-2 text-3xl font-bold text-text-primary">Verifica tu correo UC</h2>
+          <h2 className="mb-2 text-3xl font-bold text-text-primary">Verifica tu Email</h2>
           <p className="text-base text-text-muted">
-            Hemos enviado un correo de verificación a:
+            Te hemos enviado un correo de verificación a:
           </p>
-          <p className="mt-2 text-lg font-semibold text-brand">{currentUser?.email}</p>
+          <p className="mt-2 text-lg font-semibold text-brand">{currentUser?.correo}</p>
         </div>
 
-        <div className="mb-6 rounded-xl border border-brand/30 bg-brand/10 p-6 text-sm text-text-primary dark:border-brand/20 dark:bg-brand/15">
-          <h3 className="mb-3 font-semibold text-brand">Instrucciones:</h3>
-          <ol className="space-y-2 list-decimal list-inside">
-            <li>Revisa tu bandeja de entrada de Outlook o tu correo UC</li>
-            <li>Busca el correo de verificación de NexUC (puede estar en spam)</li>
-            <li>Haz clic en el enlace de verificación dentro del correo</li>
-            <li>Regresa a esta página y presiona "Verificar Estado"</li>
+        <div className="mb-6 rounded-xl border border-brand/30 bg-brand/10 p-4 text-sm text-text-primary dark:border-brand/20 dark:bg-brand/15">
+          <p className="mb-2 font-semibold">Instrucciones:</p>
+          <ol className="list-decimal list-inside space-y-1 text-text-muted">
+            <li>Abre tu correo electrónico</li>
+            <li>Busca el email de NexUC</li>
+            <li>Haz clic en el enlace de verificación</li>
+            <li>Regresa aquí y haz clic en "Verificar estado"</li>
           </ol>
         </div>
 
@@ -115,37 +126,36 @@ const EmailVerificationPending = () => {
 
         <div className="space-y-4">
           <PrimaryButton
-            onClick={handleRefreshStatus}
-            className="w-full justify-center py-3 text-base font-semibold"
+            onClick={handleCheckVerification}
+            disabled={checking}
+            className="w-full justify-center py-2 text-base font-semibold"
           >
-            Verificar Estado
+            {checking ? 'Verificando...' : 'Verificar Estado'}
           </PrimaryButton>
 
           <button
             onClick={handleResendEmail}
-            disabled={!canResend || isResending}
-            className="w-full rounded-xl border border-border bg-[rgb(var(--bg-card))] px-4 py-3 text-base font-medium text-text-primary transition-colors hover:bg-[rgb(var(--bg-hover))] disabled:opacity-50 disabled:cursor-not-allowed dark:bg-card/50"
+            disabled={resending || countdown > 0}
+            className="w-full rounded-xl border border-border bg-transparent py-2 px-4 text-base font-semibold text-text-primary transition-all hover:bg-[rgb(var(--bg-hover))] disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isResending
+            {resending
               ? 'Reenviando...'
-              : canResend
-              ? 'Reenviar correo de verificación'
-              : `Reenviar en ${countdown}s`}
+              : countdown > 0
+              ? `Reenviar en ${countdown}s`
+              : 'Reenviar Correo'}
           </button>
 
           <button
             onClick={handleLogout}
-            className="w-full rounded-xl border border-border bg-transparent px-4 py-3 text-base font-medium text-text-muted transition-colors hover:bg-[rgb(var(--bg-hover))] hover:text-text-primary"
+            className="w-full rounded-xl border border-border bg-transparent py-2 px-4 text-base font-semibold text-text-muted transition-all hover:bg-[rgb(var(--bg-hover))] hover:text-text-primary"
           >
-            Cerrar sesión
+            Cerrar Sesión
           </button>
         </div>
 
-        <div className="mt-6 rounded-xl border border-yellow-500/30 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-500">
-          <p className="font-semibold mb-1">Nota importante:</p>
-          <p>
-            Si no recibes el correo en unos minutos, revisa tu carpeta de spam o correo no deseado.
-            Los correos de verificación pueden tardar hasta 5 minutos en llegar.
+        <div className="mt-6 text-center">
+          <p className="text-sm text-text-muted">
+            ¿No recibiste el correo? Revisa tu carpeta de spam o correos no deseados.
           </p>
         </div>
       </div>

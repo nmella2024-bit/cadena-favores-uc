@@ -111,9 +111,6 @@ const Registro = () => {
         intereses: interesesArray,
         descripcion: formData.descripcion,
       });
-
-      // No redirigir automáticamente - el AuthContext manejará la redirección
-      // a la página de verificación de email
     } catch (err) {
       setError(err.message);
     }

@@ -31,10 +31,7 @@ export const registerUser = async (email, password, userData) => {
     });
 
     // Enviar correo de verificación
-    await sendEmailVerification(createdUser, {
-      url: window.location.origin + '/favores', // URL de redirección después de verificar
-      handleCodeInApp: false,
-    });
+    await sendEmailVerification(createdUser);
 
     // Esperar a que el token de autenticación se sincronice con Firestore
     await new Promise(resolve => setTimeout(resolve, 1000));
@@ -167,10 +164,7 @@ export const resendVerificationEmail = async () => {
   }
 
   try {
-    await sendEmailVerification(user, {
-      url: window.location.origin + '/favores',
-      handleCodeInApp: false,
-    });
+    await sendEmailVerification(user);
   } catch (error) {
     console.error('Error al reenviar correo de verificación:', error);
 
@@ -181,3 +175,4 @@ export const resendVerificationEmail = async () => {
     throw new Error('Error al enviar el correo de verificación. Por favor intenta más tarde.');
   }
 };
+

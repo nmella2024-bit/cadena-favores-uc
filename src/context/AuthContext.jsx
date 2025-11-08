@@ -53,10 +53,10 @@ export const AuthProvider = ({ children }) => {
               emailVerified: user.emailVerified,
             });
           } else {
-            // Si no hay datos en Firestore, el usuario no está registrado en Red UC
-            // Pero si el usuario tiene email no verificado, permitir que vea la página de verificación
+            // Si no hay datos en Firestore pero el usuario existe en Auth
+            // Permitir acceso temporal para verificación de email
             if (!user.emailVerified) {
-              // Crear un usuario temporal solo con datos de Auth para mostrar la página de verificación
+              // Crear usuario temporal para mostrar la página de verificación
               setCurrentUser({
                 id: user.uid,
                 uid: user.uid,
@@ -64,10 +64,10 @@ export const AuthProvider = ({ children }) => {
                 correo: user.email,
                 email: user.email,
                 emailVerified: false,
-                isTemporary: true, // Flag para indicar que es temporal
+                isTemporary: true,
               });
             } else {
-              // Si el email está verificado pero no hay datos en Firestore, cerrar sesión
+              // Si está verificado pero no tiene datos en Firestore, algo salió mal
               console.warn('Usuario autenticado pero no registrado en Firestore. Cerrando sesión.');
               await logoutUser();
               setCurrentUser(null);
