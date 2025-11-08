@@ -22,6 +22,25 @@ const normalizeText = (text) => {
 };
 
 /**
+ * Verifica si un texto contiene todas las palabras de búsqueda (búsqueda AND)
+ * @param {string} text - Texto donde buscar
+ * @param {string} searchTerm - Término de búsqueda
+ * @returns {boolean} True si el texto contiene todas las palabras
+ */
+const matchesAllWords = (text, searchTerm) => {
+  if (!text || !searchTerm) return false;
+
+  const normalizedText = normalizeText(text);
+  const normalizedSearch = normalizeText(searchTerm);
+
+  // Dividir el término de búsqueda en palabras (separadas por espacios)
+  const searchWords = normalizedSearch.split(/\s+/).filter(word => word.length > 0);
+
+  // Verificar que TODAS las palabras estén presentes en el texto
+  return searchWords.every(word => normalizedText.includes(word));
+};
+
+/**
  * Busca en múltiples colecciones de Firestore
  * @param {string} searchTerm - Término de búsqueda
  * @param {Object} options - Opciones de búsqueda
@@ -72,9 +91,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
         favoresSnapshot.forEach(doc => {
           const data = doc.data();
-          const searchableText = normalizeText(`${data.titulo} ${data.descripcion} ${data.categoria} ${data.nombreUsuario}`);
+          const searchableText = `${data.titulo} ${data.descripcion} ${data.categoria} ${data.nombreUsuario}`;
 
-          if (searchableText.includes(searchNormalized)) {
+          if (matchesAllWords(searchableText, searchTerm)) {
             results.favores.push({
               id: doc.id,
               type: 'favor',
@@ -98,9 +117,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
         anunciosSnapshot.forEach(doc => {
           const data = doc.data();
-          const searchableText = normalizeText(`${data.titulo} ${data.descripcion} ${data.autorNombre}`);
+          const searchableText = `${data.titulo} ${data.descripcion} ${data.autorNombre}`;
 
-          if (searchableText.includes(searchNormalized)) {
+          if (matchesAllWords(searchableText, searchTerm)) {
             results.anuncios.push({
               id: doc.id,
               type: 'anuncio',
@@ -123,9 +142,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
         marketplaceSnapshot.forEach(doc => {
           const data = doc.data();
-          const searchableText = normalizeText(`${data.titulo} ${data.descripcion} ${data.autorNombre}`);
+          const searchableText = `${data.titulo} ${data.descripcion} ${data.autorNombre}`;
 
-          if (searchableText.includes(searchNormalized)) {
+          if (matchesAllWords(searchableText, searchTerm)) {
             results.marketplace.push({
               id: doc.id,
               type: 'marketplace',
@@ -206,8 +225,8 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
           const ramo = data.ramo || '';
           const autorNombre = data.autorNombre || '';
 
-          const searchableText = normalizeText(`${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre}`);
-          const matchesMaterial = searchableText.includes(searchNormalized);
+          const searchableText = `${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre}`;
+          const matchesMaterial = matchesAllWords(searchableText, searchTerm);
 
           // Búsqueda por ruta de carpeta
           let matchesFolder = false;
@@ -215,7 +234,7 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
           if (data.carpetaId && folderMap.has(data.carpetaId)) {
             folderPath = buildFolderPath(data.carpetaId);
-            matchesFolder = normalizeText(folderPath).includes(searchNormalized);
+            matchesFolder = matchesAllWords(folderPath, searchTerm);
           }
 
           if (matchesMaterial || matchesFolder) {
@@ -271,9 +290,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
 
         usuariosSnapshot.forEach(doc => {
           const data = doc.data();
-          const searchableText = normalizeText(`${data.nombre} ${data.email} ${data.carrera}`);
+          const searchableText = `${data.nombre} ${data.email} ${data.carrera}`;
 
-          if (searchableText.includes(searchNormalized)) {
+          if (matchesAllWords(searchableText, searchTerm)) {
             results.usuarios.push({
               id: doc.id,
               type: 'usuario',
@@ -424,8 +443,8 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       const autorNombre = data.autorNombre || '';
       const tags = Array.isArray(data.tags) ? data.tags.join(' ') : '';
 
-      const searchableText = normalizeText(`${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre} ${tags}`);
-      const matchesMaterial = searchableText.includes(searchNormalized);
+      const searchableText = `${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre} ${tags}`;
+      const matchesMaterial = matchesAllWords(searchableText, searchTerm);
 
       // Búsqueda por ruta de carpeta
       let matchesFolder = false;
@@ -433,7 +452,7 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
 
       if (data.carpetaId && folderMap.has(data.carpetaId)) {
         folderPath = buildFolderPath(data.carpetaId);
-        matchesFolder = normalizeText(folderPath).includes(searchNormalized);
+        matchesFolder = matchesAllWords(folderPath, searchTerm);
       }
 
       if (matchesMaterial || matchesFolder) {
