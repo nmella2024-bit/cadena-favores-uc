@@ -44,15 +44,8 @@ function App() {
             <Route path="/registro" element={<Registro />} />
             <Route path="/verificar-email" element={<EmailVerificationPending />} />
 
-            {/* Favores - Protegidas */}
-            <Route
-              path="/favores"
-              element={
-                <ProtectedRoute>
-                  <Favores />
-                </ProtectedRoute>
-              }
-            />
+            {/* Favores - Vista pública, publicación protegida */}
+            <Route path="/favores" element={<Favores />} />
             <Route
               path="/publicar"
               element={
@@ -61,44 +54,16 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/favor/:id"
-              element={
-                <ProtectedRoute>
-                  <FavorDetalle />
-                </ProtectedRoute>
-              }
-            />
+            <Route path="/favor/:id" element={<FavorDetalle />} />
 
-            {/* Anuncios - Protegidas */}
-            <Route
-              path="/anuncios"
-              element={
-                <ProtectedRoute>
-                  <Anuncios />
-                </ProtectedRoute>
-              }
-            />
+            {/* Anuncios - Vista pública */}
+            <Route path="/anuncios" element={<Anuncios />} />
 
-            {/* Marketplace - Protegidas */}
-            <Route
-              path="/marketplace"
-              element={
-                <ProtectedRoute>
-                  <Marketplace />
-                </ProtectedRoute>
-              }
-            />
+            {/* Marketplace - Vista pública */}
+            <Route path="/marketplace" element={<Marketplace />} />
 
-            {/* Material - Protegidas */}
-            <Route
-              path="/material"
-              element={
-                <ProtectedRoute>
-                  <Material />
-                </ProtectedRoute>
-              }
-            />
+            {/* Material - Vista pública */}
+            <Route path="/material" element={<Material />} />
             <Route
               path="/admin/seed-folders"
               element={
