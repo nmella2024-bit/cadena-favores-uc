@@ -12,6 +12,18 @@ const GlobalSearch = () => {
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
+  // Log cuando el componente se monta
+  useEffect(() => {
+    const instanceId = Math.random().toString(36).substring(7);
+    console.log(`[GlobalSearch ${instanceId}] Componente montado correctamente`);
+    console.log(`[GlobalSearch ${instanceId}] buscarGlobal importado:`, typeof buscarGlobal);
+
+    // Guardar el ID en el ref para debugging
+    if (searchRef.current) {
+      searchRef.current.dataset.instanceId = instanceId;
+    }
+  }, []);
+
   // Cerrar al hacer clic fuera (solo desktop)
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -33,36 +45,51 @@ const GlobalSearch = () => {
 
   // Debounce de búsqueda
   useEffect(() => {
+    console.log('[GlobalSearch useEffect] searchTerm cambió:', searchTerm, 'longitud:', searchTerm.trim().length);
+
     if (searchTerm.trim().length < 2) {
+      console.log('[GlobalSearch useEffect] Término muy corto, no buscar');
       setResults(null);
       return;
     }
 
+    console.log('[GlobalSearch useEffect] Programando búsqueda en 300ms...');
     const timeoutId = setTimeout(() => {
+      console.log('[GlobalSearch useEffect] Ejecutando búsqueda después de debounce');
       realizarBusqueda(searchTerm);
     }, 300); // 300ms de debounce
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      console.log('[GlobalSearch useEffect] Limpiando timeout');
+      clearTimeout(timeoutId);
+    };
   }, [searchTerm]);
 
   const realizarBusqueda = async (term) => {
     try {
+      console.log('[GlobalSearch] Iniciando búsqueda para:', term);
       setIsLoading(true);
       const searchResults = await buscarGlobal(term, {
         collections: ['favores', 'anuncios', 'marketplace', 'material', 'usuarios'],
         limitPerCollection: 5
       });
+      console.log('[GlobalSearch] Resultados recibidos:', searchResults);
       setResults(searchResults);
     } catch (error) {
-      console.error('Error en búsqueda:', error);
+      console.error('[GlobalSearch] Error en búsqueda:', error);
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleInputChange = (e) => {
-    setSearchTerm(e.target.value);
-    if (!isOpen) setIsOpen(true);
+    const newValue = e.target.value;
+    console.log('[GlobalSearch handleInputChange] Nuevo valor:', newValue);
+    setSearchTerm(newValue);
+    if (!isOpen) {
+      console.log('[GlobalSearch handleInputChange] Abriendo dropdown');
+      setIsOpen(true);
+    }
   };
 
   const handleClear = () => {
@@ -287,15 +314,24 @@ const GlobalSearch = () => {
   return (
     <div ref={searchRef} className="relative">
       {/* Input de búsqueda - Desktop */}
-      <div className="hidden md:block relative" style={{ width: '125px' }}>
+      <div className="hidden md:block relative" style={{ width: '300px' }}>
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
         <input
           ref={inputRef}
           type="text"
           value={searchTerm}
-          onChange={handleInputChange}
-          onFocus={() => setIsOpen(true)}
-          placeholder="Buscar favores, anuncios, productos..."
+          data-search-type="desktop"
+          onChange={(e) => {
+            console.log('[GlobalSearch INPUT Desktop] onChange disparado:', e.target.value);
+            handleInputChange(e);
+          }}
+          onFocus={() => {
+            console.log('[GlobalSearch INPUT Desktop] onFocus disparado');
+            setIsOpen(true);
+          }}
+          onKeyDown={(e) => console.log('[GlobalSearch INPUT Desktop] tecla presionada:', e.key)}
+          onInput={(e) => console.log('[GlobalSearch INPUT Desktop] onInput disparado:', e.target.value)}
+          placeholder="Buscar..."
           className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
         />
         {searchTerm && (
@@ -350,7 +386,14 @@ const GlobalSearch = () => {
                 <input
                   type="text"
                   value={searchTerm}
-                  onChange={handleInputChange}
+                  data-search-type="mobile"
+                  onChange={(e) => {
+                    console.log('[GlobalSearch INPUT Mobile] onChange disparado:', e.target.value);
+                    handleInputChange(e);
+                  }}
+                  onFocus={() => console.log('[GlobalSearch INPUT Mobile] onFocus disparado')}
+                  onKeyDown={(e) => console.log('[GlobalSearch INPUT Mobile] tecla presionada:', e.key)}
+                  onInput={(e) => console.log('[GlobalSearch INPUT Mobile] onInput disparado:', e.target.value)}
                   placeholder="Buscar favores, anuncios, productos..."
                   autoFocus
                   className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"

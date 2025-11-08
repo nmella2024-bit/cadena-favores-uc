@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '../services/materialService';
 import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId } from '../services/folderService';
+import { buscarEnMateriales } from '../services/searchService';
 import { useAuth } from '../context/AuthContext';
 import { useSearchParams } from 'react-router-dom';
 import { Search, BookOpen, Filter, X, Plus, Inbox, AlertCircle, FolderPlus } from 'lucide-react';
@@ -252,18 +253,72 @@ const Material = () => {
     }
   }, [searchTerm]);
 
+  // Estado para resultados de búsqueda avanzada
+  const [searchResults, setSearchResults] = useState(null);
+  const [searching, setSearching] = useState(false);
+
+  // Efecto para búsqueda avanzada (con carpetas)
+  useEffect(() => {
+    const normalizedQuery = searchTerm.trim();
+
+    // Si no hay búsqueda, limpiar resultados
+    if (normalizedQuery.length < 2) {
+      setSearchResults(null);
+      return;
+    }
+
+    // Debounce de 300ms
+    const timeoutId = setTimeout(async () => {
+      try {
+        console.log('[Material] Iniciando búsqueda avanzada:', normalizedQuery);
+        setSearching(true);
+
+        // Buscar en materiales de la carpeta actual o en todas
+        const carpetaIdParaBusqueda = carpetaActual?.id || 'all';
+        const resultados = await buscarEnMateriales(normalizedQuery, carpetaIdParaBusqueda);
+
+        console.log('[Material] Resultados de búsqueda:', resultados.length);
+        setSearchResults(resultados);
+      } catch (error) {
+        console.error('[Material] Error en búsqueda:', error);
+        setSearchResults([]);
+      } finally {
+        setSearching(false);
+      }
+    }, 300);
+
+    return () => clearTimeout(timeoutId);
+  }, [searchTerm, carpetaActual?.id]);
+
   // Filtrar y ordenar materiales (fijados primero)
   const filteredMateriales = useMemo(() => {
-    const normalizedQuery = searchTerm.trim().toLowerCase();
+    // Si hay búsqueda activa, usar resultados de búsqueda avanzada
+    if (searchTerm.trim().length >= 2 && searchResults !== null) {
+      // Aplicar filtros adicionales sobre los resultados de búsqueda
+      const filtered = searchResults.filter((material) => {
+        const matchesCarrera =
+          !carreraSeleccionada ||
+          material.carrera === carreraSeleccionada;
 
+        const matchesAnio =
+          !anioSeleccionado ||
+          material.anio === parseInt(anioSeleccionado) ||
+          material.anio === 'Todos';
+
+        const matchesRamo =
+          !ramoSeleccionado ||
+          material.ramo === ramoSeleccionado ||
+          material.ramo === 'Todos los ramos';
+
+        return matchesCarrera && matchesAnio && matchesRamo;
+      });
+
+      // Ya vienen ordenados de buscarEnMateriales (fijados primero, match type, fecha)
+      return filtered;
+    }
+
+    // Búsqueda local normal (sin búsqueda de texto o término muy corto)
     const filtered = materiales.filter((material) => {
-      const matchesSearch =
-        normalizedQuery.length === 0 ||
-        material.titulo?.toLowerCase().includes(normalizedQuery) ||
-        material.descripcion?.toLowerCase().includes(normalizedQuery) ||
-        material.ramo?.toLowerCase().includes(normalizedQuery) ||
-        material.tags?.join(' ').toLowerCase().includes(normalizedQuery);
-
       const matchesCarrera =
         !carreraSeleccionada ||
         material.carrera === carreraSeleccionada;
@@ -278,7 +333,7 @@ const Material = () => {
         material.ramo === ramoSeleccionado ||
         material.ramo === 'Todos los ramos';
 
-      return matchesSearch && matchesCarrera && matchesAnio && matchesRamo;
+      return matchesCarrera && matchesAnio && matchesRamo;
     });
 
     // Ordenar: fijados primero, luego por fecha
@@ -287,7 +342,7 @@ const Material = () => {
       if (!a.fijado && b.fijado) return 1;
       return new Date(b.fechaSubida) - new Date(a.fechaSubida);
     });
-  }, [materiales, searchTerm, carreraSeleccionada, anioSeleccionado, ramoSeleccionado]);
+  }, [materiales, searchResults, searchTerm, carreraSeleccionada, anioSeleccionado, ramoSeleccionado]);
 
   // Limpiar todos los filtros
   const limpiarFiltros = () => {
@@ -451,7 +506,7 @@ const Material = () => {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-text-muted" />
             <input
               type="text"
-              placeholder="Buscar por nombre de ramo, profesor o palabra clave..."
+              placeholder="Buscar por nombre, carpeta, ramo, profesor..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full pl-12 pr-4 py-3 bg-card border border-border rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
