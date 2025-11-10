@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   deleteUser,
   sendEmailVerification,
+  sendPasswordResetEmail,
 } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { createUserDocument, getUserData } from './userService';
@@ -173,6 +174,29 @@ export const resendVerificationEmail = async () => {
     }
 
     throw new Error('Error al enviar el correo de verificación. Por favor intenta más tarde.');
+  }
+};
+
+/**
+ * Envía un correo electrónico para restablecer la contraseña
+ * @param {string} email - Email del usuario
+ * @returns {Promise<void>}
+ */
+export const sendPasswordReset = async (email) => {
+  try {
+    await sendPasswordResetEmail(auth, email);
+  } catch (error) {
+    console.error('Error al enviar correo de restablecimiento:', error);
+
+    if (error.code === 'auth/user-not-found') {
+      throw new Error('No existe una cuenta con este correo.');
+    } else if (error.code === 'auth/invalid-email') {
+      throw new Error('El correo electrónico no es válido.');
+    } else if (error.code === 'auth/too-many-requests') {
+      throw new Error('Demasiados intentos. Por favor espera unos minutos antes de volver a intentar.');
+    }
+
+    throw new Error('Error al enviar el correo de restablecimiento. Por favor intenta más tarde.');
   }
 };
 
