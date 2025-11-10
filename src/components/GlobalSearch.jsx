@@ -355,10 +355,10 @@ const GlobalSearch = () => {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="md:hidden p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas"
+        className="md:hidden p-1.5 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70"
         aria-label="Buscar"
       >
-        <Search className="w-6 h-6" />
+        <Search className="w-5 h-5" />
       </button>
 
       {/* Dropdown de resultados - Desktop */}

@@ -130,11 +130,11 @@ const NotificationBell = () => {
       {/* Botón de campana */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas"
+        className="relative p-1.5 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70"
       >
-        <Bell className="w-6 h-6" />
+        <Bell className="w-5 h-5" />
         {noLeidas > 0 && (
-          <span className="absolute top-1 right-1 flex items-center justify-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full">
+          <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-red-500 rounded-full">
             {noLeidas > 9 ? '9+' : noLeidas}
           </span>
         )}
@@ -142,7 +142,7 @@ const NotificationBell = () => {
 
       {/* Dropdown de notificaciones */}
       {isOpen && (
-        <div className="fixed md:absolute left-1/2 md:left-auto right-auto md:right-0 -translate-x-1/2 md:translate-x-0 mt-2 w-[95vw] md:w-96 max-w-md max-h-[32rem] bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn">
+        <div className="fixed md:absolute left-2 right-2 md:left-auto md:right-0 md:translate-x-0 top-14 md:top-auto mt-0 md:mt-2 w-auto md:w-96 max-w-md max-h-[70vh] md:max-h-[32rem] bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-canvas">
             <h3 className="text-lg font-semibold text-text-primary">
