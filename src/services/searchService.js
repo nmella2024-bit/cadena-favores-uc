@@ -393,6 +393,83 @@ export const buscarEnColeccion = async (collection, searchTerm, limitResults = 2
 };
 
 /**
+ * Extrae información de año, semestre y evaluación del título
+ * @param {string} titulo - Título del material
+ * @returns {Object} Información extraída
+ */
+const extraerInfoOrdenamiento = (titulo) => {
+  const tituloLower = (titulo || '').toLowerCase();
+
+  // Extraer año (2024, 2023, etc.)
+  const matchAnio = titulo.match(/\b(20\d{2})\b/);
+  const anio = matchAnio ? parseInt(matchAnio[1]) : 0;
+
+  // Extraer semestre (C1, C2, TAV)
+  let semestreOrden = 0;
+  if (/\bc1\b|primer\s*semestre|semestre\s*1/i.test(tituloLower)) {
+    semestreOrden = 1;
+  } else if (/\bc2\b|segundo\s*semestre|semestre\s*2/i.test(tituloLower)) {
+    semestreOrden = 2;
+  } else if (/\btav\b|verano/i.test(tituloLower)) {
+    semestreOrden = 3;
+  }
+
+  // Extraer número de evaluación (I1, I2, I3, C1, C2, etc.)
+  let numeroEvaluacion = 0;
+  const matchEval = titulo.match(/\b[IiCc](\d+)\b/);
+  if (matchEval) {
+    numeroEvaluacion = parseInt(matchEval[1]);
+  }
+
+  // Tipo de evaluación (prioridad para ordenar)
+  let tipoEvaluacion = 0;
+  if (/\bexamen\b|\bfinal\b/i.test(tituloLower)) {
+    tipoEvaluacion = 100;
+  } else if (/\bi\d+\b/i.test(tituloLower)) { // I1, I2, I3
+    tipoEvaluacion = 90;
+  } else if (/\bc\d+\b/i.test(tituloLower)) { // C1, C2, C3
+    tipoEvaluacion = 80;
+  } else if (/\bpauta\b|\bsolucion\b/i.test(tituloLower)) {
+    tipoEvaluacion = 70;
+  }
+
+  return {
+    anio,
+    semestreOrden,
+    numeroEvaluacion,
+    tipoEvaluacion
+  };
+};
+
+/**
+ * Obtiene IDs de carpeta actual y todas sus subcarpetas recursivamente
+ * @param {string} carpetaId - ID de la carpeta padre
+ * @param {Map} folderMap - Mapa de carpetas
+ * @returns {Set} Set con IDs de carpeta y subcarpetas
+ */
+const obtenerCarpetasYSubcarpetas = (carpetaId, folderMap) => {
+  const carpetasIds = new Set();
+
+  if (!carpetaId) return carpetasIds;
+
+  carpetasIds.add(carpetaId);
+
+  // Buscar subcarpetas recursivamente
+  const buscarSubcarpetas = (padreId) => {
+    for (const [id, folder] of folderMap.entries()) {
+      if (folder.carpetaPadreId === padreId && !carpetasIds.has(id)) {
+        carpetasIds.add(id);
+        buscarSubcarpetas(id); // Recursivo
+      }
+    }
+  };
+
+  buscarSubcarpetas(carpetaId);
+
+  return carpetasIds;
+};
+
+/**
  * Busca SOLO en materiales (para la página Material.jsx)
  * @param {string} searchTerm - Término de búsqueda
  * @param {string} carpetaId - ID de la carpeta actual (null para raíz o 'all' para buscar en todas)
@@ -414,24 +491,7 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
     const searchData = normalizeSearchTerm(searchTerm);
     console.log('[buscarEnMateriales] Búsqueda normalizada:', searchData);
 
-    // 1. Cargar materiales
-    const materialRef = collection(db, 'material');
-    let q = query(materialRef, limit(300));
-
-    // Si hay carpetaId específica (no 'all'), filtrar por carpeta
-    if (carpetaId && carpetaId !== 'all') {
-      q = query(materialRef, where('carpetaId', '==', carpetaId), limit(300));
-    }
-
-    const materialSnapshot = await getDocs(q);
-    console.log(`[buscarEnMateriales] Materiales cargados: ${materialSnapshot.size}`);
-
-    if (materialSnapshot.empty) {
-      console.log('[buscarEnMateriales] No hay materiales');
-      return [];
-    }
-
-    // 2. Cargar carpetas para construir rutas
+    // 1. Cargar todas las carpetas primero (para obtener subcarpetas)
     const foldersRef = collection(db, 'folders');
     const foldersSnapshot = await getDocs(foldersRef);
     console.log(`[buscarEnMateriales] Carpetas cargadas: ${foldersSnapshot.size}`);
@@ -449,7 +509,24 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       });
     });
 
-    // Función para construir la ruta completa de una carpeta
+    // 2. Obtener IDs de carpeta actual y subcarpetas
+    let carpetasPermitidas = null;
+    if (carpetaId && carpetaId !== 'all') {
+      carpetasPermitidas = obtenerCarpetasYSubcarpetas(carpetaId, folderMap);
+      console.log(`[buscarEnMateriales] Buscando en carpeta y ${carpetasPermitidas.size - 1} subcarpetas`);
+    }
+
+    // 3. Cargar materiales (sin filtro de carpeta en query para no necesitar índice)
+    const materialRef = collection(db, 'material');
+    const materialSnapshot = await getDocs(query(materialRef, limit(300)));
+    console.log(`[buscarEnMateriales] Materiales cargados: ${materialSnapshot.size}`);
+
+    if (materialSnapshot.empty) {
+      console.log('[buscarEnMateriales] No hay materiales');
+      return [];
+    }
+
+    // 4. Función para construir la ruta completa de una carpeta
     const buildFolderPath = (folderId) => {
       if (!folderId) return '';
 
@@ -469,11 +546,20 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       return path.join(' / ');
     };
 
-    // 3. Buscar en materiales
+    // 5. Buscar en materiales
     const materialesEncontrados = [];
 
     materialSnapshot.forEach(doc => {
       const data = doc.data();
+
+      // Filtrar por carpeta si es necesario
+      if (carpetasPermitidas && data.carpetaId) {
+        if (!carpetasPermitidas.has(data.carpetaId)) {
+          return; // Skip este material, no está en la carpeta actual ni subcarpetas
+        }
+      } else if (carpetasPermitidas && !data.carpetaId) {
+        return; // Skip materiales sin carpeta si estamos filtrando por carpeta
+      }
 
       // Búsqueda en campos del material
       const titulo = data.titulo || '';
@@ -529,11 +615,43 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
 
     console.log(`[buscarEnMateriales] Materiales encontrados: ${materialesEncontrados.length}`);
 
-    // Ordenar por fijado y score
+    // Ordenar por múltiples criterios
     materialesEncontrados.sort((a, b) => {
+      // 1. Fijados primero
       if (a.fijado && !b.fijado) return -1;
       if (!a.fijado && b.fijado) return 1;
-      return b._searchScore - a._searchScore;
+
+      // Extraer información de ordenamiento
+      const infoA = extraerInfoOrdenamiento(a.titulo);
+      const infoB = extraerInfoOrdenamiento(b.titulo);
+
+      // 2. Por año (descendente - más reciente primero)
+      if (infoA.anio !== infoB.anio) {
+        return infoB.anio - infoA.anio;
+      }
+
+      // 3. Por semestre (C1=1, C2=2, TAV=3)
+      if (infoA.semestreOrden !== infoB.semestreOrden) {
+        return infoA.semestreOrden - infoB.semestreOrden;
+      }
+
+      // 4. Por tipo de evaluación (examen > I > C > pauta)
+      if (infoA.tipoEvaluacion !== infoB.tipoEvaluacion) {
+        return infoB.tipoEvaluacion - infoA.tipoEvaluacion;
+      }
+
+      // 5. Por número de evaluación (I1, I2, I3)
+      if (infoA.numeroEvaluacion !== infoB.numeroEvaluacion) {
+        return infoA.numeroEvaluacion - infoB.numeroEvaluacion;
+      }
+
+      // 6. Por score de búsqueda
+      if (a._searchScore !== b._searchScore) {
+        return b._searchScore - a._searchScore;
+      }
+
+      // 7. Por fecha de subida como último criterio
+      return new Date(b.fechaSubida) - new Date(a.fechaSubida);
     });
 
     const resultados = materialesEncontrados.slice(0, limitResults);
