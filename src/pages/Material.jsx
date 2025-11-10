@@ -111,11 +111,44 @@ const Material = () => {
     cargarContenido(carpetaActual?.id || null);
   }, [carpetaActual?.id]);
 
-  // Ordenar materiales (fijados primero, luego por fecha)
+  // Ordenar materiales con criterio académico
   const sortedMateriales = useMemo(() => {
     return [...materiales].sort((a, b) => {
+      // 1. Fijados primero
       if (a.fijado && !b.fijado) return -1;
       if (!a.fijado && b.fijado) return 1;
+
+      // 2. Por año académico (descendente - más reciente primero)
+      const anioA = a.anio || 0;
+      const anioB = b.anio || 0;
+      if (anioA !== anioB) return anioB - anioA;
+
+      // 3. Por tipo de material (prioridad: Certamen > Control > Pauta > Guía > PDF > DOCX > Enlace)
+      const getTipoPrioridad = (material) => {
+        const titulo = (material.titulo || '').toLowerCase();
+        const tipo = material.tipo || '';
+
+        // Prioridades basadas en contenido del título
+        if (titulo.includes('certamen') || titulo.includes('examen')) return 100;
+        if (titulo.includes('control') || titulo.includes('prueba')) return 90;
+        if (titulo.includes('pauta') || titulo.includes('solucion')) return 80;
+        if (titulo.includes('guia') || titulo.includes('ejercicio')) return 70;
+        if (titulo.includes('apunte') || titulo.includes('resumen')) return 60;
+        if (titulo.includes('presentacion') || titulo.includes('slide')) return 50;
+
+        // Si no hay palabra clave, usar tipo de archivo
+        if (tipo === 'PDF') return 40;
+        if (tipo === 'DOCX') return 30;
+        if (tipo === 'Enlace') return 20;
+
+        return 10;
+      };
+
+      const prioridadA = getTipoPrioridad(a);
+      const prioridadB = getTipoPrioridad(b);
+      if (prioridadA !== prioridadB) return prioridadB - prioridadA;
+
+      // 4. Por fecha de subida (más reciente primero) como último criterio
       return new Date(b.fechaSubida) - new Date(a.fechaSubida);
     });
   }, [materiales]);
