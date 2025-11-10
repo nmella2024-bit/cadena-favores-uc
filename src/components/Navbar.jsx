@@ -63,41 +63,41 @@ const Navbar = () => {
     <>
     <Disclosure
       as="nav"
-      className="sticky top-0 z-50 border-b border-border bg-card/80 px-2 sm:px-4 md:px-6 backdrop-blur supports-[backdrop-filter]:bg-card/60 dark:bg-card/60"
+      className="sticky top-0 z-50 border-b border-border bg-card/80 px-3 sm:px-4 md:px-6 backdrop-blur supports-[backdrop-filter]:bg-card/60 dark:bg-card/60"
     >
       {({ open }) => (
         <>
-          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-1 sm:gap-2 md:gap-4">
-            {/* Logo - más pequeño en móvil */}
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between">
+            {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-1.5 sm:gap-3 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0 min-w-0"
+              className="flex items-center gap-2 sm:gap-3 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0"
             >
-              <img src={logo} alt="NexUC" className="h-9 w-9 sm:h-16 sm:w-16 rounded object-cover dark:invert flex-shrink-0" />
-              <div className="flex flex-col min-w-0">
-                <span className="text-xs sm:text-base font-semibold leading-tight text-text-primary whitespace-nowrap">
+              <img src={logo} alt="NexUC" className="h-10 w-10 sm:h-16 sm:w-16 rounded object-cover dark:invert" />
+              <div className="flex flex-col">
+                <span className="text-sm sm:text-base font-semibold leading-tight text-text-primary">
                   NexUC
                 </span>
-                <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block whitespace-nowrap">
+                <span className="text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block">
                   Tu Espacio UC
                 </span>
               </div>
             </Link>
 
-            {/* Búsqueda global - Desktop */}
+            {/* Búsqueda global - Desktop (centrado) */}
             <div className="hidden md:block flex-1 max-w-2xl mx-4">
               <GlobalSearch />
             </div>
 
-            {/* Iconos móviles - Search, Notificaciones y Menu */}
-            <div className="flex items-center gap-1 md:hidden flex-shrink-0">
+            {/* Acciones de la derecha - Mobile */}
+            <div className="flex md:hidden items-center gap-2">
               <GlobalSearch />
               {currentUser && <NotificationBell />}
               <Disclosure.Button
-                className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-1.5 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))] dark:bg-card/60"
+                className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-2 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 dark:bg-card/60"
                 aria-label="Abrir menú de navegación"
               >
-                {open ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+                {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Disclosure.Button>
             </div>
 

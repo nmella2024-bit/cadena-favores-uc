@@ -130,11 +130,11 @@ const NotificationBell = () => {
       {/* Botón de campana */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-1.5 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70"
+        className="relative p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70"
       >
         <Bell className="w-5 h-5" />
         {noLeidas > 0 && (
-          <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-red-500 rounded-full">
+          <span className="absolute top-0 right-0 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-red-500 rounded-full">
             {noLeidas > 9 ? '9+' : noLeidas}
           </span>
         )}
