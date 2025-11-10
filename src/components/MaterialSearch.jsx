@@ -51,10 +51,19 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
       // Buscar en todas las carpetas ('all') o en la carpeta actual si está definida
       const carpetaIdParaBusqueda = carpetaActualId || 'all';
       const searchResults = await buscarEnMateriales(term, carpetaIdParaBusqueda, 50);
-      setResults(searchResults);
+
+      // Validar que los resultados tengan la estructura correcta
+      if (searchResults && typeof searchResults === 'object') {
+        setResults({
+          carpetas: searchResults.carpetas || [],
+          materiales: searchResults.materiales || []
+        });
+      } else {
+        setResults({ carpetas: [], materiales: [] });
+      }
     } catch (error) {
       console.error('[MaterialSearch] Error en búsqueda:', error);
-      setResults([]);
+      setResults({ carpetas: [], materiales: [] });
     } finally {
       setIsLoading(false);
     }
