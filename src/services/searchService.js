@@ -22,7 +22,7 @@ import {
  * @returns {boolean} True si hay coincidencia
  */
 const matchesSearch = (text, searchData) => {
-  if (!text) return false;
+  if (!text || !searchData || !searchData.variations) return false;
 
   const normalizedText = normalizeText(text);
 
@@ -44,7 +44,7 @@ const matchesSearch = (text, searchData) => {
  * @returns {number} Score de relevancia
  */
 const calculateScore = (text, searchData, metadata = {}) => {
-  if (!text) return 0;
+  if (!text || !searchData || !searchData.variations) return 0;
 
   let maxScore = 0;
 
@@ -706,7 +706,11 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
     };
   } catch (error) {
     console.error('[buscarEnMateriales] Error en búsqueda:', error);
-    throw error;
+    // Siempre devolver estructura válida en caso de error
+    return {
+      carpetas: [],
+      materiales: []
+    };
   }
 };
 
