@@ -394,17 +394,13 @@ export const buscarEnColeccion = async (collection, searchTerm, limitResults = 2
 
 /**
  * Extrae información de año, semestre y evaluación del título
- * @param {string} titulo - Título del material
- * @returns {Object} Información extraída
  */
 const extraerInfoOrdenamiento = (titulo) => {
   const tituloLower = (titulo || '').toLowerCase();
 
-  // Extraer año (2024, 2023, etc.)
   const matchAnio = titulo.match(/\b(20\d{2})\b/);
   const anio = matchAnio ? parseInt(matchAnio[1]) : 0;
 
-  // Extraer semestre (C1, C2, TAV)
   let semestreOrden = 0;
   if (/\bc1\b|primer\s*semestre|semestre\s*1/i.test(tituloLower)) {
     semestreOrden = 1;
@@ -414,58 +410,45 @@ const extraerInfoOrdenamiento = (titulo) => {
     semestreOrden = 3;
   }
 
-  // Extraer número de evaluación (I1, I2, I3, C1, C2, etc.)
   let numeroEvaluacion = 0;
   const matchEval = titulo.match(/\b[IiCc](\d+)\b/);
   if (matchEval) {
     numeroEvaluacion = parseInt(matchEval[1]);
   }
 
-  // Tipo de evaluación (prioridad para ordenar)
   let tipoEvaluacion = 0;
   if (/\bexamen\b|\bfinal\b/i.test(tituloLower)) {
     tipoEvaluacion = 100;
-  } else if (/\bi\d+\b/i.test(tituloLower)) { // I1, I2, I3
+  } else if (/\bi\d+\b/i.test(tituloLower)) {
     tipoEvaluacion = 90;
-  } else if (/\bc\d+\b/i.test(tituloLower)) { // C1, C2, C3
+  } else if (/\bc\d+\b/i.test(tituloLower)) {
     tipoEvaluacion = 80;
   } else if (/\bpauta\b|\bsolucion\b/i.test(tituloLower)) {
     tipoEvaluacion = 70;
   }
 
-  return {
-    anio,
-    semestreOrden,
-    numeroEvaluacion,
-    tipoEvaluacion
-  };
+  return { anio, semestreOrden, numeroEvaluacion, tipoEvaluacion };
 };
 
 /**
  * Obtiene IDs de carpeta actual y todas sus subcarpetas recursivamente
- * @param {string} carpetaId - ID de la carpeta padre
- * @param {Map} folderMap - Mapa de carpetas
- * @returns {Set} Set con IDs de carpeta y subcarpetas
  */
 const obtenerCarpetasYSubcarpetas = (carpetaId, folderMap) => {
   const carpetasIds = new Set();
-
   if (!carpetaId) return carpetasIds;
 
   carpetasIds.add(carpetaId);
 
-  // Buscar subcarpetas recursivamente
   const buscarSubcarpetas = (padreId) => {
     for (const [id, folder] of folderMap.entries()) {
       if (folder.carpetaPadreId === padreId && !carpetasIds.has(id)) {
         carpetasIds.add(id);
-        buscarSubcarpetas(id); // Recursivo
+        buscarSubcarpetas(id);
       }
     }
   };
 
   buscarSubcarpetas(carpetaId);
-
   return carpetasIds;
 };
 
@@ -474,7 +457,7 @@ const obtenerCarpetasYSubcarpetas = (carpetaId, folderMap) => {
  * @param {string} searchTerm - Término de búsqueda
  * @param {string} carpetaId - ID de la carpeta actual (null para raíz o 'all' para buscar en todas)
  * @param {number} limitResults - Límite de resultados (default: 100)
- * @returns {Promise<Object>} Objeto con carpetas y materiales encontrados
+ * @returns {Promise<Object>} Objeto con { carpetas: [], materiales: [] }
  */
 export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResults = 100) => {
   try {
@@ -491,14 +474,12 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
     const searchData = normalizeSearchTerm(searchTerm);
     console.log('[buscarEnMateriales] Búsqueda normalizada:', searchData);
 
-    // 1. Cargar todas las carpetas primero (para obtener subcarpetas)
+    // 1. Cargar carpetas primero
     const foldersRef = collection(db, 'folders');
     const foldersSnapshot = await getDocs(foldersRef);
     console.log(`[buscarEnMateriales] Carpetas cargadas: ${foldersSnapshot.size}`);
 
     const folderMap = new Map();
-
-    // Crear mapa de carpetas
     foldersSnapshot.forEach(doc => {
       const folderData = doc.data();
       folderMap.set(doc.id, {
@@ -509,26 +490,21 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       });
     });
 
-    // 2. Obtener IDs de carpeta actual y subcarpetas
+    // 2. Obtener IDs de carpeta actual y subcarpetas si aplica
     let carpetasPermitidas = null;
     if (carpetaId && carpetaId !== 'all') {
       carpetasPermitidas = obtenerCarpetasYSubcarpetas(carpetaId, folderMap);
       console.log(`[buscarEnMateriales] Buscando en carpeta y ${carpetasPermitidas.size - 1} subcarpetas`);
     }
 
-    // 3. Cargar materiales (sin filtro de carpeta en query para no necesitar índice)
+    // 4. Cargar materiales (sin filtro para evitar necesidad de índice compuesto)
     const materialRef = collection(db, 'material');
     const materialSnapshot = await getDocs(query(materialRef, limit(300)));
     console.log(`[buscarEnMateriales] Materiales cargados: ${materialSnapshot.size}`);
 
-    if (materialSnapshot.empty) {
-      console.log('[buscarEnMateriales] No hay materiales');
-    }
-
-    // 4. Función para construir la ruta completa de una carpeta
+    // 5. Función para construir la ruta completa de una carpeta
     const buildFolderPath = (folderId) => {
       if (!folderId) return '';
-
       const path = [];
       let currentId = folderId;
       let depth = 0;
@@ -541,17 +517,15 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
         currentId = folder.carpetaPadreId;
         depth++;
       }
-
       return path.join(' / ');
     };
 
-    // 5. Buscar carpetas que coincidan
+    // 6. Buscar carpetas que coincidan
     const carpetasEncontradas = [];
-
     folderMap.forEach((folder, folderId) => {
       // Filtrar por carpeta padre si es necesario
       if (carpetasPermitidas && !carpetasPermitidas.has(folderId)) {
-        return; // Skip carpetas que no están en el contexto actual
+        return;
       }
 
       const nombreCarpeta = folder.nombre || '';
@@ -584,7 +558,7 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
 
     console.log(`[buscarEnMateriales] Carpetas encontradas: ${carpetasEncontradas.length}`);
 
-    // 6. Buscar en materiales
+    // 7. Buscar en materiales
     const materialesEncontrados = [];
 
     materialSnapshot.forEach(doc => {
@@ -593,10 +567,10 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       // Filtrar por carpeta si es necesario
       if (carpetasPermitidas && data.carpetaId) {
         if (!carpetasPermitidas.has(data.carpetaId)) {
-          return; // Skip este material, no está en la carpeta actual ni subcarpetas
+          return;
         }
       } else if (carpetasPermitidas && !data.carpetaId) {
-        return; // Skip materiales sin carpeta si estamos filtrando por carpeta
+        return;
       }
 
       // Búsqueda en campos del material
@@ -653,12 +627,12 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
 
     console.log(`[buscarEnMateriales] Materiales encontrados: ${materialesEncontrados.length}`);
 
-    // Ordenar carpetas por score
+    // 8. Ordenar carpetas por score
     carpetasEncontradas.sort((a, b) => b._searchScore - a._searchScore);
 
-    // Ordenar materiales por múltiples criterios
+    // 9. Ordenar materiales por múltiples criterios
     materialesEncontrados.sort((a, b) => {
-      // 1. Fijados primero
+      // Fijados primero
       if (a.fijado && !b.fijado) return -1;
       if (!a.fijado && b.fijado) return 1;
 
@@ -666,32 +640,30 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       const infoA = extraerInfoOrdenamiento(a.titulo);
       const infoB = extraerInfoOrdenamiento(b.titulo);
 
-      // 2. Por año (descendente - más reciente primero)
-      if (infoA.anio !== infoB.anio) {
-        return infoB.anio - infoA.anio;
-      }
+      // Por año (descendente - más reciente primero)
+      if (infoA.anio !== infoB.anio) return infoB.anio - infoA.anio;
 
-      // 3. Por semestre (C1=1, C2=2, TAV=3)
+      // Por semestre (C1=1, C2=2, TAV=3)
       if (infoA.semestreOrden !== infoB.semestreOrden) {
         return infoA.semestreOrden - infoB.semestreOrden;
       }
 
-      // 4. Por tipo de evaluación (examen > I > C > pauta)
+      // Por tipo de evaluación
       if (infoA.tipoEvaluacion !== infoB.tipoEvaluacion) {
         return infoB.tipoEvaluacion - infoA.tipoEvaluacion;
       }
 
-      // 5. Por número de evaluación (I1, I2, I3)
+      // Por número de evaluación
       if (infoA.numeroEvaluacion !== infoB.numeroEvaluacion) {
         return infoA.numeroEvaluacion - infoB.numeroEvaluacion;
       }
 
-      // 6. Por score de búsqueda
+      // Por score de búsqueda
       if (a._searchScore !== b._searchScore) {
         return b._searchScore - a._searchScore;
       }
 
-      // 7. Por fecha de subida como último criterio
+      // Por fecha de subida
       return new Date(b.fechaSubida) - new Date(a.fechaSubida);
     });
 
@@ -706,11 +678,7 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
     };
   } catch (error) {
     console.error('[buscarEnMateriales] Error en búsqueda:', error);
-    // Siempre devolver estructura válida en caso de error
-    return {
-      carpetas: [],
-      materiales: []
-    };
+    return { carpetas: [], materiales: [] };
   }
 };
 

@@ -32,7 +32,7 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
   // Debounce de búsqueda
   useEffect(() => {
     if (searchTerm.trim().length < 2) {
-      setResults([]);
+      setResults({ carpetas: [], materiales: [] });
       return;
     }
 
@@ -48,11 +48,9 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
   const realizarBusqueda = async (term) => {
     try {
       setIsLoading(true);
-      // Buscar en todas las carpetas ('all') o en la carpeta actual si está definida
       const carpetaIdParaBusqueda = carpetaActualId || 'all';
       const searchResults = await buscarEnMateriales(term, carpetaIdParaBusqueda, 50);
 
-      // Validar que los resultados tengan la estructura correcta
       if (searchResults && typeof searchResults === 'object') {
         setResults({
           carpetas: searchResults.carpetas || [],
@@ -84,7 +82,6 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
   };
 
   const handleMaterialClick = (material) => {
-    // Navegar a la carpeta del material si tiene una
     if (material.carpetaId) {
       navigate(`/material?folder=${material.carpetaId}`);
     } else {
@@ -95,7 +92,6 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
   };
 
   const handleCarpetaClick = (carpeta) => {
-    // Navegar a la carpeta
     if (onNavigarACarpeta) {
       onNavigarACarpeta(carpeta.id);
     } else {
