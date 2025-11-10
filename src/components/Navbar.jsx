@@ -67,18 +67,18 @@ const Navbar = () => {
     >
       {({ open }) => (
         <>
-          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between">
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2">
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-2 sm:gap-3 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0"
+              className="flex items-center gap-1.5 sm:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0 min-w-0"
             >
-              <img src={logo} alt="NexUC" className="h-10 w-10 sm:h-16 sm:w-16 rounded object-cover dark:invert" />
-              <div className="flex flex-col">
-                <span className="text-sm sm:text-base font-semibold leading-tight text-text-primary">
+              <img src={logo} alt="NexUC" className="h-8 w-8 sm:h-12 sm:w-12 rounded object-cover dark:invert flex-shrink-0" />
+              <div className="flex flex-col min-w-0">
+                <span className="text-xs sm:text-base font-semibold leading-tight text-text-primary truncate">
                   NexUC
                 </span>
-                <span className="text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block">
+                <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">
                   Tu Espacio UC
                 </span>
               </div>
@@ -90,10 +90,12 @@ const Navbar = () => {
             </div>
 
             {/* Acciones de la derecha - Mobile */}
-            <div className="flex md:hidden items-center gap-3 flex-shrink-0">
+            <div className="flex md:hidden items-center gap-2 flex-shrink-0">
               <GlobalSearch />
               {currentUser && (
-                <NotificationBell />
+                <div className="flex-shrink-0">
+                  <NotificationBell />
+                </div>
               )}
               <Disclosure.Button
                 className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-2 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 dark:bg-card/60 flex-shrink-0"
