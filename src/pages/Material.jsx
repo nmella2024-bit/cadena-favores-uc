@@ -40,7 +40,7 @@ const Material = () => {
   const [carpetaAMover, setCarpetaAMover] = useState(null);
   const [eliminando, setEliminando] = useState(null);
 
-  const esUsuarioExclusivo = currentUser?.rol === 'exclusivo';
+  const esUsuarioExclusivo = currentUser?.rol === 'exclusivo' || currentUser?.rol === 'admin';
 
   // Efecto para navegar a carpeta desde URL
   useEffect(() => {

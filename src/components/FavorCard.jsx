@@ -12,6 +12,7 @@ import StarRating from './StarRating';
 import { cn } from '../utils/cn';
 import ReportModal from './ReportModal';
 import { CONTENT_TYPES } from '../services/reportService';
+import { puedeEliminar } from '../utils/adminUtils';
 
 const FavorCard = ({ favor, className }) => {
   const { currentUser, firebaseUser } = useAuth();
@@ -24,6 +25,7 @@ const FavorCard = ({ favor, className }) => {
 
   const category = categories.find((c) => c.id === favor.categoria);
   const isOwnFavor = currentUser && favor.usuarioId === currentUser.uid;
+  const canDelete = currentUser && puedeEliminar(currentUser, favor.usuarioId);
   const canRespond = currentUser && !isOwnFavor && favor.estado === 'activo';
   const isCompleted = favor.estado === 'completado';
   const isConfirmado = favor.estado === 'confirmado';
@@ -236,8 +238,8 @@ const FavorCard = ({ favor, className }) => {
             </PrimaryButton>
           )}
 
-          {/* Botón eliminar - solo si es propio y está activo */}
-          {isOwnFavor && favor.estado === 'activo' && (
+          {/* Botón eliminar - solo si es propio, admin y está activo */}
+          {canDelete && favor.estado === 'activo' && (
             <GhostButton
               type="button"
               onClick={handleDelete}

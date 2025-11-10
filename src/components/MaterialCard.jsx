@@ -1,6 +1,7 @@
 import React from 'react';
 import { Calendar, User, Trash2, BookOpen, ExternalLink, Pin, PinOff } from 'lucide-react';
 import { esMaterialNuevo } from '../services/materialService';
+import { puedeEliminar } from '../utils/adminUtils';
 
 const MaterialCard = ({ material, esExclusivo, onEliminar, onFijar, currentUser }) => {
   const esNuevo = esMaterialNuevo(material.fechaSubida);
@@ -115,8 +116,8 @@ const MaterialCard = ({ material, esExclusivo, onEliminar, onFijar, currentUser 
               </>
             )}
 
-            {/* Botón de eliminar - solo para el autor del material */}
-            {currentUser && currentUser.uid === material.autorId && onEliminar && (
+            {/* Botón de eliminar - solo para el autor del material o admins */}
+            {currentUser && puedeEliminar(currentUser, material.autorId) && onEliminar && (
               <button
                 onClick={() => onEliminar(material.id)}
                 className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/20"

@@ -42,7 +42,7 @@ const Anuncios = () => {
 
   const anios = [1, 2, 3, 4, 5];
 
-  const esUsuarioExclusivo = currentUser?.rol === 'exclusivo';
+  const esUsuarioExclusivo = currentUser?.rol === 'exclusivo' || currentUser?.rol === 'admin';
 
   const cargarAnuncios = async () => {
     try {
