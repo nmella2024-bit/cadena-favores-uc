@@ -111,6 +111,9 @@ const Registro = () => {
         intereses: interesesArray,
         descripcion: formData.descripcion,
       });
+
+      // Redirigir a la página de verificación de email
+      navigate('/email-verification-pending');
     } catch (err) {
       setError(err.message);
     }
