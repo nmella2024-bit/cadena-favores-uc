@@ -12,7 +12,7 @@ import CreateFolderModal from '../components/CreateFolderModal';
 import MoveFolderModal from '../components/MoveFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import MaterialSearch from '../components/MaterialSearch';
-import solidaridadLogo from '../assets/solidaridad UC.jpg';
+// import solidaridadLogo from '../assets/solidaridad-UC.jpg';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -287,7 +287,8 @@ const Material = () => {
                 Encuentra resúmenes, guías y material según tu carrera, año o ramo
               </p>
 
-              {/* Banner Solidaridad UC */}
+              {/* Banner Solidaridad UC - Temporalmente deshabilitado hasta subir la imagen */}
+              {/*
               <div className="mt-4 inline-flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
                 <img
                   src={solidaridadLogo}
@@ -298,6 +299,7 @@ const Material = () => {
                   En colaboración con Solidaridad UC
                 </span>
               </div>
+              */}
             </div>
 
             {currentUser && (
