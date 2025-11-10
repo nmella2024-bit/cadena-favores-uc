@@ -12,6 +12,7 @@ import {
   getDoc
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
+import { getUserData } from './userService';
 
 const FOLDERS_COLLECTION = 'folders';
 
@@ -26,6 +27,12 @@ const FOLDERS_COLLECTION = 'folders';
  */
 export const crearCarpeta = async (folderData) => {
   try {
+    // Validar que el usuario tenga rol exclusivo
+    const usuario = await getUserData(folderData.autorId);
+    if (!usuario || usuario.rol !== 'exclusivo') {
+      throw new Error('Solo los usuarios con rol exclusivo pueden crear carpetas');
+    }
+
     const nuevaCarpeta = {
       nombre: folderData.nombre,
       carpetaPadreId: folderData.carpetaPadreId || null,
@@ -174,9 +181,10 @@ export const renombrarCarpeta = async (carpetaId, nuevoNombre, userId) => {
       throw new Error('Carpeta no encontrada');
     }
 
-    // Solo el autor puede renombrar (puedes ajustar esta lógica)
-    if (carpeta.autorId !== userId) {
-      throw new Error('No tienes permisos para renombrar esta carpeta');
+    // Validar que el usuario tenga rol exclusivo
+    const usuario = await getUserData(userId);
+    if (!usuario || usuario.rol !== 'exclusivo') {
+      throw new Error('Solo los usuarios con rol exclusivo pueden renombrar carpetas');
     }
 
     const docRef = doc(db, FOLDERS_COLLECTION, carpetaId);
@@ -205,9 +213,10 @@ export const eliminarCarpeta = async (carpetaId, userId) => {
       throw new Error('Carpeta no encontrada');
     }
 
-    // Solo el autor puede eliminar (puedes ajustar esta lógica)
-    if (carpeta.autorId !== userId) {
-      throw new Error('No tienes permisos para eliminar esta carpeta');
+    // Validar que el usuario tenga rol exclusivo
+    const usuario = await getUserData(userId);
+    if (!usuario || usuario.rol !== 'exclusivo') {
+      throw new Error('Solo los usuarios con rol exclusivo pueden eliminar carpetas');
     }
 
     // Obtener todas las subcarpetas
@@ -247,18 +256,25 @@ export const moverCarpeta = async (carpetaId, nuevaCarpetaPadreId, userId) => {
       throw new Error('Carpeta no encontrada');
     }
 
-    // Solo el autor puede mover
-    if (carpeta.autorId !== userId) {
-      throw new Error('No tienes permisos para mover esta carpeta');
+    // Validar que el usuario tenga rol exclusivo
+    const usuario = await getUserData(userId);
+    if (!usuario || usuario.rol !== 'exclusivo') {
+      throw new Error('Solo los usuarios con rol exclusivo pueden mover carpetas');
     }
 
-    // Validar que no se mueva a sí misma o a una subcarpeta propia
+    // Validar que no se mueva a sí misma
     if (carpetaId === nuevaCarpetaPadreId) {
       throw new Error('No puedes mover una carpeta dentro de sí misma');
     }
 
-    // Validar que la carpeta destino existe (si no es null)
+    // Validar que no se mueva a una de sus propias subcarpetas
     if (nuevaCarpetaPadreId) {
+      const esSubcarpeta = await verificarEsSubcarpeta(carpetaId, nuevaCarpetaPadreId);
+      if (esSubcarpeta) {
+        throw new Error('No puedes mover una carpeta dentro de sus propias subcarpetas');
+      }
+
+      // Validar que la carpeta destino existe
       const carpetaDestino = await obtenerCarpetaPorId(nuevaCarpetaPadreId);
       if (!carpetaDestino) {
         throw new Error('Carpeta destino no encontrada');
@@ -275,6 +291,29 @@ export const moverCarpeta = async (carpetaId, nuevaCarpetaPadreId, userId) => {
     console.error('Error al mover carpeta:', error);
     throw new Error('No se pudo mover la carpeta: ' + error.message);
   }
+};
+
+/**
+ * Verifica si una carpeta es subcarpeta de otra (recursivamente)
+ * @param {string} carpetaPadreId - ID de la carpeta padre potencial
+ * @param {string} carpetaVerificarId - ID de la carpeta a verificar
+ * @returns {Promise<boolean>} True si es subcarpeta
+ */
+const verificarEsSubcarpeta = async (carpetaPadreId, carpetaVerificarId) => {
+  let carpetaActual = await obtenerCarpetaPorId(carpetaVerificarId);
+
+  while (carpetaActual) {
+    if (carpetaActual.id === carpetaPadreId) {
+      return true;
+    }
+    if (carpetaActual.carpetaPadreId) {
+      carpetaActual = await obtenerCarpetaPorId(carpetaActual.carpetaPadreId);
+    } else {
+      break;
+    }
+  }
+
+  return false;
 };
 
 /**

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '../services/materialService';
-import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId } from '../services/folderService';
+import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId, moverCarpeta } from '../services/folderService';
 import { useAuth } from '../context/AuthContext';
 import { useSearchParams } from 'react-router-dom';
 import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus } from 'lucide-react';
@@ -9,6 +9,7 @@ import MaterialCard from '../components/MaterialCard';
 import FolderCard from '../components/FolderCard';
 import Breadcrumb from '../components/Breadcrumb';
 import CreateFolderModal from '../components/CreateFolderModal';
+import MoveFolderModal from '../components/MoveFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import MaterialSearch from '../components/MaterialSearch';
 
@@ -35,6 +36,8 @@ const Material = () => {
   const [error, setError] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
+  const [isMoveFolderModalOpen, setIsMoveFolderModalOpen] = useState(false);
+  const [carpetaAMover, setCarpetaAMover] = useState(null);
   const [eliminando, setEliminando] = useState(null);
 
   const esUsuarioExclusivo = currentUser?.rol === 'exclusivo';
@@ -211,9 +214,26 @@ const Material = () => {
     }
   };
 
-  // Mover carpeta (placeholder para funcionalidad futura)
+  // Mover carpeta
   const handleMoverCarpeta = (carpetaId) => {
-    alert('Funcionalidad de mover carpeta próximamente');
+    const carpeta = carpetas.find(c => c.id === carpetaId);
+    if (carpeta) {
+      setCarpetaAMover(carpeta);
+      setIsMoveFolderModalOpen(true);
+    }
+  };
+
+  const handleConfirmarMoverCarpeta = async (carpetaId, nuevaCarpetaPadreId) => {
+    try {
+      await moverCarpeta(carpetaId, nuevaCarpetaPadreId, currentUser.uid);
+      // Recargar contenido
+      cargarContenido(carpetaActual?.id || null);
+      setIsMoveFolderModalOpen(false);
+      setCarpetaAMover(null);
+    } catch (err) {
+      console.error('Error al mover carpeta:', err);
+      throw err; // Propagar el error al modal para mostrarlo
+    }
   };
 
   return (
@@ -386,6 +406,17 @@ const Material = () => {
               onCrear={handleCrearCarpeta}
               carpetaPadre={carpetaActual}
             />
+            {carpetaAMover && (
+              <MoveFolderModal
+                isOpen={isMoveFolderModalOpen}
+                onClose={() => {
+                  setIsMoveFolderModalOpen(false);
+                  setCarpetaAMover(null);
+                }}
+                carpetaAMover={carpetaAMover}
+                onMover={handleConfirmarMoverCarpeta}
+              />
+            )}
           </>
         )}
       </div>
