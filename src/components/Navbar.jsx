@@ -90,12 +90,10 @@ const Navbar = () => {
             </div>
 
             {/* Acciones de la derecha - Mobile */}
-            <div className="flex md:hidden items-center gap-2 flex-shrink-0">
+            <div className="flex md:hidden items-center gap-3 flex-shrink-0">
               <GlobalSearch />
               {currentUser && (
-                <div className="relative">
-                  <NotificationBell />
-                </div>
+                <NotificationBell />
               )}
               <Disclosure.Button
                 className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-2 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 dark:bg-card/60 flex-shrink-0"
