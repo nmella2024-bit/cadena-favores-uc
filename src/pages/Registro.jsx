@@ -113,7 +113,7 @@ const Registro = () => {
       });
 
       // Redirigir a la página de verificación de email
-      navigate('/email-verification-pending');
+      navigate('/verificar-email');
     } catch (err) {
       setError(err.message);
     }
