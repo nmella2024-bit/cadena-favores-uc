@@ -12,7 +12,7 @@ import CreateFolderModal from '../components/CreateFolderModal';
 import MoveFolderModal from '../components/MoveFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import MaterialSearch from '../components/MaterialSearch';
-import solidaridadLogo from '../assets/solidaridadUC.jpf';
+import solidaridadLogo from '../assets/solidaridad UC.jpg';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
