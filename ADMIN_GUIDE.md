@@ -48,55 +48,81 @@ El sistema tiene tres roles de usuario:
 
 Asegúrate de tener el archivo `serviceAccountKey.json` en la raíz del proyecto con las credenciales de Firebase Admin SDK.
 
-### 1. Asignar Rol de Administrador
+### 1. Verificar Usuario
 
-Asigna rol de admin a un usuario existente:
+Verifica si un usuario existe y muestra su información completa:
 
 ```bash
-node scripts/asignar-admin.js <email-del-usuario>
+node scripts/verificar-usuario.cjs <email-del-usuario>
 ```
 
 **Ejemplo:**
 ```bash
-node scripts/asignar-admin.js admin@uc.cl
+node scripts/verificar-usuario.cjs usuario@uc.cl
 ```
 
-### 2. Cambiar Rol de Usuario
+### 2. Crear Documento de Usuario
+
+Si un usuario existe en Firebase Auth pero no en Firestore:
+
+```bash
+node scripts/crear-documento-usuario.cjs <email-del-usuario>
+```
+
+**Ejemplo:**
+```bash
+node scripts/crear-documento-usuario.cjs usuario@uc.cl
+```
+
+### 3. Asignar Rol de Administrador
+
+Asigna rol de admin a un usuario existente:
+
+```bash
+node scripts/asignar-admin.cjs <email-del-usuario>
+```
+
+**Ejemplo:**
+```bash
+node scripts/asignar-admin.cjs admin@uc.cl
+```
+
+### 4. Cambiar Rol de Usuario
 
 Cambia el rol de cualquier usuario:
 
 ```bash
-node scripts/cambiar-rol.js <email-del-usuario> <nuevo-rol>
+node scripts/cambiar-rol.cjs <email-del-usuario> <nuevo-rol>
 ```
 
 **Ejemplos:**
 ```bash
 # Hacer a un usuario administrador
-node scripts/cambiar-rol.js usuario@uc.cl admin
+node scripts/cambiar-rol.cjs usuario@uc.cl admin
 
 # Hacer a un usuario exclusivo
-node scripts/cambiar-rol.js usuario@uc.cl exclusivo
+node scripts/cambiar-rol.cjs usuario@uc.cl exclusivo
 
 # Convertir a usuario normal
-node scripts/cambiar-rol.js usuario@uc.cl normal
+node scripts/cambiar-rol.cjs usuario@uc.cl normal
 ```
 
-### 3. Listar Usuarios
+### 5. Listar Usuarios
 
 Lista todos los usuarios o filtra por rol:
 
 ```bash
 # Listar todos los usuarios
-node scripts/listar-usuarios.js
+node scripts/listar-usuarios.cjs
 
 # Listar solo admins
-node scripts/listar-usuarios.js admin
+node scripts/listar-usuarios.cjs admin
 
 # Listar solo exclusivos
-node scripts/listar-usuarios.js exclusivo
+node scripts/listar-usuarios.cjs exclusivo
 
 # Listar usuarios normales
-node scripts/listar-usuarios.js normal
+node scripts/listar-usuarios.cjs normal
 ```
 
 ## Uso en el Código
@@ -217,7 +243,8 @@ Si quieres mejorar el sistema de administración:
 ## Troubleshooting
 
 ### "No se encontró el usuario"
-- Verifica que el usuario se haya registrado en la aplicación
+- Primero ejecuta `node scripts/verificar-usuario.cjs email@uc.cl` para diagnosticar
+- Si existe en Auth pero no en Firestore, ejecuta `node scripts/crear-documento-usuario.cjs email@uc.cl`
 - Asegúrate de usar el email exacto (case-sensitive)
 
 ### "Permission denied"

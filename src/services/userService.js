@@ -51,9 +51,20 @@ export const getUserData = async (userId) => {
   try {
     const userDoc = await getDoc(doc(db, 'usuarios', userId));
     if (userDoc.exists()) {
-      return { id: userDoc.id, ...userDoc.data() };
+      const userData = userDoc.data();
+      // Asegurar que el campo rol existe, por defecto 'normal'
+      if (!userData.rol) {
+        console.warn(`Usuario ${userId} no tiene campo 'rol', asignando 'normal' por defecto`);
+        // Actualizar el documento con el rol por defecto
+        await updateDoc(doc(db, 'usuarios', userId), { rol: 'normal' });
+        userData.rol = 'normal';
+      }
+      return { id: userDoc.id, uid: userId, ...userData };
     } else {
-      console.log('No se encontró el documento del usuario');
+      console.error(`No se encontró el documento del usuario con ID: ${userId}`);
+      console.error('Por favor verifica que:');
+      console.error('1. El usuario existe en la colección "usuarios" de Firestore');
+      console.error('2. El ID del usuario coincide con el UID de Firebase Auth');
       return null;
     }
   } catch (error) {
