@@ -9,6 +9,17 @@ service cloud.firestore {
              get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == 'exclusivo';
     }
 
+    // Función para verificar si el usuario tiene rol admin
+    function esUsuarioAdmin() {
+      return request.auth != null &&
+             get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.rol == 'admin';
+    }
+
+    // Función para verificar si el usuario tiene rol exclusivo o admin
+    function esUsuarioExclusivoOAdmin() {
+      return esUsuarioExclusivo() || esUsuarioAdmin();
+    }
+
     // Reglas para la colección de favores
     match /favores/{favorId} {
       allow read: if true;
@@ -46,15 +57,15 @@ service cloud.firestore {
       // Todos pueden leer anuncios
       allow read: if true;
 
-      // Solo usuarios con rol "exclusivo" pueden crear anuncios
-      allow create: if esUsuarioExclusivo() &&
+      // Solo usuarios con rol "exclusivo" o "admin" pueden crear anuncios
+      allow create: if esUsuarioExclusivoOAdmin() &&
                     request.resource.data.autor == request.auth.uid;
 
-      // Solo usuarios con rol "exclusivo" pueden actualizar anuncios
-      allow update: if esUsuarioExclusivo();
+      // Solo usuarios con rol "exclusivo" o "admin" pueden actualizar anuncios
+      allow update: if esUsuarioExclusivoOAdmin();
 
-      // Solo usuarios con rol "exclusivo" pueden eliminar anuncios
-      allow delete: if esUsuarioExclusivo();
+      // Solo usuarios con rol "exclusivo" o "admin" pueden eliminar anuncios
+      allow delete: if esUsuarioExclusivoOAdmin();
     }
 
     // Reglas para la colección de calificaciones
