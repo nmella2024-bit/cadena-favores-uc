@@ -32,6 +32,11 @@ import { eliminarReportesDeContenido } from './reportService';
  */
 export const publicarFavor = async (favor, user) => {
   try {
+    // Calcular fecha de expiración basada en la duración
+    const duracionDias = parseInt(favor.duracion) || 2;
+    const fechaExpiracion = new Date();
+    fechaExpiracion.setDate(fechaExpiracion.getDate() + duracionDias);
+
     const favorData = {
       titulo: favor.titulo,
       descripcion: favor.descripcion,
@@ -44,6 +49,9 @@ export const publicarFavor = async (favor, user) => {
       fecha: serverTimestamp(),
       estado: 'activo',
       respuestas: [],
+      fijado: false, // Por defecto no está fijado
+      duracionDias: duracionDias, // Guardar la duración seleccionada
+      fechaExpiracion: Timestamp.fromDate(fechaExpiracion), // Fecha de expiración
       createdAt: serverTimestamp(),
       updatedAt: serverTimestamp(),
     };
@@ -738,6 +746,43 @@ export const obtenerFavoresConContactos = async (userId) => {
     };
   } catch (error) {
     console.error('Error al obtener favores con contactos:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fija o desfija un favor (solo administradores o moderadores pueden fijar)
+ * Cuando un favor está fijado, no expira automáticamente
+ * @param {string} favorId - ID del favor
+ * @param {boolean} fijado - true para fijar, false para desfijar
+ * @param {string} userId - ID del usuario que fija (para validación)
+ * @returns {Promise<void>}
+ */
+export const fijarFavor = async (favorId, fijado, userId) => {
+  try {
+    const favorRef = doc(db, 'favores', favorId);
+    const favorDoc = await getDoc(favorRef);
+
+    if (!favorDoc.exists()) {
+      throw new Error('El favor no existe');
+    }
+
+    const favorData = favorDoc.data();
+
+    // Validar que solo el creador o un admin pueda fijar
+    // TODO: Agregar validación de rol de admin cuando esté implementado
+    if (favorData.usuarioId !== userId) {
+      throw new Error('No tienes permisos para fijar este favor');
+    }
+
+    await updateDoc(favorRef, {
+      fijado: fijado,
+      updatedAt: serverTimestamp(),
+    });
+
+    console.log(`Favor ${fijado ? 'fijado' : 'desfijado'} exitosamente`);
+  } catch (error) {
+    console.error('Error al fijar/desfijar favor:', error);
     throw error;
   }
 };

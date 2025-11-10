@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { CalendarDays, Link2, Tag, UserRound, MessageCircle, X, CheckCircle, Star, Flag } from 'lucide-react';
+import { CalendarDays, Link2, Tag, UserRound, MessageCircle, X, CheckCircle, Star, Flag, Pin } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { categories } from '../data/mockData';
 import { eliminarFavor, ofrecerAyuda, finalizarFavor } from '../services/favorService';
@@ -114,10 +114,20 @@ const FavorCard = ({ favor, className }) => {
   return (
     <article
       className={cn(
-        'rounded-xl border border-border bg-card p-5 shadow-sm transition hover:shadow-md dark:bg-card/80',
+        'rounded-xl border border-border bg-card p-5 shadow-sm transition hover:shadow-md dark:bg-card/80 relative',
         className,
       )}
     >
+      {/* Badge de favor fijado */}
+      {favor.fijado && (
+        <div className="absolute top-0 left-0">
+          <div className="bg-yellow-500 text-white text-xs font-semibold px-3 py-1 rounded-br-lg flex items-center gap-1">
+            <Pin className="h-3 w-3" />
+            FIJADO
+          </div>
+        </div>
+      )}
+
       <div className="flex items-start justify-between gap-3">
         <h3 className="line-clamp-2 text-xl font-semibold tracking-tight" data-testid="favor-title">
           {favor.titulo}

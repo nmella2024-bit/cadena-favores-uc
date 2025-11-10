@@ -34,6 +34,11 @@ export const publicarAnuncio = async (anuncioData, usuario, imagen = null) => {
       imagenURL = await getDownloadURL(snapshot.ref);
     }
 
+    // Calcular fecha de expiración basada en la duración
+    const duracionDias = parseInt(anuncioData.duracion) || 2;
+    const fechaExpiracion = new Date();
+    fechaExpiracion.setDate(fechaExpiracion.getDate() + duracionDias);
+
     // Crear el anuncio en Firestore
     const docRef = await addDoc(collection(db, 'anuncios'), {
       titulo: anuncioData.titulo,
@@ -44,6 +49,8 @@ export const publicarAnuncio = async (anuncioData, usuario, imagen = null) => {
       fecha: serverTimestamp(),
       imagenURL: imagenURL,
       fijado: false,
+      duracionDias: duracionDias, // Guardar la duración seleccionada
+      fechaExpiracion: Timestamp.fromDate(fechaExpiracion), // Fecha de expiración
     });
 
     return docRef.id;

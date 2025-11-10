@@ -16,6 +16,7 @@ const initialFormState = {
   categoria: '',
   disponibilidad: '',
   carreras: [],
+  duracion: '2', // Duración por defecto: 2 días
 };
 
 const validateForm = ({ titulo, descripcion, categoria }) => {
@@ -207,6 +208,29 @@ const PublicarFavor = () => {
             onChange={handleChange}
             hint="Si ofreces apoyo, describe horarios sugeridos para coordinar."
           />
+
+          <SelectField
+            id="duracion"
+            name="duracion"
+            label="Duración de la publicación"
+            value={formData.duracion}
+            onChange={handleChange}
+            required
+          >
+            <option value="1">1 día</option>
+            <option value="2">2 días (recomendado)</option>
+            <option value="3">3 días</option>
+            <option value="7">7 días</option>
+          </SelectField>
+
+          <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-amber-400">
+            <div className="flex items-start gap-3">
+              <Info className="mt-1 h-5 w-5 shrink-0" aria-hidden="true" />
+              <p className="text-sm">
+                Tu favor se eliminará automáticamente después del tiempo seleccionado. Si alguien fija tu favor, este permanecerá visible de forma indefinida.
+              </p>
+            </div>
+          </div>
 
           <div className="rounded-2xl border border-brand/30 bg-brand/10 p-4 text-brand">
             <div className="flex items-start gap-3">

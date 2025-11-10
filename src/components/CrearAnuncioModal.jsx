@@ -1,10 +1,11 @@
 import React, { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { X, Image as ImageIcon, Loader2 } from 'lucide-react';
+import { X, Image as ImageIcon, Loader2, Info } from 'lucide-react';
 import { publicarAnuncio } from '../services/anuncioService';
 import PrimaryButton from './ui/PrimaryButton';
 import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
+import SelectField from './ui/SelectField';
 
 const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [titulo, setTitulo] = useState('');
@@ -12,6 +13,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [carreras, setCarreras] = useState([]);
   const [carrera, setCarrera] = useState('');
   const [anio, setAnio] = useState('');
+  const [duracion, setDuracion] = useState('2'); // Duración por defecto: 2 días
   const [imagen, setImagen] = useState(null);
   const [imagenPreview, setImagenPreview] = useState('');
   const [enviando, setEnviando] = useState(false);
@@ -103,7 +105,8 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
           descripcion: descripcion.trim(),
           carrera: carrera || 'Todas',
           anio: anio ? parseInt(anio) : null,
-          carreras: carreras.length > 0 ? carreras : []
+          carreras: carreras.length > 0 ? carreras : [],
+          duracion: duracion
         },
         usuario,
         imagen
@@ -115,6 +118,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
       setCarreras([]);
       setCarrera('');
       setAnio('');
+      setDuracion('2');
       setImagen(null);
       setImagenPreview('');
 
@@ -139,6 +143,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
       setCarreras([]);
       setCarrera('');
       setAnio('');
+      setDuracion('2');
       setImagen(null);
       setImagenPreview('');
       setError('');
@@ -282,6 +287,33 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                           <option key={a} value={a}>{a}º año</option>
                         ))}
                       </select>
+                    </div>
+                  </div>
+
+                  {/* Duración de la publicación */}
+                  <div>
+                    <label className="block text-sm font-medium text-text-primary mb-2">
+                      Duración de la publicación
+                    </label>
+                    <select
+                      value={duracion}
+                      onChange={(e) => setDuracion(e.target.value)}
+                      className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                    >
+                      <option value="1">1 día</option>
+                      <option value="2">2 días (recomendado)</option>
+                      <option value="3">3 días</option>
+                      <option value="7">7 días</option>
+                    </select>
+                  </div>
+
+                  {/* Aviso informativo */}
+                  <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-amber-400">
+                    <div className="flex items-start gap-2">
+                      <Info className="h-4 w-4 mt-0.5 shrink-0" aria-hidden="true" />
+                      <p className="text-xs">
+                        Tu anuncio se eliminará automáticamente después del tiempo seleccionado. Si tu anuncio está fijado, este permanecerá visible de forma indefinida.
+                      </p>
                     </div>
                   </div>
 
