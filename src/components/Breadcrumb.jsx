@@ -6,7 +6,7 @@ const Breadcrumb = ({ ruta, onNavigate }) => {
       {/* Raíz / Home */}
       <button
         onClick={() => onNavigate(null)}
-        className="flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-gray-100 transition-colors text-gray-700 hover:text-purple-600 font-medium whitespace-nowrap"
+        className="flex items-center space-x-1 px-3 py-2 rounded-lg hover:bg-canvas transition-colors text-text-primary hover:text-purple-600 dark:hover:text-purple-400 font-medium whitespace-nowrap"
       >
         <Home className="w-4 h-4" />
         <span>Material</span>
@@ -15,13 +15,13 @@ const Breadcrumb = ({ ruta, onNavigate }) => {
       {/* Carpetas en la ruta */}
       {ruta.map((carpeta, index) => (
         <div key={carpeta.id} className="flex items-center space-x-2">
-          <ChevronRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
+          <ChevronRight className="w-4 h-4 text-text-muted flex-shrink-0" />
           <button
             onClick={() => onNavigate(carpeta.id)}
             className={`px-3 py-2 rounded-lg transition-colors whitespace-nowrap ${
               index === ruta.length - 1
-                ? 'text-purple-600 bg-purple-50 font-semibold'
-                : 'text-gray-700 hover:bg-gray-100 hover:text-purple-600 font-medium'
+                ? 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-950/30 font-semibold'
+                : 'text-text-primary hover:bg-canvas hover:text-purple-600 dark:hover:text-purple-400 font-medium'
             }`}
           >
             {carpeta.nombre}

@@ -3,7 +3,7 @@ import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '..
 import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId, moverCarpeta } from '../services/folderService';
 import { useAuth } from '../context/AuthContext';
 import { useSearchParams } from 'react-router-dom';
-import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus } from 'lucide-react';
+import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus, Search } from 'lucide-react';
 import SubirMaterialModal from '../components/SubirMaterialModal';
 import MaterialCard from '../components/MaterialCard';
 import FolderCard from '../components/FolderCard';
@@ -12,6 +12,7 @@ import CreateFolderModal from '../components/CreateFolderModal';
 import MoveFolderModal from '../components/MoveFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import MaterialSearch from '../components/MaterialSearch';
+import solidaridadLogo from '../assets/solidaridadUC.jpf';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -285,6 +286,18 @@ const Material = () => {
               <p className="text-lg text-text-muted">
                 Encuentra resúmenes, guías y material según tu carrera, año o ramo
               </p>
+
+              {/* Banner Solidaridad UC */}
+              <div className="mt-4 inline-flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
+                <img
+                  src={solidaridadLogo}
+                  alt="Solidaridad UC"
+                  className="h-10 w-10 rounded-full object-cover"
+                />
+                <span className="text-sm font-semibold text-blue-700 dark:text-blue-400">
+                  En colaboración con Solidaridad UC
+                </span>
+              </div>
             </div>
 
             {currentUser && (
