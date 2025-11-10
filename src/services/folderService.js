@@ -27,10 +27,10 @@ const FOLDERS_COLLECTION = 'folders';
  */
 export const crearCarpeta = async (folderData) => {
   try {
-    // Validar que el usuario tenga rol exclusivo
+    // Validar que el usuario tenga rol exclusivo o admin
     const usuario = await getUserData(folderData.autorId);
-    if (!usuario || usuario.rol !== 'exclusivo') {
-      throw new Error('Solo los usuarios con rol exclusivo pueden crear carpetas');
+    if (!usuario || (usuario.rol !== 'exclusivo' && usuario.rol !== 'admin')) {
+      throw new Error('Solo los usuarios con rol exclusivo o admin pueden crear carpetas');
     }
 
     const nuevaCarpeta = {
@@ -181,10 +181,10 @@ export const renombrarCarpeta = async (carpetaId, nuevoNombre, userId) => {
       throw new Error('Carpeta no encontrada');
     }
 
-    // Validar que el usuario tenga rol exclusivo
+    // Validar que el usuario tenga rol exclusivo o admin
     const usuario = await getUserData(userId);
-    if (!usuario || usuario.rol !== 'exclusivo') {
-      throw new Error('Solo los usuarios con rol exclusivo pueden renombrar carpetas');
+    if (!usuario || (usuario.rol !== 'exclusivo' && usuario.rol !== 'admin')) {
+      throw new Error('Solo los usuarios con rol exclusivo o admin pueden renombrar carpetas');
     }
 
     const docRef = doc(db, FOLDERS_COLLECTION, carpetaId);
@@ -213,10 +213,10 @@ export const eliminarCarpeta = async (carpetaId, userId) => {
       throw new Error('Carpeta no encontrada');
     }
 
-    // Validar que el usuario tenga rol exclusivo
+    // Validar que el usuario tenga rol exclusivo o admin
     const usuario = await getUserData(userId);
-    if (!usuario || usuario.rol !== 'exclusivo') {
-      throw new Error('Solo los usuarios con rol exclusivo pueden eliminar carpetas');
+    if (!usuario || (usuario.rol !== 'exclusivo' && usuario.rol !== 'admin')) {
+      throw new Error('Solo los usuarios con rol exclusivo o admin pueden eliminar carpetas');
     }
 
     // Obtener todas las subcarpetas
@@ -256,10 +256,10 @@ export const moverCarpeta = async (carpetaId, nuevaCarpetaPadreId, userId) => {
       throw new Error('Carpeta no encontrada');
     }
 
-    // Validar que el usuario tenga rol exclusivo
+    // Validar que el usuario tenga rol exclusivo o admin
     const usuario = await getUserData(userId);
-    if (!usuario || usuario.rol !== 'exclusivo') {
-      throw new Error('Solo los usuarios con rol exclusivo pueden mover carpetas');
+    if (!usuario || (usuario.rol !== 'exclusivo' && usuario.rol !== 'admin')) {
+      throw new Error('Solo los usuarios con rol exclusivo o admin pueden mover carpetas');
     }
 
     // Validar que no se mueva a sí misma
