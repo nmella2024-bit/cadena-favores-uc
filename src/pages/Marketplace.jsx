@@ -6,6 +6,7 @@ import MarketplaceCard from '../components/MarketplaceCard';
 import CrearProductoModal from '../components/CrearProductoModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import TextField from '../components/ui/TextField';
+import { puedeEliminar } from '../utils/adminUtils';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -215,7 +216,7 @@ const Marketplace = () => {
               <MarketplaceCard
                 key={producto.id}
                 producto={producto}
-                esAutor={currentUser?.uid === producto.autor}
+                esAutor={currentUser && puedeEliminar(currentUser, producto.autor)}
                 currentUserId={currentUser?.uid}
                 onEliminar={handleEliminarProducto}
               />
