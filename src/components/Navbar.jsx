@@ -67,17 +67,17 @@ const Navbar = () => {
     >
       {({ open }) => (
         <>
-          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4">
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2 sm:gap-4">
             <Link
               to="/"
-              className="flex items-center gap-3 rounded-lg px-2 py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60"
+              className="flex items-center gap-2 sm:gap-3 rounded-lg px-1 sm:px-2 py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0"
             >
-              <img src={logo} alt="NexUC" className="h-16 w-16 rounded object-cover dark:invert" />
-              <div className="flex flex-col">
-                <span className="text-base font-semibold leading-tight text-text-primary">
+              <img src={logo} alt="NexUC" className="h-12 w-12 sm:h-16 sm:w-16 rounded object-cover dark:invert" />
+              <div className="flex flex-col hidden xs:flex">
+                <span className="text-sm sm:text-base font-semibold leading-tight text-text-primary">
                   NexUC
                 </span>
-                <span className="text-xs font-medium uppercase tracking-wide text-text-muted">
+                <span className="text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block">
                   Tu Espacio UC
                 </span>
               </div>
@@ -89,7 +89,7 @@ const Navbar = () => {
             </div>
 
             {/* Iconos móviles - Search y Notificaciones */}
-            <div className="flex items-center gap-2 md:hidden">
+            <div className="flex items-center gap-1 md:hidden">
               <GlobalSearch />
               {currentUser && <NotificationBell />}
             </div>

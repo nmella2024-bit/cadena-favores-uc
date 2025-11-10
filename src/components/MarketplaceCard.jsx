@@ -49,26 +49,26 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
   };
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden flex flex-col h-full">
+    <div className="rounded-xl border border-border bg-card p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden flex flex-col h-full">
       {esNuevo && (
         <div className="absolute top-0 right-0 z-10">
-          <div className="bg-brand text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
+          <div className="bg-brand text-white text-xs font-semibold px-2 sm:px-3 py-1 rounded-bl-lg">
             NUEVO
           </div>
         </div>
       )}
 
-      <div className="space-y-3 flex flex-col flex-1">
+      <div className="space-y-2 sm:space-y-3 flex flex-col flex-1">
         <div>
           <div className="flex items-start justify-between gap-2 mb-1">
-            <h3 className="text-lg font-semibold text-text-primary line-clamp-2">
+            <h3 className="text-base sm:text-lg font-semibold text-text-primary line-clamp-2">
               {producto.titulo}
             </h3>
-            <div className="text-lg font-bold text-brand whitespace-nowrap">
+            <div className="text-base sm:text-lg font-bold text-brand whitespace-nowrap flex-shrink-0">
               {formatearPrecio(producto.precio)}
             </div>
           </div>
-          <p className="text-sm text-text-muted line-clamp-3">
+          <p className="text-xs sm:text-sm text-text-muted line-clamp-3">
             {producto.descripcion}
           </p>
         </div>

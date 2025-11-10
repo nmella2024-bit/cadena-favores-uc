@@ -92,12 +92,12 @@ const Feed = () => {
       <Link
         key={item.id}
         to={formattedItem.link}
-        className="block bg-card border border-border rounded-xl p-4 hover:shadow-lg hover:border-brand/30 transition-all duration-200"
+        className="block bg-card border border-border rounded-xl p-3 sm:p-4 hover:shadow-lg hover:border-brand/30 transition-all duration-200"
       >
         {/* Header */}
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <div className="flex items-center gap-2">
-            <div className={`p-2 rounded-lg ${getColorBadge(item.type)}`}>
+        <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2 sm:mb-3">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className={`p-1.5 sm:p-2 rounded-lg ${getColorBadge(item.type)}`}>
               {getIconoTipo(item.type)}
             </div>
             <div className="flex flex-col">
@@ -111,18 +111,18 @@ const Feed = () => {
             </div>
           </div>
           {formattedItem.fijado && (
-            <span className="text-xs font-semibold text-brand bg-brand/10 px-2 py-1 rounded">
+            <span className="text-xs font-semibold text-brand bg-brand/10 px-2 py-1 rounded flex-shrink-0">
               Fijado
             </span>
           )}
         </div>
 
         {/* Contenido */}
-        <div className="space-y-2">
-          <h3 className="font-semibold text-text-primary line-clamp-2">
+        <div className="space-y-1.5 sm:space-y-2">
+          <h3 className="font-semibold text-sm sm:text-base text-text-primary line-clamp-2">
             {formattedItem.titulo}
           </h3>
-          <p className="text-sm text-text-muted line-clamp-2">
+          <p className="text-xs sm:text-sm text-text-muted line-clamp-2">
             {formattedItem.descripcion}
           </p>
 
@@ -186,12 +186,12 @@ const Feed = () => {
   const itemsFiltrados = filtrarItems();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Filtros */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-1.5 sm:gap-2">
         <button
           onClick={() => setFiltroTipo('all')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
             filtroTipo === 'all'
               ? 'bg-brand text-white'
               : 'bg-card border border-border text-text-muted hover:text-text-primary hover:border-brand/30'
@@ -201,47 +201,47 @@ const Feed = () => {
         </button>
         <button
           onClick={() => setFiltroTipo('favor')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2 ${
             filtroTipo === 'favor'
               ? 'bg-blue-500 text-white'
               : 'bg-card border border-border text-text-muted hover:text-text-primary hover:border-brand/30'
           }`}
         >
-          <HandHeart className="w-4 h-4" />
-          Favores
+          <HandHeart className="w-3 sm:w-4 h-3 sm:h-4" />
+          <span className="hidden xs:inline">Favores</span>
         </button>
         <button
           onClick={() => setFiltroTipo('anuncio')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2 ${
             filtroTipo === 'anuncio'
               ? 'bg-purple-500 text-white'
               : 'bg-card border border-border text-text-muted hover:text-text-primary hover:border-brand/30'
           }`}
         >
-          <Megaphone className="w-4 h-4" />
-          Anuncios
+          <Megaphone className="w-3 sm:w-4 h-3 sm:h-4" />
+          <span className="hidden xs:inline">Anuncios</span>
         </button>
         <button
           onClick={() => setFiltroTipo('marketplace')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2 ${
             filtroTipo === 'marketplace'
               ? 'bg-green-500 text-white'
               : 'bg-card border border-border text-text-muted hover:text-text-primary hover:border-brand/30'
           }`}
         >
-          <ShoppingBag className="w-4 h-4" />
-          Marketplace
+          <ShoppingBag className="w-3 sm:w-4 h-3 sm:h-4" />
+          <span className="hidden xs:inline">Marketplace</span>
         </button>
         <button
           onClick={() => setFiltroTipo('material')}
-          className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors flex items-center gap-1 sm:gap-2 ${
             filtroTipo === 'material'
               ? 'bg-yellow-500 text-white'
               : 'bg-card border border-border text-text-muted hover:text-text-primary hover:border-brand/30'
           }`}
         >
-          <BookOpen className="w-4 h-4" />
-          Material
+          <BookOpen className="w-3 sm:w-4 h-3 sm:h-4" />
+          <span className="hidden xs:inline">Material</span>
         </button>
       </div>
 

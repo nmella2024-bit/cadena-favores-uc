@@ -312,7 +312,7 @@ const GlobalSearch = () => {
   };
 
   return (
-    <div ref={searchRef} className="relative">
+    <div ref={searchRef} className="relative w-full md:w-auto">
       {/* Input de búsqueda - Desktop */}
       <div className="hidden md:block relative" style={{ width: '150px' }}>
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
@@ -332,7 +332,7 @@ const GlobalSearch = () => {
           onKeyDown={(e) => console.log('[GlobalSearch INPUT Desktop] tecla presionada:', e.key)}
           onInput={(e) => console.log('[GlobalSearch INPUT Desktop] onInput disparado:', e.target.value)}
           placeholder="Buscar..."
-          className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+          className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors text-sm"
         />
         {searchTerm && (
           <button
@@ -377,12 +377,12 @@ const GlobalSearch = () => {
 
       {/* Dropdown de resultados - Móvil */}
       {isOpen && (
-        <div className="md:hidden fixed inset-x-4 top-16 z-50 animate-fadeIn">
+        <div className="md:hidden fixed left-0 right-0 top-16 z-50 mx-2 animate-fadeIn">
           <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden max-h-[calc(100vh-5rem)]">
             {/* Input de búsqueda móvil */}
             <div className="p-3 border-b border-border bg-canvas sticky top-0">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted flex-shrink-0" />
                 <input
                   type="text"
                   value={searchTerm}
@@ -394,9 +394,9 @@ const GlobalSearch = () => {
                   onFocus={() => console.log('[GlobalSearch INPUT Mobile] onFocus disparado')}
                   onKeyDown={(e) => console.log('[GlobalSearch INPUT Mobile] tecla presionada:', e.key)}
                   onInput={(e) => console.log('[GlobalSearch INPUT Mobile] onInput disparado:', e.target.value)}
-                  placeholder="Buscar favores, anuncios, productos..."
+                  placeholder="Buscar favores, anuncios..."
                   autoFocus
-                  className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                  className="w-full pl-10 pr-10 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors text-sm"
                 />
                 {searchTerm ? (
                   <button

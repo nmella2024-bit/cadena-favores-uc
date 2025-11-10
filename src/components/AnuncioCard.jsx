@@ -18,11 +18,11 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
   };
 
   return (
-    <div className="rounded-xl border border-border bg-card p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden flex flex-col h-full">
+    <div className="rounded-xl border border-border bg-card p-3 sm:p-4 shadow-sm transition-shadow hover:shadow-md dark:bg-card/80 relative overflow-hidden flex flex-col h-full">
       {/* Badge de fijado */}
       {anuncio.fijado && (
-        <div className="absolute top-0 left-0">
-          <div className="bg-yellow-500 text-white text-xs font-semibold px-3 py-1 rounded-br-lg flex items-center gap-1">
+        <div className="absolute top-0 left-0 z-10">
+          <div className="bg-yellow-500 text-white text-xs font-semibold px-2 sm:px-3 py-1 rounded-br-lg flex items-center gap-1">
             <Pin className="h-3 w-3" />
             FIJADO
           </div>
@@ -31,27 +31,27 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
 
       {/* Badge de nuevo */}
       {esNuevo && !anuncio.fijado && (
-        <div className="absolute top-0 right-0">
-          <div className="bg-brand text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
+        <div className="absolute top-0 right-0 z-10">
+          <div className="bg-brand text-white text-xs font-semibold px-2 sm:px-3 py-1 rounded-bl-lg">
             NUEVO
           </div>
         </div>
       )}
 
       {esNuevo && anuncio.fijado && (
-        <div className="absolute top-0 right-0">
-          <div className="bg-brand text-white text-xs font-semibold px-3 py-1 rounded-bl-lg">
+        <div className="absolute top-0 right-0 z-10">
+          <div className="bg-brand text-white text-xs font-semibold px-2 sm:px-3 py-1 rounded-bl-lg">
             NUEVO
           </div>
         </div>
       )}
 
-      <div className="space-y-3 flex flex-col flex-1">
+      <div className="space-y-2 sm:space-y-3 flex flex-col flex-1">
         <div>
-          <h3 className="text-lg font-semibold text-text-primary mb-1 line-clamp-2">
+          <h3 className="text-base sm:text-lg font-semibold text-text-primary mb-1 line-clamp-2">
             {anuncio.titulo}
           </h3>
-          <p className="text-sm text-text-muted line-clamp-3">
+          <p className="text-xs sm:text-sm text-text-muted line-clamp-3">
             {anuncio.descripcion}
           </p>
         </div>

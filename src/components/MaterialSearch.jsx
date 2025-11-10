@@ -208,10 +208,10 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
   };
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-2xl mx-auto">
+    <div ref={searchRef} className="relative w-full max-w-2xl mx-auto px-2 sm:px-0">
       {/* Input de búsqueda */}
       <div className="relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-text-muted" />
+        <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-text-muted flex-shrink-0" />
         <input
           ref={inputRef}
           type="text"
@@ -222,19 +222,19 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
               setIsOpen(true);
             }
           }}
-          placeholder="Buscar por nombre, carpeta, ramo, profesor..."
-          className="w-full pl-12 pr-12 py-3 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+          placeholder="Buscar por nombre, carpeta, ramo..."
+          className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-2.5 sm:py-3 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors text-sm sm:text-base"
         />
         {searchTerm && (
           <button
             onClick={handleClear}
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-canvas rounded transition-colors"
+            className="absolute right-2 sm:right-3 top-1/2 -translate-y-1/2 p-1 hover:bg-canvas rounded transition-colors"
           >
             <X className="w-4 h-4 text-text-muted" />
           </button>
         )}
         {isLoading && (
-          <div className="absolute right-10 top-1/2 -translate-y-1/2">
+          <div className="absolute right-8 sm:right-10 top-1/2 -translate-y-1/2">
             <Loader2 className="w-4 h-4 text-brand animate-spin" />
           </div>
         )}
@@ -242,7 +242,7 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
 
       {/* Dropdown de resultados */}
       {isOpen && searchTerm.length > 0 && (
-        <div className="absolute top-full mt-2 w-full bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn">
+        <div className="absolute top-full mt-2 left-2 right-2 sm:left-0 sm:right-0 w-auto sm:w-full bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn">
           {renderResults()}
         </div>
       )}

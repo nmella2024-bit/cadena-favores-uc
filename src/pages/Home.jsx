@@ -139,22 +139,22 @@ const Home = () => {
               </button>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
               {accionesRapidas.map((accion) => {
                 const Icon = accion.icon;
                 return (
                   <button
                     key={accion.id}
                     onClick={() => handleAccionClick(accion)}
-                    className="group flex flex-col items-center justify-center p-6 rounded-xl border border-border bg-background hover:bg-card hover:border-brand/30 transition-all duration-200 hover:shadow-sm"
+                    className="group flex flex-col items-center justify-center p-4 sm:p-6 rounded-xl border border-border bg-background hover:bg-card hover:border-brand/30 transition-all duration-200 hover:shadow-sm"
                   >
-                    <div className={`${accion.iconBg} ${accion.iconColor} p-3 rounded-full mb-3 group-hover:scale-110 transition-transform`}>
-                      <Icon className="h-6 w-6" />
+                    <div className={`${accion.iconBg} ${accion.iconColor} p-2 sm:p-3 rounded-full mb-2 sm:mb-3 group-hover:scale-110 transition-transform`}>
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
                     </div>
-                    <h3 className="text-sm font-semibold text-text-primary mb-0.5">
+                    <h3 className="text-xs sm:text-sm font-semibold text-text-primary mb-0.5 text-center">
                       {accion.titulo}
                     </h3>
-                    <p className="text-xs text-text-muted">
+                    <p className="text-xs text-text-muted text-center">
                       {accion.subtitulo}
                     </p>
                   </button>
