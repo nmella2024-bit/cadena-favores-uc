@@ -470,11 +470,11 @@ const obtenerCarpetasYSubcarpetas = (carpetaId, folderMap) => {
 };
 
 /**
- * Busca SOLO en materiales (para la página Material.jsx)
+ * Busca en materiales y carpetas (para la página Material.jsx)
  * @param {string} searchTerm - Término de búsqueda
  * @param {string} carpetaId - ID de la carpeta actual (null para raíz o 'all' para buscar en todas)
  * @param {number} limitResults - Límite de resultados (default: 100)
- * @returns {Promise<Array>} Array de materiales encontrados
+ * @returns {Promise<Object>} Objeto con carpetas y materiales encontrados
  */
 export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResults = 100) => {
   try {
@@ -484,7 +484,7 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
 
     if (!searchTerm || searchTerm.trim().length < 2) {
       console.log('[buscarEnMateriales] Término muy corto');
-      return [];
+      return { carpetas: [], materiales: [] };
     }
 
     // Normalizar término de búsqueda
@@ -523,7 +523,6 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
 
     if (materialSnapshot.empty) {
       console.log('[buscarEnMateriales] No hay materiales');
-      return [];
     }
 
     // 4. Función para construir la ruta completa de una carpeta
@@ -546,7 +545,46 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       return path.join(' / ');
     };
 
-    // 5. Buscar en materiales
+    // 5. Buscar carpetas que coincidan
+    const carpetasEncontradas = [];
+
+    folderMap.forEach((folder, folderId) => {
+      // Filtrar por carpeta padre si es necesario
+      if (carpetasPermitidas && !carpetasPermitidas.has(folderId)) {
+        return; // Skip carpetas que no están en el contexto actual
+      }
+
+      const nombreCarpeta = folder.nombre || '';
+      const rutaCarpeta = buildFolderPath(folderId);
+
+      // Verificar coincidencia
+      const matchesNombre = matchesSearch(nombreCarpeta, searchData);
+      const matchesRuta = matchesSearch(rutaCarpeta, searchData);
+
+      if (matchesNombre || matchesRuta) {
+        let score = 0;
+        if (matchesNombre) {
+          score = calculateScore(nombreCarpeta, searchData, { isFileName: false });
+        }
+        if (matchesRuta) {
+          const rutaScore = calculateScore(rutaCarpeta, searchData) * 0.5;
+          score = Math.max(score, rutaScore);
+        }
+
+        carpetasEncontradas.push({
+          id: folderId,
+          type: 'carpeta',
+          nombre: nombreCarpeta,
+          carpetaPadreId: folder.carpetaPadreId,
+          rutaCompleta: rutaCarpeta,
+          _searchScore: score
+        });
+      }
+    });
+
+    console.log(`[buscarEnMateriales] Carpetas encontradas: ${carpetasEncontradas.length}`);
+
+    // 6. Buscar en materiales
     const materialesEncontrados = [];
 
     materialSnapshot.forEach(doc => {
@@ -615,7 +653,10 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
 
     console.log(`[buscarEnMateriales] Materiales encontrados: ${materialesEncontrados.length}`);
 
-    // Ordenar por múltiples criterios
+    // Ordenar carpetas por score
+    carpetasEncontradas.sort((a, b) => b._searchScore - a._searchScore);
+
+    // Ordenar materiales por múltiples criterios
     materialesEncontrados.sort((a, b) => {
       // 1. Fijados primero
       if (a.fijado && !b.fijado) return -1;
@@ -654,10 +695,15 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       return new Date(b.fechaSubida) - new Date(a.fechaSubida);
     });
 
-    const resultados = materialesEncontrados.slice(0, limitResults);
-    console.log(`[buscarEnMateriales] Resultados finales: ${resultados.length}`);
+    const resultadosCarpetas = carpetasEncontradas.slice(0, Math.min(10, limitResults));
+    const resultadosMateriales = materialesEncontrados.slice(0, limitResults);
 
-    return resultados;
+    console.log(`[buscarEnMateriales] Resultados finales: ${resultadosCarpetas.length} carpetas, ${resultadosMateriales.length} materiales`);
+
+    return {
+      carpetas: resultadosCarpetas,
+      materiales: resultadosMateriales
+    };
   } catch (error) {
     console.error('[buscarEnMateriales] Error en búsqueda:', error);
     throw error;

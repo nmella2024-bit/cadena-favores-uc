@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
-import { Search, X, Loader2, BookOpen } from 'lucide-react';
+import { Search, X, Loader2, BookOpen, Folder } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { buscarEnMateriales } from '../services/searchService';
 
-const MaterialSearch = ({ carpetaActualId = null }) => {
+const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState({ carpetas: [], materiales: [] });
   const searchRef = useRef(null);
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -70,16 +70,27 @@ const MaterialSearch = ({ carpetaActualId = null }) => {
 
   const handleClear = () => {
     setSearchTerm('');
-    setResults([]);
+    setResults({ carpetas: [], materiales: [] });
     inputRef.current?.focus();
   };
 
-  const handleItemClick = (material) => {
+  const handleMaterialClick = (material) => {
     // Navegar a la carpeta del material si tiene una
     if (material.carpetaId) {
       navigate(`/material?folder=${material.carpetaId}`);
     } else {
       navigate('/material');
+    }
+    setIsOpen(false);
+    setSearchTerm('');
+  };
+
+  const handleCarpetaClick = (carpeta) => {
+    // Navegar a la carpeta
+    if (onNavigarACarpeta) {
+      onNavigarACarpeta(carpeta.id);
+    } else {
+      navigate(`/material?folder=${carpeta.id}`);
     }
     setIsOpen(false);
     setSearchTerm('');
@@ -106,52 +117,85 @@ const MaterialSearch = ({ carpetaActualId = null }) => {
       );
     }
 
-    if (results.length === 0) {
+    if (results.carpetas.length === 0 && results.materiales.length === 0) {
       return (
         <div className="p-8 text-center">
           <Search className="w-12 h-12 text-text-muted/30 mx-auto mb-3" />
           <p className="text-text-muted text-sm">
-            No se encontraron materiales para "{searchTerm}"
+            No se encontraron resultados para "{searchTerm}"
           </p>
         </div>
       );
     }
 
+    const totalResultados = results.carpetas.length + results.materiales.length;
+
     return (
       <div className="divide-y divide-border overflow-y-auto" style={{ maxHeight: '500px' }}>
-        <div className="p-4">
-          <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
-            Materiales ({results.length})
-          </p>
-          {results.map(material => (
-            <button
-              key={material.id}
-              onClick={() => handleItemClick(material)}
-              className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
-            >
-              <BookOpen className="w-4 h-4 text-yellow-600 mt-1 flex-shrink-0" />
-              <div className="flex-1 min-w-0">
-                <p className="text-base font-medium text-text-primary truncate">
-                  {material.titulo}
-                </p>
-                {material.carpetaInfo ? (
-                  <p className="text-sm text-text-muted truncate mt-1">
-                    📁 {material.carpetaInfo.rutaCompleta}
+        {/* Carpetas */}
+        {results.carpetas.length > 0 && (
+          <div className="p-4">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
+              Carpetas ({results.carpetas.length})
+            </p>
+            {results.carpetas.map(carpeta => (
+              <button
+                key={carpeta.id}
+                onClick={() => handleCarpetaClick(carpeta)}
+                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
+              >
+                <Folder className="w-4 h-4 text-blue-600 mt-1 flex-shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-base font-medium text-text-primary truncate">
+                    {carpeta.nombre}
                   </p>
-                ) : (
-                  <p className="text-sm text-text-muted truncate mt-1">
-                    {material.carrera && material.ramo ? `${material.carrera} • ${material.ramo}` : 'Sin categoría'}
+                  {carpeta.rutaCompleta && (
+                    <p className="text-sm text-text-muted truncate mt-1">
+                      📂 {carpeta.rutaCompleta}
+                    </p>
+                  )}
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Materiales */}
+        {results.materiales.length > 0 && (
+          <div className="p-4">
+            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
+              Materiales ({results.materiales.length})
+            </p>
+            {results.materiales.map(material => (
+              <button
+                key={material.id}
+                onClick={() => handleMaterialClick(material)}
+                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
+              >
+                <BookOpen className="w-4 h-4 text-yellow-600 mt-1 flex-shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <p className="text-base font-medium text-text-primary truncate">
+                    {material.titulo}
                   </p>
-                )}
-              </div>
-            </button>
-          ))}
-        </div>
+                  {material.carpetaInfo ? (
+                    <p className="text-sm text-text-muted truncate mt-1">
+                      📁 {material.carpetaInfo.rutaCompleta}
+                    </p>
+                  ) : (
+                    <p className="text-sm text-text-muted truncate mt-1">
+                      {material.carrera && material.ramo ? `${material.carrera} • ${material.ramo}` : 'Sin categoría'}
+                    </p>
+                  )}
+                </div>
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* Footer con total */}
         <div className="p-3 bg-canvas text-center">
           <p className="text-xs text-text-muted">
-            {results.length} {results.length === 1 ? 'resultado' : 'resultados'}
+            {totalResultados} {totalResultados === 1 ? 'resultado' : 'resultados'}
           </p>
         </div>
       </div>

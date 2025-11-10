@@ -315,7 +315,10 @@ const Material = () => {
 
         {/* Buscador de Material */}
         <div className="mb-6">
-          <MaterialSearch carpetaActualId={carpetaActual?.id} />
+          <MaterialSearch
+            carpetaActualId={carpetaActual?.id}
+            onNavigarACarpeta={handleAbrirCarpeta}
+          />
         </div>
 
         {/* Error Message */}
