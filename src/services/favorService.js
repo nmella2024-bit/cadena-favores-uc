@@ -23,6 +23,7 @@ import {
   notificarFavorFinalizado
 } from './notificationService';
 import { eliminarReportesDeContenido } from './reportService';
+import { puedeEliminar, esAdmin } from '../utils/adminUtils';
 
 /**
  * Publica un nuevo favor en Firestore
@@ -403,11 +404,13 @@ export const asociarAyudante = async (favorId, ayudanteId, ayudanteNombre) => {
 /**
  * Elimina un favor permanentemente de Firestore
  * IMPORTANTE: Esta función elimina el favor y todas sus referencias (incluyendo reportes)
+ * Los administradores pueden eliminar cualquier favor
  * @param {string} favorId - ID del favor a eliminar
  * @param {string} userId - ID del usuario que elimina (para validación)
+ * @param {Object} usuario - Objeto completo del usuario (opcional, para verificar rol de admin)
  * @returns {Promise<void>}
  */
-export const eliminarFavor = async (favorId, userId) => {
+export const eliminarFavor = async (favorId, userId, usuario = null) => {
   try {
     // Obtener el favor para validar permisos
     const favorRef = doc(db, 'favores', favorId);
@@ -419,9 +422,24 @@ export const eliminarFavor = async (favorId, userId) => {
 
     const favorData = favorDoc.data();
 
-    // Validar que solo el creador pueda eliminar el favor
-    if (favorData.usuarioId !== userId) {
+    // Obtener datos del usuario si no se proporcionaron
+    let usuarioCompleto = usuario;
+    if (!usuarioCompleto && userId) {
+      usuarioCompleto = await getUserData(userId);
+    }
+
+    // Validar permisos: admin puede eliminar cualquier favor, usuarios normales solo los suyos
+    const tienePermiso = usuarioCompleto
+      ? puedeEliminar(usuarioCompleto, favorData.usuarioId)
+      : favorData.usuarioId === userId;
+
+    if (!tienePermiso) {
       throw new Error('No tienes permisos para eliminar este favor');
+    }
+
+    // Log para admins
+    if (usuarioCompleto && esAdmin(usuarioCompleto) && favorData.usuarioId !== userId) {
+      console.log(`[ADMIN] Usuario ${userId} eliminó favor ${favorId} del usuario ${favorData.usuarioId}`);
     }
 
     // Eliminar reportes asociados al favor (en cascada)
@@ -751,14 +769,14 @@ export const obtenerFavoresConContactos = async (userId) => {
 };
 
 /**
- * Fija o desfija un favor (solo administradores o moderadores pueden fijar)
+ * Fija o desfija un favor (solo administradores pueden fijar)
  * Cuando un favor está fijado, no expira automáticamente
  * @param {string} favorId - ID del favor
  * @param {boolean} fijado - true para fijar, false para desfijar
- * @param {string} userId - ID del usuario que fija (para validación)
+ * @param {Object} usuario - Usuario que intenta fijar (debe tener rol admin)
  * @returns {Promise<void>}
  */
-export const fijarFavor = async (favorId, fijado, userId) => {
+export const fijarFavor = async (favorId, fijado, usuario) => {
   try {
     const favorRef = doc(db, 'favores', favorId);
     const favorDoc = await getDoc(favorRef);
@@ -767,20 +785,19 @@ export const fijarFavor = async (favorId, fijado, userId) => {
       throw new Error('El favor no existe');
     }
 
-    const favorData = favorDoc.data();
-
-    // Validar que solo el creador o un admin pueda fijar
-    // TODO: Agregar validación de rol de admin cuando esté implementado
-    if (favorData.usuarioId !== userId) {
-      throw new Error('No tienes permisos para fijar este favor');
+    // Validar que el usuario sea admin
+    if (!esAdmin(usuario)) {
+      throw new Error('Solo los administradores pueden fijar favores');
     }
+
+    const favorData = favorDoc.data();
 
     await updateDoc(favorRef, {
       fijado: fijado,
       updatedAt: serverTimestamp(),
     });
 
-    console.log(`Favor ${fijado ? 'fijado' : 'desfijado'} exitosamente`);
+    console.log(`[ADMIN] Usuario ${usuario.uid} ${fijado ? 'fijó' : 'desfijó'} favor ${favorId}`);
   } catch (error) {
     console.error('Error al fijar/desfijar favor:', error);
     throw error;

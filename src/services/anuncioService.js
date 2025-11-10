@@ -14,6 +14,8 @@ import {
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
 import { eliminarReportesDeContenido } from './reportService';
+import { puedeEliminar, esAdmin, puedeFijar } from '../utils/adminUtils';
+import { getUserData } from './userService';
 
 /**
  * Publica un nuevo anuncio
@@ -144,11 +146,13 @@ export const actualizarAnuncio = async (anuncioId, datosActualizados, nuevaImage
 /**
  * Elimina un anuncio permanentemente de Firestore y Storage
  * IMPORTANTE: Esta función elimina el anuncio, su imagen de Storage y reportes asociados
+ * Los administradores pueden eliminar cualquier anuncio
  * @param {string} anuncioId - ID del anuncio
  * @param {string} userId - ID del usuario que elimina (para validación)
+ * @param {Object} usuario - Objeto completo del usuario (opcional, para verificar rol de admin)
  * @returns {Promise<void>}
  */
-export const eliminarAnuncio = async (anuncioId, userId) => {
+export const eliminarAnuncio = async (anuncioId, userId, usuario = null) => {
   try {
     // Obtener el anuncio para validar permisos y obtener la URL de la imagen
     const anuncioRef = doc(db, 'anuncios', anuncioId);
@@ -160,9 +164,24 @@ export const eliminarAnuncio = async (anuncioId, userId) => {
 
     const anuncioData = anuncioDoc.data();
 
-    // Validar que solo el autor pueda eliminar el anuncio
-    if (anuncioData.autor !== userId) {
+    // Obtener datos del usuario si no se proporcionaron
+    let usuarioCompleto = usuario;
+    if (!usuarioCompleto && userId) {
+      usuarioCompleto = await getUserData(userId);
+    }
+
+    // Validar permisos: admin puede eliminar cualquier anuncio, usuarios normales solo los suyos
+    const tienePermiso = usuarioCompleto
+      ? puedeEliminar(usuarioCompleto, anuncioData.autor)
+      : anuncioData.autor === userId;
+
+    if (!tienePermiso) {
       throw new Error('No tienes permisos para eliminar este anuncio');
+    }
+
+    // Log para admins
+    if (usuarioCompleto && esAdmin(usuarioCompleto) && anuncioData.autor !== userId) {
+      console.log(`[ADMIN] Usuario ${userId} eliminó anuncio ${anuncioId} del usuario ${anuncioData.autor}`);
     }
 
     // Eliminar imagen de Storage si existe
@@ -208,22 +227,27 @@ export const eliminarAnuncio = async (anuncioId, userId) => {
 
 /**
  * Fija o desfija un anuncio
- * NOTA: Esta función debe ser llamada solo por usuarios con rol 'exclusivo'
- * La validación del rol debe hacerse en el componente antes de llamar esta función
+ * Solo usuarios con permisos de admin o exclusivo pueden fijar anuncios
  * @param {string} anuncioId - ID del anuncio
  * @param {boolean} fijado - Estado de fijado
- * @param {Object} usuario - Usuario que realiza la acción (opcional, para validación)
+ * @param {Object} usuario - Usuario que realiza la acción (requerido para validación)
  * @returns {Promise<void>}
  */
-export const fijarAnuncio = async (anuncioId, fijado, usuario = null) => {
+export const fijarAnuncio = async (anuncioId, fijado, usuario) => {
   try {
-    // Validación adicional: solo usuarios con rol 'exclusivo' pueden fijar anuncios
-    if (usuario && usuario.rol !== 'exclusivo') {
-      throw new Error('Solo los usuarios con rol exclusivo pueden fijar anuncios');
+    if (!usuario) {
+      throw new Error('Usuario no proporcionado');
+    }
+
+    // Validación: solo admins o exclusivos pueden fijar anuncios
+    if (!puedeFijar(usuario)) {
+      throw new Error('No tienes permisos para fijar anuncios');
     }
 
     const docRef = doc(db, 'anuncios', anuncioId);
     await updateDoc(docRef, { fijado });
+
+    console.log(`[${usuario.rol.toUpperCase()}] Usuario ${usuario.uid} ${fijado ? 'fijó' : 'desfijó'} anuncio ${anuncioId}`);
   } catch (error) {
     console.error('Error al fijar/desfijar anuncio:', error);
     throw error;

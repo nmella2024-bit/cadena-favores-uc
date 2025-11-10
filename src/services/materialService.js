@@ -14,6 +14,8 @@ import {
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
 import { eliminarReportesDeContenido } from './reportService';
+import { puedeEliminar, esAdmin } from '../utils/adminUtils';
+import { getUserData } from './userService';
 
 /**
  * Sube un archivo de material a Firebase Storage y crea un documento en Firestore
@@ -180,11 +182,13 @@ export const obtenerMaterialesFiltrados = async (filtros) => {
 /**
  * Elimina un material permanentemente de Firestore y Storage
  * IMPORTANTE: Esta función elimina el material, su archivo de Storage y reportes asociados
+ * Los administradores pueden eliminar cualquier material
  * @param {string} materialId - ID del material
  * @param {string} userId - ID del usuario que elimina (para validación)
+ * @param {Object} usuario - Objeto completo del usuario (opcional, para verificar rol de admin)
  * @returns {Promise<void>}
  */
-export const eliminarMaterial = async (materialId, userId) => {
+export const eliminarMaterial = async (materialId, userId, usuario = null) => {
   try {
     // Obtener el material para validar permisos y obtener la URL del archivo
     const materialRef = doc(db, 'material', materialId);
@@ -196,9 +200,24 @@ export const eliminarMaterial = async (materialId, userId) => {
 
     const materialData = materialDoc.data();
 
-    // Validar que solo el autor pueda eliminar el material
-    if (materialData.autorId !== userId) {
+    // Obtener datos del usuario si no se proporcionaron
+    let usuarioCompleto = usuario;
+    if (!usuarioCompleto && userId) {
+      usuarioCompleto = await getUserData(userId);
+    }
+
+    // Validar permisos: admin puede eliminar cualquier material, usuarios normales solo los suyos
+    const tienePermiso = usuarioCompleto
+      ? puedeEliminar(usuarioCompleto, materialData.autorId)
+      : materialData.autorId === userId;
+
+    if (!tienePermiso) {
       throw new Error('No tienes permisos para eliminar este material');
+    }
+
+    // Log para admins
+    if (usuarioCompleto && esAdmin(usuarioCompleto) && materialData.autorId !== userId) {
+      console.log(`[ADMIN] Usuario ${userId} eliminó material ${materialId} del usuario ${materialData.autorId}`);
     }
 
     // Eliminar archivo de Storage si existe y es un archivo subido (no un enlace externo)

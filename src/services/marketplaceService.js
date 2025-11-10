@@ -14,6 +14,8 @@ import {
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
 import { eliminarReportesDeContenido } from './reportService';
+import { puedeEliminar, esAdmin } from '../utils/adminUtils';
+import { getUserData } from './userService';
 
 /**
  * Publica un nuevo producto en el marketplace
@@ -166,7 +168,7 @@ export const actualizarProducto = async (productoId, datosActualizados) => {
  * @param {string} userId - ID del usuario que elimina (para validación)
  * @returns {Promise<void>}
  */
-export const eliminarProducto = async (productoId, userId) => {
+export const eliminarProducto = async (productoId, userId, usuario = null) => {
   try {
     // Obtener el producto para validar permisos y obtener las URLs de las imágenes
     const productoRef = doc(db, 'marketplace', productoId);
@@ -178,9 +180,24 @@ export const eliminarProducto = async (productoId, userId) => {
 
     const productoData = productoDoc.data();
 
-    // Validar que solo el autor pueda eliminar el producto
-    if (productoData.autor !== userId) {
+    // Obtener datos del usuario si no se proporcionaron
+    let usuarioCompleto = usuario;
+    if (!usuarioCompleto && userId) {
+      usuarioCompleto = await getUserData(userId);
+    }
+
+    // Validar permisos: admin puede eliminar cualquier producto, usuarios normales solo los suyos
+    const tienePermiso = usuarioCompleto
+      ? puedeEliminar(usuarioCompleto, productoData.autor)
+      : productoData.autor === userId;
+
+    if (!tienePermiso) {
       throw new Error('No tienes permisos para eliminar este producto');
+    }
+
+    // Log para admins
+    if (usuarioCompleto && esAdmin(usuarioCompleto) && productoData.autor !== userId) {
+      console.log(`[ADMIN] Usuario ${userId} eliminó producto ${productoId} del usuario ${productoData.autor}`);
     }
 
     // Eliminar todas las imágenes de Storage si existen
