@@ -99,9 +99,10 @@ const Home = () => {
   };
 
   return (
-    <div className="space-y-20 sm:space-y-24">
-      <section className="bg-card/80 py-16 sm:py-24">
-        <div className="container mx-auto max-w-3xl px-4 text-center">
+    <div className="w-full overflow-x-hidden">
+      <div className="space-y-20 sm:space-y-24">
+      <section className="bg-card/80 py-16 sm:py-24 w-full">
+        <div className="container mx-auto max-w-3xl px-4 sm:px-6 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 dark:bg-card/50 px-4 py-1 text-sm font-medium text-text-muted shadow-sm">
             <Sparkles className="h-4 w-4" aria-hidden="true" />
             Red social universitaria
@@ -126,8 +127,9 @@ const Home = () => {
 
       {/* Sección de Acciones Rápidas */}
       {currentUser && (
-        <section className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-border bg-card dark:bg-card/80 p-6 sm:p-8 shadow-sm">
+        <section className="w-full">
+          <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl border border-border bg-card dark:bg-card/80 p-4 sm:p-6 lg:p-8 shadow-sm">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-text-primary">Acciones rápidas</h2>
               <button
@@ -162,12 +164,14 @@ const Home = () => {
               })}
             </div>
           </div>
+          </div>
         </section>
       )}
 
       {/* Feed de actividad reciente para usuarios logueados */}
       {currentUser && (
-        <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <section className="w-full">
+          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-6">
             <h2 className="text-3xl font-bold tracking-tight">Actividad reciente</h2>
             <p className="mt-2 text-lg text-text-muted">
@@ -175,10 +179,12 @@ const Home = () => {
             </p>
           </div>
           <Feed />
+          </div>
         </section>
       )}
 
-      <section className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="w-full">
+        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">¿Cómo funciona?</h2>
           <p className="mt-4 text-lg text-text-muted">
@@ -199,9 +205,10 @@ const Home = () => {
             </div>
           ))}
         </div>
+        </div>
       </section>
 
-      <section className="bg-card/60 py-12 sm:py-16">
+      <section className="bg-card/60 py-12 sm:py-16 w-full">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Hecho por y para estudiantes</h2>
@@ -227,8 +234,9 @@ const Home = () => {
       </section>
 
       {!currentUser && (
-        <section className="container mx-auto max-w-4xl px-4 text-center">
-          <div className="rounded-3xl border border-border bg-card dark:bg-card/80 p-10 shadow-card">
+        <section className="w-full">
+          <div className="container mx-auto max-w-4xl px-4 sm:px-6 text-center">
+          <div className="rounded-3xl border border-border bg-card dark:bg-card/80 p-6 sm:p-10 shadow-card">
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">¿Lista o listo para sumarte?</h2>
             <p className="mt-4 text-lg text-text-muted">
               Regístrate en segundos con tu correo UC y comienza a pedir y ofrecer ayuda con confianza.
@@ -242,8 +250,10 @@ const Home = () => {
               </GhostButton>
             </div>
           </div>
+          </div>
         </section>
       )}
+      </div>
     </div>
   );
 };

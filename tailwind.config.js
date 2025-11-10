@@ -10,6 +10,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '475px',
+      },
       colors: {
         canvas: 'rgb(var(--bg-canvas) / <alpha-value>)',
         card: 'rgb(var(--bg-card) / <alpha-value>)',
@@ -26,6 +29,10 @@ export default {
       },
       boxShadow: {
         card: '0 10px 30px -12px rgb(15 23 42 / 0.2)',
+      },
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
       },
     },
   },

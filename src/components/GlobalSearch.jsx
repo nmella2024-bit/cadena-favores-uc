@@ -363,7 +363,7 @@ const GlobalSearch = () => {
 
       {/* Dropdown de resultados - Desktop */}
       {isOpen && searchTerm.trim().length >= 2 && (
-        <div className="hidden md:block absolute top-full mt-2 bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn" style={{ width: '700px' }}>
+        <div className="hidden md:block absolute top-full mt-2 left-0 right-0 md:left-auto md:right-auto bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn md:w-[700px] max-w-[95vw]">
           {isLoading && !results ? (
             <div className="p-8 text-center">
               <Loader2 className="w-8 h-8 text-brand animate-spin mx-auto mb-2" />
@@ -377,8 +377,8 @@ const GlobalSearch = () => {
 
       {/* Dropdown de resultados - Móvil */}
       {isOpen && (
-        <div className="md:hidden fixed left-0 right-0 top-16 z-50 mx-2 animate-fadeIn">
-          <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden max-h-[calc(100vh-5rem)]">
+        <div className="md:hidden fixed inset-x-0 top-16 z-50 px-2 animate-fadeIn">
+          <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden max-h-[calc(100vh-5rem)] w-full">
             {/* Input de búsqueda móvil */}
             <div className="p-3 border-b border-border bg-canvas sticky top-0">
               <div className="relative">
