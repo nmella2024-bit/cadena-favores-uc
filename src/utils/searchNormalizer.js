@@ -33,12 +33,18 @@ const ARABIC_TO_ROMAN = {
 };
 
 /**
- * Errores comunes de teclado inglés/español
+ * Errores comunes de teclado y ortográficos
  */
 const KEYBOARD_CORRECTIONS = {
   'ano': 'año',
   'nino': 'niño',
   'espanol': 'español',
+  'ayudanta': 'ayudantia',
+  'solucin': 'solucion',
+  'ejecicio': 'ejercicio',
+  'ejecicios': 'ejercicios',
+  'prueva': 'prueba',
+  'pruevas': 'pruebas',
 };
 
 /**

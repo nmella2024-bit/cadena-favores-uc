@@ -7,56 +7,37 @@ import {
   limit,
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
-import {
-  normalizeSearchTerm,
-  generateSearchVariations,
-  calculateRelevance,
-  matchesAllTokens,
-  normalizeText
-} from '../utils/searchNormalizer';
 
 /**
- * Verifica si un texto coincide con el término de búsqueda usando variaciones normalizadas
- * @param {string} text - Texto donde buscar
- * @param {Object} searchData - Datos normalizados de búsqueda
- * @returns {boolean} True si hay coincidencia
+ * Normaliza un texto: elimina tildes y convierte a minúsculas
+ * @param {string} text - Texto a normalizar
+ * @returns {string} Texto normalizado
  */
-const matchesSearch = (text, searchData) => {
-  if (!text) return false;
-
-  const normalizedText = normalizeText(text);
-
-  // Verificar con cada variación
-  for (const variation of searchData.variations) {
-    if (matchesAllTokens(variation, normalizedText)) {
-      return true;
-    }
-  }
-
-  return false;
+const normalizeText = (text) => {
+  if (!text) return '';
+  return text
+    .toLowerCase()
+    .normalize('NFD') // Descompone caracteres con tildes
+    .replace(/[\u0300-\u036f]/g, ''); // Elimina las marcas diacríticas (tildes)
 };
 
 /**
- * Calcula score de relevancia para un resultado
- * @param {string} text - Texto a evaluar
- * @param {Object} searchData - Datos de búsqueda
- * @param {Object} metadata - Metadata adicional
- * @returns {number} Score de relevancia
+ * Verifica si un texto contiene todas las palabras de búsqueda (búsqueda AND)
+ * @param {string} text - Texto donde buscar
+ * @param {string} searchTerm - Término de búsqueda
+ * @returns {boolean} True si el texto contiene todas las palabras
  */
-const calculateScore = (text, searchData, metadata = {}) => {
-  if (!text) return 0;
+const matchesAllWords = (text, searchTerm) => {
+  if (!text || !searchTerm) return false;
 
-  let maxScore = 0;
+  const normalizedText = normalizeText(text);
+  const normalizedSearch = normalizeText(searchTerm);
 
-  // Calcular score contra cada variación y tomar el máximo
-  for (const variation of searchData.variations) {
-    const score = calculateRelevance(variation, text, metadata);
-    if (score > maxScore) {
-      maxScore = score;
-    }
-  }
+  // Dividir el término de búsqueda en palabras (separadas por espacios)
+  const searchWords = normalizedSearch.split(/\s+/).filter(word => word.length > 0);
 
-  return maxScore;
+  // Verificar que TODAS las palabras estén presentes en el texto
+  return searchWords.every(word => normalizedText.includes(word));
 };
 
 /**
@@ -91,10 +72,7 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
       };
     }
 
-    // Normalizar término de búsqueda
-    const searchData = normalizeSearchTerm(searchTerm);
-    console.log('[buscarGlobal] Búsqueda normalizada:', searchData);
-
+    console.log('[buscarGlobal] Término procesado:', searchTerm.trim());
     const results = {
       favores: [],
       anuncios: [],
@@ -114,19 +92,16 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
           const data = doc.data();
           const searchableText = `${data.titulo} ${data.descripcion} ${data.categoria} ${data.nombreUsuario}`;
 
-          if (matchesSearch(searchableText, searchData)) {
-            const score = calculateScore(searchableText, searchData);
+          if (matchesAllWords(searchableText, searchTerm)) {
             results.favores.push({
               id: doc.id,
               type: 'favor',
-              ...data,
-              _searchScore: score
+              ...data
             });
           }
         });
 
-        // Ordenar por relevancia y limitar
-        results.favores.sort((a, b) => b._searchScore - a._searchScore);
+        // Limitar resultados
         results.favores = results.favores.slice(0, limitPerCollection);
       } catch (error) {
         console.error('Error buscando en favores:', error);
@@ -143,18 +118,15 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
           const data = doc.data();
           const searchableText = `${data.titulo} ${data.descripcion} ${data.autorNombre}`;
 
-          if (matchesSearch(searchableText, searchData)) {
-            const score = calculateScore(searchableText, searchData);
+          if (matchesAllWords(searchableText, searchTerm)) {
             results.anuncios.push({
               id: doc.id,
               type: 'anuncio',
-              ...data,
-              _searchScore: score
+              ...data
             });
           }
         });
 
-        results.anuncios.sort((a, b) => b._searchScore - a._searchScore);
         results.anuncios = results.anuncios.slice(0, limitPerCollection);
       } catch (error) {
         console.error('Error buscando en anuncios:', error);
@@ -171,18 +143,15 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
           const data = doc.data();
           const searchableText = `${data.titulo} ${data.descripcion} ${data.autorNombre}`;
 
-          if (matchesSearch(searchableText, searchData)) {
-            const score = calculateScore(searchableText, searchData);
+          if (matchesAllWords(searchableText, searchTerm)) {
             results.marketplace.push({
               id: doc.id,
               type: 'marketplace',
-              ...data,
-              _searchScore: score
+              ...data
             });
           }
         });
 
-        results.marketplace.sort((a, b) => b._searchScore - a._searchScore);
         results.marketplace = results.marketplace.slice(0, limitPerCollection);
       } catch (error) {
         console.error('Error buscando en marketplace:', error);
@@ -248,65 +217,59 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
         materialSnapshot.forEach(doc => {
           const data = doc.data();
 
+          // Búsqueda en campos del material
           const titulo = data.titulo || '';
           const descripcion = data.descripcion || '';
           const carrera = data.carrera || '';
           const ramo = data.ramo || '';
           const autorNombre = data.autorNombre || '';
-          const tags = Array.isArray(data.tags) ? data.tags.join(' ') : '';
 
-          // Texto de búsqueda del material
-          const searchableText = `${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre} ${tags}`;
+          const searchableText = `${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre}`;
+          const matchesMaterial = matchesAllWords(searchableText, searchTerm);
 
-          // Construir ruta de carpeta
+          // Búsqueda por ruta de carpeta
+          let matchesFolder = false;
           let folderPath = '';
+
           if (data.carpetaId && folderMap.has(data.carpetaId)) {
             folderPath = buildFolderPath(data.carpetaId);
+            matchesFolder = matchesAllWords(folderPath, searchTerm);
           }
 
-          // Verificar coincidencia
-          const matchesMaterial = matchesSearch(searchableText, searchData);
-          const matchesFolder = folderPath && matchesSearch(folderPath, searchData);
-
           if (matchesMaterial || matchesFolder) {
-            // Calcular score
-            let score = 0;
-            if (matchesMaterial) {
-              score = calculateScore(searchableText, searchData, { isFileName: true });
-            }
-            if (matchesFolder) {
-              const folderScore = calculateScore(folderPath, searchData) * 0.7; // Carpetas tienen menos peso
-              score = Math.max(score, folderScore);
-            }
-
             // Obtener información de la carpeta
             let folderInfo = null;
             if (data.carpetaId && folderMap.has(data.carpetaId)) {
               const folder = folderMap.get(data.carpetaId);
               folderInfo = {
                 nombre: folder.nombre,
-                rutaCompleta: folderPath
+                rutaCompleta: folderPath || buildFolderPath(data.carpetaId)
               };
             }
 
             materialesEncontrados.push({
               id: doc.id,
               type: 'material',
+              titulo: titulo,
+              descripcion: descripcion,
+              carrera: carrera,
+              ramo: ramo,
+              carpetaId: data.carpetaId,
+              archivoUrl: data.archivoUrl,
               ...data,
               carpetaInfo: folderInfo,
-              matchType: matchesMaterial ? 'material' : 'folder',
-              _searchScore: score
+              matchType: matchesMaterial ? 'material' : 'folder'
             });
           }
         });
 
         console.log(`[Search] Materiales encontrados: ${materialesEncontrados.length}`);
 
-        // Ordenar por score (fijados primero, luego por relevancia)
+        // Ordenar: primero los que coinciden directamente, luego por carpeta
         materialesEncontrados.sort((a, b) => {
-          if (a.fijado && !b.fijado) return -1;
-          if (!a.fijado && b.fijado) return 1;
-          return b._searchScore - a._searchScore;
+          if (a.matchType === 'material' && b.matchType === 'folder') return -1;
+          if (a.matchType === 'folder' && b.matchType === 'material') return 1;
+          return 0;
         });
 
         results.material = materialesEncontrados.slice(0, limitPerCollection);
@@ -328,18 +291,15 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
           const data = doc.data();
           const searchableText = `${data.nombre} ${data.email} ${data.carrera}`;
 
-          if (matchesSearch(searchableText, searchData)) {
-            const score = calculateScore(searchableText, searchData);
+          if (matchesAllWords(searchableText, searchTerm)) {
             results.usuarios.push({
               id: doc.id,
               type: 'usuario',
-              ...data,
-              _searchScore: score
+              ...data
             });
           }
         });
 
-        results.usuarios.sort((a, b) => b._searchScore - a._searchScore);
         results.usuarios = results.usuarios.slice(0, limitPerCollection);
       } catch (error) {
         console.error('Error buscando en usuarios:', error);
@@ -410,9 +370,7 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       return [];
     }
 
-    // Normalizar término de búsqueda
-    const searchData = normalizeSearchTerm(searchTerm);
-    console.log('[buscarEnMateriales] Búsqueda normalizada:', searchData);
+    console.log('[buscarEnMateriales] Término procesado:', searchTerm.trim());
 
     // 1. Cargar materiales
     const materialRef = collection(db, 'material');
@@ -483,37 +441,26 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
       const autorNombre = data.autorNombre || '';
       const tags = Array.isArray(data.tags) ? data.tags.join(' ') : '';
 
-      // Texto de búsqueda del material
       const searchableText = `${titulo} ${descripcion} ${carrera} ${ramo} ${autorNombre} ${tags}`;
+      const matchesMaterial = matchesAllWords(searchableText, searchTerm);
 
-      // Ruta de carpeta
+      // Búsqueda por ruta de carpeta
+      let matchesFolder = false;
       let folderPath = '';
+
       if (data.carpetaId && folderMap.has(data.carpetaId)) {
         folderPath = buildFolderPath(data.carpetaId);
+        matchesFolder = matchesAllWords(folderPath, searchTerm);
       }
 
-      // Verificar coincidencia
-      const matchesMaterial = matchesSearch(searchableText, searchData);
-      const matchesFolder = folderPath && matchesSearch(folderPath, searchData);
-
       if (matchesMaterial || matchesFolder) {
-        // Calcular score
-        let score = 0;
-        if (matchesMaterial) {
-          score = calculateScore(searchableText, searchData, { isFileName: true });
-        }
-        if (matchesFolder) {
-          const folderScore = calculateScore(folderPath, searchData) * 0.7;
-          score = Math.max(score, folderScore);
-        }
-
         // Obtener información de la carpeta
         let folderInfo = null;
         if (data.carpetaId && folderMap.has(data.carpetaId)) {
           const folder = folderMap.get(data.carpetaId);
           folderInfo = {
             nombre: folder.nombre,
-            rutaCompleta: folderPath
+            rutaCompleta: folderPath || buildFolderPath(data.carpetaId)
           };
         }
 
@@ -521,19 +468,25 @@ export const buscarEnMateriales = async (searchTerm, carpetaId = null, limitResu
           id: doc.id,
           ...data,
           carpetaInfo: folderInfo,
-          matchType: matchesMaterial ? 'material' : 'folder',
-          _searchScore: score
+          matchType: matchesMaterial ? 'material' : 'folder'
         });
       }
     });
 
     console.log(`[buscarEnMateriales] Materiales encontrados: ${materialesEncontrados.length}`);
 
-    // Ordenar por fijado y score
+    // Ordenar: primero los que coinciden directamente, luego por carpeta
     materialesEncontrados.sort((a, b) => {
+      // Fijados primero
       if (a.fijado && !b.fijado) return -1;
       if (!a.fijado && b.fijado) return 1;
-      return b._searchScore - a._searchScore;
+
+      // Luego por tipo de match
+      if (a.matchType === 'material' && b.matchType === 'folder') return -1;
+      if (a.matchType === 'folder' && b.matchType === 'material') return 1;
+
+      // Finalmente por fecha
+      return new Date(b.fechaSubida) - new Date(a.fechaSubida);
     });
 
     const resultados = materialesEncontrados.slice(0, limitResults);
