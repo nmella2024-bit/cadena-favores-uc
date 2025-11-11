@@ -28,14 +28,21 @@ service cloud.firestore {
       // Permitir actualizar si:
       // 1. Eres el creador del favor (puede actualizar todo)
       // 2. Cualquier usuario puede agregar ayudantes (siempre que el usuarioId no cambie)
+      // 3. Los admins pueden actualizar cualquier favor
       allow update: if request.auth != null && (
         // Creador puede actualizar todo
         request.auth.uid == resource.data.usuarioId ||
         // Cualquier usuario puede ofrecer ayuda si el usuarioId no cambia
-        request.resource.data.usuarioId == resource.data.usuarioId
+        request.resource.data.usuarioId == resource.data.usuarioId ||
+        // Admins pueden actualizar cualquier favor
+        esUsuarioAdmin()
       );
 
-      allow delete: if request.auth != null && request.auth.uid == resource.data.usuarioId;
+      // Permitir eliminar si eres el creador o un admin
+      allow delete: if request.auth != null && (
+        request.auth.uid == resource.data.usuarioId ||
+        esUsuarioAdmin()
+      );
     }
 
     // Reglas para la colección de usuarios
