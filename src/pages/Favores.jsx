@@ -102,7 +102,6 @@ const Favores = () => {
   }, [favors, onlyAvailable, searchQuery, selectedCategory, soloParaMi, currentUser?.carrera]);
 
   const activeFavors = filteredFavors.filter((favor) => favor.estado === 'activo');
-  const completedFavors = filteredFavors.filter((favor) => favor.estado === 'completado');
 
   const showEmptyState = !isLoading && activeFavors.length === 0;
 
@@ -291,32 +290,16 @@ const Favores = () => {
                 )}
               </div>
             ) : (
-              <div className="space-y-12">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-muted">
-                    <Briefcase className="h-4 w-4" aria-hidden="true" />
-                    Favores activos
-                  </div>
-                  <div className="grid gap-6 md:grid-cols-2">
-                    {activeFavors.map((favor) => (
-                      <FavorCard key={favor.id} favor={favor} />
-                    ))}
-                  </div>
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-muted">
+                  <Briefcase className="h-4 w-4" aria-hidden="true" />
+                  Favores activos
                 </div>
-
-                {completedFavors.length > 0 && (
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-text-muted">
-                      <Briefcase className="h-4 w-4" aria-hidden="true" />
-                      Favores completados ({completedFavors.length})
-                    </div>
-                    <div className="grid gap-6 md:grid-cols-2">
-                      {completedFavors.map((favor) => (
-                        <FavorCard key={favor.id} favor={favor} className="opacity-80" />
-                      ))}
-                    </div>
-                  </div>
-                )}
+                <div className="grid gap-6 md:grid-cols-2">
+                  {activeFavors.map((favor) => (
+                    <FavorCard key={favor.id} favor={favor} />
+                  ))}
+                </div>
               </div>
             )}
           </div>

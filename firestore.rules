@@ -121,16 +121,15 @@ service cloud.firestore {
       // Todos pueden leer material
       allow read: if true;
 
-      // Cualquier usuario autenticado puede crear material
-      allow create: if request.auth != null &&
+      // Solo usuarios con rol "exclusivo" o "admin" pueden crear material
+      allow create: if esUsuarioExclusivoOAdmin() &&
                     request.resource.data.autorId == request.auth.uid;
 
-      // Solo usuarios con rol "exclusivo" pueden actualizar material (para fijar/desfijar)
-      allow update: if esUsuarioExclusivo();
+      // Solo usuarios con rol "exclusivo" o "admin" pueden actualizar material (para fijar/desfijar)
+      allow update: if esUsuarioExclusivoOAdmin();
 
-      // Solo el autor puede eliminar su material
-      allow delete: if request.auth != null &&
-                    request.auth.uid == resource.data.autorId;
+      // Solo usuarios con rol "exclusivo" o "admin" pueden eliminar material
+      allow delete: if esUsuarioExclusivoOAdmin();
     }
 
     // Reglas para la colección de notificaciones
