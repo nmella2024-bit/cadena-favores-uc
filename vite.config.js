@@ -9,24 +9,35 @@ export default defineConfig({
     rollupOptions: {
       output: {
         // Separar vendors en chunks específicos para mejor caché
-        manualChunks: {
-          // Chunk para React y librerías relacionadas
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+        manualChunks: (id) => {
+          // Chunk para node_modules (vendors)
+          if (id.includes('node_modules')) {
+            // React y TODOS sus relacionados en un solo chunk para evitar problemas
+            if (id.includes('react') ||
+                id.includes('react-dom') ||
+                id.includes('react-router') ||
+                id.includes('use-sync-external-store') ||
+                id.includes('@react-aria') ||
+                id.includes('@react-stately') ||
+                id.includes('@tanstack/react')) {
+              return 'react-vendor';
+            }
 
-          // Chunk separado para Firebase (es grande)
-          'firebase-vendor': [
-            'firebase/app',
-            'firebase/auth',
-            'firebase/firestore',
-            'firebase/storage',
-            'firebase/analytics'
-          ],
+            // Firebase
+            if (id.includes('firebase') || id.includes('@firebase')) {
+              return 'firebase-vendor';
+            }
 
-          // Chunk para UI components y lucide icons
-          'ui-vendor': [
-            'lucide-react',
-            '@headlessui/react'
-          ],
+            // UI libraries
+            if (id.includes('lucide-react') ||
+                id.includes('@headlessui') ||
+                id.includes('@floating-ui')) {
+              return 'ui-vendor';
+            }
+
+            // Resto de vendors
+            return 'vendor';
+          }
         },
       },
     },
@@ -34,8 +45,8 @@ export default defineConfig({
     // Aumentar el límite de advertencia de tamaño de chunk
     chunkSizeWarningLimit: 1000,
 
-    // Desactivar sourcemaps en producción para reducir tamaño
-    sourcemap: false,
+    // Habilitar sourcemaps para debugging en producción (puedes desactivar después)
+    sourcemap: true,
 
     // Minificación con esbuild (más rápido que terser)
     minify: 'esbuild',
