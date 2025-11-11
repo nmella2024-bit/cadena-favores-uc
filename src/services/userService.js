@@ -30,7 +30,7 @@ export const createUserDocument = async (userId, userData) => {
       telefono: userData.telefono || '',
       intereses: userData.intereses || [],
       descripcion: userData.descripcion || '',
-      rol: userData.rol || 'normal', // Por defecto, rol normal
+      rol: userData.rol || 'comun', // Por defecto, rol comun (debe coincidir con firestore.rules)
       reputacion: 5.0,
       favoresPublicados: [],
       favoresCompletados: [],
@@ -52,12 +52,12 @@ export const getUserData = async (userId) => {
     const userDoc = await getDoc(doc(db, 'usuarios', userId));
     if (userDoc.exists()) {
       const userData = userDoc.data();
-      // Asegurar que el campo rol existe, por defecto 'normal'
+      // Asegurar que el campo rol existe, por defecto 'comun'
       if (!userData.rol) {
-        console.warn(`Usuario ${userId} no tiene campo 'rol', asignando 'normal' por defecto`);
+        console.warn(`Usuario ${userId} no tiene campo 'rol', asignando 'comun' por defecto`);
         // Actualizar el documento con el rol por defecto
-        await updateDoc(doc(db, 'usuarios', userId), { rol: 'normal' });
-        userData.rol = 'normal';
+        await updateDoc(doc(db, 'usuarios', userId), { rol: 'comun' });
+        userData.rol = 'comun';
       }
       return { id: userDoc.id, uid: userId, ...userData };
     } else {
