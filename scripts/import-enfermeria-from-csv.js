@@ -150,7 +150,7 @@ function validarRegistro(registro, index) {
 /**
  * Convierte un registro del CSV a formato Firestore
  */
-async function convertirAMaterial(registro, carpetaId) {
+async function convertirAMaterial(registro, carpetaId, autorRol) {
   // Extraer Google Drive ID de la URL
   const driveId = extraerGoogleDriveId(registro.archivoUrl);
   let archivoUrl = registro.archivoUrl.trim();
@@ -173,6 +173,7 @@ async function convertirAMaterial(registro, carpetaId) {
     nombreArchivo: registro.titulo.trim(),
     autorId: AUTOR_ID,
     autorNombre: AUTOR_NOMBRE,
+    autorRol: autorRol,
     carpetaId: carpetaId,
     fijado: false,
     fechaSubida: admin.firestore.FieldValue.serverTimestamp(),
@@ -229,7 +230,8 @@ async function importarMateriales() {
   }
   console.log('✅ Todos los registros son válidos\n');
 
-  // 4. Verificar autor
+  // 4. Verificar autor y obtener su rol
+  let autorRol = null;
   try {
     const autorDoc = await db.collection('usuarios').doc(AUTOR_ID).get();
     if (!autorDoc.exists) {
@@ -238,7 +240,9 @@ async function importarMateriales() {
       console.error('   Por favor actualiza la variable AUTOR_ID en el script con un usuario válido.\n');
       process.exit(1);
     }
-    console.log(`✅ Autor verificado: ${autorDoc.data().nombre || AUTOR_NOMBRE}\n`);
+    const autorData = autorDoc.data();
+    autorRol = autorData.rol || null;
+    console.log(`✅ Autor verificado: ${autorData.nombre || AUTOR_NOMBRE} (Rol: ${autorRol || 'ninguno'})\n`);
   } catch (error) {
     console.error('❌ Error al verificar autor:', error.message);
     process.exit(1);
@@ -284,7 +288,7 @@ async function importarMateriales() {
       }
 
       // Crear material
-      const material = await convertirAMaterial(registro, carpetaId);
+      const material = await convertirAMaterial(registro, carpetaId, autorRol);
       const docRef = db.collection('material').doc();
       batch.set(docRef, material);
       batchCount++;

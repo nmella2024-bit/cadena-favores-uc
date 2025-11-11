@@ -4,6 +4,7 @@ import { getUserData } from '../services/userService';
 import { obtenerFavoresPorUsuario } from '../services/favorService';
 import { obtenerCalificacionesUsuario } from '../services/ratingService';
 import StarRating from '../components/StarRating';
+import VerifiedBadge from '../components/VerifiedBadge';
 import { ArrowLeft, Star, TrendingUp, User, Loader2 } from 'lucide-react';
 
 const PerfilPublico = () => {
@@ -111,8 +112,9 @@ const PerfilPublico = () => {
 
             {/* Información del usuario */}
             <div className="flex-1 min-w-0">
-              <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">
-                {userData.nombre}
+              <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2 flex items-center gap-2">
+                <span>{userData.nombre}</span>
+                {userData.rol && <VerifiedBadge userRole={userData.rol} size="lg" />}
               </h1>
               <p className="text-text-muted">{userData.email}</p>
             </div>

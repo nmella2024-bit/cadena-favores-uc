@@ -13,6 +13,7 @@ import { cn } from '../utils/cn';
 import ReportModal from './ReportModal';
 import { CONTENT_TYPES } from '../services/reportService';
 import { puedeEliminar } from '../utils/adminUtils';
+import VerifiedBadge from './VerifiedBadge';
 
 const FavorCard = ({ favor, className }) => {
   const { currentUser, firebaseUser } = useAuth();
@@ -159,6 +160,7 @@ const FavorCard = ({ favor, className }) => {
         <span className="inline-flex items-center gap-2">
           <UserRound className="h-4 w-4" aria-hidden="true" />
           <span>{favor.solicitante || favor.nombreUsuario}</span>
+          {solicitanteData?.rol && <VerifiedBadge userRole={solicitanteData.rol} size="sm" />}
         </span>
         {solicitanteData && solicitanteData.reputacion && (
           <span className="inline-flex items-center gap-1">

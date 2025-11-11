@@ -8,6 +8,7 @@ import { obtenerCalificacionesUsuario } from '../services/ratingService';
 // import { obtenerMisPedidos } from '../services/orderService';
 import StarRating from '../components/StarRating';
 import EditarPerfilModal from '../components/EditarPerfilModal';
+import VerifiedBadge from '../components/VerifiedBadge';
 import { Plus, ExternalLink, Star, AlertCircle, TrendingUp, Camera, User, Edit2, Trash2 } from 'lucide-react';
 
 const Perfil = () => {
@@ -231,8 +232,9 @@ const Perfil = () => {
 
             {/* Información del usuario */}
             <div className="flex-1 min-w-0">
-              <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2">
-                {currentUser.nombre}
+              <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-2 flex items-center gap-2">
+                <span>{currentUser.nombre}</span>
+                {currentUser.rol && <VerifiedBadge userRole={currentUser.rol} size="lg" />}
               </h1>
               <p className="text-text-muted">{currentUser.correo}</p>
 

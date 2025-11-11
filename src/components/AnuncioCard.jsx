@@ -3,6 +3,7 @@ import { Calendar, User, Trash2, Maximize2, Eye, Pin, PinOff } from 'lucide-reac
 import { esAnuncioNuevo } from '../services/anuncioService';
 import ImageModal from './ImageModal';
 import AnuncioDetalleModal from './AnuncioDetalleModal';
+import VerifiedBadge from './VerifiedBadge';
 
 const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
   const esNuevo = esAnuncioNuevo(anuncio.fecha);
@@ -82,6 +83,7 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
             <div className="flex items-center gap-1">
               <User className="h-3 w-3" />
               <span>{anuncio.autorNombre}</span>
+              {anuncio.autorRol && <VerifiedBadge userRole={anuncio.autorRol} size="xs" />}
             </div>
             <div className="flex items-center gap-1">
               <Calendar className="h-3 w-3" />

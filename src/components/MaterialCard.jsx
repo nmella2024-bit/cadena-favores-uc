@@ -2,6 +2,7 @@ import React from 'react';
 import { Calendar, User, Trash2, BookOpen, ExternalLink, Pin, PinOff } from 'lucide-react';
 import { esMaterialNuevo } from '../services/materialService';
 import { puedeEliminar } from '../utils/adminUtils';
+import VerifiedBadge from './VerifiedBadge';
 
 const MaterialCard = ({ material, esExclusivo, onEliminar, onFijar, currentUser }) => {
   const esNuevo = esMaterialNuevo(material.fechaSubida);
@@ -71,6 +72,7 @@ const MaterialCard = ({ material, esExclusivo, onEliminar, onFijar, currentUser 
               <div className="flex items-center gap-1">
                 <User className="h-3 w-3" />
                 <span>{material.autorNombre}</span>
+                {material.autorRol && <VerifiedBadge userRole={material.autorRol} size="xs" />}
               </div>
             )}
             {material.fechaSubida && (
