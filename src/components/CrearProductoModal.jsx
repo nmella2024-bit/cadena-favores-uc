@@ -178,7 +178,7 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4">
+          <div className="flex min-h-full items-center justify-center p-3 sm:p-4">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -188,17 +188,17 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-card transition-all">
-                <div className="flex items-center justify-between mb-4">
-                  <Dialog.Title className="text-xl font-semibold text-text-primary">
+              <Dialog.Panel className="w-full max-w-[95vw] sm:max-w-xl md:max-w-2xl transform overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-card transition-all max-h-[90vh] overflow-y-auto">
+                <div className="flex items-center justify-between mb-4 sm:mb-6 gap-2">
+                  <Dialog.Title className="text-lg sm:text-xl font-semibold text-text-primary">
                     Publicar producto en Marketplace
                   </Dialog.Title>
                   <button
                     onClick={handleClose}
                     disabled={enviando}
-                    className="rounded-lg p-1 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors disabled:opacity-50"
+                    className="rounded-lg p-1.5 sm:p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors disabled:opacity-50 flex-shrink-0"
                   >
-                    <X className="h-5 w-5" />
+                    <X className="h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
                 </div>
 

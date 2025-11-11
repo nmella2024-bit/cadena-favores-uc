@@ -75,24 +75,24 @@ const CompletarFavorModal = ({ isOpen, onClose, favor, onConfirmacionExitosa }) 
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" />
 
       {/* Container */}
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className="mx-auto max-w-md w-full rounded-2xl border border-border bg-card p-6 shadow-2xl dark:bg-card/95">
+      <div className="fixed inset-0 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <Dialog.Panel className="mx-auto max-w-[95vw] sm:max-w-md w-full rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-2xl dark:bg-card/95 my-4 sm:my-8 max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <Dialog.Title className="text-xl font-bold text-text-primary">
+          <div className="flex items-start justify-between mb-4 gap-2">
+            <div className="min-w-0">
+              <Dialog.Title className="text-lg sm:text-xl font-bold text-text-primary">
                 Confirmar Finalización
               </Dialog.Title>
-              <p className="text-sm text-text-muted mt-1">
+              <p className="text-xs sm:text-sm text-text-muted mt-0.5 sm:mt-1">
                 Confirma que este favor se ha completado
               </p>
             </div>
             <button
               onClick={onClose}
-              className="rounded-lg p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors"
+              className="rounded-lg p-1.5 sm:p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors flex-shrink-0"
               aria-label="Cerrar"
             >
-              <X className="h-5 w-5" />
+              <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
           </div>
 

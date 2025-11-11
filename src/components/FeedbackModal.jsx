@@ -62,7 +62,7 @@ const FeedbackModal = ({ isOpen, onClose }) => {
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4">
+          <div className="flex min-h-full items-center justify-center p-3 sm:p-4">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -72,16 +72,16 @@ const FeedbackModal = ({ isOpen, onClose }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-card transition-all">
-                <div className="flex items-center justify-between mb-4">
-                  <Dialog.Title className="text-xl font-semibold text-text-primary">
+              <Dialog.Panel className="w-full max-w-[95vw] sm:max-w-md transform overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-card transition-all max-h-[90vh] overflow-y-auto">
+                <div className="flex items-center justify-between mb-4 gap-2">
+                  <Dialog.Title className="text-lg sm:text-xl font-semibold text-text-primary">
                     Danos tu feedback
                   </Dialog.Title>
                   <button
                     onClick={onClose}
-                    className="rounded-lg p-1 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors"
+                    className="rounded-lg p-1.5 sm:p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors flex-shrink-0"
                   >
-                    <X className="h-5 w-5" />
+                    <X className="h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
                 </div>
 
@@ -113,18 +113,18 @@ const FeedbackModal = ({ isOpen, onClose }) => {
                     required
                   />
 
-                  <div className="flex gap-3">
+                  <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3">
                     <button
                       type="button"
                       onClick={onClose}
-                      className="flex-1 rounded-lg border border-border bg-card/70 px-4 py-2 text-sm font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary"
+                      className="flex-1 rounded-lg border border-border bg-card/70 px-4 py-2.5 text-sm font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary"
                     >
                       Cancelar
                     </button>
                     <PrimaryButton
                       type="submit"
                       disabled={enviando}
-                      className="flex-1 justify-center"
+                      className="flex-1 justify-center py-2.5"
                     >
                       {enviando ? 'Enviando...' : 'Enviar'}
                     </PrimaryButton>
