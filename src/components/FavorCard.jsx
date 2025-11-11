@@ -131,49 +131,49 @@ const FavorCard = ({ favor, className }) => {
         </div>
       )}
 
-      <div className="flex items-start justify-between gap-2">
-        <h3 className="line-clamp-2 text-lg sm:text-xl font-semibold tracking-tight" data-testid="favor-title">
+      <div className="flex items-start justify-between gap-2 min-w-0">
+        <h3 className="line-clamp-2 text-base sm:text-lg md:text-xl font-semibold tracking-tight min-w-0 flex-1" data-testid="favor-title">
           {favor.titulo}
         </h3>
         {isFinalizado && (
-          <span className="inline-flex shrink-0 items-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 sm:px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-500">
+          <span className="inline-flex shrink-0 items-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-emerald-500">
             Finalizado
           </span>
         )}
         {isCompleted && !isFinalizado && (
-          <span className="inline-flex shrink-0 items-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 sm:px-3 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-500">
+          <span className="inline-flex shrink-0 items-center rounded-full border border-emerald-500/30 bg-emerald-500/15 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-emerald-500">
             Completado
           </span>
         )}
       </div>
 
-      <div className="mt-3 sm:mt-4 flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-sm text-text-muted">
+      <div className="mt-2 sm:mt-3 md:mt-4 flex flex-wrap items-center gap-1.5 sm:gap-2 md:gap-3 text-xs sm:text-sm text-text-muted">
         {category && (
           <span
             data-testid="favor-category"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-text-muted dark:bg-card/50"
+            className="inline-flex items-center gap-1 sm:gap-1.5 rounded-full border border-border bg-card/70 px-2 sm:px-2.5 md:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-text-muted dark:bg-card/50"
           >
-            <Tag className="h-4 w-4" aria-hidden="true" />
-            {category.name}
+            <Tag className="h-3 w-3 sm:h-3.5 sm:w-3.5 flex-shrink-0" aria-hidden="true" />
+            <span className="truncate">{category.name}</span>
           </span>
         )}
-        <span className="inline-flex items-center gap-2">
-          <UserRound className="h-4 w-4" aria-hidden="true" />
-          <span>{favor.solicitante || favor.nombreUsuario}</span>
+        <span className="inline-flex items-center gap-1 sm:gap-1.5 min-w-0">
+          <UserRound className="h-3 w-3 sm:h-3.5 sm:w-3.5 flex-shrink-0" aria-hidden="true" />
+          <span className="truncate">{favor.solicitante || favor.nombreUsuario}</span>
           {solicitanteData?.rol && <VerifiedBadge userRole={solicitanteData.rol} size="sm" />}
         </span>
         {solicitanteData && solicitanteData.reputacion && (
-          <span className="inline-flex items-center gap-1">
-            <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" aria-hidden="true" />
+          <span className="inline-flex items-center gap-0.5 sm:gap-1">
+            <Star className="h-3 w-3 sm:h-3.5 sm:w-3.5 fill-yellow-400 text-yellow-400 flex-shrink-0" aria-hidden="true" />
             <span className="font-medium">{solicitanteData.reputacion.toFixed(1)}</span>
             {solicitanteData.totalCalificaciones > 0 && (
-              <span className="text-xs">({solicitanteData.totalCalificaciones})</span>
+              <span className="text-[10px] sm:text-xs">({solicitanteData.totalCalificaciones})</span>
             )}
           </span>
         )}
-        <span className="inline-flex items-center gap-2">
-          <CalendarDays className="h-4 w-4" aria-hidden="true" />
-          <time dateTime={favor.fecha}>{favor.fecha}</time>
+        <span className="inline-flex items-center gap-1 sm:gap-1.5 min-w-0">
+          <CalendarDays className="h-3 w-3 sm:h-3.5 sm:w-3.5 flex-shrink-0" aria-hidden="true" />
+          <time dateTime={favor.fecha} className="truncate">{favor.fecha}</time>
         </span>
       </div>
 
@@ -185,19 +185,19 @@ const FavorCard = ({ favor, className }) => {
         </p>
       )}
 
-      <div className="mt-4 sm:mt-6 flex flex-col gap-2 sm:gap-3 border-t border-border pt-3 sm:pt-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-3 sm:mt-4 md:mt-6 flex flex-col gap-2 sm:gap-3 border-t border-border pt-2 sm:pt-3 md:pt-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="text-xs sm:text-sm text-text-muted">
           <span className="font-medium text-text-primary">Estado:</span>{' '}
           {isFinalizado ? 'Finalizado' : isConfirmado ? 'Confirmado' : isCompleted ? 'Completado' : 'Disponible'}
         </div>
-        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="flex flex-col sm:flex-row flex-wrap gap-1.5 sm:gap-2">
           {/* Botón ofrecer ayuda - solo si no es propio y está activo */}
           {canRespond && (
             <PrimaryButton
               data-testid="cta-offer"
               type="button"
               onClick={handleRespond}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm"
+              className="w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2 text-xs sm:text-sm whitespace-nowrap"
               disabled={favor.ayudantes?.some(a => a.idUsuario === currentUser.uid) || loadingContact}
             >
               {favor.ayudantes?.some(a => a.idUsuario === currentUser.uid) ? 'Ya ofreciste' : loadingContact ? 'Registrando...' : 'Ofrecer ayuda'}
@@ -209,9 +209,9 @@ const FavorCard = ({ favor, className }) => {
             <PrimaryButton
               type="button"
               onClick={handleFinalizar}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-700"
+              className="w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2 text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-700 whitespace-nowrap"
             >
-              <CheckCircle className="h-3 sm:h-4 w-3 sm:w-4 mr-1 inline" />
+              <CheckCircle className="h-3.5 sm:h-4 w-3.5 sm:w-4 mr-1 sm:mr-1.5 inline flex-shrink-0" />
               Finalizar
             </PrimaryButton>
           )}
@@ -221,9 +221,9 @@ const FavorCard = ({ favor, className }) => {
             <PrimaryButton
               type="button"
               onClick={() => setShowCalificarModal(true)}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-yellow-600 hover:bg-yellow-700"
+              className="w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2 text-xs sm:text-sm bg-yellow-600 hover:bg-yellow-700 whitespace-nowrap"
             >
-              <Star className="h-3 sm:h-4 w-3 sm:w-4 mr-1 inline" />
+              <Star className="h-3.5 sm:h-4 w-3.5 sm:w-4 mr-1 sm:mr-1.5 inline flex-shrink-0" />
               Calificar
             </PrimaryButton>
           )}
@@ -233,9 +233,9 @@ const FavorCard = ({ favor, className }) => {
             <PrimaryButton
               type="button"
               onClick={() => setShowCalificarModal(true)}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm bg-yellow-600 hover:bg-yellow-700"
+              className="w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2 text-xs sm:text-sm bg-yellow-600 hover:bg-yellow-700 whitespace-nowrap"
             >
-              <Star className="h-3 sm:h-4 w-3 sm:w-4 mr-1 inline" />
+              <Star className="h-3.5 sm:h-4 w-3.5 sm:w-4 mr-1 sm:mr-1.5 inline flex-shrink-0" />
               Calificar
             </PrimaryButton>
           )}
@@ -245,17 +245,18 @@ const FavorCard = ({ favor, className }) => {
             <GhostButton
               type="button"
               onClick={handleDelete}
-              className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-red-500 hover:bg-red-500/10 hover:text-red-400 focus-visible:ring-red-500/40"
+              className="w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2 text-xs sm:text-sm text-red-500 hover:bg-red-500/10 hover:text-red-400 focus-visible:ring-red-500/40 whitespace-nowrap"
             >
               Eliminar
             </GhostButton>
           )}
 
           {/* Botón ver detalles - siempre visible */}
-          <GhostButton as={Link} to={`/favores?id=${favor.id}`} className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm">
-            <span className="inline-flex items-center gap-1 sm:gap-2">
-              <Link2 className="h-3 sm:h-4 w-3 sm:w-4" aria-hidden="true" />
+          <GhostButton as={Link} to={`/favores?id=${favor.id}`} className="w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2 text-xs sm:text-sm whitespace-nowrap">
+            <span className="inline-flex items-center gap-1 sm:gap-1.5">
+              <Link2 className="h-3.5 sm:h-4 w-3.5 sm:w-4 flex-shrink-0" aria-hidden="true" />
               <span className="hidden sm:inline">Detalles</span>
+              <span className="inline sm:hidden">Ver más</span>
             </span>
           </GhostButton>
 
@@ -264,10 +265,10 @@ const FavorCard = ({ favor, className }) => {
             <GhostButton
               type="button"
               onClick={() => setShowReportModal(true)}
-              className="px-2 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm text-text-muted hover:text-red-500 hover:bg-red-500/10 focus-visible:ring-red-500/40"
+              className="w-full sm:w-auto px-2.5 sm:px-3 py-2 sm:py-2 text-xs sm:text-sm text-text-muted hover:text-red-500 hover:bg-red-500/10 focus-visible:ring-red-500/40"
               title="Reportar favor"
             >
-              <Flag className="h-3 sm:h-4 w-3 sm:w-4" aria-hidden="true" />
+              <Flag className="h-3.5 sm:h-4 w-3.5 sm:w-4 mx-auto sm:mx-0 flex-shrink-0" aria-hidden="true" />
             </GhostButton>
           )}
         </div>

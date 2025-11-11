@@ -71,14 +71,14 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-1.5 sm:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0 min-w-0"
+              className="flex items-center gap-1 sm:gap-1.5 md:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0 min-w-0"
             >
-              <img src={logo} alt="NexUC" className="h-8 w-8 sm:h-12 sm:w-12 rounded object-cover dark:invert flex-shrink-0" />
+              <img src={logo} alt="NexUC" className="h-7 w-7 sm:h-9 sm:w-9 md:h-12 md:w-12 rounded object-cover dark:invert flex-shrink-0" />
               <div className="flex flex-col min-w-0">
-                <span className="text-xs sm:text-base font-semibold leading-tight text-text-primary truncate">
+                <span className="text-xs sm:text-sm md:text-base font-semibold leading-tight text-text-primary truncate">
                   NexUC
                 </span>
-                <span className="text-[10px] sm:text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">
+                <span className="text-[9px] sm:text-[10px] md:text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">
                   Tu Espacio UC
                 </span>
               </div>
@@ -90,7 +90,7 @@ const Navbar = () => {
             </div>
 
             {/* Acciones de la derecha - Mobile */}
-            <div className="flex md:hidden items-center gap-2 flex-shrink-0">
+            <div className="flex md:hidden items-center gap-1.5 sm:gap-2 flex-shrink-0">
               <GlobalSearch />
               {currentUser && (
                 <div className="flex-shrink-0">
@@ -98,10 +98,10 @@ const Navbar = () => {
                 </div>
               )}
               <Disclosure.Button
-                className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-2 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 dark:bg-card/60 flex-shrink-0"
+                className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-1.5 sm:p-2 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 dark:bg-card/60 flex-shrink-0"
                 aria-label="Abrir menú de navegación"
               >
-                {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {open ? <X className="h-4 w-4 sm:h-5 sm:w-5" /> : <Menu className="h-4 w-4 sm:h-5 sm:w-5" />}
               </Disclosure.Button>
             </div>
 
@@ -200,7 +200,7 @@ const Navbar = () => {
 
           <Disclosure.Panel className="md:hidden">
             {({ close }) => (
-            <div className="space-y-1 border-t border-border bg-card/70 py-3 dark:bg-card/60">
+            <div className="space-y-1 border-t border-border bg-card/70 py-2 sm:py-3 px-2 sm:px-3 dark:bg-card/60">
               {/* Navegación principal */}
               {mainNavigation.map((item) => {
                 // Si tiene submenú, renderizar items expandidos

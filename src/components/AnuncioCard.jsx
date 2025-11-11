@@ -59,11 +59,11 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
 
         {anuncio.imagenURL && (
           <div className="rounded-lg overflow-hidden relative group cursor-pointer">
-            {/* Thumbnail con altura limitada */}
+            {/* Thumbnail con altura responsive */}
             <img
               src={anuncio.imagenURL}
               alt={anuncio.titulo}
-              className="w-full h-48 object-cover"
+              className="w-full h-40 sm:h-48 md:h-56 object-cover"
               onClick={() => setModalAbierto(true)}
             />
 
@@ -78,28 +78,29 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
           </div>
         )}
 
-        <div className="flex flex-col gap-3 pt-3 mt-auto border-t border-border">
-          <div className="flex flex-col gap-1 text-xs text-text-muted">
-            <div className="flex items-center gap-1">
-              <User className="h-3 w-3" />
-              <span>{anuncio.autorNombre}</span>
+        <div className="flex flex-col gap-2 sm:gap-3 pt-2 sm:pt-3 mt-auto border-t border-border">
+          <div className="flex flex-col gap-0.5 sm:gap-1 text-xs text-text-muted">
+            <div className="flex items-center gap-1 min-w-0">
+              <User className="h-3 w-3 flex-shrink-0" />
+              <span className="truncate">{anuncio.autorNombre}</span>
               {anuncio.autorRol && <VerifiedBadge userRole={anuncio.autorRol} size="xs" />}
             </div>
-            <div className="flex items-center gap-1">
-              <Calendar className="h-3 w-3" />
-              <span>{formatFecha(anuncio.fecha)}</span>
+            <div className="flex items-center gap-1 min-w-0">
+              <Calendar className="h-3 w-3 flex-shrink-0" />
+              <span className="truncate">{formatFecha(anuncio.fecha)}</span>
             </div>
           </div>
 
           {/* Botones de acción */}
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2">
             {/* Botón ver detalles - visible para todos */}
             <button
               onClick={() => setDetalleModalAbierto(true)}
-              className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-1.5 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-brand transition-colors hover:bg-brand/20 min-w-0"
             >
-              <Eye className="h-4 w-4" />
-              Ver detalles
+              <Eye className="h-3.5 w-3.5 sm:h-4 sm:w-4 flex-shrink-0" />
+              <span className="hidden sm:inline">Ver detalles</span>
+              <span className="inline sm:hidden">Detalles</span>
             </button>
 
             {/* Botones exclusivos para usuarios con rol exclusivo */}
@@ -109,7 +110,7 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
                 {onFijar && (
                   <button
                     onClick={() => onFijar(anuncio.id, !anuncio.fijado)}
-                    className={`inline-flex items-center justify-center gap-2 rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
+                    className={`inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-lg border px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors ${
                       anuncio.fijado
                         ? 'border-yellow-500/30 bg-yellow-500/10 text-yellow-600 hover:bg-yellow-500/20'
                         : 'border-border bg-background text-text-muted hover:bg-border/50'
@@ -117,9 +118,9 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
                     title={anuncio.fijado ? 'Desfijar anuncio' : 'Fijar anuncio'}
                   >
                     {anuncio.fijado ? (
-                      <PinOff className="h-4 w-4" />
+                      <PinOff className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     ) : (
-                      <Pin className="h-4 w-4" />
+                      <Pin className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                     )}
                   </button>
                 )}
@@ -128,10 +129,10 @@ const AnuncioCard = ({ anuncio, esExclusivo, onEliminar, onFijar }) => {
                 {onEliminar && (
                   <button
                     onClick={() => onEliminar(anuncio.id)}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-1.5 text-sm font-medium text-red-500 transition-colors hover:bg-red-500/20"
+                    className="inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-red-500 transition-colors hover:bg-red-500/20"
                     title="Eliminar anuncio"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   </button>
                 )}
               </>

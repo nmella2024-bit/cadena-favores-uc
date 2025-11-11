@@ -101,20 +101,20 @@ const Home = () => {
   return (
     <div className="w-full overflow-x-hidden">
       <div className="space-y-20 sm:space-y-24">
-      <section className="bg-card/80 py-16 sm:py-24 w-full">
+      <section className="bg-card/80 py-12 sm:py-16 md:py-24 w-full">
         <div className="container mx-auto max-w-3xl px-4 sm:px-6 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card/70 dark:bg-card/50 px-4 py-1 text-sm font-medium text-text-muted shadow-sm">
-            <Sparkles className="h-4 w-4" aria-hidden="true" />
+          <span className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-border bg-card/70 dark:bg-card/50 px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium text-text-muted shadow-sm">
+            <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
             Red social universitaria
           </span>
-          <h1 className="mt-6 text-4xl font-bold tracking-tight sm:text-5xl">
+          <h1 className="mt-4 sm:mt-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">
             Conecta, enseña y aprende dentro de la comunidad UC
           </h1>
-          <p className="mt-4 text-lg text-text-muted">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-text-muted">
             NexUC es un puente entre estudiantes que quieren pedir un favor y quienes pueden ofrecer ayuda.
             Comparte conocimiento, apoya proyectos y fortalece tus redes con empatía.
           </p>
-          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:gap-4">
+          <div className="mt-6 sm:mt-8 md:mt-10 flex flex-col justify-center gap-2 sm:gap-3 md:gap-4">
             <PrimaryButton as={Link} to={currentUser ? '/publicar' : '/registro'}>
               {currentUser ? 'Publicar un favor' : 'Crear cuenta UC'}
             </PrimaryButton>
@@ -129,34 +129,34 @@ const Home = () => {
       {currentUser && (
         <section className="w-full">
           <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl border border-border bg-card dark:bg-card/80 p-4 sm:p-6 lg:p-8 shadow-sm">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-text-primary">Acciones rápidas</h2>
+          <div className="rounded-2xl border border-border bg-card dark:bg-card/80 p-3 sm:p-4 md:p-6 lg:p-8 shadow-sm">
+            <div className="flex items-center justify-between mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-text-primary">Acciones rápidas</h2>
               <button
                 onClick={() => {/* Aquí se puede agregar funcionalidad para más acciones */}}
-                className="p-2 rounded-lg hover:bg-background transition-colors"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-background transition-colors"
                 aria-label="Más acciones"
               >
-                <Plus className="h-5 w-5 text-text-muted" />
+                <Plus className="h-4 w-4 sm:h-5 sm:w-5 text-text-muted" />
               </button>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
               {accionesRapidas.map((accion) => {
                 const Icon = accion.icon;
                 return (
                   <button
                     key={accion.id}
                     onClick={() => handleAccionClick(accion)}
-                    className="group flex flex-col items-center justify-center p-4 sm:p-6 rounded-xl border border-border bg-background hover:bg-card hover:border-brand/30 transition-all duration-200 hover:shadow-sm"
+                    className="group flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 rounded-xl border border-border bg-background hover:bg-card hover:border-brand/30 transition-all duration-200 hover:shadow-sm min-h-[100px] sm:min-h-[120px]"
                   >
-                    <div className={`${accion.iconBg} ${accion.iconColor} p-2 sm:p-3 rounded-full mb-2 sm:mb-3 group-hover:scale-110 transition-transform`}>
-                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <div className={`${accion.iconBg} ${accion.iconColor} p-2 sm:p-2.5 md:p-3 rounded-full mb-1.5 sm:mb-2 md:mb-3 group-hover:scale-110 transition-transform flex-shrink-0`}>
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                     </div>
-                    <h3 className="text-xs sm:text-sm font-semibold text-text-primary mb-0.5 text-center">
+                    <h3 className="text-[11px] sm:text-xs md:text-sm font-semibold text-text-primary mb-0.5 text-center line-clamp-2">
                       {accion.titulo}
                     </h3>
-                    <p className="text-xs text-text-muted text-center">
+                    <p className="text-[10px] sm:text-xs text-text-muted text-center line-clamp-1">
                       {accion.subtitulo}
                     </p>
                   </button>
@@ -186,22 +186,22 @@ const Home = () => {
       <section className="w-full">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">¿Cómo funciona?</h2>
-          <p className="mt-4 text-lg text-text-muted">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight">¿Cómo funciona?</h2>
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-text-muted">
             Publicar un favor es sencillo y recibir ayuda lo es aún más. Solo necesitas seguir estos pasos.
           </p>
         </div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-3">
+        <div className="mt-8 sm:mt-10 md:mt-12 grid gap-4 sm:gap-6 sm:grid-cols-3">
           {steps.map((step) => (
             <div
               key={step.number}
-              className="rounded-2xl border border-border bg-card dark:bg-card/80 p-8 text-left shadow-sm transition hover:shadow-card"
+              className="rounded-2xl border border-border bg-card dark:bg-card/80 p-4 sm:p-6 md:p-8 text-left shadow-sm transition hover:shadow-card"
             >
-              <span className="text-sm font-semibold uppercase tracking-[0.3em] text-text-muted">
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-[0.3em] text-text-muted">
                 {step.number}
               </span>
-              <h3 className="mt-4 text-xl font-semibold tracking-tight">{step.title}</h3>
-              <p className="mt-3 text-sm text-text-muted">{step.description}</p>
+              <h3 className="mt-3 sm:mt-4 text-lg sm:text-xl font-semibold tracking-tight">{step.title}</h3>
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-text-muted">{step.description}</p>
             </div>
           ))}
         </div>

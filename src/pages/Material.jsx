@@ -271,51 +271,53 @@ const Material = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pt-8 pb-12 px-4">
+    <div className="min-h-screen bg-background pt-4 sm:pt-6 md:pt-8 pb-8 sm:pb-12 px-3 sm:px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
+        <div className="mb-6 sm:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-3 sm:mb-4">
             <div className="text-center sm:text-left">
-              <div className="flex items-center justify-center sm:justify-start gap-3 mb-2">
-                <BookOpen className="h-10 w-10 text-brand" />
-                <h1 className="text-4xl font-bold text-text-primary">
+              <div className="flex items-center justify-center sm:justify-start gap-2 sm:gap-3 mb-1.5 sm:mb-2">
+                <BookOpen className="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 text-brand flex-shrink-0" />
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-primary leading-tight">
                   Material de Estudio UC
                 </h1>
               </div>
-              <p className="text-lg text-text-muted">
+              <p className="text-sm sm:text-base md:text-lg text-text-muted">
                 Encuentra resúmenes, guías y material según tu carrera, año o ramo
               </p>
 
-              <div className="mt-4 inline-flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
+              <div className="mt-3 sm:mt-4 inline-flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/30 dark:to-purple-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
                 <img
                   src={solidaridadLogo}
                   alt="Solidaridad UC"
-                  className="h-10 w-10 rounded-full object-cover"
+                  className="h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 rounded-full object-cover flex-shrink-0"
                 />
-                <span className="text-sm font-semibold text-blue-700 dark:text-blue-400">
+                <span className="text-xs sm:text-sm font-semibold text-blue-700 dark:text-blue-400 truncate">
                   En colaboración con Solidaridad UC
                 </span>
               </div>
             </div>
 
             {currentUser && (
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
                 {esUsuarioExclusivo && (
                   <PrimaryButton
                     onClick={() => setIsFolderModalOpen(true)}
-                    className="inline-flex items-center gap-2 whitespace-nowrap bg-purple-600 hover:bg-purple-700"
+                    className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-purple-600 hover:bg-purple-700 px-3 sm:px-4 py-2 text-sm"
                   >
-                    <FolderPlus className="h-5 w-5" />
-                    Nueva Carpeta
+                    <FolderPlus className="h-4 w-4 sm:h-5 sm:w-5" />
+                    <span className="hidden sm:inline">Nueva Carpeta</span>
+                    <span className="inline sm:hidden">Nueva Carpeta</span>
                   </PrimaryButton>
                 )}
                 <PrimaryButton
                   onClick={() => setIsModalOpen(true)}
-                  className="inline-flex items-center gap-2 whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap px-3 sm:px-4 py-2 text-sm"
                 >
-                  <Plus className="h-5 w-5" />
-                  Subir Material
+                  <Plus className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span className="hidden sm:inline">Subir Material</span>
+                  <span className="inline sm:hidden">Subir</span>
                 </PrimaryButton>
               </div>
             )}
@@ -343,7 +345,7 @@ const Material = () => {
 
         {/* Loading State */}
         {loading && (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <SkeletonCard key={i} />
             ))}
@@ -389,8 +391,8 @@ const Material = () => {
         {!loading && (carpetas.length > 0 || sortedMateriales.length > 0) && (
           <>
             {/* Contador */}
-            <div className="flex items-center justify-between mb-4">
-              <p className="text-sm text-text-muted">
+            <div className="flex items-center justify-between mb-3 sm:mb-4">
+              <p className="text-xs sm:text-sm text-text-muted">
                 {carpetas.length > 0 && `${carpetas.length} ${carpetas.length === 1 ? 'carpeta' : 'carpetas'}`}
                 {carpetas.length > 0 && sortedMateriales.length > 0 && ' • '}
                 {sortedMateriales.length > 0 && `${sortedMateriales.length} ${sortedMateriales.length === 1 ? 'archivo' : 'archivos'}`}
@@ -399,9 +401,9 @@ const Material = () => {
 
             {/* Grid de Carpetas */}
             {carpetas.length > 0 && (
-              <div className="mb-8">
-                <h3 className="text-lg font-semibold text-text-primary mb-4">Carpetas</h3>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="mb-6 sm:mb-8">
+                <h3 className="text-base sm:text-lg font-semibold text-text-primary mb-3 sm:mb-4">Carpetas</h3>
+                <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                   {carpetas.map((carpeta) => (
                     <FolderCard
                       key={carpeta.id}
@@ -420,8 +422,8 @@ const Material = () => {
             {/* Grid de Materiales */}
             {sortedMateriales.length > 0 && (
               <div>
-                <h3 className="text-lg font-semibold text-text-primary mb-4">Archivos</h3>
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <h3 className="text-base sm:text-lg font-semibold text-text-primary mb-3 sm:mb-4">Archivos</h3>
+                <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                   {sortedMateriales.map((material) => (
                     <MaterialCard
                       key={material.id}

@@ -141,33 +141,33 @@ const EditarPerfilModal = ({ isOpen, onClose, onActualizacionExitosa }) => {
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" />
 
       {/* Container */}
-      <div className="fixed inset-0 flex items-center justify-center p-4 overflow-y-auto">
-        <Dialog.Panel className="mx-auto max-w-2xl w-full rounded-2xl border border-border bg-card p-6 shadow-2xl dark:bg-card/95 my-8">
+      <div className="fixed inset-0 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <Dialog.Panel className="mx-auto max-w-[95vw] sm:max-w-xl md:max-w-2xl w-full rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-2xl dark:bg-card/95 my-4 sm:my-8 max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="flex items-start justify-between mb-6">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-brand/10">
-                <User className="h-6 w-6 text-brand" />
+          <div className="flex items-start justify-between mb-4 sm:mb-6 gap-2">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+              <div className="p-1.5 sm:p-2 rounded-lg bg-brand/10 flex-shrink-0">
+                <User className="h-5 w-5 sm:h-6 sm:w-6 text-brand" />
               </div>
-              <div>
-                <Dialog.Title className="text-xl font-bold text-text-primary">
+              <div className="min-w-0">
+                <Dialog.Title className="text-lg sm:text-xl font-bold text-text-primary">
                   Editar Perfil
                 </Dialog.Title>
-                <p className="text-sm text-text-muted mt-1">
+                <p className="text-xs sm:text-sm text-text-muted mt-0.5 sm:mt-1 hidden sm:block">
                   Actualiza tu información personal
                 </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="rounded-lg p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors"
+              className="rounded-lg p-1.5 sm:p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors flex-shrink-0"
               aria-label="Cerrar"
             >
-              <X className="h-5 w-5" />
+              <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 md:space-y-5">
             {/* Nombre */}
             <TextField
               label="Nombre"
@@ -244,16 +244,16 @@ const EditarPerfilModal = ({ isOpen, onClose, onActualizacionExitosa }) => {
 
             {/* Intereses */}
             <div>
-              <label className="block text-sm font-medium text-text-primary mb-3">
+              <label className="block text-sm font-medium text-text-primary mb-2 sm:mb-3">
                 Intereses
               </label>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {INTERESES_DISPONIBLES.map((interes) => (
                   <button
                     key={interes}
                     type="button"
                     onClick={() => handleInteresesChange(interes)}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-colors ${
                       formData.intereses.includes(interes)
                         ? 'bg-brand text-white'
                         : 'bg-card border border-border text-text-muted hover:border-brand/50'
@@ -266,7 +266,7 @@ const EditarPerfilModal = ({ isOpen, onClose, onActualizacionExitosa }) => {
             </div>
 
             {/* Botones */}
-            <div className="flex gap-3 pt-4">
+            <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 pt-3 sm:pt-4">
               <GhostButton
                 type="button"
                 onClick={onClose}
@@ -280,7 +280,12 @@ const EditarPerfilModal = ({ isOpen, onClose, onActualizacionExitosa }) => {
                 disabled={loading}
                 className="flex-1"
               >
-                {loading ? 'Guardando...' : 'Guardar cambios'}
+                {loading ? 'Guardando...' : (
+                  <>
+                    <span className="hidden sm:inline">Guardar cambios</span>
+                    <span className="inline sm:hidden">Guardar</span>
+                  </>
+                )}
               </PrimaryButton>
             </div>
           </form>

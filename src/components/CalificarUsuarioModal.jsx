@@ -187,24 +187,24 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
       <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" aria-hidden="true" />
 
       {/* Container */}
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className="mx-auto max-w-md w-full rounded-2xl border border-border bg-card p-6 shadow-2xl dark:bg-card/95">
+      <div className="fixed inset-0 flex items-center justify-center p-3 sm:p-4 overflow-y-auto">
+        <Dialog.Panel className="mx-auto max-w-[95vw] sm:max-w-md w-full rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-2xl dark:bg-card/95 my-4 sm:my-8 max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <Dialog.Title className="text-xl font-bold text-text-primary">
+          <div className="flex items-start justify-between mb-4 gap-2">
+            <div className="min-w-0">
+              <Dialog.Title className="text-lg sm:text-xl font-bold text-text-primary">
                 Calificar Usuario
               </Dialog.Title>
-              <p className="text-sm text-text-muted mt-1">
+              <p className="text-xs sm:text-sm text-text-muted mt-0.5 sm:mt-1">
                 Comparte tu experiencia con este favor
               </p>
             </div>
             <button
               onClick={onClose}
-              className="rounded-lg p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors"
+              className="rounded-lg p-1.5 sm:p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors flex-shrink-0"
               aria-label="Cerrar"
             >
-              <X className="h-5 w-5" />
+              <X className="h-4 w-4 sm:h-5 sm:w-5" />
             </button>
           </div>
 
@@ -231,10 +231,10 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
               </GhostButton>
             </div>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
               {/* Información del favor */}
-              <div className="mb-6 p-4 rounded-lg bg-brand/10 border border-brand/20">
-                <h4 className="font-semibold text-text-primary mb-1">{favor.titulo}</h4>
+              <div className="p-3 sm:p-4 rounded-lg bg-brand/10 border border-brand/20">
+                <h4 className="font-semibold text-text-primary mb-1 text-sm sm:text-base line-clamp-2">{favor.titulo}</h4>
                 <p className="text-xs text-text-muted">
                   {favor.categoria && `${favor.categoria} • `}
                   {favor.fecha}
@@ -243,10 +243,10 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
 
               {/* Usuario a calificar */}
               {infoCalificacion && (
-                <div className="mb-6">
-                  <p className="text-sm text-text-muted mb-2">Calificando a:</p>
-                  <div className="p-3 rounded-lg bg-card/70 dark:bg-card/50 border border-border">
-                    <p className="font-medium text-text-primary">
+                <div>
+                  <p className="text-xs sm:text-sm text-text-muted mb-2">Calificando a:</p>
+                  <div className="p-2.5 sm:p-3 rounded-lg bg-card/70 dark:bg-card/50 border border-border">
+                    <p className="font-medium text-text-primary text-sm sm:text-base">
                       {infoCalificacion.usuarioACalificarNombre}
                     </p>
                     <p className="text-xs text-text-muted mt-1">
@@ -257,11 +257,11 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
               )}
 
               {/* Calificación con estrellas */}
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-text-primary mb-3">
+              <div>
+                <label className="block text-xs sm:text-sm font-medium text-text-primary mb-2 sm:mb-3">
                   Calificación <span className="text-red-500">*</span>
                 </label>
-                <div className="flex justify-center p-4 rounded-lg bg-canvas border border-border">
+                <div className="flex justify-center p-3 sm:p-4 rounded-lg bg-canvas border border-border">
                   <StarRating
                     rating={estrellas}
                     onRatingChange={setEstrellas}
@@ -270,7 +270,7 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
                   />
                 </div>
                 {estrellas > 0 && (
-                  <p className="text-center text-sm text-text-muted mt-2">
+                  <p className="text-center text-xs sm:text-sm text-text-muted mt-2">
                     {estrellas === 1 && 'Muy mala experiencia'}
                     {estrellas === 2 && 'Mala experiencia'}
                     {estrellas === 3 && 'Experiencia regular'}
@@ -281,18 +281,18 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
               </div>
 
               {/* Comentario opcional */}
-              <div className="mb-6">
-                <label htmlFor="comentario" className="block text-sm font-medium text-text-primary mb-2">
+              <div>
+                <label htmlFor="comentario" className="block text-xs sm:text-sm font-medium text-text-primary mb-2">
                   Comentario <span className="text-text-muted text-xs">(opcional)</span>
                 </label>
                 <textarea
                   id="comentario"
                   value={comentario}
                   onChange={(e) => setComentario(e.target.value)}
-                  rows={4}
+                  rows={3}
                   maxLength={500}
                   placeholder="Comparte tu experiencia con este favor..."
-                  className="w-full px-4 py-3 rounded-lg border border-border bg-canvas text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 resize-none"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-border bg-canvas text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 resize-none text-sm"
                 />
                 <p className="text-xs text-text-muted mt-1 text-right">
                   {comentario.length}/500 caracteres
@@ -300,7 +300,7 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
               </div>
 
               {/* Info */}
-              <div className="mb-6 p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
+              <div className="p-2.5 sm:p-3 rounded-lg bg-blue-500/10 border border-blue-500/20">
                 <p className="text-xs text-blue-600 dark:text-blue-400">
                   Como solicitante del favor, puedes calificar a quien te ayudó.
                   Tu calificación será visible públicamente y ayudará a construir confianza en la comunidad.
@@ -308,7 +308,7 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
               </div>
 
               {/* Botones */}
-              <div className="flex gap-3">
+              <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3">
                 <GhostButton
                   type="button"
                   onClick={onClose}
@@ -321,7 +321,12 @@ const CalificarUsuarioModal = ({ isOpen, onClose, favor, onCalificacionExitosa }
                   disabled={loading || estrellas === 0}
                   className="flex-1"
                 >
-                  {loading ? 'Enviando...' : 'Enviar calificación'}
+                  {loading ? 'Enviando...' : (
+                    <>
+                      <span className="hidden sm:inline">Enviar calificación</span>
+                      <span className="inline sm:hidden">Enviar</span>
+                    </>
+                  )}
                 </PrimaryButton>
               </div>
             </form>

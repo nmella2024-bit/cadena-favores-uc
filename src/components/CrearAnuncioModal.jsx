@@ -167,7 +167,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
         </Transition.Child>
 
         <div className="fixed inset-0 overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4">
+          <div className="flex min-h-full items-center justify-center p-3 sm:p-4">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -177,17 +177,17 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-card transition-all">
-                <div className="flex items-center justify-between mb-4">
-                  <Dialog.Title className="text-xl font-semibold text-text-primary">
+              <Dialog.Panel className="w-full max-w-[95vw] sm:max-w-xl md:max-w-2xl transform overflow-hidden rounded-2xl border border-border bg-card p-4 sm:p-6 shadow-card transition-all max-h-[90vh] overflow-y-auto">
+                <div className="flex items-center justify-between mb-4 sm:mb-6 gap-2">
+                  <Dialog.Title className="text-lg sm:text-xl font-semibold text-text-primary">
                     Publicar nuevo anuncio
                   </Dialog.Title>
                   <button
                     onClick={handleClose}
                     disabled={enviando}
-                    className="rounded-lg p-1 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors disabled:opacity-50"
+                    className="rounded-lg p-1.5 sm:p-2 text-text-muted hover:bg-card/80 hover:text-text-primary transition-colors disabled:opacity-50 flex-shrink-0"
                   >
-                    <X className="h-5 w-5" />
+                    <X className="h-4 w-4 sm:h-5 sm:w-5" />
                   </button>
                 </div>
 
@@ -197,7 +197,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                   </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
                   <TextField
                     id="titulo"
                     name="titulo"
@@ -254,7 +254,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     {/* Carrera */}
                     <div>
                       <label className="block text-sm font-medium text-text-primary mb-2">
@@ -351,27 +351,31 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                     </p>
                   </div>
 
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex flex-col-reverse sm:flex-row gap-2 sm:gap-3 pt-3 sm:pt-4">
                     <button
                       type="button"
                       onClick={handleClose}
                       disabled={enviando}
-                      className="flex-1 rounded-lg border border-border bg-card/70 px-4 py-2 text-sm font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary disabled:opacity-50"
+                      className="flex-1 rounded-lg border border-border bg-card/70 px-4 py-2.5 text-sm font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary disabled:opacity-50"
                     >
                       Cancelar
                     </button>
                     <PrimaryButton
                       type="submit"
                       disabled={enviando}
-                      className="flex-1 justify-center"
+                      className="flex-1 justify-center py-2.5"
                     >
                       {enviando ? (
                         <>
                           <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                          Publicando...
+                          <span className="hidden sm:inline">Publicando...</span>
+                          <span className="inline sm:hidden">Publicando...</span>
                         </>
                       ) : (
-                        'Publicar anuncio'
+                        <>
+                          <span className="hidden sm:inline">Publicar anuncio</span>
+                          <span className="inline sm:hidden">Publicar</span>
+                        </>
                       )}
                     </PrimaryButton>
                   </div>
