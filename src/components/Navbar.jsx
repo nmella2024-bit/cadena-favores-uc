@@ -45,7 +45,7 @@ const Navbar = () => {
         onClick={onClick}
         className={({ isActive }) =>
           [
-            'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
+            'inline-flex items-center gap-1 lg:gap-2 rounded-lg px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
             isMobile ? 'w-full justify-start' : 'justify-center',
             isActive
               ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4 dark:bg-brand/20'
@@ -53,8 +53,8 @@ const Navbar = () => {
           ].join(' ')
         }
       >
-        <Icon className="h-4 w-4" strokeWidth={2} />
-        {item.label}
+        <Icon className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
+        <span className="whitespace-nowrap">{item.label}</span>
       </NavLink>
     );
   };
@@ -67,30 +67,30 @@ const Navbar = () => {
     >
       {({ open }) => (
         <>
-          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-2">
+          <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-1 md:gap-2">
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-1 sm:gap-1.5 md:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0 min-w-0"
+              className="flex items-center gap-1 sm:gap-1.5 md:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0"
             >
-              <img src={logo} alt="NexUC" className="h-12 w-12 sm:h-14 sm:w-14 md:h-20 md:w-20 rounded object-cover dark:invert flex-shrink-0" />
-              <div className="flex flex-col min-w-0">
-                <span className="text-xs sm:text-sm md:text-base font-semibold leading-tight text-text-primary truncate">
+              <img src={logo} alt="NexUC" className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded object-cover dark:invert flex-shrink-0" />
+              <div className="flex flex-col min-w-0 hidden xs:flex">
+                <span className="text-[10px] sm:text-xs md:text-sm lg:text-base font-semibold leading-tight text-text-primary truncate">
                   NexUC
                 </span>
-                <span className="text-[9px] sm:text-[10px] md:text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">
+                <span className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">
                   Tu Espacio UC
                 </span>
               </div>
             </Link>
 
             {/* Búsqueda global - Desktop (centrado) */}
-            <div className="hidden md:block flex-1 max-w-xl mx-4">
+            <div className="hidden md:block flex-1 max-w-md mx-2 lg:mx-4">
               <GlobalSearch />
             </div>
 
             {/* Acciones de la derecha - Mobile */}
-            <div className="flex md:hidden items-center gap-1.5 sm:gap-2 flex-shrink-0">
+            <div className="flex md:hidden items-center gap-1 sm:gap-1.5 flex-shrink-0 ml-auto">
               <GlobalSearch />
               {currentUser && (
                 <div className="flex-shrink-0">
@@ -98,15 +98,15 @@ const Navbar = () => {
                 </div>
               )}
               <Disclosure.Button
-                className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-1.5 sm:p-2 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 dark:bg-card/60 flex-shrink-0"
+                className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-1.5 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 dark:bg-card/60 flex-shrink-0"
                 aria-label="Abrir menú de navegación"
               >
-                {open ? <X className="h-4 w-4 sm:h-5 sm:w-5" /> : <Menu className="h-4 w-4 sm:h-5 sm:w-5" />}
+                {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
               </Disclosure.Button>
             </div>
 
             {/* Navegación desktop */}
-            <div className="hidden items-center gap-2 md:flex">
+            <div className="hidden items-center gap-1 lg:gap-2 md:flex flex-shrink-0">
               {/* Navegación principal */}
               {mainNavigation.map((item) => {
                 // Si tiene submenú, renderizar dropdown
@@ -120,15 +120,15 @@ const Navbar = () => {
                         <>
                           <HeadlessMenu.Button
                             className={[
-                              'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
+                              'inline-flex items-center gap-1 lg:gap-2 rounded-lg px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]',
                               isActive
                                 ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4 dark:bg-brand/20'
                                 : 'text-text-muted hover:text-text-primary hover:bg-card/80 dark:hover:bg-card/60',
                             ].join(' ')}
                           >
-                            <Icon className="h-4 w-4" strokeWidth={2} />
-                            {item.label}
-                            <ChevronDown className={`h-4 w-4 transition-transform ${open ? 'rotate-180' : ''}`} />
+                            <Icon className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
+                            <span className="whitespace-nowrap">{item.label}</span>
+                            <ChevronDown className={`h-4 w-4 flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
                           </HeadlessMenu.Button>
                           <HeadlessMenu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-lg border border-border bg-card shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div className="py-1">
@@ -167,10 +167,10 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => setIsFeedbackOpen(true)}
-                className="inline-flex items-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-2 text-sm font-medium text-brand transition-colors hover:bg-brand/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
+                className="inline-flex items-center gap-1 lg:gap-2 rounded-lg border border-brand/30 bg-brand/10 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium text-brand transition-colors hover:bg-brand/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
               >
-                <MessageSquare className="h-4 w-4" />
-                Feedback
+                <MessageSquare className="h-4 w-4 flex-shrink-0" />
+                <span className="whitespace-nowrap">Feedback</span>
               </button>
               {currentUser && <NotificationBell />}
               <ThemeToggle />
@@ -180,14 +180,14 @@ const Navbar = () => {
                 <button
                   type="button"
                   onClick={logout}
-                  className="inline-flex items-center rounded-lg border border-border bg-card/70 px-3 py-2 text-sm font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))] dark:bg-card/60"
+                  className="inline-flex items-center whitespace-nowrap rounded-lg border border-border bg-card/70 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))] dark:bg-card/60"
                 >
                   Cerrar sesión
                 </button>
               ) : (
                 <Link
                   to="/registro"
-                  className="inline-flex items-center rounded-lg bg-[rgb(var(--brand))] px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-[rgb(var(--brand-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
+                  className="inline-flex items-center whitespace-nowrap rounded-lg bg-[rgb(var(--brand))] px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-white shadow-sm transition-colors hover:bg-[rgb(var(--brand-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
                 >
                   Registrarse
                 </Link>
