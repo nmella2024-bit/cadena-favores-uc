@@ -314,7 +314,7 @@ const GlobalSearch = () => {
   return (
     <div ref={searchRef} className="relative w-full md:w-auto">
       {/* Input de búsqueda - Desktop */}
-      <div className="hidden md:block relative md:w-48 lg:w-64">
+      <div className="hidden md:block relative md:w-24 lg:w-32">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-muted" />
         <input
           ref={inputRef}
