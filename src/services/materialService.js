@@ -10,6 +10,8 @@ import {
   query,
   orderBy,
   where,
+  limit,
+  startAfter,
 } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
@@ -80,12 +82,17 @@ export const subirMaterial = async (materialData, usuario, archivo) => {
 };
 
 /**
- * Obtiene todos los materiales
+ * Obtiene todos los materiales (sin paginación - deprecado)
+ * @deprecated Usar obtenerMaterialesPaginados en su lugar
  * @returns {Promise<Array>} Lista de materiales
  */
 export const obtenerMateriales = async () => {
   try {
-    const q = query(collection(db, 'material'), orderBy('fechaSubida', 'desc'));
+    const q = query(
+      collection(db, 'material'),
+      orderBy('fechaSubida', 'desc'),
+      limit(50) // Limitar a 50 para evitar descargas masivas
+    );
     const querySnapshot = await getDocs(q);
 
     const materiales = [];
@@ -101,6 +108,56 @@ export const obtenerMateriales = async () => {
     return materiales;
   } catch (error) {
     console.error('Error al obtener materiales:', error);
+    throw error;
+  }
+};
+
+/**
+ * Obtiene materiales con paginación (RECOMENDADO)
+ * @param {number} pageSize - Cantidad de materiales por página (default: 20)
+ * @param {Object} lastVisible - Último documento de la página anterior
+ * @returns {Promise<{materiales: Array, lastVisible: Object, hasMore: boolean}>}
+ */
+export const obtenerMaterialesPaginados = async (pageSize = 20, lastVisible = null) => {
+  try {
+    let q = query(
+      collection(db, 'material'),
+      orderBy('fechaSubida', 'desc'),
+      limit(pageSize + 1)
+    );
+
+    if (lastVisible) {
+      q = query(
+        collection(db, 'material'),
+        orderBy('fechaSubida', 'desc'),
+        startAfter(lastVisible),
+        limit(pageSize + 1)
+      );
+    }
+
+    const querySnapshot = await getDocs(q);
+    const materiales = [];
+    const hasMore = querySnapshot.docs.length > pageSize;
+
+    const docs = hasMore ? querySnapshot.docs.slice(0, -1) : querySnapshot.docs;
+
+    docs.forEach((doc) => {
+      const data = doc.data();
+      materiales.push({
+        id: doc.id,
+        ...data,
+        fechaSubida: data.fechaSubida?.toDate ? data.fechaSubida.toDate().toISOString() : new Date().toISOString(),
+        _doc: doc,
+      });
+    });
+
+    return {
+      materiales,
+      lastVisible: docs.length > 0 ? docs[docs.length - 1] : null,
+      hasMore,
+    };
+  } catch (error) {
+    console.error('Error al obtener materiales paginados:', error);
     throw error;
   }
 };

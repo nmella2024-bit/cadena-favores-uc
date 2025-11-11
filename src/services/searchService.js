@@ -108,7 +108,8 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
     if (collections.includes('favores')) {
       try {
         const favoresRef = collection(db, 'favores');
-        const favoresSnapshot = await getDocs(query(favoresRef, limit(100)));
+        // Limitar a 50 documentos para reducir costos
+        const favoresSnapshot = await getDocs(query(favoresRef, limit(50)));
 
         favoresSnapshot.forEach(doc => {
           const data = doc.data();
@@ -137,7 +138,8 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
     if (collections.includes('anuncios')) {
       try {
         const anunciosRef = collection(db, 'anuncios');
-        const anunciosSnapshot = await getDocs(query(anunciosRef, limit(100)));
+        // Limitar a 30 documentos (menos anuncios que favores típicamente)
+        const anunciosSnapshot = await getDocs(query(anunciosRef, limit(30)));
 
         anunciosSnapshot.forEach(doc => {
           const data = doc.data();
@@ -165,7 +167,8 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
     if (collections.includes('marketplace')) {
       try {
         const marketplaceRef = collection(db, 'marketplace');
-        const marketplaceSnapshot = await getDocs(query(marketplaceRef, limit(100)));
+        // Limitar a 50 documentos
+        const marketplaceSnapshot = await getDocs(query(marketplaceRef, limit(50)));
 
         marketplaceSnapshot.forEach(doc => {
           const data = doc.data();
@@ -194,9 +197,9 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
       try {
         console.log('[Search] Iniciando búsqueda en materiales...');
 
-        // 1. Cargar materiales primero (más rápido)
+        // 1. Cargar materiales primero (más rápido) - Reducido para mejorar rendimiento
         const materialRef = collection(db, 'material');
-        const materialSnapshot = await getDocs(query(materialRef, limit(300)));
+        const materialSnapshot = await getDocs(query(materialRef, limit(100)));
         console.log(`[Search] Materiales cargados: ${materialSnapshot.size}`);
 
         if (materialSnapshot.empty) {

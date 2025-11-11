@@ -9,13 +9,13 @@ import { getStorage } from "firebase/storage";
 // NUEVO PROYECTO: red-uc-eeuu (región US)
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyD4ZjQw7PQ1fPSA2P9axFobTPkZmBAnKss",
-  authDomain: "red-uc-eeuu.firebaseapp.com",
-  projectId: "red-uc-eeuu",
-  storageBucket: "red-uc-eeuu.firebasestorage.app",
-  messagingSenderId: "705871614487",
-  appId: "1:705871614487:web:aab5ec45d47db1f7d44252",
-  measurementId: "G-8RV5170JWM"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase

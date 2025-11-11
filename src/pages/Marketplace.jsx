@@ -91,7 +91,7 @@ const Marketplace = () => {
 
     try {
       setEliminando(productoId);
-      await eliminarProducto(productoId, currentUser.uid);
+      await eliminarProducto(productoId, currentUser.uid, currentUser);
       setProductos(productos.filter(p => p.id !== productoId));
     } catch (err) {
       console.error('Error al eliminar producto:', err);

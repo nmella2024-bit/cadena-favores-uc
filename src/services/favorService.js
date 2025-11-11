@@ -10,6 +10,7 @@ import {
   where,
   orderBy,
   limit,
+  startAfter,
   serverTimestamp,
   arrayUnion,
   Timestamp,
@@ -71,14 +72,16 @@ export const publicarFavor = async (favor, user) => {
 };
 
 /**
- * Obtiene todos los favores activos
+ * Obtiene todos los favores activos (sin paginación - deprecado)
+ * @deprecated Usar obtenerFavoresPaginados en su lugar
  * @returns {Promise<Array>} Lista de favores
  */
 export const obtenerFavores = async () => {
   try {
     const q = query(
       collection(db, 'favores'),
-      orderBy('fecha', 'desc')
+      orderBy('fecha', 'desc'),
+      limit(50) // Limitar a 50 para evitar descargas masivas
     );
 
     const querySnapshot = await getDocs(q);
@@ -97,6 +100,57 @@ export const obtenerFavores = async () => {
     return favores;
   } catch (error) {
     console.error('Error al obtener favores:', error);
+    throw error;
+  }
+};
+
+/**
+ * Obtiene favores con paginación (RECOMENDADO)
+ * @param {number} pageSize - Cantidad de favores por página (default: 20)
+ * @param {Object} lastVisible - Último documento de la página anterior (para paginación)
+ * @returns {Promise<{favores: Array, lastVisible: Object, hasMore: boolean}>} Favores y metadata de paginación
+ */
+export const obtenerFavoresPaginados = async (pageSize = 20, lastVisible = null) => {
+  try {
+    let q = query(
+      collection(db, 'favores'),
+      orderBy('fecha', 'desc'),
+      limit(pageSize + 1) // +1 para verificar si hay más páginas
+    );
+
+    if (lastVisible) {
+      q = query(
+        collection(db, 'favores'),
+        orderBy('fecha', 'desc'),
+        startAfter(lastVisible),
+        limit(pageSize + 1)
+      );
+    }
+
+    const querySnapshot = await getDocs(q);
+    const favores = [];
+    const hasMore = querySnapshot.docs.length > pageSize;
+
+    // Si hay más páginas, quitamos el último elemento
+    const docs = hasMore ? querySnapshot.docs.slice(0, -1) : querySnapshot.docs;
+
+    docs.forEach((doc) => {
+      const data = doc.data();
+      favores.push({
+        id: doc.id,
+        ...data,
+        fecha: data.fecha?.toDate().toLocaleDateString('es-CL') || 'Fecha desconocida',
+        _doc: doc, // Guardamos el documento para paginación
+      });
+    });
+
+    return {
+      favores,
+      lastVisible: docs.length > 0 ? docs[docs.length - 1] : null,
+      hasMore,
+    };
+  } catch (error) {
+    console.error('Error al obtener favores paginados:', error);
     throw error;
   }
 };

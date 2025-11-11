@@ -87,6 +87,47 @@
         { "fieldPath": "userId", "order": "ASCENDING" },
         { "fieldPath": "fechaCreacion", "order": "DESCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "notificaciones",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId", "order": "ASCENDING" },
+        { "fieldPath": "leida", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "material",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "carrera", "order": "ASCENDING" },
+        { "fieldPath": "anio", "order": "DESCENDING" },
+        { "fieldPath": "fechaSubida", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "material",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "carpetaId", "order": "ASCENDING" },
+        { "fieldPath": "fechaSubida", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "marketplace",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "estado", "order": "ASCENDING" },
+        { "fieldPath": "fecha", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "marketplace",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "autor", "order": "ASCENDING" },
+        { "fieldPath": "fecha", "order": "DESCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []

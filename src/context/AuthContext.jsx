@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { onAuthChange, registerUser, loginUser, logoutUser } from '../services/authService';
 import { getUserData } from '../services/userService';
 
@@ -194,7 +194,8 @@ export const AuthProvider = ({ children }) => {
     throw new Error('Usa el servicio eliminarFavor de favorService directamente');
   };
 
-  const value = {
+  // Memoizar el valor del contexto para evitar re-renders innecesarios
+  const value = useMemo(() => ({
     currentUser,
     usuario: currentUser, // Alias para compatibilidad
     firebaseUser,
@@ -205,7 +206,7 @@ export const AuthProvider = ({ children }) => {
     publishFavor,
     respondToFavor,
     deleteFavor,
-  };
+  }), [currentUser, firebaseUser, loading]); // Dependencias: solo cambian cuando estos valores cambian
 
   // Mostrar un loader mientras se verifica la autenticación
   if (loading) {

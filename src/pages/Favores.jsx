@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Briefcase, Inbox, Search, X, CalendarDays, UserRound, Tag, MessageCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
-import { obtenerFavores, responderFavor, eliminarFavor, ofrecerAyuda } from '../services/favorService';
+import { obtenerFavores, obtenerFavoresPaginados, responderFavor, eliminarFavor, ofrecerAyuda } from '../services/favorService';
 import FavorCard from '../components/FavorCard';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import GhostButton from '../components/ui/GhostButton';
@@ -42,20 +42,25 @@ const Favores = () => {
   const [onlyAvailable, setOnlyAvailable] = useState(false);
   const [soloParaMi, setSoloParaMi] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState('');
+  const [lastVisible, setLastVisible] = useState(null);
+  const [hasMore, setHasMore] = useState(true);
 
   // Modal state
   const favorId = searchParams.get('id');
   const selectedFavor = favors.find(f => f.id === favorId);
 
-  // Cargar favores desde Firestore al montar el componente
+  // Cargar favores desde Firestore al montar el componente (con paginación)
   useEffect(() => {
     const cargarFavores = async () => {
       try {
         setIsLoading(true);
         setError('');
-        const favoresData = await obtenerFavores();
-        setFavors(favoresData);
+        const { favores, lastVisible: last, hasMore: more } = await obtenerFavoresPaginados(20);
+        setFavors(favores);
+        setLastVisible(last);
+        setHasMore(more);
       } catch (err) {
         console.error('Error al cargar favores:', err);
         setError('Error al cargar los favores. Intenta recargar la página.');
@@ -66,6 +71,23 @@ const Favores = () => {
 
     cargarFavores();
   }, []);
+
+  // Función para cargar más favores
+  const cargarMasFavores = async () => {
+    if (!hasMore || isLoadingMore) return;
+
+    try {
+      setIsLoadingMore(true);
+      const { favores: nuevosFavores, lastVisible: last, hasMore: more } = await obtenerFavoresPaginados(20, lastVisible);
+      setFavors(prev => [...prev, ...nuevosFavores]);
+      setLastVisible(last);
+      setHasMore(more);
+    } catch (err) {
+      console.error('Error al cargar más favores:', err);
+    } finally {
+      setIsLoadingMore(false);
+    }
+  };
 
   // Efecto para simular carga cuando cambian los filtros
   useEffect(() => {
@@ -131,8 +153,10 @@ const Favores = () => {
         alert('¡Gracias por tu ayuda! El solicitante podrá ver tu oferta.');
         closeModal();
         // Recargar los favores
-        const favoresData = await obtenerFavores();
-        setFavors(favoresData);
+        const { favores, lastVisible: last, hasMore: more } = await obtenerFavoresPaginados(20);
+        setFavors(favores);
+        setLastVisible(last);
+        setHasMore(more);
       } catch (error) {
         console.error('Error al ofrecer ayuda:', error);
         alert(error.message || 'Error al ofrecer ayuda. Intenta nuevamente.');
@@ -300,6 +324,17 @@ const Favores = () => {
                     <FavorCard key={favor.id} favor={favor} />
                   ))}
                 </div>
+                {hasMore && !isLoading && (
+                  <div className="mt-8 flex justify-center">
+                    <GhostButton
+                      onClick={cargarMasFavores}
+                      disabled={isLoadingMore}
+                      className="px-6 py-2.5"
+                    >
+                      {isLoadingMore ? 'Cargando...' : 'Cargar más favores'}
+                    </GhostButton>
+                  </div>
+                )}
               </div>
             )}
           </div>

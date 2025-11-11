@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
 import ProtectedRoute from './components/ProtectedRoute';
 
-// Pages
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Registro from './pages/Registro';
-import Favores from './pages/Favores';
-import PublicarFavor from './pages/PublicarFavor';
-import Perfil from './pages/Perfil';
-import PerfilPublico from './pages/PerfilPublico';
-import FavorDetalle from './pages/FavorDetalle';
-import Anuncios from './pages/Anuncios';
-import Marketplace from './pages/Marketplace';
-import Material from './pages/Material';
-import EmailVerificationPending from './pages/EmailVerificationPending';
-import AdminSeedFolders from './components/AdminSeedFolders';
-import MigrarMaterialesExistentes from './components/MigrarMaterialesExistentes';
-import DiagnosticoMaterial from './components/DiagnosticoMaterial';
+// Loading component
+const LoadingFallback = () => (
+  <div className="flex min-h-screen items-center justify-center bg-[rgb(var(--bg-canvas))]">
+    <div className="text-center">
+      <div className="mx-auto h-12 w-12 animate-spin rounded-full border-4 border-brand border-t-transparent"></div>
+      <p className="mt-4 text-sm text-text-muted">Cargando...</p>
+    </div>
+  </div>
+);
+
+// Pages - Lazy loaded para code splitting
+const Home = lazy(() => import('./pages/Home'));
+const Login = lazy(() => import('./pages/Login'));
+const Registro = lazy(() => import('./pages/Registro'));
+const Favores = lazy(() => import('./pages/Favores'));
+const PublicarFavor = lazy(() => import('./pages/PublicarFavor'));
+const Perfil = lazy(() => import('./pages/Perfil'));
+const PerfilPublico = lazy(() => import('./pages/PerfilPublico'));
+const FavorDetalle = lazy(() => import('./pages/FavorDetalle'));
+const Anuncios = lazy(() => import('./pages/Anuncios'));
+const Marketplace = lazy(() => import('./pages/Marketplace'));
+const Material = lazy(() => import('./pages/Material'));
+const EmailVerificationPending = lazy(() => import('./pages/EmailVerificationPending'));
+const AdminSeedFolders = lazy(() => import('./components/AdminSeedFolders'));
+const MigrarMaterialesExistentes = lazy(() => import('./components/MigrarMaterialesExistentes'));
+const DiagnosticoMaterial = lazy(() => import('./components/DiagnosticoMaterial'));
 
 // UCloseMeal Pages - TEMPORALMENTE DESHABILITADO
 // import UCloseMealRoleSelect from './pages/UCloseMealRoleSelect';
@@ -35,9 +45,10 @@ function App() {
     <AuthProvider>
       <Router>
         <Layout>
-          <Routes>
-            {/* Página principal */}
-            <Route path="/" element={<Home />} />
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              {/* Página principal */}
+              <Route path="/" element={<Home />} />
 
             {/* Autenticación */}
             <Route path="/login" element={<Login />} />
@@ -116,9 +127,10 @@ function App() {
               }
             />
 
-            {/* Ruta por defecto - redirige a home */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+              {/* Ruta por defecto - redirige a home */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
         </Layout>
       </Router>
     </AuthProvider>

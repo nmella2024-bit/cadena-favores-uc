@@ -38,10 +38,29 @@ service cloud.firestore {
       allow delete: if request.auth != null && request.auth.uid == resource.data.usuarioId;
     }
 
-    // Reglas para la colección de usuarios - ABIERTAS TEMPORALMENTE
+    // Reglas para la colección de usuarios
     match /usuarios/{userId} {
-      allow read: if true;
-      allow write: if true;
+      // Solo usuarios autenticados pueden leer perfiles
+      allow read: if request.auth != null;
+
+      // Solo el dueño del perfil puede actualizarlo
+      // Además, prevenir cambio de campos críticos como rol
+      allow update: if request.auth != null &&
+                       request.auth.uid == userId &&
+                       // Prevenir cambio de rol (solo admins pueden cambiar roles vía Cloud Functions)
+                       request.resource.data.rol == resource.data.rol &&
+                       // Prevenir cambio de uid
+                       request.resource.data.uid == resource.data.uid;
+
+      // La creación de usuarios se maneja automáticamente vía Cloud Function en onCreate de Auth
+      // Pero permitimos crear perfil si el usuario autenticado coincide con el userId
+      allow create: if request.auth != null &&
+                       request.auth.uid == userId &&
+                       // El rol inicial debe ser "comun"
+                       request.resource.data.rol == 'comun';
+
+      // No se permite eliminar usuarios (debe hacerse desde Firebase Auth)
+      allow delete: if false;
     }
 
     // Reglas para la colección de feedback
@@ -96,9 +115,11 @@ service cloud.firestore {
       allow update: if request.auth != null &&
                     request.auth.uid == resource.data.autor;
 
-      // Solo el autor puede eliminar su producto
-      allow delete: if request.auth != null &&
-                    request.auth.uid == resource.data.autor;
+      // El autor o los admins pueden eliminar productos
+      allow delete: if request.auth != null && (
+                    request.auth.uid == resource.data.autor ||
+                    esUsuarioAdmin()
+                    );
     }
 
     // Reglas para la colección de pedidos (UCloseMeal)
