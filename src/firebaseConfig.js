@@ -20,32 +20,71 @@ const firebaseConfig = {
 
 // Validar que las variables de entorno estén configuradas
 if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
-  console.error('Error: Firebase configuration is missing. Please check your environment variables.');
-  console.error('Missing variables:', {
-    apiKey: !firebaseConfig.apiKey ? 'VITE_FIREBASE_API_KEY' : 'OK',
-    authDomain: !firebaseConfig.authDomain ? 'VITE_FIREBASE_AUTH_DOMAIN' : 'OK',
-    projectId: !firebaseConfig.projectId ? 'VITE_FIREBASE_PROJECT_ID' : 'OK',
-    storageBucket: !firebaseConfig.storageBucket ? 'VITE_FIREBASE_STORAGE_BUCKET' : 'OK',
-    messagingSenderId: !firebaseConfig.messagingSenderId ? 'VITE_FIREBASE_MESSAGING_SENDER_ID' : 'OK',
-    appId: !firebaseConfig.appId ? 'VITE_FIREBASE_APP_ID' : 'OK',
+  const errorMsg = 'FIREBASE ERROR: Variables de entorno faltantes. Revisa la configuración en Vercel.';
+  console.error(errorMsg);
+  console.error('Variables faltantes:', {
+    apiKey: !firebaseConfig.apiKey ? 'VITE_FIREBASE_API_KEY ❌' : '✅',
+    authDomain: !firebaseConfig.authDomain ? 'VITE_FIREBASE_AUTH_DOMAIN ❌' : '✅',
+    projectId: !firebaseConfig.projectId ? 'VITE_FIREBASE_PROJECT_ID ❌' : '✅',
+    storageBucket: !firebaseConfig.storageBucket ? 'VITE_FIREBASE_STORAGE_BUCKET ❌' : '✅',
+    messagingSenderId: !firebaseConfig.messagingSenderId ? 'VITE_FIREBASE_MESSAGING_SENDER_ID ❌' : '✅',
+    appId: !firebaseConfig.appId ? 'VITE_FIREBASE_APP_ID ❌' : '✅',
   });
+
+  // Mostrar mensaje visible en la página para debugging
+  if (typeof document !== 'undefined') {
+    document.body.innerHTML = `
+      <div style="padding: 40px; font-family: system-ui; max-width: 800px; margin: 0 auto;">
+        <h1 style="color: #dc2626;">⚠️ Error de Configuración</h1>
+        <p>Las variables de entorno de Firebase no están configuradas correctamente.</p>
+        <h2>Variables faltantes:</h2>
+        <ul>
+          ${!firebaseConfig.apiKey ? '<li>❌ VITE_FIREBASE_API_KEY</li>' : '<li>✅ VITE_FIREBASE_API_KEY</li>'}
+          ${!firebaseConfig.authDomain ? '<li>❌ VITE_FIREBASE_AUTH_DOMAIN</li>' : '<li>✅ VITE_FIREBASE_AUTH_DOMAIN</li>'}
+          ${!firebaseConfig.projectId ? '<li>❌ VITE_FIREBASE_PROJECT_ID</li>' : '<li>✅ VITE_FIREBASE_PROJECT_ID</li>'}
+          ${!firebaseConfig.storageBucket ? '<li>❌ VITE_FIREBASE_STORAGE_BUCKET</li>' : '<li>✅ VITE_FIREBASE_STORAGE_BUCKET</li>'}
+          ${!firebaseConfig.messagingSenderId ? '<li>❌ VITE_FIREBASE_MESSAGING_SENDER_ID</li>' : '<li>✅ VITE_FIREBASE_MESSAGING_SENDER_ID</li>'}
+          ${!firebaseConfig.appId ? '<li>❌ VITE_FIREBASE_APP_ID</li>' : '<li>✅ VITE_FIREBASE_APP_ID</li>'}
+        </ul>
+        <h3>Cómo solucionarlo:</h3>
+        <ol>
+          <li>Ve a tu Dashboard de Vercel</li>
+          <li>Selecciona tu proyecto</li>
+          <li>Ve a Settings → Environment Variables</li>
+          <li>Agrega todas las variables que faltan</li>
+          <li>Redeploya el proyecto</li>
+        </ol>
+      </div>
+    `;
+  }
+
+  throw new Error(errorMsg);
 }
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+let app, analytics, auth, db, storage;
 
-// Initialize Analytics only if supported (prevents errors in unsupported environments)
-let analytics = null;
-isSupported().then(yes => {
-  if (yes) {
-    analytics = getAnalytics(app);
-  }
-}).catch(err => {
-  console.warn('Analytics not supported:', err);
-});
+try {
+  app = initializeApp(firebaseConfig);
+  console.log('✅ Firebase inicializado correctamente');
 
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
+  // Initialize Analytics only if supported (prevents errors in unsupported environments)
+  analytics = null;
+  isSupported().then(yes => {
+    if (yes) {
+      analytics = getAnalytics(app);
+      console.log('✅ Analytics inicializado');
+    }
+  }).catch(err => {
+    console.warn('Analytics not supported:', err);
+  });
+
+  auth = getAuth(app);
+  db = getFirestore(app);
+  storage = getStorage(app);
+} catch (error) {
+  console.error('❌ Error al inicializar Firebase:', error);
+  throw error;
+}
 
 export { app, analytics, auth, db, storage };
