@@ -169,20 +169,20 @@ service cloud.firestore {
 
     // ============================================
     // Reglas para la colección de CARPETAS (folders)
-    // Solo usuarios EXCLUSIVOS pueden gestionar carpetas
+    // Usuarios EXCLUSIVOS y ADMINS pueden gestionar carpetas
     // ============================================
     match /folders/{folderId} {
       // Todos pueden leer carpetas (para ver la estructura)
       allow read: if true;
 
-      // Solo usuarios con rol "exclusivo" pueden crear carpetas
-      allow create: if esUsuarioExclusivo();
+      // Usuarios con rol "exclusivo" o "admin" pueden crear carpetas
+      allow create: if esUsuarioExclusivoOAdmin();
 
-      // Solo usuarios con rol "exclusivo" pueden modificar carpetas
-      allow update: if esUsuarioExclusivo();
+      // Usuarios con rol "exclusivo" o "admin" pueden modificar carpetas
+      allow update: if esUsuarioExclusivoOAdmin();
 
-      // Solo usuarios con rol "exclusivo" pueden eliminar carpetas
-      allow delete: if esUsuarioExclusivo();
+      // Usuarios con rol "exclusivo" o "admin" pueden eliminar carpetas
+      allow delete: if esUsuarioExclusivoOAdmin();
     }
   }
 }

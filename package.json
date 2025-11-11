@@ -26,7 +26,9 @@
     "test:drive": "node scripts/test-drive-connection.js",
     "comercial:fix-csv": "node scripts/fix-comercial-csv.js",
     "comercial:create-folders": "node scripts/create-folders-from-comercial.js",
-    "comercial:import": "node scripts/import-materiales-from-comercial.js"
+    "comercial:import": "node scripts/import-materiales-from-comercial.js",
+    "enfermeria:create-folders": "node scripts/create-material-folders-from-csv.js",
+    "enfermeria:import": "node scripts/import-enfermeria-from-csv.js"
   },
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",
