@@ -73,7 +73,7 @@ const Navbar = () => {
               to="/"
               className="flex items-center gap-1 sm:gap-1.5 md:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0 min-w-0"
             >
-              <img src={logo} alt="NexUC" className="h-7 w-7 sm:h-9 sm:w-9 md:h-12 md:w-12 rounded object-cover dark:invert flex-shrink-0" />
+              <img src={logo} alt="NexUC" className="h-9 w-9 sm:h-11 sm:w-11 md:h-15 md:w-15 rounded object-cover dark:invert flex-shrink-0" />
               <div className="flex flex-col min-w-0">
                 <span className="text-xs sm:text-sm md:text-base font-semibold leading-tight text-text-primary truncate">
                   NexUC
@@ -85,7 +85,7 @@ const Navbar = () => {
             </Link>
 
             {/* Búsqueda global - Desktop (centrado) */}
-            <div className="hidden md:block flex-1 max-w-2xl mx-4">
+            <div className="hidden md:block flex-1 max-w-xl mx-4">
               <GlobalSearch />
             </div>
 

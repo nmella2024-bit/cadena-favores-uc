@@ -28,9 +28,7 @@ const validateForm = ({ titulo, descripcion, categoria }) => {
     errors.titulo = 'El título no puede superar los 80 caracteres.';
   }
 
-  if (!descripcion || descripcion.trim().length < 30) {
-    errors.descripcion = 'Describe el favor con al menos 30 caracteres.';
-  }
+  // Description is now optional - no minimum character requirement
 
   if (!categoria) {
     errors.categoria = 'Selecciona una categoría para tu favor.';
@@ -173,12 +171,11 @@ const PublicarFavor = () => {
           <TextareaField
             id="descripcion"
             name="descripcion"
-            label="Descripción"
+            label="Descripción (opcional)"
             placeholder="Explica los detalles: por qué necesitas ayuda, plazos, qué ofreces a cambio, etc."
             value={formData.descripcion}
             onChange={handleChange}
             error={errors.descripcion}
-            required
             rows={6}
           />
 
