@@ -314,8 +314,8 @@ const GlobalSearch = () => {
   return (
     <div ref={searchRef} className="relative w-full md:w-auto flex-shrink-0">
       {/* Input de búsqueda - Desktop */}
-      <div className="hidden md:block relative w-28 lg:w-36 xl:w-44">
-        <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted flex-shrink-0" />
+      <div className="hidden md:block relative w-20 lg:w-24">
+        <Search className="absolute left-1.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-text-muted flex-shrink-0" />
         <input
           ref={inputRef}
           type="text"
@@ -332,19 +332,19 @@ const GlobalSearch = () => {
           onKeyDown={(e) => console.log('[GlobalSearch INPUT Desktop] tecla presionada:', e.key)}
           onInput={(e) => console.log('[GlobalSearch INPUT Desktop] onInput disparado:', e.target.value)}
           placeholder="Buscar..."
-          className="w-full pl-7 pr-8 py-1.5 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all text-xs lg:text-sm"
+          className="w-full pl-6 pr-7 py-1.5 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-all text-xs"
         />
         {searchTerm && (
           <button
             onClick={handleClear}
-            className="absolute right-1.5 top-1/2 -translate-y-1/2 p-0.5 hover:bg-canvas rounded transition-colors"
+            className="absolute right-1 top-1/2 -translate-y-1/2 p-0.5 hover:bg-canvas rounded transition-colors"
           >
-            <X className="w-3 h-3 lg:w-3.5 lg:h-3.5 text-text-muted" />
+            <X className="w-3 h-3 text-text-muted" />
           </button>
         )}
         {isLoading && (
-          <div className="absolute right-1.5 top-1/2 -translate-y-1/2">
-            <Loader2 className="w-3 h-3 lg:w-3.5 lg:h-3.5 text-brand animate-spin" />
+          <div className="absolute right-1 top-1/2 -translate-y-1/2">
+            <Loader2 className="w-3 h-3 text-brand animate-spin" />
           </div>
         )}
       </div>
