@@ -52,9 +52,10 @@ const Navbar = () => {
               : 'text-text-muted hover:text-text-primary hover:bg-card/80 dark:hover:bg-card/60',
           ].join(' ')
         }
+        title={item.label}
       >
         <Icon className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
-        <span className="whitespace-nowrap">{item.label}</span>
+        <span className="whitespace-nowrap hidden lg:inline">{item.label}</span>
       </NavLink>
     );
   };
@@ -85,7 +86,7 @@ const Navbar = () => {
             </Link>
 
             {/* Búsqueda global - Desktop (centrado) */}
-            <div className="hidden md:block flex-1 max-w-md mx-2 lg:mx-4">
+            <div className="hidden md:flex items-center mx-2">
               <GlobalSearch />
             </div>
 
@@ -106,7 +107,7 @@ const Navbar = () => {
             </div>
 
             {/* Navegación desktop */}
-            <div className="hidden items-center gap-1 lg:gap-2 md:flex flex-shrink-0">
+            <div className="hidden items-center gap-1 lg:gap-2 md:flex flex-shrink-0 ml-auto">
               {/* Navegación principal */}
               {mainNavigation.map((item) => {
                 // Si tiene submenú, renderizar dropdown
@@ -125,9 +126,10 @@ const Navbar = () => {
                                 ? 'bg-brand/10 text-brand underline decoration-2 underline-offset-4 dark:bg-brand/20'
                                 : 'text-text-muted hover:text-text-primary hover:bg-card/80 dark:hover:bg-card/60',
                             ].join(' ')}
+                            title={item.label}
                           >
                             <Icon className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
-                            <span className="whitespace-nowrap">{item.label}</span>
+                            <span className="whitespace-nowrap hidden lg:inline">{item.label}</span>
                             <ChevronDown className={`h-4 w-4 flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
                           </HeadlessMenu.Button>
                           <HeadlessMenu.Items className="absolute right-0 mt-2 w-48 origin-top-right rounded-lg border border-border bg-card shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
@@ -167,29 +169,32 @@ const Navbar = () => {
               <button
                 type="button"
                 onClick={() => setIsFeedbackOpen(true)}
-                className="inline-flex items-center gap-1 lg:gap-2 rounded-lg border border-brand/30 bg-brand/10 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium text-brand transition-colors hover:bg-brand/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
+                className="hidden lg:inline-flex items-center gap-1 lg:gap-2 rounded-lg border border-brand/30 bg-brand/10 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium text-brand transition-colors hover:bg-brand/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
               >
                 <MessageSquare className="h-4 w-4 flex-shrink-0" />
                 <span className="whitespace-nowrap">Feedback</span>
               </button>
               {currentUser && <NotificationBell />}
-              <ThemeToggle />
+              <div className="hidden lg:block">
+                <ThemeToggle />
+              </div>
 
               {/* Botones de autenticación */}
               {currentUser ? (
                 <button
                   type="button"
                   onClick={logout}
-                  className="inline-flex items-center whitespace-nowrap rounded-lg border border-border bg-card/70 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))] dark:bg-card/60"
+                  className="inline-flex items-center whitespace-nowrap rounded-lg border border-border bg-card/70 px-2 py-2 text-xs font-medium text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))] dark:bg-card/60"
                 >
-                  Cerrar sesión
+                  <span className="hidden lg:inline">Cerrar sesión</span>
+                  <span className="lg:hidden">Salir</span>
                 </button>
               ) : (
                 <Link
                   to="/registro"
-                  className="inline-flex items-center whitespace-nowrap rounded-lg bg-[rgb(var(--brand))] px-3 lg:px-4 py-2 text-xs lg:text-sm font-medium text-white shadow-sm transition-colors hover:bg-[rgb(var(--brand-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
+                  className="inline-flex items-center whitespace-nowrap rounded-lg bg-[rgb(var(--brand))] px-2 py-2 text-xs font-medium text-white shadow-sm transition-colors hover:bg-[rgb(var(--brand-hover))] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 focus-visible:ring-offset-2 focus-visible:ring-offset-[rgb(var(--bg-canvas))]"
                 >
-                  Registrarse
+                  Registro
                 </Link>
               )}
 
