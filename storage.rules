@@ -8,11 +8,12 @@ service firebase.storage {
       // Permitir lectura pública de todas las imágenes de anuncios
       allow read: if true;
 
-      // Solo usuarios con rol "exclusivo" pueden subir imágenes de anuncios
+      // Solo usuarios con rol "exclusivo" o "admin" pueden subir imágenes de anuncios
       // y solo a su propia carpeta
       allow write: if request.auth != null &&
                    request.auth.uid == userId &&
-                   firestore.get(/databases/(default)/documents/usuarios/$(request.auth.uid)).data.rol == 'exclusivo' &&
+                   (firestore.get(/databases/(default)/documents/usuarios/$(request.auth.uid)).data.rol == 'exclusivo' ||
+                    firestore.get(/databases/(default)/documents/usuarios/$(request.auth.uid)).data.rol == 'admin') &&
                    request.resource.size < 5 * 1024 * 1024 && // Máximo 5MB
                    request.resource.contentType.matches('image/.*');
     }

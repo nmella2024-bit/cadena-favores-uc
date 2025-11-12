@@ -60,16 +60,16 @@ export const confirmarFinalizacion = async (favorId, userId, rolEnFavor) => {
 
 /**
  * Califica a un usuario después de completar un favor
- * SOLO el solicitante puede calificar al ayudante
+ * Tanto el solicitante como el ayudante pueden calificarse mutuamente
  * @param {Object} calificacionData - Datos de la calificación
  * @param {string} calificacionData.favorId - ID del favor
- * @param {string} calificacionData.calificadorId - ID del solicitante que califica
- * @param {string} calificacionData.calificadorNombre - Nombre del solicitante
- * @param {string} calificacionData.calificadoId - ID del ayudante calificado
- * @param {string} calificacionData.calificadoNombre - Nombre del ayudante
+ * @param {string} calificacionData.calificadorId - ID del usuario que califica
+ * @param {string} calificacionData.calificadorNombre - Nombre del usuario que califica
+ * @param {string} calificacionData.calificadoId - ID del usuario calificado
+ * @param {string} calificacionData.calificadoNombre - Nombre del usuario calificado
  * @param {number} calificacionData.estrellas - Calificación de 1 a 5
  * @param {string} calificacionData.comentario - Comentario opcional
- * @param {string} calificacionData.rolCalificador - Siempre debe ser 'solicitante'
+ * @param {string} calificacionData.rolCalificador - 'solicitante' o 'ayudante'
  * @returns {Promise<string>} ID de la calificación creada
  */
 export const calificarUsuario = async (calificacionData) => {
@@ -253,7 +253,7 @@ export const obtenerCalificacionesUsuario = async (userId) => {
 
 /**
  * Verifica si un usuario puede calificar en un favor específico
- * SOLO el solicitante puede calificar al ayudante
+ * Tanto el solicitante como el ayudante pueden calificarse mutuamente
  * @param {string} favorId - ID del favor
  * @param {string} userId - ID del usuario
  * @returns {Promise<Object>} Información sobre si puede calificar y a quién
@@ -342,7 +342,7 @@ export const verificarPuedeCalificar = async (favorId, userId) => {
 
 /**
  * Verifica si un usuario puede calificar en un favor FINALIZADO
- * SOLO el solicitante puede calificar al ayudante después de finalizar
+ * Tanto el solicitante como el ayudante pueden calificarse mutuamente
  * @param {string} favorId - ID del favor
  * @param {string} userId - ID del usuario
  * @returns {Promise<Object>} Información sobre si puede calificar y a quién
@@ -389,37 +389,34 @@ export const verificarPuedeCalificarFinalizado = async (favorId, userId) => {
       };
     }
 
-    // SOLO el solicitante puede calificar
-    if (favorData.usuarioId !== userId) {
-      console.log('❌ [verificarPuedeCalificarFinalizado] Usuario no es solicitante');
+    // Determinar el rol del usuario actual
+    let rolUsuario = null;
+    let usuarioACalificarId = null;
+
+    if (favorData.usuarioId === userId) {
+      // El usuario actual es el solicitante, califica al ayudante
+      rolUsuario = 'solicitante';
+      usuarioACalificarId = favorData.ayudanteId;
+    } else if (favorData.ayudanteId === userId) {
+      // El usuario actual es el ayudante, califica al solicitante
+      rolUsuario = 'ayudante';
+      usuarioACalificarId = favorData.usuarioId;
+    } else {
+      console.log('❌ [verificarPuedeCalificarFinalizado] Usuario no participa en el favor');
       return {
         puedeCalificar: false,
-        razon: 'Solo el solicitante del favor puede calificar al ayudante',
-        noEsSolicitante: true,
+        razon: 'No participaste en este favor',
+        noParticipa: true,
       };
     }
 
-    // Verificar que existe ayudanteId
-    if (!favorData.ayudanteId) {
-      console.error('❌ [verificarPuedeCalificarFinalizado] No hay ayudanteId');
-      return {
-        puedeCalificar: false,
-        razon: 'No se registró quién ayudó con este favor',
-        sinAyudante: true,
-      };
-    }
+    console.log('👤 [verificarPuedeCalificarFinalizado] Rol del usuario:', rolUsuario, 'Calificará a:', usuarioACalificarId);
 
-    // El solicitante califica al ayudante
-    const rolUsuario = 'solicitante';
-    const usuarioACalificarId = favorData.ayudanteId;
+    // Obtener nombre del usuario a calificar
+    const usuarioACalificarDoc = await getDoc(doc(db, 'usuarios', usuarioACalificarId));
+    const usuarioACalificarNombre = usuarioACalificarDoc.exists() ? usuarioACalificarDoc.data()?.nombre || 'Usuario' : 'Usuario';
 
-    console.log('👤 [verificarPuedeCalificarFinalizado] Obteniendo datos del ayudante:', usuarioACalificarId);
-
-    // Obtener nombre del ayudante
-    const ayudanteDoc = await getDoc(doc(db, 'usuarios', usuarioACalificarId));
-    const usuarioACalificarNombre = ayudanteDoc.exists() ? ayudanteDoc.data()?.nombre || 'Usuario' : 'Usuario';
-
-    console.log('✅ [verificarPuedeCalificarFinalizado] Nombre del ayudante:', usuarioACalificarNombre);
+    console.log('✅ [verificarPuedeCalificarFinalizado] Nombre del usuario a calificar:', usuarioACalificarNombre);
 
     // Verificar si ya calificó
     const calificacionesRef = collection(db, 'calificaciones');
