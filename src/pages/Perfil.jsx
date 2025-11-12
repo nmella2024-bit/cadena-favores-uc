@@ -543,7 +543,7 @@ const Perfil = () => {
                           {favor.miContacto.solicitanteNombre}
                         </p>
                         <a
-                          href={`https://wa.me/${favor.miContacto.solicitanteTelefono.replace(/[^0-9]/g, '')}`}
+                          href={`https://wa.me/${favor.miContacto.solicitanteTelefono.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola ${favor.miContacto.solicitanteNombre}! Me ofrecí a ayudarte con: "${favor.titulo}" a través de NexUC. ¿Sigues necesitando ayuda?`)}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 text-sm text-emerald-600 hover:text-emerald-700 font-medium"

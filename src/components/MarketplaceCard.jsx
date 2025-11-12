@@ -150,7 +150,7 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
               )}
               {autorTelefono && (
                 <a
-                  href={`https://wa.me/${autorTelefono.replace(/[^0-9]/g, '')}`}
+                  href={`https://wa.me/${autorTelefono.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola! Vi tu publicación "${producto.titulo}" en el marketplace de NexUC. ¿Está todavía disponible?`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/10 px-2 py-1 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
