@@ -375,12 +375,24 @@ const GlobalSearch = () => {
         </div>
       )}
 
+      {/* Backdrop móvil para cerrar al hacer clic fuera */}
+      {isOpen && (
+        <div
+          className="md:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
+          onClick={() => {
+            setIsOpen(false);
+            setSearchTerm('');
+            setResults(null);
+          }}
+        />
+      )}
+
       {/* Dropdown de resultados - Móvil */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 top-14 sm:top-16 z-50 px-2 animate-fadeIn overflow-y-auto">
-          <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] w-full my-2">
+        <div className="md:hidden fixed inset-x-2 top-14 sm:top-16 bottom-2 z-50 animate-fadeIn pointer-events-none">
+          <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden h-full flex flex-col pointer-events-auto">
             {/* Input de búsqueda móvil */}
-            <div className="p-2 sm:p-3 border-b border-border bg-canvas sticky top-0 z-10">
+            <div className="p-2 sm:p-3 border-b border-border bg-canvas flex-shrink-0">
               <div className="relative">
                 <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted flex-shrink-0" />
                 <input
@@ -425,7 +437,7 @@ const GlobalSearch = () => {
             </div>
 
             {/* Resultados móvil */}
-            <div className="overflow-y-auto" style={{ maxHeight: 'calc(100vh - 10rem)' }}>
+            <div className="overflow-y-auto flex-1">
               {searchTerm.trim().length >= 2 ? (
                 isLoading && !results ? (
                   <div className="p-8 text-center">
@@ -446,18 +458,6 @@ const GlobalSearch = () => {
             </div>
           </div>
         </div>
-      )}
-
-      {/* Backdrop móvil para cerrar al hacer clic fuera */}
-      {isOpen && (
-        <div
-          className="md:hidden fixed inset-0 z-40"
-          onClick={() => {
-            setIsOpen(false);
-            setSearchTerm('');
-            setResults(null);
-          }}
-        />
       )}
     </div>
   );
