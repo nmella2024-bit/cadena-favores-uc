@@ -72,14 +72,14 @@ const Navbar = () => {
             {/* Logo */}
             <Link
               to="/"
-              className="flex items-center gap-1 sm:gap-1.5 md:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0"
+              className="flex items-center gap-1.5 sm:gap-2 md:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0"
             >
-              <img src={logo} alt="NexUC" className="h-8 w-8 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded object-cover dark:invert flex-shrink-0" />
-              <div className="flex flex-col min-w-0 hidden xs:flex">
-                <span className="text-[10px] sm:text-xs md:text-sm lg:text-base font-semibold leading-tight text-text-primary truncate">
+              <img src={logo} alt="NexUC" className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded object-cover dark:invert flex-shrink-0" />
+              <div className="flex flex-col min-w-0">
+                <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold leading-tight text-text-primary truncate">
                   NexUC
                 </span>
-                <span className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">
+                <span className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">
                   Tu Espacio UC
                 </span>
               </div>

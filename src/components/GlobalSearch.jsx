@@ -151,163 +151,176 @@ const GlobalSearch = () => {
     const hasResults = results.total > 0;
 
     if (!hasResults) {
-      return (
-        <div className="p-8 text-center">
-          <Search className="w-12 h-12 text-text-muted/30 mx-auto mb-3" />
-          <p className="text-text-muted text-sm">
-            No se encontraron resultados para "{searchTerm}"
-          </p>
-        </div>
-      );
+      return null;
     }
 
     return (
-      <div className="divide-y divide-border overflow-y-auto" style={{ maxHeight: '700px' }}>
+      <>
         {/* Favores */}
         {results.favores.length > 0 && (
-          <div className="p-4">
-            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
+          <div className="p-3 md:p-4">
+            <p className="text-xs md:text-sm font-semibold text-text-muted uppercase tracking-wide mb-2 md:mb-3 px-1">
               Favores ({results.favores.length})
             </p>
-            {results.favores.map(item => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
-              >
-                {getIconForType(item.type)}
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-medium text-text-primary truncate">
-                    {item.titulo}
-                  </p>
-                  <p className="text-sm text-text-muted truncate mt-1">
-                    {item.descripcion}
-                  </p>
-                </div>
-              </button>
-            ))}
+            <div className="space-y-1">
+              {results.favores.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => handleItemClick(item)}
+                  className="w-full flex items-start gap-2 md:gap-3 p-2 md:p-3 hover:bg-card rounded-lg transition-colors text-left active:bg-card/80"
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    {getIconForType(item.type)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm md:text-base font-medium text-text-primary truncate">
+                      {item.titulo}
+                    </p>
+                    <p className="text-xs md:text-sm text-text-muted line-clamp-2 mt-0.5 md:mt-1">
+                      {item.descripcion}
+                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
         {/* Anuncios */}
         {results.anuncios.length > 0 && (
-          <div className="p-4">
-            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
+          <div className="p-3 md:p-4 border-t border-border">
+            <p className="text-xs md:text-sm font-semibold text-text-muted uppercase tracking-wide mb-2 md:mb-3 px-1">
               Anuncios ({results.anuncios.length})
             </p>
-            {results.anuncios.map(item => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
-              >
-                {getIconForType(item.type)}
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-medium text-text-primary truncate">
-                    {item.titulo}
-                  </p>
-                  <p className="text-sm text-text-muted truncate mt-1">
-                    {item.descripcion}
-                  </p>
-                </div>
-              </button>
-            ))}
+            <div className="space-y-1">
+              {results.anuncios.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => handleItemClick(item)}
+                  className="w-full flex items-start gap-2 md:gap-3 p-2 md:p-3 hover:bg-card rounded-lg transition-colors text-left active:bg-card/80"
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    {getIconForType(item.type)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm md:text-base font-medium text-text-primary truncate">
+                      {item.titulo}
+                    </p>
+                    <p className="text-xs md:text-sm text-text-muted line-clamp-2 mt-0.5 md:mt-1">
+                      {item.descripcion}
+                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
         {/* Marketplace */}
         {results.marketplace.length > 0 && (
-          <div className="p-4">
-            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
+          <div className="p-3 md:p-4 border-t border-border">
+            <p className="text-xs md:text-sm font-semibold text-text-muted uppercase tracking-wide mb-2 md:mb-3 px-1">
               Marketplace ({results.marketplace.length})
             </p>
-            {results.marketplace.map(item => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
-              >
-                {getIconForType(item.type)}
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-medium text-text-primary truncate">
-                    {item.titulo}
-                  </p>
-                  {item.precio && (
-                    <p className="text-sm font-semibold text-green-600 mt-1">
-                      ${item.precio.toLocaleString('es-CL')}
+            <div className="space-y-1">
+              {results.marketplace.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => handleItemClick(item)}
+                  className="w-full flex items-start gap-2 md:gap-3 p-2 md:p-3 hover:bg-card rounded-lg transition-colors text-left active:bg-card/80"
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    {getIconForType(item.type)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm md:text-base font-medium text-text-primary truncate">
+                      {item.titulo}
                     </p>
-                  )}
-                </div>
-              </button>
-            ))}
+                    {item.precio && (
+                      <p className="text-xs md:text-sm font-semibold text-green-600 mt-0.5 md:mt-1">
+                        ${item.precio.toLocaleString('es-CL')}
+                      </p>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
         {/* Material */}
         {results.material.length > 0 && (
-          <div className="p-4">
-            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
+          <div className="p-3 md:p-4 border-t border-border">
+            <p className="text-xs md:text-sm font-semibold text-text-muted uppercase tracking-wide mb-2 md:mb-3 px-1">
               Material ({results.material.length})
             </p>
-            {results.material.map(item => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
-              >
-                {getIconForType(item.type)}
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-medium text-text-primary truncate">
-                    {item.titulo}
-                  </p>
-                  {item.carpetaInfo ? (
-                    <p className="text-sm text-text-muted truncate mt-1">
-                      📁 {item.carpetaInfo.rutaCompleta}
+            <div className="space-y-1">
+              {results.material.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => handleItemClick(item)}
+                  className="w-full flex items-start gap-2 md:gap-3 p-2 md:p-3 hover:bg-card rounded-lg transition-colors text-left active:bg-card/80"
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    {getIconForType(item.type)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm md:text-base font-medium text-text-primary truncate">
+                      {item.titulo}
                     </p>
-                  ) : (
-                    <p className="text-sm text-text-muted truncate mt-1">
-                      {item.carrera && item.ramo ? `${item.carrera} • ${item.ramo}` : 'Sin categoría'}
-                    </p>
-                  )}
-                </div>
-              </button>
-            ))}
+                    {item.carpetaInfo ? (
+                      <p className="text-xs md:text-sm text-text-muted line-clamp-1 mt-0.5 md:mt-1">
+                        📁 {item.carpetaInfo.rutaCompleta}
+                      </p>
+                    ) : (
+                      <p className="text-xs md:text-sm text-text-muted line-clamp-1 mt-0.5 md:mt-1">
+                        {item.carrera && item.ramo ? `${item.carrera} • ${item.ramo}` : 'Sin categoría'}
+                      </p>
+                    )}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
         {/* Usuarios */}
         {results.usuarios.length > 0 && (
-          <div className="p-4">
-            <p className="text-sm font-semibold text-text-muted uppercase tracking-wide mb-3">
+          <div className="p-3 md:p-4 border-t border-border">
+            <p className="text-xs md:text-sm font-semibold text-text-muted uppercase tracking-wide mb-2 md:mb-3 px-1">
               Usuarios ({results.usuarios.length})
             </p>
-            {results.usuarios.map(item => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item)}
-                className="w-full flex items-start gap-3 p-3 hover:bg-canvas rounded-lg transition-colors text-left mb-1"
-              >
-                {getIconForType(item.type)}
-                <div className="flex-1 min-w-0">
-                  <p className="text-base font-medium text-text-primary truncate">
-                    {item.nombre}
-                  </p>
-                  <p className="text-sm text-text-muted truncate mt-1">
-                    {item.carrera}
-                  </p>
-                </div>
-              </button>
-            ))}
+            <div className="space-y-1">
+              {results.usuarios.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => handleItemClick(item)}
+                  className="w-full flex items-start gap-2 md:gap-3 p-2 md:p-3 hover:bg-card rounded-lg transition-colors text-left active:bg-card/80"
+                >
+                  <div className="flex-shrink-0 mt-0.5">
+                    {getIconForType(item.type)}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm md:text-base font-medium text-text-primary truncate">
+                      {item.nombre}
+                    </p>
+                    <p className="text-xs md:text-sm text-text-muted line-clamp-1 mt-0.5 md:mt-1">
+                      {item.carrera}
+                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
         {/* Footer con total */}
-        <div className="p-3 bg-canvas text-center">
+        <div className="p-3 md:p-4 bg-card/50 text-center border-t border-border sticky bottom-0">
           <p className="text-xs text-text-muted">
-            {results.total} {results.total === 1 ? 'resultado' : 'resultados'} encontrados
+            {results.total} {results.total === 1 ? 'resultado encontrado' : 'resultados encontrados'}
           </p>
         </div>
-      </div>
+      </>
     );
   };
 
@@ -353,12 +366,13 @@ const GlobalSearch = () => {
       <button
         onClick={(e) => {
           e.stopPropagation();
+          console.log('[GlobalSearch] Botón de búsqueda móvil clickeado');
           setIsOpen(!isOpen);
         }}
-        className="md:hidden p-1 sm:p-1.5 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70 flex-shrink-0"
+        className="md:hidden p-1.5 sm:p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70 flex-shrink-0"
         aria-label="Buscar"
       >
-        <Search className="w-4 h-4 sm:w-4 sm:h-4" />
+        <Search className="w-5 h-5 sm:w-5 sm:h-5" />
       </button>
 
       {/* Dropdown de resultados - Desktop */}
@@ -375,89 +389,115 @@ const GlobalSearch = () => {
         </div>
       )}
 
-      {/* Backdrop móvil para cerrar al hacer clic fuera */}
+      {/* Modal de búsqueda - Móvil */}
       {isOpen && (
-        <div
-          className="md:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm"
-          onClick={() => {
-            setIsOpen(false);
-            setSearchTerm('');
-            setResults(null);
-          }}
-        />
-      )}
+        <>
+          {/* Backdrop */}
+          <div
+            className="md:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[60]"
+            onClick={() => {
+              console.log('[GlobalSearch] Cerrando modal desde backdrop');
+              setIsOpen(false);
+              setSearchTerm('');
+              setResults(null);
+            }}
+          />
 
-      {/* Dropdown de resultados - Móvil */}
-      {isOpen && (
-        <div className="md:hidden fixed inset-x-2 top-14 sm:top-16 bottom-2 z-50 animate-fadeIn pointer-events-none">
-          <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden h-full flex flex-col pointer-events-auto">
-            {/* Input de búsqueda móvil */}
-            <div className="p-2 sm:p-3 border-b border-border bg-canvas flex-shrink-0">
-              <div className="relative">
-                <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted flex-shrink-0" />
-                <input
-                  type="text"
-                  value={searchTerm}
-                  data-search-type="mobile"
-                  onChange={(e) => {
-                    console.log('[GlobalSearch INPUT Mobile] onChange disparado:', e.target.value);
-                    handleInputChange(e);
+          {/* Modal */}
+          <div className="md:hidden fixed inset-x-0 top-0 bottom-0 z-[70] flex flex-col bg-canvas">
+            {/* Header del modal con input */}
+            <div className="flex-shrink-0 border-b border-border bg-card shadow-sm">
+              <div className="flex items-center gap-2 p-3">
+                {/* Botón volver */}
+                <button
+                  onClick={() => {
+                    console.log('[GlobalSearch] Cerrando modal desde botón cerrar');
+                    setIsOpen(false);
+                    setSearchTerm('');
+                    setResults(null);
                   }}
-                  onFocus={() => console.log('[GlobalSearch INPUT Mobile] onFocus disparado')}
-                  onKeyDown={(e) => console.log('[GlobalSearch INPUT Mobile] tecla presionada:', e.key)}
-                  onInput={(e) => console.log('[GlobalSearch INPUT Mobile] onInput disparado:', e.target.value)}
-                  placeholder="Buscar..."
-                  autoFocus
-                  className="w-full pl-8 sm:pl-9 pr-14 sm:pr-16 py-1.5 sm:py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors text-xs sm:text-sm"
-                />
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-0.5">
-                  {searchTerm && (
-                    <button
-                      onClick={handleClear}
-                      className="p-1 hover:bg-canvas rounded transition-colors"
-                      aria-label="Limpiar"
-                    >
-                      <X className="w-3.5 h-3.5 text-text-muted" />
-                    </button>
-                  )}
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="p-1 hover:bg-canvas rounded transition-colors"
-                    aria-label="Cerrar"
-                  >
-                    <X className="w-3.5 h-3.5 text-text-muted" />
-                  </button>
-                </div>
-                {isLoading && (
-                  <div className="absolute right-14 top-1/2 -translate-y-1/2">
-                    <Loader2 className="w-4 h-4 text-brand animate-spin" />
+                  className="p-2 -ml-2 text-text-muted hover:text-text-primary transition-colors"
+                  aria-label="Cerrar búsqueda"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+
+                {/* Input de búsqueda */}
+                <div className="flex-1 relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => {
+                      console.log('[GlobalSearch Mobile] Input cambiado:', e.target.value);
+                      handleInputChange(e);
+                    }}
+                    placeholder="Buscar en NexUC..."
+                    autoFocus
+                    className="w-full pl-10 pr-10 py-2.5 bg-canvas border border-border rounded-lg text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand"
+                  />
+
+                  {/* Botón limpiar o loading */}
+                  <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                    {isLoading ? (
+                      <Loader2 className="w-4 h-4 text-brand animate-spin" />
+                    ) : searchTerm && (
+                      <button
+                        onClick={handleClear}
+                        className="p-1 hover:bg-border rounded-full transition-colors"
+                        aria-label="Limpiar búsqueda"
+                      >
+                        <X className="w-4 h-4 text-text-muted" />
+                      </button>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
             </div>
 
-            {/* Resultados móvil */}
-            <div className="overflow-y-auto flex-1">
-              {searchTerm.trim().length >= 2 ? (
-                isLoading && !results ? (
-                  <div className="p-8 text-center">
-                    <Loader2 className="w-8 h-8 text-brand animate-spin mx-auto mb-2" />
-                    <p className="text-sm text-text-muted">Buscando...</p>
+            {/* Contenido de resultados */}
+            <div className="flex-1 overflow-y-auto">
+              {searchTerm.trim().length < 2 ? (
+                // Estado inicial
+                <div className="flex flex-col items-center justify-center h-full px-6 text-center">
+                  <div className="w-16 h-16 rounded-full bg-brand/10 flex items-center justify-center mb-4">
+                    <Search className="w-8 h-8 text-brand" />
                   </div>
-                ) : (
-                  renderResults()
-                )
-              ) : (
-                <div className="p-8 text-center">
-                  <Search className="w-12 h-12 text-text-muted/30 mx-auto mb-3" />
-                  <p className="text-text-muted text-sm">
-                    Escribe al menos 2 caracteres para buscar
+                  <h3 className="text-lg font-semibold text-text-primary mb-2">
+                    Buscar en NexUC
+                  </h3>
+                  <p className="text-sm text-text-muted max-w-xs">
+                    Encuentra favores, anuncios, material de estudio, productos del marketplace y más...
                   </p>
+                </div>
+              ) : isLoading && !results ? (
+                // Cargando
+                <div className="flex flex-col items-center justify-center h-full">
+                  <Loader2 className="w-12 h-12 text-brand animate-spin mb-4" />
+                  <p className="text-sm text-text-muted">Buscando...</p>
+                </div>
+              ) : results && results.total === 0 ? (
+                // Sin resultados
+                <div className="flex flex-col items-center justify-center h-full px-6 text-center">
+                  <div className="w-16 h-16 rounded-full bg-text-muted/10 flex items-center justify-center mb-4">
+                    <Search className="w-8 h-8 text-text-muted/40" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-text-primary mb-2">
+                    No se encontraron resultados
+                  </h3>
+                  <p className="text-sm text-text-muted">
+                    No hay resultados para "{searchTerm}"
+                  </p>
+                </div>
+              ) : (
+                // Resultados
+                <div className="divide-y divide-border">
+                  {renderResults()}
                 </div>
               )}
             </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
