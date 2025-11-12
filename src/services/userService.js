@@ -81,11 +81,8 @@ export const getUserData = async (userId) => {
  */
 export const updateUserData = async (userId, updates) => {
   try {
-    // Asegurar que el uid está presente en los datos para cumplir con las reglas de Firestore
-    const updateData = {
-      ...updates,
-      uid: userId
-    };
+    // Remover campos que no deberían actualizarse (rol, uid)
+    const { rol, uid, ...updateData } = updates;
 
     await updateDoc(doc(db, 'usuarios', userId), updateData);
     console.log('Datos del usuario actualizados');
