@@ -130,11 +130,11 @@ const NotificationBell = () => {
       {/* Botón de campana */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70 flex-shrink-0"
+        className="relative p-1 sm:p-1.5 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70 flex-shrink-0"
       >
-        <Bell className="w-5 h-5" />
+        <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
         {noLeidas > 0 && (
-          <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-card">
+          <span className="absolute -top-0.5 sm:-top-1 -right-0.5 sm:-right-1 flex items-center justify-center min-w-[16px] sm:min-w-[18px] h-[16px] sm:h-[18px] px-0.5 sm:px-1 text-[9px] sm:text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-card">
             {noLeidas > 9 ? '9+' : noLeidas}
           </span>
         )}
@@ -142,28 +142,28 @@ const NotificationBell = () => {
 
       {/* Dropdown de notificaciones */}
       {isOpen && (
-        <div className="fixed md:absolute left-2 right-2 md:left-auto md:right-0 md:translate-x-0 top-14 md:top-auto mt-0 md:mt-2 w-auto md:w-96 max-w-md max-h-[70vh] md:max-h-[32rem] bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn">
+        <div className="fixed md:absolute left-2 right-2 md:left-auto md:right-0 md:translate-x-0 top-14 sm:top-14 md:top-auto mt-0 md:mt-2 w-auto md:w-96 max-w-md max-h-[70vh] md:max-h-[32rem] bg-card border border-border rounded-xl shadow-2xl overflow-hidden z-50 animate-fadeIn">
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-canvas">
-            <h3 className="text-lg font-semibold text-text-primary">
+          <div className="flex items-center justify-between px-3 sm:px-4 py-2 sm:py-3 border-b border-border bg-canvas">
+            <h3 className="text-base sm:text-lg font-semibold text-text-primary">
               Notificaciones
             </h3>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               {noLeidas > 0 && (
                 <button
                   onClick={handleMarcarTodasLeidas}
-                  className="text-xs text-brand hover:text-brand-hover transition-colors flex items-center gap-1"
+                  className="text-[10px] sm:text-xs text-brand hover:text-brand-hover transition-colors flex items-center gap-0.5 sm:gap-1"
                   title="Marcar todas como leídas"
                 >
-                  <CheckCheck className="w-4 h-4" />
-                  Marcar todas
+                  <CheckCheck className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="hidden sm:inline">Marcar todas</span>
                 </button>
               )}
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1 hover:bg-border rounded transition-colors"
+                className="p-0.5 sm:p-1 hover:bg-border rounded transition-colors"
               >
-                <X className="w-4 h-4 text-text-muted" />
+                <X className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-muted" />
               </button>
             </div>
           </div>
@@ -183,30 +183,30 @@ const NotificationBell = () => {
                   <button
                     key={notif.id}
                     onClick={() => handleNotificationClick(notif)}
-                    className={`w-full px-4 py-3 text-left hover:bg-canvas transition-colors ${
+                    className={`w-full px-3 sm:px-4 py-2 sm:py-3 text-left hover:bg-canvas transition-colors ${
                       !notif.leida ? 'bg-brand/5' : ''
                     }`}
                   >
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-2 sm:gap-3">
                       {/* Icono */}
-                      <div className="text-2xl flex-shrink-0 mt-0.5">
+                      <div className="text-lg sm:text-2xl flex-shrink-0 mt-0.5">
                         {getIconoNotificacion(notif.type)}
                       </div>
 
                       {/* Contenido */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-2">
-                          <p className="font-semibold text-sm text-text-primary line-clamp-1">
+                        <div className="flex items-start justify-between gap-1 sm:gap-2">
+                          <p className="font-semibold text-xs sm:text-sm text-text-primary line-clamp-1">
                             {notif.title}
                           </p>
                           {!notif.leida && (
-                            <div className="w-2 h-2 bg-brand rounded-full flex-shrink-0 mt-1" />
+                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-brand rounded-full flex-shrink-0 mt-1" />
                           )}
                         </div>
-                        <p className="text-sm text-text-muted mt-1 line-clamp-2">
+                        <p className="text-xs sm:text-sm text-text-muted mt-0.5 sm:mt-1 line-clamp-2">
                           {notif.message}
                         </p>
-                        <p className="text-xs text-text-muted mt-1">
+                        <p className="text-[10px] sm:text-xs text-text-muted mt-0.5 sm:mt-1">
                           {formatearFecha(notif.fechaCreacion)}
                         </p>
                       </div>

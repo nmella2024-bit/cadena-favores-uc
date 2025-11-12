@@ -355,10 +355,10 @@ const GlobalSearch = () => {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="md:hidden p-1.5 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70 flex-shrink-0"
+        className="md:hidden p-1 sm:p-1.5 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70 flex-shrink-0"
         aria-label="Buscar"
       >
-        <Search className="w-4 h-4" />
+        <Search className="w-4 h-4 sm:w-4 sm:h-4" />
       </button>
 
       {/* Dropdown de resultados - Desktop */}
@@ -377,10 +377,10 @@ const GlobalSearch = () => {
 
       {/* Dropdown de resultados - Móvil */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 top-16 z-50 px-2 animate-fadeIn overflow-y-auto">
-          <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden max-h-[calc(100vh-5rem)] w-full my-2">
+        <div className="md:hidden fixed inset-0 top-14 sm:top-16 z-50 px-2 animate-fadeIn overflow-y-auto">
+          <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden max-h-[calc(100vh-4rem)] sm:max-h-[calc(100vh-5rem)] w-full my-2">
             {/* Input de búsqueda móvil */}
-            <div className="p-2 border-b border-border bg-canvas sticky top-0 z-10">
+            <div className="p-2 sm:p-3 border-b border-border bg-canvas sticky top-0 z-10">
               <div className="relative">
                 <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted flex-shrink-0" />
                 <input
@@ -396,7 +396,7 @@ const GlobalSearch = () => {
                   onInput={(e) => console.log('[GlobalSearch INPUT Mobile] onInput disparado:', e.target.value)}
                   placeholder="Buscar..."
                   autoFocus
-                  className="w-full pl-9 pr-16 py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors text-sm"
+                  className="w-full pl-8 sm:pl-9 pr-14 sm:pr-16 py-1.5 sm:py-2 bg-card border border-border rounded-lg text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors text-xs sm:text-sm"
                 />
                 <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-0.5">
                   {searchTerm && (
