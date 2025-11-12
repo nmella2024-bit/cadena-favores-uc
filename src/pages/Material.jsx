@@ -299,18 +299,16 @@ const Material = () => {
               </div>
             </div>
 
-            {currentUser && (
+            {currentUser && esUsuarioExclusivo && (
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
-                {esUsuarioExclusivo && (
-                  <PrimaryButton
-                    onClick={() => setIsFolderModalOpen(true)}
-                    className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-purple-600 hover:bg-purple-700 px-3 sm:px-4 py-2 text-sm"
-                  >
-                    <FolderPlus className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="hidden sm:inline">Nueva Carpeta</span>
-                    <span className="inline sm:hidden">Nueva Carpeta</span>
-                  </PrimaryButton>
-                )}
+                <PrimaryButton
+                  onClick={() => setIsFolderModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-purple-600 hover:bg-purple-700 px-3 sm:px-4 py-2 text-sm"
+                >
+                  <FolderPlus className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span className="hidden sm:inline">Nueva Carpeta</span>
+                  <span className="inline sm:hidden">Nueva Carpeta</span>
+                </PrimaryButton>
                 <PrimaryButton
                   onClick={() => setIsModalOpen(true)}
                   className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap px-3 sm:px-4 py-2 text-sm"
@@ -360,21 +358,19 @@ const Material = () => {
               {carpetaActual ? 'Carpeta vacía' : 'No hay contenido'}
             </h3>
             <p className="text-sm text-text-muted max-w-md">
-              {currentUser
+              {currentUser && esUsuarioExclusivo
                 ? 'No se encontraron carpetas ni materiales. Crea una carpeta o sube material para comenzar.'
                 : 'No hay contenido disponible en este momento.'}
             </p>
-            {currentUser && (
+            {currentUser && esUsuarioExclusivo && (
               <div className="flex gap-3 mt-6">
-                {esUsuarioExclusivo && (
-                  <PrimaryButton
-                    onClick={() => setIsFolderModalOpen(true)}
-                    className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700"
-                  >
-                    <FolderPlus className="h-5 w-5" />
-                    Crear Carpeta
-                  </PrimaryButton>
-                )}
+                <PrimaryButton
+                  onClick={() => setIsFolderModalOpen(true)}
+                  className="inline-flex items-center gap-2 bg-purple-600 hover:bg-purple-700"
+                >
+                  <FolderPlus className="h-5 w-5" />
+                  Crear Carpeta
+                </PrimaryButton>
                 <PrimaryButton
                   onClick={() => setIsModalOpen(true)}
                   className="inline-flex items-center gap-2"
@@ -441,7 +437,7 @@ const Material = () => {
         )}
 
         {/* Modal para subir material */}
-        {currentUser && (
+        {currentUser && esUsuarioExclusivo && (
           <>
             <SubirMaterialModal
               isOpen={isModalOpen}

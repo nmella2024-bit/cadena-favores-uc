@@ -71,13 +71,24 @@ export const puedeEliminarAnuncios = (usuario) => {
 
 /**
  * Verifica si un usuario puede eliminar material
- * Solo los admins pueden eliminar material (exclusivos NO pueden)
+ * Los admins y exclusivos pueden eliminar cualquier material
+ * Los usuarios normales solo pueden eliminar su propio material
  * @param {Object} usuario - Usuario actual
+ * @param {string} autorId - ID del autor del material (opcional)
  * @returns {boolean} true si puede eliminar material
  */
-export const puedeEliminarMaterial = (usuario) => {
+export const puedeEliminarMaterial = (usuario, autorId) => {
   if (!usuario) return false;
-  return esAdmin(usuario);
+
+  // Los admins y exclusivos pueden eliminar cualquier material
+  if (esAdminOExclusivo(usuario)) return true;
+
+  // Los usuarios normales solo pueden eliminar su propio material
+  if (autorId) {
+    return usuario.uid === autorId;
+  }
+
+  return false;
 };
 
 /**
