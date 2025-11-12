@@ -14,7 +14,7 @@ import {
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { db, storage } from '../firebaseConfig';
 import { eliminarReportesDeContenido } from './reportService';
-import { puedeEliminar, esAdmin, puedeFijar } from '../utils/adminUtils';
+import { puedeEliminar, esAdmin, puedeFijar, puedeEditar } from '../utils/adminUtils';
 import { getUserData } from './userService';
 
 /**
@@ -125,7 +125,21 @@ export const obtenerAnuncio = async (anuncioId) => {
  */
 export const actualizarAnuncio = async (anuncioId, datosActualizados, nuevaImagen = null, usuario) => {
   try {
+    // Obtener el anuncio actual para validar permisos
     const docRef = doc(db, 'anuncios', anuncioId);
+    const docSnap = await getDoc(docRef);
+
+    if (!docSnap.exists()) {
+      throw new Error('El anuncio no existe');
+    }
+
+    const anuncioActual = docSnap.data();
+
+    // Validar permisos: solo el autor o admins pueden editar
+    if (!puedeEditar(usuario, anuncioActual.autor)) {
+      throw new Error('No tienes permisos para editar este anuncio');
+    }
+
     const updates = { ...datosActualizados };
 
     // Si hay nueva imagen, subirla
@@ -137,6 +151,11 @@ export const actualizarAnuncio = async (anuncioId, datosActualizados, nuevaImage
     }
 
     await updateDoc(docRef, updates);
+
+    // Log para auditoría
+    if (esAdmin(usuario) && anuncioActual.autor !== usuario.uid) {
+      console.log(`[ADMIN] Usuario ${usuario.uid} editó anuncio ${anuncioId} del usuario ${anuncioActual.autor}`);
+    }
   } catch (error) {
     console.error('Error al actualizar anuncio:', error);
     throw error;

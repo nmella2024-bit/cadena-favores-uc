@@ -87,8 +87,9 @@ service cloud.firestore {
       allow create: if esUsuarioExclusivoOAdmin() &&
                     request.resource.data.autor == request.auth.uid;
 
-      // Solo usuarios con rol "exclusivo" o "admin" pueden actualizar anuncios
-      allow update: if esUsuarioExclusivoOAdmin();
+      // Solo el autor (si es exclusivo) o admins pueden actualizar anuncios
+      allow update: if esUsuarioAdmin() ||
+                    (esUsuarioExclusivo() && request.auth.uid == resource.data.autor);
 
       // Solo admins pueden eliminar anuncios
       allow delete: if esUsuarioAdmin();
@@ -153,8 +154,9 @@ service cloud.firestore {
       allow create: if esUsuarioExclusivoOAdmin() &&
                     request.resource.data.autorId == request.auth.uid;
 
-      // Solo usuarios con rol "exclusivo" o "admin" pueden actualizar material (para fijar/desfijar)
-      allow update: if esUsuarioExclusivoOAdmin();
+      // Solo el autor (si es exclusivo) o admins pueden actualizar material
+      allow update: if esUsuarioAdmin() ||
+                    (esUsuarioExclusivo() && request.auth.uid == resource.data.autorId);
 
       // Solo admins pueden eliminar material
       allow delete: if esUsuarioAdmin();
@@ -197,6 +199,8 @@ service cloud.firestore {
     // ============================================
     // Reglas para la colección de CARPETAS (folders)
     // Usuarios EXCLUSIVOS y ADMINS pueden gestionar carpetas
+    // NOTA: Las carpetas son estructura compartida, por lo que cualquier
+    // exclusivo/admin puede editarlas para mantener la organización
     // ============================================
     match /folders/{folderId} {
       // Todos pueden leer carpetas (para ver la estructura)
@@ -206,6 +210,7 @@ service cloud.firestore {
       allow create: if esUsuarioExclusivoOAdmin();
 
       // Usuarios con rol "exclusivo" o "admin" pueden modificar carpetas
+      // (estructura compartida colaborativa)
       allow update: if esUsuarioExclusivoOAdmin();
 
       // Usuarios con rol "exclusivo" o "admin" pueden eliminar carpetas

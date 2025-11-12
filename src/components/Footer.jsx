@@ -15,7 +15,8 @@ const Footer = () => (
         <div className="space-y-3">
           <h3 className="text-lg font-semibold tracking-tight text-[rgb(var(--text-primary))]">Contacto</h3>
           <ul className="space-y-2 text-sm text-[rgb(var(--text-muted))]">
-            <li>contacto@reduc.cl</li>
+            <li>nmellaq@estudiante.uc.cl</li>
+            <li>jeronimo.muzzo@estudiante.uc.cl</li>
             <li>Campus San Joaquín, Macul, Santiago</li>
           </ul>
         </div>
@@ -23,14 +24,8 @@ const Footer = () => (
         <div className="space-y-3">
           <h3 className="text-lg font-semibold tracking-tight text-[rgb(var(--text-primary))]">Síguenos</h3>
           <div className="flex flex-wrap gap-3 text-sm">
-            <a href="#" className="text-[rgb(var(--text-muted))] transition-colors hover:text-[rgb(var(--brand))]">
+            <a href="https://www.instagram.com/nex_uc?igsh=Znc0bDE1eTRlOG9u" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--text-muted))] transition-colors hover:text-[rgb(var(--brand))]">
               Instagram
-            </a>
-            <a href="#" className="text-[rgb(var(--text-muted))] transition-colors hover:text-[rgb(var(--brand))]">
-              LinkedIn
-            </a>
-            <a href="#" className="text-[rgb(var(--text-muted))] transition-colors hover:text-[rgb(var(--brand))]">
-              Github
             </a>
           </div>
         </div>
