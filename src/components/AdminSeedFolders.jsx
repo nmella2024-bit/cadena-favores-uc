@@ -5,7 +5,7 @@ import { FolderPlus, Check, X, Loader2 } from 'lucide-react';
 
 /**
  * Componente de administración para crear la estructura de carpetas
- * Solo accesible para usuarios con rol 'exclusivo'
+ * Solo accesible para usuarios con rol 'exclusivo' o 'admin'
  */
 const AdminSeedFolders = () => {
   const { currentUser } = useAuth();
@@ -542,8 +542,8 @@ const AdminSeedFolders = () => {
     }
   };
 
-  // Solo mostrar para usuarios exclusivos
-  if (!currentUser || currentUser.rol !== 'exclusivo') {
+  // Solo mostrar para usuarios exclusivos o admins
+  if (!currentUser || (currentUser.rol !== 'exclusivo' && currentUser.rol !== 'admin')) {
     return null;
   }
 

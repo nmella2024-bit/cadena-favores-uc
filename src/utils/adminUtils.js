@@ -41,7 +41,7 @@ export const esAdminOExclusivo = (usuario) => {
 };
 
 /**
- * Verifica si un usuario puede eliminar un contenido
+ * Verifica si un usuario puede eliminar un contenido general
  * Los admins pueden eliminar cualquier contenido
  * Los usuarios normales solo pueden eliminar su propio contenido
  * @param {Object} usuario - Usuario actual
@@ -56,6 +56,28 @@ export const puedeEliminar = (usuario, autorId) => {
 
   // Los usuarios normales solo pueden eliminar su propio contenido
   return usuario.uid === autorId;
+};
+
+/**
+ * Verifica si un usuario puede eliminar anuncios
+ * Solo los admins pueden eliminar anuncios (exclusivos NO pueden)
+ * @param {Object} usuario - Usuario actual
+ * @returns {boolean} true si puede eliminar anuncios
+ */
+export const puedeEliminarAnuncios = (usuario) => {
+  if (!usuario) return false;
+  return esAdmin(usuario);
+};
+
+/**
+ * Verifica si un usuario puede eliminar material
+ * Solo los admins pueden eliminar material (exclusivos NO pueden)
+ * @param {Object} usuario - Usuario actual
+ * @returns {boolean} true si puede eliminar material
+ */
+export const puedeEliminarMaterial = (usuario) => {
+  if (!usuario) return false;
+  return esAdmin(usuario);
 };
 
 /**
@@ -88,12 +110,23 @@ export const puedeFijar = (usuario) => {
 };
 
 /**
- * Verifica si un usuario puede gestionar reportes
- * Solo los admins pueden gestionar reportes
+ * Verifica si un usuario puede gestionar reportes (leer y actualizar)
+ * Los admins y exclusivos pueden gestionar reportes
  * @param {Object} usuario - Usuario actual
  * @returns {boolean} true si puede gestionar reportes
  */
 export const puedeGestionarReportes = (usuario) => {
+  if (!usuario) return false;
+  return esAdminOExclusivo(usuario);
+};
+
+/**
+ * Verifica si un usuario puede eliminar reportes
+ * Solo los admins pueden eliminar reportes
+ * @param {Object} usuario - Usuario actual
+ * @returns {boolean} true si puede eliminar reportes
+ */
+export const puedeEliminarReportes = (usuario) => {
   if (!usuario) return false;
   return esAdmin(usuario);
 };

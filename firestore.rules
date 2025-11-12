@@ -63,8 +63,8 @@ service cloud.firestore {
       // Pero permitimos crear perfil si el usuario autenticado coincide con el userId
       allow create: if request.auth != null &&
                        request.auth.uid == userId &&
-                       // El rol inicial debe ser "comun"
-                       request.resource.data.rol == 'comun';
+                       // El rol inicial debe ser "normal"
+                       request.resource.data.rol == 'normal';
 
       // No se permite eliminar usuarios (debe hacerse desde Firebase Auth)
       allow delete: if false;
@@ -90,8 +90,8 @@ service cloud.firestore {
       // Solo usuarios con rol "exclusivo" o "admin" pueden actualizar anuncios
       allow update: if esUsuarioExclusivoOAdmin();
 
-      // Solo usuarios con rol "exclusivo" o "admin" pueden eliminar anuncios
-      allow delete: if esUsuarioExclusivoOAdmin();
+      // Solo admins pueden eliminar anuncios
+      allow delete: if esUsuarioAdmin();
     }
 
     // Reglas para la colección de calificaciones
@@ -156,8 +156,8 @@ service cloud.firestore {
       // Solo usuarios con rol "exclusivo" o "admin" pueden actualizar material (para fijar/desfijar)
       allow update: if esUsuarioExclusivoOAdmin();
 
-      // Solo usuarios con rol "exclusivo" o "admin" pueden eliminar material
-      allow delete: if esUsuarioExclusivoOAdmin();
+      // Solo admins pueden eliminar material
+      allow delete: if esUsuarioAdmin();
     }
 
     // Reglas para la colección de notificaciones
@@ -180,18 +180,18 @@ service cloud.firestore {
 
     // Reglas para la colección de reportes
     match /reportes/{reporteId} {
-      // Solo usuarios con rol "exclusivo" pueden leer reportes (moderadores/admins)
-      allow read: if esUsuarioExclusivo();
+      // Solo usuarios con rol "exclusivo" o "admin" pueden leer reportes (moderadores/admins)
+      allow read: if esUsuarioExclusivoOAdmin();
 
       // Cualquier usuario autenticado puede crear reportes
       allow create: if request.auth != null &&
                     request.resource.data.reporterId == request.auth.uid;
 
-      // Solo usuarios con rol "exclusivo" pueden actualizar reportes (para cambiar estado)
-      allow update: if esUsuarioExclusivo();
+      // Solo usuarios con rol "exclusivo" o "admin" pueden actualizar reportes (para cambiar estado)
+      allow update: if esUsuarioExclusivoOAdmin();
 
-      // Solo usuarios con rol "exclusivo" pueden eliminar reportes
-      allow delete: if esUsuarioExclusivo();
+      // Solo admins pueden eliminar reportes
+      allow delete: if esUsuarioAdmin();
     }
 
     // ============================================

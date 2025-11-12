@@ -77,8 +77,8 @@ const MigrarMaterialesExistentes = () => {
     }
   };
 
-  // Solo mostrar para usuarios exclusivos
-  if (!currentUser || currentUser.rol !== 'exclusivo') {
+  // Solo mostrar para usuarios exclusivos o admins
+  if (!currentUser || (currentUser.rol !== 'exclusivo' && currentUser.rol !== 'admin')) {
     return null;
   }
 

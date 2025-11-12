@@ -360,9 +360,9 @@ export const obtenerMaterialesUsuario = async (userId) => {
  */
 export const fijarMaterial = async (materialId, fijado, usuario = null) => {
   try {
-    // Validación adicional: solo usuarios con rol 'exclusivo' pueden fijar materiales
-    if (usuario && usuario.rol !== 'exclusivo') {
-      throw new Error('Solo los usuarios con rol exclusivo pueden fijar materiales');
+    // Validación adicional: solo usuarios con rol 'exclusivo' o 'admin' pueden fijar materiales
+    if (usuario && usuario.rol !== 'exclusivo' && usuario.rol !== 'admin') {
+      throw new Error('Solo los usuarios con rol exclusivo o admin pueden fijar materiales');
     }
 
     const docRef = doc(db, 'material', materialId);
