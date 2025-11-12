@@ -54,10 +54,10 @@ service cloud.firestore {
       // Además, prevenir cambio de campos críticos como rol
       allow update: if request.auth != null &&
                        request.auth.uid == userId &&
-                       // Prevenir cambio de rol (solo admins pueden cambiar roles vía Cloud Functions)
-                       request.resource.data.rol == resource.data.rol &&
-                       // Prevenir cambio de uid
-                       request.resource.data.uid == resource.data.uid;
+                       // Prevenir cambio de rol (solo si se incluye en la actualización)
+                       (!('rol' in request.resource.data) || request.resource.data.rol == resource.data.rol) &&
+                       // Prevenir cambio de uid (solo si se incluye en la actualización)
+                       (!('uid' in request.resource.data) || request.resource.data.uid == resource.data.uid);
 
       // La creación de usuarios se maneja automáticamente vía Cloud Function en onCreate de Auth
       // Pero permitimos crear perfil si el usuario autenticado coincide con el userId

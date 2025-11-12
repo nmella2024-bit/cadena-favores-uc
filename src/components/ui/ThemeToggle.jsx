@@ -11,7 +11,8 @@ const ThemeToggle = ({ className }) => {
     if (stored) {
       return stored === 'dark';
     }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Modo claro por defecto
+    return false;
   });
 
   useEffect(() => {

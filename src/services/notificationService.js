@@ -6,11 +6,11 @@ import {
   orderBy,
   getDocs,
   doc,
-  updateDoc,
   onSnapshot,
   Timestamp,
   writeBatch,
-  limit
+  limit,
+  deleteDoc
 } from 'firebase/firestore';
 import { db } from '../firebaseConfig';
 
@@ -130,24 +130,22 @@ export const suscribirseANotificaciones = (userId, callback, limitCount = 50) =>
 };
 
 /**
- * Marca una notificación como leída
+ * Marca una notificación como leída (eliminándola automáticamente)
  * @param {string} notificationId - ID de la notificación
  */
 export const marcarComoLeida = async (notificationId) => {
   try {
     const notificationRef = doc(db, 'notificaciones', notificationId);
-    await updateDoc(notificationRef, {
-      leida: true,
-    });
-    console.log('✅ Notificación marcada como leída');
+    await deleteDoc(notificationRef);
+    console.log('✅ Notificación eliminada');
   } catch (error) {
-    console.error('❌ Error al marcar notificación como leída:', error);
+    console.error('❌ Error al eliminar notificación:', error);
     throw error;
   }
 };
 
 /**
- * Marca todas las notificaciones de un usuario como leídas
+ * Marca todas las notificaciones de un usuario como leídas (eliminándolas automáticamente)
  * @param {string} userId - ID del usuario
  */
 export const marcarTodasComoLeidas = async (userId) => {
@@ -168,13 +166,13 @@ export const marcarTodasComoLeidas = async (userId) => {
 
     const batch = writeBatch(db);
     snapshot.docs.forEach(doc => {
-      batch.update(doc.ref, { leida: true });
+      batch.delete(doc.ref);
     });
 
     await batch.commit();
-    console.log('✅ Todas las notificaciones marcadas como leídas');
+    console.log('✅ Todas las notificaciones eliminadas');
   } catch (error) {
-    console.error('❌ Error al marcar todas las notificaciones como leídas:', error);
+    console.error('❌ Error al eliminar todas las notificaciones:', error);
     throw error;
   }
 };
