@@ -224,19 +224,21 @@ useEffect(() => {
 }, []);
 ```
 
-### 4. Configurar Variables de Entorno (Opcional pero Recomendado)
+### 4. Configurar Variables de Entorno (Recomendado)
 
-Crea un archivo `.env` para proteger tus credenciales:
+Crea un archivo `.env` con tus credenciales de Firebase:
 
 ```env
-VITE_FIREBASE_API_KEY=AIzaSyAKoXS4QXnf-7MtCQk_pnNaa3anfsJ3dSU
-VITE_FIREBASE_AUTH_DOMAIN=red-uc-8c043.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=red-uc-8c043
-VITE_FIREBASE_STORAGE_BUCKET=red-uc-8c043.firebasestorage.app
-VITE_FIREBASE_MESSAGING_SENDER_ID=164069116151
-VITE_FIREBASE_APP_ID=1:164069116151:web:5564c7bc858ee678d96bf2
-VITE_FIREBASE_MEASUREMENT_ID=G-VBRSLB5Q5V
+VITE_FIREBASE_API_KEY=your-api-key-here
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+VITE_FIREBASE_APP_ID=your-app-id
+VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
 ```
+
+> **Nota:** Obtén estos valores desde Firebase Console > Project Settings > Your apps
 
 Y actualiza `firebaseConfig.js`:
 

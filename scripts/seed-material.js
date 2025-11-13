@@ -9,17 +9,25 @@
 
 const { initializeApp } = require('firebase/app');
 const { getFirestore, collection, addDoc } = require('firebase/firestore');
+require('dotenv').config();
 
-// Configuración de Firebase (usar las mismas credenciales del proyecto)
+// Configuración de Firebase usando variables de entorno
 const firebaseConfig = {
-  apiKey: "AIzaSyD4ZjQw7PQ1fPSA2P9axFobTPkZmBAnKss",
-  authDomain: "red-uc-eeuu.firebaseapp.com",
-  projectId: "red-uc-eeuu",
-  storageBucket: "red-uc-eeuu.firebasestorage.app",
-  messagingSenderId: "705871614487",
-  appId: "1:705871614487:web:aab5ec45d47db1f7d44252",
-  measurementId: "G-8RV5170JWM"
+  apiKey: process.env.VITE_FIREBASE_API_KEY,
+  authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VITE_FIREBASE_APP_ID,
+  measurementId: process.env.VITE_FIREBASE_MEASUREMENT_ID
 };
+
+// Validar que las variables de entorno estén configuradas
+if (!firebaseConfig.apiKey || !firebaseConfig.projectId) {
+  console.error('❌ ERROR: Variables de entorno de Firebase no configuradas.');
+  console.error('Crea un archivo .env en la raíz del proyecto con las credenciales de Firebase.');
+  process.exit(1);
+}
 
 // Inicializar Firebase
 const app = initializeApp(firebaseConfig);

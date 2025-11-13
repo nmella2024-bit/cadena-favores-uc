@@ -6,15 +6,19 @@ Para que la aplicación funcione correctamente en Vercel, debes configurar las s
 
 ### Variables de Firebase (OBLIGATORIAS)
 
+**Obtén estos valores de:** Firebase Console > Project Settings > General > Your apps > Web app
+
 ```
-VITE_FIREBASE_API_KEY=AIzaSyD4ZjQw7PQ1fPSA2P9axFobTPkZmBAnKss
-VITE_FIREBASE_AUTH_DOMAIN=red-uc-eeuu.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=red-uc-eeuu
-VITE_FIREBASE_STORAGE_BUCKET=red-uc-eeuu.firebasestorage.app
-VITE_FIREBASE_MESSAGING_SENDER_ID=705871614487
-VITE_FIREBASE_APP_ID=1:705871614487:web:aab5ec45d47db1f7d44252
-VITE_FIREBASE_MEASUREMENT_ID=G-8RV5170JWM
+VITE_FIREBASE_API_KEY=your-api-key-here
+VITE_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your-project-id
+VITE_FIREBASE_STORAGE_BUCKET=your-project.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+VITE_FIREBASE_APP_ID=your-app-id
+VITE_FIREBASE_MEASUREMENT_ID=your-measurement-id
 ```
+
+> **Nota:** Reemplaza `your-*` con los valores reales de tu proyecto Firebase.
 
 ## Pasos para Configurar en Vercel
 
