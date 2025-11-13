@@ -49,6 +49,7 @@ export const publicarProducto = async (productoData, usuario, imagenes = []) => 
       autor: usuario.uid,
       autorNombre: usuario.nombre || usuario.displayName || 'Usuario',
       autorEmail: usuario.email || '',
+      autorTelefono: usuario.telefono || '', // Guardar teléfono del autor
       fecha: serverTimestamp(),
       imagenesURL: imagenesURL,
       estado: 'disponible', // disponible, vendido, reservado

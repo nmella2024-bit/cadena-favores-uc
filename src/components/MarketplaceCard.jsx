@@ -1,32 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Calendar, User, Trash2, Mail, ChevronLeft, ChevronRight, MessageCircle, Maximize2 } from 'lucide-react';
 import { esProductoNuevo, formatearPrecio } from '../services/marketplaceService';
-import { getUserData } from '../services/userService';
 import ImageModal from './ImageModal';
 
 const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
   const esNuevo = esProductoNuevo(producto.fecha);
   const [imagenActual, setImagenActual] = useState(0);
-  const [autorTelefono, setAutorTelefono] = useState(null);
   const [modalAbierto, setModalAbierto] = useState(false);
-
-  useEffect(() => {
-    // Obtener teléfono del autor del producto
-    const obtenerTelefonoAutor = async () => {
-      if (producto.autor && !esAutor) {
-        try {
-          const datosAutor = await getUserData(producto.autor);
-          if (datosAutor?.telefono) {
-            setAutorTelefono(datosAutor.telefono);
-          }
-        } catch (error) {
-          console.error('Error al obtener teléfono del autor:', error);
-        }
-      }
-    };
-
-    obtenerTelefonoAutor();
-  }, [producto.autor, esAutor]);
 
   const formatFecha = (fecha) => {
     return new Date(fecha).toLocaleDateString('es-CL', {
@@ -148,9 +128,9 @@ const MarketplaceCard = ({ producto, esAutor, onEliminar, currentUserId }) => {
                   <span>Email</span>
                 </a>
               )}
-              {autorTelefono && (
+              {producto.autorTelefono && (
                 <a
-                  href={`https://wa.me/${autorTelefono.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola! Vi tu publicación "${producto.titulo}" en el marketplace de NexUC. ¿Está todavía disponible?`)}`}
+                  href={`https://wa.me/${producto.autorTelefono.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(`Hola! Vi tu publicación "${producto.titulo}" en el marketplace de NexUC. ¿Está todavía disponible?`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1 rounded-lg bg-emerald-500/10 px-2 py-1 text-xs font-semibold text-emerald-600 hover:bg-emerald-500/20 transition-colors dark:text-emerald-400"
