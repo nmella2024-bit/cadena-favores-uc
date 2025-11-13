@@ -54,7 +54,7 @@ const EmailVerificationPending = () => {
       if (firebaseUser.emailVerified) {
         setMessage('¡Email verificado! Redirigiendo...');
         setTimeout(() => {
-          window.location.reload(); // Recargar para actualizar el estado en AuthContext
+          navigate('/'); // Redirigir a la página principal
         }, 1000);
       } else {
         setError('Tu email aún no ha sido verificado. Por favor revisa tu correo y haz clic en el enlace.');
