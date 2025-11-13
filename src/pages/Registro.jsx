@@ -5,6 +5,8 @@ import PrimaryButton from '../components/ui/PrimaryButton';
 import TextField from '../components/ui/TextField';
 import SelectField from '../components/ui/SelectField';
 import TextareaField from '../components/ui/TextareaField';
+import SearchableSelect from '../components/ui/SearchableSelect';
+import { CARRERAS_UC } from '../data/carreras';
 
 const Registro = () => {
   const navigate = useNavigate();
@@ -194,23 +196,17 @@ const Registro = () => {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <SelectField
+            <SearchableSelect
               id="carrera"
               name="carrera"
-              label="Carrera *"
+              label="Carrera"
               value={formData.carrera}
               onChange={handleChange}
+              options={CARRERAS_UC}
+              placeholder="Busca tu carrera..."
               required
-            >
-              <option value="">Selecciona tu carrera</option>
-              <option value="Ingeniería Civil">Ingeniería Civil</option>
-              <option value="Ingeniería Comercial">Ingeniería Comercial</option>
-              <option value="Derecho">Derecho</option>
-              <option value="Medicina">Medicina</option>
-              <option value="Enfermería">Enfermería</option>
-              <option value="College">College</option>
-              <option value="Construcción Civil">Construcción Civil</option>
-            </SelectField>
+              hint="Escribe para buscar entre las 75 carreras UC"
+            />
 
             <SelectField id="año" name="año" label="Año *" value={formData.año} onChange={handleChange} required>
               <option value="">Selecciona</option>

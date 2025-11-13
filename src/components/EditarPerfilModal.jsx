@@ -7,22 +7,8 @@ import PrimaryButton from './ui/PrimaryButton';
 import GhostButton from './ui/GhostButton';
 import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
-import SelectField from './ui/SelectField';
-
-const CARRERAS_UC = [
-  'Ingeniería Civil',
-  'Ingeniería Comercial',
-  'Derecho',
-  'Medicina',
-  'Psicología',
-  'Arquitectura',
-  'Diseño',
-  'Pedagogía',
-  'Enfermería',
-  'Agronomía',
-  'Periodismo',
-  'Otra'
-];
+import SearchableSelect from './ui/SearchableSelect';
+import { CARRERAS_UC } from '../data/carreras';
 
 const INTERESES_DISPONIBLES = [
   'Deportes',
@@ -181,20 +167,15 @@ const EditarPerfilModal = ({ isOpen, onClose, onActualizacionExitosa }) => {
             />
 
             {/* Carrera */}
-            <SelectField
+            <SearchableSelect
               label="Carrera"
               id="carrera"
               name="carrera"
               value={formData.carrera}
               onChange={handleChange}
-            >
-              <option value="">Selecciona tu carrera</option>
-              {CARRERAS_UC.map((carrera) => (
-                <option key={carrera} value={carrera}>
-                  {carrera}
-                </option>
-              ))}
-            </SelectField>
+              options={CARRERAS_UC}
+              placeholder="Busca tu carrera..."
+            />
 
             {/* Año */}
             <SelectField

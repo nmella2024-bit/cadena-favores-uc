@@ -6,6 +6,8 @@ import AnuncioCard from '../components/AnuncioCard';
 import CrearAnuncioModal from '../components/CrearAnuncioModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import TextField from '../components/ui/TextField';
+import SearchableSelect from '../components/ui/SearchableSelect';
+import { CARRERAS_UC } from '../data/carreras';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -32,14 +34,7 @@ const Anuncios = () => {
   const [soloParaMi, setSoloParaMi] = useState(false);
 
   // Opciones de filtros
-  const carreras = [
-    'Ingeniería',
-    'Arquitectura',
-    'Economía',
-    'College',
-    'Todas'
-  ];
-
+  const opcionesCarreras = ['Todas las carreras', ...CARRERAS_UC];
   const anios = [1, 2, 3, 4, 5];
 
   const esUsuarioExclusivo = currentUser?.rol === 'exclusivo' || currentUser?.rol === 'admin';
@@ -83,8 +78,10 @@ const Anuncios = () => {
 
       const matchesCarrera =
         !carreraSeleccionada ||
+        carreraSeleccionada === 'Todas las carreras' ||
         carreraSeleccionada === 'Todas' ||
-        anuncio.carrera === carreraSeleccionada;
+        anuncio.carrera === carreraSeleccionada ||
+        (anuncio.carreras && anuncio.carreras.includes(carreraSeleccionada));
 
       const matchesAnio =
         !anioSeleccionado ||
@@ -239,21 +236,15 @@ const Anuncios = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Filtro Carrera */}
-              <div>
-                <label className="block text-sm font-medium text-text-primary mb-2">
-                  Carrera
-                </label>
-                <select
-                  value={carreraSeleccionada}
-                  onChange={(e) => setCarreraSeleccionada(e.target.value)}
-                  className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
-                >
-                  <option value="">Todas las carreras</option>
-                  {carreras.map(carrera => (
-                    <option key={carrera} value={carrera}>{carrera}</option>
-                  ))}
-                </select>
-              </div>
+              <SearchableSelect
+                id="filtro-carrera"
+                name="filtro-carrera"
+                label="Filtrar por carrera"
+                value={carreraSeleccionada}
+                onChange={(e) => setCarreraSeleccionada(e.target.value)}
+                options={opcionesCarreras}
+                placeholder="Todas las carreras"
+              />
 
               {/* Filtro Año */}
               <div>

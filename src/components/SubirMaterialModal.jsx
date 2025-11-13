@@ -6,6 +6,8 @@ import { subirArchivoADrive } from '../services/driveService';
 import PrimaryButton from './ui/PrimaryButton';
 import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
+import SearchableSelect from './ui/SearchableSelect';
+import { CARRERAS_UC } from '../data/carreras';
 
 const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpetaActual }) => {
   const [titulo, setTitulo] = useState('');
@@ -19,22 +21,6 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpet
   const [enlaceExterno, setEnlaceExterno] = useState('');
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
-
-  // Opciones de filtros
-  const carreras = [
-    'Ingeniería Civil',
-    'Ingeniería Comercial',
-    'Derecho',
-    'Medicina',
-    'Psicología',
-    'Diseño',
-    'Arquitectura',
-    'Pedagogía',
-    'Enfermería',
-    'Agronomía',
-    'Periodismo',
-    'Otra'
-  ];
 
   const anios = [1, 2, 3, 4, 5];
 
@@ -419,22 +405,16 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpet
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {/* Carrera */}
-                    <div>
-                      <label className="block text-sm font-medium text-text-primary mb-2">
-                        Carrera *
-                      </label>
-                      <select
-                        value={carrera}
-                        onChange={(e) => setCarrera(e.target.value)}
-                        required
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
-                      >
-                        <option value="">Selecciona...</option>
-                        {carreras.map(c => (
-                          <option key={c} value={c}>{c}</option>
-                        ))}
-                      </select>
-                    </div>
+                    <SearchableSelect
+                      id="carrera"
+                      name="carrera"
+                      label="Carrera"
+                      value={carrera}
+                      onChange={(e) => setCarrera(e.target.value)}
+                      options={CARRERAS_UC}
+                      placeholder="Busca tu carrera..."
+                      required
+                    />
 
                     {/* Año */}
                     <div>

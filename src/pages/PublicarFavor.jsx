@@ -9,13 +9,15 @@ import GhostButton from '../components/ui/GhostButton';
 import TextField from '../components/ui/TextField';
 import SelectField from '../components/ui/SelectField';
 import TextareaField from '../components/ui/TextareaField';
+import SearchableSelect from '../components/ui/SearchableSelect';
+import { CARRERAS_UC } from '../data/carreras';
 
 const initialFormState = {
   titulo: '',
   descripcion: '',
   categoria: '',
   disponibilidad: '',
-  carreras: [],
+  carreraObjetivo: '', // Carrera a la que va dirigido
   duracion: '2', // Duración por defecto: 2 días
 };
 
@@ -46,7 +48,9 @@ const PublicarFavor = () => {
   const [formError, setFormError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [carreras, setCarreras] = useState([]);
+
+  // Opciones de carreras: todas las carreras UC + opción "Todas"
+  const opcionesCarreras = ['Todas las carreras', ...CARRERAS_UC];
 
   useEffect(() => {
     if (!currentUser) {
@@ -62,21 +66,6 @@ const PublicarFavor = () => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     setErrors((prev) => ({ ...prev, [name]: undefined }));
-  };
-
-  const handleCarreraChange = (carrera) => {
-    setCarreras((prev) => {
-      if (carrera === 'Todas') {
-        // If "Todas" is checked, clear all other selections
-        return prev.includes('Todas') ? [] : ['Todas'];
-      } else {
-        // If any other option is checked while "Todas" is checked, uncheck "Todas"
-        const newCarreras = prev.includes(carrera)
-          ? prev.filter((c) => c !== carrera)
-          : [...prev.filter((c) => c !== 'Todas'), carrera];
-        return newCarreras;
-      }
-    });
   };
 
   const handleSubmit = async (event) => {
@@ -97,12 +86,17 @@ const PublicarFavor = () => {
     try {
       setIsSubmitting(true);
 
+      // Preparar datos del favor
+      const carreraFinal = formData.carreraObjetivo === 'Todas las carreras' || !formData.carreraObjetivo
+        ? 'Todas'
+        : formData.carreraObjetivo;
+      const carrerasArray = carreraFinal === 'Todas' ? ['Todas'] : [carreraFinal];
+
       // Publicar favor usando el servicio de Firebase
-      await publicarFavor({ ...formData, carreras }, firebaseUser);
+      await publicarFavor({ ...formData, carreras: carrerasArray }, firebaseUser);
 
       setShowSuccess(true);
       setFormData(initialFormState);
-      setCarreras([]);
     } catch (error) {
       console.error('Error al publicar favor:', error);
       setFormError(error.message || 'Error al publicar el favor. Intenta nuevamente.');
@@ -244,33 +238,16 @@ const PublicarFavor = () => {
             </div>
           </div>
 
-          <div className="space-y-3">
-            <label className="block text-sm font-medium text-text">
-              Carreras relacionadas (opcional)
-            </label>
-            <p className="text-sm text-text-muted">
-              Selecciona las carreras a las que va dirigido este favor. Si no seleccionas ninguna, será visible para todos.
-            </p>
-            <div className="space-y-2">
-              {['Ingeniería Comercial', 'Ingeniería Civil', 'Arquitectura', 'College', 'Todas'].map((carrera) => (
-                <label
-                  key={carrera}
-                  className="flex items-center gap-3 rounded-lg border border-border bg-bg-muted p-3 transition-colors hover:bg-bg-muted/80 cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    checked={carreras.includes(carrera)}
-                    onChange={() => handleCarreraChange(carrera)}
-                    disabled={carrera !== 'Todas' && carreras.includes('Todas')}
-                    className="h-4 w-4 rounded border-border text-brand focus:ring-2 focus:ring-brand focus:ring-offset-2 focus:ring-offset-bg-canvas disabled:cursor-not-allowed disabled:opacity-50"
-                  />
-                  <span className={`text-sm ${carreras.includes('Todas') && carrera !== 'Todas' ? 'text-text-muted' : 'text-text'}`}>
-                    {carrera}
-                  </span>
-                </label>
-              ))}
-            </div>
-          </div>
+          <SearchableSelect
+            id="carreraObjetivo"
+            name="carreraObjetivo"
+            label="Dirigido a (opcional)"
+            value={formData.carreraObjetivo}
+            onChange={handleChange}
+            options={opcionesCarreras}
+            placeholder="Todas las carreras"
+            hint="Busca una carrera específica o deja en blanco para todas"
+          />
 
           <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:justify-end">
             <GhostButton type="button" className="sm:w-auto" onClick={() => navigate('/favores')}>

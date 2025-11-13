@@ -6,12 +6,13 @@ import PrimaryButton from './ui/PrimaryButton';
 import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
 import SelectField from './ui/SelectField';
+import SearchableSelect from './ui/SearchableSelect';
+import { CARRERAS_UC } from '../data/carreras';
 
 const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [carreras, setCarreras] = useState([]);
-  const [carrera, setCarrera] = useState('');
+  const [carreraObjetivo, setCarreraObjetivo] = useState(''); // Carrera específica a la que va dirigido
   const [anio, setAnio] = useState('');
   const [duracion, setDuracion] = useState('2'); // Duración por defecto: 2 días
   const [imagen, setImagen] = useState(null);
@@ -19,36 +20,10 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
 
-  // Opciones de carreras disponibles
-  const opcionesCarreras = [
-    'Ingeniería Comercial',
-    'Ingeniería Civil',
-    'Arquitectura',
-    'College',
-    'Todas'
-  ];
+  // Opciones de carreras: todas las carreras UC + opción "Todas"
+  const opcionesCarreras = ['Todas las carreras', ...CARRERAS_UC];
 
   const anios = [1, 2, 3, 4, 5];
-
-  const handleCarrerasChange = (carreraSeleccionada) => {
-    if (carreraSeleccionada === 'Todas') {
-      // Si se selecciona "Todas", solo mantener "Todas" y limpiar las demás
-      setCarreras(['Todas']);
-    } else {
-      // Si se selecciona otra opción
-      if (carreras.includes('Todas')) {
-        // Si "Todas" estaba seleccionada, deseleccionarla y solo agregar la nueva
-        setCarreras([carreraSeleccionada]);
-      } else {
-        // Toggle: agregar o quitar la carrera seleccionada
-        if (carreras.includes(carreraSeleccionada)) {
-          setCarreras(carreras.filter(c => c !== carreraSeleccionada));
-        } else {
-          setCarreras([...carreras, carreraSeleccionada]);
-        }
-      }
-    }
-  };
 
   const handleImagenChange = (e) => {
     const file = e.target.files[0];
@@ -99,13 +74,17 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
     setEnviando(true);
 
     try {
+      // Preparar datos del anuncio
+      const carreraFinal = carreraObjetivo === 'Todas las carreras' || !carreraObjetivo ? 'Todas' : carreraObjetivo;
+      const carrerasArray = carreraFinal === 'Todas' ? ['Todas'] : [carreraFinal];
+
       await publicarAnuncio(
         {
           titulo: titulo.trim(),
           descripcion: descripcion.trim(),
-          carrera: carrera || 'Todas',
+          carrera: carreraFinal,
           anio: anio ? parseInt(anio) : null,
-          carreras: carreras.length > 0 ? carreras : [],
+          carreras: carrerasArray,
           duracion: duracion
         },
         usuario,
@@ -115,8 +94,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
       // Limpiar formulario
       setTitulo('');
       setDescripcion('');
-      setCarreras([]);
-      setCarrera('');
+      setCarreraObjetivo('');
       setAnio('');
       setDuracion('2');
       setImagen(null);
@@ -140,8 +118,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
     if (!enviando) {
       setTitulo('');
       setDescripcion('');
-      setCarreras([]);
-      setCarrera('');
+      setCarreraObjetivo('');
       setAnio('');
       setDuracion('2');
       setImagen(null);
@@ -220,57 +197,18 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                     required
                   />
 
-                  {/* Carreras relacionadas (multi-select) */}
-                  <div>
-                    <label className="block text-sm font-medium text-text-primary mb-2">
-                      Carreras relacionadas (opcional)
-                    </label>
-                    <div className="space-y-2">
-                      {opcionesCarreras.map((opcion) => {
-                        const isChecked = carreras.includes(opcion);
-                        const isDisabled = carreras.includes('Todas') && opcion !== 'Todas';
-
-                        return (
-                          <label
-                            key={opcion}
-                            className={`flex items-center gap-3 p-3 rounded-lg border border-border bg-card/50 transition-colors cursor-pointer hover:bg-card/70 ${
-                              isDisabled ? 'opacity-50 cursor-not-allowed' : ''
-                            }`}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={isChecked}
-                              disabled={isDisabled}
-                              onChange={() => handleCarrerasChange(opcion)}
-                              className="w-4 h-4 text-brand bg-background border-border rounded focus:ring-2 focus:ring-brand/30 disabled:cursor-not-allowed"
-                            />
-                            <span className="text-sm text-text-primary">{opcion}</span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                    <p className="mt-2 text-xs text-text-muted">
-                      Selecciona las carreras a las que va dirigido este anuncio. Si no seleccionas ninguna, será visible para todos.
-                    </p>
-                  </div>
-
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    {/* Carrera */}
-                    <div>
-                      <label className="block text-sm font-medium text-text-primary mb-2">
-                        Carrera (opcional)
-                      </label>
-                      <select
-                        value={carrera}
-                        onChange={(e) => setCarrera(e.target.value)}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
-                      >
-                        <option value="">Todas las carreras</option>
-                        {opcionesCarreras.map(c => (
-                          <option key={c} value={c}>{c}</option>
-                        ))}
-                      </select>
-                    </div>
+                    {/* Carrera dirigida */}
+                    <SearchableSelect
+                      id="carreraObjetivo"
+                      name="carreraObjetivo"
+                      label="Dirigido a"
+                      value={carreraObjetivo}
+                      onChange={(e) => setCarreraObjetivo(e.target.value)}
+                      options={opcionesCarreras}
+                      placeholder="Todas las carreras"
+                      hint="Busca una carrera específica o deja en blanco para todas"
+                    />
 
                     {/* Año */}
                     <div>
