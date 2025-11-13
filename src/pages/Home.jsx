@@ -55,8 +55,8 @@ const Home = () => {
       icon: Heart,
       iconBg: 'bg-blue-500/10',
       iconColor: 'text-blue-500',
-      ruta: '/publicar',
-      requireAuth: true
+      ruta: '/favores',
+      requireAuth: false
     },
     {
       id: 'vender-algo',
