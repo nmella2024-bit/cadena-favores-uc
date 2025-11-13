@@ -9,6 +9,7 @@
 
 import {setGlobalOptions} from "firebase-functions";
 import {onSchedule} from "firebase-functions/v2/scheduler";
+import {onDocumentUpdated} from "firebase-functions/v2/firestore";
 import * as logger from "firebase-functions/logger";
 import * as admin from "firebase-admin";
 
@@ -216,6 +217,42 @@ export const limpiarFavoresFinalizados = onSchedule({
   } catch (error) {
     logger.error("❌ Error al limpiar favores finalizados:", error);
     throw error;
+  }
+});
+
+/**
+ * Función trigger que se ejecuta automáticamente cuando una notificación es actualizada
+ * Si la notificación es marcada como leída (leida: true), se elimina inmediatamente
+ * Esto mantiene la colección de notificaciones limpia y solo con notificaciones activas
+ */
+export const eliminarNotificacionLeida = onDocumentUpdated({
+  document: "notificaciones/{notificationId}",
+  region: "us-central1",
+}, async (event) => {
+  const beforeData = event.data?.before.data();
+  const afterData = event.data?.after.data();
+
+  // Verificar que tenemos los datos
+  if (!beforeData || !afterData) {
+    logger.warn("⚠️ No se encontraron datos en el evento");
+    return;
+  }
+
+  // Verificar si la notificación cambió de NO leída a leída
+  const fueLeida = !beforeData.leida && afterData.leida;
+
+  if (fueLeida) {
+    const notificationId = event.params.notificationId;
+    logger.info(`📬 Notificación ${notificationId} marcada como leída, eliminando...`);
+
+    try {
+      // Eliminar la notificación
+      await event.data?.after.ref.delete();
+      logger.info(`✅ Notificación ${notificationId} eliminada exitosamente`);
+    } catch (error) {
+      logger.error(`❌ Error al eliminar notificación ${notificationId}:`, error);
+      throw error;
+    }
   }
 });
 

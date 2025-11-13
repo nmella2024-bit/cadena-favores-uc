@@ -6,6 +6,7 @@ Este documento describe las Cloud Functions que mantienen la base de datos limpi
 
 ### 1. `eliminarContenidoExpirado`
 
+**Tipo:** Scheduled Function
 **Frecuencia:** Cada 1 hora
 **Horario:** Continuo (24/7)
 **Zona horaria:** America/Santiago
@@ -26,8 +27,9 @@ Elimina automáticamente favores y anuncios que han llegado a su fecha de expira
 ✅ Se eliminaron X favores expirados
 ```
 
-### 2. `limpiarFavoresFinalizados` (NUEVA)
+### 2. `limpiarFavoresFinalizados`
 
+**Tipo:** Scheduled Function
 **Frecuencia:** Cada día
 **Horario:** 02:00 AM
 **Zona horaria:** America/Santiago
@@ -55,6 +57,44 @@ Elimina automáticamente favores que fueron finalizados hace más de 30 días. E
 📝 Eliminando Y reportes asociados al favor
 ✅ Batch ejecutado: X favores procesados
 🎉 Limpieza completada. Total eliminados: X favores finalizados
+```
+
+### 3. `eliminarNotificacionLeida` (NUEVA)
+
+**Tipo:** Firestore Trigger (onDocumentUpdated)
+**Trigger:** Cuando se actualiza un documento en `notificaciones/{notificationId}`
+**Ejecución:** Instantánea (en tiempo real)
+
+**Descripción:**
+Se ejecuta automáticamente cada vez que una notificación es actualizada. Si la notificación cambia de NO leída a leída (campo `leida` cambia de `false` a `true`), la elimina inmediatamente. Esto mantiene la colección de notificaciones limpia y solo contiene notificaciones activas/no leídas.
+
+**Qué elimina:**
+- Notificaciones que cambian de `leida: false` a `leida: true`
+- Eliminación instantánea (en milisegundos después de marcar como leída)
+
+**Por qué eliminar notificaciones leídas:**
+- Mantiene la colección limpia y pequeña
+- Mejora el rendimiento de las queries
+- Reduce costos de almacenamiento
+- Las notificaciones leídas ya cumplieron su propósito
+
+**Flujo de funcionamiento:**
+```
+Usuario marca notificación como leída
+    ↓
+Campo leida cambia: false → true
+    ↓
+Trigger detecta el cambio
+    ↓
+Función elimina la notificación instantáneamente
+    ↓
+✅ Notificación eliminada de la base de datos
+```
+
+**Logs:**
+```
+📬 Notificación abc123 marcada como leída, eliminando...
+✅ Notificación abc123 eliminada exitosamente
 ```
 
 ## Índices Requeridos en Firestore
