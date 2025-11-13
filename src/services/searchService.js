@@ -104,14 +104,16 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
       total: 0
     };
 
-    // Búsqueda en Favores
+    // Búsqueda en Favores (Híbrida: cache + Firestore)
     if (collections.includes('favores')) {
       try {
         const favoresRef = collection(db, 'favores');
-        // Limitar a 50 documentos para reducir costos
-        const favoresSnapshot = await getDocs(query(favoresRef, limit(50)));
 
-        favoresSnapshot.forEach(doc => {
+        // FASE 1: Búsqueda rápida en primeros 50 favores (cache local)
+        console.log('[buscarGlobal] Fase 1: Buscando en cache local (50 favores)...');
+        const cacheSnapshot = await getDocs(query(favoresRef, limit(50)));
+
+        cacheSnapshot.forEach(doc => {
           const data = doc.data();
           const searchableText = `${data.titulo} ${data.descripcion} ${data.categoria} ${data.nombreUsuario}`;
 
@@ -126,9 +128,58 @@ export const buscarGlobal = async (searchTerm, options = {}) => {
           }
         });
 
+        console.log(`[buscarGlobal] Fase 1: ${results.favores.length} resultados encontrados en cache`);
+
+        // FASE 2: Si no hay suficientes resultados, buscar en toda la colección
+        // Se considera "suficiente" si tenemos al menos limitPerCollection resultados
+        // o si encontramos al menos algunos resultados y no queremos sobrecargar
+        const umbralMinimo = Math.min(3, limitPerCollection);
+
+        if (results.favores.length < umbralMinimo) {
+          console.log('[buscarGlobal] Fase 2: Resultados insuficientes, buscando en toda la colección...');
+
+          // Buscar en todos los favores sin límite
+          const allFavoresSnapshot = await getDocs(favoresRef);
+
+          console.log(`[buscarGlobal] Fase 2: ${allFavoresSnapshot.size} favores totales en BD`);
+
+          // Usar un Set para evitar duplicados por ID
+          const favoresMap = new Map();
+
+          // Agregar los que ya teníamos
+          results.favores.forEach(favor => {
+            favoresMap.set(favor.id, favor);
+          });
+
+          // Procesar todos los documentos
+          allFavoresSnapshot.forEach(doc => {
+            // Saltar si ya lo procesamos
+            if (favoresMap.has(doc.id)) return;
+
+            const data = doc.data();
+            const searchableText = `${data.titulo} ${data.descripcion} ${data.categoria} ${data.nombreUsuario}`;
+
+            if (matchesSearch(searchableText, searchData)) {
+              const score = calculateScore(searchableText, searchData);
+              favoresMap.set(doc.id, {
+                id: doc.id,
+                type: 'favor',
+                ...data,
+                _searchScore: score
+              });
+            }
+          });
+
+          // Convertir Map a array
+          results.favores = Array.from(favoresMap.values());
+          console.log(`[buscarGlobal] Fase 2: ${results.favores.length} resultados totales después de búsqueda completa`);
+        }
+
         // Ordenar por relevancia y limitar
         results.favores.sort((a, b) => b._searchScore - a._searchScore);
         results.favores = results.favores.slice(0, limitPerCollection);
+
+        console.log(`[buscarGlobal] Favores finales: ${results.favores.length}`);
       } catch (error) {
         console.error('Error buscando en favores:', error);
       }
@@ -391,6 +442,65 @@ export const buscarEnColeccion = async (collection, searchTerm, limitResults = 2
     return results[collection] || [];
   } catch (error) {
     console.error(`Error buscando en ${collection}:`, error);
+    throw error;
+  }
+};
+
+/**
+ * Busca directamente en toda la colección de favores sin límite de cache
+ * Útil cuando se necesita garantizar resultados completos
+ * @param {string} searchTerm - Término de búsqueda
+ * @param {number} limitResults - Límite de resultados (default: 20)
+ * @returns {Promise<Array>} Resultados de la búsqueda
+ */
+export const buscarEnFavoresCompleto = async (searchTerm, limitResults = 20) => {
+  try {
+    console.log('[buscarEnFavoresCompleto] Iniciando búsqueda completa...');
+
+    if (!searchTerm || searchTerm.trim().length < 2) {
+      console.log('[buscarEnFavoresCompleto] Término muy corto');
+      return [];
+    }
+
+    // Normalizar término de búsqueda
+    const searchData = normalizeSearchTerm(searchTerm);
+    console.log('[buscarEnFavoresCompleto] Búsqueda normalizada:', searchData);
+
+    const favoresRef = collection(db, 'favores');
+    const allFavoresSnapshot = await getDocs(favoresRef);
+
+    console.log(`[buscarEnFavoresCompleto] ${allFavoresSnapshot.size} favores totales en BD`);
+
+    const favoresEncontrados = [];
+
+    allFavoresSnapshot.forEach(doc => {
+      const data = doc.data();
+      const searchableText = `${data.titulo} ${data.descripcion} ${data.categoria} ${data.nombreUsuario}`;
+
+      if (matchesSearch(searchableText, searchData)) {
+        const score = calculateScore(searchableText, searchData);
+        favoresEncontrados.push({
+          id: doc.id,
+          type: 'favor',
+          ...data,
+          _searchScore: score
+        });
+      }
+    });
+
+    console.log(`[buscarEnFavoresCompleto] ${favoresEncontrados.length} resultados encontrados`);
+
+    // Ordenar por relevancia
+    favoresEncontrados.sort((a, b) => b._searchScore - a._searchScore);
+
+    // Limitar resultados
+    const resultadosFinales = favoresEncontrados.slice(0, limitResults);
+
+    console.log(`[buscarEnFavoresCompleto] ${resultadosFinales.length} resultados finales`);
+
+    return resultadosFinales;
+  } catch (error) {
+    console.error('[buscarEnFavoresCompleto] Error en búsqueda:', error);
     throw error;
   }
 };
