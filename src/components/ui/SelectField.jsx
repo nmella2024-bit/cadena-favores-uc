@@ -13,7 +13,7 @@ const SelectField = React.forwardRef(
         ref={ref}
         id={id}
         className={cn(
-          'w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-text-primary shadow-sm transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30 focus:ring-offset-2 focus:ring-offset-[rgb(var(--bg-canvas))]',
+          'w-full rounded-lg border border-border bg-card px-3 py-2 text-sm text-text-primary shadow-sm transition-colors focus:border-brand focus:ring-2 focus:ring-brand/30 focus:ring-offset-2 focus:ring-offset-[rgb(var(--bg-canvas))] [&>option]:bg-background [&>option]:dark:bg-card [&>option]:text-text-primary',
           selectClassName,
         )}
         aria-invalid={Boolean(error)}

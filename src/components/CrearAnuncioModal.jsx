@@ -218,7 +218,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                       <select
                         value={anio}
                         onChange={(e) => setAnio(e.target.value)}
-                        className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                        className="w-full px-4 py-2.5 bg-background dark:bg-card border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors [&>option]:bg-background [&>option]:dark:bg-card [&>option]:text-text-primary"
                       >
                         <option value="">Todos los años</option>
                         {anios.map(a => (
@@ -236,7 +236,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                     <select
                       value={duracion}
                       onChange={(e) => setDuracion(e.target.value)}
-                      className="w-full px-4 py-2.5 bg-background border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors"
+                      className="w-full px-4 py-2.5 bg-background dark:bg-card border border-border rounded-lg text-text-primary focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand transition-colors [&>option]:bg-background [&>option]:dark:bg-card [&>option]:text-text-primary"
                     >
                       <option value="1">1 día</option>
                       <option value="2">2 días (recomendado)</option>
