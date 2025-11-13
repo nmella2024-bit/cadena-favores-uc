@@ -75,7 +75,7 @@ const Home = () => {
       icon: Calendar,
       iconBg: 'bg-purple-500/10',
       iconColor: 'text-purple-500',
-      ruta: '/eventos',
+      ruta: '/anuncios',
       requireAuth: false
     },
     {
