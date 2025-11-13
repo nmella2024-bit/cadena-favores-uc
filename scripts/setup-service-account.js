@@ -34,7 +34,6 @@ console.log(`✅ Proyecto Firebase detectado: ${firebaseProjectId}\n`);
 // 2. Buscar archivo de credenciales
 const possibleFiles = [
   `${firebaseProjectId}-*.json`,
-  'coherent-flame-*.json',
   'red-uc-*.json',
   '*-service-account.json',
   'serviceAccountKey.json'

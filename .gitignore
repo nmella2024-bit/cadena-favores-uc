@@ -44,7 +44,9 @@ build/
 firebase-debug.log*
 firestore-debug.log*
 serviceAccountKey.json
+serviceAccountKey-*.json
 materiales.csv
+usuarios-backup.json
 
 # Archivos temporales
 *.tmp
@@ -81,3 +83,5 @@ desktop.ini
 *~
 
 coherent-flame-475215-f0-4fff3af9eaec.json
+*-service-account.json
+*-firebase-adminsdk-*.json

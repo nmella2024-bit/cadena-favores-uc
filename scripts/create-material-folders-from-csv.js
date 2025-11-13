@@ -29,11 +29,13 @@ const __dirname = dirname(__filename);
 
 const CSV_FILE = path.join(__dirname, '..', 'EnfermeriaUC.csv');
 const CREDENTIALS_PATH = path.join(__dirname, '..', 'serviceAccountKey.json');
-const SERVICE_ACCOUNT_EMAIL = 'firebase-adminsdk-fbsvc@red-uc-eeuu.iam.gserviceaccount.com';
 
-// ID de la carpeta raíz de "Material" en Google Drive
-// Esta carpeta debe estar compartida con el Service Account como "Editor"
-const ROOT_FOLDER_ID = '1qQwtcpIaEusfGFtXyT7BlrVTLuYWmTyK';
+// IMPORTANTE: Configura este ID en variables de entorno o archivo .env
+// Esta es la carpeta raíz de "Material" en Google Drive
+// Debe estar compartida con el Service Account como "Editor"
+const ROOT_FOLDER_ID = process.env.GOOGLE_DRIVE_ROOT_FOLDER_ID || '1qQwtcpIaEusfGFtXyT7BlrVTLuYWmTyK';
+
+let SERVICE_ACCOUNT_EMAIL;
 
 // ============================================
 // INICIALIZAR FIREBASE ADMIN
@@ -43,13 +45,17 @@ console.log('🔧 Inicializando Firebase Admin...\n');
 try {
   const serviceAccount = JSON.parse(fs.readFileSync(CREDENTIALS_PATH, 'utf-8'));
 
+  // Leer el email del service account del archivo de credenciales
+  SERVICE_ACCOUNT_EMAIL = serviceAccount.client_email;
+
   if (!admin.apps.length) {
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount)
     });
   }
 
-  console.log('✅ Firebase Admin inicializado\n');
+  console.log('✅ Firebase Admin inicializado');
+  console.log(`   Service Account: ${SERVICE_ACCOUNT_EMAIL}\n`);
 } catch (error) {
   console.error('❌ Error:', error.message);
   process.exit(1);

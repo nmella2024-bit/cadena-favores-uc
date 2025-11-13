@@ -29,7 +29,10 @@
     "comercial:import": "node scripts/import-materiales-from-comercial.js",
     "enfermeria:create-folders": "node scripts/create-material-folders-from-csv.js",
     "enfermeria:import": "node scripts/import-enfermeria-from-csv.js",
-    "demo:accounts": "node scripts/create-demo-accounts.cjs"
+    "demo:accounts": "node scripts/create-demo-accounts.cjs",
+    "security:audit": "bash scripts/security-audit.sh",
+    "security:rotate": "bash scripts/rotate-credentials.sh",
+    "security:permissions": "bash scripts/setup-service-account-minimal-permissions.sh"
   },
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",

@@ -21,7 +21,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const CREDENTIALS_PATH = path.join(__dirname, '..', 'serviceAccountKey.json');
-const SERVICE_ACCOUNT_EMAIL = 'bot-subida-drive@coherent-flame-475215-f0.iam.gserviceaccount.com';
+
+// Leer el Service Account Email del archivo de credenciales
+let SERVICE_ACCOUNT_EMAIL;
+try {
+  const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_PATH, 'utf-8'));
+  SERVICE_ACCOUNT_EMAIL = credentials.client_email;
+} catch (error) {
+  console.error('❌ Error al leer credenciales:', error.message);
+  process.exit(1);
+}
 
 async function testDriveConnection() {
   console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');

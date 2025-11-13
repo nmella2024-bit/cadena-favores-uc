@@ -11,7 +11,7 @@
  * node scripts/migrate-folders-to-drive.js
  *
  * REQUISITOS:
- * - Tener el archivo coherent-flame-475215-f0-4fff3af9eaec.json en la raíz
+ * - Tener el archivo serviceAccountKey.json en la raíz
  * - Las carpetas deben existir en Google Drive con el mismo nombre
  */
 
@@ -49,7 +49,7 @@ try {
   console.log(`   Service Account: ${SERVICE_ACCOUNT_EMAIL}\n`);
 } catch (error) {
   console.error('❌ Error al inicializar Firebase Admin:', error.message);
-  console.error('   Asegúrate de que el archivo coherent-flame-475215-f0-4fff3af9eaec.json existe\n');
+  console.error('   Asegúrate de que el archivo serviceAccountKey.json existe en la raíz\n');
   process.exit(1);
 }
 
