@@ -128,6 +128,39 @@
         { "fieldPath": "autor", "order": "ASCENDING" },
         { "fieldPath": "fecha", "order": "DESCENDING" }
       ]
+    },
+    {
+      "collectionGroup": "favores",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "estado", "order": "ASCENDING" },
+        { "fieldPath": "fechaFinalizacion", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "reportes",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "contentType", "order": "ASCENDING" },
+        { "fieldPath": "contentId", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "favores",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "fechaExpiracion", "order": "ASCENDING" },
+        { "fieldPath": "fijado", "order": "ASCENDING" },
+        { "fieldPath": "estado", "order": "ASCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "anuncios",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "fechaExpiracion", "order": "ASCENDING" },
+        { "fieldPath": "fijado", "order": "ASCENDING" }
+      ]
     }
   ],
   "fieldOverrides": []
