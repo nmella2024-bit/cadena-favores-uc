@@ -10,6 +10,7 @@ import TextField from '../components/ui/TextField';
 import SelectField from '../components/ui/SelectField';
 import Toggle from '../components/ui/Toggle';
 import { categories } from '../data/mockData';
+import { esParaMi } from '../data/facultades';
 
 const SkeletonCard = () => (
   <div
@@ -110,14 +111,38 @@ const Favores = () => {
         favor.descripcion.toLowerCase().includes(normalizedQuery) ||
         (favor.disponibilidad && favor.disponibilidad.toLowerCase().includes(normalizedQuery));
 
-      // Filtro "Para mí": solo mostrar favores de mi carrera o sin carrera específica
-      const matchesParaMi =
-        !soloParaMi ||
-        !currentUser?.carrera ||
-        !favor.carreras || // Si el favor no tiene carreras específicas, mostrarlo
-        favor.carreras.length === 0 || // Si el array está vacío, mostrarlo
-        favor.carreras.includes('Todas') || // Si incluye "Todas", mostrarlo
-        favor.carreras.includes(currentUser.carrera); // Si incluye mi carrera, mostrarlo
+      // Filtro "Para mí": usar la nueva lógica basada en facultades
+      const matchesParaMi = !soloParaMi || (() => {
+        console.log('🔍 FAVOR:', favor.titulo);
+        console.log('👤 Usuario carrera:', currentUser?.carrera);
+        console.log('📋 Favor facultades:', favor.facultades);
+        console.log('📋 Favor carreras (antiguo):', favor.carreras);
+
+        if (!currentUser?.carrera) {
+          console.log('❌ Sin carrera de usuario - mostrar');
+          return true;
+        }
+
+        // Si tiene facultades (publicaciones nuevas)
+        if (favor.facultades && favor.facultades.length > 0) {
+          console.log('✅ Tiene facultades - llamando esParaMi');
+          const resultado = esParaMi(favor.facultades, currentUser.carrera);
+          console.log('Resultado esParaMi:', resultado);
+          return resultado;
+        }
+
+        // Soporte para publicaciones antiguas con campo "carreras"
+        if (favor.carreras && favor.carreras.length > 0) {
+          console.log('✅ Tiene carreras (antiguo)');
+          const resultado = favor.carreras.includes('Todas') || favor.carreras.includes(currentUser.carrera);
+          console.log('Resultado carreras antiguo:', resultado);
+          return resultado;
+        }
+
+        // Si no tiene ni facultades ni carreras, mostrarlo
+        console.log('⚠️ Sin facultades ni carreras - mostrar todo');
+        return true;
+      })();
 
       return matchesCategory && matchesAvailability && matchesSearch && matchesParaMi;
     });

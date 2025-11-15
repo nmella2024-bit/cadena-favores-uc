@@ -7,6 +7,7 @@ import CrearProductoModal from '../components/CrearProductoModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import TextField from '../components/ui/TextField';
 import { puedeEliminar } from '../utils/adminUtils';
+import { esParaMi } from '../data/facultades';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -71,14 +72,38 @@ const Marketplace = () => {
         producto.titulo.toLowerCase().includes(normalizedQuery) ||
         producto.descripcion.toLowerCase().includes(normalizedQuery);
 
-      // Filtro "Para mí": solo mostrar productos de mi carrera o sin carrera específica
-      const matchesParaMi =
-        !soloParaMi ||
-        !currentUser?.carrera ||
-        !producto.carreras || // Si el producto no tiene carreras específicas, mostrarlo
-        producto.carreras.length === 0 || // Si el array está vacío, mostrarlo
-        producto.carreras.includes('Todas') || // Si incluye "Todas", mostrarlo
-        producto.carreras.includes(currentUser.carrera); // Si incluye mi carrera, mostrarlo
+      // Filtro "Para mí": usar la nueva lógica basada en facultades
+      const matchesParaMi = !soloParaMi || (() => {
+        console.log('🔍 PRODUCTO:', producto.titulo);
+        console.log('👤 Usuario carrera:', currentUser?.carrera);
+        console.log('📋 Producto facultades:', producto.facultades);
+        console.log('📋 Producto carreras (antiguo):', producto.carreras);
+
+        if (!currentUser?.carrera) {
+          console.log('❌ Sin carrera de usuario - mostrar');
+          return true;
+        }
+
+        // Si tiene facultades (publicaciones nuevas)
+        if (producto.facultades && producto.facultades.length > 0) {
+          console.log('✅ Tiene facultades - llamando esParaMi');
+          const resultado = esParaMi(producto.facultades, currentUser.carrera);
+          console.log('Resultado esParaMi:', resultado);
+          return resultado;
+        }
+
+        // Soporte para publicaciones antiguas con campo "carreras"
+        if (producto.carreras && producto.carreras.length > 0) {
+          console.log('✅ Tiene carreras (antiguo)');
+          const resultado = producto.carreras.includes('Todas') || producto.carreras.includes(currentUser.carrera);
+          console.log('Resultado carreras antiguo:', resultado);
+          return resultado;
+        }
+
+        // Si no tiene ni facultades ni carreras, mostrarlo
+        console.log('⚠️ Sin facultades ni carreras - mostrar todo');
+        return true;
+      })();
 
       return matchesSearch && matchesParaMi;
     });

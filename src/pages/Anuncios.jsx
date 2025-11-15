@@ -7,7 +7,7 @@ import CrearAnuncioModal from '../components/CrearAnuncioModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import TextField from '../components/ui/TextField';
 import SearchableSelect from '../components/ui/SearchableSelect';
-import { CARRERAS_UC } from '../data/carreras';
+import { FACULTADES_UC, esParaMi } from '../data/facultades';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -25,7 +25,7 @@ const Anuncios = () => {
   const { currentUser } = useAuth();
   const [anuncios, setAnuncios] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [carreraSeleccionada, setCarreraSeleccionada] = useState('');
+  const [facultadSeleccionada, setFacultadSeleccionada] = useState('');
   const [anioSeleccionado, setAnioSeleccionado] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
@@ -34,7 +34,7 @@ const Anuncios = () => {
   const [soloParaMi, setSoloParaMi] = useState(false);
 
   // Opciones de filtros
-  const opcionesCarreras = ['Todas las carreras', ...CARRERAS_UC];
+  const opcionesFacultades = ['Todas las facultades', ...FACULTADES_UC];
   const anios = [1, 2, 3, 4, 5];
 
   const esUsuarioExclusivo = currentUser?.rol === 'exclusivo' || currentUser?.rol === 'admin';
@@ -76,27 +76,39 @@ const Anuncios = () => {
         anuncio.titulo.toLowerCase().includes(normalizedQuery) ||
         anuncio.descripcion.toLowerCase().includes(normalizedQuery);
 
-      const matchesCarrera =
-        !carreraSeleccionada ||
-        carreraSeleccionada === 'Todas las carreras' ||
-        carreraSeleccionada === 'Todas' ||
-        anuncio.carrera === carreraSeleccionada ||
-        (anuncio.carreras && anuncio.carreras.includes(carreraSeleccionada));
+      const matchesFacultad =
+        !facultadSeleccionada ||
+        facultadSeleccionada === 'Todas las facultades' ||
+        facultadSeleccionada === 'Todas' ||
+        anuncio.facultad === facultadSeleccionada ||
+        (anuncio.facultades && anuncio.facultades.includes(facultadSeleccionada)) ||
+        // Soporte para anuncios antiguos con carreras
+        (!anuncio.facultades && anuncio.carrera === facultadSeleccionada) ||
+        (!anuncio.facultades && anuncio.carreras && anuncio.carreras.includes(facultadSeleccionada));
 
       const matchesAnio =
         !anioSeleccionado ||
         anuncio.anio === parseInt(anioSeleccionado);
 
-      // Filtro "Para mí": solo mostrar anuncios de mi carrera o sin carrera específica
-      const matchesParaMi =
-        !soloParaMi ||
-        !currentUser?.carrera ||
-        !anuncio.carreras || // Si el anuncio no tiene carreras específicas, mostrarlo
-        anuncio.carreras.length === 0 || // Si el array está vacío, mostrarlo
-        anuncio.carreras.includes('Todas') || // Si incluye "Todas", mostrarlo
-        anuncio.carreras.includes(currentUser.carrera); // Si incluye mi carrera, mostrarlo
+      // Filtro "Para mí": usar la nueva lógica basada en facultades
+      const matchesParaMi = !soloParaMi || (() => {
+        if (!currentUser?.carrera) return true;
 
-      return matchesSearch && matchesCarrera && matchesAnio && matchesParaMi;
+        // Si tiene facultades (publicaciones nuevas)
+        if (anuncio.facultades && anuncio.facultades.length > 0) {
+          return esParaMi(anuncio.facultades, currentUser.carrera);
+        }
+
+        // Soporte para publicaciones antiguas con campo "carreras"
+        if (anuncio.carreras && anuncio.carreras.length > 0) {
+          return anuncio.carreras.includes('Todas') || anuncio.carreras.includes(currentUser.carrera);
+        }
+
+        // Si no tiene ni facultades ni carreras, mostrarlo
+        return true;
+      })();
+
+      return matchesSearch && matchesFacultad && matchesAnio && matchesParaMi;
     });
 
     // Ordenar: fijados primero, luego por fecha
@@ -105,12 +117,12 @@ const Anuncios = () => {
       if (!a.fijado && b.fijado) return 1;
       return new Date(b.fecha) - new Date(a.fecha);
     });
-  }, [anuncios, searchQuery, carreraSeleccionada, anioSeleccionado, soloParaMi, currentUser?.carrera]);
+  }, [anuncios, searchQuery, facultadSeleccionada, anioSeleccionado, soloParaMi, currentUser?.carrera]);
 
   // Limpiar filtros
   const limpiarFiltros = () => {
     setSearchQuery('');
-    setCarreraSeleccionada('');
+    setFacultadSeleccionada('');
     setAnioSeleccionado('');
   };
 
@@ -223,7 +235,7 @@ const Anuncios = () => {
                 <Filter className="h-5 w-5 text-brand" />
                 <h2 className="text-lg font-semibold text-text-primary">Filtros</h2>
               </div>
-              {(carreraSeleccionada || anioSeleccionado || searchQuery) && (
+              {(facultadSeleccionada || anioSeleccionado || searchQuery) && (
                 <button
                   onClick={limpiarFiltros}
                   className="flex items-center gap-2 px-3 py-1.5 text-sm text-text-muted hover:text-brand transition-colors"
@@ -235,15 +247,15 @@ const Anuncios = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Filtro Carrera */}
+              {/* Filtro Facultad */}
               <SearchableSelect
-                id="filtro-carrera"
-                name="filtro-carrera"
-                label="Filtrar por carrera"
-                value={carreraSeleccionada}
-                onChange={(e) => setCarreraSeleccionada(e.target.value)}
-                options={opcionesCarreras}
-                placeholder="Todas las carreras"
+                id="filtro-facultad"
+                name="filtro-facultad"
+                label="Filtrar por facultad"
+                value={facultadSeleccionada}
+                onChange={(e) => setFacultadSeleccionada(e.target.value)}
+                options={opcionesFacultades}
+                placeholder="Todas las facultades"
               />
 
               {/* Filtro Año */}

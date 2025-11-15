@@ -7,12 +7,12 @@ import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
 import SelectField from './ui/SelectField';
 import SearchableSelect from './ui/SearchableSelect';
-import { CARRERAS_UC } from '../data/carreras';
+import { FACULTADES_UC } from '../data/facultades';
 
 const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [carreraObjetivo, setCarreraObjetivo] = useState(''); // Carrera específica a la que va dirigido
+  const [facultadObjetivo, setFacultadObjetivo] = useState(''); // Facultad a la que va dirigido
   const [anio, setAnio] = useState('');
   const [duracion, setDuracion] = useState('2'); // Duración por defecto: 2 días
   const [imagen, setImagen] = useState(null);
@@ -20,8 +20,8 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
 
-  // Opciones de carreras: todas las carreras UC + opción "Todas"
-  const opcionesCarreras = ['Todas las carreras', ...CARRERAS_UC];
+  // Opciones de facultades: todas las facultades UC + opción "Todas"
+  const opcionesFacultades = ['Todas las facultades', ...FACULTADES_UC];
 
   const anios = [1, 2, 3, 4, 5];
 
@@ -75,16 +75,16 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
 
     try {
       // Preparar datos del anuncio
-      const carreraFinal = carreraObjetivo === 'Todas las carreras' || !carreraObjetivo ? 'Todas' : carreraObjetivo;
-      const carrerasArray = carreraFinal === 'Todas' ? ['Todas'] : [carreraFinal];
+      const facultadFinal = facultadObjetivo === 'Todas las facultades' || !facultadObjetivo ? 'Todas' : facultadObjetivo;
+      const facultadesArray = facultadFinal === 'Todas' ? ['Todas'] : [facultadFinal];
 
       await publicarAnuncio(
         {
           titulo: titulo.trim(),
           descripcion: descripcion.trim(),
-          carrera: carreraFinal,
+          facultad: facultadFinal, // Cambio de carrera a facultad
           anio: anio ? parseInt(anio) : null,
-          carreras: carrerasArray,
+          facultades: facultadesArray, // Cambio de carreras a facultades
           duracion: duracion
         },
         usuario,
@@ -94,7 +94,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
       // Limpiar formulario
       setTitulo('');
       setDescripcion('');
-      setCarreraObjetivo('');
+      setFacultadObjetivo('');
       setAnio('');
       setDuracion('2');
       setImagen(null);
@@ -118,7 +118,7 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
     if (!enviando) {
       setTitulo('');
       setDescripcion('');
-      setCarreraObjetivo('');
+      setFacultadObjetivo('');
       setAnio('');
       setDuracion('2');
       setImagen(null);
@@ -198,16 +198,16 @@ const CrearAnuncioModal = ({ isOpen, onClose, usuario, onAnuncioCreado }) => {
                   />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    {/* Carrera dirigida */}
+                    {/* Facultad dirigida */}
                     <SearchableSelect
-                      id="carreraObjetivo"
-                      name="carreraObjetivo"
+                      id="facultadObjetivo"
+                      name="facultadObjetivo"
                       label="Dirigido a"
-                      value={carreraObjetivo}
-                      onChange={(e) => setCarreraObjetivo(e.target.value)}
-                      options={opcionesCarreras}
-                      placeholder="Todas las carreras"
-                      hint="Busca una carrera específica o deja en blanco para todas"
+                      value={facultadObjetivo}
+                      onChange={(e) => setFacultadObjetivo(e.target.value)}
+                      options={opcionesFacultades}
+                      placeholder="Todas las facultades"
+                      hint="Busca una facultad específica o deja en blanco para todas"
                     />
 
                     {/* Año */}

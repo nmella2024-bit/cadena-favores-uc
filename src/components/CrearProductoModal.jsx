@@ -6,7 +6,7 @@ import PrimaryButton from './ui/PrimaryButton';
 import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
 import SearchableSelect from './ui/SearchableSelect';
-import { CARRERAS_UC } from '../data/carreras';
+import { FACULTADES_UC } from '../data/facultades';
 
 const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
   const [titulo, setTitulo] = useState('');
@@ -14,12 +14,12 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
   const [precio, setPrecio] = useState('');
   const [imagenes, setImagenes] = useState([]);
   const [imagenesPreviews, setImagenesPreviews] = useState([]);
-  const [carreraObjetivo, setCarreraObjetivo] = useState('');
+  const [facultadObjetivo, setFacultadObjetivo] = useState('');
   const [enviando, setEnviando] = useState(false);
   const [error, setError] = useState('');
 
-  // Opciones de carreras: todas las carreras UC + opción "Todas"
-  const opcionesCarreras = ['Todas las carreras', ...CARRERAS_UC];
+  // Opciones de facultades: todas las facultades UC + opción "Todas"
+  const opcionesFacultades = ['Todas las facultades', ...FACULTADES_UC];
 
   const handleImagenesChange = async (e) => {
     const files = Array.from(e.target.files);
@@ -102,15 +102,15 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
 
     try {
       // Preparar datos del producto
-      const carreraFinal = carreraObjetivo === 'Todas las carreras' || !carreraObjetivo ? 'Todas' : carreraObjetivo;
-      const carrerasArray = carreraFinal === 'Todas' ? ['Todas'] : [carreraFinal];
+      const facultadFinal = facultadObjetivo === 'Todas las facultades' || !facultadObjetivo ? 'Todas' : facultadObjetivo;
+      const facultadesArray = facultadFinal === 'Todas' ? ['Todas'] : [facultadFinal];
 
       await publicarProducto(
         {
           titulo: titulo.trim(),
           descripcion: descripcion.trim(),
           precio: parseFloat(precio),
-          carreras: carrerasArray
+          facultades: facultadesArray // Cambio de carreras a facultades
         },
         usuario,
         imagenes
@@ -122,7 +122,7 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
       setPrecio('');
       setImagenes([]);
       setImagenesPreviews([]);
-      setCarreraObjetivo('');
+      setFacultadObjetivo('');
 
       // Notificar que se creó el producto
       if (onProductoCreado) {
@@ -145,7 +145,7 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
       setPrecio('');
       setImagenes([]);
       setImagenesPreviews([]);
-      setCarreraObjetivo('');
+      setFacultadObjetivo('');
       setError('');
       onClose();
     }
@@ -280,14 +280,14 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
                   </div>
 
                   <SearchableSelect
-                    id="carreraObjetivo"
-                    name="carreraObjetivo"
+                    id="facultadObjetivo"
+                    name="facultadObjetivo"
                     label="Dirigido a (opcional)"
-                    value={carreraObjetivo}
-                    onChange={(e) => setCarreraObjetivo(e.target.value)}
-                    options={opcionesCarreras}
-                    placeholder="Todas las carreras"
-                    hint="Busca una carrera específica o deja en blanco para todas"
+                    value={facultadObjetivo}
+                    onChange={(e) => setFacultadObjetivo(e.target.value)}
+                    options={opcionesFacultades}
+                    placeholder="Todas las facultades"
+                    hint="Busca una facultad específica o deja en blanco para todas"
                     disabled={enviando}
                   />
 

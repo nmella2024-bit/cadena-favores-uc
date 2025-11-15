@@ -10,14 +10,14 @@ import TextField from '../components/ui/TextField';
 import SelectField from '../components/ui/SelectField';
 import TextareaField from '../components/ui/TextareaField';
 import SearchableSelect from '../components/ui/SearchableSelect';
-import { CARRERAS_UC } from '../data/carreras';
+import { FACULTADES_UC } from '../data/facultades';
 
 const initialFormState = {
   titulo: '',
   descripcion: '',
   categoria: '',
   disponibilidad: '',
-  carreraObjetivo: '', // Carrera a la que va dirigido
+  facultadObjetivo: '', // Facultad a la que va dirigido
   duracion: '2', // Duración por defecto: 2 días
 };
 
@@ -49,8 +49,8 @@ const PublicarFavor = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
-  // Opciones de carreras: todas las carreras UC + opción "Todas"
-  const opcionesCarreras = ['Todas las carreras', ...CARRERAS_UC];
+  // Opciones de facultades: todas las facultades UC + opción "Todas"
+  const opcionesFacultades = ['Todas las facultades', ...FACULTADES_UC];
 
   useEffect(() => {
     if (!currentUser) {
@@ -87,13 +87,13 @@ const PublicarFavor = () => {
       setIsSubmitting(true);
 
       // Preparar datos del favor
-      const carreraFinal = formData.carreraObjetivo === 'Todas las carreras' || !formData.carreraObjetivo
+      const facultadFinal = formData.facultadObjetivo === 'Todas las facultades' || !formData.facultadObjetivo
         ? 'Todas'
-        : formData.carreraObjetivo;
-      const carrerasArray = carreraFinal === 'Todas' ? ['Todas'] : [carreraFinal];
+        : formData.facultadObjetivo;
+      const facultadesArray = facultadFinal === 'Todas' ? ['Todas'] : [facultadFinal];
 
       // Publicar favor usando el servicio de Firebase
-      await publicarFavor({ ...formData, carreras: carrerasArray }, firebaseUser);
+      await publicarFavor({ ...formData, facultades: facultadesArray }, firebaseUser);
 
       setShowSuccess(true);
       setFormData(initialFormState);
@@ -239,14 +239,14 @@ const PublicarFavor = () => {
           </div>
 
           <SearchableSelect
-            id="carreraObjetivo"
-            name="carreraObjetivo"
+            id="facultadObjetivo"
+            name="facultadObjetivo"
             label="Dirigido a (opcional)"
-            value={formData.carreraObjetivo}
+            value={formData.facultadObjetivo}
             onChange={handleChange}
-            options={opcionesCarreras}
-            placeholder="Todas las carreras"
-            hint="Busca una carrera específica o deja en blanco para todas"
+            options={opcionesFacultades}
+            placeholder="Todas las facultades"
+            hint="Busca una facultad específica o deja en blanco para todas"
           />
 
           <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:justify-end">
