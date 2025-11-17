@@ -155,13 +155,13 @@ const MisReferidos = () => {
         {/* Información adicional */}
         <div className="mt-8 rounded-xl border border-blue-500/30 bg-blue-500/10 p-6">
           <h3 className="mb-3 font-semibold text-blue-600 dark:text-blue-400">
-            Sobre el concurso de referidos
+            Sobre tus referidos
           </h3>
           <ul className="space-y-2 text-sm text-blue-600 dark:text-blue-400">
+            <li>• Esta lista es privada, solo tú puedes verla</li>
             <li>• Los referidos se cuentan desde el momento del registro</li>
             <li>• Solo se cuentan usuarios que completen su registro y verifiquen su email</li>
-            <li>• El concurso finaliza el 21 de noviembre de 2025</li>
-            <li>• Los usuarios con más referidos aparecerán en el ranking</li>
+            <li>• Comparte tu código con amigos para sumar más referidos</li>
           </ul>
         </div>
       </div>
