@@ -9,6 +9,7 @@ import { obtenerCalificacionesUsuario } from '../services/ratingService';
 import StarRating from '../components/StarRating';
 import EditarPerfilModal from '../components/EditarPerfilModal';
 import VerifiedBadge from '../components/VerifiedBadge';
+import ReferralStats from '../components/ReferralStats';
 import { Plus, ExternalLink, Star, AlertCircle, TrendingUp, Camera, User, Edit2, Trash2 } from 'lucide-react';
 
 const Perfil = () => {
@@ -363,6 +364,11 @@ const Perfil = () => {
               </p>
             </div>
           </div> */}
+        </div>
+
+        {/* Sistema de Referidos */}
+        <div className="mb-12">
+          <ReferralStats />
         </div>
 
         {/* Secciones en grid */}
