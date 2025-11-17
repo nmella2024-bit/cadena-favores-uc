@@ -13,6 +13,7 @@ import {
 import { ref, uploadBytes, getDownloadURL, deleteObject } from 'firebase/storage';
 import { deleteUser } from 'firebase/auth';
 import { db, storage, auth } from '../firebaseConfig';
+import { generateReferralCode } from './referralService';
 
 /**
  * Crea un documento de usuario en Firestore
@@ -22,6 +23,9 @@ import { db, storage, auth } from '../firebaseConfig';
  */
 export const createUserDocument = async (userId, userData) => {
   try {
+    // Generar código de referido único
+    const codigoReferido = generateReferralCode(userId);
+
     await setDoc(doc(db, 'usuarios', userId), {
       nombre: userData.nombre,
       email: userData.email,
@@ -35,6 +39,10 @@ export const createUserDocument = async (userId, userData) => {
       favoresPublicados: [],
       favoresCompletados: [],
       fechaRegistro: serverTimestamp(),
+      // Campos de referidos
+      codigoReferido: codigoReferido,
+      totalReferidos: 0,
+      fechaGeneracionCodigo: serverTimestamp(),
     });
   } catch (error) {
     console.error('Error al crear documento de usuario:', error);

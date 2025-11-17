@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import TextField from '../components/ui/TextField';
@@ -7,10 +7,12 @@ import SelectField from '../components/ui/SelectField';
 import TextareaField from '../components/ui/TextareaField';
 import SearchableSelect from '../components/ui/SearchableSelect';
 import { CARRERAS_UC } from '../data/carreras';
+import { validateReferralCode } from '../services/referralService';
 
 const Registro = () => {
   const navigate = useNavigate();
   const { register } = useAuth();
+  const [searchParams] = useSearchParams();
 
   const [formData, setFormData] = useState({
     nombre: '',
@@ -22,9 +24,53 @@ const Registro = () => {
     telefono: '',
     intereses: '',
     descripcion: '',
+    codigoReferido: '',
   });
   const [error, setError] = useState('');
   const [emailError, setEmailError] = useState('');
+  const [referralStatus, setReferralStatus] = useState(null); // null, 'valid', 'invalid'
+  const [referralUser, setReferralUser] = useState(null);
+  const [validatingReferral, setValidatingReferral] = useState(false);
+
+  // Leer código de referido de la URL
+  useEffect(() => {
+    const refCode = searchParams.get('ref');
+    if (refCode) {
+      setFormData((prev) => ({
+        ...prev,
+        codigoReferido: refCode,
+      }));
+      // Validar el código automáticamente
+      validateReferralCodeInput(refCode);
+    }
+  }, [searchParams]);
+
+  // Validar código de referido
+  const validateReferralCodeInput = async (code) => {
+    if (!code || code.trim().length === 0) {
+      setReferralStatus(null);
+      setReferralUser(null);
+      return;
+    }
+
+    setValidatingReferral(true);
+    try {
+      const user = await validateReferralCode(code);
+      if (user) {
+        setReferralStatus('valid');
+        setReferralUser(user);
+      } else {
+        setReferralStatus('invalid');
+        setReferralUser(null);
+      }
+    } catch (error) {
+      console.error('Error validando código:', error);
+      setReferralStatus('invalid');
+      setReferralUser(null);
+    } finally {
+      setValidatingReferral(false);
+    }
+  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -55,6 +101,20 @@ const Registro = () => {
           ...prev,
           [name]: cleaned,
         }));
+      }
+    }
+    // Validación para código de referido
+    else if (name === 'codigoReferido') {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value.toUpperCase(),
+      }));
+      // Validar el código cuando el usuario deja de escribir
+      if (value.length >= 3) {
+        validateReferralCodeInput(value);
+      } else {
+        setReferralStatus(null);
+        setReferralUser(null);
       }
     } else {
       setFormData((prev) => ({
@@ -103,16 +163,19 @@ const Registro = () => {
         .map((interest) => interest.trim())
         .filter((interest) => interest.length > 0);
 
-      await register({
-        nombre: formData.nombre,
-        correo: formData.correo,
-        password: formData.password,
-        carrera: formData.carrera,
-        año: parseInt(formData.año, 10),
-        telefono: formData.telefono,
-        intereses: interesesArray,
-        descripcion: formData.descripcion,
-      });
+      await register(
+        {
+          nombre: formData.nombre,
+          correo: formData.correo,
+          password: formData.password,
+          carrera: formData.carrera,
+          año: parseInt(formData.año, 10),
+          telefono: formData.telefono,
+          intereses: interesesArray,
+          descripcion: formData.descripcion,
+        },
+        formData.codigoReferido || null
+      );
 
       // Redirigir a la página de verificación de email
       navigate('/verificar-email');
@@ -231,6 +294,33 @@ const Registro = () => {
             required
             maxLength={12}
           />
+
+          <div className="relative">
+            <TextField
+              id="codigoReferido"
+              name="codigoReferido"
+              label="Código de Referido (Opcional)"
+              placeholder="Ej: ABC123"
+              value={formData.codigoReferido}
+              onChange={handleChange}
+              hint="Si alguien te invitó, ingresa su código aquí"
+            />
+            {validatingReferral && (
+              <div className="absolute right-3 top-9 text-sm text-text-muted">
+                Validando...
+              </div>
+            )}
+            {referralStatus === 'valid' && referralUser && (
+              <div className="mt-2 rounded-lg border border-green-500/30 bg-green-500/10 p-3 text-sm text-green-600 dark:text-green-500">
+                ✓ Código válido: Te invitó <strong>{referralUser.nombre}</strong>
+              </div>
+            )}
+            {referralStatus === 'invalid' && formData.codigoReferido && (
+              <div className="mt-2 rounded-lg border border-yellow-500/30 bg-yellow-500/10 p-3 text-sm text-yellow-600 dark:text-yellow-500">
+                ⚠ Código no válido (puedes continuar sin él)
+              </div>
+            )}
+          </div>
 
           <TextField
             id="intereses"

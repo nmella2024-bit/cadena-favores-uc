@@ -216,5 +216,27 @@ service cloud.firestore {
       // Usuarios con rol "exclusivo" o "admin" pueden eliminar carpetas
       allow delete: if esUsuarioExclusivoOAdmin();
     }
+
+    // ============================================
+    // Reglas para la colección de REFERIDOS
+    // Sistema de códigos de amigo para concurso
+    // ============================================
+    match /referidos/{referidoId} {
+      // Usuarios pueden leer sus propios referidos
+      allow read: if request.auth != null && (
+        request.auth.uid == resource.data.referidoPor ||
+        request.auth.uid == resource.data.referido ||
+        esUsuarioExclusivoOAdmin()
+      );
+
+      // Solo el sistema puede crear referidos (usuarios autenticados)
+      // Se valida que el referido sea el usuario actual
+      allow create: if request.auth != null &&
+                    request.auth.uid == request.resource.data.referido;
+
+      // No se permite actualizar o eliminar referidos (inmutables)
+      allow update: if false;
+      allow delete: if esUsuarioAdmin();
+    }
   }
 }

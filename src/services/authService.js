@@ -10,15 +10,17 @@ import {
 } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { createUserDocument, getUserData } from './userService';
+import { registerReferral, extractReferralCode } from './referralService';
 
 /**
  * Registra un nuevo usuario con email y contraseña
  * @param {string} email - Email del usuario
  * @param {string} password - Contraseña
  * @param {Object} userData - Datos adicionales del usuario (nombre, carrera, etc.)
+ * @param {string} referralCode - Código de referido opcional
  * @returns {Promise<Object>} Usuario creado
  */
-export const registerUser = async (email, password, userData) => {
+export const registerUser = async (email, password, userData, referralCode = null) => {
   let createdUser = null;
 
   try {
@@ -47,6 +49,18 @@ export const registerUser = async (email, password, userData) => {
       intereses: userData.intereses || [],
       descripcion: userData.descripcion || '',
     });
+
+    // Si hay código de referido, registrar el referral
+    if (referralCode && referralCode.trim().length > 0) {
+      try {
+        const code = extractReferralCode(referralCode);
+        await registerReferral(createdUser.uid, code, email);
+        console.log('Referido registrado exitosamente');
+      } catch (referralError) {
+        // No fallar el registro si el código de referido es inválido
+        console.warn('Error al registrar referido (no crítico):', referralError.message);
+      }
+    }
 
     return createdUser;
   } catch (error) {

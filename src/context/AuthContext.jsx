@@ -89,7 +89,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Función de registro
-  const register = async (userData) => {
+  const register = async (userData, referralCode = null) => {
     try {
       // Validar que sea correo UC con regex estricto
       const ucEmailRegex = /^[a-zA-Z0-9._-]+@(uc\.cl|estudiante\.uc\.cl)$/;
@@ -98,15 +98,20 @@ export const AuthProvider = ({ children }) => {
       }
 
       // Registrar usuario en Firebase
-      await registerUser(userData.correo, userData.password, {
-        nombre: userData.nombre,
-        email: userData.correo,
-        carrera: userData.carrera || '',
-        año: userData.año || 1,
-        telefono: userData.telefono || '',
-        intereses: userData.intereses || [],
-        descripcion: userData.descripcion || '',
-      });
+      await registerUser(
+        userData.correo,
+        userData.password,
+        {
+          nombre: userData.nombre,
+          email: userData.correo,
+          carrera: userData.carrera || '',
+          año: userData.año || 1,
+          telefono: userData.telefono || '',
+          intereses: userData.intereses || [],
+          descripcion: userData.descripcion || '',
+        },
+        referralCode
+      );
 
       // El listener de onAuthChange se encargará de actualizar currentUser
       return true;

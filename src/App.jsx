@@ -30,6 +30,8 @@ const EmailVerificationPending = lazy(() => import('./pages/EmailVerificationPen
 const AdminSeedFolders = lazy(() => import('./components/AdminSeedFolders'));
 const MigrarMaterialesExistentes = lazy(() => import('./components/MigrarMaterialesExistentes'));
 const DiagnosticoMaterial = lazy(() => import('./components/DiagnosticoMaterial'));
+const MisReferidos = lazy(() => import('./pages/MisReferidos'));
+const RankingReferidos = lazy(() => import('./pages/RankingReferidos'));
 
 // UCloseMeal Pages - TEMPORALMENTE DESHABILITADO
 // import UCloseMealRoleSelect from './pages/UCloseMealRoleSelect';
@@ -123,6 +125,24 @@ function App() {
               element={
                 <ProtectedRoute>
                   <PerfilPublico />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* Referidos - Protegidas */}
+            <Route
+              path="/mis-referidos"
+              element={
+                <ProtectedRoute>
+                  <MisReferidos />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/ranking-referidos"
+              element={
+                <ProtectedRoute>
+                  <RankingReferidos />
                 </ProtectedRoute>
               }
             />
