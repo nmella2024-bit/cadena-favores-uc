@@ -24,6 +24,12 @@ export const registerUser = async (email, password, userData, referralCode = nul
   let createdUser = null;
 
   try {
+    // VALIDACIÓN DE SEGURIDAD: Solo permitir dominios UC
+    const ucEmailRegex = /^[a-zA-Z0-9._-]+@(uc\.cl|estudiante\.uc\.cl)$/;
+    if (!ucEmailRegex.test(email)) {
+      throw new Error('Solo se permiten correos institucionales UC (@uc.cl o @estudiante.uc.cl)');
+    }
+
     // Crear usuario en Firebase Auth
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     createdUser = userCredential.user;
@@ -94,6 +100,12 @@ export const registerUser = async (email, password, userData, referralCode = nul
  */
 export const loginUser = async (email, password) => {
   try {
+    // VALIDACIÓN DE SEGURIDAD: Verificar dominio UC antes de autenticar
+    const ucEmailRegex = /^[a-zA-Z0-9._-]+@(uc\.cl|estudiante\.uc\.cl)$/;
+    if (!ucEmailRegex.test(email)) {
+      throw new Error('Solo se permiten correos institucionales UC (@uc.cl o @estudiante.uc.cl)');
+    }
+
     // Primero intentar autenticar con Firebase Auth
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;

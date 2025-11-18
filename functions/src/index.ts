@@ -9,7 +9,7 @@
 
 import {setGlobalOptions} from "firebase-functions";
 import {onSchedule} from "firebase-functions/v2/scheduler";
-import {onDocumentUpdated} from "firebase-functions/v2/firestore";
+import {onDocumentUpdated, onDocumentCreated} from "firebase-functions/v2/firestore";
 import * as logger from "firebase-functions/logger";
 import * as admin from "firebase-admin";
 
@@ -253,6 +253,50 @@ export const eliminarNotificacionLeida = onDocumentUpdated({
       logger.error(`❌ Error al eliminar notificación ${notificationId}:`, error);
       throw error;
     }
+  }
+});
+
+/**
+ * FUNCIÓN DE SEGURIDAD: Validar que el usuario recién creado tenga email UC
+ * Se ejecuta automáticamente cuando se crea un nuevo documento de usuario
+ * Si el email NO es @uc.cl o @estudiante.uc.cl, elimina el documento y el usuario de Auth
+ */
+export const validarEmailUCEnCreacion = onDocumentCreated({
+  document: "usuarios/{userId}",
+  region: "us-central1",
+}, async (event) => {
+  const userData = event.data?.data();
+  const userId = event.params.userId;
+
+  if (!userData) {
+    logger.warn(`⚠️ No se encontraron datos para el usuario ${userId}`);
+    return;
+  }
+
+  const email = userData.email;
+
+  // Validar dominio UC
+  const ucEmailRegex = /^[a-zA-Z0-9._-]+@(uc\.cl|estudiante\.uc\.cl)$/;
+
+  if (!ucEmailRegex.test(email)) {
+    logger.error(`🚨 SEGURIDAD: Detectado usuario con email no UC: ${email} (${userId})`);
+
+    try {
+      // 1. Eliminar el documento de Firestore
+      await event.data?.ref.delete();
+      logger.info(`✅ Documento de usuario ${userId} eliminado de Firestore`);
+
+      // 2. Eliminar el usuario de Firebase Auth
+      await admin.auth().deleteUser(userId);
+      logger.info(`✅ Usuario ${userId} eliminado de Firebase Auth`);
+
+      logger.info(`🛡️ Usuario no autorizado bloqueado: ${email}`);
+    } catch (error) {
+      logger.error(`❌ Error al eliminar usuario no autorizado ${userId}:`, error);
+      throw error;
+    }
+  } else {
+    logger.info(`✓ Usuario validado correctamente: ${email} (${userId})`);
   }
 });
 
