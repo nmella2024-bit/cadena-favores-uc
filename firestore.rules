@@ -47,8 +47,9 @@ service cloud.firestore {
 
     // Reglas para la colección de usuarios
     match /usuarios/{userId} {
-      // Solo usuarios autenticados pueden leer perfiles
-      allow read: if request.auth != null;
+      // Permitir lectura pública para validar códigos de referido (sin autenticación)
+      // Los datos de usuario son en su mayoría públicos (perfil, nombre, carrera)
+      allow read: if true;
 
       // Solo el dueño del perfil puede actualizarlo
       // Además, prevenir cambio de campos críticos como rol
