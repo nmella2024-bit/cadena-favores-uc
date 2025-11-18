@@ -36,7 +36,9 @@
     "demo:accounts": "node scripts/create-demo-accounts.cjs",
     "security:audit": "bash scripts/security-audit.sh",
     "security:rotate": "bash scripts/rotate-credentials.sh",
-    "security:permissions": "bash scripts/setup-service-account-minimal-permissions.sh"
+    "security:permissions": "bash scripts/setup-service-account-minimal-permissions.sh",
+    "referrals:sync": "node scripts/sync-referral-counts.cjs",
+    "referrals:test": "node scripts/test-referral-system.cjs"
   },
   "dependencies": {
     "@dataconnect/generated": "file:src/dataconnect-generated",
