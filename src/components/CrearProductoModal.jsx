@@ -230,7 +230,7 @@ const CrearProductoModal = ({ isOpen, onClose, usuario, onProductoCreado }) => {
                     onChange={(e) => setPrecio(e.target.value)}
                     required
                     min="0"
-                    step="1000"
+                    step="1"
                   />
 
                   <div>
