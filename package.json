@@ -31,6 +31,8 @@
     "enfermeria:import": "node scripts/import-enfermeria-from-csv.js",
     "derecho:create-folders": "node scripts/create-derecho-folders-from-csv.js",
     "derecho:import": "node scripts/import-derecho-from-csv.js",
+    "psicologia:create-folders": "node scripts/create-psicologia-folders.js",
+    "psicologia:import": "node scripts/import-psicologia-from-csv.js",
     "demo:accounts": "node scripts/create-demo-accounts.cjs",
     "security:audit": "bash scripts/security-audit.sh",
     "security:rotate": "bash scripts/rotate-credentials.sh",
