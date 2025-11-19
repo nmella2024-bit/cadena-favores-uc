@@ -372,7 +372,7 @@ const GlobalSearch = () => {
         className="md:hidden p-1.5 sm:p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70 flex-shrink-0"
         aria-label="Buscar"
       >
-        <Search className="w-5 h-5 sm:w-5 sm:h-5" />
+        <Search className="w-6 h-6 sm:w-7 sm:h-7" />
       </button>
 
       {/* Dropdown de resultados - Desktop */}

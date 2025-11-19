@@ -132,9 +132,9 @@ const NotificationBell = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="relative p-1 sm:p-1.5 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-canvas border border-border bg-card/70 flex-shrink-0"
       >
-        <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
+        <Bell className="w-6 h-6 sm:w-7 sm:h-7" />
         {noLeidas > 0 && (
-          <span className="absolute -top-0.5 sm:-top-1 -right-0.5 sm:-right-1 flex items-center justify-center min-w-[16px] sm:min-w-[18px] h-[16px] sm:h-[18px] px-0.5 sm:px-1 text-[9px] sm:text-[10px] font-bold text-white bg-red-500 rounded-full border-2 border-card">
+          <span className="absolute -top-0.5 sm:-top-1 -right-0.5 sm:-right-1 flex items-center justify-center min-w-[18px] sm:min-w-[20px] h-[18px] sm:h-[20px] px-0.5 sm:px-1 text-[10px] sm:text-[11px] font-bold text-white bg-red-500 rounded-full border-2 border-card">
             {noLeidas > 9 ? '9+' : noLeidas}
           </span>
         )}

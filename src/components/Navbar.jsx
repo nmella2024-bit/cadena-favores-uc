@@ -104,7 +104,7 @@ const Navbar = () => {
                 className="inline-flex items-center justify-center rounded-lg border border-border bg-card/70 p-1.5 sm:p-2 text-text-muted transition-colors hover:bg-card/90 hover:text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/30 dark:bg-card/60 flex-shrink-0"
                 aria-label="Abrir menú de navegación"
               >
-                {open ? <X className="h-4 w-4 sm:h-5 sm:w-5" /> : <Menu className="h-4 w-4 sm:h-5 sm:w-5" />}
+                {open ? <X className="h-6 w-6 sm:h-7 sm:w-7" /> : <Menu className="h-6 w-6 sm:h-7 sm:w-7" />}
               </Disclosure.Button>
             </div>
 
