@@ -74,7 +74,7 @@ const Navbar = () => {
               to="/"
               className="flex items-center gap-1.5 sm:gap-2 md:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0"
             >
-              <img src={logo} alt="NexUC" className="h-10 w-10 sm:h-12 sm:w-12 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded object-cover dark:invert flex-shrink-0" />
+              <img src={logo} alt="NexUC" className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded object-cover dark:invert flex-shrink-0" />
               <div className="flex flex-col min-w-0">
                 <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold leading-tight text-text-primary truncate">
                   NexUC
