@@ -7,6 +7,7 @@ import CrearAnuncioModal from '../components/CrearAnuncioModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import TextField from '../components/ui/TextField';
 import SearchableSelect from '../components/ui/SearchableSelect';
+import Toggle from '../components/ui/Toggle';
 import { FACULTADES_UC, esParaMi } from '../data/facultades';
 
 const SkeletonCard = () => (
@@ -210,21 +211,11 @@ const Anuncios = () => {
           {/* Toggle "Para mí" */}
           {currentUser?.carrera && (
             <div className="mb-6">
-              <label className="flex items-center gap-3 cursor-pointer w-fit">
-                <div className="relative">
-                  <input
-                    type="checkbox"
-                    checked={soloParaMi}
-                    onChange={(e) => setSoloParaMi(e.target.checked)}
-                    className="sr-only peer"
-                  />
-                  <div className="w-11 h-6 bg-border rounded-full peer peer-checked:bg-brand transition-colors peer-focus:ring-2 peer-focus:ring-brand/30"></div>
-                  <div className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
-                </div>
-                <span className="text-sm font-medium text-text-primary">
-                  Para mí ({currentUser.carrera})
-                </span>
-              </label>
+              <Toggle
+                label={`Para mí (${currentUser.carrera})`}
+                checked={soloParaMi}
+                onChange={setSoloParaMi}
+              />
             </div>
           )}
 
