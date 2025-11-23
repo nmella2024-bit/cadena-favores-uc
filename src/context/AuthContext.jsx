@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { onAuthChange, registerUser, loginUser, logoutUser } from '../services/authService';
 import { getUserData } from '../services/userService';
+import { isValidUCEmail } from '../utils/validators';
+import { transformUserData } from '../utils/userTransforms';
 
 export const AuthContext = createContext();
 
@@ -28,51 +30,22 @@ export const AuthProvider = ({ children }) => {
           // Obtener datos completos del usuario desde Firestore
           const userData = await getUserData(user.uid);
 
-          if (userData) {
-            // Combinar datos de Firebase Auth con datos de Firestore
-            setCurrentUser({
-              id: user.uid,
-              uid: user.uid,
-              nombre: userData.nombre || user.displayName || 'Usuario',
-              correo: user.email,
-              email: user.email,
-              carrera: userData.carrera || '',
-              año: userData.año || 1,
-              telefono: userData.telefono || '',
-              intereses: userData.intereses || [],
-              descripcion: userData.descripcion || '',
-              rol: userData.rol || 'normal', // Campo rol agregado
-              reputacion: userData.reputacion || 5.0,
-              totalCalificaciones: userData.totalCalificaciones || 0,
-              favoresPublicados: userData.favoresPublicados || [],
-              favoresCompletados: userData.favoresCompletados || [],
-              fechaRegistro: userData.fechaRegistro,
-              fotoPerfil: userData.fotoPerfil || null, // Foto de perfil de Firestore
-              // Propiedades de Firebase Auth
-              photoURL: user.photoURL,
-              emailVerified: user.emailVerified,
-            });
+          // Transformar y combinar datos usando la utilidad
+          const transformedUser = transformUserData(user, userData);
+
+          if (transformedUser.isTemporary && !user.emailVerified) {
+            // Caso usuario temporal no verificado
+            setCurrentUser(transformedUser);
+          } else if (transformedUser.isTemporary && user.emailVerified) {
+            // Caso borde: verificado pero sin datos en Firestore
+            console.warn('Usuario autenticado pero no registrado en Firestore. Cerrando sesión.');
+            await logoutUser();
+            setCurrentUser(null);
           } else {
-            // Si no hay datos en Firestore pero el usuario existe en Auth
-            // Permitir acceso temporal para verificación de email
-            if (!user.emailVerified) {
-              // Crear usuario temporal para mostrar la página de verificación
-              setCurrentUser({
-                id: user.uid,
-                uid: user.uid,
-                nombre: user.displayName || 'Usuario',
-                correo: user.email,
-                email: user.email,
-                emailVerified: false,
-                isTemporary: true,
-              });
-            } else {
-              // Si está verificado pero no tiene datos en Firestore, algo salió mal
-              console.warn('Usuario autenticado pero no registrado en Firestore. Cerrando sesión.');
-              await logoutUser();
-              setCurrentUser(null);
-            }
+            // Usuario normal
+            setCurrentUser(transformedUser);
           }
+
         } catch (error) {
           console.error('Error al obtener datos del usuario:', error);
           setCurrentUser(null);
@@ -91,9 +64,7 @@ export const AuthProvider = ({ children }) => {
   // Función de registro
   const register = async (userData, referralCode = null) => {
     try {
-      // Validar que sea correo UC con regex estricto
-      const ucEmailRegex = /^[a-zA-Z0-9._-]+@(uc\.cl|estudiante\.uc\.cl)$/;
-      if (!ucEmailRegex.test(userData.correo)) {
+      if (!isValidUCEmail(userData.correo)) {
         throw new Error('Debes usar un correo UC válido (@uc.cl o @estudiante.uc.cl)');
       }
 
@@ -113,7 +84,6 @@ export const AuthProvider = ({ children }) => {
         referralCode
       );
 
-      // El listener de onAuthChange se encargará de actualizar currentUser
       return true;
     } catch (error) {
       console.error('Error en registro:', error);
@@ -135,12 +105,10 @@ export const AuthProvider = ({ children }) => {
   const login = async (correo, password) => {
     try {
       await loginUser(correo, password);
-      // El listener de onAuthChange se encargará de actualizar currentUser
       return true;
     } catch (error) {
       console.error('Error en login:', error);
 
-      // Mensajes de error más amigables
       if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
         throw new Error('Correo o contraseña incorrectos');
       } else if (error.code === 'auth/invalid-email') {
@@ -157,46 +125,10 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       await logoutUser();
-      // El listener de onAuthChange se encargará de limpiar currentUser
     } catch (error) {
       console.error('Error en logout:', error);
       throw error;
     }
-  };
-
-  // NOTA: Las siguientes funciones (publishFavor, respondToFavor, deleteFavor)
-  // se mantendrán aquí por compatibilidad, pero ahora llamarán a los servicios de Firebase
-  // Se actualizarán en los siguientes pasos
-
-  // Función para publicar un favor (wrapper)
-  const publishFavor = async (favorData) => {
-    if (!currentUser || !firebaseUser) {
-      throw new Error('Debes iniciar sesión para publicar un favor');
-    }
-
-    // Esta función se actualizará para usar publicarFavor de favorService
-    // Por ahora, lanza un error indicando que debe usarse directamente el servicio
-    throw new Error('Usa el servicio publicarFavor de favorService directamente');
-  };
-
-  // Función para responder a un favor (wrapper)
-  const respondToFavor = async (favorId) => {
-    if (!currentUser || !firebaseUser) {
-      throw new Error('Debes iniciar sesión para responder a un favor');
-    }
-
-    // Esta función se actualizará para usar responderFavor de favorService
-    throw new Error('Usa el servicio responderFavor de favorService directamente');
-  };
-
-  // Función para eliminar un favor (wrapper)
-  const deleteFavor = async (favorId) => {
-    if (!currentUser || !firebaseUser) {
-      throw new Error('Debes iniciar sesión');
-    }
-
-    // Esta función se actualizará para usar eliminarFavor de favorService
-    throw new Error('Usa el servicio eliminarFavor de favorService directamente');
   };
 
   // Memoizar el valor del contexto para evitar re-renders innecesarios
@@ -208,10 +140,7 @@ export const AuthProvider = ({ children }) => {
     register,
     login,
     logout,
-    publishFavor,
-    respondToFavor,
-    deleteFavor,
-  }), [currentUser, firebaseUser, loading]); // Dependencias: solo cambian cuando estos valores cambian
+  }), [currentUser, firebaseUser, loading]);
 
   // Mostrar un loader mientras se verifica la autenticación
   if (loading) {

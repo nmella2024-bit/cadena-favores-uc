@@ -32,8 +32,6 @@ service cloud.firestore {
       allow update: if request.auth != null && (
         // Creador puede actualizar todo
         request.auth.uid == resource.data.usuarioId ||
-        // Cualquier usuario puede ofrecer ayuda si el usuarioId no cambia
-        request.resource.data.usuarioId == resource.data.usuarioId ||
         // Admins pueden actualizar cualquier favor
         esUsuarioAdmin()
       );
@@ -64,11 +62,6 @@ service cloud.firestore {
          // SEGURIDAD: Prevenir cambio de email a dominio no UC
          (!('email' in request.resource.data) ||
           request.resource.data.email.matches('.*@(uc\\.cl|estudiante\\.uc\\.cl)$')))
-        ||
-        // Permitir a cualquier usuario autenticado incrementar totalReferidos
-        // (cuando alguien usa tu código de referido)
-        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['totalReferidos']) &&
-         request.resource.data.totalReferidos == resource.data.totalReferidos + 1)
       );
 
       // La creación de usuarios se maneja automáticamente vía Cloud Function en onCreate de Auth
@@ -184,8 +177,8 @@ service cloud.firestore {
       allow read: if request.auth != null &&
                    request.auth.uid == resource.data.userId;
 
-      // Solo el sistema puede crear notificaciones (cualquier usuario autenticado puede crearlas)
-      allow create: if request.auth != null;
+      // Solo el sistema puede crear notificaciones (Admin SDK)
+      allow create: if false;
 
       // Solo el destinatario puede actualizar sus notificaciones (marcar como leída)
       allow update: if request.auth != null &&
