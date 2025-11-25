@@ -71,7 +71,7 @@ const Login = () => {
           <p className="text-base text-text-muted">
             {showResetPassword
               ? 'Te enviaremos un enlace para restablecer tu contraseña'
-              : 'Bienvenido de vuelta a NexUC'}
+              : 'Bienvenido de vuelta a NexU+'}
           </p>
         </div>
 

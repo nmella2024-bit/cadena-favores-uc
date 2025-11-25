@@ -86,7 +86,7 @@ const FeedbackModal = ({ isOpen, onClose }) => {
                 </div>
 
                 <p className="text-sm text-text-muted mb-4">
-                  Tu opinión es muy importante para nosotros. Cuéntanos qué te parece NexUC y cómo podemos mejorar.
+                  Tu opinión es muy importante para nosotros. Cuéntanos qué te parece NexU+ y cómo podemos mejorar.
                 </p>
 
                 {exito && (

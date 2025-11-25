@@ -279,7 +279,7 @@ const FavorDetalle = () => {
                   </p>
                 </div>
                 <a
-                  href={`https://wa.me/${favor.ayudanteSeleccionado.telefono.replace(/\D/g, '')}?text=${encodeURIComponent(`Hola ${favor.ayudanteSeleccionado.nombre}! Soy ${currentUser.nombre} y acepté tu oferta de ayuda para: "${favor.titulo}" a través de NexUC. ¿Podemos coordinar?`)}`}
+                  href={`https://wa.me/${favor.ayudanteSeleccionado.telefono.replace(/\D/g, '')}?text=${encodeURIComponent(`Hola ${favor.ayudanteSeleccionado.nombre}! Soy ${currentUser.nombre} y acepté tu oferta de ayuda para: "${favor.titulo}" a través de NexU+. ¿Podemos coordinar?`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors"

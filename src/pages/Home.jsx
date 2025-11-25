@@ -111,7 +111,7 @@ const Home = () => {
             Conecta, enseña y aprende dentro de la comunidad UC
           </h1>
           <p className="mt-3 sm:mt-4 text-base sm:text-lg text-text-muted">
-            NexUC es un puente entre estudiantes que quieren pedir un favor y quienes pueden ofrecer ayuda.
+            NexU+ es un puente entre estudiantes que quieren pedir un favor y quienes pueden ofrecer ayuda.
             Comparte conocimiento, apoya proyectos y fortalece tus redes con empatía.
           </p>
           <div className="mt-6 sm:mt-8 md:mt-10 flex flex-col justify-center gap-2 sm:gap-3 md:gap-4">

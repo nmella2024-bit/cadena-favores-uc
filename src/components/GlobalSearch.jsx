@@ -180,7 +180,7 @@ const GlobalSearch = () => {
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Buscar en NexUC..."
+                    placeholder="Buscar en NexU+..."
                     autoFocus
                     className="w-full pl-10 pr-10 py-2.5 bg-canvas border border-border rounded-lg text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand"
                   />
@@ -200,7 +200,7 @@ const GlobalSearch = () => {
                   <div className="w-16 h-16 rounded-full bg-brand/10 flex items-center justify-center mb-4">
                     <Search className="w-8 h-8 text-brand" />
                   </div>
-                  <h3 className="text-lg font-semibold text-text-primary mb-2">Buscar en NexUC</h3>
+                  <h3 className="text-lg font-semibold text-text-primary mb-2">Buscar en NexU+</h3>
                   <p className="text-sm text-text-muted max-w-xs">Encuentra favores, anuncios, material de estudio, productos del marketplace y más...</p>
                 </div>
               ) : isLoading && !results ? (

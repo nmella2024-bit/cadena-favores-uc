@@ -63,10 +63,10 @@ const Navbar = () => {
             <div className="mx-auto flex h-14 sm:h-16 max-w-7xl items-center justify-between gap-1 md:gap-2">
               {/* Logo */}
               <Link to="/" className="flex items-center gap-1.5 sm:gap-2 md:gap-2 rounded-lg py-1 transition-colors hover:bg-card/80 dark:hover:bg-card/60 flex-shrink-0">
-                <img src={logo} alt="NexUC" className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded object-cover dark:invert flex-shrink-0" />
+                <img src={logo} alt="NexU+" className="h-12 w-12 sm:h-14 sm:w-14 md:h-16 md:w-16 lg:h-20 lg:w-20 rounded object-cover dark:invert flex-shrink-0" />
                 <div className="flex flex-col min-w-0">
-                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold leading-tight text-text-primary truncate">NexUC</span>
-                  <span className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">Tu Espacio UC</span>
+                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold leading-tight text-text-primary truncate">NexU+</span>
+                  <span className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm font-medium uppercase tracking-wide text-text-muted hidden sm:block truncate">Tu Espacio en la U</span>
                 </div>
               </Link>
 

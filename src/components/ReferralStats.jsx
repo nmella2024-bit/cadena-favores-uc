@@ -56,12 +56,12 @@ const ReferralStats = ({ compact = false }) => {
   };
 
   const handleShare = async () => {
-    const shareText = `¡Únete a NexUC usando mi código de referido: ${referralCode}!\n\nRegistrate aquí: ${referralLink}`;
+    const shareText = `¡Únete a NexU+ usando mi código de referido: ${referralCode}!\n\nRegistrate aquí: ${referralLink}`;
 
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Únete a NexUC',
+          title: 'Únete a NexU+',
           text: shareText,
         });
       } catch (error) {
@@ -188,7 +188,7 @@ const ReferralStats = ({ compact = false }) => {
         <p className="font-medium">¿Cómo funciona?</p>
         <ol className="mt-2 ml-4 list-decimal space-y-1">
           <li>Comparte tu código o link con tus amigos</li>
-          <li>Ellos lo usan al registrarse en NexUC</li>
+          <li>Ellos lo usan al registrarse en NexU+</li>
           <li>Se suman automáticamente a tu contador</li>
         </ol>
       </div>

@@ -106,7 +106,7 @@ const EmailVerificationPending = () => {
           <p className="mb-2 font-semibold">Instrucciones:</p>
           <ol className="list-decimal list-inside space-y-1 text-text-muted">
             <li>Abre tu correo electrónico</li>
-            <li>Busca el email de NexUC</li>
+            <li>Busca el email de NexU+</li>
             <li>Haz clic en el enlace de verificación</li>
             <li>Regresa aquí y haz clic en "Verificar estado"</li>
           </ol>

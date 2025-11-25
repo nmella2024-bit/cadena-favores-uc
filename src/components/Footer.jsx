@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         <div className="space-y-3">
-          <h3 className="text-lg font-semibold tracking-tight text-[rgb(var(--text-primary))]">NexUC</h3>
+          <h3 className="text-lg font-semibold tracking-tight text-[rgb(var(--text-primary))]">NexU+</h3>
           <p className="text-sm text-[rgb(var(--text-muted))]">
             Plataforma colaborativa creada por estudiantes de la Pontificia Universidad Católica de Chile para
             fortalecer la ayuda entre pares.
@@ -24,7 +24,7 @@ const Footer = () => (
         <div className="space-y-3">
           <h3 className="text-lg font-semibold tracking-tight text-[rgb(var(--text-primary))]">Síguenos</h3>
           <div className="flex flex-wrap gap-3 text-sm">
-            <a href="https://www.instagram.com/nex_uc?igsh=Znc0bDE1eTRlOG9u" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--text-muted))] transition-colors hover:text-[rgb(var(--brand))]">
+            <a href="https://www.instagram.com/nexu_plus?igsh=Znc0bDE1eTRlOG9u&utm_source=qr" target="_blank" rel="noopener noreferrer" className="text-[rgb(var(--text-muted))] transition-colors hover:text-[rgb(var(--brand))]">
               Instagram
             </a>
           </div>
@@ -32,7 +32,7 @@ const Footer = () => (
       </div>
 
       <div className="mt-12 border-t border-border pt-6 text-center text-sm text-[rgb(var(--text-muted))]">
-        <p>© {new Date().getFullYear()} NexUC. Todos los derechos reservados.</p>
+        <p>© {new Date().getFullYear()} NexU+. Todos los derechos reservados.</p>
         <p className="mt-2 italic">
           “Nadie lo sabe todo, pero todos sabemos algo que puede ayudar a alguien.”
         </p>

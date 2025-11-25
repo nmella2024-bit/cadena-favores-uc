@@ -189,7 +189,7 @@ const Registro = () => {
       <div className="w-full max-w-4xl rounded-2xl border border-border bg-[rgb(var(--bg-card))] p-8 shadow-card animate-fade-in dark:bg-card/80">
         <div className="mb-8 text-center">
           <h2 className="mb-2 text-3xl font-bold text-text-primary">Crear Cuenta</h2>
-          <p className="text-base text-text-muted">Únete a la comunidad de NexUC</p>
+          <p className="text-base text-text-muted">Únete a la comunidad de NexU+</p>
         </div>
 
         <div className="mb-6 rounded-xl border border-brand/30 bg-brand/10 p-4 text-sm text-brand dark:border-brand/20 dark:bg-brand/15">
