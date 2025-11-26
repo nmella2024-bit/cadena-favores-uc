@@ -41,7 +41,7 @@ const NavItem = ({ item, isMobile, onClick }) => {
       title={item.label}
     >
       <Icon className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
-      <span className="whitespace-nowrap hidden lg:inline">{item.label}</span>
+      <span className={`whitespace-nowrap ${isMobile ? '' : 'hidden lg:inline'}`}>{item.label}</span>
     </NavLink>
   );
 };
