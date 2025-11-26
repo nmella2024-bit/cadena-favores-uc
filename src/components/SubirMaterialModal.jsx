@@ -3,6 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { X, Upload, Loader2, FileText } from 'lucide-react';
 import { subirMaterial } from '../services/materialService';
 import { subirArchivoADrive } from '../services/driveService';
+import { useAuth } from '../context/AuthContext';
 import PrimaryButton from './ui/PrimaryButton';
 import TextField from './ui/TextField';
 import TextareaField from './ui/TextareaField';
@@ -10,6 +11,7 @@ import SearchableSelect from './ui/SearchableSelect';
 import { CARRERAS_UC } from '../data/carreras';
 
 const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpetaActual }) => {
+  const { firebaseUser } = useAuth();
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [carrera, setCarrera] = useState('');
@@ -240,13 +242,18 @@ const SubirMaterialModal = ({ isOpen, onClose, usuario, onMaterialSubido, carpet
           tags: tagsArray,
         };
 
+        // Obtener token de autenticación
+        const token = await firebaseUser.getIdToken();
+
         // Subir el archivo a Google Drive con metadatos completos
         const driveResponse = await subirArchivoADrive(
           archivo,
           carpetaActual.googleDriveFolderId,
           carpetaActual.id,
           usuario.uid,
-          metadatos
+          metadatos,
+          null, // firestoreId
+          token // Token de autenticación
         );
 
         console.log('✅ Archivo subido a Drive:', driveResponse.link);

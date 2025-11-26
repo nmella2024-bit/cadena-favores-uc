@@ -12,7 +12,7 @@
  * @param {string} firestoreId - (Opcional) ID del material existente para actualizar
  * @returns {Promise<Object>} Respuesta con {success, fileId, link, nombre}
  */
-export const subirArchivoADrive = async (archivo, googleDriveFolderId, carpetaId, usuarioId, metadatos = {}, firestoreId = null) => {
+export const subirArchivoADrive = async (archivo, googleDriveFolderId, carpetaId, usuarioId, metadatos = {}, firestoreId = null, token) => {
   try {
     const formData = new FormData();
 
@@ -41,8 +41,14 @@ export const subirArchivoADrive = async (archivo, googleDriveFolderId, carpetaId
 
     console.log('📤 Subiendo archivo a Google Drive:', archivo.name);
 
+    const headers = {};
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+
     const response = await fetch('/api/uploadHandler', {
       method: 'POST',
+      headers,
       body: formData,
     });
 
@@ -76,10 +82,10 @@ export const subirArchivoADrive = async (archivo, googleDriveFolderId, carpetaId
  * @param {string} usuarioId - ID del usuario
  * @returns {Promise<Array>} Array con los resultados de cada subida
  */
-export const subirMultiplesArchivosADrive = async (archivos, googleDriveFolderId, carpetaId, usuarioId) => {
+export const subirMultiplesArchivosADrive = async (archivos, googleDriveFolderId, carpetaId, usuarioId, token) => {
   try {
     const promesas = archivos.map(archivo =>
-      subirArchivoADrive(archivo, googleDriveFolderId, carpetaId, usuarioId)
+      subirArchivoADrive(archivo, googleDriveFolderId, carpetaId, usuarioId, {}, null, token)
     );
 
     const resultados = await Promise.all(promesas);
