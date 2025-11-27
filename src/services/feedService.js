@@ -20,112 +20,115 @@ export const obtenerFeed = async (options = {}) => {
   try {
     const { carrera = null, limitPerType = 10 } = options;
 
-    const feedItems = [];
+    // Definir las promesas de cada consulta
+    const promises = [];
 
-    // 1. Obtener favores activos recientes
-    try {
-      const favoresRef = collection(db, 'favores');
-      const favoresQuery = query(
-        favoresRef,
-        where('estado', '==', 'activo'),
-        orderBy('fecha', 'desc'),
-        limit(limitPerType)
-      );
-
-      const favoresSnapshot = await getDocs(favoresQuery);
-      favoresSnapshot.forEach(doc => {
-        const data = doc.data();
-        feedItems.push({
+    // 1. Favores
+    promises.push((async () => {
+      try {
+        const favoresRef = collection(db, 'favores');
+        const favoresQuery = query(
+          favoresRef,
+          where('estado', '==', 'activo'),
+          orderBy('fecha', 'desc'),
+          limit(limitPerType)
+        );
+        const snapshot = await getDocs(favoresQuery);
+        return snapshot.docs.map(doc => ({
           id: doc.id,
           type: 'favor',
-          ...data,
-          timestamp: data.fecha,
-        });
-      });
-    } catch (error) {
-      console.error('Error al obtener favores para feed:', error);
-    }
+          ...doc.data(),
+          timestamp: doc.data().fecha,
+        }));
+      } catch (error) {
+        console.error('Error al obtener favores:', error);
+        return [];
+      }
+    })());
 
-    // 2. Obtener anuncios recientes
-    try {
-      const anunciosRef = collection(db, 'anuncios');
-      const anunciosQuery = query(
-        anunciosRef,
-        orderBy('fecha', 'desc'),
-        limit(limitPerType)
-      );
-
-      const anunciosSnapshot = await getDocs(anunciosQuery);
-      anunciosSnapshot.forEach(doc => {
-        const data = doc.data();
-        feedItems.push({
+    // 2. Anuncios
+    promises.push((async () => {
+      try {
+        const anunciosRef = collection(db, 'anuncios');
+        const anunciosQuery = query(
+          anunciosRef,
+          orderBy('fecha', 'desc'),
+          limit(limitPerType)
+        );
+        const snapshot = await getDocs(anunciosQuery);
+        return snapshot.docs.map(doc => ({
           id: doc.id,
           type: 'anuncio',
-          ...data,
-          timestamp: data.fecha,
-        });
-      });
-    } catch (error) {
-      console.error('Error al obtener anuncios para feed:', error);
-    }
+          ...doc.data(),
+          timestamp: doc.data().fecha,
+        }));
+      } catch (error) {
+        console.error('Error al obtener anuncios:', error);
+        return [];
+      }
+    })());
 
-    // 3. Obtener productos de marketplace recientes
-    try {
-      const marketplaceRef = collection(db, 'marketplace');
-      const marketplaceQuery = query(
-        marketplaceRef,
-        where('estado', '==', 'disponible'),
-        orderBy('fecha', 'desc'),
-        limit(limitPerType)
-      );
-
-      const marketplaceSnapshot = await getDocs(marketplaceQuery);
-      marketplaceSnapshot.forEach(doc => {
-        const data = doc.data();
-        feedItems.push({
+    // 3. Marketplace
+    promises.push((async () => {
+      try {
+        const marketplaceRef = collection(db, 'marketplace');
+        const marketplaceQuery = query(
+          marketplaceRef,
+          where('estado', '==', 'disponible'),
+          orderBy('fecha', 'desc'),
+          limit(limitPerType)
+        );
+        const snapshot = await getDocs(marketplaceQuery);
+        return snapshot.docs.map(doc => ({
           id: doc.id,
           type: 'marketplace',
-          ...data,
-          timestamp: data.fecha,
-        });
-      });
-    } catch (error) {
-      console.error('Error al obtener marketplace para feed:', error);
-    }
-
-    // 4. Obtener material académico reciente (filtrar por carrera si está disponible)
-    try {
-      const materialRef = collection(db, 'material');
-      let materialQuery;
-
-      if (carrera) {
-        materialQuery = query(
-          materialRef,
-          where('carrera', '==', carrera),
-          orderBy('fechaSubida', 'desc'),
-          limit(limitPerType)
-        );
-      } else {
-        materialQuery = query(
-          materialRef,
-          orderBy('fechaSubida', 'desc'),
-          limit(limitPerType)
-        );
+          ...doc.data(),
+          timestamp: doc.data().fecha,
+        }));
+      } catch (error) {
+        console.error('Error al obtener marketplace:', error);
+        return [];
       }
+    })());
 
-      const materialSnapshot = await getDocs(materialQuery);
-      materialSnapshot.forEach(doc => {
-        const data = doc.data();
-        feedItems.push({
+    // 4. Material
+    promises.push((async () => {
+      try {
+        const materialRef = collection(db, 'material');
+        let materialQuery;
+
+        if (carrera) {
+          materialQuery = query(
+            materialRef,
+            where('carrera', '==', carrera),
+            orderBy('fechaSubida', 'desc'),
+            limit(limitPerType)
+          );
+        } else {
+          materialQuery = query(
+            materialRef,
+            orderBy('fechaSubida', 'desc'),
+            limit(limitPerType)
+          );
+        }
+        const snapshot = await getDocs(materialQuery);
+        return snapshot.docs.map(doc => ({
           id: doc.id,
           type: 'material',
-          ...data,
-          timestamp: data.fechaSubida,
-        });
-      });
-    } catch (error) {
-      console.error('Error al obtener material para feed:', error);
-    }
+          ...doc.data(),
+          timestamp: doc.data().fechaSubida,
+        }));
+      } catch (error) {
+        console.error('Error al obtener material:', error);
+        return [];
+      }
+    })());
+
+    // Ejecutar todas las consultas en paralelo
+    const results = await Promise.all(promises);
+
+    // Aplanar el array de arrays
+    const feedItems = results.flat();
 
     // Ordenar todos los items por timestamp (más recientes primero)
     feedItems.sort((a, b) => {
@@ -134,8 +137,8 @@ export const obtenerFeed = async (options = {}) => {
       return timeB - timeA;
     });
 
-    // Limitar el total de items (opcional, para no saturar)
-    const maxTotalItems = limitPerType * 4; // 4 tipos de contenido
+    // Limitar el total de items
+    const maxTotalItems = limitPerType * 4;
     return feedItems.slice(0, maxTotalItems);
 
   } catch (error) {
