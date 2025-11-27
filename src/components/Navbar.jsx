@@ -18,6 +18,7 @@ const NAVIGATION_ITEMS = [
     submenu: [
       { label: 'Ver favores', to: '/favores' },
       { label: 'Publicar favor', to: '/publicar' },
+      { label: 'Clases particulares', to: '/clases-particulares' },
     ]
   },
   { label: 'Material', to: '/material', icon: BookOpen },

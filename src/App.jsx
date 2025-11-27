@@ -19,6 +19,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const Registro = lazy(() => import('./pages/Registro'));
 const Favores = lazy(() => import('./pages/Favores'));
+const ClasesParticulares = lazy(() => import('./pages/ClasesParticulares'));
 const PublicarFavor = lazy(() => import('./pages/PublicarFavor'));
 const Perfil = lazy(() => import('./pages/Perfil'));
 const PerfilPublico = lazy(() => import('./pages/PerfilPublico'));
@@ -52,100 +53,101 @@ function App() {
               {/* Página principal */}
               <Route path="/" element={<Home />} />
 
-            {/* Autenticación */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/registro" element={<Registro />} />
-            <Route path="/verificar-email" element={<EmailVerificationPending />} />
+              {/* Autenticación */}
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Registro />} />
+              <Route path="/verificar-email" element={<EmailVerificationPending />} />
 
-            {/* Favores - Vista pública, publicación protegida */}
-            <Route path="/favores" element={<Favores />} />
-            <Route
-              path="/publicar"
-              element={
-                <ProtectedRoute>
-                  <PublicarFavor />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/favor/:id" element={<FavorDetalle />} />
+              {/* Favores - Vista pública, publicación protegida */}
+              <Route path="/favores" element={<Favores />} />
+              <Route
+                path="/publicar"
+                element={
+                  <ProtectedRoute>
+                    <PublicarFavor />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/favor/:id" element={<FavorDetalle />} />
+              <Route path="/clases-particulares" element={<ClasesParticulares />} />
 
-            {/* Anuncios - Vista pública */}
-            <Route path="/anuncios" element={<Anuncios />} />
+              {/* Anuncios - Vista pública */}
+              <Route path="/anuncios" element={<Anuncios />} />
 
-            {/* Marketplace - Vista pública */}
-            <Route path="/marketplace" element={<Marketplace />} />
+              {/* Marketplace - Vista pública */}
+              <Route path="/marketplace" element={<Marketplace />} />
 
-            {/* Material - Vista pública */}
-            <Route path="/material" element={<Material />} />
-            <Route
-              path="/admin/seed-folders"
-              element={
-                <ProtectedRoute>
-                  <AdminSeedFolders />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/migrar-materiales"
-              element={
-                <ProtectedRoute>
-                  <MigrarMaterialesExistentes />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/admin/diagnostico"
-              element={
-                <ProtectedRoute>
-                  <DiagnosticoMaterial />
-                </ProtectedRoute>
-              }
-            />
+              {/* Material - Vista pública */}
+              <Route path="/material" element={<Material />} />
+              <Route
+                path="/admin/seed-folders"
+                element={
+                  <ProtectedRoute>
+                    <AdminSeedFolders />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/migrar-materiales"
+                element={
+                  <ProtectedRoute>
+                    <MigrarMaterialesExistentes />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin/diagnostico"
+                element={
+                  <ProtectedRoute>
+                    <DiagnosticoMaterial />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* UCloseMeal - TEMPORALMENTE DESHABILITADO */}
-            {/* <Route path="/uclosemeal" element={<UCloseMealRoleSelect />} /> */}
-            {/* <Route path="/uclosemeal/comprador" element={<CompradorRestaurantes />} /> */}
-            {/* <Route path="/uclosemeal/comprador/restaurante/:id" element={<CompradorMenu />} /> */}
-            {/* <Route path="/uclosemeal/comprador/checkout" element={<CompradorCheckout />} /> */}
-            {/* <Route path="/uclosemeal/comprador/confirmacion" element={<CompradorConfirmacion />} /> */}
-            {/* <Route path="/uclosemeal/repartidor" element={<RepartidorDashboard />} /> */}
-            {/* <Route path="/uclosemeal/mis-pedidos" element={<MisPedidosUCloseMeal />} /> */}
+              {/* UCloseMeal - TEMPORALMENTE DESHABILITADO */}
+              {/* <Route path="/uclosemeal" element={<UCloseMealRoleSelect />} /> */}
+              {/* <Route path="/uclosemeal/comprador" element={<CompradorRestaurantes />} /> */}
+              {/* <Route path="/uclosemeal/comprador/restaurante/:id" element={<CompradorMenu />} /> */}
+              {/* <Route path="/uclosemeal/comprador/checkout" element={<CompradorCheckout />} /> */}
+              {/* <Route path="/uclosemeal/comprador/confirmacion" element={<CompradorConfirmacion />} /> */}
+              {/* <Route path="/uclosemeal/repartidor" element={<RepartidorDashboard />} /> */}
+              {/* <Route path="/uclosemeal/mis-pedidos" element={<MisPedidosUCloseMeal />} /> */}
 
-            {/* Perfil - Protegidas */}
-            <Route
-              path="/perfil"
-              element={
-                <ProtectedRoute>
-                  <Perfil />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/perfil/:userId"
-              element={
-                <ProtectedRoute>
-                  <PerfilPublico />
-                </ProtectedRoute>
-              }
-            />
+              {/* Perfil - Protegidas */}
+              <Route
+                path="/perfil"
+                element={
+                  <ProtectedRoute>
+                    <Perfil />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/perfil/:userId"
+                element={
+                  <ProtectedRoute>
+                    <PerfilPublico />
+                  </ProtectedRoute>
+                }
+              />
 
-            {/* Referidos - Protegidas */}
-            <Route
-              path="/mis-referidos"
-              element={
-                <ProtectedRoute>
-                  <MisReferidos />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/ranking-referidos"
-              element={
-                <ProtectedRoute>
-                  <RankingReferidos />
-                </ProtectedRoute>
-              }
-            />
+              {/* Referidos - Protegidas */}
+              <Route
+                path="/mis-referidos"
+                element={
+                  <ProtectedRoute>
+                    <MisReferidos />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/ranking-referidos"
+                element={
+                  <ProtectedRoute>
+                    <RankingReferidos />
+                  </ProtectedRoute>
+                }
+              />
 
               {/* Ruta por defecto - redirige a home */}
               <Route path="*" element={<Navigate to="/" replace />} />
