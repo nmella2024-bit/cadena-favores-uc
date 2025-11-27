@@ -5,8 +5,7 @@ import { useAuth } from '../context/AuthContext';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import GhostButton from '../components/ui/GhostButton';
 import Feed from '../components/Feed';
-import WallOfFame from '../components/home/WallOfFame';
-import FavorRoulette from '../components/home/FavorRoulette';
+
 
 const highlights = [
   {
@@ -131,52 +130,39 @@ const Home = () => {
         {currentUser && (
           <section className="w-full">
             <div className="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-              {/* Wall of Fame */}
-              <div className="mb-8">
-                <WallOfFame />
-              </div>
-
-              <div className="grid lg:grid-cols-[1fr,300px] gap-6 items-start">
-                {/* Acciones Rápidas */}
-                <div className="rounded-2xl border border-border bg-card dark:bg-card/80 p-3 sm:p-4 md:p-6 lg:p-8 shadow-sm">
-                  <div className="flex items-center justify-between mb-4 sm:mb-6">
-                    <h2 className="text-xl sm:text-2xl font-bold text-text-primary">Acciones rápidas</h2>
-                    <button
-                      onClick={() => {/* Aquí se puede agregar funcionalidad para más acciones */ }}
-                      className="p-1.5 sm:p-2 rounded-lg hover:bg-background transition-colors"
-                      aria-label="Más acciones"
-                    >
-                      <Plus className="h-4 w-4 sm:h-5 sm:w-5 text-text-muted" />
-                    </button>
-                  </div>
-
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
-                    {accionesRapidas.map((accion) => {
-                      const Icon = accion.icon;
-                      return (
-                        <button
-                          key={accion.id}
-                          onClick={() => handleAccionClick(accion)}
-                          className="group flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 rounded-xl border border-border bg-background hover:bg-card hover:border-brand/30 transition-all duration-200 hover:shadow-sm min-h-[100px] sm:min-h-[120px]"
-                        >
-                          <div className={`${accion.iconBg} ${accion.iconColor} p-2 sm:p-2.5 md:p-3 rounded-full mb-1.5 sm:mb-2 md:mb-3 group-hover:scale-110 transition-transform flex-shrink-0`}>
-                            <Icon className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
-                          </div>
-                          <h3 className="text-[11px] sm:text-xs md:text-sm font-semibold text-text-primary mb-0.5 text-center line-clamp-2">
-                            {accion.titulo}
-                          </h3>
-                          <p className="text-[10px] sm:text-xs text-text-muted text-center line-clamp-1">
-                            {accion.subtitulo}
-                          </p>
-                        </button>
-                      );
-                    })}
-                  </div>
+              <div className="rounded-2xl border border-border bg-card dark:bg-card/80 p-3 sm:p-4 md:p-6 lg:p-8 shadow-sm">
+                <div className="flex items-center justify-between mb-4 sm:mb-6">
+                  <h2 className="text-xl sm:text-2xl font-bold text-text-primary">Acciones rápidas</h2>
+                  <button
+                    onClick={() => {/* Aquí se puede agregar funcionalidad para más acciones */ }}
+                    className="p-1.5 sm:p-2 rounded-lg hover:bg-background transition-colors"
+                    aria-label="Más acciones"
+                  >
+                    <Plus className="h-4 w-4 sm:h-5 sm:w-5 text-text-muted" />
+                  </button>
                 </div>
 
-                {/* Favor Roulette */}
-                <div className="lg:sticky lg:top-24">
-                  <FavorRoulette />
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 md:gap-3 lg:gap-4">
+                  {accionesRapidas.map((accion) => {
+                    const Icon = accion.icon;
+                    return (
+                      <button
+                        key={accion.id}
+                        onClick={() => handleAccionClick(accion)}
+                        className="group flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 rounded-xl border border-border bg-background hover:bg-card hover:border-brand/30 transition-all duration-200 hover:shadow-sm min-h-[100px] sm:min-h-[120px]"
+                      >
+                        <div className={`${accion.iconBg} ${accion.iconColor} p-2 sm:p-2.5 md:p-3 rounded-full mb-1.5 sm:mb-2 md:mb-3 group-hover:scale-110 transition-transform flex-shrink-0`}>
+                          <Icon className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
+                        </div>
+                        <h3 className="text-[11px] sm:text-xs md:text-sm font-semibold text-text-primary mb-0.5 text-center line-clamp-2">
+                          {accion.titulo}
+                        </h3>
+                        <p className="text-[10px] sm:text-xs text-text-muted text-center line-clamp-1">
+                          {accion.subtitulo}
+                        </p>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>

@@ -10,8 +10,6 @@ import StarRating from '../components/StarRating';
 import EditarPerfilModal from '../components/EditarPerfilModal';
 import VerifiedBadge from '../components/VerifiedBadge';
 import ReferralStats from '../components/ReferralStats';
-import LevelRing from '../components/gamification/LevelRing';
-import BadgeList from '../components/gamification/BadgeList';
 import { Plus, ExternalLink, Star, AlertCircle, TrendingUp, Camera, User, Edit2, Trash2 } from 'lucide-react';
 
 const Perfil = () => {
@@ -196,10 +194,20 @@ const Perfil = () => {
         {/* Header Section - Minimalista */}
         <div className="mb-12">
           <div className="flex items-start gap-6 mb-6">
-            {/* Foto de perfil con Level Ring */}
+            {/* Foto de perfil */}
             <div className="relative group flex-shrink-0">
-              <div className="h-24 w-24 sm:h-28 sm:w-28">
-                <LevelRing user={currentUser} size="lg" />
+              <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-full overflow-hidden bg-card border-2 border-border">
+                {currentUser.fotoPerfil ? (
+                  <img
+                    src={currentUser.fotoPerfil}
+                    alt={currentUser.nombre}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-brand/20 to-brand/5">
+                    <User className="h-12 w-12 sm:h-14 sm:w-14 text-brand/40" />
+                  </div>
+                )}
               </div>
 
               {/* Botón para cambiar foto */}
@@ -288,12 +296,6 @@ const Perfil = () => {
                 </span>
               ))
             )}
-          </div>
-
-          {/* Medallas y Logros */}
-          <div className="mt-6">
-            <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-3">Medallas y Logros</h3>
-            <BadgeList badges={currentUser.badges} />
           </div>
         </div>
 
