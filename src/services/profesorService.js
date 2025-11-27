@@ -57,7 +57,7 @@ export const registrarProfesor = async (datos, usuario) => {
         const nuevoProfesor = {
             ...datos,
             usuarioId: usuario.uid,
-            nombre: usuario.displayName || datos.nombre,
+            nombre: usuario.nombre || usuario.displayName || datos.nombre,
             email: usuario.email,
             fotoPerfil: usuario.photoURL || null,
             fechaRegistro: serverTimestamp(),

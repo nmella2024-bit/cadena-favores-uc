@@ -47,7 +47,7 @@ export const publicarFavor = async (favor, user) => {
       facultades: favor.facultades || [], // Facultades a las que está dirigido (nueva lógica)
       carreras: favor.carreras || [], // Carreras (campo antiguo para compatibilidad)
       usuarioId: user.uid,
-      nombreUsuario: user.displayName || 'Anónimo',
+      nombreUsuario: user.nombre || user.displayName || 'Anónimo',
       emailUsuario: user.email,
       fecha: serverTimestamp(),
       estado: 'activo',
@@ -290,7 +290,7 @@ export const responderFavor = async (favorId, user) => {
 
       respuestas.push({
         usuarioId: user.uid,
-        nombreUsuario: user.displayName || 'Anónimo',
+        nombreUsuario: user.nombre || user.displayName || 'Anónimo',
         emailUsuario: user.email,
         telefonoUsuario: respondienteData.telefono || '', // Teléfono del que responde
         fecha: new Date(),

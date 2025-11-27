@@ -36,7 +36,7 @@ export const crearPedido = async (orderData, user) => {
       puntoEntrega: orderData.puntoEntrega,
       instrucciones: orderData.instrucciones || '',
       solicitanteId: user.uid,
-      solicitanteNombre: user.displayName || user.nombre || 'Usuario',
+      solicitanteNombre: user.nombre || user.displayName || 'Usuario',
       solicitanteEmail: user.email,
       estado: 'pendiente', // pendiente, aceptado, en-camino, entregado, cancelado
       repartidorId: null,
@@ -209,7 +209,7 @@ export const aceptarPedido = async (pedidoId, user) => {
     await updateDoc(pedidoRef, {
       estado: 'aceptado',
       repartidorId: user.uid,
-      repartidorNombre: user.displayName || user.nombre || 'Repartidor',
+      repartidorNombre: user.nombre || user.displayName || 'Repartidor',
       fechaAceptado: serverTimestamp(),
       updatedAt: serverTimestamp(),
     });
@@ -414,7 +414,7 @@ export const crearPedidoConCarrito = async (orderData, user) => {
       instrucciones: orderData.instrucciones || '',
       metodoPago: orderData.metodoPago,
       solicitanteId: user.uid || user.id,
-      solicitanteNombre: user.displayName || user.nombre || 'Usuario',
+      solicitanteNombre: user.nombre || user.displayName || 'Usuario',
       solicitanteEmail: user.email || user.correo,
       solicitanteWhatsapp: whatsappUsuario, // Agregar WhatsApp del comprador
       estado: 'pendiente', // pendiente, aceptado, en-camino, entregado, cancelado
