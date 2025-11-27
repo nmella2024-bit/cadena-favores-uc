@@ -14,12 +14,12 @@ export default defineConfig({
           if (id.includes('node_modules')) {
             // React y TODOS sus relacionados en un solo chunk para evitar problemas
             if (id.includes('react') ||
-                id.includes('react-dom') ||
-                id.includes('react-router') ||
-                id.includes('use-sync-external-store') ||
-                id.includes('@react-aria') ||
-                id.includes('@react-stately') ||
-                id.includes('@tanstack/react')) {
+              id.includes('react-dom') ||
+              id.includes('react-router') ||
+              id.includes('use-sync-external-store') ||
+              id.includes('@react-aria') ||
+              id.includes('@react-stately') ||
+              id.includes('@tanstack/react')) {
               return 'react-vendor';
             }
 
@@ -30,8 +30,8 @@ export default defineConfig({
 
             // UI libraries
             if (id.includes('lucide-react') ||
-                id.includes('@headlessui') ||
-                id.includes('@floating-ui')) {
+              id.includes('@headlessui') ||
+              id.includes('@floating-ui')) {
               return 'ui-vendor';
             }
 
@@ -45,8 +45,8 @@ export default defineConfig({
     // Aumentar el límite de advertencia de tamaño de chunk
     chunkSizeWarningLimit: 1000,
 
-    // Habilitar sourcemaps para debugging en producción (puedes desactivar después)
-    sourcemap: true,
+    // Deshabilitar sourcemaps para producción por seguridad
+    sourcemap: false,
 
     // Minificación con esbuild (más rápido que terser)
     minify: 'esbuild',

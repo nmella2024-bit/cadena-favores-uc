@@ -247,5 +247,27 @@ service cloud.firestore {
       allow update: if false;
       allow delete: if esUsuarioAdmin();
     }
+    // ============================================
+    // Reglas para la colección de PROFESORES (Clases Particulares)
+    // ============================================
+    match /profesores/{profesorId} {
+      // Todos pueden ver los perfiles de profesores
+      allow read: if true;
+
+      // Cualquier usuario autenticado puede registrarse como profesor
+      // Se valida que el usuarioId coincida con el usuario autenticado
+      allow create: if request.auth != null &&
+                    request.resource.data.usuarioId == request.auth.uid;
+
+      // Solo el profesor puede actualizar su propio perfil
+      allow update: if request.auth != null &&
+                    request.auth.uid == resource.data.usuarioId;
+
+      // Solo el profesor o un admin pueden eliminar el perfil
+      allow delete: if request.auth != null && (
+                    request.auth.uid == resource.data.usuarioId ||
+                    esUsuarioAdmin()
+      );
+    }
   }
 }
