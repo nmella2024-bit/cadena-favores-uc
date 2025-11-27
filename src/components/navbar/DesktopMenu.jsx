@@ -44,9 +44,8 @@ const DesktopMenu = ({ currentUser, logout, setIsFeedbackOpen, location }) => {
                 return <NavItem key={item.to} item={item} />;
             })}
 
-            <button type="button" onClick={() => setIsFeedbackOpen(true)} className="hidden lg:inline-flex items-center gap-1 lg:gap-2 rounded-lg border border-brand/30 bg-brand/10 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium text-brand transition-colors hover:bg-brand/20">
+            <button type="button" onClick={() => setIsFeedbackOpen(true)} className="hidden lg:inline-flex items-center justify-center rounded-lg border border-brand/30 bg-brand/10 p-2 text-brand transition-colors hover:bg-brand/20" title="Dar Feedback">
                 <MessageSquare className="h-4 w-4 flex-shrink-0" />
-                <span className="whitespace-nowrap">Feedback</span>
             </button>
             {currentUser && <NotificationBell />}
             <div className="hidden lg:block"><ThemeToggle /></div>
