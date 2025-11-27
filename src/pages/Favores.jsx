@@ -233,19 +233,33 @@ const Favores = () => {
               </div>
             )}
 
-            <SelectField
-              id="category"
-              label="Categoría"
-              value={selectedCategory}
-              onChange={(event) => setSelectedCategory(event.target.value)}
-            >
-              <option value="all">Todas las categorías</option>
-              {categories.map((category) => (
-                <option key={category.id} value={category.id}>
-                  {category.icon} {category.name}
-                </option>
-              ))}
-            </SelectField>
+            <div className="space-y-3">
+              <label className="text-sm font-medium text-text-primary">Categoría</label>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedCategory('all')}
+                  className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${selectedCategory === 'all'
+                      ? 'bg-brand text-white shadow-md shadow-brand/20'
+                      : 'bg-card border border-border text-text-muted hover:bg-card/80 hover:text-text-primary'
+                    }`}
+                >
+                  <Inbox className="h-4 w-4" />
+                  Todas
+                </button>
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${selectedCategory === category.id
+                        ? 'bg-brand text-white shadow-md shadow-brand/20'
+                        : 'bg-card border border-border text-text-muted hover:bg-card/80 hover:text-text-primary'
+                      }`}
+                  >
+                    {category.icon} {category.name}
+                  </button>
+                ))}
+              </div>
+            </div>
             <Toggle
               label="Solo favores disponibles"
               description="Oculta los que ya están completados"
@@ -343,7 +357,7 @@ const Favores = () => {
           onClick={closeModal}
         >
           <div
-            className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto bg-card rounded-2xl border border-border shadow-2xl dark:bg-card/95"
+            className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto bg-card/90 backdrop-blur-md rounded-2xl border border-border shadow-2xl dark:bg-card/80"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}

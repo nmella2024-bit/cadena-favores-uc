@@ -15,13 +15,25 @@
 
 :root.dark {
   color-scheme: dark;
-  --bg-canvas: 15 23 42;
-  --bg-card: 30 41 59;
+  --bg-canvas: 10 10 12; /* Más oscuro para contraste neon */
+  --bg-card: 18 18 23;
   --text-primary: 248 250 252;
-  --text-muted: 203 213 225;
-  --border: 51 65 85;
-  --brand: 147 197 253;
-  --brand-hover: 96 165 250;
+  --text-muted: 148 163 184;
+  --border: 30 41 59;
+  --brand: 96 165 250; /* Azul neon */
+  --brand-hover: 59 130 246;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.dark .glass {
+  background: rgba(18, 18, 23, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @layer base {

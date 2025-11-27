@@ -1,6 +1,8 @@
 import React, { lazy } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import ProtectedRoute from './components/ProtectedRoute';
+import PageTransition from './components/ui/PageTransition';
 
 // Pages - Lazy loaded para code splitting
 const Home = lazy(() => import('./pages/Home'));
@@ -23,101 +25,105 @@ const MisReferidos = lazy(() => import('./pages/MisReferidos'));
 const RankingReferidos = lazy(() => import('./pages/RankingReferidos'));
 
 const AppRoutes = () => {
+    const location = useLocation();
+
     return (
-        <Routes>
-            {/* Página principal */}
-            <Route path="/" element={<Home />} />
+        <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+                {/* Página principal */}
+                <Route path="/" element={<PageTransition><Home /></PageTransition>} />
 
-            {/* Autenticación */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/registro" element={<Registro />} />
-            <Route path="/verificar-email" element={<EmailVerificationPending />} />
+                {/* Autenticación */}
+                <Route path="/login" element={<PageTransition><Login /></PageTransition>} />
+                <Route path="/registro" element={<PageTransition><Registro /></PageTransition>} />
+                <Route path="/verificar-email" element={<EmailVerificationPending />} />
 
-            {/* Favores - Vista pública, publicación protegida */}
-            <Route path="/favores" element={<Favores />} />
-            <Route
-                path="/publicar"
-                element={
-                    <ProtectedRoute>
-                        <PublicarFavor />
-                    </ProtectedRoute>
-                }
-            />
-            <Route path="/favor/:id" element={<FavorDetalle />} />
-            <Route path="/clases-particulares" element={<ClasesParticulares />} />
+                {/* Favores - Vista pública, publicación protegida */}
+                <Route path="/favores" element={<PageTransition><Favores /></PageTransition>} />
+                <Route
+                    path="/publicar"
+                    element={
+                        <ProtectedRoute>
+                            <PublicarFavor />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route path="/favor/:id" element={<FavorDetalle />} />
+                <Route path="/clases-particulares" element={<ClasesParticulares />} />
 
-            {/* Anuncios - Vista pública */}
-            <Route path="/anuncios" element={<Anuncios />} />
+                {/* Anuncios - Vista pública */}
+                <Route path="/anuncios" element={<PageTransition><Anuncios /></PageTransition>} />
 
-            {/* Marketplace - Vista pública */}
-            <Route path="/marketplace" element={<Marketplace />} />
+                {/* Marketplace - Vista pública */}
+                <Route path="/marketplace" element={<PageTransition><Marketplace /></PageTransition>} />
 
-            {/* Material - Vista pública */}
-            <Route path="/material" element={<Material />} />
-            <Route
-                path="/admin/seed-folders"
-                element={
-                    <ProtectedRoute>
-                        <AdminSeedFolders />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/admin/migrar-materiales"
-                element={
-                    <ProtectedRoute>
-                        <MigrarMaterialesExistentes />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/admin/diagnostico"
-                element={
-                    <ProtectedRoute>
-                        <DiagnosticoMaterial />
-                    </ProtectedRoute>
-                }
-            />
+                {/* Material - Vista pública */}
+                <Route path="/material" element={<PageTransition><Material /></PageTransition>} />
+                <Route
+                    path="/admin/seed-folders"
+                    element={
+                        <ProtectedRoute>
+                            <AdminSeedFolders />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/admin/migrar-materiales"
+                    element={
+                        <ProtectedRoute>
+                            <MigrarMaterialesExistentes />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/admin/diagnostico"
+                    element={
+                        <ProtectedRoute>
+                            <DiagnosticoMaterial />
+                        </ProtectedRoute>
+                    }
+                />
 
-            {/* Perfil - Protegidas */}
-            <Route
-                path="/perfil"
-                element={
-                    <ProtectedRoute>
-                        <Perfil />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/perfil/:userId"
-                element={
-                    <ProtectedRoute>
-                        <PerfilPublico />
-                    </ProtectedRoute>
-                }
-            />
+                {/* Perfil - Protegidas */}
+                <Route
+                    path="/perfil"
+                    element={
+                        <ProtectedRoute>
+                            <Perfil />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/perfil/:userId"
+                    element={
+                        <ProtectedRoute>
+                            <PerfilPublico />
+                        </ProtectedRoute>
+                    }
+                />
 
-            {/* Referidos - Protegidas */}
-            <Route
-                path="/mis-referidos"
-                element={
-                    <ProtectedRoute>
-                        <MisReferidos />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/ranking-referidos"
-                element={
-                    <ProtectedRoute>
-                        <RankingReferidos />
-                    </ProtectedRoute>
-                }
-            />
+                {/* Referidos - Protegidas */}
+                <Route
+                    path="/mis-referidos"
+                    element={
+                        <ProtectedRoute>
+                            <MisReferidos />
+                        </ProtectedRoute>
+                    }
+                />
+                <Route
+                    path="/ranking-referidos"
+                    element={
+                        <ProtectedRoute>
+                            <RankingReferidos />
+                        </ProtectedRoute>
+                    }
+                />
 
-            {/* Ruta por defecto - redirige a home */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
+                {/* Ruta por defecto - redirige a home */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+        </AnimatePresence>
     );
 };
 

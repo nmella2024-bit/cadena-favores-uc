@@ -25,6 +25,7 @@ import {
 } from './notificationService';
 import { eliminarReportesDeContenido } from './reportService';
 import { puedeEliminar, esAdmin } from '../utils/adminUtils';
+import { triggerConfetti, triggerSchoolPride } from '../utils/confetti';
 
 /**
  * Publica un nuevo favor en Firestore
@@ -329,6 +330,7 @@ export const completarFavor = async (favorId, userId) => {
     // Marcar como completado en el perfil del usuario
     await markFavorAsCompleted(userId, favorId);
 
+    triggerConfetti();
     console.log('Favor marcado como completado');
   } catch (error) {
     console.error('Error al completar favor:', error);
@@ -773,6 +775,7 @@ export const completarFavorConAyudante = async (favorId, solicitanteId) => {
 
     await updateDoc(favorRef, updateData);
 
+    triggerSchoolPride();
     console.log('✅ [completarFavorConAyudante] Favor finalizado exitosamente');
   } catch (error) {
     console.error('❌ [completarFavorConAyudante] Error:', error);

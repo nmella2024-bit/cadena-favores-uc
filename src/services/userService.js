@@ -334,3 +334,65 @@ export const deleteUserProfile = async (userId) => {
     throw error;
   }
 };
+
+/**
+ * Agrega experiencia (XP) al usuario y verifica si sube de nivel
+ * @param {string} userId - ID del usuario
+ * @param {number} amount - Cantidad de XP a agregar
+ * @returns {Promise<void>}
+ */
+export const addXp = async (userId, amount) => {
+  try {
+    const userRef = doc(db, 'usuarios', userId);
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      const userData = userDoc.data();
+      const currentXp = userData.xp || 0;
+      const newXp = currentXp + amount;
+
+      // Calcular nivel: Nivel = floor(sqrt(XP / 100))
+      // Ejemplo: 100 XP = Nivel 1, 400 XP = Nivel 2, 900 XP = Nivel 3
+      const currentLevel = userData.level || 0;
+      const newLevel = Math.floor(Math.sqrt(newXp / 100));
+
+      const updates = { xp: newXp };
+
+      if (newLevel > currentLevel) {
+        updates.level = newLevel;
+        console.log(`¡Usuario ${userId} subió al nivel ${newLevel}!`);
+        // Aquí se podría disparar una notificación de "Level Up"
+      }
+
+      await updateDoc(userRef, updates);
+    }
+  } catch (error) {
+    console.error('Error al agregar XP:', error);
+  }
+};
+
+/**
+ * Desbloquea una medalla para el usuario
+ * @param {string} userId - ID del usuario
+ * @param {string} badgeId - ID de la medalla (ej: 'first_favor', 'speedster')
+ * @returns {Promise<void>}
+ */
+export const awardBadge = async (userId, badgeId) => {
+  try {
+    const userRef = doc(db, 'usuarios', userId);
+    const userDoc = await getDoc(userRef);
+
+    if (userDoc.exists()) {
+      const badges = userDoc.data().badges || [];
+
+      if (!badges.includes(badgeId)) {
+        badges.push(badgeId);
+        await updateDoc(userRef, { badges });
+        console.log(`¡Usuario ${userId} ganó la medalla ${badgeId}!`);
+        // Aquí se podría disparar una notificación de "Badge Unlocked"
+      }
+    }
+  } catch (error) {
+    console.error('Error al otorgar medalla:', error);
+  }
+};
