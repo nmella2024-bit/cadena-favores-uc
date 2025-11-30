@@ -46,8 +46,7 @@ export const obtenerSolicitudesProfesores = async () => {
     try {
         const q = query(
             collection(db, COLLECTION_NAME),
-            where('estado', '==', 'pendiente'),
-            orderBy('fechaRegistro', 'desc')
+            where('estado', '==', 'pendiente')
         );
 
         const querySnapshot = await getDocs(q);

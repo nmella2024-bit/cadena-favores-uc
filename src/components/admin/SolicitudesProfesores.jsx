@@ -60,7 +60,15 @@ const SolicitudesProfesores = () => {
     }
 
     if (solicitudes.length === 0) {
-        return null; // No mostrar nada si no hay solicitudes
+        return (
+            <div className="mb-8 rounded-lg border border-border bg-card p-6">
+                <h2 className="text-xl font-semibold text-text-primary mb-4 flex items-center gap-2">
+                    <Clock className="h-5 w-5 text-orange-500" />
+                    Solicitudes de Profesores Pendientes
+                </h2>
+                <p className="text-text-muted text-sm">No hay solicitudes pendientes en este momento.</p>
+            </div>
+        );
     }
 
     return (
