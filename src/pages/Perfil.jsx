@@ -373,6 +373,13 @@ const Perfil = () => {
           <ReferralStats />
         </div>
 
+        {/* DEBUG INFO - REMOVE LATER */}
+        <div className="mb-4 p-2 bg-gray-100 text-xs font-mono border border-gray-300 rounded">
+          <p>User ID: {currentUser.uid}</p>
+          <p>Role: {currentUser.rol}</p>
+          <p>Is Admin: {esAdmin(currentUser) ? 'Yes' : 'No'}</p>
+        </div>
+
         {/* Panel de Administración - Solicitudes de Profesores */}
         {esAdmin(currentUser) && (
           <SolicitudesProfesores />
