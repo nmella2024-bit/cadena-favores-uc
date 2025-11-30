@@ -11,6 +11,8 @@ import EditarPerfilModal from '../components/EditarPerfilModal';
 import VerifiedBadge from '../components/VerifiedBadge';
 import ReferralStats from '../components/ReferralStats';
 import { Plus, ExternalLink, Star, AlertCircle, TrendingUp, Camera, User, Edit2, Trash2 } from 'lucide-react';
+import SolicitudesProfesores from '../components/admin/SolicitudesProfesores';
+import { esAdmin } from '../utils/adminUtils';
 
 const Perfil = () => {
   const navigate = useNavigate();
@@ -370,6 +372,11 @@ const Perfil = () => {
         <div className="mb-12">
           <ReferralStats />
         </div>
+
+        {/* Panel de Administración - Solicitudes de Profesores */}
+        {esAdmin(currentUser) && (
+          <SolicitudesProfesores />
+        )}
 
         {/* Secciones en grid */}
         <div className="grid lg:grid-cols-2 gap-6">

@@ -237,10 +237,10 @@ const RegistroProfesorModal = ({ isOpen, onClose, onRegistroExitoso }) => {
                                             {loading ? (
                                                 <>
                                                     <Loader2 className="h-4 w-4 animate-spin mr-2" />
-                                                    Registrando...
+                                                    Enviando solicitud...
                                                 </>
                                             ) : (
-                                                'Confirmar registro'
+                                                'Enviar solicitud'
                                             )}
                                         </PrimaryButton>
                                     </div>
