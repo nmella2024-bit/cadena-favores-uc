@@ -23,15 +23,19 @@ export const generateStudyMaterial = async (topic, style, contextText = '') => {
   `;
 
     try {
-        // Pollinations.ai text API: GET https://text.pollinations.ai/{prompt}
-        // We need to encode the prompt properly.
-        // Note: Pollinations might have length limits, so we truncate context if needed.
+        // Pollinations.ai text API: POST https://text.pollinations.ai/
+        // We use POST to avoid URL length limits with large context.
 
-        const prompt = encodeURIComponent(systemPrompt);
-        const response = await fetch(`https://text.pollinations.ai/${prompt}`);
+        const response = await fetch('https://text.pollinations.ai/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain',
+            },
+            body: systemPrompt
+        });
 
         if (!response.ok) {
-            throw new Error(`API Error: ${response.status}`);
+            throw new Error(`API Error: ${response.status} ${response.statusText}`);
         }
 
         let text = await response.text();
@@ -42,6 +46,6 @@ export const generateStudyMaterial = async (topic, style, contextText = '') => {
         return text;
     } catch (error) {
         console.error('Error generating study material:', error);
-        throw new Error('Error al conectar con el servicio de IA gratuito. Intenta nuevamente.');
+        throw new Error('Error al conectar con el servicio de IA gratuito. Intenta nuevamente o reduce la cantidad de contexto.');
     }
 };
