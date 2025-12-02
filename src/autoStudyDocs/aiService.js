@@ -54,90 +54,52 @@ export const askAI = async (question, context = '') => {
 };
 
 /**
- * Helper to call Pollinations API with robust fallback strategy.
- * Strategy: Local Proxy (Best for Local Dev) -> POST JSON -> POST Plain Text -> GET (Truncated) -> GET via Proxy (CORS Bypass).
+ * Helper to call AI APIs with robust fallback strategy.
+ * Strategy: Local Proxy GET (Pollinations) -> Hercai API (Backup) -> Direct GET (Pollinations).
  */
 const callPollinationsAI = async (prompt) => {
     let lastError = null;
 
-    // Attempt 0: Local Vite Proxy (Solves CORS in Development)
+    // Attempt 1: Local Vite Proxy via GET (Avoids POST 405 & CORS)
     try {
-        console.log('Attempting AI request via Local Proxy (/api/ai)...');
-        const response = await fetch('/api/ai/openai', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                messages: [
-                    { role: 'system', content: 'You are a helpful assistant.' },
-                    { role: 'user', content: prompt }
-                ],
-                model: 'openai',
-                seed: 42
-            })
-        });
+        console.log('Attempting AI request via Local Proxy (GET)...');
+        // Truncate to 1500 chars to be safe for URL length
+        const safePrompt = encodeURIComponent(prompt.substring(0, 1500));
+        const response = await fetch(`/api/ai/${safePrompt}?model=openai&seed=42`);
 
         if (response.ok) {
             let text = await response.text();
             return cleanResponse(text);
         }
-        console.warn(`Local Proxy failed: ${response.status}`);
-        lastError = `Local Proxy Error: ${response.status}`;
+        console.warn(`Local Proxy GET failed: ${response.status}`);
+        lastError = `Local Proxy GET Error: ${response.status}`;
     } catch (e) {
-        console.warn('Local Proxy failed:', e);
-        lastError = `Local Proxy Network Error: ${e.message}`;
+        console.warn('Local Proxy GET failed:', e);
+        lastError = `Local Proxy GET Network Error: ${e.message}`;
     }
 
-    // Attempt 1: POST to /openai endpoint (Best for structured JSON)
+    // Attempt 2: Hercai API (Free Backup Provider)
     try {
-        console.log('Attempting AI request via POST (JSON)...');
-        const response = await fetch('https://text.pollinations.ai/openai', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                messages: [
-                    { role: 'system', content: 'You are a helpful assistant.' },
-                    { role: 'user', content: prompt }
-                ],
-                model: 'openai',
-                seed: 42
-            })
-        });
+        console.log('Attempting AI request via Hercai (Backup)...');
+        const safePrompt = encodeURIComponent(prompt.substring(0, 1000));
+        const response = await fetch(`https://hercai.zaid.one/v2/hercai?question=${safePrompt}`);
 
         if (response.ok) {
-            let text = await response.text();
-            return cleanResponse(text);
+            const data = await response.json();
+            if (data && data.reply) {
+                return cleanResponse(data.reply);
+            }
         }
-        const errText = await response.text();
-        console.warn(`POST JSON failed: ${response.status} ${errText}`);
-        lastError += ` | POST JSON Error: ${response.status}`;
+        console.warn(`Hercai failed: ${response.status}`);
+        lastError += ` | Hercai Error: ${response.status}`;
     } catch (e) {
-        console.warn('POST JSON failed:', e);
-        lastError += ` | POST JSON Network Error: ${e.message}`;
+        console.warn('Hercai failed:', e);
+        lastError += ` | Hercai Network Error: ${e.message}`;
     }
 
-    // Attempt 2: POST Plain Text to root (Fallback for JSON issues)
+    // Attempt 3: Direct GET to Pollinations (Last Resort)
     try {
-        console.log('Attempting AI request via POST (Plain Text)...');
-        const response = await fetch('https://text.pollinations.ai/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain' },
-            body: prompt
-        });
-
-        if (response.ok) {
-            let text = await response.text();
-            return cleanResponse(text);
-        }
-        console.warn(`POST Text failed: ${response.status}`);
-        lastError += ` | POST Text Error: ${response.status}`;
-    } catch (e) {
-        console.warn('POST Text failed:', e);
-        lastError += ` | POST Text Network Error: ${e.message}`;
-    }
-
-    // Attempt 3: GET (Last Resort, heavily truncated)
-    try {
-        console.log('Attempting AI request via GET (Last Resort)...');
+        console.log('Attempting AI request via Direct GET (Last Resort)...');
         const safePrompt = encodeURIComponent(prompt.substring(0, 800));
         const response = await fetch(`https://text.pollinations.ai/${safePrompt}?model=openai&seed=42`);
 
@@ -146,32 +108,13 @@ const callPollinationsAI = async (prompt) => {
             return cleanResponse(text);
         }
         const errText = await response.text();
-        lastError += ` | GET Error: ${response.status} ${errText}`;
+        lastError += ` | Direct GET Error: ${response.status} ${errText}`;
     } catch (e) {
-        console.error('GET fallback failed:', e);
-        lastError += ` | GET Network Error: ${e.message}`;
+        console.error('Direct GET fallback failed:', e);
+        lastError += ` | Direct GET Network Error: ${e.message}`;
     }
 
-    // Attempt 4: GET via CORS Proxy (Ultimate Fallback for "Load failed")
-    try {
-        console.log('Attempting AI request via CORS Proxy...');
-        const safePrompt = encodeURIComponent(prompt.substring(0, 800));
-        const targetUrl = `https://text.pollinations.ai/${safePrompt}?model=openai&seed=42`;
-        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
-
-        const response = await fetch(proxyUrl);
-
-        if (response.ok) {
-            let text = await response.text();
-            return cleanResponse(text);
-        }
-        lastError += ` | Proxy Error: ${response.status}`;
-    } catch (e) {
-        console.error('Proxy fallback failed:', e);
-        lastError += ` | Proxy Network Error: ${e.message}`;
-    }
-
-    throw new Error(`No se pudo conectar con la IA (Gratis). Posible bloqueo de red o CORS. Detalles: ${lastError}`);
+    throw new Error(`No se pudo conectar con ninguna IA (Gratis). Verifica tu conexión a internet. Detalles: ${lastError}`);
 };
 
 const cleanResponse = (text) => {
