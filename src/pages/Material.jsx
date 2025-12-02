@@ -13,6 +13,8 @@ import MoveFolderModal from '../components/MoveFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import MaterialSearch from '../components/MaterialSearch';
 import solidaridadLogo from '../assets/solidaridad-UC.jpg';
+import AutoStudyInterface from '../../autoStudyDocs/components/AutoStudyInterface';
+import { Sparkles } from 'lucide-react';
 
 const SkeletonCard = () => (
   <div className="animate-pulse rounded-xl border border-border bg-card/70 p-6 shadow-sm dark:bg-card/60">
@@ -40,6 +42,7 @@ const Material = () => {
   const [isMoveFolderModalOpen, setIsMoveFolderModalOpen] = useState(false);
   const [carpetaAMover, setCarpetaAMover] = useState(null);
   const [eliminando, setEliminando] = useState(null);
+  const [isAutoStudyOpen, setIsAutoStudyOpen] = useState(false);
 
   const esUsuarioExclusivo = currentUser?.rol === 'exclusivo' || currentUser?.rol === 'admin';
 
@@ -301,6 +304,34 @@ const Material = () => {
 
             {currentUser && esUsuarioExclusivo && (
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
+                {/* Auto Study Docs Button */}
+                {(() => {
+                  const isAdmin = currentUser?.rol === 'admin';
+                  if (isAdmin) {
+                    return (
+                      <PrimaryButton
+                        onClick={() => setIsAutoStudyOpen(true)}
+                        className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 px-3 sm:px-4 py-2 text-sm border-none"
+                      >
+                        <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
+                        <span className="hidden sm:inline">Generar con IA</span>
+                        <span className="inline sm:hidden">IA</span>
+                      </PrimaryButton>
+                    );
+                  } else {
+                    return (
+                      <div
+                        className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-gray-200 dark:bg-gray-800 px-3 sm:px-4 py-2 text-sm rounded-lg text-gray-400 cursor-not-allowed line-through"
+                        title="Solo disponible para administradores"
+                      >
+                        <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
+                        <span className="hidden sm:inline">Generar con IA</span>
+                        <span className="inline sm:hidden">IA</span>
+                      </div>
+                    );
+                  }
+                })()}
+
                 <PrimaryButton
                   onClick={() => setIsFolderModalOpen(true)}
                   className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-purple-600 hover:bg-purple-700 px-3 sm:px-4 py-2 text-sm"
@@ -462,6 +493,9 @@ const Material = () => {
                 carpetaAMover={carpetaAMover}
                 onMover={handleConfirmarMoverCarpeta}
               />
+            )}
+            {isAutoStudyOpen && (
+              <AutoStudyInterface onClose={() => setIsAutoStudyOpen(false)} />
             )}
           </>
         )}
