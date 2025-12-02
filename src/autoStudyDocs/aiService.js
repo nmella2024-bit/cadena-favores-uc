@@ -55,10 +55,37 @@ export const askAI = async (question, context = '') => {
 
 /**
  * Helper to call Pollinations API with robust fallback strategy.
- * Strategy: POST JSON -> POST Plain Text -> GET (Truncated) -> GET via Proxy (CORS Bypass).
+ * Strategy: Local Proxy (Best for Local Dev) -> POST JSON -> POST Plain Text -> GET (Truncated) -> GET via Proxy (CORS Bypass).
  */
 const callPollinationsAI = async (prompt) => {
     let lastError = null;
+
+    // Attempt 0: Local Vite Proxy (Solves CORS in Development)
+    try {
+        console.log('Attempting AI request via Local Proxy (/api/ai)...');
+        const response = await fetch('/api/ai/openai', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                messages: [
+                    { role: 'system', content: 'You are a helpful assistant.' },
+                    { role: 'user', content: prompt }
+                ],
+                model: 'openai',
+                seed: 42
+            })
+        });
+
+        if (response.ok) {
+            let text = await response.text();
+            return cleanResponse(text);
+        }
+        console.warn(`Local Proxy failed: ${response.status}`);
+        lastError = `Local Proxy Error: ${response.status}`;
+    } catch (e) {
+        console.warn('Local Proxy failed:', e);
+        lastError = `Local Proxy Network Error: ${e.message}`;
+    }
 
     // Attempt 1: POST to /openai endpoint (Best for structured JSON)
     try {
@@ -82,10 +109,10 @@ const callPollinationsAI = async (prompt) => {
         }
         const errText = await response.text();
         console.warn(`POST JSON failed: ${response.status} ${errText}`);
-        lastError = `POST JSON Error: ${response.status}`;
+        lastError += ` | POST JSON Error: ${response.status}`;
     } catch (e) {
         console.warn('POST JSON failed:', e);
-        lastError = `POST JSON Network Error: ${e.message}`;
+        lastError += ` | POST JSON Network Error: ${e.message}`;
     }
 
     // Attempt 2: POST Plain Text to root (Fallback for JSON issues)

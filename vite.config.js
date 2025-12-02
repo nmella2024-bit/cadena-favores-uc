@@ -4,6 +4,17 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
 
+  server: {
+    proxy: {
+      '/api/ai': {
+        target: 'https://text.pollinations.ai',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/ai/, ''),
+        secure: false,
+      },
+    },
+  },
+
   build: {
     // Configuración optimizada para producción
     rollupOptions: {
