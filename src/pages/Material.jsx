@@ -304,33 +304,15 @@ const Material = () => {
 
             {currentUser && (
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full sm:w-auto">
-                {/* Auto Study Docs Button - Visible para todos, habilitado solo para admins */}
-                {(() => {
-                  const isAdmin = currentUser?.rol === 'admin';
-                  if (isAdmin) {
-                    return (
-                      <PrimaryButton
-                        onClick={() => setIsAutoStudyOpen(true)}
-                        className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 px-3 sm:px-4 py-2 text-sm border-none"
-                      >
-                        <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
-                        <span className="hidden sm:inline">Generar con IA</span>
-                        <span className="inline sm:hidden">IA</span>
-                      </PrimaryButton>
-                    );
-                  } else {
-                    return (
-                      <div
-                        className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-gray-200 dark:bg-gray-800 px-3 sm:px-4 py-2 text-sm rounded-lg text-gray-400 cursor-not-allowed line-through opacity-70"
-                        title="Solo disponible para administradores"
-                      >
-                        <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
-                        <span className="hidden sm:inline">Generar con IA</span>
-                        <span className="inline sm:hidden">IA</span>
-                      </div>
-                    );
-                  }
-                })()}
+                {/* Auto Study Docs Button - Visible y habilitado para TODOS */}
+                <PrimaryButton
+                  onClick={() => setIsAutoStudyOpen(true)}
+                  className="inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 px-3 sm:px-4 py-2 text-sm border-none"
+                >
+                  <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <span className="hidden sm:inline">Generar con IA</span>
+                  <span className="inline sm:hidden">IA</span>
+                </PrimaryButton>
 
                 {/* Botones exclusivos (Crear Carpeta, Subir Material) */}
                 {esUsuarioExclusivo && (
