@@ -334,44 +334,37 @@ const Material = () => {
         <Breadcrumb ruta={rutaCarpeta} onNavigate={handleNavegar} />
 
         {/* Buscador de Material y Botón IA */}
-        <div className="mb-6 max-w-3xl mx-auto px-2 sm:px-0 flex flex-col sm:flex-row gap-3 sm:items-center">
-          <div className="flex-grow relative z-20">
-            <MaterialSearch
-              carpetaActualId={carpetaActual?.id}
-              onNavigarACarpeta={handleAbrirCarpeta}
-              className="w-full"
-            />
-          </div>
+        <div className="mb-6 max-w-4xl mx-auto px-2 sm:px-0">
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+            {/* Buscador */}
+            <div className="flex-grow relative z-20">
+              <MaterialSearch
+                carpetaActualId={carpetaActual?.id}
+                onNavigarACarpeta={handleAbrirCarpeta}
+                className="w-full"
+              />
+            </div>
 
-          {/* Auto Study Docs Button - Visible siempre, habilitado solo Admin */}
-          <div className="flex-shrink-0 relative z-10">
-            {(() => {
-              const isAdmin = currentUser?.rol === 'admin';
-
-              if (isAdmin) {
-                return (
-                  <PrimaryButton
-                    onClick={() => setIsAutoStudyOpen(true)}
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 px-3 sm:px-4 py-2.5 text-sm border-none h-[42px] shadow-sm"
-                  >
-                    <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="hidden sm:inline">Generar con IA</span>
-                    <span className="inline sm:hidden">IA</span>
-                  </PrimaryButton>
-                );
-              } else {
-                return (
-                  <div
-                    className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 whitespace-nowrap bg-gray-200 dark:bg-gray-800 px-3 sm:px-4 py-2.5 text-sm rounded-lg text-gray-400 cursor-not-allowed line-through opacity-70 h-[42px]"
-                    title={currentUser ? "Solo disponible para administradores" : "Inicia sesión como administrador"}
-                  >
-                    <Sparkles className="h-4 w-4 sm:h-5 sm:w-5" />
-                    <span className="hidden sm:inline">Generar con IA</span>
-                    <span className="inline sm:hidden">IA</span>
-                  </div>
-                );
-              }
-            })()}
+            {/* Botón IA */}
+            <div className="flex-shrink-0 relative z-10">
+              {currentUser?.rol === 'admin' ? (
+                <PrimaryButton
+                  onClick={() => setIsAutoStudyOpen(true)}
+                  className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 px-4 text-sm font-medium border-none shadow-sm transition-all hover:shadow-md"
+                >
+                  <Sparkles className="h-5 w-5" />
+                  <span>Generar con IA</span>
+                </PrimaryButton>
+              ) : (
+                <div
+                  className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 text-sm font-medium rounded-lg text-gray-400 cursor-not-allowed opacity-75"
+                  title={currentUser ? "Solo disponible para administradores" : "Inicia sesión como administrador"}
+                >
+                  <Sparkles className="h-5 w-5" />
+                  <span className="line-through decoration-gray-400/50">Generar con IA</span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
