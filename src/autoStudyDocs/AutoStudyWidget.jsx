@@ -473,18 +473,22 @@ const AutoStudyWidget = (props) => {
                             <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900">
                                 {chatHistory.map((msg, idx) => (
                                     <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                        <div className={`max-w-[80%] rounded-lg p-3 text-sm ${msg.role === 'user'
+                                        <div className={`max-w-[85%] rounded-lg p-3 text-sm shadow-sm ${msg.role === 'user'
                                             ? 'bg-blue-600 text-white'
-                                            : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 shadow-sm'
+                                            : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700'
                                             }`}>
-                                            <div className="prose dark:prose-invert max-w-none text-sm">
+                                            <div className="leading-relaxed whitespace-pre-wrap break-words" dir="ltr">
                                                 {msg.role === 'system' ? (
-                                                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-medium">
+                                                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold mb-1">
                                                         <Sparkles className="w-4 h-4" />
-                                                        {msg.content}
+                                                        <span>Asistente</span>
                                                     </div>
+                                                ) : null}
+
+                                                {msg.role === 'system' ? (
+                                                    <span>{msg.content}</span>
                                                 ) : (
-                                                    <div dangerouslySetInnerHTML={{ __html: msg.content.replace(/\n/g, '<br/>') }} />
+                                                    <div dangerouslySetInnerHTML={{ __html: msg.content ? msg.content.replace(/\n/g, '<br/>') : '<span class="italic opacity-50">...</span>' }} />
                                                 )}
                                             </div>
                                         </div>
