@@ -3,8 +3,12 @@ import { generateStudyMaterial } from './aiService';
 import { extractTextFromFile, extractTextFromUrl } from './contextProcessor';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import { extractTextFromFile, extractTextFromUrl } from './contextProcessor';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
 import { obtenerMateriales } from '../services/materialService';
-import { Search, FileText, X, Loader2, Plus, Database } from 'lucide-react';
+import { buscarEnMateriales } from '../services/searchService';
+import { Search, FileText, X, Loader2, Plus, Database, Sparkles } from 'lucide-react';
 
 const AutoStudyWidget = (props) => {
     const [topic, setTopic] = useState('');
@@ -99,15 +103,64 @@ const AutoStudyWidget = (props) => {
         setGeneratedContent('');
 
         try {
-            // Combine context from all valid files
-            const combinedContext = contextFiles
+            // 1. Auto-Search for context if no files are manually selected
+            let autoContext = '';
+            let usedMaterials = [];
+
+            if (contextFiles.length === 0) {
+                setProcessingFiles(true);
+                try {
+                    // Search for materials related to the topic
+                    const searchResults = await buscarEnMateriales(topic, 'all', 5); // Top 5 results
+                    const materials = searchResults.materiales || [];
+
+                    if (materials.length > 0) {
+                        // Extract text from top 3 materials with URLs
+                        const materialsWithUrl = materials.filter(m => m.archivoUrl).slice(0, 3);
+
+                        const extractedTexts = await Promise.all(
+                            materialsWithUrl.map(async (m) => {
+                                try {
+                                    const text = await extractTextFromUrl(m.archivoUrl);
+                                    usedMaterials.push(m.titulo);
+                                    return `--- Material: ${m.titulo} ---\n${text.substring(0, 3000)}`; // Limit per file
+                                } catch (e) {
+                                    console.warn(`Failed to extract from ${m.titulo}`, e);
+                                    return '';
+                                }
+                            })
+                        );
+                        autoContext = extractedTexts.join('\n\n');
+                    }
+                } catch (searchErr) {
+                    console.warn('Auto-search failed:', searchErr);
+                } finally {
+                    setProcessingFiles(false);
+                }
+            }
+
+            // 2. Combine manual and auto context
+            const manualContext = contextFiles
                 .filter(f => !f.error)
                 .map(f => `--- Documento: ${f.name} ---\n${f.text}`)
                 .join('\n\n');
 
-            const content = await generateStudyMaterial(topic, style, combinedContext);
-            setGeneratedContent(content);
+            const fullContext = `${manualContext}\n\n${autoContext}`.trim();
+
+            // 3. Generate Content
+            const content = await generateStudyMaterial(topic, style, fullContext);
+
+            // Add note about used sources if auto-search was used
+            let finalContent = content;
+            if (usedMaterials.length > 0) {
+                finalContent += `<div class="mt-8 pt-4 border-t border-gray-200 text-sm text-gray-500">
+                    <p><strong>Fuentes utilizadas automáticamente:</strong> ${usedMaterials.join(', ')}</p>
+                </div>`;
+            }
+
+            setGeneratedContent(finalContent);
         } catch (err) {
+            console.error(err);
             setError(err.message || 'Error al generar el documento.');
         } finally {
             setLoading(false);
