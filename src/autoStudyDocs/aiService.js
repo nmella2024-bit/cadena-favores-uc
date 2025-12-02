@@ -49,23 +49,20 @@ export const askAI = async (question, context = '') => {
     4. Responde en texto plano (puedes usar markdown simple).
     `;
 
-    try {
-        return await callPollinationsAI(systemPrompt);
-    } catch (error) {
-        console.error('Chat AI failed:', error);
-        throw new Error('Error al conectar con el chat de IA.');
-    }
+    // Direct call to propagate specific errors
+    return await callPollinationsAI(systemPrompt);
 };
 
 /**
- * Helper to call Pollinations API with fallback.
+ * Helper to call Pollinations API with robust fallback strategy.
+ * Strategy: POST JSON -> POST Plain Text -> GET (Truncated).
  */
 const callPollinationsAI = async (prompt) => {
     let lastError = null;
 
     // Attempt 1: POST to /openai endpoint (Best for structured JSON)
     try {
-        console.log('Attempting AI request via POST (openai endpoint)...');
+        console.log('Attempting AI request via POST (JSON)...');
         const response = await fetch('https://text.pollinations.ai/openai', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -84,19 +81,38 @@ const callPollinationsAI = async (prompt) => {
             return cleanResponse(text);
         }
         const errText = await response.text();
-        console.warn(`POST failed with status ${response.status}: ${errText}`);
-        lastError = `POST Error: ${response.status} ${errText}`;
+        console.warn(`POST JSON failed: ${response.status} ${errText}`);
+        lastError = `POST JSON Error: ${response.status}`;
     } catch (e) {
-        console.warn('POST request failed:', e);
-        lastError = `POST Network Error: ${e.message}`;
+        console.warn('POST JSON failed:', e);
+        lastError = `POST JSON Network Error: ${e.message}`;
     }
 
-    // Attempt 2: GET (Fallback, limited length)
+    // Attempt 2: POST Plain Text to root (Fallback for JSON issues)
     try {
-        console.log('Attempting AI request via GET (Fallback)...');
-        // Truncate prompt to ~1500 chars to be safe for URL length
-        // We use the root endpoint for GET as it handles raw text better
-        const safePrompt = encodeURIComponent(prompt.substring(0, 1500));
+        console.log('Attempting AI request via POST (Plain Text)...');
+        const response = await fetch('https://text.pollinations.ai/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain' },
+            body: prompt
+        });
+
+        if (response.ok) {
+            let text = await response.text();
+            return cleanResponse(text);
+        }
+        console.warn(`POST Text failed: ${response.status}`);
+        lastError += ` | POST Text Error: ${response.status}`;
+    } catch (e) {
+        console.warn('POST Text failed:', e);
+        lastError += ` | POST Text Network Error: ${e.message}`;
+    }
+
+    // Attempt 3: GET (Last Resort, heavily truncated)
+    try {
+        console.log('Attempting AI request via GET (Last Resort)...');
+        // Truncate to 1000 chars to ensure it fits in URL
+        const safePrompt = encodeURIComponent(prompt.substring(0, 1000));
         const response = await fetch(`https://text.pollinations.ai/${safePrompt}?model=openai&seed=42`);
 
         if (response.ok) {
@@ -104,13 +120,13 @@ const callPollinationsAI = async (prompt) => {
             return cleanResponse(text);
         }
         const errText = await response.text();
-        lastError = `GET Error: ${response.status} ${errText} (Prev: ${lastError})`;
+        lastError += ` | GET Error: ${response.status} ${errText}`;
     } catch (e) {
         console.error('GET fallback failed:', e);
-        lastError = `GET Network Error: ${e.message} (Prev: ${lastError})`;
+        lastError += ` | GET Network Error: ${e.message}`;
     }
 
-    throw new Error(`Service unavailable. Details: ${lastError}`);
+    throw new Error(`No se pudo conectar con la IA (Gratis). Detalles técnicos: ${lastError}`);
 };
 
 const cleanResponse = (text) => {
