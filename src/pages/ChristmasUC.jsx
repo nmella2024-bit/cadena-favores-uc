@@ -16,7 +16,34 @@ const ChristmasUC = () => {
         }
     }, []);
 
+    const isDayUnlockable = (day) => {
+        const today = new Date();
+        const currentMonth = today.getMonth(); // 0-indexed, 11 is December
+        const currentDay = today.getDate();
+
+        // Allow opening if it's December and the day has passed or is today
+        // Also allow if it's past December (e.g. January next year)
+        if (currentMonth === 11) {
+            return currentDay >= day;
+        }
+        // If it's not December, we might want to lock everything or unlock everything depending on the year
+        // For simplicity, let's assume this is only active in December.
+        // But if testing in November, everything is locked.
+        // If testing in January, everything should be open? Let's stick to strict December logic for now
+        // or allow testing by checking if month > 11 (not possible) or year > currentYear...
+        // Let's keep it simple: Only unlockable in December if day <= currentDay.
+
+        // For testing purposes (since today is Dec 2nd 2025 according to metadata), 
+        // we want days 1 and 2 to be unlockable.
+        return currentMonth === 11 && currentDay >= day;
+    };
+
     const handleDayClick = (day) => {
+        if (!isDayUnlockable(day)) {
+            alert("¡Aún no es tiempo! Vuelve el día correspondiente para abrir esta casilla.");
+            return;
+        }
+
         if (openedDays.includes(day)) {
             setSelectedFact({ day, fact: UC_FACTS[day - 1] });
             return;
@@ -27,23 +54,6 @@ const ChristmasUC = () => {
         localStorage.setItem('christmas_uc_opened_days', JSON.stringify(newOpenedDays));
         setSelectedFact({ day, fact: UC_FACTS[day - 1] });
     };
-
-    const isAdmin = currentUser?.rol === 'admin';
-
-    if (!isAdmin) {
-        return (
-            <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
-                <div className="text-center text-white max-w-md">
-                    <Lock className="w-16 h-16 mx-auto mb-4 text-red-500" />
-                    <h1 className="text-3xl font-bold mb-2">Acceso Restringido</h1>
-                    <p className="text-slate-300">
-                        Esta sección es exclusiva para administradores por el momento.
-                        ¡Vuelve pronto para disfrutar del espíritu navideño UC!
-                    </p>
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div className="min-h-screen bg-slate-900 p-4 sm:p-8 relative overflow-hidden">
@@ -76,13 +86,17 @@ const ChristmasUC = () => {
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
                     {Array.from({ length: 25 }, (_, i) => i + 1).map((day) => {
                         const isOpened = openedDays.includes(day);
+                        const isUnlockable = isDayUnlockable(day);
+
                         return (
                             <button
                                 key={day}
                                 onClick={() => handleDayClick(day)}
-                                className={`aspect-square rounded-xl p-4 flex flex-col items-center justify-center transition-all duration-300 transform hover:scale-105 ${isOpened
-                                        ? 'bg-green-600/20 border-2 border-green-500/50 text-green-400'
-                                        : 'bg-slate-800/50 border-2 border-slate-700 hover:border-red-500/50 hover:bg-red-500/10 text-slate-300'
+                                className={`aspect-square rounded-xl p-4 flex flex-col items-center justify-center transition-all duration-300 transform ${isOpened
+                                        ? 'bg-green-600/20 border-2 border-green-500/50 text-green-400 scale-100'
+                                        : isUnlockable
+                                            ? 'bg-slate-800/50 border-2 border-slate-700 hover:border-red-500/50 hover:bg-red-500/10 text-slate-300 hover:scale-105 cursor-pointer'
+                                            : 'bg-slate-800/30 border-2 border-slate-800 text-slate-600 cursor-not-allowed opacity-70'
                                     }`}
                             >
                                 {isOpened ? (
@@ -95,7 +109,11 @@ const ChristmasUC = () => {
                                 ) : (
                                     <>
                                         <span className="text-4xl font-bold mb-2">{day}</span>
-                                        <Gift className="w-6 h-6 text-red-500" />
+                                        {isUnlockable ? (
+                                            <Gift className="w-6 h-6 text-red-500" />
+                                        ) : (
+                                            <Lock className="w-6 h-6 text-slate-600" />
+                                        )}
                                     </>
                                 )}
                             </button>

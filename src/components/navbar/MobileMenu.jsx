@@ -35,17 +35,6 @@ const MobileMenu = ({ currentUser, logout, setIsFeedbackOpen, location }) => {
                                 </div>
                             );
                         }
-                        if (item.label === 'Christmas UC') {
-                            const isAdmin = currentUser?.rol === 'admin';
-                            if (!isAdmin) {
-                                return (
-                                    <div key={item.label} className="flex items-center gap-1.5 sm:gap-2 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-text-muted/50 cursor-not-allowed line-through w-full">
-                                        <item.icon className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2} />
-                                        {item.label}
-                                    </div>
-                                );
-                            }
-                        }
                         return <NavItem key={item.to} item={item} isMobile onClick={() => close()} />;
                     })}
 
