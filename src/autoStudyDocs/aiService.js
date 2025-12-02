@@ -55,7 +55,7 @@ export const askAI = async (question, context = '') => {
 
 /**
  * Helper to call Pollinations API with robust fallback strategy.
- * Strategy: POST JSON -> POST Plain Text -> GET (Truncated).
+ * Strategy: POST JSON -> POST Plain Text -> GET (Truncated) -> GET via Proxy (CORS Bypass).
  */
 const callPollinationsAI = async (prompt) => {
     let lastError = null;
@@ -111,8 +111,7 @@ const callPollinationsAI = async (prompt) => {
     // Attempt 3: GET (Last Resort, heavily truncated)
     try {
         console.log('Attempting AI request via GET (Last Resort)...');
-        // Truncate to 1000 chars to ensure it fits in URL
-        const safePrompt = encodeURIComponent(prompt.substring(0, 1000));
+        const safePrompt = encodeURIComponent(prompt.substring(0, 800));
         const response = await fetch(`https://text.pollinations.ai/${safePrompt}?model=openai&seed=42`);
 
         if (response.ok) {
@@ -126,7 +125,26 @@ const callPollinationsAI = async (prompt) => {
         lastError += ` | GET Network Error: ${e.message}`;
     }
 
-    throw new Error(`No se pudo conectar con la IA (Gratis). Detalles técnicos: ${lastError}`);
+    // Attempt 4: GET via CORS Proxy (Ultimate Fallback for "Load failed")
+    try {
+        console.log('Attempting AI request via CORS Proxy...');
+        const safePrompt = encodeURIComponent(prompt.substring(0, 800));
+        const targetUrl = `https://text.pollinations.ai/${safePrompt}?model=openai&seed=42`;
+        const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`;
+
+        const response = await fetch(proxyUrl);
+
+        if (response.ok) {
+            let text = await response.text();
+            return cleanResponse(text);
+        }
+        lastError += ` | Proxy Error: ${response.status}`;
+    } catch (e) {
+        console.error('Proxy fallback failed:', e);
+        lastError += ` | Proxy Network Error: ${e.message}`;
+    }
+
+    throw new Error(`No se pudo conectar con la IA (Gratis). Posible bloqueo de red o CORS. Detalles: ${lastError}`);
 };
 
 const cleanResponse = (text) => {
