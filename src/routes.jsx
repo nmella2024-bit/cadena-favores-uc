@@ -21,6 +21,7 @@ const MigrarMaterialesExistentes = lazy(() => import('./components/MigrarMateria
 const DiagnosticoMaterial = lazy(() => import('./components/DiagnosticoMaterial'));
 const MisReferidos = lazy(() => import('./pages/MisReferidos'));
 const RankingReferidos = lazy(() => import('./pages/RankingReferidos'));
+const ChristmasUC = lazy(() => import('./pages/ChristmasUC'));
 
 const AppRoutes = () => {
     return (
@@ -114,6 +115,9 @@ const AppRoutes = () => {
                     </ProtectedRoute>
                 }
             />
+
+            {/* Christmas UC */}
+            <Route path="/christmas-uc" element={<ChristmasUC />} />
 
             {/* Ruta por defecto - redirige a home */}
             <Route path="*" element={<Navigate to="/" replace />} />

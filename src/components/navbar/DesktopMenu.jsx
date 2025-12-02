@@ -41,6 +41,17 @@ const DesktopMenu = ({ currentUser, logout, setIsFeedbackOpen, location }) => {
                         </HeadlessMenu>
                     );
                 }
+                if (item.label === 'Christmas UC') {
+                    const isAdmin = currentUser?.rol === 'admin';
+                    if (!isAdmin) {
+                        return (
+                            <div key={item.label} className="inline-flex items-center gap-1 lg:gap-2 rounded-lg px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium text-text-muted/50 cursor-not-allowed line-through" title="Próximamente">
+                                <item.icon className="h-4 w-4 flex-shrink-0" strokeWidth={2} />
+                                <span className="whitespace-nowrap hidden lg:inline">{item.label}</span>
+                            </div>
+                        );
+                    }
+                }
                 return <NavItem key={item.to} item={item} />;
             })}
 

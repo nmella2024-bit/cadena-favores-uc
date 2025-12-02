@@ -13,4 +13,5 @@ export const NAVIGATION_ITEMS = [
         ]
     },
     { label: 'Material', to: '/material', icon: BookOpen },
+    { label: 'Christmas UC', to: '/christmas-uc', icon: HandHeart }, // Icono temporal, se puede cambiar
 ];

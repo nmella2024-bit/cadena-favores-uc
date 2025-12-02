@@ -23,15 +23,21 @@ export const obtenerProfesores = async () => {
     try {
         const q = query(
             collection(db, COLLECTION_NAME),
-            where('estado', '==', 'activo'),
-            orderBy('fechaRegistro', 'desc')
+            where('estado', '==', 'activo')
         );
 
         const querySnapshot = await getDocs(q);
-        return querySnapshot.docs.map(doc => ({
+        const profesores = querySnapshot.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
         }));
+
+        // Ordenar en memoria por fechaRegistro descendente
+        return profesores.sort((a, b) => {
+            const fechaA = a.fechaRegistro?.toMillis() || 0;
+            const fechaB = b.fechaRegistro?.toMillis() || 0;
+            return fechaB - fechaA;
+        });
     } catch (error) {
         console.error('Error al obtener profesores:', error);
         throw error;
