@@ -67,3 +67,29 @@ const extractTextFromPdf = async (file) => {
         throw new Error('Failed to extract text from PDF file.');
     }
 };
+/**
+ * Extracts text from a URL (e.g. Firebase Storage).
+ * @param {string} url - The URL of the file.
+ * @param {string} mimeType - Optional mime type if known.
+ * @returns {Promise<string>} - The extracted text.
+ */
+export const extractTextFromUrl = async (url, mimeType = null) => {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Failed to fetch file: ${response.statusText}`);
+
+        const blob = await response.blob();
+
+        // Create a File object from the Blob to reuse existing logic
+        // We try to infer name/type if possible, or use defaults
+        const type = mimeType || blob.type;
+        const name = url.split('/').pop().split('?')[0] || 'downloaded_file';
+
+        const file = new File([blob], name, { type });
+
+        return await extractTextFromFile(file);
+    } catch (error) {
+        console.error('Error extracting text from URL:', error);
+        throw error;
+    }
+};

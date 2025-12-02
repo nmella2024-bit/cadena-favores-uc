@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { generateStudyMaterial } from './aiService';
-import { extractTextFromFile } from './contextProcessor';
+import { extractTextFromFile, extractTextFromUrl } from './contextProcessor';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
+import { obtenerMateriales } from '../services/materialService';
+import { Search, FileText, X, Loader2, Plus, Database } from 'lucide-react';
 
 const AutoStudyWidget = (props) => {
     const [topic, setTopic] = useState('');
@@ -12,7 +14,47 @@ const AutoStudyWidget = (props) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [processingFiles, setProcessingFiles] = useState(false);
+
+    // Material Selector State
+    const [showMaterialSelector, setShowMaterialSelector] = useState(false);
+    const [availableMaterials, setAvailableMaterials] = useState([]);
+    const [loadingMaterials, setLoadingMaterials] = useState(false);
+
     const contentRef = useRef(null);
+
+    const loadMaterials = async () => {
+        setLoadingMaterials(true);
+        try {
+            const materials = await obtenerMateriales();
+            setAvailableMaterials(materials);
+        } catch (error) {
+            console.error("Error loading materials:", error);
+        } finally {
+            setLoadingMaterials(false);
+        }
+    };
+
+    const handleOpenMaterialSelector = () => {
+        setShowMaterialSelector(true);
+        loadMaterials();
+    };
+
+    const handleSelectMaterial = async (material) => {
+        if (!material.archivoUrl) return;
+
+        setProcessingFiles(true);
+        setShowMaterialSelector(false); // Close selector
+
+        try {
+            const text = await extractTextFromUrl(material.archivoUrl);
+            setContextFiles(prev => [...prev, { name: material.titulo || 'Material sin título', text }]);
+        } catch (err) {
+            console.error(`Error processing material ${material.titulo}:`, err);
+            setError(`Error al procesar el material: ${material.titulo}`);
+        } finally {
+            setProcessingFiles(false);
+        }
+    };
 
     const handleFileChange = async (e) => {
         const files = Array.from(e.target.files);
@@ -198,6 +240,17 @@ const AutoStudyWidget = (props) => {
                   "
                                     disabled={processingFiles}
                                 />
+
+                                <div className="mt-2">
+                                    <button
+                                        onClick={handleOpenMaterialSelector}
+                                        className="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1"
+                                    >
+                                        <Database className="w-4 h-4" />
+                                        Seleccionar de Material existente
+                                    </button>
+                                </div>
+
                                 {processingFiles && <p className="text-xs text-blue-500 mt-1">Procesando archivos...</p>}
 
                                 {contextFiles.length > 0 && (
@@ -286,6 +339,47 @@ const AutoStudyWidget = (props) => {
                     </div>
                 </div>
             </div>
+
+            {/* Material Selector Modal */}
+            {showMaterialSelector && (
+                <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col border border-gray-200 dark:border-gray-700">
+                        <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                            <h3 className="text-lg font-bold text-gray-800 dark:text-white">Seleccionar Material</h3>
+                            <button onClick={() => setShowMaterialSelector(false)} className="text-gray-500 hover:text-gray-700">
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+                        <div className="flex-1 overflow-y-auto p-4">
+                            {loadingMaterials ? (
+                                <div className="flex justify-center p-8">
+                                    <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+                                </div>
+                            ) : (
+                                <div className="space-y-2">
+                                    {availableMaterials.map(material => (
+                                        <button
+                                            key={material.id}
+                                            onClick={() => handleSelectMaterial(material)}
+                                            className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-3 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
+                                        >
+                                            <FileText className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                                            <div>
+                                                <p className="font-medium text-gray-800 dark:text-gray-200">{material.titulo}</p>
+                                                <p className="text-xs text-gray-500">{material.ramo} • {material.anio}</p>
+                                            </div>
+                                            <Plus className="w-4 h-4 text-gray-400 ml-auto" />
+                                        </button>
+                                    ))}
+                                    {availableMaterials.length === 0 && (
+                                        <p className="text-center text-gray-500 py-8">No se encontraron materiales.</p>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
