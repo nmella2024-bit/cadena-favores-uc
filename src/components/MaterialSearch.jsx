@@ -3,7 +3,7 @@ import { Search, X, Loader2, BookOpen, Folder } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { buscarEnMateriales } from '../services/searchService';
 
-const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) => {
+const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null, className = '' }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -208,7 +208,7 @@ const MaterialSearch = ({ carpetaActualId = null, onNavigarACarpeta = null }) =>
   };
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-2xl mx-auto px-2 sm:px-0">
+    <div ref={searchRef} className={`relative w-full ${className}`}>
       {/* Input de búsqueda */}
       <div className="relative">
         <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-text-muted flex-shrink-0" />
