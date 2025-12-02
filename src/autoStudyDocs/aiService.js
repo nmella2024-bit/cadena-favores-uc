@@ -26,12 +26,8 @@ export const generateStudyMaterial = async (topic, style, contextText = '') => {
     Usa <h2>, <h3>, <p>, <ul>, <li>, <strong>, etc.
   `;
 
-    try {
-        return await callPollinationsAI(systemPrompt);
-    } catch (error) {
-        console.error('All AI attempts failed:', error);
-        throw new Error('No se pudo conectar con el servicio de IA. Por favor, intenta reducir el contexto o prueba más tarde.');
-    }
+    // Direct call to propagate specific errors from callPollinationsAI
+    return await callPollinationsAI(systemPrompt);
 };
 
 /**
