@@ -24,14 +24,21 @@ export const generateStudyMaterial = async (topic, style, contextText = '') => {
 
     try {
         // Pollinations.ai text API: POST https://text.pollinations.ai/
-        // We use POST to avoid URL length limits with large context.
+        // We use POST with JSON body (OpenAI compatible format)
 
         const response = await fetch('https://text.pollinations.ai/', {
             method: 'POST',
             headers: {
-                'Content-Type': 'text/plain',
+                'Content-Type': 'application/json',
             },
-            body: systemPrompt
+            body: JSON.stringify({
+                messages: [
+                    { role: 'system', content: systemPrompt }, // System prompt is now part of messages
+                    { role: 'user', content: `Tema: ${topic}\nEstilo: ${style}\n\n${contextText ? `Contexto:\n${contextText}` : ''}` }
+                ],
+                model: 'openai', // Optional but recommended
+                seed: 42 // Optional for consistency
+            })
         });
 
         if (!response.ok) {
