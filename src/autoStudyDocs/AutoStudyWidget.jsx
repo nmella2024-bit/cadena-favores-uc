@@ -67,11 +67,12 @@ const AutoStudyWidget = (props) => {
                 console.warn("Chat search failed:", err);
             }
 
-            // 2. Ask AI
-            const answer = await askAI(userMsg.content, context);
-            setChatHistory(prev => [...prev, { role: 'assistant', content: answer }]);
         } catch (err) {
-            setChatHistory(prev => [...prev, { role: 'assistant', content: "Lo siento, tuve un problema al conectar con el servidor. Intenta de nuevo." }]);
+            console.error("Chat Error:", err);
+            setChatHistory(prev => [...prev, {
+                role: 'assistant',
+                content: `⚠️ **Error de conexión**: ${err.message || 'Error desconocido'}. \n\nIntenta de nuevo o reduce la cantidad de texto.`
+            }]);
         } finally {
             setChatLoading(false);
         }
@@ -469,8 +470,8 @@ const AutoStudyWidget = (props) => {
                                 {chatHistory.map((msg, idx) => (
                                     <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                         <div className={`max-w-[80%] rounded-lg p-3 text-sm ${msg.role === 'user'
-                                                ? 'bg-blue-600 text-white'
-                                                : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 shadow-sm'
+                                            ? 'bg-blue-600 text-white'
+                                            : 'bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 shadow-sm'
                                             }`}>
                                             <div className="prose dark:prose-invert max-w-none text-sm">
                                                 {msg.role === 'system' ? (

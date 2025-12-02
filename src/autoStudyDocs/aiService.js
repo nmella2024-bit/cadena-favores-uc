@@ -65,10 +65,12 @@ export const askAI = async (question, context = '') => {
  * Helper to call Pollinations API with fallback.
  */
 const callPollinationsAI = async (prompt) => {
-    // Attempt 1: POST (Best for large context)
+    let lastError = null;
+
+    // Attempt 1: POST to /openai endpoint (Best for structured JSON)
     try {
-        console.log('Attempting AI request via POST...');
-        const response = await fetch('https://text.pollinations.ai/', {
+        console.log('Attempting AI request via POST (openai endpoint)...');
+        const response = await fetch('https://text.pollinations.ai/openai', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -85,27 +87,34 @@ const callPollinationsAI = async (prompt) => {
             let text = await response.text();
             return cleanResponse(text);
         }
-        console.warn(`POST failed with status ${response.status}. Trying fallback...`);
+        const errText = await response.text();
+        console.warn(`POST failed with status ${response.status}: ${errText}`);
+        lastError = `POST Error: ${response.status} ${errText}`;
     } catch (e) {
         console.warn('POST request failed:', e);
+        lastError = `POST Network Error: ${e.message}`;
     }
 
     // Attempt 2: GET (Fallback, limited length)
     try {
         console.log('Attempting AI request via GET (Fallback)...');
         // Truncate prompt to ~1500 chars to be safe for URL length
+        // We use the root endpoint for GET as it handles raw text better
         const safePrompt = encodeURIComponent(prompt.substring(0, 1500));
-        const response = await fetch(`https://text.pollinations.ai/${safePrompt}`);
+        const response = await fetch(`https://text.pollinations.ai/${safePrompt}?model=openai&seed=42`);
 
         if (response.ok) {
             let text = await response.text();
             return cleanResponse(text);
         }
+        const errText = await response.text();
+        lastError = `GET Error: ${response.status} ${errText} (Prev: ${lastError})`;
     } catch (e) {
         console.error('GET fallback failed:', e);
+        lastError = `GET Network Error: ${e.message} (Prev: ${lastError})`;
     }
 
-    throw new Error('Service unavailable');
+    throw new Error(`Service unavailable. Details: ${lastError}`);
 };
 
 const cleanResponse = (text) => {
