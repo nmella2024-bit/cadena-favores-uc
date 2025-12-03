@@ -61,23 +61,26 @@ const callPollinationsAI = async (prompt) => {
     let lastError = null;
 
     // 1. Attempt: Pollinations (GET - Optimized)
-    try {
-        console.log('Attempting AI request via Pollinations...');
-        // Simple, direct prompt to avoid confusion
-        const corePrompt = `Escribe una guía de estudio sobre: ${prompt.substring(0, 100)}. Usa HTML (h2, ul, p).`;
-        const safePrompt = encodeURIComponent(corePrompt);
+    // Try multiple models including gpt-4o-mini which is often available
+    const models = ['openai', 'gpt-4o-mini', 'searchgpt'];
 
-        // Random seed to prevent caching
-        const response = await fetch(`/api/ai/${safePrompt}?model=openai&seed=${Math.floor(Math.random() * 1000)}`);
+    for (const model of models) {
+        try {
+            console.log(`Attempting AI request via Pollinations (${model})...`);
+            const corePrompt = `Escribe una guía de estudio sobre: ${prompt.substring(0, 100)}. Usa HTML (h2, ul, p).`;
+            const safePrompt = encodeURIComponent(corePrompt);
 
-        if (response.ok) {
-            const text = await response.text();
-            if (isValidResponse(text)) return cleanResponse(text);
+            const response = await fetch(`/api/ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
+
+            if (response.ok) {
+                const text = await response.text();
+                if (isValidResponse(text)) return cleanResponse(text);
+            }
+            lastError = `Pollinations (${model}) Error: ${response.status}`;
+        } catch (e) {
+            console.warn(`Pollinations (${model}) failed:`, e);
+            lastError = `Pollinations (${model}) Network Error: ${e.message}`;
         }
-        lastError = `Pollinations Error: ${response.status}`;
-    } catch (e) {
-        console.warn('Pollinations failed:', e);
-        lastError = `Pollinations Network Error: ${e.message}`;
     }
 
     // 2. Attempt: Hercai API (Backup)
@@ -110,6 +113,8 @@ const callPollinationsAI = async (prompt) => {
         <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
             <p class="text-sm text-blue-700">
                 <strong>Modo Offline:</strong> La IA no pudo responder correctamente, así que generamos esta plantilla para ti.
+                <br/>
+                <span class="text-xs opacity-75">Detalle: ${lastError}</span>
             </p>
         </div>
 
