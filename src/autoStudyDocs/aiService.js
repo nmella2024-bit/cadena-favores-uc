@@ -55,18 +55,36 @@ export const askAI = async (question, context = '') => {
 
 /**
  * Helper to call AI APIs with robust fallback strategy.
- * Strategy: Local Proxy GET (Pollinations) -> Hercai API (Backup) -> Direct GET (Pollinations).
- * Strategy: Hercai (Simple/Fast) -> Pollinations (Backup) -> Template Fallback.
+ * Strategy: Pollinations (GET) -> Hercai (Backup) -> Template Fallback.
  */
 const callPollinationsAI = async (prompt) => {
     let lastError = null;
 
-    // 1. Attempt: Hercai API (Simple, usually reliable)
+    // 1. Attempt: Pollinations (GET - Optimized)
+    try {
+        console.log('Attempting AI request via Pollinations...');
+        // Simple, direct prompt to avoid confusion
+        const corePrompt = `Escribe una guía de estudio sobre: ${prompt.substring(0, 100)}. Usa HTML (h2, ul, p).`;
+        const safePrompt = encodeURIComponent(corePrompt);
+
+        // Random seed to prevent caching
+        const response = await fetch(`/api/ai/${safePrompt}?model=openai&seed=${Math.floor(Math.random() * 1000)}`);
+
+        if (response.ok) {
+            const text = await response.text();
+            if (isValidResponse(text)) return cleanResponse(text);
+        }
+        lastError = `Pollinations Error: ${response.status}`;
+    } catch (e) {
+        console.warn('Pollinations failed:', e);
+        lastError = `Pollinations Network Error: ${e.message}`;
+    }
+
+    // 2. Attempt: Hercai API (Backup)
     try {
         console.log('Attempting AI request via Hercai...');
-        // Hercai doesn't support system prompts, so we prepend instructions
-        const fullPrompt = `Actúa como profesor experto. Responde en formato HTML (h2, h3, ul, li, p). ${prompt}`;
-        const safePrompt = encodeURIComponent(fullPrompt.substring(0, 1000));
+        const fullPrompt = `Responde en HTML. ${prompt}`;
+        const safePrompt = encodeURIComponent(fullPrompt.substring(0, 500));
 
         const response = await fetch(`https://hercai.zaid.one/v2/hercai?question=${safePrompt}`);
 
@@ -76,41 +94,22 @@ const callPollinationsAI = async (prompt) => {
                 return cleanResponse(data.reply);
             }
         }
-        lastError = `Hercai Error: ${response.status}`;
+        lastError += ` | Hercai Error: ${response.status}`;
     } catch (e) {
         console.warn('Hercai failed:', e);
-        lastError = `Hercai Network Error: ${e.message}`;
-    }
-
-    // 2. Attempt: Pollinations (Backup via Local Proxy)
-    try {
-        console.log('Attempting AI request via Pollinations Proxy...');
-        const safePrompt = encodeURIComponent(prompt.substring(0, 800));
-        // Try 'searchgpt' model which is sometimes more stable for text
-        const response = await fetch(`/api/ai/${safePrompt}?model=searchgpt&seed=${Math.floor(Math.random() * 1000)}`);
-
-        if (response.ok) {
-            const text = await response.text();
-            if (isValidResponse(text)) return cleanResponse(text);
-        }
-        lastError += ` | Pollinations Error: ${response.status}`;
-    } catch (e) {
-        console.warn('Pollinations failed:', e);
-        lastError += ` | Pollinations Network Error: ${e.message}`;
+        lastError += ` | Hercai Network Error: ${e.message}`;
     }
 
     // 3. Template Fallback (Last Resort)
-    console.warn("All AI attempts failed. Switching to Template Fallback.");
+    console.warn("All AI attempts failed/rejected. Switching to Template Fallback.");
 
     const topicMatch = prompt.match(/Tema: (.+)/);
     const topic = topicMatch ? topicMatch[1] : 'Tu Tema de Estudio';
 
     return `
-        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
-            <p class="text-sm text-yellow-700">
-                <strong>Nota:</strong> Las IAs gratuitas están saturadas. Usando guía base.
-                <br/>
-                <span class="text-xs opacity-75">Errores: ${lastError}</span>
+        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
+            <p class="text-sm text-blue-700">
+                <strong>Modo Offline:</strong> La IA no pudo responder correctamente, así que generamos esta plantilla para ti.
             </p>
         </div>
 
@@ -138,9 +137,9 @@ const callPollinationsAI = async (prompt) => {
 };
 
 const isValidResponse = (text) => {
-    if (!text || text.length < 5) return false; // Relaxed length check
-    if (text.includes('Error') || text.includes('404') || text.includes('405')) return false;
-    // We accept 'NexU' now if it comes with other text, as it might be a signature we can clean later
+    if (!text || text.length < 20) return false;
+    // STRICT FILTER: Reject known garbage responses
+    if (text.includes('NexU') || text.includes('Error') || text.includes('404') || text.includes('405')) return false;
     return true;
 };
 
