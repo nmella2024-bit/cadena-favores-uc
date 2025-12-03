@@ -51,13 +51,14 @@ export const askAI = async (question, context = '') => {
 
     // Direct call to propagate specific errors
     return await callPollinationsAI(systemPrompt);
+    return await callPollinationsAI(systemPrompt, true);
 };
 
 /**
  * Helper to call AI APIs with robust fallback strategy.
  * Strategy: Pollinations (GET) -> Hercai (Backup) -> Template Fallback.
  */
-const callPollinationsAI = async (prompt) => {
+const callPollinationsAI = async (prompt, isChat = false) => {
     let lastError = null;
     let rejectedReason = '';
 
@@ -67,7 +68,9 @@ const callPollinationsAI = async (prompt) => {
     for (const model of models) {
         try {
             console.log(`Attempting AI request via Pollinations (${model})...`);
-            const corePrompt = `Escribe una guía de estudio sobre: ${prompt.substring(0, 100)}. Usa HTML (h2, ul, p).`;
+            // For Chat, we want plain text. For Docs, we want HTML.
+            const formatInstruction = isChat ? "Responde brevemente en texto plano." : "Usa HTML (h2, ul, p).";
+            const corePrompt = `${formatInstruction} ${prompt.substring(0, 100)}`;
             const safePrompt = encodeURIComponent(corePrompt);
 
             const response = await fetch(`/api/ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
@@ -87,7 +90,7 @@ const callPollinationsAI = async (prompt) => {
     // 2. Attempt: Hercai API (Backup)
     try {
         console.log('Attempting AI request via Hercai...');
-        const fullPrompt = `Responde en HTML. ${prompt}`;
+        const fullPrompt = isChat ? prompt : `Responde en HTML. ${prompt}`;
         const safePrompt = encodeURIComponent(fullPrompt.substring(0, 500));
 
         const response = await fetch(`https://hercai.zaid.one/v2/hercai?question=${safePrompt}`);
@@ -104,9 +107,19 @@ const callPollinationsAI = async (prompt) => {
         lastError += ` | Hercai Network Error: ${e.message}`;
     }
 
-    // 3. Template Fallback (Last Resort)
-    console.warn("All AI attempts failed/rejected. Switching to Template Fallback.");
+    // 3. Fallback (Context Aware)
+    console.warn("All AI attempts failed/rejected. Switching to Fallback.");
 
+    if (isChat) {
+        return `⚠️ **Modo Offline**: No puedo conectar con mi cerebro en la nube ahora mismo. 
+        
+        Por favor intenta:
+        1. Verificar tu internet.
+        2. Preguntar algo más corto.
+        3. Usar el "Generador de Documentos" que tiene respaldo automático.`;
+    }
+
+    // Template Fallback for Documents
     const topicMatch = prompt.match(/Tema: (.+)/);
     const topic = topicMatch ? topicMatch[1] : 'Tu Tema de Estudio';
 
@@ -143,11 +156,9 @@ const callPollinationsAI = async (prompt) => {
 };
 
 const isValidResponse = (text) => {
-    if (!text || text.length < 20) return false;
-    // Relaxed Filter: Only reject "NexU" if the text is suspiciously short (garbage)
-    // If it's a long, valid guide that happens to mention "NexU", we accept it.
-    if (text.includes('NexU') && text.length < 100) return false;
-
+    if (!text || text.length < 5) return false;
+    // STRICT FILTER: Unconditional ban on NexU
+    if (text.includes('NexU')) return false;
     if (text.includes('Error') || text.includes('404') || text.includes('405')) return false;
     return true;
 };
