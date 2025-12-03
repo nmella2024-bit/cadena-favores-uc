@@ -59,72 +59,89 @@ export const askAI = async (question, context = '') => {
  */
 /**
  * Helper to call AI APIs with robust fallback strategy.
- * Strategy: Rotate through Pollinations models (OpenAI -> Mistral -> Llama) via Local Proxy and Direct GET.
+ * Strategy: Rotate through Pollinations models -> Template Fallback (Guarantees output).
  */
 /**
  * Helper to call AI APIs with robust fallback strategy.
- * Strategy: Rotate through Pollinations models -> Template Fallback (Guarantees output).
+ * Strategy: POST (OpenAI Format) -> GET (Simple Format) -> Template Fallback.
  */
 const callPollinationsAI = async (prompt) => {
     const models = ['openai', 'mistral', 'llama'];
     let lastError = null;
 
-    // 1. Try AI Models
+    // 1. Try POST Request (OpenAI Compatible - Best for large context)
     for (const model of models) {
         try {
-            console.log(`Attempting AI request (${model}) via Local Proxy...`);
-            // Aggressively truncate to 500 chars to ensure URL safety and avoid 414/400 errors
-            const safePrompt = encodeURIComponent(prompt.substring(0, 500));
-            const response = await fetch(`/api/ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
+            console.log(`Attempting AI request (${model}) via POST...`);
+
+            const response = await fetch('/api/ai/openai', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    messages: [
+                        { role: 'system', content: 'Eres un profesor experto y servicial. Genera contenido educativo claro, estructurado y en formato HTML (h2, h3, ul, li, p). No uses Markdown.' },
+                        { role: 'user', content: prompt }
+                    ],
+                    model: model,
+                    seed: Math.floor(Math.random() * 1000)
+                })
+            });
 
             if (response.ok) {
-                let text = await response.text();
-                console.log(`AI Response (${model}):`, text.substring(0, 50)); // Debug log
+                const data = await response.json();
+                // OpenAI format: choices[0].message.content
+                const text = data.choices?.[0]?.message?.content || data.content || '';
                 if (isValidResponse(text)) return cleanResponse(text);
             }
-            console.warn(`Local Proxy (${model}) failed: ${response.status}`);
-            lastError = `Proxy (${model}) Error: ${response.status}`;
+
+            console.warn(`POST (${model}) failed: ${response.status}`);
+            lastError = `POST (${model}) Error: ${response.status}`;
         } catch (e) {
-            console.warn(`Local Proxy (${model}) failed:`, e);
-            lastError = `Proxy (${model}) Network Error: ${e.message}`;
+            console.warn(`POST (${model}) failed:`, e);
+            lastError = `POST (${model}) Network Error: ${e.message}`;
         }
     }
 
-    // 2. Template Fallback (Last Resort - Guarantees a document)
+    // 2. Template Fallback (Last Resort)
     console.warn("All AI attempts failed. Switching to Template Fallback.");
 
-    // Extract topic from prompt if possible, or use a generic one
     const topicMatch = prompt.match(/Tema: (.+)/);
     const topic = topicMatch ? topicMatch[1] : 'Tu Tema de Estudio';
 
     return `
+        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+            <p class="text-sm text-yellow-700">
+                <strong>Nota:</strong> No pudimos conectar con la IA avanzada en este momento. Hemos generado esta guía base para que puedas empezar.
+            </p>
+        </div>
+
         <h2>Guía de Estudio: ${topic}</h2>
-        <p><em>Nota: No se pudo conectar con la IA en este momento, pero aquí tienes una estructura base para comenzar a estudiar.</em></p>
         
         <h3>1. Introducción</h3>
-        <p>Define aquí los conceptos básicos de <strong>${topic}</strong>. ¿Qué es y por qué es importante?</p>
+        <p>Comienza definiendo <strong>${topic}</strong>. Es fundamental entender el "qué" y el "por qué" antes de profundizar.</p>
         
         <h3>2. Conceptos Clave</h3>
         <ul>
-            <li>Concepto fundamental 1</li>
-            <li>Concepto fundamental 2</li>
-            <li>Concepto fundamental 3</li>
+            <li><strong>Concepto 1:</strong> [Rellena aquí]</li>
+            <li><strong>Concepto 2:</strong> [Rellena aquí]</li>
+            <li><strong>Concepto 3:</strong> [Rellena aquí]</li>
         </ul>
         
-        <h3>3. Resumen del Material</h3>
-        <p>Utiliza este espacio para sintetizar la información de tus apuntes o bibliografía.</p>
+        <h3>3. Desarrollo del Tema</h3>
+        <p>Utiliza esta sección para explicar los detalles técnicos, fórmulas o fechas importantes relacionadas con ${topic}.</p>
         
-        <h3>4. Preguntas de Repaso</h3>
+        <h3>4. Preguntas de Auto-evaluación</h3>
         <ul>
-            <li>¿Cuál es el objetivo principal de ${topic}?</li>
-            <li>¿Cómo se relaciona con otros temas del curso?</li>
+            <li>¿Cuál es la importancia de ${topic} en el contexto general?</li>
+            <li>¿Podrías explicar ${topic} a alguien que no sabe nada del tema?</li>
         </ul>
     `;
 };
 
 const isValidResponse = (text) => {
-    // Check for empty, short, or garbage responses
-    if (!text || text.length < 10) return false;
+    if (!text || text.length < 20) return false;
     if (text.includes('NexU') || text.includes('Error') || text.includes('404')) return false;
     return true;
 };
