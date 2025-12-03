@@ -278,7 +278,7 @@ const AutoStudyWidget = (props) => {
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col border border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-4xl h-[85vh] overflow-hidden flex flex-col border border-gray-200 dark:border-gray-700">
                 <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-900/50">
                     <div className="flex items-center gap-2">
                         <span className="text-2xl">🤖</span>
@@ -468,58 +468,79 @@ const AutoStudyWidget = (props) => {
                             </div>
                         </div>
                     ) : (
-                        /* Chat Interface */
-                        <div className="flex flex-col h-full">
-                            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900">
+                        /* Chat Interface - Fixed Layout */
+                        <div className="flex flex-col h-full overflow-hidden relative">
+                            {/* Messages Area - Scrollable */}
+                            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 dark:bg-gray-900 scroll-smooth">
                                 {chatHistory.map((msg, idx) => (
-                                    <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                        <div className={`max-w-[85%] rounded-lg p-3 text-sm shadow-sm ${msg.role === 'user'
-                                            ? 'bg-blue-600 text-white'
-                                            : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700'
-                                            }`}>
-                                            <div className="leading-relaxed whitespace-pre-wrap break-words" dir="ltr">
-                                                {msg.role === 'system' ? (
-                                                    <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold mb-1">
-                                                        <Sparkles className="w-4 h-4" />
-                                                        <span>Asistente</span>
-                                                    </div>
-                                                ) : null}
+                                    <div key={idx} className={`flex w-full ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                                        <div
+                                            className={`
+                                                relative px-4 py-3 rounded-2xl text-sm shadow-sm max-w-[90%] md:max-w-[85%] 
+                                                ${msg.role === 'user'
+                                                    ? 'bg-blue-600 text-white rounded-br-none'
+                                                    : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-bl-none'
+                                                }
+                                            `}
+                                        >
+                                            {/* Sender Label */}
+                                            {msg.role === 'system' && (
+                                                <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold mb-2 text-xs uppercase tracking-wider border-b border-gray-100 dark:border-gray-700 pb-1">
+                                                    <Sparkles className="w-3 h-3" />
+                                                    <span>Asistente IA</span>
+                                                </div>
+                                            )}
 
+                                            {/* Message Content */}
+                                            <div
+                                                className="prose-sm max-w-none leading-relaxed break-words whitespace-pre-wrap"
+                                                dir="ltr"
+                                                style={{ color: 'inherit' }} // Force inherit color
+                                            >
                                                 {msg.role === 'system' ? (
                                                     <span>{msg.content}</span>
                                                 ) : (
-                                                    <div dangerouslySetInnerHTML={{ __html: msg.content ? msg.content.replace(/\n/g, '<br/>') : '<span class="italic opacity-50">...</span>' }} />
+                                                    <div dangerouslySetInnerHTML={{
+                                                        __html: msg.content
+                                                            ? msg.content
+                                                                .replace(/\n/g, '<br/>')
+                                                                .replace(/```/g, '') // Strip code blocks for now to prevent layout break
+                                                            : '<span class="italic opacity-50">...</span>'
+                                                    }} />
                                                 )}
                                             </div>
                                         </div>
                                     </div>
                                 ))}
+
+                                {/* Loading Indicator */}
                                 {chatLoading && (
-                                    <div className="flex justify-start">
-                                        <div className="bg-white dark:bg-gray-800 rounded-lg p-3 border border-gray-200 dark:border-gray-700 shadow-sm">
-                                            <Loader2 className="w-5 h-5 animate-spin text-blue-500" />
+                                    <div className="flex justify-start w-full animate-pulse">
+                                        <div className="bg-white dark:bg-gray-800 rounded-2xl rounded-bl-none p-4 border border-gray-200 dark:border-gray-700 shadow-sm flex items-center gap-3">
+                                            <Loader2 className="w-5 h-5 animate-spin text-blue-600" />
+                                            <span className="text-gray-500 dark:text-gray-400 text-sm font-medium">Pensando...</span>
                                         </div>
                                     </div>
                                 )}
-                                <div ref={chatEndRef} />
+                                <div ref={chatEndRef} className="h-1" />
                             </div>
-                            <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-                                <form onSubmit={handleChatSubmit} className="flex gap-2">
+
+                            {/* Input Area - Fixed at Bottom */}
+                            <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-10">
+                                <form onSubmit={handleChatSubmit} className="flex gap-3 items-center">
                                     <input
                                         type="text"
                                         value={chatQuery}
                                         onChange={(e) => setChatQuery(e.target.value)}
-                                        placeholder="Pregunta algo sobre los materiales..."
-                                        className="flex-1 p-2 border border-gray-300 dark:border-gray-600 rounded-md bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+                                        placeholder="Escribe tu pregunta aquí..."
+                                        className="flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                                     />
                                     <button
                                         type="submit"
                                         disabled={chatLoading || !chatQuery.trim()}
-                                        className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md disabled:opacity-50 transition-colors"
+                                        className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95 shadow-md hover:shadow-lg"
                                     >
-                                        <div className="w-6 h-6 flex items-center justify-center">
-                                            {chatLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : '➤'}
-                                        </div>
+                                        {chatLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <span className="text-lg">➤</span>}
                                     </button>
                                 </form>
                             </div>
