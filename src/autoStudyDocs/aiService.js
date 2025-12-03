@@ -59,10 +59,10 @@ export const askAI = async (question, context = '') => {
  */
 const callPollinationsAI = async (prompt) => {
     let lastError = null;
+    let rejectedReason = '';
 
     // 1. Attempt: Pollinations (GET - Optimized)
-    // Try multiple models including gpt-4o-mini which is often available
-    const models = ['openai', 'gpt-4o-mini', 'searchgpt'];
+    const models = ['openai', 'gpt-4o-mini', 'mistral'];
 
     for (const model of models) {
         try {
@@ -75,6 +75,7 @@ const callPollinationsAI = async (prompt) => {
             if (response.ok) {
                 const text = await response.text();
                 if (isValidResponse(text)) return cleanResponse(text);
+                rejectedReason = `Rejected (${model}): ${text.substring(0, 30)}...`;
             }
             lastError = `Pollinations (${model}) Error: ${response.status}`;
         } catch (e) {
@@ -110,11 +111,11 @@ const callPollinationsAI = async (prompt) => {
     const topic = topicMatch ? topicMatch[1] : 'Tu Tema de Estudio';
 
     return `
-        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4">
-            <p class="text-sm text-blue-700">
-                <strong>Modo Offline:</strong> La IA no pudo responder correctamente, así que generamos esta plantilla para ti.
+        <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
+            <p class="text-sm text-green-700">
+                <strong>Guía Estándar Generada:</strong> La conexión con la IA es inestable, pero hemos creado esta guía estructurada para ti.
                 <br/>
-                <span class="text-xs opacity-75">Detalle: ${lastError}</span>
+                <span class="text-xs opacity-50">Diag: ${lastError} | ${rejectedReason}</span>
             </p>
         </div>
 
@@ -143,8 +144,11 @@ const callPollinationsAI = async (prompt) => {
 
 const isValidResponse = (text) => {
     if (!text || text.length < 20) return false;
-    // STRICT FILTER: Reject known garbage responses
-    if (text.includes('NexU') || text.includes('Error') || text.includes('404') || text.includes('405')) return false;
+    // Relaxed Filter: Only reject "NexU" if the text is suspiciously short (garbage)
+    // If it's a long, valid guide that happens to mention "NexU", we accept it.
+    if (text.includes('NexU') && text.length < 100) return false;
+
+    if (text.includes('Error') || text.includes('404') || text.includes('405')) return false;
     return true;
 };
 
