@@ -61,19 +61,25 @@ export const askAI = async (question, context = '') => {
  * Helper to call AI APIs with robust fallback strategy.
  * Strategy: Rotate through Pollinations models (OpenAI -> Mistral -> Llama) via Local Proxy and Direct GET.
  */
+/**
+ * Helper to call AI APIs with robust fallback strategy.
+ * Strategy: Rotate through Pollinations models -> Template Fallback (Guarantees output).
+ */
 const callPollinationsAI = async (prompt) => {
     const models = ['openai', 'mistral', 'llama'];
     let lastError = null;
 
+    // 1. Try AI Models
     for (const model of models) {
-        // Attempt 1: Local Vite Proxy (GET)
         try {
             console.log(`Attempting AI request (${model}) via Local Proxy...`);
-            const safePrompt = encodeURIComponent(prompt.substring(0, 1500));
+            // Aggressively truncate to 500 chars to ensure URL safety and avoid 414/400 errors
+            const safePrompt = encodeURIComponent(prompt.substring(0, 500));
             const response = await fetch(`/api/ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
 
             if (response.ok) {
                 let text = await response.text();
+                console.log(`AI Response (${model}):`, text.substring(0, 50)); // Debug log
                 if (isValidResponse(text)) return cleanResponse(text);
             }
             console.warn(`Local Proxy (${model}) failed: ${response.status}`);
@@ -82,30 +88,45 @@ const callPollinationsAI = async (prompt) => {
             console.warn(`Local Proxy (${model}) failed:`, e);
             lastError = `Proxy (${model}) Network Error: ${e.message}`;
         }
-
-        // Attempt 2: Direct GET (Fallback)
-        try {
-            console.log(`Attempting AI request (${model}) via Direct GET...`);
-            const safePrompt = encodeURIComponent(prompt.substring(0, 1000));
-            const response = await fetch(`https://text.pollinations.ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
-
-            if (response.ok) {
-                let text = await response.text();
-                if (isValidResponse(text)) return cleanResponse(text);
-            }
-            const errText = await response.text();
-            lastError += ` | Direct (${model}) Error: ${response.status} ${errText}`;
-        } catch (e) {
-            console.error(`Direct GET (${model}) failed:`, e);
-            lastError += ` | Direct (${model}) Network Error: ${e.message}`;
-        }
     }
 
-    throw new Error(`No se pudo generar una respuesta válida con ninguna IA. Detalles: ${lastError}`);
+    // 2. Template Fallback (Last Resort - Guarantees a document)
+    console.warn("All AI attempts failed. Switching to Template Fallback.");
+
+    // Extract topic from prompt if possible, or use a generic one
+    const topicMatch = prompt.match(/Tema: (.+)/);
+    const topic = topicMatch ? topicMatch[1] : 'Tu Tema de Estudio';
+
+    return `
+        <h2>Guía de Estudio: ${topic}</h2>
+        <p><em>Nota: No se pudo conectar con la IA en este momento, pero aquí tienes una estructura base para comenzar a estudiar.</em></p>
+        
+        <h3>1. Introducción</h3>
+        <p>Define aquí los conceptos básicos de <strong>${topic}</strong>. ¿Qué es y por qué es importante?</p>
+        
+        <h3>2. Conceptos Clave</h3>
+        <ul>
+            <li>Concepto fundamental 1</li>
+            <li>Concepto fundamental 2</li>
+            <li>Concepto fundamental 3</li>
+        </ul>
+        
+        <h3>3. Resumen del Material</h3>
+        <p>Utiliza este espacio para sintetizar la información de tus apuntes o bibliografía.</p>
+        
+        <h3>4. Preguntas de Repaso</h3>
+        <ul>
+            <li>¿Cuál es el objetivo principal de ${topic}?</li>
+            <li>¿Cómo se relaciona con otros temas del curso?</li>
+        </ul>
+    `;
 };
 
 const isValidResponse = (text) => {
-    return text && text.length > 5 && !text.includes('NexU') && !text.includes('Error');
+    // Check for empty, short, or garbage responses
+    if (!text || text.length < 10) return false;
+    if (text.includes('NexU') || text.includes('Error') || text.includes('404')) return false;
+    return true;
 };
 
 const cleanResponse = (text) => {
