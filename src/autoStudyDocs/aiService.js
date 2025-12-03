@@ -157,16 +157,28 @@ const callPollinationsAI = async (prompt, isChat = false) => {
 };
 
 const isValidResponse = (text) => {
-    if (!text || text.length < 5) return false;
-    // STRICT FILTER: Unconditional ban on NexU
-    if (text.includes('NexU')) return false;
+    if (!text) return false;
 
-    // Check for specific error patterns, not just the word "Error"
+    // 1. Check for Hard Errors
     if (text.startsWith('Error:') || text.includes('404 Not Found') || text.includes('405 Method Not Allowed')) return false;
 
-    return true;
+    // 2. Sanitize: Remove "NexU" and other known garbage
+    const cleaned = text.replace(/NexU\+?(\s-\sRed Social Universitaria)?/gi, '').trim();
+
+    // 3. Length Check on CLEANED text
+    // If the remaining text is substantial (> 50 chars), we accept it.
+    // This allows responses that had a watermark but are otherwise good.
+    if (cleaned.length > 50) return true;
+
+    return false;
 };
 
 const cleanResponse = (text) => {
-    return text.replace(/```html/g, '').replace(/```/g, '').trim();
+    // Remove markdown code blocks
+    let cleaned = text.replace(/```html/g, '').replace(/```/g, '');
+
+    // Remove "NexU" watermark if present (it passed validation because the rest of the text was long enough)
+    cleaned = cleaned.replace(/NexU\+?(\s-\sRed Social Universitaria)?/gi, '');
+
+    return cleaned.trim();
 };
