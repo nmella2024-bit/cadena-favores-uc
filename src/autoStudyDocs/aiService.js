@@ -63,7 +63,8 @@ const callPollinationsAI = async (prompt, isChat = false) => {
     let rejectedReason = '';
 
     // 1. Attempt: Pollinations (GET - Optimized)
-    const models = ['openai', 'gpt-4o-mini', 'mistral'];
+    // Expanded rotation to maximize success chance
+    const models = ['openai', 'gpt-4o-mini', 'searchgpt', 'mistral', 'qwen'];
 
     for (const model of models) {
         try {
@@ -126,7 +127,7 @@ const callPollinationsAI = async (prompt, isChat = false) => {
     return `
         <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
             <p class="text-sm text-green-700">
-                <strong>Guía Estándar Generada:</strong> La conexión con la IA es inestable, pero hemos creado esta guía estructurada para ti.
+                <strong>Guía Estándar Generada:</strong> La IA está saturada, pero aquí tienes una guía completa generada por nuestro sistema de respaldo.
                 <br/>
                 <span class="text-xs opacity-50">Diag: ${lastError} | ${rejectedReason}</span>
             </p>
@@ -159,7 +160,10 @@ const isValidResponse = (text) => {
     if (!text || text.length < 5) return false;
     // STRICT FILTER: Unconditional ban on NexU
     if (text.includes('NexU')) return false;
-    if (text.includes('Error') || text.includes('404') || text.includes('405')) return false;
+
+    // Check for specific error patterns, not just the word "Error"
+    if (text.startsWith('Error:') || text.includes('404 Not Found') || text.includes('405 Method Not Allowed')) return false;
+
     return true;
 };
 
