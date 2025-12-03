@@ -476,7 +476,7 @@ const AutoStudyWidget = (props) => {
                                     <div key={idx} className={`flex w-full ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                                         <div
                                             className={`
-                                                relative px-4 py-3 rounded-2xl text-sm shadow-sm max-w-[90%] md:max-w-[85%] 
+                                                relative px-4 py-3 rounded-2xl text-sm shadow-sm max-w-[90%] md:max-w-[85%] min-w-[40%]
                                                 ${msg.role === 'user'
                                                     ? 'bg-blue-600 text-white rounded-br-none'
                                                     : 'bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-bl-none'
@@ -493,20 +493,19 @@ const AutoStudyWidget = (props) => {
 
                                             {/* Message Content */}
                                             <div
-                                                className="prose-sm max-w-none leading-relaxed break-words whitespace-pre-wrap"
+                                                className="text-sm leading-relaxed break-words whitespace-pre-wrap font-normal"
                                                 dir="ltr"
-                                                style={{ color: 'inherit' }} // Force inherit color
+                                                style={{ color: 'inherit' }}
                                             >
                                                 {msg.role === 'system' ? (
                                                     <span>{msg.content}</span>
                                                 ) : (
-                                                    <div dangerouslySetInnerHTML={{
-                                                        __html: msg.content
-                                                            ? msg.content
-                                                                .replace(/\n/g, '<br/>')
-                                                                .replace(/```/g, '') // Strip code blocks for now to prevent layout break
-                                                            : '<span class="italic opacity-50">...</span>'
-                                                    }} />
+                                                    <span>
+                                                        {msg.content && msg.content.trim()
+                                                            ? msg.content.replace(/<[^>]*>/g, '') // Strip HTML tags just in case
+                                                            : '...'
+                                                        }
+                                                    </span>
                                                 )}
                                             </div>
                                         </div>
