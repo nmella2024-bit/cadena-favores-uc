@@ -12,6 +12,11 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api\/ai/, ''),
         secure: false,
       },
+      '/openai': {
+        target: 'https://text.pollinations.ai',
+        changeOrigin: true,
+        secure: false,
+      },
     },
   },
 

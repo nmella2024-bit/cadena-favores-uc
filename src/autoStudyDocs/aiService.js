@@ -74,7 +74,8 @@ const callPollinationsAI = async (prompt) => {
         try {
             console.log(`Attempting AI request (${model}) via POST...`);
 
-            const response = await fetch('/api/ai/openai', {
+            // Use the direct proxy '/openai' which maps to 'https://text.pollinations.ai/openai'
+            const response = await fetch('/openai', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -114,6 +115,8 @@ const callPollinationsAI = async (prompt) => {
         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
             <p class="text-sm text-yellow-700">
                 <strong>Nota:</strong> No pudimos conectar con la IA avanzada en este momento. Hemos generado esta guía base para que puedas empezar.
+                <br/>
+                <span class="text-xs opacity-75">Detalle del error: ${lastError || 'Conexión inestable'}</span>
             </p>
         </div>
 
