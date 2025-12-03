@@ -57,64 +57,55 @@ export const askAI = async (question, context = '') => {
  * Helper to call AI APIs with robust fallback strategy.
  * Strategy: Local Proxy GET (Pollinations) -> Hercai API (Backup) -> Direct GET (Pollinations).
  */
+/**
+ * Helper to call AI APIs with robust fallback strategy.
+ * Strategy: Rotate through Pollinations models (OpenAI -> Mistral -> Llama) via Local Proxy and Direct GET.
+ */
 const callPollinationsAI = async (prompt) => {
+    const models = ['openai', 'mistral', 'llama'];
     let lastError = null;
 
-    // Attempt 1: Local Vite Proxy via GET (Avoids POST 405 & CORS)
-    try {
-        console.log('Attempting AI request via Local Proxy (GET)...');
-        // Truncate to 1500 chars to be safe for URL length
-        const safePrompt = encodeURIComponent(prompt.substring(0, 1500));
-        const response = await fetch(`/api/ai/${safePrompt}?model=openai&seed=42`);
+    for (const model of models) {
+        // Attempt 1: Local Vite Proxy (GET)
+        try {
+            console.log(`Attempting AI request (${model}) via Local Proxy...`);
+            const safePrompt = encodeURIComponent(prompt.substring(0, 1500));
+            const response = await fetch(`/api/ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
 
-        if (response.ok) {
-            let text = await response.text();
-            return cleanResponse(text);
-        }
-        console.warn(`Local Proxy GET failed: ${response.status}`);
-        lastError = `Local Proxy GET Error: ${response.status}`;
-    } catch (e) {
-        console.warn('Local Proxy GET failed:', e);
-        lastError = `Local Proxy GET Network Error: ${e.message}`;
-    }
-
-    // Attempt 2: Hercai API (Free Backup Provider)
-    try {
-        console.log('Attempting AI request via Hercai (Backup)...');
-        const safePrompt = encodeURIComponent(prompt.substring(0, 1000));
-        const response = await fetch(`https://hercai.zaid.one/v2/hercai?question=${safePrompt}`);
-
-        if (response.ok) {
-            const data = await response.json();
-            if (data && data.reply) {
-                return cleanResponse(data.reply);
+            if (response.ok) {
+                let text = await response.text();
+                if (isValidResponse(text)) return cleanResponse(text);
             }
+            console.warn(`Local Proxy (${model}) failed: ${response.status}`);
+            lastError = `Proxy (${model}) Error: ${response.status}`;
+        } catch (e) {
+            console.warn(`Local Proxy (${model}) failed:`, e);
+            lastError = `Proxy (${model}) Network Error: ${e.message}`;
         }
-        console.warn(`Hercai failed: ${response.status}`);
-        lastError += ` | Hercai Error: ${response.status}`;
-    } catch (e) {
-        console.warn('Hercai failed:', e);
-        lastError += ` | Hercai Network Error: ${e.message}`;
+
+        // Attempt 2: Direct GET (Fallback)
+        try {
+            console.log(`Attempting AI request (${model}) via Direct GET...`);
+            const safePrompt = encodeURIComponent(prompt.substring(0, 1000));
+            const response = await fetch(`https://text.pollinations.ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
+
+            if (response.ok) {
+                let text = await response.text();
+                if (isValidResponse(text)) return cleanResponse(text);
+            }
+            const errText = await response.text();
+            lastError += ` | Direct (${model}) Error: ${response.status} ${errText}`;
+        } catch (e) {
+            console.error(`Direct GET (${model}) failed:`, e);
+            lastError += ` | Direct (${model}) Network Error: ${e.message}`;
+        }
     }
 
-    // Attempt 3: Direct GET to Pollinations (Last Resort)
-    try {
-        console.log('Attempting AI request via Direct GET (Last Resort)...');
-        const safePrompt = encodeURIComponent(prompt.substring(0, 800));
-        const response = await fetch(`https://text.pollinations.ai/${safePrompt}?model=openai&seed=42`);
+    throw new Error(`No se pudo generar una respuesta válida con ninguna IA. Detalles: ${lastError}`);
+};
 
-        if (response.ok) {
-            let text = await response.text();
-            return cleanResponse(text);
-        }
-        const errText = await response.text();
-        lastError += ` | Direct GET Error: ${response.status} ${errText}`;
-    } catch (e) {
-        console.error('Direct GET fallback failed:', e);
-        lastError += ` | Direct GET Network Error: ${e.message}`;
-    }
-
-    throw new Error(`No se pudo conectar con ninguna IA (Gratis). Verifica tu conexión a internet. Detalles: ${lastError}`);
+const isValidResponse = (text) => {
+    return text && text.length > 5 && !text.includes('NexU') && !text.includes('Error');
 };
 
 const cleanResponse = (text) => {
