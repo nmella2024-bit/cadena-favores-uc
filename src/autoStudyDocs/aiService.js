@@ -59,49 +59,36 @@ export const askAI = async (question, context = '') => {
  */
 /**
  * Helper to call AI APIs with robust fallback strategy.
- * Strategy: Rotate through Pollinations models -> Template Fallback (Guarantees output).
- */
-/**
- * Helper to call AI APIs with robust fallback strategy.
- * Strategy: POST (OpenAI Format) -> GET (Simple Format) -> Template Fallback.
+ * Strategy: GET (Optimized) -> Template Fallback.
+ * Note: POST is not supported by the free provider (returns 405).
  */
 const callPollinationsAI = async (prompt) => {
     const models = ['openai', 'mistral', 'llama'];
     let lastError = null;
 
-    // 1. Try POST Request (OpenAI Compatible - Best for large context)
+    // 1. Try GET Request (Concatenated Prompt)
     for (const model of models) {
         try {
-            console.log(`Attempting AI request (${model}) via POST...`);
+            console.log(`Attempting AI request (${model}) via GET...`);
 
-            // Use the direct proxy '/openai' which maps to 'https://text.pollinations.ai/openai'
-            const response = await fetch('/openai', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    messages: [
-                        { role: 'system', content: 'Eres un profesor experto y servicial. Genera contenido educativo claro, estructurado y en formato HTML (h2, h3, ul, li, p). No uses Markdown.' },
-                        { role: 'user', content: prompt }
-                    ],
-                    model: model,
-                    seed: Math.floor(Math.random() * 1000)
-                })
-            });
+            // Construct a single prompt string since GET doesn't support messages array
+            // We strip the context to keep it short and reliable
+            const corePrompt = `Actúa como profesor experto. Crea una guía de estudio sobre: ${prompt.substring(0, 100)}. Usa formato HTML (h2, h3, ul, p). Sé breve y directo.`;
+            const safePrompt = encodeURIComponent(corePrompt);
+
+            // Use the original /api/ai proxy
+            const response = await fetch(`/api/ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
 
             if (response.ok) {
-                const data = await response.json();
-                // OpenAI format: choices[0].message.content
-                const text = data.choices?.[0]?.message?.content || data.content || '';
+                const text = await response.text();
                 if (isValidResponse(text)) return cleanResponse(text);
             }
 
-            console.warn(`POST (${model}) failed: ${response.status}`);
-            lastError = `POST (${model}) Error: ${response.status}`;
+            console.warn(`GET (${model}) failed: ${response.status}`);
+            lastError = `GET (${model}) Error: ${response.status}`;
         } catch (e) {
-            console.warn(`POST (${model}) failed:`, e);
-            lastError = `POST (${model}) Network Error: ${e.message}`;
+            console.warn(`GET (${model}) failed:`, e);
+            lastError = `GET (${model}) Network Error: ${e.message}`;
         }
     }
 
@@ -114,9 +101,9 @@ const callPollinationsAI = async (prompt) => {
     return `
         <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
             <p class="text-sm text-yellow-700">
-                <strong>Nota:</strong> No pudimos conectar con la IA avanzada en este momento. Hemos generado esta guía base para que puedas empezar.
+                <strong>Nota:</strong> La IA está saturada (Error 405/Connection). Usando guía base.
                 <br/>
-                <span class="text-xs opacity-75">Detalle del error: ${lastError || 'Conexión inestable'}</span>
+                <span class="text-xs opacity-75">Último error: ${lastError}</span>
             </p>
         </div>
 
@@ -145,7 +132,7 @@ const callPollinationsAI = async (prompt) => {
 
 const isValidResponse = (text) => {
     if (!text || text.length < 20) return false;
-    if (text.includes('NexU') || text.includes('Error') || text.includes('404')) return false;
+    if (text.includes('NexU') || text.includes('Error') || text.includes('404') || text.includes('405')) return false;
     return true;
 };
 
