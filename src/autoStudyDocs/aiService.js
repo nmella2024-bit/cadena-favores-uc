@@ -51,16 +51,38 @@ export const askAI = async (question, context = '') => {
 };
 
 /**
+ * Generates a Quiz based on a topic and context.
+ * @param {string} topic 
+ * @param {string} contextText 
+ * @returns {Promise<Object>} JSON object with questions
+ */
+export const generateQuiz = async (topic, contextText = '') => {
+    const prompt = `
+    Genera un Quiz de estudio sobre el tema: "${topic}".
+    
+    ${contextText ? `Usa el siguiente contenido como base para las preguntas:\n${contextText.substring(0, 15000)}` : ''}
+    `;
+
+    const response = await callOpenAI(prompt, false, 'quiz');
+    try {
+        return JSON.parse(response);
+    } catch (e) {
+        console.error("Failed to parse Quiz JSON", e);
+        throw new Error("Error al generar el formato del Quiz.");
+    }
+};
+
+/**
  * Helper to call the Backend AI API.
  * Always calls /api/ai (Serverless Function).
  * Requires OPENAI_API_KEY to be set in the backend environment.
  */
-const callOpenAI = async (prompt, isChat = false) => {
+const callOpenAI = async (prompt, isChat = false, mode = 'document') => {
     try {
         const response = await fetch('/api/ai', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt, isChat })
+            body: JSON.stringify({ prompt, isChat, mode })
         });
 
         if (!response.ok) {

@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { generateStudyMaterial, askAI } from './aiService';
+import { generateStudyMaterial, askAI, generateQuiz } from './aiService';
 import { extractTextFromFile, extractTextFromUrl } from './contextProcessor';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { obtenerMateriales } from '../services/materialService';
 import { buscarEnMateriales } from '../services/searchService';
-import { Search, FileText, X, Loader2, Plus, Database, Sparkles, MessageSquare, FileOutput } from 'lucide-react';
+import { Search, FileText, X, Loader2, Plus, Database, Sparkles, MessageSquare, FileOutput, Brain, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const AutoStudyWidget = (props) => {
     const [topic, setTopic] = useState('');
@@ -16,6 +17,14 @@ const AutoStudyWidget = (props) => {
     const [error, setError] = useState('');
     const [processingFiles, setProcessingFiles] = useState(false);
 
+    // Quiz State
+    const [quizData, setQuizData] = useState(null);
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [quizScore, setQuizScore] = useState(0);
+    const [showQuizResults, setShowQuizResults] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null);
+    const [isAnswerChecked, setIsAnswerChecked] = useState(false);
+
     // Material Selector State
     const [showMaterialSelector, setShowMaterialSelector] = useState(false);
     const [availableMaterials, setAvailableMaterials] = useState([]);
@@ -24,7 +33,7 @@ const AutoStudyWidget = (props) => {
 
 
     // Chat State
-    const [activeTab, setActiveTab] = useState('generate'); // 'generate' | 'chat'
+    const [activeTab, setActiveTab] = useState('generate'); // 'generate' | 'chat' | 'quiz'
     const [chatQuery, setChatQuery] = useState('');
     const [chatHistory, setChatHistory] = useState([{ role: 'system', content: '¡Hola! Soy tu asistente de estudio. Pregúntame sobre materiales o pídeme que genere documentos.' }]);
     const [chatLoading, setChatLoading] = useState(false);
@@ -278,6 +287,68 @@ const AutoStudyWidget = (props) => {
         }
     };
 
+    const handleGenerateQuiz = async () => {
+        if (!topic) {
+            setError('Por favor ingresa un tema para el Quiz.');
+            return;
+        }
+
+        setLoading(true);
+        setError('');
+        setQuizData(null);
+        setCurrentQuestionIndex(0);
+        setQuizScore(0);
+        setShowQuizResults(false);
+
+        try {
+            // Prepare context (similar to generate)
+            const manualContext = contextFiles
+                .filter(f => !f.error)
+                .map(f => `--- Documento: ${f.name} ---\n${f.text}`)
+                .join('\n\n');
+
+            const quizJson = await generateQuiz(topic, manualContext);
+            if (quizJson && quizJson.questions && quizJson.questions.length > 0) {
+                setQuizData(quizJson);
+            } else {
+                throw new Error("La IA no generó preguntas válidas.");
+            }
+        } catch (err) {
+            console.error("Quiz Error:", err);
+            setError(err.message || 'Error al generar el Quiz.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleOptionSelect = (optionIndex) => {
+        if (isAnswerChecked) return;
+        setSelectedOption(optionIndex);
+        setIsAnswerChecked(true);
+
+        const currentQuestion = quizData.questions[currentQuestionIndex];
+        if (optionIndex === currentQuestion.correctIndex) {
+            setQuizScore(prev => prev + 1);
+        }
+    };
+
+    const handleNextQuestion = () => {
+        if (currentQuestionIndex < quizData.questions.length - 1) {
+            setCurrentQuestionIndex(prev => prev + 1);
+            setSelectedOption(null);
+            setIsAnswerChecked(false);
+        } else {
+            setShowQuizResults(true);
+        }
+    };
+
+    const handleRestartQuiz = () => {
+        setQuizData(null);
+        setTopic('');
+        setContextFiles([]);
+        setError('');
+    };
+
     const handleExportPDF = async () => {
         if (!contentRef.current) return;
 
@@ -355,19 +426,26 @@ const AutoStudyWidget = (props) => {
                         className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'generate' ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'}`}
                     >
                         <FileOutput className="w-4 h-4" />
-                        Generador de Documentos
+                        Generador
+                    </button>
+                    <button
+                        onClick={() => setActiveTab('quiz')}
+                        className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'quiz' ? 'border-b-2 border-purple-500 text-purple-600 dark:text-purple-400' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'}`}
+                    >
+                        <Brain className="w-4 h-4" />
+                        Modo Estudio
                     </button>
                     <button
                         onClick={() => setActiveTab('chat')}
                         className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'chat' ? 'border-b-2 border-blue-500 text-blue-600 dark:text-blue-400' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'}`}
                     >
                         <MessageSquare className="w-4 h-4" />
-                        Chat Asistente
+                        Chat
                     </button>
                 </div>
 
                 <div className="flex-1 overflow-hidden flex flex-col">
-                    {activeTab === 'generate' ? (
+                    {activeTab === 'generate' && (
                         <div className="flex-1 overflow-y-auto p-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {/* Left Column: Inputs */}
@@ -464,10 +542,7 @@ const AutoStudyWidget = (props) => {
                                     >
                                         {loading ? (
                                             <span className="flex items-center justify-center gap-2">
-                                                <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                                </svg>
+                                                <Loader2 className="animate-spin h-5 w-5" />
                                                 Generando...
                                             </span>
                                         ) : '✨ Generar Documento'}
@@ -536,7 +611,180 @@ const AutoStudyWidget = (props) => {
                                 </div>
                             </div>
                         </div>
-                    ) : (
+                    )}
+
+                    {activeTab === 'quiz' && (
+                        <div className="flex-1 overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
+                            {!quizData ? (
+                                // Quiz Setup View
+                                <div className="max-w-xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 text-center">
+                                    <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <Brain className="w-8 h-8" />
+                                    </div>
+                                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Modo Estudio Interactivo</h2>
+                                    <p className="text-gray-500 dark:text-gray-400 mb-8">
+                                        Genera un quiz de 5 preguntas sobre cualquier tema o documento para poner a prueba tus conocimientos.
+                                    </p>
+
+                                    <div className="space-y-4 text-left mb-8">
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                                Tema del Quiz
+                                            </label>
+                                            <input
+                                                type="text"
+                                                value={topic}
+                                                onChange={(e) => setTopic(e.target.value)}
+                                                placeholder="Ej: Biología Celular, Historia..."
+                                                className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                                Material de Apoyo (Opcional)
+                                            </label>
+                                            <input
+                                                type="file"
+                                                multiple
+                                                accept=".pdf,.txt,.md,.json"
+                                                onChange={handleFileChange}
+                                                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-purple-50 file:text-purple-700 hover:file:bg-purple-100"
+                                            />
+                                            {contextFiles.length > 0 && (
+                                                <p className="text-xs text-green-600 mt-2">✓ {contextFiles.length} archivos adjuntos</p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    <button
+                                        onClick={handleGenerateQuiz}
+                                        disabled={loading || !topic}
+                                        className="w-full py-3 px-6 rounded-xl text-white font-bold text-lg transition-all bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 shadow-lg transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        {loading ? (
+                                            <span className="flex items-center justify-center gap-2">
+                                                <Loader2 className="animate-spin h-6 w-6" />
+                                                Creando Quiz...
+                                            </span>
+                                        ) : 'Comenzar Quiz 🚀'}
+                                    </button>
+                                    {error && <p className="text-red-500 mt-4 text-sm">{error}</p>}
+                                </div>
+                            ) : showQuizResults ? (
+                                // Results View
+                                <div className="max-w-md mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 text-center">
+                                    <div className="mb-6">
+                                        {quizScore >= 3 ? (
+                                            <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto animate-bounce">
+                                                <CheckCircle className="w-10 h-10" />
+                                            </div>
+                                        ) : (
+                                            <div className="w-20 h-20 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto">
+                                                <Sparkles className="w-10 h-10" />
+                                            </div>
+                                        )}
+                                    </div>
+                                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                                        Tu Puntaje: {quizScore}/{quizData.questions.length}
+                                    </h2>
+                                    <p className="text-gray-500 dark:text-gray-400 mb-8">
+                                        {quizScore === 5 ? '¡Perfecto! Eres un experto.' :
+                                            quizScore >= 3 ? '¡Muy bien! Sigue así.' :
+                                                'Sigue practicando, vas por buen camino.'}
+                                    </p>
+                                    <button
+                                        onClick={handleRestartQuiz}
+                                        className="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold transition-colors"
+                                    >
+                                        <RotateCcw className="w-5 h-5" />
+                                        Generar Nuevo Quiz
+                                    </button>
+                                </div>
+                            ) : (
+                                // Active Quiz View
+                                <div className="max-w-2xl mx-auto">
+                                    <div className="mb-6 flex justify-between items-center text-sm font-medium text-gray-500">
+                                        <span>Pregunta {currentQuestionIndex + 1} de {quizData.questions.length}</span>
+                                        <span>Puntaje: {quizScore}</span>
+                                    </div>
+
+                                    {/* Progress Bar */}
+                                    <div className="w-full bg-gray-200 rounded-full h-2 mb-8">
+                                        <div
+                                            className="bg-purple-600 h-2 rounded-full transition-all duration-500"
+                                            style={{ width: `${((currentQuestionIndex + 1) / quizData.questions.length) * 100}%` }}
+                                        />
+                                    </div>
+
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={currentQuestionIndex}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            exit={{ opacity: 0, x: -20 }}
+                                            className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700"
+                                        >
+                                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 leading-relaxed">
+                                                {quizData.questions[currentQuestionIndex].question}
+                                            </h3>
+
+                                            <div className="space-y-3">
+                                                {quizData.questions[currentQuestionIndex].options.map((option, idx) => {
+                                                    const isSelected = selectedOption === idx;
+                                                    const isCorrect = idx === quizData.questions[currentQuestionIndex].correctIndex;
+                                                    const showStatus = isAnswerChecked;
+
+                                                    let buttonClass = "w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex justify-between items-center ";
+
+                                                    if (showStatus) {
+                                                        if (isCorrect) buttonClass += "border-green-500 bg-green-50 text-green-800";
+                                                        else if (isSelected) buttonClass += "border-red-500 bg-red-50 text-red-800";
+                                                        else buttonClass += "border-gray-100 opacity-50";
+                                                    } else {
+                                                        buttonClass += "border-gray-100 hover:border-purple-200 hover:bg-purple-50";
+                                                    }
+
+                                                    return (
+                                                        <button
+                                                            key={idx}
+                                                            onClick={() => handleOptionSelect(idx)}
+                                                            disabled={isAnswerChecked}
+                                                            className={buttonClass}
+                                                        >
+                                                            <span className="font-medium">{option}</span>
+                                                            {showStatus && isCorrect && <CheckCircle className="w-5 h-5 text-green-600" />}
+                                                            {showStatus && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-red-600" />}
+                                                        </button>
+                                                    );
+                                                })}
+                                            </div>
+
+                                            {isAnswerChecked && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: 10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700"
+                                                >
+                                                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                                                        <strong>Explicación:</strong> {quizData.questions[currentQuestionIndex].explanation}
+                                                    </p>
+                                                    <button
+                                                        onClick={handleNextQuestion}
+                                                        className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-colors"
+                                                    >
+                                                        {currentQuestionIndex < quizData.questions.length - 1 ? 'Siguiente Pregunta' : 'Ver Resultados'}
+                                                    </button>
+                                                </motion.div>
+                                            )}
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    {activeTab === 'chat' && (
                         /* Chat Interface - Fixed Layout */
                         <div className="flex flex-col h-full overflow-hidden relative">
                             {/* Messages Area - Scrollable */}

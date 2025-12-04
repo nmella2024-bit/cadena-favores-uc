@@ -8,7 +8,7 @@ export default async function handler(req) {
   }
 
   try {
-    const { prompt, isChat } = await req.json();
+    const { prompt, isChat, mode } = await req.json();
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
@@ -84,10 +84,34 @@ export default async function handler(req) {
              </div>
         `;
 
+    const quizSystemPrompt = `
+            Eres un profesor experto creando evaluaciones. Tu objetivo es generar un Quiz de estudio desafiante y educativo.
+            
+            INSTRUCCIONES:
+            1. Analiza el tema o contexto proporcionado.
+            2. Genera 5 preguntas de selección múltiple.
+            3. Responde ÚNICAMENTE con un JSON válido con esta estructura exacta:
+            {
+              "questions": [
+                {
+                  "question": "¿Pregunta?",
+                  "options": ["Opción A", "Opción B", "Opción C", "Opción D"],
+                  "correctIndex": 0, // Índice de la respuesta correcta (0-3)
+                  "explanation": "Breve explicación de por qué es la correcta."
+                }
+              ]
+            }
+            4. NO incluyas markdown (\`\`\`). Solo el JSON raw.
+        `;
+
+    let systemPrompt = docSystemPrompt;
+    if (isChat) systemPrompt = chatSystemPrompt;
+    if (mode === 'quiz') systemPrompt = quizSystemPrompt;
+
     const messages = [
       {
         role: "system",
-        content: isChat ? chatSystemPrompt : docSystemPrompt
+        content: systemPrompt
       },
       { role: "user", content: prompt }
     ];
@@ -102,6 +126,7 @@ export default async function handler(req) {
         model: "gpt-4o-mini",
         messages: messages,
         temperature: 0.7,
+        response_format: mode === 'quiz' ? { type: "json_object" } : undefined
       }),
     });
 
