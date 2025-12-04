@@ -44,25 +44,33 @@ const AutoStudyWidget = (props) => {
         const files = Array.from(e.target.files);
         if (files.length === 0) return;
 
-        setChatLoading(true); // Show loading while processing
+        console.log("Processing chat files:", files.map(f => f.name));
+        setChatLoading(true);
+
         try {
             const processed = await Promise.all(
                 files.map(async (file) => {
                     try {
                         const text = await extractTextFromFile(file);
+                        console.log(`Extracted text from ${file.name} (${text.length} chars)`);
                         return { name: file.name, text };
                     } catch (err) {
-                        console.error("Error reading chat file:", err);
+                        console.error(`Error reading chat file ${file.name}:`, err);
+                        alert(`Error al leer ${file.name}: ${err.message}`);
                         return null;
                     }
                 })
             );
-            setChatFiles(prev => [...prev, ...processed.filter(Boolean)]);
+            const validFiles = processed.filter(Boolean);
+            if (validFiles.length > 0) {
+                setChatFiles(prev => [...prev, ...validFiles]);
+            }
         } catch (err) {
             console.error("Error processing chat files:", err);
+            alert("Error general al procesar archivos.");
         } finally {
             setChatLoading(false);
-            if (chatFileRef.current) chatFileRef.current.value = ''; // Reset input
+            if (chatFileRef.current) chatFileRef.current.value = '';
         }
     };
 
@@ -475,8 +483,20 @@ const AutoStudyWidget = (props) => {
                                 {/* Right Column: Preview */}
                                 <div className="border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-900 min-h-[400px] flex flex-col">
                                     <div className="p-3 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center bg-white dark:bg-gray-800 rounded-t-lg">
-                                        <h3 className="font-medium text-gray-700 dark:text-gray-300">Vista Previa</h3>
+                                        <h3 className="font-medium text-gray-700 dark:text-gray-300">Vista Previa (Editable)</h3>
                                         <div className="flex gap-2">
+                                            <button
+                                                onClick={() => {
+                                                    if (!contentRef.current) return;
+                                                    const text = contentRef.current.innerText;
+                                                    navigator.clipboard.writeText(text);
+                                                    alert("¡Texto copiado!");
+                                                }}
+                                                disabled={!generatedContent}
+                                                className="text-xs px-2 py-1 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded disabled:opacity-50"
+                                            >
+                                                Copiar
+                                            </button>
                                             <button
                                                 onClick={handleExportTXT}
                                                 disabled={!generatedContent}
@@ -498,7 +518,10 @@ const AutoStudyWidget = (props) => {
                                         {generatedContent ? (
                                             <div
                                                 ref={contentRef}
-                                                className="prose dark:prose-invert max-w-none bg-white dark:bg-gray-800 p-6 rounded shadow-sm"
+                                                contentEditable
+                                                suppressContentEditableWarning
+                                                onInput={(e) => setGeneratedContent(e.currentTarget.innerHTML)}
+                                                className="prose dark:prose-invert max-w-none bg-white dark:bg-gray-800 p-6 rounded shadow-sm outline-none focus:ring-2 focus:ring-blue-500/20"
                                                 dangerouslySetInnerHTML={{ __html: generatedContent }}
                                             />
                                         ) : (
