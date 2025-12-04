@@ -57,14 +57,9 @@ export const askAI = async (question, context = '') => {
  */
 const callOpenAI = async (prompt, isChat = false) => {
     try {
-        // Direct call to our backend.
-        // In local dev, this requires running 'vercel dev'.
-        // In production, it works automatically.
         const response = await fetch('/api/ai', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt, isChat })
         });
 
