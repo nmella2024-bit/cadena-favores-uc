@@ -1,11 +1,7 @@
 /**
  * AI Service for "Cadena de Favores UC"
- * Uses official OpenAI API for reliable, high-quality generation.
- * Requires VITE_OPENAI_API_KEY in .env
+ * Calls the backend API (/api/ai) to generate content.
  */
-
-const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
-const API_URL = 'https://api.openai.com/v1/chat/completions';
 
 /**
  * Generates study material using OpenAI.
@@ -55,43 +51,28 @@ export const askAI = async (question, context = '') => {
 };
 
 /**
- * Helper to call OpenAI API.
+ * Helper to call the Backend AI API.
+ * This avoids exposing the API Key in the frontend and solves CORS issues.
  */
 const callOpenAI = async (prompt, isChat = false) => {
-    if (!OPENAI_API_KEY) {
-        console.error("Missing VITE_OPENAI_API_KEY");
-        return isChat
-            ? "⚠️ Error: Falta la API Key de OpenAI. Por favor configúrala en el archivo .env."
-            : getFallbackTemplate("Configuración Incompleta (Falta API Key)");
-    }
-
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch('/api/ai', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${OPENAI_API_KEY}`
             },
-            body: JSON.stringify({
-                model: "gpt-4o-mini", // Cost-effective and fast
-                messages: [
-                    { role: "system", content: isChat ? "Eres un asistente útil." : "Eres un generador de contenido HTML." },
-                    { role: "user", content: prompt }
-                ],
-                temperature: 0.7,
-                max_tokens: isChat ? 500 : 2000
-            })
+            body: JSON.stringify({ prompt, isChat })
         });
 
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(`OpenAI Error ${response.status}: ${errorData.error?.message || response.statusText}`);
+            throw new Error(errorData.error || `Server Error: ${response.status}`);
         }
 
         const data = await response.json();
-        let content = data.choices[0].message.content;
+        let content = data.content;
 
-        // Clean markdown if present
+        // Clean markdown if present (just in case)
         content = content.replace(/```html/g, '').replace(/```/g, '').trim();
 
         return content;
@@ -100,7 +81,7 @@ const callOpenAI = async (prompt, isChat = false) => {
         console.error("AI Request Failed:", error);
 
         if (isChat) {
-            return `⚠️ **Error de Conexión**: No pude conectar con OpenAI. (${error.message})`;
+            return `⚠️ **Error de Conexión**: No pude conectar con el servidor de IA. (${error.message})`;
         }
 
         // Fallback for documents
