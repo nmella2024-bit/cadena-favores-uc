@@ -28,7 +28,9 @@ const AutoStudyWidget = (props) => {
     const [chatQuery, setChatQuery] = useState('');
     const [chatHistory, setChatHistory] = useState([{ role: 'system', content: '¡Hola! Soy tu asistente de estudio. Pregúntame sobre materiales o pídeme que genere documentos.' }]);
     const [chatLoading, setChatLoading] = useState(false);
+    const [chatFiles, setChatFiles] = useState([]); // Files attached to chat
     const chatEndRef = useRef(null);
+    const chatFileRef = useRef(null); // Ref for hidden file input
 
     const contentRef = useRef(null);
 
@@ -38,45 +40,89 @@ const AutoStudyWidget = (props) => {
         }
     }, [chatHistory, activeTab]);
 
+    const handleChatFileChange = async (e) => {
+        const files = Array.from(e.target.files);
+        if (files.length === 0) return;
+
+        setChatLoading(true); // Show loading while processing
+        try {
+            const processed = await Promise.all(
+                files.map(async (file) => {
+                    try {
+                        const text = await extractTextFromFile(file);
+                        return { name: file.name, text };
+                    } catch (err) {
+                        console.error("Error reading chat file:", err);
+                        return null;
+                    }
+                })
+            );
+            setChatFiles(prev => [...prev, ...processed.filter(Boolean)]);
+        } catch (err) {
+            console.error("Error processing chat files:", err);
+        } finally {
+            setChatLoading(false);
+            if (chatFileRef.current) chatFileRef.current.value = ''; // Reset input
+        }
+    };
+
+    const removeChatFile = (index) => {
+        setChatFiles(prev => prev.filter((_, i) => i !== index));
+    };
+
     const handleChatSubmit = async (e) => {
         e.preventDefault();
-        if (!chatQuery.trim()) return;
+        if (!chatQuery.trim() && chatFiles.length === 0) return;
 
         const userMsg = { role: 'user', content: chatQuery };
+
+        // Add file context to the message display if files are present
+        if (chatFiles.length > 0) {
+            userMsg.content += `\n\n[Archivos adjuntos: ${chatFiles.map(f => f.name).join(', ')}]`;
+        }
+
         setChatHistory(prev => [...prev, userMsg]);
         setChatQuery('');
+        const currentFiles = [...chatFiles]; // Snapshot current files
+        setChatFiles([]); // Clear files after sending
         setChatLoading(true);
 
         try {
-            // 1. Search for relevant materials to provide context
+            // 1. Prepare Context from Files
             let context = "";
-            try {
-                const searchResults = await buscarEnMateriales(chatQuery, 'all', 10);
-                const materials = searchResults.materiales || [];
-                const folders = searchResults.carpetas || [];
-
-                if (materials.length > 0 || folders.length > 0) {
-                    context += "Materiales encontrados:\n";
-                    materials.forEach(m => {
-                        context += `- ${m.titulo} (${m.ramo || 'General'}, ${m.anio || 'N/A'}). Ruta: ${m.carpetaInfo?.rutaCompleta || 'Raíz'}\n`;
-                    });
-                    context += "\nCarpetas encontradas:\n";
-                    folders.forEach(f => {
-                        context += `- ${f.nombre}. Ruta: ${f.rutaCompleta}\n`;
-                    });
-                }
-            } catch (err) {
-                console.warn("Chat search failed:", err);
+            if (currentFiles.length > 0) {
+                context += "--- Archivos Adjuntos por el Usuario ---\n";
+                currentFiles.forEach(f => {
+                    context += `Documento: ${f.name}\nContenido: ${f.text.substring(0, 10000)}\n\n`;
+                });
             }
 
-            // 2. Ask AI
-            const answer = await askAI(userMsg.content, context);
+            // 2. Search for relevant materials (if query is long enough)
+            if (chatQuery.length > 5) {
+                try {
+                    const searchResults = await buscarEnMateriales(chatQuery, 'all', 5);
+                    const materials = searchResults.materiales || [];
+
+                    if (materials.length > 0) {
+                        context += "\n--- Materiales Relacionados Encontrados ---\n";
+                        materials.forEach(m => {
+                            context += `- ${m.titulo} (${m.ramo || 'General'}).\n`;
+                        });
+                    }
+                } catch (err) {
+                    console.warn("Chat search failed:", err);
+                }
+            }
+
+            // 3. Ask AI
+            // We pass the raw query (without the attachment note) to the AI, but with the full context
+            const answer = await askAI(chatQuery, context);
             setChatHistory(prev => [...prev, { role: 'assistant', content: answer }]);
         } catch (err) {
             console.error("Chat Error:", err);
             setChatHistory(prev => [...prev, {
                 role: 'assistant',
-                content: `⚠️ **Error de conexión**: ${err.message || 'Error desconocido'}. \n\nIntenta de nuevo o reduce la cantidad de texto.`
+                content: `⚠️ **Error de conexión**: ${err.message || 'Error desconocido'}.`
             }]);
         } finally {
             setChatLoading(false);
@@ -526,17 +572,50 @@ const AutoStudyWidget = (props) => {
 
                             {/* Input Area - Fixed at Bottom */}
                             <div className="p-4 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-10">
+                                {/* File Chips */}
+                                {chatFiles.length > 0 && (
+                                    <div className="flex flex-wrap gap-2 mb-2">
+                                        {chatFiles.map((file, idx) => (
+                                            <div key={idx} className="flex items-center gap-1 bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full border border-blue-100">
+                                                <span className="truncate max-w-[150px]">{file.name}</span>
+                                                <button onClick={() => removeChatFile(idx)} className="hover:text-blue-900">
+                                                    <X className="w-3 h-3" />
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
                                 <form onSubmit={handleChatSubmit} className="flex gap-3 items-center">
+                                    <input
+                                        type="file"
+                                        ref={chatFileRef}
+                                        onChange={handleChatFileChange}
+                                        className="hidden"
+                                        multiple
+                                        accept=".pdf,.txt,.md,.json"
+                                    />
+                                    <button
+                                        type="button"
+                                        onClick={() => chatFileRef.current?.click()}
+                                        className="p-3 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-colors"
+                                        title="Adjuntar archivo"
+                                    >
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                        </svg>
+                                    </button>
+
                                     <input
                                         type="text"
                                         value={chatQuery}
                                         onChange={(e) => setChatQuery(e.target.value)}
-                                        placeholder="Escribe tu pregunta aquí..."
+                                        placeholder={chatFiles.length > 0 ? "Pregunta sobre los archivos..." : "Escribe tu pregunta aquí..."}
                                         className="flex-1 p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                                     />
                                     <button
                                         type="submit"
-                                        disabled={chatLoading || !chatQuery.trim()}
+                                        disabled={chatLoading || (!chatQuery.trim() && chatFiles.length === 0)}
                                         className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed transition-all transform active:scale-95 shadow-md hover:shadow-lg"
                                     >
                                         {chatLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <span className="text-lg">➤</span>}
