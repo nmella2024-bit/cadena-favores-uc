@@ -1,13 +1,18 @@
 /**
- * Generates study material using Pollinations.ai (Free, No Key).
- * @param {string} topic - The main topic to study.
- * @param {string} style - The desired style (e.g., 'Resumen', 'Apuntes', 'Guía de estudio').
- * @param {string} contextText - Content from existing documents to use as context.
- * @returns {Promise<string>} - The generated HTML content.
+ * AI Service for "Cadena de Favores UC"
+ * Uses official OpenAI API for reliable, high-quality generation.
+ * Requires VITE_OPENAI_API_KEY in .env
  */
+
+const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+const API_URL = 'https://api.openai.com/v1/chat/completions';
+
 /**
- * Generates study material using Pollinations.ai (Free, No Key).
- * Uses a fallback strategy: POST (full context) -> GET (truncated context).
+ * Generates study material using OpenAI.
+ * @param {string} topic - The main topic to study.
+ * @param {string} style - The desired style.
+ * @param {string} contextText - Content from existing documents.
+ * @returns {Promise<string>} - The generated HTML content.
  */
 export const generateStudyMaterial = async (topic, style, contextText = '') => {
     const systemPrompt = `
@@ -20,14 +25,13 @@ export const generateStudyMaterial = async (topic, style, contextText = '') => {
     Estilo solicitado: ${style}
     Tema: ${topic}
     
-    ${contextText ? `Usa el siguiente contenido como contexto base (ignora si es irrelevante):\n${contextText.substring(0, 20000)}` : ''}
+    ${contextText ? `Usa el siguiente contenido como contexto base:\n${contextText.substring(0, 15000)}` : ''}
     
-    IMPORTANTE: Responde ÚNICAMENTE con el código HTML del contenido. No incluyas markdown (como \`\`\`html) ni texto introductorio.
+    IMPORTANTE: Responde ÚNICAMENTE con el código HTML del contenido. No incluyas markdown.
     Usa <h2>, <h3>, <p>, <ul>, <li>, <strong>, etc.
-  `;
+    `;
 
-    // Direct call to propagate specific errors from callPollinationsAI
-    return await callPollinationsAI(systemPrompt);
+    return await callOpenAI(systemPrompt, false);
 };
 
 /**
@@ -40,145 +44,92 @@ export const askAI = async (question, context = '') => {
     
     Pregunta del usuario: ${question}
     
-    ${context ? `Información de contexto (Materiales encontrados):\n${context}` : ''}
+    ${context ? `Información de contexto:\n${context}` : ''}
     
     Instrucciones:
-    1. Si el contexto contiene la respuesta (ej: ubicación de un archivo), indícalo claramente.
-    2. Si no tienes la información, sé honesto.
-    3. Sé amable y conciso.
-    4. Responde en texto plano (puedes usar markdown simple).
+    1. Sé amable, conciso y útil.
+    2. Responde en texto plano.
     `;
 
-    // Direct call to propagate specific errors
-    return await callPollinationsAI(systemPrompt);
-    return await callPollinationsAI(systemPrompt, true);
+    return await callOpenAI(systemPrompt, true);
 };
 
 /**
- * Helper to call AI APIs with robust fallback strategy.
- * Strategy: Pollinations (GET) -> Hercai (Backup) -> Template Fallback.
+ * Helper to call OpenAI API.
  */
-const callPollinationsAI = async (prompt, isChat = false) => {
-    let lastError = null;
-    let rejectedReason = '';
-
-    // 1. Attempt: Pollinations (GET - Optimized)
-    // Expanded rotation to maximize success chance
-    const models = ['openai', 'gpt-4o-mini', 'searchgpt', 'mistral', 'qwen'];
-
-    for (const model of models) {
-        try {
-            console.log(`Attempting AI request via Pollinations (${model})...`);
-            // For Chat, we want plain text. For Docs, we want HTML.
-            const formatInstruction = isChat ? "Responde brevemente en texto plano." : "Usa HTML (h2, ul, p).";
-            const corePrompt = `${formatInstruction} ${prompt.substring(0, 100)}`;
-            const safePrompt = encodeURIComponent(corePrompt);
-
-            const response = await fetch(`/api/ai/${safePrompt}?model=${model}&seed=${Math.floor(Math.random() * 1000)}`);
-
-            if (response.ok) {
-                const text = await response.text();
-                if (isValidResponse(text)) return cleanResponse(text);
-                rejectedReason = `Rejected (${model}): ${text.substring(0, 30)}...`;
-            }
-            lastError = `Pollinations (${model}) Error: ${response.status}`;
-        } catch (e) {
-            console.warn(`Pollinations (${model}) failed:`, e);
-            lastError = `Pollinations (${model}) Network Error: ${e.message}`;
-        }
+const callOpenAI = async (prompt, isChat = false) => {
+    if (!OPENAI_API_KEY) {
+        console.error("Missing VITE_OPENAI_API_KEY");
+        return isChat
+            ? "⚠️ Error: Falta la API Key de OpenAI. Por favor configúrala en el archivo .env."
+            : getFallbackTemplate("Configuración Incompleta (Falta API Key)");
     }
 
-    // 2. Attempt: Hercai API (Backup)
     try {
-        console.log('Attempting AI request via Hercai...');
-        const fullPrompt = isChat ? prompt : `Responde en HTML. ${prompt}`;
-        const safePrompt = encodeURIComponent(fullPrompt.substring(0, 500));
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${OPENAI_API_KEY}`
+            },
+            body: JSON.stringify({
+                model: "gpt-4o-mini", // Cost-effective and fast
+                messages: [
+                    { role: "system", content: isChat ? "Eres un asistente útil." : "Eres un generador de contenido HTML." },
+                    { role: "user", content: prompt }
+                ],
+                temperature: 0.7,
+                max_tokens: isChat ? 500 : 2000
+            })
+        });
 
-        const response = await fetch(`https://hercai.zaid.one/v2/hercai?question=${safePrompt}`);
-
-        if (response.ok) {
-            const data = await response.json();
-            if (data && data.reply && isValidResponse(data.reply)) {
-                return cleanResponse(data.reply);
-            }
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(`OpenAI Error ${response.status}: ${errorData.error?.message || response.statusText}`);
         }
-        lastError += ` | Hercai Error: ${response.status}`;
-    } catch (e) {
-        console.warn('Hercai failed:', e);
-        lastError += ` | Hercai Network Error: ${e.message}`;
+
+        const data = await response.json();
+        let content = data.choices[0].message.content;
+
+        // Clean markdown if present
+        content = content.replace(/```html/g, '').replace(/```/g, '').trim();
+
+        return content;
+
+    } catch (error) {
+        console.error("AI Request Failed:", error);
+
+        if (isChat) {
+            return `⚠️ **Error de Conexión**: No pude conectar con OpenAI. (${error.message})`;
+        }
+
+        // Fallback for documents
+        const topicMatch = prompt.match(/Tema: (.+)/);
+        const topic = topicMatch ? topicMatch[1] : 'Tu Tema';
+        return getFallbackTemplate(topic, error.message);
     }
+};
 
-    // 3. Fallback (Context Aware)
-    console.warn("All AI attempts failed/rejected. Switching to Fallback.");
-
-    if (isChat) {
-        return `⚠️ **Modo Offline**: No puedo conectar con mi cerebro en la nube ahora mismo. 
-        
-        Por favor intenta:
-        1. Verificar tu internet.
-        2. Preguntar algo más corto.
-        3. Usar el "Generador de Documentos" que tiene respaldo automático.`;
-    }
-
-    // Template Fallback for Documents
-    const topicMatch = prompt.match(/Tema: (.+)/);
-    const topic = topicMatch ? topicMatch[1] : 'Tu Tema de Estudio';
-
+const getFallbackTemplate = (topic, errorDetails = '') => {
     return `
-        <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-4">
-            <p class="text-sm text-green-700">
-                <strong>Guía Estándar Generada:</strong> La IA está saturada, pero aquí tienes una guía completa generada por nuestro sistema de respaldo.
+        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
+            <p class="text-sm text-red-700">
+                <strong>Error de Generación:</strong> No pudimos conectar con OpenAI.
                 <br/>
-                <span class="text-xs opacity-50">Diag: ${lastError} | ${rejectedReason}</span>
+                <span class="text-xs opacity-75">Detalle: ${errorDetails}</span>
             </p>
         </div>
 
         <h2>Guía de Estudio: ${topic}</h2>
+        <p>Esta es una plantilla generada automáticamente porque falló la conexión con la IA.</p>
         
         <h3>1. Introducción</h3>
-        <p>Comienza definiendo <strong>${topic}</strong>. Es fundamental entender el "qué" y el "por qué" antes de profundizar.</p>
+        <p>Define aquí los conceptos básicos de <strong>${topic}</strong>.</p>
         
         <h3>2. Conceptos Clave</h3>
         <ul>
-            <li><strong>Concepto 1:</strong> [Rellena aquí]</li>
-            <li><strong>Concepto 2:</strong> [Rellena aquí]</li>
-            <li><strong>Concepto 3:</strong> [Rellena aquí]</li>
-        </ul>
-        
-        <h3>3. Desarrollo del Tema</h3>
-        <p>Utiliza esta sección para explicar los detalles técnicos, fórmulas o fechas importantes relacionadas con ${topic}.</p>
-        
-        <h3>4. Preguntas de Auto-evaluación</h3>
-        <ul>
-            <li>¿Cuál es la importancia de ${topic} en el contexto general?</li>
-            <li>¿Podrías explicar ${topic} a alguien que no sabe nada del tema?</li>
+            <li>Concepto 1...</li>
+            <li>Concepto 2...</li>
         </ul>
     `;
-};
-
-const isValidResponse = (text) => {
-    if (!text) return false;
-
-    // 1. Check for Hard Errors
-    if (text.startsWith('Error:') || text.includes('404 Not Found') || text.includes('405 Method Not Allowed')) return false;
-
-    // 2. Sanitize: Remove "NexU" and other known garbage
-    const cleaned = text.replace(/NexU\+?(\s-\sRed Social Universitaria)?/gi, '').trim();
-
-    // 3. Length Check on CLEANED text
-    // If the remaining text is substantial (> 50 chars), we accept it.
-    // This allows responses that had a watermark but are otherwise good.
-    if (cleaned.length > 50) return true;
-
-    return false;
-};
-
-const cleanResponse = (text) => {
-    // Remove markdown code blocks
-    let cleaned = text.replace(/```html/g, '').replace(/```/g, '');
-
-    // Remove "NexU" watermark if present (it passed validation because the rest of the text was long enough)
-    cleaned = cleaned.replace(/NexU\+?(\s-\sRed Social Universitaria)?/gi, '');
-
-    return cleaned.trim();
 };
