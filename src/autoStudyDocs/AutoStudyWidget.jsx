@@ -5,8 +5,8 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { obtenerMateriales } from '../services/materialService';
 import { buscarEnMateriales } from '../services/searchService';
-import { Search, FileText, X, Loader2, Plus, Database, Sparkles, MessageSquare, FileOutput, Brain, CheckCircle, XCircle, RotateCcw } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Search, FileText, X, Loader2, Plus, Database, Sparkles, MessageSquare, FileOutput } from 'lucide-react';
+// import { motion, AnimatePresence } from 'framer-motion'; // Temporarily disabled for debugging
 
 const AutoStudyWidget = (props) => {
     const [topic, setTopic] = useState('');
@@ -432,7 +432,7 @@ const AutoStudyWidget = (props) => {
                         onClick={() => setActiveTab('quiz')}
                         className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${activeTab === 'quiz' ? 'border-b-2 border-purple-500 text-purple-600 dark:text-purple-400' : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'}`}
                     >
-                        <Brain className="w-4 h-4" />
+                        <span className="w-4 h-4">🧠</span>
                         Modo Estudio
                     </button>
                     <button
@@ -619,7 +619,7 @@ const AutoStudyWidget = (props) => {
                                 // Quiz Setup View
                                 <div className="max-w-xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 text-center">
                                     <div className="w-16 h-16 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                                        <Brain className="w-8 h-8" />
+                                        <span className="text-3xl">🧠</span>
                                     </div>
                                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Modo Estudio Interactivo</h2>
                                     <p className="text-gray-500 dark:text-gray-400 mb-8">
@@ -677,11 +677,11 @@ const AutoStudyWidget = (props) => {
                                     <div className="mb-6">
                                         {quizScore >= 3 ? (
                                             <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto animate-bounce">
-                                                <CheckCircle className="w-10 h-10" />
+                                                <span className="text-4xl">✅</span>
                                             </div>
                                         ) : (
                                             <div className="w-20 h-20 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mx-auto">
-                                                <Sparkles className="w-10 h-10" />
+                                                <span className="text-4xl">✨</span>
                                             </div>
                                         )}
                                     </div>
@@ -697,7 +697,7 @@ const AutoStudyWidget = (props) => {
                                         onClick={handleRestartQuiz}
                                         className="flex items-center justify-center gap-2 w-full py-3 px-6 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold transition-colors"
                                     >
-                                        <RotateCcw className="w-5 h-5" />
+                                        <span>🔄</span>
                                         Generar Nuevo Quiz
                                     </button>
                                 </div>
@@ -717,68 +717,58 @@ const AutoStudyWidget = (props) => {
                                         />
                                     </div>
 
-                                    <AnimatePresence mode="wait">
-                                        <motion.div
-                                            key={currentQuestionIndex}
-                                            initial={{ opacity: 0, x: 20 }}
-                                            animate={{ opacity: 1, x: 0 }}
-                                            exit={{ opacity: 0, x: -20 }}
-                                            className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700"
-                                        >
-                                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 leading-relaxed">
-                                                {quizData.questions[currentQuestionIndex].question}
-                                            </h3>
+                                    {/* AnimatePresence and motion removed for debugging */}
+                                    <div className="bg-white dark:bg-gray-800 p-6 md:p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
+                                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 leading-relaxed">
+                                            {quizData.questions[currentQuestionIndex].question}
+                                        </h3>
 
-                                            <div className="space-y-3">
-                                                {quizData.questions[currentQuestionIndex].options.map((option, idx) => {
-                                                    const isSelected = selectedOption === idx;
-                                                    const isCorrect = idx === quizData.questions[currentQuestionIndex].correctIndex;
-                                                    const showStatus = isAnswerChecked;
+                                        <div className="space-y-3">
+                                            {quizData.questions[currentQuestionIndex].options.map((option, idx) => {
+                                                const isSelected = selectedOption === idx;
+                                                const isCorrect = idx === quizData.questions[currentQuestionIndex].correctIndex;
+                                                const showStatus = isAnswerChecked;
 
-                                                    let buttonClass = "w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex justify-between items-center ";
+                                                let buttonClass = "w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex justify-between items-center ";
 
-                                                    if (showStatus) {
-                                                        if (isCorrect) buttonClass += "border-green-500 bg-green-50 text-green-800";
-                                                        else if (isSelected) buttonClass += "border-red-500 bg-red-50 text-red-800";
-                                                        else buttonClass += "border-gray-100 opacity-50";
-                                                    } else {
-                                                        buttonClass += "border-gray-100 hover:border-purple-200 hover:bg-purple-50";
-                                                    }
+                                                if (showStatus) {
+                                                    if (isCorrect) buttonClass += "border-green-500 bg-green-50 text-green-800";
+                                                    else if (isSelected) buttonClass += "border-red-500 bg-red-50 text-red-800";
+                                                    else buttonClass += "border-gray-100 opacity-50";
+                                                } else {
+                                                    buttonClass += "border-gray-100 hover:border-purple-200 hover:bg-purple-50";
+                                                }
 
-                                                    return (
-                                                        <button
-                                                            key={idx}
-                                                            onClick={() => handleOptionSelect(idx)}
-                                                            disabled={isAnswerChecked}
-                                                            className={buttonClass}
-                                                        >
-                                                            <span className="font-medium">{option}</span>
-                                                            {showStatus && isCorrect && <CheckCircle className="w-5 h-5 text-green-600" />}
-                                                            {showStatus && isSelected && !isCorrect && <XCircle className="w-5 h-5 text-red-600" />}
-                                                        </button>
-                                                    );
-                                                })}
-                                            </div>
-
-                                            {isAnswerChecked && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: 10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700"
-                                                >
-                                                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                                                        <strong>Explicación:</strong> {quizData.questions[currentQuestionIndex].explanation}
-                                                    </p>
+                                                return (
                                                     <button
-                                                        onClick={handleNextQuestion}
-                                                        className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-colors"
+                                                        key={idx}
+                                                        onClick={() => handleOptionSelect(idx)}
+                                                        disabled={isAnswerChecked}
+                                                        className={buttonClass}
                                                     >
-                                                        {currentQuestionIndex < quizData.questions.length - 1 ? 'Siguiente Pregunta' : 'Ver Resultados'}
+                                                        <span className="font-medium">{option}</span>
+                                                        {/* Icons removed for debugging */}
+                                                        {showStatus && isCorrect && <span>✅</span>}
+                                                        {showStatus && isSelected && !isCorrect && <span>❌</span>}
                                                     </button>
-                                                </motion.div>
-                                            )}
-                                        </motion.div>
-                                    </AnimatePresence>
+                                                );
+                                            })}
+                                        </div>
+
+                                        {isAnswerChecked && (
+                                            <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
+                                                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                                                    <strong>Explicación:</strong> {quizData.questions[currentQuestionIndex].explanation}
+                                                </p>
+                                                <button
+                                                    onClick={handleNextQuestion}
+                                                    className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-colors"
+                                                >
+                                                    {currentQuestionIndex < quizData.questions.length - 1 ? 'Siguiente Pregunta' : 'Ver Resultados'}
+                                                </button>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
                             )}
                         </div>
