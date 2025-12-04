@@ -520,8 +520,8 @@ const AutoStudyWidget = (props) => {
                                                 ref={contentRef}
                                                 contentEditable
                                                 suppressContentEditableWarning
-                                                onInput={(e) => setGeneratedContent(e.currentTarget.innerHTML)}
-                                                className="prose dark:prose-invert max-w-none bg-white dark:bg-gray-800 p-6 rounded shadow-sm outline-none focus:ring-2 focus:ring-blue-500/20"
+                                                onBlur={(e) => setGeneratedContent(e.currentTarget.innerHTML)}
+                                                className="prose dark:prose-invert max-w-none bg-white dark:bg-gray-800 p-8 rounded-xl shadow-sm outline-none focus:ring-2 focus:ring-blue-500/20 min-h-[500px]"
                                                 dangerouslySetInnerHTML={{ __html: generatedContent }}
                                             />
                                         ) : (

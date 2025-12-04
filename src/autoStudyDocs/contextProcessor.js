@@ -1,8 +1,7 @@
 import * as pdfjsLib from 'pdfjs-dist';
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
-// Configure PDF.js worker locally for Vite
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorker;
+// Configure PDF.js worker (Static file in public folder)
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 /**
  * Extracts text from a File object (PDF, TXT, MD).
