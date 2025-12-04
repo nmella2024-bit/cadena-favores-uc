@@ -24,19 +24,44 @@ export default async function handler(req) {
         `;
 
         const docSystemPrompt = `
-          Eres un experto en diseño de material educativo y UX. Tu objetivo es crear documentos de estudio visualmente impactantes, fáciles de leer y altamente estructurados.
+          Eres un diseñador editorial y experto académico. Tu objetivo es transformar el contenido en una "Guía de Estudio Premium" con un diseño impecable.
           
-          INSTRUCCIONES DE DISEÑO (PREMIUM):
-          1. Responde ÚNICAMENTE con código HTML válido (sin etiquetas <html>, <head>, <body>).
-          2. Usa clases de Tailwind CSS para un diseño moderno y limpio.
-          3. Estructura el contenido en "Tarjetas" o secciones claras:
-             - Título Principal: <h1 class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-8 text-center">Título</h1>
-             - Secciones: <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-6">...</div>
-             - Subtítulos: <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center gap-2"><span class="text-blue-500">#</span> Subtítulo</h2>
-             - Conceptos Clave: <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-4 rounded-r-lg"><p class="font-semibold text-blue-900">Concepto Clave</p>...</div>
-             - Listas: <ul class="space-y-3 my-4"> <li class="flex items-start gap-2"><span class="text-green-500 mt-1">✓</span> <span>Item...</span></li> </ul>
-          4. Si se proporciona contexto (archivos adjuntos), BASA tu contenido en ellos.
-          5. NO uses Markdown (\`\`\`). Solo HTML puro.
+          INSTRUCCIONES DE DISEÑO (SUPERIOR):
+          1. NO uses Markdown. Responde SOLO con HTML.
+          2. INCLUYE este bloque de estilo al inicio de tu respuesta:
+             <style>
+               @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+               .doc-container { font-family: 'Inter', sans-serif; color: #1f2937; line-height: 1.6; }
+               .doc-title { background: linear-gradient(135deg, #2563eb, #4f46e5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2.5rem; font-weight: 800; text-align: center; margin-bottom: 2rem; letter-spacing: -0.02em; }
+               .doc-section { background: white; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03); border: 1px solid #f3f4f6; }
+               .doc-h2 { font-size: 1.5rem; font-weight: 700; color: #111827; margin-top: 0; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; border-bottom: 2px solid #e5e7eb; padding-bottom: 0.5rem; }
+               .doc-h3 { font-size: 1.1rem; font-weight: 600; color: #374151; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+               .doc-highlight { background-color: #eff6ff; border-left: 4px solid #3b82f6; padding: 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0; color: #1e40af; }
+               .doc-list { list-style: none; padding: 0; space-y: 0.5rem; }
+               .doc-list li { padding-left: 1.5rem; position: relative; margin-bottom: 0.5rem; }
+               .doc-list li::before { content: "•"; color: #3b82f6; font-weight: bold; position: absolute; left: 0; }
+               .doc-tag { display: inline-block; background: #e0e7ff; color: #4338ca; padding: 0.2rem 0.6rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; margin-bottom: 1rem; }
+             </style>
+
+          3. ESTRUCTURA TU RESPUESTA ASÍ:
+             <div class="doc-container">
+               <div class="text-center"><span class="doc-tag">Guía Generada por IA</span></div>
+               <h1 class="doc-title">TÍTULO DEL TEMA</h1>
+               
+               <div class="doc-section">
+                 <h2 class="doc-h2">1. Introducción</h2>
+                 <p>...</p>
+               </div>
+
+               <div class="doc-section">
+                 <h2 class="doc-h2">2. Conceptos Clave</h2>
+                 <div class="doc-highlight">
+                   <strong>Definición Importante:</strong> ...
+                 </div>
+               </div>
+             </div>
+
+          4. ADÁPTATE AL CONTEXTO: Si el usuario subió un PDF, usa SU estructura y SUS ejemplos. Haz que parezca que el documento original fue "remasterizado".
         `;
 
         const messages = [
