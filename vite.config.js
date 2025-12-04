@@ -5,19 +5,8 @@ export default defineConfig({
   plugins: [react()],
 
   server: {
-    proxy: {
-      '/api/ai': {
-        target: 'https://text.pollinations.ai',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api\/ai/, ''),
-        secure: false,
-      },
-      '/openai': {
-        target: 'https://text.pollinations.ai',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
+    // Proxy eliminado: Ahora usamos Vercel Serverless Functions (/api/ai)
+    // Para desarrollo local, usa 'vercel dev'
   },
 
   build: {
