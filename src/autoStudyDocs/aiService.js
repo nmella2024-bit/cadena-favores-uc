@@ -51,43 +51,69 @@ export const askAI = async (question, context = '') => {
 };
 
 /**
- * Helper to call the Backend AI API.
- * This avoids exposing the API Key in the frontend and solves CORS issues.
+ * Helper to call the AI API.
+ * Hybrid Strategy:
+ * - Development: Uses local proxy (/openai-api) + VITE_OPENAI_API_KEY.
+ * - Production: Uses backend route (/api/ai) + Server-side Key.
  */
 const callOpenAI = async (prompt, isChat = false) => {
+    const isDev = import.meta.env.DEV;
+    const apiKey = import.meta.env.VITE_OPENAI_API_KEY;
+
     try {
-        const response = await fetch('/api/ai', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ prompt, isChat })
-        });
+        let response;
+
+        if (isDev) {
+            // --- DEVELOPMENT MODE ---
+            // Call OpenAI via Vite Proxy to avoid CORS locally
+            if (!apiKey) throw new Error("Falta VITE_OPENAI_API_KEY en .env para modo local.");
+
+            response = await fetch('/openai-api/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({
+                    model: "gpt-4o-mini",
+                    messages: [
+                        { role: "system", content: isChat ? "Eres un asistente útil." : "Eres un generador de contenido HTML." },
+                        { role: "user", content: prompt }
+                    ],
+                    temperature: 0.7,
+                    max_tokens: isChat ? 500 : 2000
+                })
+            });
+        } else {
+            // --- PRODUCTION MODE ---
+            // Call Backend API (Secure, No Key exposed)
+            response = await fetch('/api/ai', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt, isChat })
+            });
+        }
 
         if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || `Server Error: ${response.status}`);
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.error?.message || errorData.error || `Error ${response.status}`);
         }
 
         const data = await response.json();
-        let content = data.content;
+        // Handle different response structures (Direct OpenAI vs Backend Wrapper)
+        let content = isDev ? data.choices[0].message.content : data.content;
 
-        // Clean markdown if present (just in case)
-        content = content.replace(/```html/g, '').replace(/```/g, '').trim();
-
-        return content;
+        return content.replace(/```html/g, '').replace(/```/g, '').trim();
 
     } catch (error) {
         console.error("AI Request Failed:", error);
+        const msg = isDev ? `(Local Mode): ${error.message}` : `(Server Mode): ${error.message}`;
 
-        if (isChat) {
-            return `⚠️ **Error de Conexión**: No pude conectar con el servidor de IA. (${error.message})`;
-        }
+        if (isChat) return `⚠️ **Error de Conexión**: ${msg}`;
 
-        // Fallback for documents
         const topicMatch = prompt.match(/Tema: (.+)/);
         const topic = topicMatch ? topicMatch[1] : 'Tu Tema';
-        return getFallbackTemplate(topic, error.message);
+        return getFallbackTemplate(topic, msg);
     }
 };
 

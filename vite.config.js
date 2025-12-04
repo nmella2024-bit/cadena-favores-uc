@@ -5,8 +5,15 @@ export default defineConfig({
   plugins: [react()],
 
   server: {
-    // Proxy eliminado: Ahora usamos Vercel Serverless Functions (/api/ai)
-    // Para desarrollo local, usa 'vercel dev'
+    proxy: {
+      // Proxy para desarrollo local (evita CORS y permite usar VITE_OPENAI_API_KEY)
+      '/openai-api': {
+        target: 'https://api.openai.com/v1',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/openai-api/, ''),
+        secure: false,
+      },
+    },
   },
 
   build: {
