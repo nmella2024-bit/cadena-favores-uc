@@ -149,8 +149,16 @@ const QuizPlayer = ({ quizData, onComplete, onClose }) => {
                 ) : (
                     <div className="p-4 bg-yellow-50 text-yellow-800 rounded-lg border border-yellow-200">
                         {currentQuestion.type === 'open' ? (
-                            <div className="text-gray-600 italic">
-                                Esta es una pregunta de desarrollo. Piensa tu respuesta y verifica con la explicación.
+                            <div className="flex flex-col gap-3">
+                                <div className="text-gray-600 italic">
+                                    Esta es una pregunta de desarrollo. Piensa tu respuesta y verifica con la explicación.
+                                </div>
+                                <button
+                                    onClick={() => setIsChecked(true)}
+                                    className="self-start px-4 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 font-medium transition-colors"
+                                >
+                                    Ver Respuesta / Explicación
+                                </button>
                             </div>
                         ) : (
                             <>
