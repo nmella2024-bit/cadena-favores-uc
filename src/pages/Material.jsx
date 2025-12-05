@@ -351,13 +351,13 @@ const Material = () => {
             <div className="flex-shrink-0 relative z-10 flex flex-col sm:flex-row gap-2">
 
               {currentUser?.rol === 'admin' ? (
-                <PrimaryButton
-                  onClick={() => setIsAutoStudyOpen(true)}
-                  className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 px-4 text-sm font-medium border-none shadow-sm transition-all hover:shadow-md"
+                <button
+                  onClick={() => setShowAutoStudy(true)}
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-lg hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
                 >
-                  <Sparkles className="h-5 w-5" />
-                  <span>Generar Doc</span>
-                </PrimaryButton>
+                  <Sparkles className="w-4 h-4" />
+                  Generar con NexIA
+                </button>
               ) : (
                 <div
                   className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 px-4 text-sm font-medium rounded-lg text-gray-400 cursor-not-allowed opacity-75"
