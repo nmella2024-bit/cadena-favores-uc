@@ -101,6 +101,7 @@ export default async function handler(req) {
                 {
                   "type": "multiple-choice" | "open",
                   "question": "¿Pregunta?",
+                  "unit": "Unidad General (ej: Cálculo, Álgebra, Historia)", // OBLIGATORIO: Clasificación general
                   "subtopic": "Sub-tema específico (ej: Límites Notables)", // OBLIGATORIO
                   // Solo para multiple-choice:
                   "options": ["Opción A", "Opción B", "Opción C", "Opción D"], // OBLIGATORIO: Siempre 4 opciones

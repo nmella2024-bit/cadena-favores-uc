@@ -1,102 +1,162 @@
 import React, { useState } from 'react';
+import { useStudy, StudyProvider } from '../context/StudyContext';
 import { Link } from 'react-router-dom';
-import { StudyProvider } from '../context/StudyContext';
+import {
+    Brain,
+    Target,
+    History,
+    LineChart,
+    BookOpen,
+    ArrowLeft,
+    GraduationCap,
+    Flame,
+    Trophy
+} from 'lucide-react';
+
 import QuizGenerator from '../components/study/QuizGenerator';
 import AdaptiveQuiz from '../components/study/AdaptiveQuiz';
 import WeaknessDetector from '../components/study/WeaknessDetector';
 import DesarrolloPractice from '../components/study/DesarrolloPractice';
 import StudyHistory from '../components/study/StudyHistory';
-import { ArrowLeft, GraduationCap, LayoutGrid } from 'lucide-react';
+import Achievements from '../components/study/Achievements';
 
-const ModoEstudioPro = () => {
+const Dashboard = () => {
+    const { userLevel, streak, unitStats } = useStudy();
     const [activeTab, setActiveTab] = useState('generator');
 
-    const renderContent = () => {
-        switch (activeTab) {
-            case 'generator': return <QuizGenerator />;
-            case 'adaptive': return <AdaptiveQuiz />;
-            case 'weakness': return <WeaknessDetector />;
-            case 'desarrollo': return <DesarrolloPractice />;
-            case 'history': return <StudyHistory />;
-            default: return <QuizGenerator />;
-        }
-    };
-
     return (
-        <StudyProvider>
-            <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8">
-                <div className="max-w-7xl mx-auto">
-                    {/* Header */}
-                    <div className="flex items-center gap-4 mb-8">
-                        <Link to="/material" className="p-2 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-full transition-colors">
-                            <ArrowLeft className="w-6 h-6 text-gray-600 dark:text-gray-300" />
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-sans">
+            {/* Header */}
+            <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                        <Link to="/material" className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors">
+                            <ArrowLeft className="w-5 h-5" />
                         </Link>
-                        <div>
-                            <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                                <GraduationCap className="w-8 h-8 text-purple-600" />
-                                Modo Estudio Pro
-                            </h1>
-                            <p className="text-gray-500 dark:text-gray-400">Tu centro de aprendizaje inteligente</p>
+                        <div className="flex items-center gap-2">
+                            <div className="bg-purple-600 p-2 rounded-lg">
+                                <GraduationCap className="w-6 h-6 text-white" />
+                            </div>
+                            <div>
+                                <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500">
+                                    Modo Estudio Pro
+                                </h1>
+                                <p className="text-xs text-gray-500 dark:text-gray-400">Nivel {userLevel} • Adaptativo</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                        {/* Sidebar Navigation */}
-                        <div className="lg:col-span-1 space-y-2">
-                            <NavButton
-                                active={activeTab === 'generator'}
-                                onClick={() => setActiveTab('generator')}
-                                label="Generador de Quizzes"
-                                icon="⚡"
-                            />
-                            <NavButton
-                                active={activeTab === 'adaptive'}
-                                onClick={() => setActiveTab('adaptive')}
-                                label="Quiz Adaptativo"
-                                icon="📈"
-                            />
-                            <NavButton
-                                active={activeTab === 'weakness'}
-                                onClick={() => setActiveTab('weakness')}
-                                label="Detector de Debilidades"
-                                icon="🎯"
-                            />
-                            <NavButton
-                                active={activeTab === 'desarrollo'}
-                                onClick={() => setActiveTab('desarrollo')}
-                                label="Práctica de Desarrollo"
-                                icon="✍️"
-                            />
-                            <NavButton
-                                active={activeTab === 'history'}
-                                onClick={() => setActiveTab('history')}
-                                label="Historial"
-                                icon="🕒"
-                            />
+                    <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-2 px-3 py-1 bg-orange-50 dark:bg-orange-900/20 text-orange-600 dark:text-orange-400 rounded-full border border-orange-200 dark:border-orange-800">
+                            <Flame className="w-4 h-4" />
+                            <span className="text-sm font-bold">{streak} días</span>
                         </div>
-
-                        {/* Main Content Area */}
-                        <div className="lg:col-span-3">
-                            {renderContent()}
+                        <div className="hidden md:block text-sm text-gray-500">
+                            Potenciado por AI
                         </div>
                     </div>
                 </div>
-            </div>
-        </StudyProvider>
+            </header>
+
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    {/* Sidebar Navigation */}
+                    <div className="lg:col-span-3 space-y-6">
+                        <nav className="space-y-2">
+                            <button
+                                onClick={() => setActiveTab('generator')}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'generator' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30' : 'hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
+                            >
+                                <Brain className="w-5 h-5" />
+                                <span className="font-medium">Generador de Quiz</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('adaptive')}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'adaptive' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30' : 'hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
+                            >
+                                <Target className="w-5 h-5" />
+                                <span className="font-medium">Quiz Adaptativo</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('weakness')}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'weakness' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30' : 'hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
+                            >
+                                <LineChart className="w-5 h-5" />
+                                <span className="font-medium">Detectar Debilidades</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('desarrollo')}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'desarrollo' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30' : 'hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
+                            >
+                                <BookOpen className="w-5 h-5" />
+                                <span className="font-medium">Práctica Desarrollo</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('achievements')}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'achievements' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30' : 'hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
+                            >
+                                <Trophy className="w-5 h-5" />
+                                <span className="font-medium">Logros</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('history')}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'history' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30' : 'hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
+                            >
+                                <History className="w-5 h-5" />
+                                <span className="font-medium">Historial</span>
+                            </button>
+                        </nav>
+
+                        {/* Unit Progress Widget */}
+                        <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
+                            <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">Progreso por Unidad</h3>
+                            <div className="space-y-3">
+                                {Object.entries(unitStats).length > 0 ? (
+                                    Object.entries(unitStats).map(([unit, stats]) => {
+                                        const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
+                                        return (
+                                            <div key={unit}>
+                                                <div className="flex justify-between text-xs mb-1">
+                                                    <span className="font-medium truncate max-w-[120px]">{unit}</span>
+                                                    <span className="text-gray-500">{percentage}%</span>
+                                                </div>
+                                                <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-1.5">
+                                                    <div
+                                                        className="bg-blue-500 h-1.5 rounded-full transition-all duration-500"
+                                                        style={{ width: `${percentage}%` }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        );
+                                    })
+                                ) : (
+                                    <p className="text-xs text-gray-400 italic">Completa quizzes para ver tu progreso.</p>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Main Content Area */}
+                    <div className="lg:col-span-9">
+                        {activeTab === 'generator' && <QuizGenerator />}
+                        {activeTab === 'adaptive' && <AdaptiveQuiz />}
+                        {activeTab === 'weakness' && <WeaknessDetector />}
+                        {activeTab === 'desarrollo' && <DesarrolloPractice />}
+                        {activeTab === 'history' && <StudyHistory />}
+                        {activeTab === 'achievements' && <Achievements />}
+                    </div>
+                </div>
+            </main>
+        </div>
     );
 };
 
-const NavButton = ({ active, onClick, label, icon }) => (
-    <button
-        onClick={onClick}
-        className={`w-full text-left p-4 rounded-xl transition-all flex items-center gap-3 font-medium ${active
-                ? 'bg-white dark:bg-gray-800 shadow-md text-purple-600 border-l-4 border-purple-600'
-                : 'hover:bg-white/50 dark:hover:bg-gray-800/50 text-gray-600 dark:text-gray-400'
-            }`}
-    >
-        <span className="text-xl">{icon}</span>
-        {label}
-    </button>
-);
+const ModoEstudioPro = () => {
+    return (
+        <StudyProvider>
+            <Dashboard />
+        </StudyProvider>
+    );
+};
 
 export default ModoEstudioPro;

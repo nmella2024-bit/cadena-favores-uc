@@ -49,6 +49,7 @@ const QuizPlayer = ({ quizData, onComplete, onClose }) => {
             ...prev,
             {
                 subtopic: currentQuestion.subtopic,
+                unit: currentQuestion.unit,
                 isCorrect
             }
         ]);

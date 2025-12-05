@@ -42,46 +42,146 @@ export const StudyProvider = ({ children }) => {
         localStorage.setItem('study_userLevel', userLevel.toString());
     }, [userLevel]);
 
+    // Gamification State
+    const [streak, setStreak] = useState(() => {
+        const saved = localStorage.getItem('study_streak');
+        return saved ? parseInt(saved) : 0;
+    });
+    const [lastStudyDate, setLastStudyDate] = useState(() => {
+        return localStorage.getItem('study_lastDate') || null;
+    });
+    const [unitStats, setUnitStats] = useState(() => {
+        const saved = localStorage.getItem('study_unitStats');
+        return saved ? JSON.parse(saved) : {};
+    });
+    const [achievements, setAchievements] = useState(() => {
+        const saved = localStorage.getItem('study_achievements');
+        return saved ? JSON.parse(saved) : [];
+    });
+
+    // Persistence for Gamification
+    useEffect(() => { localStorage.setItem('study_streak', streak.toString()); }, [streak]);
+    useEffect(() => { if (lastStudyDate) localStorage.setItem('study_lastDate', lastStudyDate); }, [lastStudyDate]);
+    useEffect(() => { localStorage.setItem('study_unitStats', JSON.stringify(unitStats)); }, [unitStats]);
+    useEffect(() => { localStorage.setItem('study_achievements', JSON.stringify(achievements)); }, [achievements]);
+
+    // Check Streak on Mount
+    useEffect(() => {
+        if (lastStudyDate) {
+            const today = new Date().toDateString();
+            const last = new Date(lastStudyDate).toDateString();
+            const diffTime = Math.abs(new Date(today) - new Date(last));
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+            if (diffDays > 1 && last !== today) {
+                setStreak(0); // Reset streak if missed a day
+            }
+        }
+    }, []);
+
+    const checkAchievements = (newStats, currentStreak, totalQuestions) => {
+        const newUnlocked = [];
+        const unlockedSet = new Set(achievements);
+
+        // 1. First Step
+        if (!unlockedSet.has('first_step')) {
+            newUnlocked.push('first_step');
+        }
+
+        // 2. On Fire (Streak >= 3)
+        if (currentStreak >= 3 && !unlockedSet.has('on_fire')) {
+            newUnlocked.push('on_fire');
+        }
+
+        // 3. Scholar (Total Questions >= 50)
+        // Need to calculate total questions across all topics
+        let totalQ = 0;
+        Object.values(newStats).forEach(s => totalQ += s.total);
+        if (totalQ >= 50 && !unlockedSet.has('scholar')) {
+            newUnlocked.push('scholar');
+        }
+
+        if (newUnlocked.length > 0) {
+            setAchievements(prev => [...prev, ...newUnlocked]);
+            // Could trigger a toast here
+            // alert(`¡Logro desbloqueado! ${newUnlocked.join(', ')}`);
+        }
+    };
+
     // Acciones
     const addQuizResult = (result) => {
-        const { topic, score, total, type, details } = result; // details: [{ subtopic, isCorrect }]
+        const { topic, score, total, type, details } = result; // details: [{ subtopic, isCorrect, unit }]
 
         // Update History
         const newHistory = [result, ...quizHistory];
         setQuizHistory(newHistory);
         localStorage.setItem('study_quizHistory', JSON.stringify(newHistory));
 
-        // Update Topic Stats
-        setTopicStats(prev => {
-            const currentStats = prev[topic] || { correct: 0, total: 0, subtopics: {} };
-            const newCorrect = currentStats.correct + score;
-            const newTotal = currentStats.total + total;
+        // Update Streak
+        const today = new Date().toDateString();
+        const last = lastStudyDate ? new Date(lastStudyDate).toDateString() : null;
+        let newStreak = streak;
 
-            // Update Subtopic Stats if available
-            const currentSubtopics = currentStats.subtopics || {};
-            let updatedSubtopics = { ...currentSubtopics };
-
-            if (details && Array.isArray(details)) {
-                details.forEach(d => {
-                    if (d.subtopic) {
-                        const sub = updatedSubtopics[d.subtopic] || { correct: 0, total: 0 };
-                        updatedSubtopics[d.subtopic] = {
-                            correct: sub.correct + (d.isCorrect ? 1 : 0),
-                            total: sub.total + 1
-                        };
-                    }
-                });
-            }
-
-            return {
-                ...prev,
-                [topic]: {
-                    correct: newCorrect,
-                    total: newTotal,
-                    subtopics: updatedSubtopics
+        if (last !== today) {
+            if (last) {
+                const diffTime = Math.abs(new Date(today) - new Date(last));
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                if (diffDays === 1) {
+                    newStreak += 1;
+                } else {
+                    newStreak = 1;
                 }
-            };
-        });
+            } else {
+                newStreak = 1;
+            }
+            setStreak(newStreak);
+            setLastStudyDate(new Date().toISOString());
+        }
+
+        // Update Topic Stats & Unit Stats
+        let newTopicStats = { ...topicStats };
+        let newUnitStats = { ...unitStats };
+
+        // Topic Stats Logic
+        const currentStats = newTopicStats[topic] || { correct: 0, total: 0, subtopics: {} };
+        const newCorrect = currentStats.correct + score;
+        const newTotal = currentStats.total + total;
+
+        const currentSubtopics = currentStats.subtopics || {};
+        let updatedSubtopics = { ...currentSubtopics };
+
+        if (details && Array.isArray(details)) {
+            details.forEach(d => {
+                // Subtopic Update
+                if (d.subtopic) {
+                    const sub = updatedSubtopics[d.subtopic] || { correct: 0, total: 0 };
+                    updatedSubtopics[d.subtopic] = {
+                        correct: sub.correct + (d.isCorrect ? 1 : 0),
+                        total: sub.total + 1
+                    };
+                }
+                // Unit Update
+                if (d.unit) {
+                    const uStat = newUnitStats[d.unit] || { correct: 0, total: 0 };
+                    newUnitStats[d.unit] = {
+                        correct: uStat.correct + (d.isCorrect ? 1 : 0),
+                        total: uStat.total + 1
+                    };
+                }
+            });
+        }
+
+        newTopicStats[topic] = {
+            correct: newCorrect,
+            total: newTotal,
+            subtopics: updatedSubtopics
+        };
+
+        setTopicStats(newTopicStats);
+        setUnitStats(newUnitStats);
+
+        // Check Achievements
+        checkAchievements(newTopicStats, newStreak, 0);
 
         // Lógica simple adaptativa
         const percentage = total > 0 ? score / total : 0;
@@ -120,6 +220,9 @@ export const StudyProvider = ({ children }) => {
         quizHistory,
         topicStats,
         userLevel,
+        streak,
+        unitStats,
+        achievements,
         addQuizResult,
         getWeakTopics
     };
