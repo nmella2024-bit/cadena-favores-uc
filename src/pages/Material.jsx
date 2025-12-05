@@ -13,7 +13,7 @@ import MoveFolderModal from '../components/MoveFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import MaterialSearch from '../components/MaterialSearch';
 import solidaridadLogo from '../assets/solidaridad-UC.jpg';
-import AutoStudyInterface from '../autoStudyDocs/AutoStudyWidget';
+// import AutoStudyInterface from '../autoStudyDocs/AutoStudyWidget';
 
 
 const SkeletonCard = () => (
@@ -511,9 +511,9 @@ const Material = () => {
         )}
 
         {/* Modal de Auto Study - Fuera del bloque exclusivo para asegurar que renderice si es admin */}
-        {currentUser && isAutoStudyOpen && (
-          <AutoStudyInterface onClose={() => setIsAutoStudyOpen(false)} />
-        )}
+        {/* {currentUser && isAutoStudyOpen && (
+        <AutoStudyInterface onClose={() => setIsAutoStudyOpen(false)} />
+      )} */}
       </div>
     </div>
   );
