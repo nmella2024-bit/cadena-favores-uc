@@ -347,14 +347,14 @@ const Material = () => {
 
             {/* Botones IA */}
             <div className="flex-shrink-0 relative z-10 flex flex-col sm:flex-row gap-2">
-              <Link to="/modo-estudio-pro">
-                <PrimaryButton
-                  className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-4 text-sm font-medium border-none shadow-sm transition-all hover:shadow-md"
-                >
-                  <Sparkles className="h-5 w-5" />
-                  <span>Modo Estudio Pro</span>
-                </PrimaryButton>
-              </Link>
+              <PrimaryButton
+                as={Link}
+                to="/modo-estudio-pro"
+                className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-4 text-sm font-medium border-none shadow-sm transition-all hover:shadow-md"
+              >
+                <Sparkles className="h-5 w-5" />
+                <span>Modo Estudio Pro</span>
+              </PrimaryButton>
 
               {currentUser?.rol === 'admin' ? (
                 <PrimaryButton
