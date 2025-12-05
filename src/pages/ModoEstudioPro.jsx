@@ -13,6 +13,7 @@ import {
     Trophy
 } from 'lucide-react';
 
+import ExerciseBank from '../components/study/ExerciseBank';
 import QuizGenerator from '../components/study/QuizGenerator';
 import AdaptiveQuiz from '../components/study/AdaptiveQuiz';
 import WeaknessDetector from '../components/study/WeaknessDetector';
@@ -69,6 +70,13 @@ const Dashboard = () => {
                             >
                                 <Brain className="w-5 h-5" />
                                 <span className="font-medium">Generador de Quiz</span>
+                            </button>
+                            <button
+                                onClick={() => setActiveTab('bank')}
+                                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${activeTab === 'bank' ? 'bg-purple-600 text-white shadow-lg shadow-purple-500/30' : 'hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300'}`}
+                            >
+                                <BookOpen className="w-5 h-5" />
+                                <span className="font-medium">Banco de Ejercicios</span>
                             </button>
                             <button
                                 onClick={() => setActiveTab('adaptive')}
@@ -139,6 +147,7 @@ const Dashboard = () => {
                     {/* Main Content Area */}
                     <div className="lg:col-span-9">
                         {activeTab === 'generator' && <QuizGenerator />}
+                        {activeTab === 'bank' && <ExerciseBank />}
                         {activeTab === 'adaptive' && <AdaptiveQuiz />}
                         {activeTab === 'weakness' && <WeaknessDetector />}
                         {activeTab === 'desarrollo' && <DesarrolloPractice />}
