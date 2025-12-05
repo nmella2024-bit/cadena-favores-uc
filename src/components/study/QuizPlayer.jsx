@@ -11,6 +11,13 @@ const QuizPlayer = ({ quizData, onComplete, onClose }) => {
 
     const currentQuestion = quizData?.questions?.[currentIndex];
 
+    // Debugging
+    console.log('QuizPlayer Render:', {
+        currentIndex,
+        total: quizData?.questions?.length,
+        currentQuestion
+    });
+
     if (!currentQuestion && !showResults) {
         return (
             <div className="text-center p-8">
@@ -92,31 +99,43 @@ const QuizPlayer = ({ quizData, onComplete, onClose }) => {
             </div>
 
             <h3 className="text-xl font-bold mb-6 text-gray-900 dark:text-white">
-                {currentQuestion.question}
+                {currentQuestion.question || 'Pregunta sin texto'}
             </h3>
 
             <div className="space-y-3 mb-6">
-                {currentQuestion.options.map((option, idx) => {
-                    let className = "w-full text-left p-4 rounded-lg border transition-all ";
-                    if (isChecked) {
-                        if (idx === currentQuestion.correctIndex) className += "bg-green-100 border-green-500 text-green-800";
-                        else if (idx === selectedOption) className += "bg-red-100 border-red-500 text-red-800";
-                        else className += "border-gray-200 opacity-50";
-                    } else {
-                        className += "border-gray-200 hover:border-purple-500 hover:bg-purple-50";
-                    }
+                {Array.isArray(currentQuestion.options) && currentQuestion.options.length > 0 ? (
+                    currentQuestion.options.map((option, idx) => {
+                        let className = "w-full text-left p-4 rounded-lg border transition-all ";
+                        if (isChecked) {
+                            if (idx === currentQuestion.correctIndex) className += "bg-green-100 border-green-500 text-green-800";
+                            else if (idx === selectedOption) className += "bg-red-100 border-red-500 text-red-800";
+                            else className += "border-gray-200 opacity-50";
+                        } else {
+                            className += "border-gray-200 hover:border-purple-500 hover:bg-purple-50";
+                        }
 
-                    return (
+                        return (
+                            <button
+                                key={idx}
+                                onClick={() => handleOptionSelect(idx)}
+                                disabled={isChecked}
+                                className={className}
+                            >
+                                {option}
+                            </button>
+                        );
+                    })
+                ) : (
+                    <div className="p-4 bg-yellow-50 text-yellow-800 rounded-lg border border-yellow-200">
+                        ⚠️ Esta pregunta no tiene opciones válidas.
                         <button
-                            key={idx}
-                            onClick={() => handleOptionSelect(idx)}
-                            disabled={isChecked}
-                            className={className}
+                            onClick={handleNext}
+                            className="block mt-2 text-sm font-bold underline"
                         >
-                            {option}
+                            Saltar pregunta
                         </button>
-                    );
-                })}
+                    </div>
+                )}
             </div>
 
             {isChecked && (
