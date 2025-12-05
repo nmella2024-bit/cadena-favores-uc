@@ -3,7 +3,7 @@ import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '..
 import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId, moverCarpeta } from '../services/folderService';
 import { useAuth } from '../context/AuthContext';
 import { useSearchParams, Link } from 'react-router-dom';
-import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus, Search } from 'lucide-react';
+import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus, Search, Sparkles } from 'lucide-react';
 import SubirMaterialModal from '../components/SubirMaterialModal';
 import MaterialCard from '../components/MaterialCard';
 import FolderCard from '../components/FolderCard';
@@ -349,6 +349,13 @@ const Material = () => {
 
 
             <div className="flex-shrink-0 relative z-10 flex flex-col sm:flex-row gap-2">
+              <Link
+                to="/modo-estudio-pro"
+                className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-4 text-sm font-medium border-none shadow-sm transition-all hover:shadow-md rounded-lg text-white"
+              >
+                <Sparkles className="h-5 w-5" />
+                <span>Modo Estudio Pro</span>
+              </Link>
               {currentUser?.rol === 'admin' ? (
                 <PrimaryButton
                   onClick={() => setIsAutoStudyOpen(true)}
