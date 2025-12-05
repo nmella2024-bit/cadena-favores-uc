@@ -13,7 +13,7 @@ import MoveFolderModal from '../components/MoveFolderModal';
 import PrimaryButton from '../components/ui/PrimaryButton';
 import MaterialSearch from '../components/MaterialSearch';
 import solidaridadLogo from '../assets/solidaridad-UC.jpg';
-
+import AutoStudyInterface from '../autoStudyDocs/AutoStudyWidget';
 
 
 const SkeletonCard = () => (
