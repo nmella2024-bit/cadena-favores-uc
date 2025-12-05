@@ -17,6 +17,7 @@ export const generateQuiz = async (topic, config = {}) => {
                 prompt: `Generar quiz sobre ${topic}`, // Fallback prompt
                 config: {
                     topic,
+                    context: config.context, // Pass context if available
                     ...config
                 }
             })

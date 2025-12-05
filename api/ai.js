@@ -101,15 +101,16 @@ export default async function handler(req) {
                 {
                   "type": "multiple-choice" | "open",
                   "question": "¿Pregunta?",
+                  "subtopic": "Sub-tema específico (ej: Límites Notables)", // OBLIGATORIO
                   // Solo para multiple-choice:
-                  "options": ["Opción A", "Opción B", "Opción C", "Opción D"],
+                  "options": ["Opción A", "Opción B", "Opción C", "Opción D"], // OBLIGATORIO: Siempre 4 opciones
                   "correctIndex": 0, 
                   // Para ambos tipos:
                   "explanation": "Explicación detallada de la respuesta correcta."
                 }
               ]
             }
-            4. NO incluyas markdown (\`\`\`). Solo el JSON raw.
+            4. NO incluyas markdown (\`\`\`). Solo el JSON raw. Asegúrate de que "options" nunca esté vacío para preguntas de selección múltiple.
         `;
 
     const gradeSystemPrompt = `

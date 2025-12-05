@@ -44,40 +44,76 @@ export const StudyProvider = ({ children }) => {
 
     // Acciones
     const addQuizResult = (result) => {
-        // result: { topic, score, total, date, type }
-        setQuizHistory(prev => [result, ...prev]);
+        const { topic, score, total, type, details } = result; // details: [{ subtopic, isCorrect }]
 
-        // Actualizar estadísticas por tema
+        // Update History
+        const newHistory = [result, ...quizHistory];
+        setQuizHistory(newHistory);
+        localStorage.setItem('study_quizHistory', JSON.stringify(newHistory));
+
+        // Update Topic Stats
         setTopicStats(prev => {
-            const current = prev[result.topic] || { correct: 0, total: 0 };
-            const newStats = {
+            const currentStats = prev[topic] || { correct: 0, total: 0, subtopics: {} };
+            const newCorrect = currentStats.correct + score;
+            const newTotal = currentStats.total + total;
+
+            // Update Subtopic Stats if available
+            const currentSubtopics = currentStats.subtopics || {};
+            let updatedSubtopics = { ...currentSubtopics };
+
+            if (details && Array.isArray(details)) {
+                details.forEach(d => {
+                    if (d.subtopic) {
+                        const sub = updatedSubtopics[d.subtopic] || { correct: 0, total: 0 };
+                        updatedSubtopics[d.subtopic] = {
+                            correct: sub.correct + (d.isCorrect ? 1 : 0),
+                            total: sub.total + 1
+                        };
+                    }
+                });
+            }
+
+            return {
                 ...prev,
-                [result.topic]: {
-                    correct: current.correct + result.score,
-                    total: current.total + result.total
+                [topic]: {
+                    correct: newCorrect,
+                    total: newTotal,
+                    subtopics: updatedSubtopics
                 }
             };
-            return newStats;
         });
 
         // Lógica simple adaptativa
-        const percentage = result.score / result.total;
-        if (percentage >= 0.8 && userLevel < 5) {
-            setUserLevel(prev => prev + 1);
-        } else if (percentage < 0.4 && userLevel > 1) {
-            setUserLevel(prev => prev - 1);
+        const percentage = total > 0 ? score / total : 0;
+        if (total > 0) {
+            if (percentage >= 0.8 && userLevel < 5) {
+                setUserLevel(prev => prev + 1);
+            } else if (percentage < 0.4 && userLevel > 1) {
+                setUserLevel(prev => prev - 1);
+            }
         }
     };
 
     const getWeakTopics = () => {
-        return Object.entries(topicStats)
-            .map(([topic, stats]) => ({
-                topic,
-                percentage: stats.total > 0 ? (stats.correct / stats.total) * 100 : 0,
-                total: stats.total
-            }))
-            .filter(item => item.percentage < 60 && item.total >= 5) // Criterio de debilidad
-            .sort((a, b) => a.percentage - b.percentage);
+        const weaknesses = [];
+        Object.entries(topicStats).forEach(([topic, stats]) => {
+            // Check main topic
+            const mainPercentage = stats.total > 0 ? (stats.correct / stats.total) * 100 : 100;
+            if (stats.total >= 3 && mainPercentage < 60) {
+                weaknesses.push({ topic, percentage: mainPercentage, type: 'topic' });
+            }
+
+            // Check subtopics
+            if (stats.subtopics) {
+                Object.entries(stats.subtopics).forEach(([sub, subStats]) => {
+                    const subPercentage = subStats.total > 0 ? (subStats.correct / subStats.total) * 100 : 100;
+                    if (subStats.total >= 1 && subPercentage < 60) {
+                        weaknesses.push({ topic: `${topic}: ${sub}`, percentage: subPercentage, type: 'subtopic' });
+                    }
+                });
+            }
+        });
+        return weaknesses.sort((a, b) => a.percentage - b.percentage);
     };
 
     const value = {

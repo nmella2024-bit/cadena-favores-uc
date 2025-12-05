@@ -32,14 +32,26 @@ const QuizPlayer = ({ quizData, onComplete, onClose }) => {
         );
     }
 
+    const [details, setDetails] = useState([]); // [{ subtopic, isCorrect }]
+
     const handleOptionSelect = (index) => {
         if (isChecked) return;
         setSelectedOption(index);
         setIsChecked(true);
 
-        if (index === currentQuestion.correctIndex) {
+        const isCorrect = index === currentQuestion.correctIndex;
+        if (isCorrect) {
             setScore(prev => prev + 1);
         }
+
+        // Track details
+        setDetails(prev => [
+            ...prev,
+            {
+                subtopic: currentQuestion.subtopic,
+                isCorrect
+            }
+        ]);
     };
 
     const handleNext = () => {
@@ -56,10 +68,18 @@ const QuizPlayer = ({ quizData, onComplete, onClose }) => {
         setShowResults(true);
         addQuizResult({
             topic: quizData.topic || 'General',
-            score: score + (selectedOption === currentQuestion.correctIndex ? 0 : 0), // Add last point if correct (already added in handleOptionSelect?) No, handleOptionSelect adds it.
+            score: score + (selectedOption === currentQuestion.correctIndex ? 0 : 0), // Already added in handleOptionSelect? Yes.
+            // Wait, handleOptionSelect adds to score state, but finishQuiz uses current score state.
+            // The issue is if finishQuiz is called immediately after handleOptionSelect (e.g. last question).
+            // But handleNext calls finishQuiz. handleNext is called by button click.
+            // So score state is already updated.
+            // However, handleOptionSelect updates details state.
+            // If user clicks "Ver Resultados" immediately after selecting option (if we had auto-advance), it might be race condition.
+            // But we have a "Next/Finish" button that appears AFTER selection. So state should be stable.
             total: quizData.questions.length,
             date: new Date().toISOString(),
-            type: 'quiz'
+            type: 'quiz',
+            details: details
         });
         if (onComplete) onComplete(score);
     };
