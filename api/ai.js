@@ -137,12 +137,17 @@ export default async function handler(req) {
     if (mode === 'quiz') systemPrompt = quizSystemPrompt;
     if (mode === 'grade-open-answer') systemPrompt = gradeSystemPrompt;
 
+    let finalPrompt = prompt;
+    if (config?.context) {
+      finalPrompt += `\n\nCONTEXTO/MATERIAL DE ESTUDIO:\n${config.context}\n\nINSTRUCCIÓN: Usa EXCLUSIVAMENTE este material para generar las preguntas. Si el material es insuficiente, usa tu conocimiento general pero prioriza el contexto.`;
+    }
+
     const messages = [
       {
         role: "system",
         content: systemPrompt
       },
-      { role: "user", content: prompt }
+      { role: "user", content: finalPrompt }
     ];
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
