@@ -228,6 +228,19 @@ const ExerciseBank = () => {
                                     </span>
                                     <span className="text-sm text-gray-500">Selecciona un tema:</span>
                                 </div>
+
+                                {SYLLABUS[selectedCourse].externalLink && (
+                                    <a
+                                        href={SYLLABUS[selectedCourse].externalLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="mb-4 w-full flex items-center justify-center gap-2 p-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg border border-blue-200 transition-colors font-medium"
+                                    >
+                                        <Book className="w-4 h-4" />
+                                        Ver Guías en Manthano
+                                    </a>
+                                )}
+
                                 {SYLLABUS[selectedCourse].topics.map((topic) => (
                                     <button
                                         key={topic}
