@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStudy } from '../../context/StudyContext';
-import { generateWeaknessQuiz } from '../../services/studyAI';
+import { studyAI } from '../../services/studyAI';
 import QuizPlayer from './QuizPlayer';
 import { AlertTriangle, CheckCircle, Loader2 } from 'lucide-react';
 
@@ -15,7 +15,7 @@ const WeaknessDetector = () => {
         if (weakTopics.length === 0) return;
         setLoading(true);
         try {
-            const data = await generateWeaknessQuiz(weakTopics.slice(0, 3)); // Top 3 weak topics
+            const data = await studyAI.generateWeaknessQuiz(weakTopics.slice(0, 3)); // Top 3 weak topics
             setQuizData({ ...data, topic: 'Refuerzo Personalizado' });
         } catch (error) {
             alert('Error al generar quiz de refuerzo');

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useStudy } from '../../context/StudyContext';
-import { generateQuiz } from '../../services/studyAI';
+import { studyAI } from '../../services/studyAI';
 import QuizPlayer from './QuizPlayer';
 import { TrendingUp, Loader2 } from 'lucide-react';
 
@@ -21,7 +21,7 @@ const AdaptiveQuiz = () => {
         setLoading(true);
         try {
             const difficulty = getDifficultyLabel(userLevel);
-            const data = await generateQuiz(topic, {
+            const data = await studyAI.generateQuiz(topic, {
                 numQuestions: 5,
                 questionType: 'multiple-choice',
                 difficulty

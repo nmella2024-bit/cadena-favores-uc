@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { generateQuiz } from '../../services/studyAI';
+import { studyAI } from '../../services/studyAI';
 import QuizPlayer from './QuizPlayer';
 import { Loader2, Brain } from 'lucide-react';
 
@@ -50,7 +50,7 @@ const QuizGenerator = () => {
         setLoading(true);
         try {
             const context = contextFiles.map(f => `--- ${f.name} ---\n${f.text}`).join('\n\n');
-            const data = await generateQuiz(topic || 'Material Adjunto', { ...config, context });
+            const data = await studyAI.generateQuiz(topic || 'Material Adjunto', { ...config, context });
             setQuizData({ ...data, topic: topic || 'Material Adjunto' });
         } catch (error) {
             alert('Error al generar el quiz. Intenta de nuevo.');

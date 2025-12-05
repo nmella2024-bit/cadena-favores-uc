@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { gradeAnswer } from '../../services/studyAI';
+import { studyAI } from '../../services/studyAI';
 import { useStudy } from '../../context/StudyContext';
 import { PenTool, Loader2, Send } from 'lucide-react';
 
@@ -14,7 +14,7 @@ const DesarrolloPractice = () => {
         if (!question || !answer) return;
         setLoading(true);
         try {
-            const result = await gradeAnswer(question, answer);
+            const result = await studyAI.gradeAnswer(question, answer);
             setFeedback(result);
 
             // Save result
