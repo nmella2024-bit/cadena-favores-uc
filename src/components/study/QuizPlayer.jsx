@@ -148,13 +148,21 @@ const QuizPlayer = ({ quizData, onComplete, onClose }) => {
                     })
                 ) : (
                     <div className="p-4 bg-yellow-50 text-yellow-800 rounded-lg border border-yellow-200">
-                        ⚠️ Esta pregunta no tiene opciones válidas.
-                        <button
-                            onClick={handleNext}
-                            className="block mt-2 text-sm font-bold underline"
-                        >
-                            Saltar pregunta
-                        </button>
+                        {currentQuestion.type === 'open' ? (
+                            <div className="text-gray-600 italic">
+                                Esta es una pregunta de desarrollo. Piensa tu respuesta y verifica con la explicación.
+                            </div>
+                        ) : (
+                            <>
+                                ⚠️ Esta pregunta no tiene opciones válidas.
+                                <button
+                                    onClick={handleNext}
+                                    className="block mt-2 text-sm font-bold underline"
+                                >
+                                    Saltar pregunta
+                                </button>
+                            </>
+                        )}
                     </div>
                 )}
             </div>

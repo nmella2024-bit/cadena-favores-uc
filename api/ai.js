@@ -104,14 +104,15 @@ export default async function handler(req) {
                   "unit": "Unidad General (ej: Cálculo, Álgebra, Historia)", // OBLIGATORIO: Clasificación general
                   "subtopic": "Sub-tema específico (ej: Límites Notables)", // OBLIGATORIO
                   // Solo para multiple-choice:
-                  "options": ["Opción A", "Opción B", "Opción C", "Opción D"], // OBLIGATORIO: Siempre 4 opciones
+                  "options": ["Opción A", "Opción B", "Opción C", "Opción D"], // OBLIGATORIO: Siempre 4 opciones. NUNCA DEJAR VACÍO.
                   "correctIndex": 0, 
                   // Para ambos tipos:
                   "explanation": "Explicación detallada de la respuesta correcta."
                 }
               ]
             }
-            4. NO incluyas markdown (\`\`\`). Solo el JSON raw. Asegúrate de que "options" nunca esté vacío para preguntas de selección múltiple.
+            4. IMPORTANTE: Si el tipo es "multiple-choice" o "mixed", el array "options" DEBE tener 4 strings. Si no se te ocurren, inventa opciones plausibles. NUNCA devuelvas "options": [] o null.
+            5. NO incluyas markdown (\`\`\`). Solo el JSON raw.
         `;
 
     const gradeSystemPrompt = `

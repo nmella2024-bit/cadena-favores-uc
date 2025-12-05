@@ -4,41 +4,31 @@ import { studyAI } from '../../services/studyAI';
 import QuizPlayer from './QuizPlayer';
 
 const SYLLABUS = {
+    "Introducción al Cálculo": {
+        icon: <Calculator className="w-6 h-6" />,
+        color: "text-green-500",
+        bg: "bg-green-100",
+        topics: [
+            "Números Reales y Desigualdades",
+            "Valor Absoluto",
+            "Funciones: Dominio y Recorrido",
+            "Composición de Funciones",
+            "Funciones Inversas",
+            "Trigonometría Básica"
+        ]
+    },
     "Cálculo I": {
         icon: <Calculator className="w-6 h-6" />,
         color: "text-blue-500",
         bg: "bg-blue-100",
         topics: [
-            "Números Reales y Desigualdades",
-            "Funciones y Gráficas",
             "Límites y Continuidad",
-            "Derivadas: Concepto y Reglas",
-            "Aplicaciones de la Derivada",
+            "Derivadas: Definición y Reglas",
+            "Regla de la Cadena",
+            "Derivación Implícita",
+            "Aplicaciones: Máximos y Mínimos",
+            "Teorema del Valor Medio",
             "Integrales Indefinidas"
-        ]
-    },
-    "Álgebra Lineal": {
-        icon: <Layers className="w-6 h-6" />,
-        color: "text-purple-500",
-        bg: "bg-purple-100",
-        topics: [
-            "Matrices y Determinantes",
-            "Sistemas de Ecuaciones Lineales",
-            "Espacios Vectoriales",
-            "Transformaciones Lineales",
-            "Valores y Vectores Propios"
-        ]
-    },
-    "Física I": {
-        icon: <Atom className="w-6 h-6" />,
-        color: "text-orange-500",
-        bg: "bg-orange-100",
-        topics: [
-            "Vectores y Cinemática",
-            "Dinámica de la Partícula (Leyes de Newton)",
-            "Trabajo y Energía",
-            "Momento Lineal y Colisiones",
-            "Dinámica de Rotación"
         ]
     },
     "Cálculo II": {
@@ -47,10 +37,68 @@ const SYLLABUS = {
         bg: "bg-red-100",
         topics: [
             "Técnicas de Integración",
+            "Integrales Definidas y Áreas",
+            "Volúmenes de Revolución",
             "Integrales Impropias",
-            "Sucesiones y Series",
-            "Coordenadas Polares",
-            "Vectores en el Espacio"
+            "Sucesiones y Series Numéricas",
+            "Series de Potencias y Taylor",
+            "Coordenadas Polares"
+        ]
+    },
+    "Cálculo III": {
+        icon: <Atom className="w-6 h-6" />,
+        color: "text-indigo-500",
+        bg: "bg-indigo-100",
+        topics: [
+            "Vectores y Geometría en el Espacio",
+            "Funciones de Varias Variables",
+            "Derivadas Parciales y Gradiente",
+            "Optimización Multivariable (Lagrange)",
+            "Integrales Dobles y Triples",
+            "Campos Vectoriales",
+            "Teoremas de Green, Stokes y Divergencia"
+        ]
+    },
+    "Álgebra Lineal": {
+        icon: <Layers className="w-6 h-6" />,
+        color: "text-purple-500",
+        bg: "bg-purple-100",
+        topics: [
+            "Matrices y Operaciones",
+            "Determinantes e Inversa",
+            "Sistemas de Ecuaciones Lineales",
+            "Espacios Vectoriales y Subespacios",
+            "Independencia Lineal y Bases",
+            "Transformaciones Lineales",
+            "Valores y Vectores Propios (Diagonalización)"
+        ]
+    },
+    "Probabilidad y Estadística": {
+        icon: <Book className="w-6 h-6" />,
+        color: "text-yellow-500",
+        bg: "bg-yellow-100",
+        topics: [
+            "Probabilidad Condicional y Bayes",
+            "Variables Aleatorias Discretas",
+            "Variables Aleatorias Continuas",
+            "Distribuciones (Normal, Binomial, Poisson)",
+            "Teorema del Límite Central",
+            "Intervalos de Confianza",
+            "Pruebas de Hipótesis"
+        ]
+    },
+    "Física: Mecánica": {
+        icon: <Atom className="w-6 h-6" />,
+        color: "text-orange-500",
+        bg: "bg-orange-100",
+        topics: [
+            "Cinemática en 1D y 2D",
+            "Leyes de Newton (Dinámica)",
+            "Trabajo y Energía",
+            "Conservación del Momento Lineal",
+            "Dinámica de Rotación y Torque",
+            "Gravitación Universal",
+            "Oscilaciones y Ondas Mecánicas"
         ]
     }
 };
