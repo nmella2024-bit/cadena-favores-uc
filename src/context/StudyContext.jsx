@@ -171,10 +171,14 @@ export const StudyProvider = ({ children }) => {
             });
         }
 
+        // Determine Unit from details if possible
+        const unit = details && details.length > 0 && details.find(d => d.unit)?.unit;
+
         newTopicStats[topic] = {
             correct: newCorrect,
             total: newTotal,
-            subtopics: updatedSubtopics
+            subtopics: updatedSubtopics,
+            unit: unit || currentStats.unit || 'General' // Persist unit
         };
 
         setTopicStats(newTopicStats);
@@ -195,12 +199,16 @@ export const StudyProvider = ({ children }) => {
     };
 
     const getWeakTopics = () => {
-        const weaknesses = [];
+        const groupedWeaknesses = {};
+
         Object.entries(topicStats).forEach(([topic, stats]) => {
+            const unit = stats.unit || 'General';
+
             // Check main topic
             const mainPercentage = stats.total > 0 ? (stats.correct / stats.total) * 100 : 100;
             if (stats.total >= 3 && mainPercentage < 60) {
-                weaknesses.push({ topic, percentage: mainPercentage, type: 'topic' });
+                if (!groupedWeaknesses[unit]) groupedWeaknesses[unit] = [];
+                groupedWeaknesses[unit].push({ topic, percentage: mainPercentage, type: 'topic' });
             }
 
             // Check subtopics
@@ -208,12 +216,19 @@ export const StudyProvider = ({ children }) => {
                 Object.entries(stats.subtopics).forEach(([sub, subStats]) => {
                     const subPercentage = subStats.total > 0 ? (subStats.correct / subStats.total) * 100 : 100;
                     if (subStats.total >= 1 && subPercentage < 60) {
-                        weaknesses.push({ topic: `${topic}: ${sub}`, percentage: subPercentage, type: 'subtopic' });
+                        if (!groupedWeaknesses[unit]) groupedWeaknesses[unit] = [];
+                        groupedWeaknesses[unit].push({ topic: `${topic}: ${sub}`, percentage: subPercentage, type: 'subtopic', rawTopic: topic, rawSubtopic: sub });
                     }
                 });
             }
         });
-        return weaknesses.sort((a, b) => a.percentage - b.percentage);
+
+        // Sort within units
+        Object.keys(groupedWeaknesses).forEach(unit => {
+            groupedWeaknesses[unit].sort((a, b) => a.percentage - b.percentage);
+        });
+
+        return groupedWeaknesses;
     };
 
     const value = {
