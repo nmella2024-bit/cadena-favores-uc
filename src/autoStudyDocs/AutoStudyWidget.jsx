@@ -1078,7 +1078,7 @@ const AutoStudyWidget = (props) => {
                 </div>
             )}
         </div>
-        </div >
+
     );
 };
 
