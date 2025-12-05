@@ -1,104 +1,74 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useStudy } from '../../context/StudyContext';
-import { studyAI } from '../../services/studyAI';
+import { generateQuiz } from '../../services/studyAI';
 import QuizPlayer from './QuizPlayer';
-import { TrendingUp, Loader2, Award } from 'lucide-react';
+import { TrendingUp, Loader2 } from 'lucide-react';
 
 const AdaptiveQuiz = () => {
     const { userLevel } = useStudy();
-    const [step, setStep] = useState('intro'); // intro, loading, playing
     const [topic, setTopic] = useState('');
+    const [loading, setLoading] = useState(false);
     const [quizData, setQuizData] = useState(null);
-    const [error, setError] = useState('');
+
+    const getDifficultyLabel = (level) => {
+        if (level <= 2) return 'Básico';
+        if (level <= 4) return 'Intermedio';
+        return 'Avanzado';
+    };
 
     const handleStart = async () => {
-        if (!topic.trim()) return;
-        setStep('loading');
+        if (!topic) return;
+        setLoading(true);
         try {
-            const data = await studyAI.generateQuiz(topic, '', {
+            const difficulty = getDifficultyLabel(userLevel);
+            const data = await generateQuiz(topic, {
                 numQuestions: 5,
-                questionType: 'mixed',
-                difficulty: userLevel
+                questionType: 'multiple-choice',
+                difficulty
             });
-            setQuizData(data);
-            setStep('playing');
-        } catch (err) {
-            console.error(err);
-            setError('Error al iniciar el quiz adaptativo.');
-            setStep('intro');
+            setQuizData({ ...data, topic });
+        } catch (error) {
+            alert('Error al iniciar quiz adaptativo');
+        } finally {
+            setLoading(false);
         }
     };
 
-    if (step === 'playing' && quizData) {
-        return (
-            <div>
-                <div className="mb-4 flex justify-between items-center bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
-                    <span className="text-sm font-medium text-blue-800 dark:text-blue-200">
-                        Nivel Actual: <strong>{userLevel}</strong>
-                    </span>
-                    <button
-                        onClick={() => setStep('intro')}
-                        className="text-xs text-blue-600 dark:text-blue-400 hover:underline"
-                    >
-                        Salir
-                    </button>
-                </div>
-                <QuizPlayer
-                    quizData={quizData}
-                    onRestart={() => setStep('intro')}
-                />
-            </div>
-        );
+    if (quizData) {
+        return <QuizPlayer quizData={quizData} onClose={() => setQuizData(null)} />;
     }
 
     return (
-        <div className="max-w-2xl mx-auto text-center">
-            <div className="mb-8">
-                <div className="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <TrendingUp className="w-10 h-10" />
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 h-full">
+            <div className="flex items-center gap-3 mb-4">
+                <div className="p-3 bg-blue-100 rounded-lg text-blue-600">
+                    <TrendingUp className="w-6 h-6" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Quiz Adaptativo</h2>
-                <p className="text-gray-500 dark:text-gray-400 mt-2">
-                    El sistema ajustará la dificultad automáticamente según tu desempeño.
-                </p>
+                <div>
+                    <h2 className="text-xl font-bold">Quiz Adaptativo</h2>
+                    <p className="text-sm text-gray-500">Nivel actual: {userLevel}/5 ({getDifficultyLabel(userLevel)})</p>
+                </div>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700">
-                <div className="mb-6">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-100 text-purple-700 font-bold text-sm">
-                        <Award className="w-4 h-4" />
-                        Tu Nivel: {userLevel}
-                    </div>
-                </div>
+            <p className="text-gray-600 dark:text-gray-300 mb-6">
+                El sistema ajustará la dificultad de las preguntas basándose en tu rendimiento histórico.
+            </p>
 
-                <div className="mb-6 text-left">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Tema a practicar
-                    </label>
-                    <input
-                        type="text"
-                        value={topic}
-                        onChange={(e) => setTopic(e.target.value)}
-                        placeholder="Ej: Matemáticas, Historia, Programación..."
-                        className="w-full p-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none"
-                    />
-                </div>
-
-                {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            <div className="space-y-4">
+                <input
+                    type="text"
+                    value={topic}
+                    onChange={(e) => setTopic(e.target.value)}
+                    placeholder="Tema a practicar..."
+                    className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:border-gray-600"
+                />
 
                 <button
                     onClick={handleStart}
-                    disabled={!topic.trim() || step === 'loading'}
-                    className="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg shadow-lg shadow-blue-500/30 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                    disabled={loading || !topic}
+                    className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
                 >
-                    {step === 'loading' ? (
-                        <>
-                            <Loader2 className="w-6 h-6 animate-spin" />
-                            Preparando Desafío...
-                        </>
-                    ) : (
-                        'Iniciar Desafío'
-                    )}
+                    {loading ? <Loader2 className="animate-spin w-5 h-5" /> : 'Comenzar Desafío'}
                 </button>
             </div>
         </div>

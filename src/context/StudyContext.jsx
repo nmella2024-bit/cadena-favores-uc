@@ -11,93 +11,81 @@ export const useStudy = () => {
 };
 
 export const StudyProvider = ({ children }) => {
-    const [studyHistory, setStudyHistory] = useState([]);
-    const [weakTopics, setWeakTopics] = useState([]);
-    const [userLevel, setUserLevel] = useState('Intermedio'); // Principiante, Intermedio, Avanzado
+    // Estado para el historial de quizzes
+    const [quizHistory, setQuizHistory] = useState(() => {
+        const saved = localStorage.getItem('study_quizHistory');
+        return saved ? JSON.parse(saved) : [];
+    });
 
-    // Load from LocalStorage on mount
+    // Estado para temas débiles (agregación de estadísticas)
+    const [topicStats, setTopicStats] = useState(() => {
+        const saved = localStorage.getItem('study_topicStats');
+        return saved ? JSON.parse(saved) : {};
+    });
+
+    // Nivel del usuario para quizzes adaptativos (1-5, default 3)
+    const [userLevel, setUserLevel] = useState(() => {
+        const saved = localStorage.getItem('study_userLevel');
+        return saved ? parseInt(saved) : 3;
+    });
+
+    // Persistencia
     useEffect(() => {
-        const storedHistory = localStorage.getItem('studyHistory');
-        const storedLevel = localStorage.getItem('userLevel');
+        localStorage.setItem('study_quizHistory', JSON.stringify(quizHistory));
+    }, [quizHistory]);
 
-        if (storedHistory) {
-            setStudyHistory(JSON.parse(storedHistory));
-        }
-        if (storedLevel) {
-            setUserLevel(storedLevel);
-        }
-    }, []);
-
-    // Calculate Weak Topics whenever history changes
     useEffect(() => {
-        if (studyHistory.length === 0) return;
+        localStorage.setItem('study_topicStats', JSON.stringify(topicStats));
+    }, [topicStats]);
 
-        const topicStats = {};
+    useEffect(() => {
+        localStorage.setItem('study_userLevel', userLevel.toString());
+    }, [userLevel]);
 
-        studyHistory.forEach(session => {
-            // Assuming session.details contains breakdown by topic/subtopic
-            // or session.topic is the main topic
-            const topic = session.topic;
-            if (!topicStats[topic]) {
-                topicStats[topic] = { correct: 0, total: 0 };
-            }
-            topicStats[topic].correct += session.correct;
-            topicStats[topic].total += session.total;
+    // Acciones
+    const addQuizResult = (result) => {
+        // result: { topic, score, total, date, type }
+        setQuizHistory(prev => [result, ...prev]);
+
+        // Actualizar estadísticas por tema
+        setTopicStats(prev => {
+            const current = prev[result.topic] || { correct: 0, total: 0 };
+            const newStats = {
+                ...prev,
+                [result.topic]: {
+                    correct: current.correct + result.score,
+                    total: current.total + result.total
+                }
+            };
+            return newStats;
         });
 
-        const weak = [];
-        Object.keys(topicStats).forEach(topic => {
-            const stats = topicStats[topic];
-            const percentage = stats.total > 0 ? (stats.correct / stats.total) : 0;
-            if (percentage < 0.6) {
-                weak.push({ topic, percentage, stats });
-            }
-        });
-
-        setWeakTopics(weak);
-    }, [studyHistory]);
-
-    const addResult = (result) => {
-        // result: { date, topic, type, correct, total, details? }
-        const newHistory = [result, ...studyHistory];
-        setStudyHistory(newHistory);
-        localStorage.setItem('studyHistory', JSON.stringify(newHistory));
-
-        // Update Adaptive Level Logic (Simple Heuristic)
-        // If last 3 quizzes > 80% -> Level Up
-        // If last 2 quizzes < 40% -> Level Down
-        updateAdaptiveLevel(newHistory);
+        // Lógica simple adaptativa
+        const percentage = result.score / result.total;
+        if (percentage >= 0.8 && userLevel < 5) {
+            setUserLevel(prev => prev + 1);
+        } else if (percentage < 0.4 && userLevel > 1) {
+            setUserLevel(prev => prev - 1);
+        }
     };
 
-    const updateAdaptiveLevel = (history) => {
-        if (history.length < 3) return;
-
-        const last3 = history.slice(0, 3);
-        const allGood = last3.every(h => (h.correct / h.total) >= 0.8);
-
-        if (allGood && userLevel !== 'Avanzado') {
-            const next = userLevel === 'Principiante' ? 'Intermedio' : 'Avanzado';
-            setUserLevel(next);
-            localStorage.setItem('userLevel', next);
-            return;
-        }
-
-        const last2 = history.slice(0, 2);
-        const allBad = last2.every(h => (h.correct / h.total) <= 0.4);
-
-        if (allBad && userLevel !== 'Principiante') {
-            const prev = userLevel === 'Avanzado' ? 'Intermedio' : 'Principiante';
-            setUserLevel(prev);
-            localStorage.setItem('userLevel', prev);
-        }
+    const getWeakTopics = () => {
+        return Object.entries(topicStats)
+            .map(([topic, stats]) => ({
+                topic,
+                percentage: stats.total > 0 ? (stats.correct / stats.total) * 100 : 0,
+                total: stats.total
+            }))
+            .filter(item => item.percentage < 60 && item.total >= 5) // Criterio de debilidad
+            .sort((a, b) => a.percentage - b.percentage);
     };
 
     const value = {
-        studyHistory,
-        weakTopics,
+        quizHistory,
+        topicStats,
         userLevel,
-        addResult,
-        setUserLevel
+        addQuizResult,
+        getWeakTopics
     };
 
     return (

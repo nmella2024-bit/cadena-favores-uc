@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { generateStudyMaterial, askAI, generateQuiz, gradeOpenAnswer } from './aiService';
 import { extractTextFromFile, extractTextFromUrl } from './contextProcessor';
 import { jsPDF } from 'jspdf';
@@ -683,6 +684,19 @@ const AutoStudyWidget = (props) => {
                                         Genera un quiz de 5 preguntas sobre cualquier tema o documento para poner a prueba tus conocimientos.
                                     </p>
 
+                                    <div className="mb-8">
+                                        <Link
+                                            to="/modo-estudio-pro"
+                                            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl font-bold shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
+                                        >
+                                            <span>🚀</span>
+                                            <span>Ir a Modo Estudio Pro</span>
+                                        </Link>
+                                        <p className="text-xs text-gray-500 mt-2">
+                                            Descubre herramientas avanzadas: Quiz Adaptativo, Historial y más.
+                                        </p>
+                                    </div>
+
                                     <div className="space-y-4 text-left mb-8">
                                         {/* Weak Topic Banner */}
                                         {weakTopics.length > 0 && (
@@ -1038,46 +1052,48 @@ const AutoStudyWidget = (props) => {
                 </div>
             </div>
             {/* Material Selector Modal */}
-            {showMaterialSelector && (
-                <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col border border-gray-200 dark:border-gray-700">
-                        <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                            <h3 className="text-lg font-bold text-gray-800 dark:text-white">Seleccionar Material</h3>
-                            <button onClick={() => setShowMaterialSelector(false)} className="text-gray-500 hover:text-gray-700">
-                                <X className="w-5 h-5" />
-                            </button>
-                        </div>
-                        <div className="flex-1 overflow-y-auto p-4">
-                            {loadingMaterials ? (
-                                <div className="flex justify-center p-8">
-                                    <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-                                </div>
-                            ) : (
-                                <div className="space-y-2">
-                                    {availableMaterials.map(material => (
-                                        <button
-                                            key={material.id}
-                                            onClick={() => handleSelectMaterial(material)}
-                                            className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-3 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
-                                        >
-                                            <FileText className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                                            <div>
-                                                <p className="font-medium text-gray-800 dark:text-gray-200">{material.titulo}</p>
-                                                <p className="text-xs text-gray-500">{material.ramo} • {material.anio}</p>
-                                            </div>
-                                            <Plus className="w-4 h-4 text-gray-400 ml-auto" />
-                                        </button>
-                                    ))}
-                                    {availableMaterials.length === 0 && (
-                                        <p className="text-center text-gray-500 py-8">No se encontraron materiales.</p>
-                                    )}
-                                </div>
-                            )}
+            {
+                showMaterialSelector && (
+                    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col border border-gray-200 dark:border-gray-700">
+                            <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                                <h3 className="text-lg font-bold text-gray-800 dark:text-white">Seleccionar Material</h3>
+                                <button onClick={() => setShowMaterialSelector(false)} className="text-gray-500 hover:text-gray-700">
+                                    <X className="w-5 h-5" />
+                                </button>
+                            </div>
+                            <div className="flex-1 overflow-y-auto p-4">
+                                {loadingMaterials ? (
+                                    <div className="flex justify-center p-8">
+                                        <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+                                    </div>
+                                ) : (
+                                    <div className="space-y-2">
+                                        {availableMaterials.map(material => (
+                                            <button
+                                                key={material.id}
+                                                onClick={() => handleSelectMaterial(material)}
+                                                className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-3 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
+                                            >
+                                                <FileText className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                                                <div>
+                                                    <p className="font-medium text-gray-800 dark:text-gray-200">{material.titulo}</p>
+                                                    <p className="text-xs text-gray-500">{material.ramo} • {material.anio}</p>
+                                                </div>
+                                                <Plus className="w-4 h-4 text-gray-400 ml-auto" />
+                                            </button>
+                                        ))}
+                                        {availableMaterials.length === 0 && (
+                                            <p className="text-center text-gray-500 py-8">No se encontraron materiales.</p>
+                                        )}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )
+            }
+        </div >
 
     );
 };
