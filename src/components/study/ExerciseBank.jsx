@@ -109,14 +109,20 @@ const ExerciseBank = () => {
     const [isGenerating, setIsGenerating] = useState(false);
     const [quizData, setQuizData] = useState(null);
 
-    const handleGenerateGuide = async (course, topic) => {
+    const handleGenerateGuide = async (course, topic, mode = 'quiz') => {
         setIsGenerating(true);
         try {
-            const prompt = `Genera una guía de ejercicios práctica y desafiante sobre "${topic}" para el curso de "${course}". Incluye problemas variados.`;
+            let prompt = `Genera una guía de ejercicios práctica y desafiante sobre "${topic}" para el curso de "${course}". Incluye problemas variados.`;
+
+            if (mode === 'exam') {
+                prompt = `Genera un problema de ALTA DIFICULTAD (Tipo Prueba/Examen) para el curso "${course}". Debe ser un desafío complejo que integre múltiples conceptos.`;
+            }
 
             const data = await studyAI.generateQuiz(prompt, {
-                numQuestions: 5,
-                type: 'mixed' // Mezcla de selección múltiple y desarrollo si es posible, o solo multiple por ahora para seguridad
+                numQuestions: mode === 'exam' ? 1 : 5, // Exam mode = 1 big problem
+                type: mode === 'exam' ? 'open' : 'mixed',
+                difficulty: mode === 'exam' ? 'exam' : 'Intermedio',
+                mode: mode // Pass mode to service if needed, though difficulty handles it mostly
             });
 
             // Enforce unit tagging for gamification
@@ -126,7 +132,7 @@ const ExerciseBank = () => {
                 subtopic: topic
             }));
 
-            setQuizData({ ...data, questions: taggedQuestions });
+            setQuizData({ ...data, questions: taggedQuestions, isExam: mode === 'exam' });
         } catch (error) {
             console.error("Error generating guide:", error);
             alert("Hubo un error generando la guía. Por favor intenta de nuevo.");
@@ -229,17 +235,14 @@ const ExerciseBank = () => {
                                     <span className="text-sm text-gray-500">Selecciona un tema:</span>
                                 </div>
 
-                                {SYLLABUS[selectedCourse].externalLink && (
-                                    <a
-                                        href={SYLLABUS[selectedCourse].externalLink}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="mb-4 w-full flex items-center justify-center gap-2 p-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg border border-blue-200 transition-colors font-medium"
-                                    >
-                                        <Book className="w-4 h-4" />
-                                        Ver Guías en Manthano
-                                    </a>
-                                )}
+                                <button
+                                    onClick={() => handleGenerateGuide(selectedCourse, 'Examen Final', 'exam')}
+                                    disabled={isGenerating}
+                                    className="mb-4 w-full flex items-center justify-center gap-2 p-3 bg-red-50 hover:bg-red-100 text-red-700 rounded-lg border border-red-200 transition-colors font-bold shadow-sm"
+                                >
+                                    <span className="text-lg">🔥</span>
+                                    Generar Ejercicio Tipo Prueba (Nivel Difícil)
+                                </button>
 
                                 {SYLLABUS[selectedCourse].topics.map((topic) => (
                                     <button

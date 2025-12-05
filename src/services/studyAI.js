@@ -21,7 +21,7 @@ const generateQuiz = async (topic, config = {}) => {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                mode: 'quiz',
+                mode: config.difficulty === 'exam' ? 'exam' : 'quiz',
                 prompt: `Generar quiz sobre ${safeTopic}`,
                 config: {
                     topic: safeTopic,

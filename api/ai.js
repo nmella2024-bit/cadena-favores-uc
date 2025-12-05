@@ -132,10 +132,37 @@ export default async function handler(req) {
         }
     `;
 
+    const examSystemPrompt = `
+        Eres un Profesor Titular de la Universidad Católica (UC). Tu objetivo es diseñar una pregunta de "Prueba de Cátedra" (Certamen/Examen) de ALTA DIFICULTAD.
+
+        INSTRUCCIONES:
+        1. Ignora preguntas triviales o de memorización.
+        2. Diseña un problema complejo que requiera:
+           - Análisis profundo.
+           - Combinación de múltiples conceptos (ej: Integrales + Geometría, o Probabilidad + Álgebra).
+           - Justificación teórica.
+        3. Usa lenguaje académico formal (estilo LaTeX para fórmulas si es necesario, pero en texto plano legible).
+        4. El problema debe ser desafiante, tipo "filtro" de primer año.
+        
+        Responde ÚNICAMENTE con un JSON válido con esta estructura exacta:
+        {
+          "questions": [
+            {
+              "type": "open", // Siempre desarrollo para exámenes
+              "question": "Enunciado completo del problema complejo...",
+              "unit": "Unidad General",
+              "subtopic": "Tema Específico",
+              "explanation": "Pauta de corrección detallada paso a paso, explicando el razonamiento lógico y matemático esperado."
+            }
+          ]
+        }
+    `;
+
     let systemPrompt = docSystemPrompt;
     if (isChat) systemPrompt = chatSystemPrompt;
     if (mode === 'quiz') systemPrompt = quizSystemPrompt;
     if (mode === 'grade-open-answer') systemPrompt = gradeSystemPrompt;
+    if (mode === 'exam') systemPrompt = examSystemPrompt;
 
     let finalPrompt = prompt;
     if (config?.context) {
