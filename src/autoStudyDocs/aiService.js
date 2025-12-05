@@ -54,16 +54,17 @@ export const askAI = async (question, context = '') => {
  * Generates a Quiz based on a topic and context.
  * @param {string} topic 
  * @param {string} contextText 
+ * @param {Object} config - { questionType: 'multiple-choice'|'open'|'mixed', numQuestions: 5 }
  * @returns {Promise<Object>} JSON object with questions
  */
-export const generateQuiz = async (topic, contextText = '') => {
+export const generateQuiz = async (topic, contextText = '', config = {}) => {
     const prompt = `
     Genera un Quiz de estudio sobre el tema: "${topic}".
     
     ${contextText ? `Usa el siguiente contenido como base para las preguntas:\n${contextText.substring(0, 15000)}` : ''}
     `;
 
-    const response = await callOpenAI(prompt, false, 'quiz');
+    const response = await callOpenAI(prompt, false, 'quiz', config);
     try {
         return JSON.parse(response);
     } catch (e) {
@@ -73,16 +74,39 @@ export const generateQuiz = async (topic, contextText = '') => {
 };
 
 /**
+ * Grades an open-ended answer using AI.
+ * @param {string} question 
+ * @param {string} userAnswer 
+ * @returns {Promise<Object>} Feedback object { score, feedback: { good, bad, improvement } }
+ */
+export const gradeOpenAnswer = async (question, userAnswer) => {
+    const prompt = `
+    Pregunta: "${question}"
+    Respuesta del estudiante: "${userAnswer}"
+    
+    Evalúa esta respuesta.
+    `;
+
+    const response = await callOpenAI(prompt, false, 'grade-open-answer');
+    try {
+        return JSON.parse(response);
+    } catch (e) {
+        console.error("Failed to parse Grading JSON", e);
+        throw new Error("Error al evaluar la respuesta.");
+    }
+};
+
+/**
  * Helper to call the Backend AI API.
  * Always calls /api/ai (Serverless Function).
  * Requires OPENAI_API_KEY to be set in the backend environment.
  */
-const callOpenAI = async (prompt, isChat = false, mode = 'document') => {
+const callOpenAI = async (prompt, isChat = false, mode = 'document', config = {}) => {
     try {
         const response = await fetch('/api/ai', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ prompt, isChat, mode })
+            body: JSON.stringify({ prompt, isChat, mode, config })
         });
 
         if (!response.ok) {

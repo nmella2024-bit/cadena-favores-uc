@@ -2,8 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '../services/materialService';
 import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId, moverCarpeta } from '../services/folderService';
 import { useAuth } from '../context/AuthContext';
-import { useSearchParams } from 'react-router-dom';
-import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus, Search } from 'lucide-react';
+import { useSearchParams, Link } from 'react-router-dom';
+import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus, Search, GraduationCap } from 'lucide-react';
 import SubirMaterialModal from '../components/SubirMaterialModal';
 import MaterialCard from '../components/MaterialCard';
 import FolderCard from '../components/FolderCard';
@@ -345,15 +345,24 @@ const Material = () => {
               />
             </div>
 
-            {/* Botón IA */}
-            <div className="flex-shrink-0 relative z-10">
+            {/* Botones IA */}
+            <div className="flex-shrink-0 relative z-10 flex flex-col sm:flex-row gap-2">
+              <Link to="/modo-estudio-pro">
+                <PrimaryButton
+                  className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 px-4 text-sm font-medium border-none shadow-sm transition-all hover:shadow-md"
+                >
+                  <GraduationCap className="h-5 w-5" />
+                  <span>Modo Estudio Pro</span>
+                </PrimaryButton>
+              </Link>
+
               {currentUser?.rol === 'admin' ? (
                 <PrimaryButton
                   onClick={() => setIsAutoStudyOpen(true)}
                   className="w-full sm:w-auto h-[46px] inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-600 hover:to-emerald-600 px-4 text-sm font-medium border-none shadow-sm transition-all hover:shadow-md"
                 >
                   <Sparkles className="h-5 w-5" />
-                  <span>Generar con IA</span>
+                  <span>Generar Doc</span>
                 </PrimaryButton>
               ) : (
                 <div
@@ -361,7 +370,7 @@ const Material = () => {
                   title={currentUser ? "Solo disponible para administradores" : "Inicia sesión como administrador"}
                 >
                   <Sparkles className="h-5 w-5" />
-                  <span className="line-through decoration-gray-400/50">Generar con IA</span>
+                  <span className="line-through decoration-gray-400/50">Generar Doc</span>
                 </div>
               )}
             </div>

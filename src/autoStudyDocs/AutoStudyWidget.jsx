@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { generateStudyMaterial, askAI, generateQuiz } from './aiService';
+import { generateStudyMaterial, askAI, generateQuiz, gradeOpenAnswer } from './aiService';
 import { extractTextFromFile, extractTextFromUrl } from './contextProcessor';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -24,6 +24,33 @@ const AutoStudyWidget = (props) => {
     const [showQuizResults, setShowQuizResults] = useState(false);
     const [selectedOption, setSelectedOption] = useState(null);
     const [isAnswerChecked, setIsAnswerChecked] = useState(false);
+
+    // Advanced Quiz State
+    const [quizConfig, setQuizConfig] = useState({ questionType: 'multiple-choice', numQuestions: 5 });
+    const [openAnswer, setOpenAnswer] = useState('');
+    const [gradingFeedback, setGradingFeedback] = useState(null);
+    const [weakTopics, setWeakTopics] = useState([]);
+    const [isGrading, setIsGrading] = useState(false);
+
+    // Load Weak Topics on Mount
+    useEffect(() => {
+        const stats = JSON.parse(localStorage.getItem('studyStats') || '{}');
+        const weak = Object.keys(stats).filter(topic => {
+            const s = stats[topic];
+            return (s.correct / (s.correct + s.wrong)) < 0.6 || s.wrong >= 2; // Simple heuristic
+        });
+        setWeakTopics(weak);
+    }, []);
+
+    const updateTopicStats = (topic, isCorrect) => {
+        const stats = JSON.parse(localStorage.getItem('studyStats') || '{}');
+        if (!stats[topic]) stats[topic] = { correct: 0, wrong: 0 };
+
+        if (isCorrect) stats[topic].correct++;
+        else stats[topic].wrong++;
+
+        localStorage.setItem('studyStats', JSON.stringify(stats));
+    };
 
     // Material Selector State
     const [showMaterialSelector, setShowMaterialSelector] = useState(false);
@@ -307,7 +334,7 @@ const AutoStudyWidget = (props) => {
                 .map(f => `--- Documento: ${f.name} ---\n${f.text}`)
                 .join('\n\n');
 
-            const quizJson = await generateQuiz(topic, manualContext);
+            const quizJson = await generateQuiz(topic, manualContext, quizConfig);
             if (quizJson && quizJson.questions && quizJson.questions.length > 0) {
                 setQuizData(quizJson);
             } else {
@@ -327,8 +354,34 @@ const AutoStudyWidget = (props) => {
         setIsAnswerChecked(true);
 
         const currentQuestion = quizData.questions[currentQuestionIndex];
-        if (optionIndex === currentQuestion.correctIndex) {
+        const isCorrect = optionIndex === currentQuestion.correctIndex;
+
+        if (isCorrect) {
             setQuizScore(prev => prev + 1);
+        }
+        updateTopicStats(topic, isCorrect);
+    };
+
+    const handleOpenAnswerSubmit = async () => {
+        if (!openAnswer.trim()) return;
+        setIsGrading(true);
+        try {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            const feedback = await gradeOpenAnswer(currentQuestion.question, openAnswer);
+            setGradingFeedback(feedback);
+            setIsAnswerChecked(true);
+
+            if (feedback.score >= 60) {
+                setQuizScore(prev => prev + 1);
+                updateTopicStats(topic, true);
+            } else {
+                updateTopicStats(topic, false);
+            }
+        } catch (err) {
+            console.error("Grading Error:", err);
+            alert("Error al evaluar la respuesta.");
+        } finally {
+            setIsGrading(false);
         }
     };
 
@@ -337,6 +390,8 @@ const AutoStudyWidget = (props) => {
             setCurrentQuestionIndex(prev => prev + 1);
             setSelectedOption(null);
             setIsAnswerChecked(false);
+            setOpenAnswer('');
+            setGradingFeedback(null);
         } else {
             setShowQuizResults(true);
         }
@@ -347,6 +402,8 @@ const AutoStudyWidget = (props) => {
         setTopic('');
         setContextFiles([]);
         setError('');
+        setOpenAnswer('');
+        setGradingFeedback(null);
     };
 
     const handleExportPDF = async () => {
@@ -627,6 +684,26 @@ const AutoStudyWidget = (props) => {
                                     </p>
 
                                     <div className="space-y-4 text-left mb-8">
+                                        {/* Weak Topic Banner */}
+                                        {weakTopics.length > 0 && (
+                                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                                                <p className="text-sm text-orange-800 font-medium mb-2">
+                                                    ⚠️ Detectamos temas que podrías reforzar:
+                                                </p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {weakTopics.map(t => (
+                                                        <button
+                                                            key={t}
+                                                            onClick={() => setTopic(t)}
+                                                            className="text-xs bg-white border border-orange-200 text-orange-700 px-2 py-1 rounded-full hover:bg-orange-100"
+                                                        >
+                                                            {t}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
+
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                                 Tema del Quiz
@@ -638,6 +715,37 @@ const AutoStudyWidget = (props) => {
                                                 placeholder="Ej: Biología Celular, Historia..."
                                                 className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-purple-500"
                                             />
+                                        </div>
+
+                                        <div className="grid grid-cols-2 gap-4">
+                                            <div>
+                                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                                    Tipo de Preguntas
+                                                </label>
+                                                <select
+                                                    value={quizConfig.questionType}
+                                                    onChange={(e) => setQuizConfig({ ...quizConfig, questionType: e.target.value })}
+                                                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"
+                                                >
+                                                    <option value="multiple-choice">Alternativas</option>
+                                                    <option value="open">Desarrollo (IA)</option>
+                                                    <option value="mixed">Mixto</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                                    Cantidad
+                                                </label>
+                                                <select
+                                                    value={quizConfig.numQuestions}
+                                                    onChange={(e) => setQuizConfig({ ...quizConfig, numQuestions: parseInt(e.target.value) })}
+                                                    className="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white"
+                                                >
+                                                    <option value={5}>5 Preguntas</option>
+                                                    <option value={10}>10 Preguntas</option>
+                                                    <option value={15}>15 Preguntas</option>
+                                                </select>
+                                            </div>
                                         </div>
 
                                         <div>
@@ -724,42 +832,84 @@ const AutoStudyWidget = (props) => {
                                         </h3>
 
                                         <div className="space-y-3">
-                                            {quizData.questions[currentQuestionIndex].options.map((option, idx) => {
-                                                const isSelected = selectedOption === idx;
-                                                const isCorrect = idx === quizData.questions[currentQuestionIndex].correctIndex;
-                                                const showStatus = isAnswerChecked;
-
-                                                let buttonClass = "w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex justify-between items-center ";
-
-                                                if (showStatus) {
-                                                    if (isCorrect) buttonClass += "border-green-500 bg-green-50 text-green-800";
-                                                    else if (isSelected) buttonClass += "border-red-500 bg-red-50 text-red-800";
-                                                    else buttonClass += "border-gray-100 opacity-50";
-                                                } else {
-                                                    buttonClass += "border-gray-100 hover:border-purple-200 hover:bg-purple-50";
-                                                }
-
-                                                return (
-                                                    <button
-                                                        key={idx}
-                                                        onClick={() => handleOptionSelect(idx)}
+                                            {quizData.questions[currentQuestionIndex].type === 'open' || (!quizData.questions[currentQuestionIndex].type && quizConfig.questionType === 'open') ? (
+                                                // Open Question UI
+                                                <div className="space-y-4">
+                                                    <textarea
+                                                        value={openAnswer}
+                                                        onChange={(e) => setOpenAnswer(e.target.value)}
                                                         disabled={isAnswerChecked}
-                                                        className={buttonClass}
-                                                    >
-                                                        <span className="font-medium">{option}</span>
-                                                        {/* Icons removed for debugging */}
-                                                        {showStatus && isCorrect && <span>✅</span>}
-                                                        {showStatus && isSelected && !isCorrect && <span>❌</span>}
-                                                    </button>
-                                                );
-                                            })}
+                                                        placeholder="Escribe tu respuesta aquí..."
+                                                        className="w-full p-4 border border-gray-300 dark:border-gray-600 rounded-xl bg-gray-50 dark:bg-gray-700 min-h-[150px] focus:ring-2 focus:ring-purple-500 outline-none"
+                                                    />
+                                                    {!isAnswerChecked && (
+                                                        <button
+                                                            onClick={handleOpenAnswerSubmit}
+                                                            disabled={!openAnswer.trim() || isGrading}
+                                                            className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-colors disabled:opacity-50"
+                                                        >
+                                                            {isGrading ? <Loader2 className="w-5 h-5 animate-spin mx-auto" /> : 'Enviar Respuesta'}
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            ) : (
+                                                // Multiple Choice UI
+                                                quizData.questions[currentQuestionIndex].options.map((option, idx) => {
+                                                    const isSelected = selectedOption === idx;
+                                                    const isCorrect = idx === quizData.questions[currentQuestionIndex].correctIndex;
+                                                    const showStatus = isAnswerChecked;
+
+                                                    let buttonClass = "w-full text-left p-4 rounded-xl border-2 transition-all duration-200 flex justify-between items-center ";
+
+                                                    if (showStatus) {
+                                                        if (isCorrect) buttonClass += "border-green-500 bg-green-50 text-green-800";
+                                                        else if (isSelected) buttonClass += "border-red-500 bg-red-50 text-red-800";
+                                                        else buttonClass += "border-gray-100 opacity-50";
+                                                    } else {
+                                                        buttonClass += "border-gray-100 hover:border-purple-200 hover:bg-purple-50";
+                                                    }
+
+                                                    return (
+                                                        <button
+                                                            key={idx}
+                                                            onClick={() => handleOptionSelect(idx)}
+                                                            disabled={isAnswerChecked}
+                                                            className={buttonClass}
+                                                        >
+                                                            <span className="font-medium">{option}</span>
+                                                            {/* Icons removed for debugging */}
+                                                            {showStatus && isCorrect && <span>✅</span>}
+                                                            {showStatus && isSelected && !isCorrect && <span>❌</span>}
+                                                        </button>
+                                                    );
+                                                })
+                                            )}
                                         </div>
 
                                         {isAnswerChecked && (
                                             <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
-                                                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                                                    <strong>Explicación:</strong> {quizData.questions[currentQuestionIndex].explanation}
-                                                </p>
+                                                {gradingFeedback ? (
+                                                    <div className="mb-4 space-y-3">
+                                                        <div className="flex items-center gap-2 mb-2">
+                                                            <span className="text-lg font-bold">Puntaje: {gradingFeedback.score}/100</span>
+                                                            <div className="flex-1 h-2 bg-gray-200 rounded-full">
+                                                                <div
+                                                                    className={`h-2 rounded-full ${gradingFeedback.score >= 60 ? 'bg-green-500' : 'bg-red-500'}`}
+                                                                    style={{ width: `${gradingFeedback.score}%` }}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="text-sm space-y-2">
+                                                            <p className="text-green-700 bg-green-50 p-2 rounded">👍 {gradingFeedback.feedback.good}</p>
+                                                            <p className="text-red-700 bg-red-50 p-2 rounded">👎 {gradingFeedback.feedback.bad}</p>
+                                                            <p className="text-blue-700 bg-blue-50 p-2 rounded">💡 {gradingFeedback.feedback.improvement}</p>
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
+                                                        <strong>Explicación:</strong> {quizData.questions[currentQuestionIndex].explanation}
+                                                    </p>
+                                                )}
                                                 <button
                                                     onClick={handleNextQuestion}
                                                     className="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-colors"
@@ -886,48 +1036,49 @@ const AutoStudyWidget = (props) => {
                         </div>
                     )}
                 </div>
-                {/* Material Selector Modal */}
-                {showMaterialSelector && (
-                    <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-                        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col border border-gray-200 dark:border-gray-700">
-                            <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                                <h3 className="text-lg font-bold text-gray-800 dark:text-white">Seleccionar Material</h3>
-                                <button onClick={() => setShowMaterialSelector(false)} className="text-gray-500 hover:text-gray-700">
-                                    <X className="w-5 h-5" />
-                                </button>
-                            </div>
-                            <div className="flex-1 overflow-y-auto p-4">
-                                {loadingMaterials ? (
-                                    <div className="flex justify-center p-8">
-                                        <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
-                                    </div>
-                                ) : (
-                                    <div className="space-y-2">
-                                        {availableMaterials.map(material => (
-                                            <button
-                                                key={material.id}
-                                                onClick={() => handleSelectMaterial(material)}
-                                                className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-3 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
-                                            >
-                                                <FileText className="w-5 h-5 text-blue-500 flex-shrink-0" />
-                                                <div>
-                                                    <p className="font-medium text-gray-800 dark:text-gray-200">{material.titulo}</p>
-                                                    <p className="text-xs text-gray-500">{material.ramo} • {material.anio}</p>
-                                                </div>
-                                                <Plus className="w-4 h-4 text-gray-400 ml-auto" />
-                                            </button>
-                                        ))}
-                                        {availableMaterials.length === 0 && (
-                                            <p className="text-center text-gray-500 py-8">No se encontraron materiales.</p>
-                                        )}
-                                    </div>
-                                )}
-                            </div>
+            </div>
+            {/* Material Selector Modal */}
+            {showMaterialSelector && (
+                <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+                    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-2xl w-full max-w-2xl max-h-[80vh] flex flex-col border border-gray-200 dark:border-gray-700">
+                        <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                            <h3 className="text-lg font-bold text-gray-800 dark:text-white">Seleccionar Material</h3>
+                            <button onClick={() => setShowMaterialSelector(false)} className="text-gray-500 hover:text-gray-700">
+                                <X className="w-5 h-5" />
+                            </button>
+                        </div>
+                        <div className="flex-1 overflow-y-auto p-4">
+                            {loadingMaterials ? (
+                                <div className="flex justify-center p-8">
+                                    <Loader2 className="w-8 h-8 animate-spin text-blue-500" />
+                                </div>
+                            ) : (
+                                <div className="space-y-2">
+                                    {availableMaterials.map(material => (
+                                        <button
+                                            key={material.id}
+                                            onClick={() => handleSelectMaterial(material)}
+                                            className="w-full text-left p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-3 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-600"
+                                        >
+                                            <FileText className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                                            <div>
+                                                <p className="font-medium text-gray-800 dark:text-gray-200">{material.titulo}</p>
+                                                <p className="text-xs text-gray-500">{material.ramo} • {material.anio}</p>
+                                            </div>
+                                            <Plus className="w-4 h-4 text-gray-400 ml-auto" />
+                                        </button>
+                                    ))}
+                                    {availableMaterials.length === 0 && (
+                                        <p className="text-center text-gray-500 py-8">No se encontraron materiales.</p>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     </div>
-                )}
-            </div>
+                </div>
+            )}
         </div>
+        </div >
     );
 };
 

@@ -22,6 +22,7 @@ const DiagnosticoMaterial = lazy(() => import('./components/DiagnosticoMaterial'
 const MisReferidos = lazy(() => import('./pages/MisReferidos'));
 const RankingReferidos = lazy(() => import('./pages/RankingReferidos'));
 const ChristmasUC = lazy(() => import('./pages/ChristmasUC'));
+const ModoEstudioPro = lazy(() => import('./pages/ModoEstudioPro'));
 
 const AppRoutes = () => {
     return (
@@ -118,6 +119,9 @@ const AppRoutes = () => {
 
             {/* Christmas UC */}
             <Route path="/christmas-uc" element={<ChristmasUC />} />
+
+            {/* Modo Estudio Pro */}
+            <Route path="/modo-estudio-pro" element={<ModoEstudioPro />} />
 
             {/* Ruta por defecto - redirige a home */}
             <Route path="*" element={<Navigate to="/" replace />} />

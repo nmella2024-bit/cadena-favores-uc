@@ -8,7 +8,7 @@ export default async function handler(req) {
   }
 
   try {
-    const { prompt, isChat, mode } = await req.json();
+    const { prompt, isChat, mode, config } = await req.json();
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
@@ -87,26 +87,52 @@ export default async function handler(req) {
     const quizSystemPrompt = `
             Eres un profesor experto creando evaluaciones. Tu objetivo es generar un Quiz de estudio desafiante y educativo.
             
+            CONFIGURACIÓN:
+            - Cantidad de preguntas: ${config?.numQuestions || 5}
+            - Tipo de preguntas: ${config?.questionType || 'multiple-choice'} (multiple-choice, open, mixed)
+            - Dificultad: ${config?.difficulty || 'Intermedio'} (Principiante, Intermedio, Avanzado)
+
             INSTRUCCIONES:
             1. Analiza el tema o contexto proporcionado.
-            2. Genera 5 preguntas de selección múltiple.
+            2. Genera las preguntas según la configuración.
             3. Responde ÚNICAMENTE con un JSON válido con esta estructura exacta:
             {
               "questions": [
                 {
+                  "type": "multiple-choice" | "open",
                   "question": "¿Pregunta?",
+                  // Solo para multiple-choice:
                   "options": ["Opción A", "Opción B", "Opción C", "Opción D"],
-                  "correctIndex": 0, // Índice de la respuesta correcta (0-3)
-                  "explanation": "Breve explicación de por qué es la correcta."
+                  "correctIndex": 0, 
+                  // Para ambos tipos:
+                  "explanation": "Explicación detallada de la respuesta correcta."
                 }
               ]
             }
             4. NO incluyas markdown (\`\`\`). Solo el JSON raw.
         `;
 
+    const gradeSystemPrompt = `
+        Eres un profesor experto corrigiendo exámenes. Tu objetivo es evaluar la respuesta de un estudiante a una pregunta de desarrollo.
+
+        INSTRUCCIONES:
+        1. Analiza la pregunta y la respuesta del usuario.
+        2. Evalúa la precisión, completitud y claridad.
+        3. Responde ÚNICAMENTE con un JSON válido con esta estructura:
+        {
+            "score": 0-100, // Puntaje numérico
+            "feedback": {
+                "good": "Lo que el estudiante hizo bien.",
+                "bad": "Lo que faltó o fue incorrecto.",
+                "improvement": "Sugerencias concretas para mejorar."
+            }
+        }
+    `;
+
     let systemPrompt = docSystemPrompt;
     if (isChat) systemPrompt = chatSystemPrompt;
     if (mode === 'quiz') systemPrompt = quizSystemPrompt;
+    if (mode === 'grade-open-answer') systemPrompt = gradeSystemPrompt;
 
     const messages = [
       {
@@ -126,7 +152,7 @@ export default async function handler(req) {
         model: "gpt-4o-mini",
         messages: messages,
         temperature: 0.7,
-        response_format: mode === 'quiz' ? { type: "json_object" } : undefined
+        response_format: (mode === 'quiz' || mode === 'grade-open-answer') ? { type: "json_object" } : undefined
       }),
     });
 
