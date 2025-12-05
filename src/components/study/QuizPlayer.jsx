@@ -9,7 +9,21 @@ const QuizPlayer = ({ quizData, onComplete, onClose }) => {
     const [isChecked, setIsChecked] = useState(false);
     const [showResults, setShowResults] = useState(false);
 
-    const currentQuestion = quizData.questions[currentIndex];
+    const currentQuestion = quizData?.questions?.[currentIndex];
+
+    if (!currentQuestion && !showResults) {
+        return (
+            <div className="text-center p-8">
+                <p className="text-red-500 mb-4">Lo sentimos, ha ocurrido un error al cargar la pregunta.</p>
+                <button
+                    onClick={onClose}
+                    className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
+                >
+                    Volver
+                </button>
+            </div>
+        );
+    }
 
     const handleOptionSelect = (index) => {
         if (isChecked) return;
