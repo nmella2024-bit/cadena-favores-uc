@@ -31,7 +31,7 @@ const pdfjsLib = require('pdfjs-dist');
 // pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/legacy/build/pdf.worker.js'; 
 // Let's try without first.
 
-const MATERIAL_DIR = './material';
+const MATERIAL_DIR = './exports/downloads';
 const EXPORT_DIR = './exports/ejercicios';
 const TEMP_DIR = './temp_downloads'; // Temp dir for Drive downloads
 const MANIFEST_PATH = path.join(EXPORT_DIR, 'manifest.csv');
@@ -120,19 +120,40 @@ const processText = (text, fileName, filePath, originalUrl = null) => {
     if (!text) return [];
 
     const exercises = [];
-    // Regex to find "Ejercicio X" or "Problema X"
-    // This is a simple regex, might need refinement
-    const exerciseRegex = /(?:Ejercicio|Problema|Pregunta)\s+(\d+)[\s\.:]+(.*?)(?=(?:Ejercicio|Problema|Pregunta)\s+\d+|$)/gs;
+
+    // Strategy 1: Look for explicit "Ejercicio X", "Problema X", "Pregunta X"
+    const explicitRegex = /(?:Ejercicio|Problema|Pregunta)\s+(\d+)[\s\.:]+(.*?)(?=(?:Ejercicio|Problema|Pregunta)\s+\d+|$)/gs;
+
+    // Strategy 2: Look for numbered lists "1.", "1)", "1.-" at start of lines
+    // This is riskier but catches more.
+    const listRegex = /(?:^|\n)\s*(\d+)[\.\)]\s+(.*?)(?=(?:^|\n)\s*\d+[\.\)]\s+|$)/gs;
 
     let match;
-    while ((match = exerciseRegex.exec(text)) !== null) {
-        const number = match[1];
-        const content = match[2].trim();
+    let foundExplicit = false;
+
+    // Try Explicit First
+    while ((match = explicitRegex.exec(text)) !== null) {
+        foundExplicit = true;
+        addExercise(match, 'explicit');
+    }
+
+    // If no explicit found, try list style
+    if (!foundExplicit) {
+        while ((match = listRegex.exec(text)) !== null) {
+            addExercise(match, 'list');
+        }
+    }
+
+    function addExercise(m, type) {
+        const number = m[1];
+        const content = m[2].trim();
+
+        if (content.length < 20) return; // Skip too short
+
         const summary = content.substring(0, 50).replace(/\n/g, ' ') + '...';
 
-        // Try to find page number (heuristic based on "--- Page X ---" marker inserted by PDF extractor)
-        // We look backwards from the match index to find the last page marker
-        const textBefore = text.substring(0, match.index);
+        // Try to find page number
+        const textBefore = text.substring(0, m.index);
         const pageMatch = textBefore.match(/--- Page (\d+) ---/g);
         const page = pageMatch ? pageMatch[pageMatch.length - 1].match(/\d+/)[0] : 'Unknown';
 
@@ -143,9 +164,24 @@ const processText = (text, fileName, filePath, originalUrl = null) => {
             numero: number,
             resumen: summary,
             archivo_origen: fileName,
-            ruta_origen: originalUrl || filePath, // Use URL if available
+            ruta_origen: originalUrl || filePath,
             pagina: page,
             content: content
+        });
+    }
+
+    // Fallback: If still no exercises, treat the whole text as one item (e.g. a short guide)
+    if (exercises.length === 0 && text.length > 50) {
+        exercises.push({
+            id: `${path.basename(fileName, path.extname(fileName))}_Full`,
+            titulo: `Documento Completo`,
+            tipo: 'material',
+            numero: '1',
+            resumen: text.substring(0, 50).replace(/\n/g, ' ') + '...',
+            archivo_origen: fileName,
+            ruta_origen: originalUrl || filePath,
+            pagina: '1',
+            content: text
         });
     }
 

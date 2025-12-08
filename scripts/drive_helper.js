@@ -33,9 +33,11 @@ export const extractFileIdFromUrl = (url) => {
 };
 
 export const downloadFileFromDrive = async (fileId, destPath) => {
-    if (!drive) throw new Error('Drive API not initialized');
+    // if (!drive) throw new Error('Drive API not initialized'); // Removed early throw
 
     try {
+        if (!drive) throw new Error('Drive API not initialized'); // Throw here to trigger catch block
+
         const dest = fs.createWriteStream(destPath);
         const res = await drive.files.get(
             { fileId, alt: 'media' },
@@ -49,7 +51,38 @@ export const downloadFileFromDrive = async (fileId, destPath) => {
                 .pipe(dest);
         });
     } catch (error) {
-        throw new Error(`Failed to download file ${fileId}: ${error.message}`);
+        // Fallback: Try public export URL if API fails (e.g. no service account)
+        try {
+            console.log(`Attempting public download fallback for ${fileId}...`);
+            const publicUrl = `https://docs.google.com/uc?export=download&id=${fileId}`;
+            const dest = fs.createWriteStream(destPath);
+
+            // Need to handle redirects for public drive links
+            const downloadPublic = (url) => {
+                return new Promise((resolve, reject) => {
+                    import('https').then(https => {
+                        https.get(url, (res) => {
+                            if (res.statusCode === 302 || res.statusCode === 303) {
+                                downloadPublic(res.headers.location).then(resolve).catch(reject);
+                            } else if (res.statusCode !== 200) {
+                                reject(new Error(`Public download failed: ${res.statusCode}`));
+                            } else {
+                                res.pipe(dest);
+                                dest.on('finish', () => {
+                                    dest.close();
+                                    resolve(destPath);
+                                });
+                            }
+                        }).on('error', reject);
+                    });
+                });
+            };
+
+            return await downloadPublic(publicUrl);
+
+        } catch (fallbackError) {
+            throw new Error(`Failed to download file ${fileId}: ${error.message} (Fallback also failed: ${fallbackError.message})`);
+        }
     }
 };
 

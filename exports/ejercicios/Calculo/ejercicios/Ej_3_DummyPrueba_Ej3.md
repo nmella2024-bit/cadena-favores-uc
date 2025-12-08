@@ -1,1 +1,0 @@
-Integre la función h(x) = e^x entre 0 y 1.

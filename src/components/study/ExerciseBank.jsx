@@ -104,6 +104,17 @@ const SYLLABUS = {
             "Gravitación Universal",
             "Oscilaciones y Ondas Mecánicas"
         ]
+    },
+    "Todos los ramos": {
+        icon: <Database className="w-6 h-6" />,
+        color: "text-gray-500",
+        bg: "bg-gray-100",
+        topics: [
+            "Material General",
+            "Pruebas Anteriores",
+            "Guías de Ejercicios",
+            "Ayudantías"
+        ]
     }
 };
 
@@ -232,7 +243,30 @@ const ExerciseBank = () => {
         setSelectedTopic(null);
     };
 
-    const filteredExercises = extractedList.filter(ex =>
+    // Sort extractedList by relevance to selectedTopic
+    const sortedExercises = React.useMemo(() => {
+        if (!selectedTopic || extractedList.length === 0) return extractedList;
+
+        const topicKeywords = normalizeKey(selectedTopic).split(' ').filter(k => k.length > 3); // Filter short words
+        if (topicKeywords.length === 0) return extractedList;
+
+        return [...extractedList].sort((a, b) => {
+            const getScore = (ex) => {
+                let score = 0;
+                const text = (ex.title + ' ' + ex.content).toLowerCase();
+                const normalizedText = normalizeKey(text);
+
+                topicKeywords.forEach(keyword => {
+                    if (normalizedText.includes(keyword)) score += 1;
+                });
+                return score;
+            };
+
+            return getScore(b) - getScore(a);
+        });
+    }, [extractedList, selectedTopic]);
+
+    const filteredExercises = sortedExercises.filter(ex =>
         ex.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
         ex.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -412,88 +446,84 @@ const ExerciseBank = () => {
                                 )}
 
                                 {viewMode === 'topic-choice' && (
-                                    <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
-                                            ¿Qué te gustaría hacer con <strong>{selectedTopic}</strong>?
-                                        </p>
+                                    <div className="flex flex-col h-full animate-in fade-in slide-in-from-right-4 duration-300 space-y-6">
 
-                                        <button
-                                            onClick={() => handleGenerateGuide(selectedCourse, selectedTopic)}
-                                            className="w-full p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-xl hover:shadow-md transition-all text-left group"
-                                        >
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <div className="p-2 bg-purple-100 dark:bg-purple-800 rounded-lg text-purple-600 dark:text-purple-300">
-                                                    <Sparkles className="w-6 h-6" />
+                                        {/* AI Generation Section */}
+                                        <div>
+                                            <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                                <Sparkles className="w-4 h-4 text-purple-500" />
+                                                Generar Material Nuevo
+                                            </h4>
+                                            <button
+                                                onClick={() => handleGenerateGuide(selectedCourse, selectedTopic)}
+                                                className="w-full p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-xl hover:shadow-md transition-all text-left group"
+                                            >
+                                                <div className="flex items-center gap-3 mb-2">
+                                                    <div className="p-2 bg-purple-100 dark:bg-purple-800 rounded-lg text-purple-600 dark:text-purple-300">
+                                                        <Sparkles className="w-6 h-6" />
+                                                    </div>
+                                                    <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-purple-600 transition-colors">
+                                                        Generar Guía con IA
+                                                    </h4>
                                                 </div>
-                                                <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-purple-600 transition-colors">
-                                                    Generar Guía con IA
-                                                </h4>
-                                            </div>
-                                            <p className="text-sm text-gray-500 dark:text-gray-400 pl-[52px]">
-                                                Crea ejercicios únicos y personalizados al instante.
-                                            </p>
-                                        </button>
-
-                                        <button
-                                            onClick={() => setViewMode('real-list')}
-                                            disabled={extractedList.length === 0}
-                                            className={`w-full p-4 border rounded-xl transition-all text-left group ${extractedList.length > 0
-                                                ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 hover:shadow-md cursor-pointer'
-                                                : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-60 cursor-not-allowed'
-                                                }`}
-                                        >
-                                            <div className="flex items-center gap-3 mb-2">
-                                                <div className={`p-2 rounded-lg ${extractedList.length > 0 ? 'bg-green-100 dark:bg-green-800 text-green-600 dark:text-green-300' : 'bg-gray-200 text-gray-500'}`}>
-                                                    <Database className="w-6 h-6" />
-                                                </div>
-                                                <h4 className={`font-bold transition-colors ${extractedList.length > 0 ? 'text-gray-900 dark:text-white group-hover:text-green-600' : 'text-gray-500'}`}>
-                                                    Ver Ejercicios Reales
-                                                </h4>
-                                            </div>
-                                            <p className="text-sm text-gray-500 dark:text-gray-400 pl-[52px]">
-                                                {extractedList.length > 0
-                                                    ? `Explora ${extractedList.length} ejercicios extraídos de pruebas anteriores.`
-                                                    : 'No hay ejercicios extraídos disponibles para este curso aún.'}
-                                            </p>
-                                        </button>
-                                    </div>
-                                )}
-
-                                {viewMode === 'real-list' && (
-                                    <div className="flex flex-col h-full animate-in fade-in slide-in-from-right-4 duration-300">
-                                        <div className="relative mb-4">
-                                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                                            <input
-                                                type="text"
-                                                placeholder="Buscar en ejercicios..."
-                                                value={searchTerm}
-                                                onChange={(e) => setSearchTerm(e.target.value)}
-                                                className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-purple-500 outline-none"
-                                            />
+                                                <p className="text-sm text-gray-500 dark:text-gray-400 pl-[52px]">
+                                                    Crea ejercicios únicos y personalizados sobre {selectedTopic}.
+                                                </p>
+                                            </button>
                                         </div>
 
-                                        <div className="space-y-4 overflow-y-auto max-h-[400px] pr-2 flex-1">
-                                            {filteredExercises.length > 0 ? (
-                                                filteredExercises.map((ex, idx) => (
-                                                    <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 transition-colors">
-                                                        <div className="flex justify-between items-start mb-2">
-                                                            <h4 className="font-bold text-gray-800 dark:text-gray-200 text-sm">
-                                                                {ex.title}
-                                                            </h4>
-                                                            <span className="text-[10px] text-gray-400 bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded uppercase tracking-wider">
-                                                                {ex.id.split('_')[2]}
-                                                            </span>
-                                                        </div>
-                                                        <div className="prose dark:prose-invert text-sm max-w-none line-clamp-6 hover:line-clamp-none transition-all">
-                                                            <ReactMarkdown>{ex.content}</ReactMarkdown>
-                                                        </div>
-                                                    </div>
-                                                ))
-                                            ) : (
-                                                <div className="text-center py-8 text-gray-400 text-sm">
-                                                    No se encontraron ejercicios que coincidan con tu búsqueda.
+                                        {/* Real Exercises Section */}
+                                        <div className="flex-1 flex flex-col min-h-0">
+                                            <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                                <Database className="w-4 h-4 text-green-500" />
+                                                Ejercicios Reales Extraídos
+                                            </h4>
+
+                                            <div className="relative mb-4">
+                                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                                <input
+                                                    type="text"
+                                                    placeholder={`Buscar en ejercicios de ${selectedTopic}...`}
+                                                    value={searchTerm}
+                                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                                    className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-purple-500 outline-none"
+                                                />
+                                            </div>
+
+                                            {selectedTopic && (
+                                                <div className="px-1 pb-2">
+                                                    <span className="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 px-2 py-1 rounded-full">
+                                                        ✨ Ordenados por relevancia para: {selectedTopic}
+                                                    </span>
                                                 </div>
                                             )}
+
+                                            <div className="space-y-4 overflow-y-auto pr-2 flex-1 min-h-[200px]">
+                                                {filteredExercises.length > 0 ? (
+                                                    filteredExercises.map((ex, idx) => (
+                                                        <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 transition-colors">
+                                                            <div className="flex justify-between items-start mb-2">
+                                                                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-sm">
+                                                                    {ex.title}
+                                                                </h4>
+                                                                <span className="text-[10px] text-gray-400 bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded uppercase tracking-wider">
+                                                                    {ex.id.split('_')[2]}
+                                                                </span>
+                                                            </div>
+                                                            <div className="prose dark:prose-invert text-sm max-w-none line-clamp-6 hover:line-clamp-none transition-all">
+                                                                <ReactMarkdown>{ex.content}</ReactMarkdown>
+                                                            </div>
+                                                        </div>
+                                                    ))
+                                                ) : (
+                                                    <div className="text-center py-8 text-gray-400 text-sm bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-dashed border-gray-200 dark:border-gray-700">
+                                                        <p>No se encontraron ejercicios extraídos para esta búsqueda.</p>
+                                                        {extractedList.length === 0 && (
+                                                            <p className="text-xs mt-2">Intenta subir guías o pruebas en la sección de Materiales.</p>
+                                                        )}
+                                                    </div>
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 )}
