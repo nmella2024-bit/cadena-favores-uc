@@ -118,9 +118,9 @@ const SYLLABUS = {
     }
 };
 
-// Helper to normalize strings: remove accents, lowercase, remove spaces
+// Helper to normalize strings: remove accents, lowercase, keep spaces
 const normalizeKey = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 };
 
 const ExerciseBank = () => {
