@@ -144,15 +144,22 @@ const ExerciseBank = () => {
 
                 // 2. Load Extracted Exercises from JSON using normalized key
                 const normalizedCourse = normalizeKey(selectedCourse);
+                console.log('Debug: Selected Course:', selectedCourse);
+                console.log('Debug: Normalized Course:', normalizedCourse);
+                console.log('Debug: Available Keys:', Object.keys(extractedExercises));
+
                 // Find matching key in extractedExercises
                 // We use a more flexible match: check if one contains the other
                 // e.g. "calculo" (json) is in "calculo i" (app)
                 const matchingKey = Object.keys(extractedExercises).find(k => {
                     const normK = normalizeKey(k);
-                    return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
+                    const match = normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
+                    if (match) console.log(`Debug: Match found! ${normalizedCourse} matches ${normK}`);
+                    return match;
                 });
 
                 const courseExercises = matchingKey ? extractedExercises[matchingKey] : [];
+                console.log('Debug: Found Exercises:', courseExercises.length);
                 setExtractedList(courseExercises);
 
             } catch (error) {
@@ -517,6 +524,15 @@ const ExerciseBank = () => {
                     </div>
                 </div>
             )}
+
+            {/* DEBUG SECTION - REMOVE LATER */}
+            <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded text-xs font-mono text-gray-500 overflow-auto max-h-40">
+                <p><strong>Debug Info:</strong></p>
+                <p>Selected Course: {selectedCourse}</p>
+                <p>Normalized: {selectedCourse ? normalizeKey(selectedCourse) : 'null'}</p>
+                <p>Available Keys in JSON: {JSON.stringify(Object.keys(extractedExercises))}</p>
+                <p>Extracted List Length: {extractedList.length}</p>
+            </div>
         </div>
     );
 };
