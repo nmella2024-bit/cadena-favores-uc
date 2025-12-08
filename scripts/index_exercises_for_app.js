@@ -55,36 +55,37 @@ const SYLLABUS = {
     ]
 };
 
-const determineTopic = (content, title, courseName) => {
+const determineBestMatch = (content, title) => {
     // Normalize text for searching
     const text = (title + " " + content).toLowerCase();
     const normalizedText = normalizeKey(text);
 
-    // Find matching course in syllabus (handle normalized keys)
-    const courseKey = Object.keys(SYLLABUS).find(k => normalizeKey(k) === normalizeKey(courseName));
-    if (!courseKey) return null;
-
-    const topics = SYLLABUS[courseKey];
-    let bestTopic = null;
+    let bestMatch = null;
     let maxScore = 0;
 
-    for (const topic of topics) {
-        // Create keywords from topic name
-        // e.g. "Derivadas: Definición y Reglas" -> ["derivadas", "definicion", "reglas"]
-        const keywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
+    // Iterate over ALL courses and ALL topics
+    for (const [course, topics] of Object.entries(SYLLABUS)) {
+        for (const topic of topics) {
+            // Create keywords from topic name
+            const keywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
+            if (keywords.length === 0) continue;
 
-        let score = 0;
-        keywords.forEach(k => {
-            if (normalizedText.includes(k)) score++;
-        });
+            let score = 0;
+            keywords.forEach(k => {
+                if (normalizedText.includes(k)) score++;
+            });
 
-        if (score > maxScore) {
-            maxScore = score;
-            bestTopic = topic;
+            // Boost score if course name is mentioned
+            if (normalizedText.includes(normalizeKey(course))) score += 2;
+
+            if (score > maxScore) {
+                maxScore = score;
+                bestMatch = { course, topic };
+            }
         }
     }
 
-    return bestTopic || topics[0]; // Default to first topic if no match
+    return bestMatch;
 };
 
 const indexExercises = () => {
@@ -97,37 +98,60 @@ const indexExercises = () => {
 
     const index = {};
 
-    // Walk through Course folders
-    const courses = fs.readdirSync(EXPORTS_DIR).filter(f => fs.statSync(path.join(EXPORTS_DIR, f)).isDirectory());
+    // Initialize index with all syllabus courses to ensure they exist
+    Object.keys(SYLLABUS).forEach(course => {
+        index[normalizeKey(course)] = [];
+    });
 
-    for (const course of courses) {
-        console.log(`Processing course: ${course}`);
-        // Use normalized key for the index
-        const key = normalizeKey(course);
-        index[key] = [];
+    // Walk through ALL Course folders
+    const sourceFolders = fs.readdirSync(EXPORTS_DIR).filter(f => fs.statSync(path.join(EXPORTS_DIR, f)).isDirectory());
 
-        const exercisesDir = path.join(EXPORTS_DIR, course, 'ejercicios');
+    for (const sourceFolder of sourceFolders) {
+        console.log(`Processing source folder: ${sourceFolder}`);
+        const exercisesDir = path.join(EXPORTS_DIR, sourceFolder, 'ejercicios');
+
         if (fs.existsSync(exercisesDir)) {
             const files = fs.readdirSync(exercisesDir).filter(f => f.endsWith('.md'));
 
             for (const file of files) {
                 const content = fs.readFileSync(path.join(exercisesDir, file), 'utf-8');
-                // Simple parsing of ID and Number from filename: Ej_1_DummyPrueba_Ej1.md
                 const parts = file.replace('.md', '').split('_');
                 const number = parts[1];
-                const id = parts.slice(2).join('_');
-
                 const title = `Ejercicio ${number}`;
-                const topic = determineTopic(content, title, course);
 
-                index[key].push({
+                // Determine best course and topic match
+                const match = determineBestMatch(content, title);
+
+                if (match && match.course !== "Todos los ramos") {
+                    // Add to specific course
+                    const key = normalizeKey(match.course);
+                    index[key].push({
+                        id: file.replace('.md', ''),
+                        number: number,
+                        content: content,
+                        filename: file,
+                        title: title,
+                        topic: match.topic,
+                        originalCourse: sourceFolder
+                    });
+                }
+
+                // ALWAYS add to "Todos los ramos" as fallback/archive
+                // But map it to a generic topic if possible
+                const todosKey = normalizeKey("Todos los ramos");
+                let genericTopic = "Material General";
+                if (title.toLowerCase().includes("prueba") || content.toLowerCase().includes("prueba")) genericTopic = "Pruebas Anteriores";
+                else if (title.toLowerCase().includes("guia") || content.toLowerCase().includes("guía")) genericTopic = "Guías de Ejercicios";
+                else if (title.toLowerCase().includes("ayudantia") || content.toLowerCase().includes("ayudantía")) genericTopic = "Ayudantías";
+
+                index[todosKey].push({
                     id: file.replace('.md', ''),
                     number: number,
                     content: content,
                     filename: file,
                     title: title,
-                    topic: topic, // Add tagged topic
-                    originalCourse: course
+                    topic: genericTopic,
+                    originalCourse: sourceFolder
                 });
             }
         }
