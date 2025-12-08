@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { Book, ChevronRight, Play, Layers, Calculator, Atom, Sigma } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Book, ChevronRight, Play, Layers, Calculator, Atom, Sigma, FileText, Sparkles } from 'lucide-react';
 import { studyAI } from '../../services/studyAI';
 import QuizPlayer from './QuizPlayer';
+import { obtenerMaterialesFiltrados } from '../../services/materialService';
+import { extractTextFromUrl } from '../../autoStudyDocs/contextProcessor';
 
 const SYLLABUS = {
     "Introducción al Cálculo": {
@@ -108,21 +110,76 @@ const ExerciseBank = () => {
     const [selectedTopic, setSelectedTopic] = useState(null);
     const [isGenerating, setIsGenerating] = useState(false);
     const [quizData, setQuizData] = useState(null);
+    const [realMaterials, setRealMaterials] = useState([]);
+    const [loadingMaterials, setLoadingMaterials] = useState(false);
+
+    // Fetch real materials when course changes
+    useEffect(() => {
+        const fetchMaterials = async () => {
+            if (!selectedCourse) {
+                setRealMaterials([]);
+                return;
+            }
+
+            setLoadingMaterials(true);
+            try {
+                // Try to find materials that match the course name in 'ramo' or 'tags'
+                // Since obtenerMaterialesFiltrados filters by exact 'ramo', we use that.
+                // Note: This assumes the 'ramo' field in DB matches the SYLLABUS keys.
+                // If not, we might need a more flexible search, but let's start with this.
+                const materials = await obtenerMaterialesFiltrados({ ramo: selectedCourse });
+
+                // Filter for "Pruebas", "Exámenes", "Ayudantías" based on title or type
+                // We prioritize files that look like exams
+                const relevant = materials.filter(m => {
+                    const title = m.titulo.toLowerCase();
+                    return title.includes('prueba') || title.includes('examen') || title.includes('control') || title.includes('ayudantía') || title.includes('guía');
+                });
+
+                setRealMaterials(relevant.slice(0, 5)); // Keep top 5
+            } catch (error) {
+                console.error("Error fetching course materials:", error);
+            } finally {
+                setLoadingMaterials(false);
+            }
+        };
+
+        fetchMaterials();
+    }, [selectedCourse]);
 
     const handleGenerateGuide = async (course, topic, mode = 'quiz') => {
         setIsGenerating(true);
         try {
+            let context = "";
             let prompt = `Genera una guía de ejercicios práctica y desafiante sobre "${topic}" para el curso de "${course}". Incluye problemas variados.`;
 
+            // If exam mode, try to use a real exam as context for style matching
             if (mode === 'exam') {
                 prompt = `Genera un problema de ALTA DIFICULTAD (Tipo Prueba/Examen) para el curso "${course}". Debe ser un desafío complejo que integre múltiples conceptos.`;
+
+                // Find a suitable real material to use as style reference
+                const referenceMaterial = realMaterials.find(m =>
+                    m.archivoUrl && (m.titulo.toLowerCase().includes('prueba') || m.titulo.toLowerCase().includes('examen'))
+                );
+
+                if (referenceMaterial) {
+                    try {
+                        console.log("Using reference material:", referenceMaterial.titulo);
+                        const text = await extractTextFromUrl(referenceMaterial.archivoUrl);
+                        context = `REFERENCIA DE ESTILO Y DIFICULTAD (NO COPIAR, SOLO IMITAR ESTILO):\n\n${text.substring(0, 15000)}`; // Limit context length
+                        prompt += `\n\nIMPORTANTE: Usa el material adjunto como REFERENCIA del nivel de dificultad y estilo de preguntas de la universidad. NO copies los ejercicios, crea uno NUEVO con ese mismo estándar.`;
+                    } catch (err) {
+                        console.warn("Could not extract text from reference material:", err);
+                    }
+                }
             }
 
             const data = await studyAI.generateQuiz(prompt, {
                 numQuestions: mode === 'exam' ? 1 : 5, // Exam mode = 1 big problem
                 type: mode === 'exam' ? 'open' : 'mixed',
                 difficulty: mode === 'exam' ? 'exam' : 'Intermedio',
-                mode: mode // Pass mode to service if needed, though difficulty handles it mostly
+                mode: mode,
+                context: context // Pass the extracted text as context
             });
 
             // Enforce unit tagging for gamification
@@ -220,14 +277,14 @@ const ExerciseBank = () => {
                     <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 px-2">
                         2. Selecciona una Materia
                     </h3>
-                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 min-h-[400px] p-4">
+                    <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 min-h-[400px] p-4 flex flex-col">
                         {!selectedCourse ? (
                             <div className="h-full flex flex-col items-center justify-center text-gray-400 text-center p-8">
                                 <Book className="w-12 h-12 mb-3 opacity-20" />
                                 <p>Selecciona un ramo a la izquierda para ver sus materias.</p>
                             </div>
                         ) : (
-                            <div className="space-y-2 animate-in fade-in slide-in-from-left-4 duration-300">
+                            <div className="space-y-2 animate-in fade-in slide-in-from-left-4 duration-300 flex-1">
                                 <div className="flex items-center gap-2 mb-4 pb-4 border-b border-gray-100 dark:border-gray-700">
                                     <span className={`text-xs font-bold px-2 py-1 rounded-full ${SYLLABUS[selectedCourse].bg} ${SYLLABUS[selectedCourse].color}`}>
                                         {selectedCourse}
@@ -261,6 +318,39 @@ const ExerciseBank = () => {
                                         )}
                                     </button>
                                 ))}
+
+                                {/* Real Materials Section */}
+                                {realMaterials.length > 0 && (
+                                    <div className="mt-8 pt-4 border-t border-gray-100 dark:border-gray-700">
+                                        <h4 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
+                                            <Sparkles className="w-4 h-4 text-yellow-500" />
+                                            Material Real Encontrado
+                                        </h4>
+                                        <div className="space-y-2">
+                                            {realMaterials.map((material) => (
+                                                <a
+                                                    key={material.id}
+                                                    href={material.archivoUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="block p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg hover:bg-purple-50 dark:hover:bg-purple-900/20 border border-transparent hover:border-purple-200 transition-all group"
+                                                >
+                                                    <div className="flex items-start gap-3">
+                                                        <FileText className="w-5 h-5 text-gray-400 group-hover:text-purple-500 mt-0.5" />
+                                                        <div>
+                                                            <p className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-purple-700 dark:group-hover:text-purple-300 line-clamp-1">
+                                                                {material.titulo}
+                                                            </p>
+                                                            <p className="text-xs text-gray-500">
+                                                                {new Date(material.fechaSubida).toLocaleDateString()}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
@@ -282,6 +372,11 @@ const ExerciseBank = () => {
                             <p className="text-gray-500 dark:text-gray-400">
                                 La IA está redactando problemas únicos sobre <strong>{selectedTopic || 'el tema seleccionado'}</strong> para ti.
                             </p>
+                            {realMaterials.length > 0 && selectedTopic === 'Examen Final' && (
+                                <p className="text-xs text-purple-600 font-medium mt-2 animate-pulse">
+                                    ✨ Usando material real de la UC como referencia de estilo...
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>
