@@ -145,7 +145,12 @@ const ExerciseBank = () => {
                 // 2. Load Extracted Exercises from JSON using normalized key
                 const normalizedCourse = normalizeKey(selectedCourse);
                 // Find matching key in extractedExercises
-                const matchingKey = Object.keys(extractedExercises).find(k => normalizeKey(k) === normalizedCourse);
+                // We use a more flexible match: check if one contains the other
+                // e.g. "calculo" (json) is in "calculo i" (app)
+                const matchingKey = Object.keys(extractedExercises).find(k => {
+                    const normK = normalizeKey(k);
+                    return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
+                });
 
                 const courseExercises = matchingKey ? extractedExercises[matchingKey] : [];
                 setExtractedList(courseExercises);
@@ -423,8 +428,8 @@ const ExerciseBank = () => {
                                             onClick={() => setViewMode('real-list')}
                                             disabled={extractedList.length === 0}
                                             className={`w-full p-4 border rounded-xl transition-all text-left group ${extractedList.length > 0
-                                                    ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 hover:shadow-md cursor-pointer'
-                                                    : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-60 cursor-not-allowed'
+                                                ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 hover:shadow-md cursor-pointer'
+                                                : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-60 cursor-not-allowed'
                                                 }`}
                                         >
                                             <div className="flex items-center gap-3 mb-2">

@@ -3,7 +3,7 @@ import { obtenerMaterialesPorCarpeta, eliminarMaterial, fijarMaterial } from '..
 import { obtenerCarpetasPorNivel, crearCarpeta, renombrarCarpeta, eliminarCarpeta, obtenerRutaCarpeta, obtenerCarpetaPorId, moverCarpeta } from '../services/folderService';
 import { useAuth } from '../context/AuthContext';
 import { useSearchParams, Link } from 'react-router-dom';
-import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus, Search, Sparkles } from 'lucide-react';
+import { BookOpen, Plus, Inbox, AlertCircle, FolderPlus, Search, Sparkles, Database } from 'lucide-react';
 import SubirMaterialModal from '../components/SubirMaterialModal';
 import MaterialCard from '../components/MaterialCard';
 import FolderCard from '../components/FolderCard';
@@ -349,6 +349,15 @@ const Material = () => {
 
 
             <div className="flex-shrink-0 relative z-10 flex flex-col sm:flex-row gap-2">
+
+              <Link
+                to="/modo-estudio-pro?tab=bank"
+                className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all shadow-sm"
+              >
+                <Database className="w-4 h-4 text-green-600" />
+                <span className="hidden sm:inline">Ver Ejercicios Extraídos</span>
+                <span className="inline sm:hidden">Ejercicios</span>
+              </Link>
 
               {currentUser?.rol === 'admin' ? (
                 <button
