@@ -107,9 +107,9 @@ const SYLLABUS = {
     }
 };
 
-// Helper to normalize strings: remove accents, lowercase
+// Helper to normalize strings: remove accents, lowercase, remove spaces
 const normalizeKey = (str) => {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 };
 
 const ExerciseBank = () => {
@@ -144,23 +144,26 @@ const ExerciseBank = () => {
 
                 // 2. Load Extracted Exercises from JSON using normalized key
                 const normalizedCourse = normalizeKey(selectedCourse);
-                console.log('Debug: Selected Course:', selectedCourse);
-                console.log('Debug: Normalized Course:', normalizedCourse);
-                console.log('Debug: Available Keys:', Object.keys(extractedExercises));
 
                 // Find matching key in extractedExercises
                 // We use a more flexible match: check if one contains the other
-                // e.g. "calculo" (json) is in "calculo i" (app)
                 const matchingKey = Object.keys(extractedExercises).find(k => {
                     const normK = normalizeKey(k);
-                    const match = normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
-                    if (match) console.log(`Debug: Match found! ${normalizedCourse} matches ${normK}`);
-                    return match;
+                    // Check for containment in either direction
+                    return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
                 });
 
-                const courseExercises = matchingKey ? extractedExercises[matchingKey] : [];
-                console.log('Debug: Found Exercises:', courseExercises.length);
-                setExtractedList(courseExercises);
+                if (matchingKey) {
+                    const exercises = extractedExercises[matchingKey];
+                    if (Array.isArray(exercises)) {
+                        setExtractedList(exercises);
+                    } else {
+                        console.warn("Found matching key but value is not an array:", exercises);
+                        setExtractedList([]);
+                    }
+                } else {
+                    setExtractedList([]);
+                }
 
             } catch (error) {
                 console.error("Error fetching course materials:", error);
@@ -525,14 +528,6 @@ const ExerciseBank = () => {
                 </div>
             )}
 
-            {/* DEBUG SECTION - REMOVE LATER */}
-            <div className="mt-8 p-4 bg-gray-100 dark:bg-gray-800 rounded text-xs font-mono text-gray-500 overflow-auto max-h-40">
-                <p><strong>Debug Info:</strong></p>
-                <p>Selected Course: {selectedCourse}</p>
-                <p>Normalized: {selectedCourse ? normalizeKey(selectedCourse) : 'null'}</p>
-                <p>Available Keys in JSON: {JSON.stringify(Object.keys(extractedExercises))}</p>
-                <p>Extracted List Length: {extractedList.length}</p>
-            </div>
         </div>
     );
 };
