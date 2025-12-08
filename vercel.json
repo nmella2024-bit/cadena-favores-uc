@@ -80,5 +80,11 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/weekly-report",
+      "schedule": "0 8 * * 1"
+    }
   ]
 }

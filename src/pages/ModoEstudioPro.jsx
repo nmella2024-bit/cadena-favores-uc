@@ -20,6 +20,7 @@ import WeaknessDetector from '../components/study/WeaknessDetector';
 import DesarrolloPractice from '../components/study/DesarrolloPractice';
 import StudyHistory from '../components/study/StudyHistory';
 import Achievements from '../components/study/Achievements';
+import MasteryDashboard from '../components/study/MasteryDashboard';
 
 const Dashboard = () => {
     const { userLevel, streak, unitStats } = useStudy();
@@ -116,32 +117,7 @@ const Dashboard = () => {
                         </nav>
 
                         {/* Unit Progress Widget */}
-                        <div className="bg-white dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
-                            <h3 className="text-sm font-bold text-gray-500 mb-3 uppercase tracking-wider">Progreso por Unidad</h3>
-                            <div className="space-y-3">
-                                {Object.entries(unitStats).length > 0 ? (
-                                    Object.entries(unitStats).map(([unit, stats]) => {
-                                        const percentage = stats.total > 0 ? Math.round((stats.correct / stats.total) * 100) : 0;
-                                        return (
-                                            <div key={unit}>
-                                                <div className="flex justify-between text-xs mb-1">
-                                                    <span className="font-medium truncate max-w-[120px]">{unit}</span>
-                                                    <span className="text-gray-500">{percentage}%</span>
-                                                </div>
-                                                <div className="w-full bg-gray-100 dark:bg-gray-700 rounded-full h-1.5">
-                                                    <div
-                                                        className="bg-blue-500 h-1.5 rounded-full transition-all duration-500"
-                                                        style={{ width: `${percentage}%` }}
-                                                    />
-                                                </div>
-                                            </div>
-                                        );
-                                    })
-                                ) : (
-                                    <p className="text-xs text-gray-400 italic">Completa quizzes para ver tu progreso.</p>
-                                )}
-                            </div>
-                        </div>
+                        <MasteryDashboard />
                     </div>
 
                     {/* Main Content Area */}
