@@ -130,7 +130,7 @@ const ExerciseBank = () => {
     const [quizData, setQuizData] = useState(null);
     const [realMaterials, setRealMaterials] = useState([]);
     const [loadingMaterials, setLoadingMaterials] = useState(false);
-    const [viewMode, setViewMode] = useState('selection'); // 'selection', 'topic-choice', 'real-list'
+    const [viewMode, setViewMode] = useState('selection'); // 'selection', 'topic-choice', 'topic-choice-expanded'
     const [extractedList, setExtractedList] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -479,51 +479,61 @@ const ExerciseBank = () => {
                                                 Ejercicios Reales Extraídos
                                             </h4>
 
-                                            <div className="relative mb-4">
-                                                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-                                                <input
-                                                    type="text"
-                                                    placeholder={`Buscar en ejercicios de ${selectedTopic}...`}
-                                                    value={searchTerm}
-                                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                                    className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-purple-500 outline-none"
-                                                />
-                                            </div>
+                                            {/* Strict Filtering: Only show exercises tagged with this topic */}
+                                            {(() => {
+                                                const strictExercises = extractedList.filter(ex => ex.topic === selectedTopic);
 
-                                            {selectedTopic && (
-                                                <div className="px-1 pb-2">
-                                                    <span className="text-xs font-medium text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 px-2 py-1 rounded-full">
-                                                        ✨ Ordenados por relevancia para: {selectedTopic}
-                                                    </span>
-                                                </div>
-                                            )}
+                                                return (
+                                                    <div className="space-y-4">
+                                                        <button
+                                                            onClick={() => setViewMode(viewMode === 'topic-choice-expanded' ? 'topic-choice' : 'topic-choice-expanded')}
+                                                            className="w-full p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl hover:shadow-md transition-all text-left group flex items-center justify-between"
+                                                        >
+                                                            <div className="flex items-center gap-3">
+                                                                <div className="p-2 bg-green-100 dark:bg-green-800 rounded-lg text-green-600 dark:text-green-300">
+                                                                    <Database className="w-6 h-6" />
+                                                                </div>
+                                                                <div>
+                                                                    <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-green-600 transition-colors">
+                                                                        Ver Ejercicios Reales de {selectedTopic}
+                                                                    </h4>
+                                                                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                                                                        {strictExercises.length} ejercicios disponibles
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <ChevronRight className={`w-5 h-5 text-gray-400 transition-transform ${viewMode === 'topic-choice-expanded' ? 'rotate-90' : ''}`} />
+                                                        </button>
 
-                                            <div className="space-y-4 overflow-y-auto pr-2 flex-1 min-h-[200px]">
-                                                {filteredExercises.length > 0 ? (
-                                                    filteredExercises.map((ex, idx) => (
-                                                        <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 transition-colors">
-                                                            <div className="flex justify-between items-start mb-2">
-                                                                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-sm">
-                                                                    {ex.title}
-                                                                </h4>
-                                                                <span className="text-[10px] text-gray-400 bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded uppercase tracking-wider">
-                                                                    {ex.id.split('_')[2]}
-                                                                </span>
+                                                        {viewMode === 'topic-choice-expanded' && (
+                                                            <div className="space-y-4 animate-in slide-in-from-top-2 duration-200">
+                                                                {strictExercises.length > 0 ? (
+                                                                    strictExercises.map((ex, idx) => (
+                                                                        <div key={idx} className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-green-300 transition-colors shadow-sm">
+                                                                            <div className="flex justify-between items-start mb-2">
+                                                                                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-sm">
+                                                                                    {ex.title}
+                                                                                </h4>
+                                                                                <span className="text-[10px] text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded uppercase tracking-wider">
+                                                                                    {ex.id.split('_')[2]}
+                                                                                </span>
+                                                                            </div>
+                                                                            <div className="prose dark:prose-invert text-sm max-w-none line-clamp-6 hover:line-clamp-none transition-all">
+                                                                                <ReactMarkdown>{ex.content}</ReactMarkdown>
+                                                                            </div>
+                                                                        </div>
+                                                                    ))
+                                                                ) : (
+                                                                    <div className="text-center py-8 text-gray-400 text-sm bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-dashed border-gray-200 dark:border-gray-700">
+                                                                        <p>No se encontraron ejercicios etiquetados específicamente para "{selectedTopic}".</p>
+                                                                        <p className="text-xs mt-2">Intenta subir material que contenga palabras clave de este tema.</p>
+                                                                    </div>
+                                                                )}
                                                             </div>
-                                                            <div className="prose dark:prose-invert text-sm max-w-none line-clamp-6 hover:line-clamp-none transition-all">
-                                                                <ReactMarkdown>{ex.content}</ReactMarkdown>
-                                                            </div>
-                                                        </div>
-                                                    ))
-                                                ) : (
-                                                    <div className="text-center py-8 text-gray-400 text-sm bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-dashed border-gray-200 dark:border-gray-700">
-                                                        <p>No se encontraron ejercicios extraídos para esta búsqueda.</p>
-                                                        {extractedList.length === 0 && (
-                                                            <p className="text-xs mt-2">Intenta subir guías o pruebas en la sección de Materiales.</p>
                                                         )}
                                                     </div>
-                                                )}
-                                            </div>
+                                                );
+                                            })()}
                                         </div>
                                     </div>
                                 )}
