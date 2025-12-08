@@ -1,0 +1,4 @@
+ID_ejercicio,título,tipo,número,resumen_enunciado,archivo_origen,ruta_origen,página_or_slide,archivo_exportado,hash_exportado,fecha_extracción
+DummyPrueba_Ej1,Ejercicio 1,ejercicio,1,Calcule el límite de f(x) = (x^2 - 1)/(x - 1) cuan...,DummyPrueba.pdf,material/Calculo/DummyPrueba.pdf,1,Ej_1_DummyPrueba_Ej1.md,a689330761fe63875af2b118ae62f1881a146cfdfdd62f48a2132958427b485c,2025-12-08T16:25:00.203Z
+DummyPrueba_Ej2,Ejercicio 2,ejercicio,2,Encuentre la derivada de g(x) = sin(x) * cos(x).  ...,DummyPrueba.pdf,material/Calculo/DummyPrueba.pdf,1,Ej_2_DummyPrueba_Ej2.md,49e2586d37225ec2d23e54e876b11eb5ae90a14e83f01a86de6603011ac46918,2025-12-08T16:25:00.207Z
+DummyPrueba_Ej3,Ejercicio 3,ejercicio,3,Integre la función h(x) = e^x entre 0 y 1....,DummyPrueba.pdf,material/Calculo/DummyPrueba.pdf,2,Ej_3_DummyPrueba_Ej3.md,607a210e686675849e970cbd8bbe5620ec023c3348d571674a6bce70d98023b8,2025-12-08T16:25:00.209Z

@@ -47,6 +47,7 @@
     "canvas-confetti": "^1.9.4",
     "csv-parse": "^6.1.0",
     "csv-stringify": "^6.6.0",
+    "csv-writer": "^1.6.0",
     "firebase": "^12.4.0",
     "firebase-admin": "^13.6.0",
     "formidable": "^3.5.4",
@@ -55,12 +56,15 @@
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.4",
     "lucide-react": "^0.452.0",
+    "mammoth": "^1.11.0",
     "openai": "^6.9.1",
+    "pdf-parse": "^2.4.5",
     "pdfjs-dist": "^5.4.449",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0",
-    "resend": "^6.5.2"
+    "resend": "^6.5.2",
+    "tesseract.js": "^6.0.1"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",

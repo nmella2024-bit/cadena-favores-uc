@@ -1,0 +1,1 @@
+Calcule el límite de f(x) = (x^2 - 1)/(x - 1) cuando x tiende a 1. Solución: El límite es 2.
