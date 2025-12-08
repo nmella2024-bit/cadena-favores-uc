@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Book, ChevronRight, Play, Layers, Calculator, Atom, Sigma, FileText, Sparkles, Database } from 'lucide-react';
+import { Book, ChevronRight, Play, Layers, Calculator, Atom, Sigma, FileText, Sparkles, Database, Search, ArrowLeft } from 'lucide-react';
 import { studyAI } from '../../services/studyAI';
 import QuizPlayer from './QuizPlayer';
 import { obtenerMaterialesFiltrados } from '../../services/materialService';
@@ -107,6 +107,11 @@ const SYLLABUS = {
     }
 };
 
+// Helper to normalize strings: remove accents, lowercase
+const normalizeKey = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+};
+
 const ExerciseBank = () => {
     const [selectedCourse, setSelectedCourse] = useState(null);
     const [selectedTopic, setSelectedTopic] = useState(null);
@@ -114,8 +119,9 @@ const ExerciseBank = () => {
     const [quizData, setQuizData] = useState(null);
     const [realMaterials, setRealMaterials] = useState([]);
     const [loadingMaterials, setLoadingMaterials] = useState(false);
-    const [viewMode, setViewMode] = useState('selection'); // 'selection', 'ai-setup', 'real-list'
+    const [viewMode, setViewMode] = useState('selection'); // 'selection', 'topic-choice', 'real-list'
     const [extractedList, setExtractedList] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     // Fetch real materials when course changes
     useEffect(() => {
@@ -136,12 +142,12 @@ const ExerciseBank = () => {
                 });
                 setRealMaterials(relevant.slice(0, 5));
 
-                // 2. Load Extracted Exercises from JSON
-                // We check if the course exists in our extracted data
-                // Note: The key in JSON might need to match exactly or be mapped.
-                // Assuming folder names match course names in SYLLABUS roughly.
-                // Let's try direct match first.
-                const courseExercises = extractedExercises[selectedCourse] || [];
+                // 2. Load Extracted Exercises from JSON using normalized key
+                const normalizedCourse = normalizeKey(selectedCourse);
+                // Find matching key in extractedExercises
+                const matchingKey = Object.keys(extractedExercises).find(k => normalizeKey(k) === normalizedCourse);
+
+                const courseExercises = matchingKey ? extractedExercises[matchingKey] : [];
                 setExtractedList(courseExercises);
 
             } catch (error) {
@@ -208,7 +214,13 @@ const ExerciseBank = () => {
     const handleBack = () => {
         setQuizData(null);
         setViewMode('selection');
+        setSelectedTopic(null);
     };
+
+    const filteredExercises = extractedList.filter(ex =>
+        ex.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ex.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     if (quizData) {
         return (
@@ -298,33 +310,31 @@ const ExerciseBank = () => {
                                     <span className={`text-xs font-bold px-2 py-1 rounded-full ${SYLLABUS[selectedCourse].bg} ${SYLLABUS[selectedCourse].color}`}>
                                         {selectedCourse}
                                     </span>
-                                    <span className="text-sm text-gray-500">
-                                        {viewMode === 'real-list' ? 'Ejercicios Reales' : 'Selecciona un tema:'}
-                                    </span>
+                                    {selectedTopic && (
+                                        <>
+                                            <ChevronRight className="w-4 h-4 text-gray-400" />
+                                            <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                                                {selectedTopic}
+                                            </span>
+                                        </>
+                                    )}
 
-                                    {viewMode === 'real-list' && (
+                                    {(viewMode === 'topic-choice' || viewMode === 'real-list') && (
                                         <button
-                                            onClick={() => setViewMode('selection')}
-                                            className="ml-auto text-xs text-purple-600 hover:underline"
+                                            onClick={() => {
+                                                setViewMode('selection');
+                                                setSelectedTopic(null);
+                                            }}
+                                            className="ml-auto text-xs text-purple-600 hover:underline flex items-center gap-1"
                                         >
-                                            Volver a temas
+                                            <ArrowLeft className="w-3 h-3" />
+                                            Volver
                                         </button>
                                     )}
                                 </div>
 
                                 {viewMode === 'selection' && (
                                     <>
-                                        {/* Toggle for Real Exercises */}
-                                        {extractedList.length > 0 && (
-                                            <button
-                                                onClick={() => setViewMode('real-list')}
-                                                className="mb-4 w-full flex items-center justify-center gap-2 p-3 bg-green-50 hover:bg-green-100 text-green-700 rounded-lg border border-green-200 transition-colors font-bold shadow-sm"
-                                            >
-                                                <Database className="w-5 h-5" />
-                                                Ver {extractedList.length} Ejercicios Reales Extraídos
-                                            </button>
-                                        )}
-
                                         <button
                                             onClick={() => handleGenerateGuide(selectedCourse, 'Examen Final', 'exam')}
                                             disabled={isGenerating}
@@ -337,18 +347,17 @@ const ExerciseBank = () => {
                                         {SYLLABUS[selectedCourse].topics.map((topic) => (
                                             <button
                                                 key={topic}
-                                                onClick={() => handleGenerateGuide(selectedCourse, topic)}
+                                                onClick={() => {
+                                                    setSelectedTopic(topic);
+                                                    setViewMode('topic-choice');
+                                                }}
                                                 disabled={isGenerating}
                                                 className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 group transition-colors text-left"
                                             >
                                                 <span className="text-gray-700 dark:text-gray-300 font-medium group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
                                                     {topic}
                                                 </span>
-                                                {isGenerating && selectedTopic === topic ? (
-                                                    <div className="w-5 h-5 border-2 border-purple-600 border-t-transparent rounded-full animate-spin" />
-                                                ) : (
-                                                    <Play className="w-4 h-4 text-gray-300 group-hover:text-purple-500 transition-colors opacity-0 group-hover:opacity-100" />
-                                                )}
+                                                <ChevronRight className="w-4 h-4 text-gray-300 group-hover:text-purple-500 transition-colors opacity-0 group-hover:opacity-100" />
                                             </button>
                                         ))}
 
@@ -387,23 +396,90 @@ const ExerciseBank = () => {
                                     </>
                                 )}
 
-                                {viewMode === 'real-list' && (
-                                    <div className="space-y-4 overflow-y-auto max-h-[500px] pr-2">
-                                        {extractedList.map((ex, idx) => (
-                                            <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg border border-gray-200 dark:border-gray-700">
-                                                <div className="flex justify-between items-start mb-2">
-                                                    <h4 className="font-bold text-gray-800 dark:text-gray-200">
-                                                        {ex.title}
-                                                    </h4>
-                                                    <span className="text-xs text-gray-400 bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded">
-                                                        {ex.id}
-                                                    </span>
+                                {viewMode === 'topic-choice' && (
+                                    <div className="space-y-4 animate-in fade-in slide-in-from-right-4 duration-300">
+                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                            ¿Qué te gustaría hacer con <strong>{selectedTopic}</strong>?
+                                        </p>
+
+                                        <button
+                                            onClick={() => handleGenerateGuide(selectedCourse, selectedTopic)}
+                                            className="w-full p-4 bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-xl hover:shadow-md transition-all text-left group"
+                                        >
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <div className="p-2 bg-purple-100 dark:bg-purple-800 rounded-lg text-purple-600 dark:text-purple-300">
+                                                    <Sparkles className="w-6 h-6" />
                                                 </div>
-                                                <div className="prose dark:prose-invert text-sm max-w-none">
-                                                    <ReactMarkdown>{ex.content}</ReactMarkdown>
-                                                </div>
+                                                <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-purple-600 transition-colors">
+                                                    Generar Guía con IA
+                                                </h4>
                                             </div>
-                                        ))}
+                                            <p className="text-sm text-gray-500 dark:text-gray-400 pl-[52px]">
+                                                Crea ejercicios únicos y personalizados al instante.
+                                            </p>
+                                        </button>
+
+                                        <button
+                                            onClick={() => setViewMode('real-list')}
+                                            disabled={extractedList.length === 0}
+                                            className={`w-full p-4 border rounded-xl transition-all text-left group ${extractedList.length > 0
+                                                    ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800 hover:shadow-md cursor-pointer'
+                                                    : 'bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 opacity-60 cursor-not-allowed'
+                                                }`}
+                                        >
+                                            <div className="flex items-center gap-3 mb-2">
+                                                <div className={`p-2 rounded-lg ${extractedList.length > 0 ? 'bg-green-100 dark:bg-green-800 text-green-600 dark:text-green-300' : 'bg-gray-200 text-gray-500'}`}>
+                                                    <Database className="w-6 h-6" />
+                                                </div>
+                                                <h4 className={`font-bold transition-colors ${extractedList.length > 0 ? 'text-gray-900 dark:text-white group-hover:text-green-600' : 'text-gray-500'}`}>
+                                                    Ver Ejercicios Reales
+                                                </h4>
+                                            </div>
+                                            <p className="text-sm text-gray-500 dark:text-gray-400 pl-[52px]">
+                                                {extractedList.length > 0
+                                                    ? `Explora ${extractedList.length} ejercicios extraídos de pruebas anteriores.`
+                                                    : 'No hay ejercicios extraídos disponibles para este curso aún.'}
+                                            </p>
+                                        </button>
+                                    </div>
+                                )}
+
+                                {viewMode === 'real-list' && (
+                                    <div className="flex flex-col h-full animate-in fade-in slide-in-from-right-4 duration-300">
+                                        <div className="relative mb-4">
+                                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                                            <input
+                                                type="text"
+                                                placeholder="Buscar en ejercicios..."
+                                                value={searchTerm}
+                                                onChange={(e) => setSearchTerm(e.target.value)}
+                                                className="w-full pl-9 pr-4 py-2 text-sm border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800 focus:ring-2 focus:ring-purple-500 outline-none"
+                                            />
+                                        </div>
+
+                                        <div className="space-y-4 overflow-y-auto max-h-[400px] pr-2 flex-1">
+                                            {filteredExercises.length > 0 ? (
+                                                filteredExercises.map((ex, idx) => (
+                                                    <div key={idx} className="p-4 bg-gray-50 dark:bg-gray-700/30 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-purple-300 transition-colors">
+                                                        <div className="flex justify-between items-start mb-2">
+                                                            <h4 className="font-bold text-gray-800 dark:text-gray-200 text-sm">
+                                                                {ex.title}
+                                                            </h4>
+                                                            <span className="text-[10px] text-gray-400 bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded uppercase tracking-wider">
+                                                                {ex.id.split('_')[2]}
+                                                            </span>
+                                                        </div>
+                                                        <div className="prose dark:prose-invert text-sm max-w-none line-clamp-6 hover:line-clamp-none transition-all">
+                                                            <ReactMarkdown>{ex.content}</ReactMarkdown>
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            ) : (
+                                                <div className="text-center py-8 text-gray-400 text-sm">
+                                                    No se encontraron ejercicios que coincidan con tu búsqueda.
+                                                </div>
+                                            )}
+                                        </div>
                                     </div>
                                 )}
                             </div>

@@ -9,6 +9,11 @@ const __dirname = dirname(__filename);
 const EXPORTS_DIR = path.join(__dirname, '..', 'exports', 'ejercicios');
 const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'extractedExercises.json');
 
+// Helper to normalize strings: remove accents, lowercase
+const normalizeKey = (str) => {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+};
+
 const indexExercises = () => {
     console.log('Indexing exercises...');
 
@@ -24,7 +29,9 @@ const indexExercises = () => {
 
     for (const course of courses) {
         console.log(`Processing course: ${course}`);
-        index[course] = [];
+        // Use normalized key for the index
+        const key = normalizeKey(course);
+        index[key] = [];
 
         const exercisesDir = path.join(EXPORTS_DIR, course, 'ejercicios');
         if (fs.existsSync(exercisesDir)) {
@@ -37,14 +44,15 @@ const indexExercises = () => {
                 const number = parts[1];
                 const id = parts.slice(2).join('_');
 
-                index[course].push({
+                index[key].push({
                     id: file.replace('.md', ''),
                     number: number,
                     content: content,
                     filename: file,
                     // Try to extract a title or summary from content? 
                     // For now, just use the first line or a generic title
-                    title: `Ejercicio ${number}`
+                    title: `Ejercicio ${number}`,
+                    originalCourse: course // Keep original name for reference
                 });
             }
         }

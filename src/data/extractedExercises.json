@@ -1,25 +1,28 @@
 {
-  "Calculo": [
+  "calculo": [
     {
       "id": "Ej_1_DummyPrueba_Ej1",
       "number": "1",
       "content": "Calcule el límite de f(x) = (x^2 - 1)/(x - 1) cuando x tiende a 1. Solución: El límite es 2.",
       "filename": "Ej_1_DummyPrueba_Ej1.md",
-      "title": "Ejercicio 1"
+      "title": "Ejercicio 1",
+      "originalCourse": "Calculo"
     },
     {
       "id": "Ej_2_DummyPrueba_Ej2",
       "number": "2",
       "content": "Encuentre la derivada de g(x) = sin(x) * cos(x).\n\n--- Page 2 ---\n--- Page 2 ---",
       "filename": "Ej_2_DummyPrueba_Ej2.md",
-      "title": "Ejercicio 2"
+      "title": "Ejercicio 2",
+      "originalCourse": "Calculo"
     },
     {
       "id": "Ej_3_DummyPrueba_Ej3",
       "number": "3",
       "content": "Integre la función h(x) = e^x entre 0 y 1.",
       "filename": "Ej_3_DummyPrueba_Ej3.md",
-      "title": "Ejercicio 3"
+      "title": "Ejercicio 3",
+      "originalCourse": "Calculo"
     }
   ]
 }
