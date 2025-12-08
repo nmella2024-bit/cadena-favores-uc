@@ -24,5 +24,299 @@
       "title": "Ejercicio 3",
       "originalCourse": "Calculo"
     }
+  ],
+  "calculo i": [
+    {
+      "id": "Ej_1_CálculoI_Generated",
+      "number": "1",
+      "content": "# Límite indeterminado\n\nCalcule el siguiente límite:\n\n$$ \\lim_{x \\to 0} \\frac{\\sin(x) - x}{x^3} $$\n\n**Solución:** Aplicando L'Hopital tres veces...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_1_CálculoI_Generated.md",
+      "title": "Ejercicio 1",
+      "originalCourse": "Cálculo I"
+    },
+    {
+      "id": "Ej_2_CálculoI_Generated",
+      "number": "2",
+      "content": "# Derivada Implícita\n\nEncuentre $y'$ si $x^2 + y^2 = 25$.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_2_CálculoI_Generated.md",
+      "title": "Ejercicio 2",
+      "originalCourse": "Cálculo I"
+    },
+    {
+      "id": "Ej_3_CálculoI_Generated",
+      "number": "3",
+      "content": "# Optimización\n\nSe desea construir una caja sin tapa...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_3_CálculoI_Generated.md",
+      "title": "Ejercicio 3",
+      "originalCourse": "Cálculo I"
+    },
+    {
+      "id": "Ej_4_CálculoI_Generated",
+      "number": "4",
+      "content": "# Límite indeterminado\n\nCalcule el siguiente límite:\n\n$$ \\lim_{x \\to 0} \\frac{\\sin(x) - x}{x^3} $$\n\n**Solución:** Aplicando L'Hopital tres veces...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_4_CálculoI_Generated.md",
+      "title": "Ejercicio 4",
+      "originalCourse": "Cálculo I"
+    },
+    {
+      "id": "Ej_5_CálculoI_Generated",
+      "number": "5",
+      "content": "# Derivada Implícita\n\nEncuentre $y'$ si $x^2 + y^2 = 25$.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_5_CálculoI_Generated.md",
+      "title": "Ejercicio 5",
+      "originalCourse": "Cálculo I"
+    }
+  ],
+  "calculo ii": [
+    {
+      "id": "Ej_1_CálculoII_Generated",
+      "number": "1",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_1_CálculoII_Generated.md",
+      "title": "Ejercicio 1",
+      "originalCourse": "Cálculo II"
+    },
+    {
+      "id": "Ej_2_CálculoII_Generated",
+      "number": "2",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_2_CálculoII_Generated.md",
+      "title": "Ejercicio 2",
+      "originalCourse": "Cálculo II"
+    },
+    {
+      "id": "Ej_3_CálculoII_Generated",
+      "number": "3",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_3_CálculoII_Generated.md",
+      "title": "Ejercicio 3",
+      "originalCourse": "Cálculo II"
+    },
+    {
+      "id": "Ej_4_CálculoII_Generated",
+      "number": "4",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_4_CálculoII_Generated.md",
+      "title": "Ejercicio 4",
+      "originalCourse": "Cálculo II"
+    },
+    {
+      "id": "Ej_5_CálculoII_Generated",
+      "number": "5",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_5_CálculoII_Generated.md",
+      "title": "Ejercicio 5",
+      "originalCourse": "Cálculo II"
+    }
+  ],
+  "calculo iii": [
+    {
+      "id": "Ej_1_CálculoIII_Generated",
+      "number": "1",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_1_CálculoIII_Generated.md",
+      "title": "Ejercicio 1",
+      "originalCourse": "Cálculo III"
+    },
+    {
+      "id": "Ej_2_CálculoIII_Generated",
+      "number": "2",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_2_CálculoIII_Generated.md",
+      "title": "Ejercicio 2",
+      "originalCourse": "Cálculo III"
+    },
+    {
+      "id": "Ej_3_CálculoIII_Generated",
+      "number": "3",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_3_CálculoIII_Generated.md",
+      "title": "Ejercicio 3",
+      "originalCourse": "Cálculo III"
+    },
+    {
+      "id": "Ej_4_CálculoIII_Generated",
+      "number": "4",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_4_CálculoIII_Generated.md",
+      "title": "Ejercicio 4",
+      "originalCourse": "Cálculo III"
+    },
+    {
+      "id": "Ej_5_CálculoIII_Generated",
+      "number": "5",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_5_CálculoIII_Generated.md",
+      "title": "Ejercicio 5",
+      "originalCourse": "Cálculo III"
+    }
+  ],
+  "fisica: mecanica": [
+    {
+      "id": "Ej_1_Física:Mecánica_Generated",
+      "number": "1",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_1_Física:Mecánica_Generated.md",
+      "title": "Ejercicio 1",
+      "originalCourse": "Física: Mecánica"
+    },
+    {
+      "id": "Ej_2_Física:Mecánica_Generated",
+      "number": "2",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_2_Física:Mecánica_Generated.md",
+      "title": "Ejercicio 2",
+      "originalCourse": "Física: Mecánica"
+    },
+    {
+      "id": "Ej_3_Física:Mecánica_Generated",
+      "number": "3",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_3_Física:Mecánica_Generated.md",
+      "title": "Ejercicio 3",
+      "originalCourse": "Física: Mecánica"
+    },
+    {
+      "id": "Ej_4_Física:Mecánica_Generated",
+      "number": "4",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_4_Física:Mecánica_Generated.md",
+      "title": "Ejercicio 4",
+      "originalCourse": "Física: Mecánica"
+    },
+    {
+      "id": "Ej_5_Física:Mecánica_Generated",
+      "number": "5",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_5_Física:Mecánica_Generated.md",
+      "title": "Ejercicio 5",
+      "originalCourse": "Física: Mecánica"
+    }
+  ],
+  "introduccion al calculo": [
+    {
+      "id": "Ej_1_IntroducciónalCálculo_Generated",
+      "number": "1",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_1_IntroducciónalCálculo_Generated.md",
+      "title": "Ejercicio 1",
+      "originalCourse": "Introducción al Cálculo"
+    },
+    {
+      "id": "Ej_2_IntroducciónalCálculo_Generated",
+      "number": "2",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_2_IntroducciónalCálculo_Generated.md",
+      "title": "Ejercicio 2",
+      "originalCourse": "Introducción al Cálculo"
+    },
+    {
+      "id": "Ej_3_IntroducciónalCálculo_Generated",
+      "number": "3",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_3_IntroducciónalCálculo_Generated.md",
+      "title": "Ejercicio 3",
+      "originalCourse": "Introducción al Cálculo"
+    },
+    {
+      "id": "Ej_4_IntroducciónalCálculo_Generated",
+      "number": "4",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_4_IntroducciónalCálculo_Generated.md",
+      "title": "Ejercicio 4",
+      "originalCourse": "Introducción al Cálculo"
+    },
+    {
+      "id": "Ej_5_IntroducciónalCálculo_Generated",
+      "number": "5",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_5_IntroducciónalCálculo_Generated.md",
+      "title": "Ejercicio 5",
+      "originalCourse": "Introducción al Cálculo"
+    }
+  ],
+  "probabilidad y estadistica": [
+    {
+      "id": "Ej_1_ProbabilidadyEstadística_Generated",
+      "number": "1",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_1_ProbabilidadyEstadística_Generated.md",
+      "title": "Ejercicio 1",
+      "originalCourse": "Probabilidad y Estadística"
+    },
+    {
+      "id": "Ej_2_ProbabilidadyEstadística_Generated",
+      "number": "2",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_2_ProbabilidadyEstadística_Generated.md",
+      "title": "Ejercicio 2",
+      "originalCourse": "Probabilidad y Estadística"
+    },
+    {
+      "id": "Ej_3_ProbabilidadyEstadística_Generated",
+      "number": "3",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_3_ProbabilidadyEstadística_Generated.md",
+      "title": "Ejercicio 3",
+      "originalCourse": "Probabilidad y Estadística"
+    },
+    {
+      "id": "Ej_4_ProbabilidadyEstadística_Generated",
+      "number": "4",
+      "content": "# Problema de Certamen\n\nEste problema apareció en el Certamen 1 del 2023.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_4_ProbabilidadyEstadística_Generated.md",
+      "title": "Ejercicio 4",
+      "originalCourse": "Probabilidad y Estadística"
+    },
+    {
+      "id": "Ej_5_ProbabilidadyEstadística_Generated",
+      "number": "5",
+      "content": "# Ejercicio Práctico 1\n\nResuelva el siguiente problema planteado en clases...\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_5_ProbabilidadyEstadística_Generated.md",
+      "title": "Ejercicio 5",
+      "originalCourse": "Probabilidad y Estadística"
+    }
+  ],
+  "algebra lineal": [
+    {
+      "id": "Ej_1_ÁlgebraLineal_Generated",
+      "number": "1",
+      "content": "# Valores Propios\n\nEncuentre los valores propios de la matriz A = [[1, 2], [2, 1]].\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_1_ÁlgebraLineal_Generated.md",
+      "title": "Ejercicio 1",
+      "originalCourse": "Álgebra Lineal"
+    },
+    {
+      "id": "Ej_2_ÁlgebraLineal_Generated",
+      "number": "2",
+      "content": "# Independencia Lineal\n\nDetermine si los vectores v1=(1,0), v2=(0,1) son LI.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_2_ÁlgebraLineal_Generated.md",
+      "title": "Ejercicio 2",
+      "originalCourse": "Álgebra Lineal"
+    },
+    {
+      "id": "Ej_3_ÁlgebraLineal_Generated",
+      "number": "3",
+      "content": "# Valores Propios\n\nEncuentre los valores propios de la matriz A = [[1, 2], [2, 1]].\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_3_ÁlgebraLineal_Generated.md",
+      "title": "Ejercicio 3",
+      "originalCourse": "Álgebra Lineal"
+    },
+    {
+      "id": "Ej_4_ÁlgebraLineal_Generated",
+      "number": "4",
+      "content": "# Independencia Lineal\n\nDetermine si los vectores v1=(1,0), v2=(0,1) son LI.\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_4_ÁlgebraLineal_Generated.md",
+      "title": "Ejercicio 4",
+      "originalCourse": "Álgebra Lineal"
+    },
+    {
+      "id": "Ej_5_ÁlgebraLineal_Generated",
+      "number": "5",
+      "content": "# Valores Propios\n\nEncuentre los valores propios de la matriz A = [[1, 2], [2, 1]].\n\n*Generado automáticamente para pruebas.*",
+      "filename": "Ej_5_ÁlgebraLineal_Generated.md",
+      "title": "Ejercicio 5",
+      "originalCourse": "Álgebra Lineal"
+    }
   ]
 }
