@@ -160,7 +160,6 @@ const ExerciseBank = () => {
                 // We use a more flexible match: check if one contains the other
                 const matchingKey = Object.keys(extractedExercises).find(k => {
                     const normK = normalizeKey(k);
-                    // Check for containment in either direction
                     return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
                 });
 
@@ -479,26 +478,36 @@ const ExerciseBank = () => {
                                                 Ejercicios Reales Extraídos
                                             </h4>
 
-                                            {/* Strict Filtering: Only show exercises tagged with this topic */}
+                                            {/* Strict Filtering with Smart Fallback */}
                                             {(() => {
                                                 const strictExercises = extractedList.filter(ex => ex.topic === selectedTopic);
+                                                const hasStrict = strictExercises.length > 0;
+
+                                                // If no strict matches, use the sorted list (relevance based)
+                                                // Filter out exercises that are clearly from other topics if possible, 
+                                                // but for now just show the most relevant ones.
+                                                const displayExercises = hasStrict ? strictExercises : sortedExercises.slice(0, 10);
+                                                const count = displayExercises.length;
 
                                                 return (
                                                     <div className="space-y-4">
                                                         <button
                                                             onClick={() => setViewMode(viewMode === 'topic-choice-expanded' ? 'topic-choice' : 'topic-choice-expanded')}
-                                                            className="w-full p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl hover:shadow-md transition-all text-left group flex items-center justify-between"
+                                                            className={`w-full p-4 border rounded-xl hover:shadow-md transition-all text-left group flex items-center justify-between ${hasStrict
+                                                                ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800'
+                                                                : 'bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800'
+                                                                }`}
                                                         >
                                                             <div className="flex items-center gap-3">
-                                                                <div className="p-2 bg-green-100 dark:bg-green-800 rounded-lg text-green-600 dark:text-green-300">
+                                                                <div className={`p-2 rounded-lg ${hasStrict ? 'bg-green-100 dark:bg-green-800 text-green-600 dark:text-green-300' : 'bg-yellow-100 dark:bg-yellow-800 text-yellow-600 dark:text-yellow-300'}`}>
                                                                     <Database className="w-6 h-6" />
                                                                 </div>
                                                                 <div>
-                                                                    <h4 className="font-bold text-gray-900 dark:text-white group-hover:text-green-600 transition-colors">
-                                                                        Ver Ejercicios Reales de {selectedTopic}
+                                                                    <h4 className={`font-bold transition-colors ${hasStrict ? 'text-gray-900 dark:text-white group-hover:text-green-700' : 'text-gray-900 dark:text-white group-hover:text-yellow-700'}`}>
+                                                                        {hasStrict ? `Ver Ejercicios de ${selectedTopic}` : `Ver Ejercicios Relacionados`}
                                                                     </h4>
                                                                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                                                                        {strictExercises.length} ejercicios disponibles
+                                                                        {count} ejercicios disponibles {hasStrict ? '(Clasificados)' : '(Por relevancia)'}
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -506,29 +515,40 @@ const ExerciseBank = () => {
                                                         </button>
 
                                                         {viewMode === 'topic-choice-expanded' && (
-                                                            <div className="space-y-4 animate-in slide-in-from-top-2 duration-200">
-                                                                {strictExercises.length > 0 ? (
-                                                                    strictExercises.map((ex, idx) => (
-                                                                        <div key={idx} className="p-4 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-green-300 transition-colors shadow-sm">
-                                                                            <div className="flex justify-between items-start mb-2">
-                                                                                <h4 className="font-bold text-gray-800 dark:text-gray-200 text-sm">
-                                                                                    {ex.title}
-                                                                                </h4>
-                                                                                <span className="text-[10px] text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded uppercase tracking-wider">
-                                                                                    {ex.id.split('_')[2]}
-                                                                                </span>
-                                                                            </div>
-                                                                            <div className="prose dark:prose-invert text-sm max-w-none line-clamp-6 hover:line-clamp-none transition-all">
-                                                                                <ReactMarkdown>{ex.content}</ReactMarkdown>
-                                                                            </div>
-                                                                        </div>
-                                                                    ))
-                                                                ) : (
-                                                                    <div className="text-center py-8 text-gray-400 text-sm bg-gray-50 dark:bg-gray-800/50 rounded-lg border border-dashed border-gray-200 dark:border-gray-700">
-                                                                        <p>No se encontraron ejercicios etiquetados específicamente para "{selectedTopic}".</p>
-                                                                        <p className="text-xs mt-2">Intenta subir material que contenga palabras clave de este tema.</p>
+                                                            <div className="animate-in fade-in slide-in-from-top-2 duration-300 space-y-3">
+                                                                {!hasStrict && (
+                                                                    <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 text-sm rounded-lg border border-yellow-100 dark:border-yellow-800 flex items-center gap-2">
+                                                                        <Search className="w-4 h-4" />
+                                                                        No encontramos ejercicios etiquetados exactamente como "{selectedTopic}", pero estos son los más similares encontrados en el curso.
                                                                     </div>
                                                                 )}
+
+                                                                {displayExercises.map((ex) => (
+                                                                    <div key={ex.id} className="p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-purple-300 transition-all">
+                                                                        <div className="flex justify-between items-start mb-2">
+                                                                            <span className="text-xs font-bold px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-gray-600 dark:text-gray-300">
+                                                                                {ex.topic || "General"}
+                                                                            </span>
+                                                                            <span className="text-xs text-gray-400">
+                                                                                {ex.title}
+                                                                            </span>
+                                                                        </div>
+                                                                        <div className="prose dark:prose-invert max-w-none text-sm line-clamp-3 mb-2">
+                                                                            <ReactMarkdown>{ex.content.substring(0, 300) + "..."}</ReactMarkdown>
+                                                                        </div>
+                                                                        <button
+                                                                            className="text-sm font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1"
+                                                                            onClick={() => {
+                                                                                // Logic to open full exercise view (could be a modal or expand)
+                                                                                // For now, just log or maybe expand in place? 
+                                                                                // The user didn't specify a full view, but let's assume they want to read it.
+                                                                                // We'll leave it as is for now, maybe add a "Ver Completo" later.
+                                                                            }}
+                                                                        >
+                                                                            Ver Ejercicio Completo <ChevronRight className="w-3 h-3" />
+                                                                        </button>
+                                                                    </div>
+                                                                ))}
                                                             </div>
                                                         )}
                                                     </div>

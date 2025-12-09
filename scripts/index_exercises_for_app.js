@@ -55,6 +55,71 @@ const SYLLABUS = {
     ]
 };
 
+// Extended keywords for better semantic matching
+const TOPIC_KEYWORDS = {
+    // Introducción al Cálculo
+    "Números Reales y Desigualdades": ["desigualdad", "inecuacion", "intervalo", "acotado", "supremo", "infimo", "axioma", "absoluto"],
+    "Valor Absoluto": ["valor absoluto", "modulo", "distancia", "triangular"],
+    "Funciones: Dominio y Recorrido": ["dominio", "recorrido", "rango", "imagen", "preimagen", "codominio", "restriccion"],
+    "Composición de Funciones": ["composicion", "compuesta", "f(g(x))", "g(f(x))"],
+    "Funciones Inversas": ["inversa", "invertible", "biyectiva", "uno a uno", "sobreyectiva"],
+    "Trigonometría Básica": ["seno", "coseno", "tangente", "identidad", "trigonometrica", "periodo"],
+
+    // Cálculo I
+    "Límites y Continuidad": ["limite", "continuidad", "continua", "discontinuidad", "asintota", "sandwich", "acotada", "tendencia"],
+    "Derivadas: Definición y Reglas": ["derivada", "cociente incremental", "pendiente", "tangente", "diferenciable", "regla del producto", "regla del cociente"],
+    "Regla de la Cadena": ["regla de la cadena", "composicion", "derivada externa", "derivada interna"],
+    "Derivación Implícita": ["implicita", "dy/dx", "diferenciacion implicita"],
+    "Aplicaciones: Máximos y Mínimos": ["maximo", "minimo", "optimizacion", "crecimiento", "decrecimiento", "concavidad", "inflexion", "grafica", "extremos"],
+    "Teorema del Valor Medio": ["valor medio", "rolle", "tvm", "lagrange"],
+    "Integrales Indefinidas": ["antiderivada", "primitiva", "integral indefinida", "constante de integracion"],
+
+    // Cálculo II
+    "Técnicas de Integración": ["sustitucion", "por partes", "fracciones parciales", "trigonometrica", "cambio de variable"],
+    "Integrales Definidas y Áreas": ["integral definida", "area", "riemann", "teorema fundamental", "barro"],
+    "Volúmenes de Revolución": ["volumen", "solido", "revolucion", "discos", "arandelas", "casquetes"],
+    "Integrales Impropias": ["impropia", "infinito", "divergente", "convergente", "criterio"],
+    "Sucesiones y Series Numéricas": ["sucesion", "serie", "convergencia", "divergencia", "criterio", "telescopica", "geometrica", "p-serie"],
+    "Series de Potencias y Taylor": ["potencias", "taylor", "maclaurin", "radio de convergencia", "intervalo de convergencia", "polinomio"],
+    "Coordenadas Polares": ["polar", "cardioide", "rosa", "limacon", "area polar"],
+
+    // Cálculo III
+    "Vectores y Geometría en el Espacio": ["vector", "plano", "recta", "producto punto", "producto cruz", "espacio", "superficie", "cuadrica"],
+    "Funciones de Varias Variables": ["varias variables", "dominio", "curva de nivel", "limite multivariable", "continuidad"],
+    "Derivadas Parciales y Gradiente": ["parcial", "gradiente", "direccional", "plano tangente", "diferencial", "jacobiana"],
+    "Optimización Multivariable (Lagrange)": ["multiplicadores", "lagrange", "hessiano", "punto silla", "extremos condicionados"],
+    "Integrales Dobles y Triples": ["integral doble", "integral triple", "iterada", "fubini", "cambio de orden", "polar", "cilindrica", "esferica"],
+    "Campos Vectoriales": ["campo vectorial", "conservativo", "potencial", "rotacional", "divergencia", "linea de flujo"],
+    "Teoremas de Green, Stokes y Divergencia": ["green", "stokes", "gauss", "divergencia", "flujo", "circulacion", "integral de linea", "integral de superficie"],
+
+    // Álgebra Lineal
+    "Matrices y Operaciones": ["matriz", "suma", "producto", "transpuesta", "simetrica", "traza"],
+    "Determinantes e Inversa": ["determinante", "inversa", "adjunta", "cofactor", "singular", "invertible"],
+    "Sistemas de Ecuaciones Lineales": ["sistema", "ecuacion lineal", "gauss", "jordan", "escalonada", "homogeneo", "solucion", "cramer"],
+    "Espacios Vectoriales y Subespacios": ["espacio vectorial", "subespacio", "combinacion lineal", "generador", "clausura"],
+    "Independencia Lineal y Bases": ["independencia lineal", "dependencia", "base", "dimension", "coordenadas"],
+    "Transformaciones Lineales": ["transformacion", "lineal", "nucleo", "imagen", "kernel", "rango", "nulidad", "matriz asociada"],
+    "Valores y Vectores Propios (Diagonalización)": ["valor propio", "vector propio", "eigenvalor", "eigenvector", "caracteristico", "diagonalizacion", "diagonalizable", "semejanza"],
+
+    // Probabilidad y Estadística
+    "Probabilidad Condicional y Bayes": ["condicional", "bayes", "independencia", "total", "evento"],
+    "Variables Aleatorias Discretas": ["variable aleatoria", "discreta", "funcion de probabilidad", "esperanza", "varianza", "bernoulli"],
+    "Variables Aleatorias Continuas": ["continua", "densidad", "acumulada", "uniforme", "exponencial"],
+    "Distribuciones (Normal, Binomial, Poisson)": ["normal", "binomial", "poisson", "gaussiana", "estandar"],
+    "Teorema del Límite Central": ["limite central", "tlc", "aproximacion"],
+    "Intervalos de Confianza": ["intervalo", "confianza", "estimacion", "media", "proporcion"],
+    "Pruebas de Hipótesis": ["hipotesis", "nula", "alternativa", "p-valor", "significancia", "rechazo", "error tipo"],
+
+    // Física
+    "Cinemática en 1D y 2D": ["cinematica", "posicion", "velocidad", "aceleracion", "movimiento", "proyectil", "caida libre", "mru", "mrua"],
+    "Leyes de Newton (Dinámica)": ["newton", "fuerza", "masa", "inercia", "accion", "reaccion", "diagrama", "cuerpo libre", "roce", "tension"],
+    "Trabajo y Energía": ["trabajo", "energia", "cinetica", "potencial", "conservacion", "potencia", "mecanica"],
+    "Conservación del Momento Lineal": ["momento", "momentum", "impulso", "choque", "colision", "elastico", "inelastico"],
+    "Dinámica de Rotación y Torque": ["rotacion", "torque", "momento angular", "inercia rotacional", "rodadura"],
+    "Gravitación Universal": ["gravitacion", "kepler", "orbita", "satelite", "fuerza gravitacional"],
+    "Oscilaciones y Ondas Mecánicas": ["oscilacion", "armonico", "simple", "pendulo", "resorte", "onda", "frecuencia", "periodo", "amplitud"]
+};
+
 const determineBestMatch = (content, title) => {
     // Normalize text for searching
     const text = (title + " " + content).toLowerCase();
@@ -66,17 +131,23 @@ const determineBestMatch = (content, title) => {
     // Iterate over ALL courses and ALL topics
     for (const [course, topics] of Object.entries(SYLLABUS)) {
         for (const topic of topics) {
-            // Create keywords from topic name
-            const keywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
-            if (keywords.length === 0) continue;
-
             let score = 0;
-            keywords.forEach(k => {
-                if (normalizedText.includes(k)) score++;
+
+            // 1. Check Topic Name Keywords
+            const topicNameKeywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
+            topicNameKeywords.forEach(k => {
+                if (normalizedText.includes(k)) score += 3; // High weight for exact topic name match
             });
 
-            // Boost score if course name is mentioned
-            if (normalizedText.includes(normalizeKey(course))) score += 2;
+            // 2. Check Semantic Keywords (The "Smart" Part)
+            const semanticKeywords = TOPIC_KEYWORDS[topic] || [];
+            semanticKeywords.forEach(k => {
+                const normK = normalizeKey(k);
+                if (normalizedText.includes(normK)) score += 2; // Medium weight for related concepts
+            });
+
+            // 3. Boost score if course name is mentioned
+            if (normalizedText.includes(normalizeKey(course))) score += 1;
 
             if (score > maxScore) {
                 maxScore = score;
