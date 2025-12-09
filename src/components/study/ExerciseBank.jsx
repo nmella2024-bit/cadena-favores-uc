@@ -189,6 +189,8 @@ const ExerciseBank = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [error, setError] = useState(null);
 
+    const [selectedExercise, setSelectedExercise] = useState(null); // For Document Mode
+
     // Fetch real materials when course changes
     useEffect(() => {
         const fetchMaterials = async () => {
@@ -210,29 +212,21 @@ const ExerciseBank = () => {
                     return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
                 });
 
-                // General key
-                const generalKey = Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos");
-                const generalExercises = generalKey ? extractedExercises[generalKey] : [];
-
+                // STRICT MODE: Only load exercises from the matching key. 
+                // Do NOT merge with "todos los ramos" unless explicitly requested or if no specific key found.
                 let combined = [];
 
                 if (matchingKey) {
                     const specificExercises = extractedExercises[matchingKey];
-
                     if (Array.isArray(specificExercises)) {
                         combined = [...specificExercises];
-                        const specificIds = new Set(specificExercises.map(e => e.id));
-
-                        generalExercises.forEach(ex => {
-                            if (!specificIds.has(ex.id)) {
-                                combined.push(ex);
-                            }
-                        });
-                    } else {
-                        combined = generalExercises;
                     }
                 } else {
-                    combined = generalExercises;
+                    // Fallback only if no specific key exists
+                    const generalKey = Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos");
+                    if (generalKey) {
+                        combined = extractedExercises[generalKey];
+                    }
                 }
 
                 setExtractedList(combined);
@@ -336,11 +330,6 @@ const ExerciseBank = () => {
         });
     }, [extractedList, selectedTopic]);
 
-    const filteredExercises = sortedExercises.filter(ex =>
-        ex.content.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        ex.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-
     if (quizData) {
         return (
             <div className="space-y-4">
@@ -371,6 +360,78 @@ const ExerciseBank = () => {
     return (
         <div className="h-full flex flex-col bg-white dark:bg-gray-900">
 
+            {/* Document Mode Modal */}
+            {selectedExercise && (
+                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+                    <div className="bg-white w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+                        {/* Header */}
+                        <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-gray-50">
+                            <div>
+                                <h3 className="font-bold text-gray-900 text-lg line-clamp-1">
+                                    {selectedExercise.title || "Ejercicio Sin Título"}
+                                </h3>
+                                <p className="text-xs text-gray-500">
+                                    {selectedExercise.topic || selectedTopic || selectedCourse}
+                                </p>
+                            </div>
+                            <button
+                                onClick={() => setSelectedExercise(null)}
+                                className="p-2 hover:bg-gray-200 rounded-full transition-colors text-gray-500"
+                            >
+                                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/* Content (Scrollable) */}
+                        <div className="flex-1 overflow-y-auto p-8 bg-white">
+                            <div className="max-w-3xl mx-auto prose prose-lg prose-slate">
+                                <ReactMarkdown>
+                                    {selectedExercise.content}
+                                </ReactMarkdown>
+                            </div>
+                        </div>
+
+                        {/* Footer */}
+                        <div className="p-4 border-t border-gray-200 bg-gray-50 flex justify-between items-center">
+                            <div className="flex items-center gap-4">
+                                <p className="text-xs text-gray-400">
+                                    ID: {selectedExercise.id}
+                                </p>
+                                {(() => {
+                                    // Extract Drive ID from filename if present
+                                    // Pattern: ..._ID_...
+                                    // Example: Ej_3_Ayudantia8_Solucionario_086pUxoz0hoe425WpgKb_Ej3.md
+                                    const match = selectedExercise.filename?.match(/_([a-zA-Z0-9_-]{25,})_/);
+                                    const driveId = match ? match[1] : null;
+
+                                    if (driveId) {
+                                        return (
+                                            <a
+                                                href={`https://drive.google.com/file/d/${driveId}/view`}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-xs font-bold text-purple-600 hover:underline flex items-center gap-1"
+                                            >
+                                                <FileText className="w-3 h-3" />
+                                                Ver PDF Original
+                                            </a>
+                                        );
+                                    }
+                                    return null;
+                                })()}
+                            </div>
+                            <button
+                                onClick={() => setSelectedExercise(null)}
+                                className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+                            >
+                                Cerrar Documento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Course Selection */}
@@ -548,12 +609,9 @@ const ExerciseBank = () => {
 
                                             {/* Strict Filtering with Smart Fallback */}
                                             {(() => {
+                                                // STRICT MODE: Filter by topic if possible, otherwise by relevance
                                                 const strictExercises = extractedList.filter(ex => ex.topic === selectedTopic);
                                                 const hasStrict = strictExercises.length > 0;
-
-                                                // If no strict matches, use the sorted list (relevance based)
-                                                // Filter out exercises that are clearly from other topics if possible, 
-                                                // but for now just show the most relevant ones.
                                                 const displayExercises = hasStrict ? strictExercises : sortedExercises.slice(0, 10);
                                                 const count = displayExercises.length;
 
@@ -583,7 +641,7 @@ const ExerciseBank = () => {
                                                         </button>
 
                                                         {viewMode === 'topic-choice-expanded' && (
-                                                            <div className="animate-in fade-in slide-in-from-top-2 duration-300 space-y-3">
+                                                            <div className="animate-in fade-in slide-in-from-top-2 duration-300 space-y-3 max-h-[400px] overflow-y-auto pr-2">
                                                                 {!hasStrict && (
                                                                     <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 text-sm rounded-lg border border-yellow-100 dark:border-yellow-800 flex items-center gap-2">
                                                                         <Search className="w-4 h-4" />
@@ -592,7 +650,9 @@ const ExerciseBank = () => {
                                                                 )}
 
                                                                 {displayExercises.map((ex) => (
-                                                                    <div key={ex.id} className="p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-purple-300 transition-all">
+                                                                    <div key={ex.id} className="p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-purple-300 transition-all cursor-pointer group"
+                                                                        onClick={() => setSelectedExercise(ex)}
+                                                                    >
                                                                         <div className="flex justify-between items-start mb-2">
                                                                             <span className="text-xs font-bold px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-gray-600 dark:text-gray-300">
                                                                                 {ex.topic || "General"}
@@ -601,19 +661,14 @@ const ExerciseBank = () => {
                                                                                 {ex.title}
                                                                             </span>
                                                                         </div>
-                                                                        <div className="prose dark:prose-invert max-w-none text-sm line-clamp-3 mb-2">
+                                                                        <div className="prose dark:prose-invert max-w-none text-sm line-clamp-3 mb-2 opacity-70 group-hover:opacity-100 transition-opacity">
                                                                             <ReactMarkdown>{ex.content.substring(0, 300) + "..."}</ReactMarkdown>
                                                                         </div>
                                                                         <button
-                                                                            className="text-sm font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1"
-                                                                            onClick={() => {
-                                                                                // Logic to open full exercise view (could be a modal or expand)
-                                                                                // For now, just log or maybe expand in place? 
-                                                                                // The user didn't specify a full view, but let's assume they want to read it.
-                                                                                // We'll leave it as is for now, maybe add a "Ver Completo" later.
-                                                                            }}
+                                                                            className="text-sm font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1 mt-2"
                                                                         >
-                                                                            Ver Ejercicio Completo <ChevronRight className="w-3 h-3" />
+                                                                            <FileText className="w-4 h-4" />
+                                                                            Ver Documento Completo
                                                                         </button>
                                                                     </div>
                                                                 ))}
