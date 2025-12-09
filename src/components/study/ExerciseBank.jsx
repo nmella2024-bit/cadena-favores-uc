@@ -379,8 +379,10 @@ const ExerciseBank = () => {
             <div className="bg-red-100 p-2 text-xs font-mono overflow-auto max-h-32 border-b border-red-300 flex-none">
                 <p>Selected Course: {selectedCourse}</p>
                 <p>Normalized: {selectedCourse ? normalizeKey(selectedCourse) : 'null'}</p>
+                <p>Matching Key: {Object.keys(extractedExercises).find(k => selectedCourse && (normalizeKey(selectedCourse).includes(normalizeKey(k)) || normalizeKey(k).includes(normalizeKey(selectedCourse)))) || 'none'}</p>
+                <p>General Key: {Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos") || 'none'}</p>
+                <p>Direct Access 'calculo i': {extractedExercises['calculo i']?.length ?? 'undefined'}</p>
                 <p>Extracted List Count: {extractedList.length}</p>
-                <p>Sorted List Count: {sortedExercises.length}</p>
                 <p>Data Keys: {Object.keys(extractedExercises).join(', ')}</p>
             </div>
 
