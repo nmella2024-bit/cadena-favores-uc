@@ -642,34 +642,34 @@ const ExerciseBank = () => {
                         )}
                     </div>
                 </div>
+            </div>
 
 
-                {isGenerating && (
-                    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
-                        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center space-y-4 animate-in zoom-in duration-300">
-                            <div className="relative w-20 h-20 mx-auto">
-                                <div className="absolute inset-0 border-4 border-purple-100 rounded-full"></div>
-                                <div className="absolute inset-0 border-4 border-purple-600 rounded-full border-t-transparent animate-spin"></div>
-                                <div className="absolute inset-0 flex items-center justify-center text-2xl">🧠</div>
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                                    Creando Guía de Ejercicios...
-                                </h3>
-                                <p className="text-gray-500 dark:text-gray-400">
-                                    La IA está redactando problemas únicos sobre <strong>{selectedTopic || 'el tema seleccionado'}</strong> para ti.
+            {isGenerating && (
+                <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
+                    <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center space-y-4 animate-in zoom-in duration-300">
+                        <div className="relative w-20 h-20 mx-auto">
+                            <div className="absolute inset-0 border-4 border-purple-100 rounded-full"></div>
+                            <div className="absolute inset-0 border-4 border-purple-600 rounded-full border-t-transparent animate-spin"></div>
+                            <div className="absolute inset-0 flex items-center justify-center text-2xl">🧠</div>
+                        </div>
+                        <div>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                                Creando Guía de Ejercicios...
+                            </h3>
+                            <p className="text-gray-500 dark:text-gray-400">
+                                La IA está redactando problemas únicos sobre <strong>{selectedTopic || 'el tema seleccionado'}</strong> para ti.
+                            </p>
+                            {realMaterials.length > 0 && selectedTopic === 'Examen Final' && (
+                                <p className="text-xs text-purple-600 font-medium mt-2 animate-pulse">
+                                    ✨ Usando material real de la UC como referencia de estilo...
                                 </p>
-                                {realMaterials.length > 0 && selectedTopic === 'Examen Final' && (
-                                    <p className="text-xs text-purple-600 font-medium mt-2 animate-pulse">
-                                        ✨ Usando material real de la UC como referencia de estilo...
-                                    </p>
-                                )}
-                            </div>
+                            )}
                         </div>
                     </div>
                 )}
 
-            </div>
+                </div>
             );
 };
 
