@@ -163,16 +163,31 @@ const ExerciseBank = () => {
                     return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
                 });
 
+                // 3. Load "Todos los ramos" as fallback/supplement
+                const generalKey = Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos");
+                const generalExercises = generalKey ? extractedExercises[generalKey] : [];
+
                 if (matchingKey) {
-                    const exercises = extractedExercises[matchingKey];
-                    if (Array.isArray(exercises)) {
-                        setExtractedList(exercises);
+                    const specificExercises = extractedExercises[matchingKey];
+
+                    if (Array.isArray(specificExercises)) {
+                        // Merge specific and general, avoiding duplicates by ID
+                        const combined = [...specificExercises];
+                        const specificIds = new Set(specificExercises.map(e => e.id));
+
+                        generalExercises.forEach(ex => {
+                            if (!specificIds.has(ex.id)) {
+                                combined.push(ex);
+                            }
+                        });
+
+                        setExtractedList(combined);
                     } else {
-                        console.warn("Found matching key but value is not an array:", exercises);
-                        setExtractedList([]);
+                        console.warn("Found matching key but value is not an array:", specificExercises);
+                        setExtractedList(generalExercises);
                     }
                 } else {
-                    setExtractedList([]);
+                    setExtractedList(generalExercises);
                 }
 
             } catch (error) {

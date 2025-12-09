@@ -31,6 +31,15 @@ const checkCourse = (courseName) => {
     }
 };
 
-checkCourse("calculo i");
-checkCourse("introduccion al calculo");
-checkCourse("todos los ramos");
+const courses = [
+    "introduccion al calculo",
+    "calculo i",
+    "calculo ii",
+    "calculo iii",
+    "algebra lineal",
+    "probabilidad y estadistica",
+    "fisica: mecanica",
+    "todos los ramos"
+];
+
+courses.forEach(c => checkCourse(c));
