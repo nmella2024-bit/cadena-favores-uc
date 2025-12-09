@@ -242,20 +242,30 @@ const determineBestMatch = (content, title, sourceFolder, subfolder = "") => {
     // 0.5. Check Subfolder for Ayudantias (User suggestion)
     // If subfolder contains "Ayudantia X", map to SYLLABUS[course].topics[X-1]
     if (targetCourseKey && SYLLABUS[targetCourseKey]) {
-        const ayudantiaMatch = (normalizedSubfolder + " " + normalizedText).match(/ayudant[ií]a\s*(\d+)/i);
-        if (ayudantiaMatch) {
-            const ayudantiaNum = parseInt(ayudantiaMatch[1]);
-            const topics = SYLLABUS[targetCourseKey].topics;
-            if (ayudantiaNum > 0 && ayudantiaNum <= topics.length) {
-                const mappedTopic = topics[ayudantiaNum - 1];
-                return { course: targetCourseKey, topic: mappedTopic };
+        // Check for "Ayudantia X" pattern in Subfolder OR Title/Content
+        // Handle typo "ayudanta"
+        const ayudantiaRegex = /(?:ayudant[ií]?a|ayudanta)\s*(\d+)/i;
+        const subfolderMatch = normalizedSubfolder.match(ayudantiaRegex);
+        const textMatch = normalizedText.match(ayudantiaRegex);
+
+        const match = subfolderMatch || textMatch;
+
+        if (match && targetCourseKey) {
+            const ayudantiaNum = parseInt(match[1]);
+            const courseData = SYLLABUS[targetCourseKey];
+            if (courseData && courseData.topics) {
+                const topics = courseData.topics;
+                if (ayudantiaNum > 0 && ayudantiaNum <= topics.length) {
+                    const mappedTopic = topics[ayudantiaNum - 1];
+                    return { course: targetCourseKey, topic: mappedTopic };
+                }
             }
         }
-    }
-
-    // If source is "Todos los ramos", we allow searching across ALL courses
+    } // If source is "Todos los ramos", we allow searching across ALL courses
     if (!targetCourseKey && normalizedSource.includes("todos los ramos")) {
         // Fallback to the original logic: find best match across ALL courses
+        const MIN_SCORE = 5; // Require at least 5 points (e.g. 1 keyword + 1 semantic, or 2 keywords)
+
         for (const [course, courseData] of Object.entries(SYLLABUS)) {
             const topics = courseData.topics;
             for (const topic of topics) {
@@ -280,14 +290,24 @@ const determineBestMatch = (content, title, sourceFolder, subfolder = "") => {
                 }
             }
         }
-        return bestMatch;
+
+        if (maxScore >= MIN_SCORE) {
+            return bestMatch;
+        }
+        return null; // Return null if no strong match found
     }
 
     if (!targetCourseKey) {
         return null;
     }
 
-    const topics = SYLLABUS[targetCourseKey];
+    const courseData = SYLLABUS[targetCourseKey];
+
+    if (!courseData || !courseData.topics) {
+        return null;
+    }
+
+    const topics = courseData.topics;
 
     if (!topics) {
         return null;
