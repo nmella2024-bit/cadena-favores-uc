@@ -667,10 +667,11 @@ const ExerciseBank = () => {
                             )}
                         </div>
                     </div>
-                )}
-
                 </div>
-            );
+            )}
+
+        </div>
+    );
 };
 
-            export default ExerciseBank;
+export default ExerciseBank;
