@@ -165,40 +165,61 @@ const TOPIC_KEYWORDS = {
     "Inducción Electromagnética": ["induccion", "faraday", "lenz", "fem"]
 };
 
-const determineBestMatch = (content, title) => {
+const determineBestMatch = (content, title, sourceFolder) => {
     // Normalize text for searching
     const text = (title + " " + content).toLowerCase();
     const normalizedText = normalizeKey(text);
+    const normalizedSource = normalizeKey(sourceFolder);
 
     let bestMatch = null;
     let maxScore = 0;
 
-    // Iterate over ALL courses and ALL topics
-    for (const [course, topics] of Object.entries(SYLLABUS)) {
-        for (const topic of topics) {
-            let score = 0;
+    // Find the matching course in SYLLABUS based on sourceFolder
+    // We try to find which syllabus key matches the source folder name
+    const targetCourseKey = Object.keys(SYLLABUS).find(k =>
+        normalizedSource.includes(normalizeKey(k)) || normalizeKey(k).includes(normalizedSource)
+    );
 
-            // 1. Check Topic Name Keywords
-            const topicNameKeywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
-            topicNameKeywords.forEach(k => {
-                if (normalizedText.includes(k)) score += 3; // High weight for exact topic name match
-            });
+    if (!targetCourseKey) {
+        // If source is "Todos los ramos" or unknown, we can't strictly classify by course topics.
+        // We can try to match against ALL topics but mark it as "General" course?
+        // Or just return null to let the caller put it in "Todos los ramos".
+        return null;
+    }
 
-            // 2. Check Semantic Keywords (The "Smart" Part)
-            const semanticKeywords = TOPIC_KEYWORDS[topic] || [];
-            semanticKeywords.forEach(k => {
-                const normK = normalizeKey(k);
-                if (normalizedText.includes(normK)) score += 2; // Medium weight for related concepts
-            });
+    const topics = SYLLABUS[targetCourseKey]?.topics;
 
-            // 3. Boost score if course name is mentioned
-            if (normalizedText.includes(normalizeKey(course))) score += 1;
+    if (!topics) {
+        return null;
+    }
 
-            if (score > maxScore) {
-                maxScore = score;
-                bestMatch = { course, topic };
-            }
+    // Iterate ONLY over topics of the matched course
+    for (const topic of topics) {
+        let score = 0;
+
+        // 1. Check Topic Name Keywords
+        const topicNameKeywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
+        topicNameKeywords.forEach(k => {
+            if (normalizedText.includes(k)) score += 3; // High weight for exact topic name match
+        });
+
+        // 2. Check Semantic Keywords (The "Smart" Part)
+        const semanticKeywords = TOPIC_KEYWORDS[topic] || [];
+        semanticKeywords.forEach(k => {
+            const normK = normalizeKey(k);
+            if (normalizedText.includes(normK)) score += 2; // Medium weight for related concepts
+        });
+
+        if (score > maxScore) {
+            maxScore = score;
+            bestMatch = { course: targetCourseKey, topic };
         }
+    }
+
+    // If no topic matched well, default to the course with a generic topic?
+    // Or just return the course with "General" topic?
+    if (!bestMatch) {
+        return { course: targetCourseKey, topic: "General" };
     }
 
     return bestMatch;
@@ -250,13 +271,17 @@ const indexExercises = () => {
                 // actually, let's use the meaningful title as the display title too if it's good
                 const displayTitle = meaningfulTitle && meaningfulTitle.length > 3 ? meaningfulTitle : `Ejercicio ${number}`;
 
-                // Determine best course and topic match
+                // Determine best topic match WITHIN the current course
                 // Pass meaningfulTitle to help with classification
-                const match = determineBestMatch(content, displayTitle);
+                const match = determineBestMatch(content, displayTitle, sourceFolder);
 
-                if (match && match.course !== "Todos los ramos") {
+                if (match) {
                     // Add to specific course
                     const key = normalizeKey(match.course);
+
+                    // Ensure the key exists in index
+                    if (!index[key]) index[key] = [];
+
                     index[key].push({
                         id: file.replace('.md', ''),
                         number: number,
