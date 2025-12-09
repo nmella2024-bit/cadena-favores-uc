@@ -180,9 +180,11 @@ const indexExercises = () => {
     for (const sourceFolder of sourceFolders) {
         console.log(`Processing source folder: ${sourceFolder}`);
         const exercisesDir = path.join(EXPORTS_DIR, sourceFolder, 'ejercicios');
+        console.log(`Looking in: ${exercisesDir}`);
 
         if (fs.existsSync(exercisesDir)) {
             const files = fs.readdirSync(exercisesDir).filter(f => f.endsWith('.md'));
+            console.log(`Found ${files.length} MD files`);
 
             for (const file of files) {
                 const content = fs.readFileSync(path.join(exercisesDir, file), 'utf-8');

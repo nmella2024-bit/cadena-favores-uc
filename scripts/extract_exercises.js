@@ -24,7 +24,7 @@ if (!global.DOMMatrix) {
     };
 }
 
-const pdfjsLib = require('pdfjs-dist');
+import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.mjs';
 
 // Also need to set worker?
 // In legacy build for Node, we might need to point to the worker file if it complains.
