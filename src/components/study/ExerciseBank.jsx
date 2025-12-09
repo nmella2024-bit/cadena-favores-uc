@@ -187,6 +187,7 @@ const ExerciseBank = () => {
     const [viewMode, setViewMode] = useState('selection'); // 'selection', 'topic-choice', 'topic-choice-expanded'
     const [extractedList, setExtractedList] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [error, setError] = useState(null);
 
     // Fetch real materials when course changes
     useEffect(() => {
@@ -198,13 +199,9 @@ const ExerciseBank = () => {
             }
 
             setLoadingMaterials(true);
-            setError(null); // Clear previous errors
             setError(null);
-            const logs = [];
-            const addLog = (msg) => logs.push(msg);
 
             try {
-                addLog(`Start fetch for: ${selectedCourse}`);
                 const normalizedCourse = normalizeKey(selectedCourse);
 
                 // Find matching key
@@ -212,21 +209,15 @@ const ExerciseBank = () => {
                     const normK = normalizeKey(k);
                     return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
                 });
-                addLog(`Matching Key: ${matchingKey}`);
 
                 // General key
                 const generalKey = Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos");
-                addLog(`General Key: ${generalKey}`);
-
                 const generalExercises = generalKey ? extractedExercises[generalKey] : [];
-                addLog(`General Count: ${generalExercises?.length}`);
 
                 let combined = [];
 
                 if (matchingKey) {
                     const specificExercises = extractedExercises[matchingKey];
-                    addLog(`Specific found. IsArray? ${Array.isArray(specificExercises)}`);
-                    addLog(`Specific Count: ${specificExercises?.length}`);
 
                     if (Array.isArray(specificExercises)) {
                         combined = [...specificExercises];
@@ -237,21 +228,16 @@ const ExerciseBank = () => {
                                 combined.push(ex);
                             }
                         });
-                        addLog(`Merged Count: ${combined.length}`);
                     } else {
-                        addLog('Specific is not array, using general');
                         combined = generalExercises;
                     }
                 } else {
-                    addLog('No matching key, using general');
                     combined = generalExercises;
                 }
 
-                addLog(`Final Combined: ${combined.length}`);
                 setExtractedList(combined);
-                setDebugLog(logs);
 
-                // 1. Fetch DB Materials (PDFs) - This part was originally before the extracted exercises logic
+                // 1. Fetch DB Materials (PDFs)
                 const materials = await obtenerMaterialesFiltrados({ ramo: selectedCourse });
                 const relevant = materials.filter(m => {
                     const title = m.titulo.toLowerCase();
@@ -262,8 +248,6 @@ const ExerciseBank = () => {
             } catch (error) {
                 console.error("Error fetching course materials:", error);
                 setError(error.message);
-                addLog(`Error: ${error.message}`);
-                setDebugLog(logs);
             } finally {
                 setLoadingMaterials(false);
             }
@@ -386,23 +370,6 @@ const ExerciseBank = () => {
 
     return (
         <div className="h-full flex flex-col bg-white dark:bg-gray-900">
-            {/* DEBUG UI - REMOVE LATER */}
-            <div className="bg-red-100 p-2 text-xs font-mono overflow-auto max-h-32 border-b border-red-300 flex-none">
-                <p>Selected Course: {selectedCourse}</p>
-                <p>Normalized: {selectedCourse ? normalizeKey(selectedCourse) : 'null'}</p>
-                <p>Matching Key: {Object.keys(extractedExercises).find(k => selectedCourse && (normalizeKey(selectedCourse).includes(normalizeKey(k)) || normalizeKey(k).includes(normalizeKey(selectedCourse)))) || 'none'}</p>
-                <p>General Key: {Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos") || 'none'}</p>
-                <p>Direct Access 'calculo i': {extractedExercises['calculo i']?.length ?? 'undefined'}</p>
-                <p>Extracted List Count: {extractedList.length}</p>
-                <p>Error: {error || 'none'}</p>
-                <p>Data Keys: {Object.keys(extractedExercises).join(', ')}</p>
-                <div className="mt-2 pt-2 border-t border-red-300">
-                    <p className="font-bold">Execution Log:</p>
-                    {debugLog.map((log, i) => (
-                        <p key={i} className="whitespace-nowrap">{log}</p>
-                    ))}
-                </div>
-            </div>
 
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
