@@ -165,6 +165,22 @@ const TOPIC_KEYWORDS = {
     "Inducción Electromagnética": ["induccion", "faraday", "lenz", "fem"]
 };
 
+// Course Codes Mapping for strict classification
+const COURSE_CODES = {
+    "MAT1610": "Cálculo I",
+    "MAT1620": "Cálculo II",
+    "MAT1630": "Cálculo III",
+    "MAT1640": "Ecuaciones Diferenciales", // Not in syllabus but good to know
+    "MAT1203": "Álgebra Lineal",
+    "EYP1113": "Probabilidad y Estadística",
+    "FIS1513": "Física: Mecánica",
+    "FIS1523": "Termodinámica",
+    "FIS1533": "Electricidad y Magnetismo",
+    "QIM100": "Química General",
+    "ICS1113": "Cálculo III", // Optimización often covers Calc III topics
+    "ICS1513": "Finanzas"
+};
+
 const determineBestMatch = (content, title, sourceFolder) => {
     // Normalize text for searching
     const text = (title + " " + content).toLowerCase();
@@ -174,11 +190,72 @@ const determineBestMatch = (content, title, sourceFolder) => {
     let bestMatch = null;
     let maxScore = 0;
 
+    // 0. Check for Explicit Course Codes in Title or Content
+    for (const [code, mappedCourse] of Object.entries(COURSE_CODES)) {
+        if (normalizedText.includes(normalizeKey(code))) {
+            // Found a course code!
+            // We still need a topic, so we search for topics within that course
+            const mappedTopics = SYLLABUS[mappedCourse];
+            let bestTopic = "General";
+            let maxTopicScore = 0;
+
+            if (mappedTopics) {
+                for (const topic of mappedTopics) {
+                    let tScore = 0;
+                    const topicKeywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
+                    topicKeywords.forEach(k => { if (normalizedText.includes(k)) tScore += 3; });
+
+                    const semantic = TOPIC_KEYWORDS[topic] || [];
+                    semantic.forEach(k => { if (normalizedText.includes(normalizeKey(k))) tScore += 2; });
+
+                    if (tScore > maxTopicScore) {
+                        maxTopicScore = tScore;
+                        bestTopic = topic;
+                    }
+                }
+            }
+            return { course: mappedCourse, topic: bestTopic };
+        }
+    }
+
     // Find the matching course in SYLLABUS based on sourceFolder
     // We try to find which syllabus key matches the source folder name
-    const targetCourseKey = Object.keys(SYLLABUS).find(k =>
+    let targetCourseKey = Object.keys(SYLLABUS).find(k =>
         normalizedSource.includes(normalizeKey(k)) || normalizeKey(k).includes(normalizedSource)
     );
+
+    // If source is "Todos los ramos", we allow searching across ALL courses
+    if (!targetCourseKey && normalizedSource.includes("todos los ramos")) {
+        // Fallback to the original logic: find best match across ALL courses
+        for (const [course, topics] of Object.entries(SYLLABUS)) {
+            for (const topic of topics) {
+                let score = 0;
+                // 1. Check Topic Name Keywords
+                const topicNameKeywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
+                topicNameKeywords.forEach(k => {
+                    if (normalizedText.includes(k)) score += 3;
+                });
+                // 2. Check Semantic Keywords
+                const semanticKeywords = TOPIC_KEYWORDS[topic] || [];
+                semanticKeywords.forEach(k => {
+                    const normK = normalizeKey(k);
+                    if (normalizedText.includes(normK)) score += 2;
+                });
+                // 3. Boost if course name mentioned
+                if (normalizedText.includes(normalizeKey(course))) score += 1;
+
+                if (title.includes("Prueba 1") && course === "Cálculo I") {
+                    console.log(`   -> Checking ${course} / ${topic}: Score=${score}`);
+                }
+
+                if (score > maxScore) {
+                    maxScore = score;
+                    bestMatch = { course, topic };
+                }
+            }
+        }
+        return bestMatch;
+    }
 
     if (!targetCourseKey) {
         // If source is "Todos los ramos" or unknown, we can't strictly classify by course topics.
@@ -187,7 +264,7 @@ const determineBestMatch = (content, title, sourceFolder) => {
         return null;
     }
 
-    const topics = SYLLABUS[targetCourseKey]?.topics;
+    const topics = SYLLABUS[targetCourseKey]; // Corrected: SYLLABUS[key] directly returns the array of topics
 
     if (!topics) {
         return null;
@@ -274,6 +351,10 @@ const indexExercises = () => {
                 // Determine best topic match WITHIN the current course
                 // Pass meaningfulTitle to help with classification
                 const match = determineBestMatch(content, displayTitle, sourceFolder);
+
+                if (number === '12' || number === '1') { // Debug specific files
+                    console.log(`Debug ${file}: Source=${sourceFolder}, Match=${JSON.stringify(match)}`);
+                }
 
                 if (match) {
                     // Add to specific course
