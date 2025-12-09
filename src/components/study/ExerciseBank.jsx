@@ -581,7 +581,7 @@ const ExerciseBank = () => {
                                                                 <div className="grid grid-cols-1 gap-4">
                                                                     {displayExercises.map((ex) => {
                                                                         // Extract Drive ID
-                                                                        const match = ex.filename?.match(/_([a-zA-Z0-9_-]{25,})_/);
+                                                                        const match = ex.filename?.match(/_([a-zA-Z0-9_-]{15,})_/);
                                                                         const driveId = match ? match[1] : null;
 
                                                                         return (
