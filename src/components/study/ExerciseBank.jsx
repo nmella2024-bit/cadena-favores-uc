@@ -4,7 +4,7 @@ import { studyAI } from '../../services/studyAI';
 import QuizPlayer from './QuizPlayer';
 import { obtenerMaterialesFiltrados } from '../../services/materialService';
 import { extractTextFromUrl } from '../../autoStudyDocs/contextProcessor';
-import extractedExercises from '../../data/extractedExercises.json';
+
 import ReactMarkdown from 'react-markdown';
 
 const SYLLABUS = {
@@ -169,6 +169,9 @@ const SYLLABUS = {
     }
 };
 
+import * as extractedExercisesData from '../../data/extractedExercises.json';
+const extractedExercises = extractedExercisesData.default || extractedExercisesData;
+
 // Helper to normalize strings: remove accents, lowercase, keep spaces
 const normalizeKey = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
@@ -206,23 +209,29 @@ const ExerciseBank = () => {
 
                 // 2. Load Extracted Exercises from JSON using normalized key
                 const normalizedCourse = normalizeKey(selectedCourse);
+                console.log('DEBUG: Selected Course:', selectedCourse);
+                console.log('DEBUG: Normalized Course:', normalizedCourse);
 
                 // Find matching key in extractedExercises
-                // We use a more flexible match: check if one contains the other
                 const matchingKey = Object.keys(extractedExercises).find(k => {
                     const normK = normalizeKey(k);
                     return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
                 });
+                console.log('DEBUG: Matching Key:', matchingKey);
 
                 // 3. Load "Todos los ramos" as fallback/supplement
                 const generalKey = Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos");
+                console.log('DEBUG: General Key:', generalKey);
+
                 const generalExercises = generalKey ? extractedExercises[generalKey] : [];
+                console.log('DEBUG: General Exercises Count:', generalExercises.length);
 
                 if (matchingKey) {
                     const specificExercises = extractedExercises[matchingKey];
+                    console.log('DEBUG: Specific Exercises Count:', specificExercises ? specificExercises.length : 0);
 
                     if (Array.isArray(specificExercises)) {
-                        // Merge specific and general, avoiding duplicates by ID
+                        // Merge specific and general
                         const combined = [...specificExercises];
                         const specificIds = new Set(specificExercises.map(e => e.id));
 
@@ -231,13 +240,14 @@ const ExerciseBank = () => {
                                 combined.push(ex);
                             }
                         });
-
+                        console.log('DEBUG: Combined Exercises Count:', combined.length);
                         setExtractedList(combined);
                     } else {
                         console.warn("Found matching key but value is not an array:", specificExercises);
                         setExtractedList(generalExercises);
                     }
                 } else {
+                    console.log('DEBUG: Using only general exercises');
                     setExtractedList(generalExercises);
                 }
 

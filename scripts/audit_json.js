@@ -8,9 +8,11 @@ const __dirname = path.dirname(__filename);
 const jsonPath = path.join(__dirname, '../src/data/extractedExercises.json');
 const data = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
 
+console.log("Available keys in JSON:", Object.keys(data));
+
 console.log("--- Audit Report ---");
 
-const checkCourse = (courseName) => {
+const auditCourse = (courseName) => {
     const exercises = data[courseName] || [];
     console.log(`\nCourse: ${courseName}`);
     console.log(`Total Exercises: ${exercises.length}`);
@@ -46,4 +48,4 @@ const courses = [
     "todos los ramos"
 ];
 
-courses.forEach(c => checkCourse(c));
+courses.forEach(c => auditCourse(c));

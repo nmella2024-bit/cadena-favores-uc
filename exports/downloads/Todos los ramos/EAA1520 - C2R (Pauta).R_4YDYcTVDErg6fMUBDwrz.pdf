@@ -1,0 +1,91 @@
+#########################
+## EAA1520 - Pauta C2R ##
+#########################
+
+Data <- rio::import("C2_R_2024_01.xlsx")
+head(Data)
+
+################
+## Pregunta 1 ##
+################
+
+X <- Data$EFICIENCIA
+suppressWarnings(ks.test(scale(X), "pnorm")$p.value)
+## No se rechaza Normalidad
+
+X <- dplyr::filter(Data, ZONA == 0)$EFICIENCIA
+Y <- dplyr::filter(Data, ZONA == 1)$EFICIENCIA
+var.test(X, Y)$p.value
+## No se rechaza la hipótesis de varianzas iguales.
+t.test(X,Y,mu = 0,var.equal = T)$p.value
+
+## Valor-p = 0.09297066 [1.0 puntos]
+## Valor-p > 5% --> NO  [0.2 puntos]
+
+################
+## Pregunta 2 ##
+################
+
+X <- Data$HORAS
+aux <- fitdistrplus::fitdist(data = X, distr = "gamma", method = "mle", fix.arg = list(shape = 8))
+TeachingDemos::z.test(x = aux$estimate, stdev = aux$sd, alternative = "greater", conf.level = 0.90)$conf.int
+n <- length(X)
+k <- 8
+TeachingDemos::z.test(x = aux$estimate, stdev = sqrt(aux$estimate^2/(n*k)), alternative = "greater", conf.level = 0.90)$conf.int
+
+## LI = 0.4514433   [0.5 Puntos]      
+## LS = Inf         [0.5 Puntos]      
+## 0.45 < LI --> SI [0.2 Puntos]
+
+################
+## Pregunta 3 ##
+################
+
+aux <- aggregate(NUM>11 ~ ZONA, data = Data, FUN = mean)
+p1 <- aux[1,2]
+p2 <- aux[2,2]
+n <- table(Data$ZONA)
+n1 <- n[1]
+n2 <- n[2]
+p <- (n1*p1+n2*p2)/(n1+n2)
+TeachingDemos::z.test(x = p1-p2, stdev = sqrt(p*(1-p)*(1/n1+1/n2)))$p.value
+TeachingDemos::z.test(x = p1-p2, stdev = sqrt(p1*(1-p1)/n1+p2*(1-p2)/n2))$p.value
+X <- (dplyr::filter(Data, ZONA == 0)$NUM>11)*1
+Y <- (dplyr::filter(Data, ZONA == 1)$NUM>11)*1
+aux.X <- fitdistrplus::fitdist(data = X, distr = "binom", fix.arg = list(size = 1), start = list(prob = 0.5))
+aux.Y <- fitdistrplus::fitdist(data = Y, distr = "binom", fix.arg = list(size = 1), start = list(prob = 0.5))
+TeachingDemos::z.test(x = aux.X$estimate-aux.Y$estimate, stdev = sqrt(aux.X$sd^2+aux.Y$sd^2))$p.value
+
+## Valor-p = 0.7319889 o 0.7309894 [1.0 Puntos]
+## Valor-p > 10% --> NO  [0.2 puntos]
+
+################
+## Pregunta 4 ##
+################
+
+X <- Data$EFICIENCIA
+sqrt(TeachingDemos::sigma.test(x = X, conf.level = 0.90, alternative = "less")$conf.int)
+## LI = 0.000000  [0.5 Puntos] 
+## LS = 1.776814  [0.5 Puntos]
+## LS < 2 ---> SI [0.2 Puntos]
+
+################
+## Pregunta 5 ##
+################
+
+X <- dplyr::filter(Data, ZONA == 0)$HORAS
+Y <- dplyr::filter(Data, ZONA == 1)$HORAS
+aux.1 <- fitdistrplus::fitdist(data = X, distr = "lnorm", method = "mle")
+aux.2 <- fitdistrplus::fitdist(data = Y, distr = "lnorm", method = "mle")
+
+TeachingDemos::z.test(x = aux.1$estimate[1] - aux.2$estimate[1], stdev = sqrt(aux.1$sd[1]^2+aux.2$sd[1]^2), conf.level = 0.90)$conf.int
+
+## LI = -0.2268209 o -0.1738232  [0.5 Puntos] 
+## LS = +0.1738232 o +0.2268209  [0.5 Puntos]
+## IC contiene a cero ---> NO [0.2 Puntos]
+
+TeachingDemos::z.test(x = aux.1$estimate[1] - aux.2$estimate[1], stdev = sqrt(aux.1$sd[1]^2+aux.2$sd[1]^2), conf.level = 0.95)$conf.int
+
+## LI = -0.2651973 o -0.2121996  [0.5 Puntos] 
+## LS = +0.2121996 o +0.2651973  [0.5 Puntos]
+## IC contiene a cero ---> NO [0.2 Puntos]
