@@ -512,7 +512,7 @@ const ExerciseBank = () => {
                                     </>
                                 )}
 
-                                {viewMode === 'topic-choice' && (
+                                {(viewMode === 'topic-choice' || viewMode === 'topic-choice-expanded') && (
                                     <div className="flex flex-col h-full animate-in fade-in slide-in-from-right-4 duration-300 space-y-6">
 
                                         {/* AI Generation Section */}
