@@ -199,39 +199,34 @@ const ExerciseBank = () => {
 
             setLoadingMaterials(true);
             setError(null); // Clear previous errors
+            setError(null);
+            const logs = [];
+            const addLog = (msg) => logs.push(msg);
+
             try {
-                // 1. Fetch DB Materials (PDFs)
-                const materials = await obtenerMaterialesFiltrados({ ramo: selectedCourse });
-                const relevant = materials.filter(m => {
-                    const title = m.titulo.toLowerCase();
-                    return title.includes('prueba') || title.includes('examen') || title.includes('control') || title.includes('ayudantía') || title.includes('guía');
-                });
-                setRealMaterials(relevant.slice(0, 5));
-
-                // 2. Load Extracted Exercises from JSON using normalized key
+                addLog(`Start fetch for: ${selectedCourse}`);
                 const normalizedCourse = normalizeKey(selectedCourse);
-                console.log('DEBUG: Selected Course:', selectedCourse);
-                console.log('DEBUG: Normalized Course:', normalizedCourse);
 
-                // Find matching key in extractedExercises
+                // Find matching key
                 const matchingKey = Object.keys(extractedExercises).find(k => {
                     const normK = normalizeKey(k);
                     return normalizedCourse.includes(normK) || normK.includes(normalizedCourse);
                 });
-                console.log('DEBUG: Matching Key:', matchingKey);
+                addLog(`Matching Key: ${matchingKey}`);
 
-                // 3. Load "Todos los ramos" as fallback/supplement
+                // General key
                 const generalKey = Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos");
-                console.log('DEBUG: General Key:', generalKey);
+                addLog(`General Key: ${generalKey}`);
 
                 const generalExercises = generalKey ? extractedExercises[generalKey] : [];
-                console.log('DEBUG: General Exercises Count:', generalExercises.length);
+                addLog(`General Count: ${generalExercises?.length}`);
 
                 let combined = [];
 
                 if (matchingKey) {
                     const specificExercises = extractedExercises[matchingKey];
-                    console.log('DEBUG: Specific Exercises Count:', specificExercises ? specificExercises.length : 0);
+                    addLog(`Specific found. IsArray? ${Array.isArray(specificExercises)}`);
+                    addLog(`Specific Count: ${specificExercises?.length}`);
 
                     if (Array.isArray(specificExercises)) {
                         combined = [...specificExercises];
@@ -242,21 +237,33 @@ const ExerciseBank = () => {
                                 combined.push(ex);
                             }
                         });
+                        addLog(`Merged Count: ${combined.length}`);
                     } else {
-                        console.warn("Found matching key but value is not an array:", specificExercises);
+                        addLog('Specific is not array, using general');
                         combined = generalExercises;
                     }
                 } else {
-                    console.log('DEBUG: Using only general exercises');
+                    addLog('No matching key, using general');
                     combined = generalExercises;
                 }
 
-                console.log('DEBUG: Combined Exercises Count:', combined.length);
+                addLog(`Final Combined: ${combined.length}`);
                 setExtractedList(combined);
+                setDebugLog(logs);
+
+                // 1. Fetch DB Materials (PDFs) - This part was originally before the extracted exercises logic
+                const materials = await obtenerMaterialesFiltrados({ ramo: selectedCourse });
+                const relevant = materials.filter(m => {
+                    const title = m.titulo.toLowerCase();
+                    return title.includes('prueba') || title.includes('examen') || title.includes('control') || title.includes('ayudantía') || title.includes('guía');
+                });
+                setRealMaterials(relevant.slice(0, 5));
 
             } catch (error) {
                 console.error("Error fetching course materials:", error);
-                setError(error.message); // Set error message
+                setError(error.message);
+                addLog(`Error: ${error.message}`);
+                setDebugLog(logs);
             } finally {
                 setLoadingMaterials(false);
             }
@@ -389,6 +396,12 @@ const ExerciseBank = () => {
                 <p>Extracted List Count: {extractedList.length}</p>
                 <p>Error: {error || 'none'}</p>
                 <p>Data Keys: {Object.keys(extractedExercises).join(', ')}</p>
+                <div className="mt-2 pt-2 border-t border-red-300">
+                    <p className="font-bold">Execution Log:</p>
+                    {debugLog.map((log, i) => (
+                        <p key={i} className="whitespace-nowrap">{log}</p>
+                    ))}
+                </div>
             </div>
 
 
