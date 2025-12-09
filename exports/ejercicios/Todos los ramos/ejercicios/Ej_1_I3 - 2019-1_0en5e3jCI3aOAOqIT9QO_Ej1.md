@@ -1,0 +1,1 @@
+Demuestre que para todo conjunto   A   (finito o infinito) se tiene que   A   no es equinumeroso con el conjunto potencia 2 A .

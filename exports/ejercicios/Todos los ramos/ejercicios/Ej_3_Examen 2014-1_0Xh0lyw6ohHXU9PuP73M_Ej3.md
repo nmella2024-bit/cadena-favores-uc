@@ -1,0 +1,9 @@
+Una planta de potencia sencilla opera con 20 kg/s de vapor como se muestra en la figura.  Despreciando las p´ erdidas en cada uno de los componentes, calcular: a) la tasa de transferencia de calor en la caldera (  ˙ Q B   ), b) la potencia generada en la turbina (  ˙ W T   ), c) la tasa de transferencia de calor en el condensador (  ˙ Q C   ), d) la potencia requerida por la bomba (  ˙ W P   ), e) la eficiencia t´ ermica del ciclo ( η ).  Soluci´ on:  Todos los dispositivos son de flujo estacionario con una entrada y una salida.   Se desprecian los efectos de energ´ ıa cin´ etica y potencial, ˙ m entra   = ˙ m sale   ˙ Q neto   −   ˙ W neto   = ˙ m   ( h sale   −   h entra ) Valores de entalp´ ıa en cada uno de los estados indicados en la figura:  h 1   =   h f   @40 o C   = 167.53 kJ/kg  h 2   =   h f   @40 o C   = 167.53 kJ/kg  h 3   =   h 10 M P a, 600 o C   = 3625.8 kJ/kg  h 4   =   h g @10 kP a   = 2583.9 kJ/kg 6
+
+--- Page 7 ---
+a) [1.5 ptos.] ˙ m 2   = ˙ m 3   = ˙ m   = 20 kg/s ˙ Q B   = ˙ m   ( h 3   −   h 2 ) = 20   ×   (3625 . 8   −   167 . 53) = 69.15 MW b) [1.5 ptos.] ˙ m 3   = ˙ m 4   = ˙ m   = 20 kg/s ˙ W T   = ˙ m   ( h 3   −   h 4 ) = 20   ×   (3625 . 8   −   2583 . 9) = 20838 kJ/s = 20.8 MW 7
+
+--- Page 8 ---
+c) [1.5 ptos.] ˙ m 4   = ˙ m 1   = ˙ m   = 20 kg/s ˙ Q C   = ˙ m   ( h 1   −   h 4 ) = 20   ×   (167 . 53   −   2583 . 9) = -48.33 MW d) [0.5 pto.] ˙ W B   = ˙ m ν 1   ∆ P   =   m ρ   ∆ P   =   20 1000   ×   (10000   −   10) = 199.8 kJ   ≈   0.2 MW e) [1.0 pto.]  η   =   W neto  Q entra  =   W T   −   W P  Q B  =  20 . 8   −   0 . 2 69 . 15   = 0.298 = 29.8 % 8
+
+--- Page 9 ---

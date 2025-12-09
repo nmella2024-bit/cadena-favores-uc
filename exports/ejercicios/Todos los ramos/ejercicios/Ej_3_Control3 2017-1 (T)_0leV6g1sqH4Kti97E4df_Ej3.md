@@ -1,0 +1,1 @@
+Si   F   ( x ) =  ∫   x  1  f   ( t )   dt   donde   , f   ( t ) =  ∫   t 2  1  √ 1 +   u 3  u   du   entonces el valor de   F   ′ ′ (1) es:  a ) 4  b ) 2  c ) ln( 5 2 )  d   ) ln( 3 2 )  e ) Ninguna de las anteriores. Respuesta Correcta Sin uso de calculadoras. Recuerde escribir solo con tinta indeleble y no usar corrector.

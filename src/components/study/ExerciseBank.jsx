@@ -580,10 +580,12 @@ const ExerciseBank = () => {
 
                                                                 <div className="grid grid-cols-1 gap-4">
                                                                     {displayExercises.map((ex) => {
-                                                                        // Extract Drive ID: usually the second to last segment separated by underscores
-                                                                        // Example: ..._0Kpiso9hELvxgIZEQ1pA_Ej3.md
-                                                                        const match = ex.filename?.match(/_([a-zA-Z0-9_-]{15,})_[^_]+\.md$/);
-                                                                        const driveId = match ? match[1] : null;
+                                                                        // Extract Drive ID from filename
+                                                                        // Filename format: Title_DriveID_DocID_EjX.md
+                                                                        // Drive ID is approx 33 chars, DocID is 20 chars.
+                                                                        // We look for the long ID surrounded by underscores.
+                                                                        const driveIdMatch = ex.filename.match(/_([a-zA-Z0-9_-]{25,})_/);
+                                                                        const driveId = driveIdMatch ? driveIdMatch[1] : null;
 
                                                                         return (
                                                                             <div

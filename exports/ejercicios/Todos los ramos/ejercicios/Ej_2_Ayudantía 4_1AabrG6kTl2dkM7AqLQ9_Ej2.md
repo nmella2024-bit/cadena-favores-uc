@@ -1,0 +1,1 @@
+A partir del tensor   y el plano de la figura N°2, determine:  Figura N°2  a)   el vector tracción en el plano.  b)   la tensión normal y tangencial en dicho plano.

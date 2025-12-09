@@ -1,0 +1,1 @@
+TRANS-7  a)   =IF(A1<4, “DEFICIENTE”, IF (A1>5.5, “DESTACADO”, “PROMEDIO”))  Estática y Dinámica

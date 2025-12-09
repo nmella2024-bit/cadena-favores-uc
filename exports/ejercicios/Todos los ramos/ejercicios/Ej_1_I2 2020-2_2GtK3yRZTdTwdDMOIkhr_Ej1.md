@@ -1,0 +1,1 @@
+(7 puntos) Una de las principales diferencias entre   la caja automática y la mecánica es si la  decisión de que marcha seleccionar la realiza un sistema computarizado o el conductor.  Explique brevemente los principales criterios en el caso de conductor y los principales  parámetros en el caso del computador pa ra seleccionar la marcha más adecuada .

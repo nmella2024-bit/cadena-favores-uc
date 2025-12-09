@@ -1,0 +1,6 @@
+--- Page 1 ---
+PONTIFICIA UNIVERSIDAD CAT  ´ OLICA DE CHILE FACULTAD DE MATEM  ´ ATICAS DEPARTAMENTO DE MATEM  ´ ATICA TAV 2020 MAT1630 - Control 5 NOMBRE:............................................................................................................ Considere el campo vectorial  F   ( x, y ) = (   y  ( x   −   1) 2   +   y 2   ,   1   −   x  ( x   −   1) 2   +   y 2   ) 1. Calcular   ∫  C 1  F   ·   dr  donde   C 1   es la curva   r ( t ) = (cos   t   + 1 ,   sin   t ) con 0   ≤   t   ≤   2 π  Soluci´ on:  C 1   es  r ( t ) = (cos   t   + 1 ,   sin   t ) con 0   ≤   t   ≤   2 π . Luego   r ′ ( t ) = ( −   sin   t,   cos   t ) y   F   ( r ( t )) = (sen   t,   −   cos   t ) Se tiene entonces que  ∫  C 1  F   ·   dr   =  ∫   2 π  0  F   ( r ( t ))   ·   r ′ ( t ) dt   =  ∫   2 π  0  − 1 dt   =   − 2 π.  2. Calcular   ∫  C 2  F   ·   dr  donde   C 2   =   { ( x, y )   ∈   R 2   : 16 x 2   +   y 2   = 4 }   recorrida en forma positiva.  Soluci´ on:  ∂Q ∂x   =   ( x   −   1) 2   −   y 2  [( x   −   1) 2   +   y 2 ] 2
+
+--- Page 2 ---
+∂P ∂y   =   ( x   −   1) 2   −   y 2  [( x   −   1) 2   +   y 2 ] 2  Como   ∂Q ∂x   =   ∂P ∂y   y   C 2   es una curva cerrada contenida en una reg´ ıon simplemente conexa, se concluye que   F   es conservativo en esa regi´ on y por lo tanto  ∫  C 2  F   · dr   = 0 .
+

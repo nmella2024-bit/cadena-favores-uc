@@ -1,0 +1,1 @@
+Se tiene el siguiente estado de tensiones en dos planos de un punto material. Calcule el estado de tensiones en los ejes X-Y

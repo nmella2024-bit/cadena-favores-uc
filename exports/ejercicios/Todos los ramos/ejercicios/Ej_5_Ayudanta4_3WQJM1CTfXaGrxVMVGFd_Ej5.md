@@ -1,0 +1,1 @@
+Soluci´ on al final del libro Poole.  •

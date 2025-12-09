@@ -1,0 +1,1 @@
+IIQ1003-5-6  a)   La entropía total del universo se debe incrementar.

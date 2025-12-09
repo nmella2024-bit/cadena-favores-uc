@@ -1,0 +1,4 @@
+[1 punto] Un resorte ideal sin masa y con constante el´ astica   k   est´ a conectado en uno de sus extremos a un bloque de masa   M   , inicialmente en reposo. En el instante  t   = 0, el bloque es impactado por una bala de masa   m b   y velocidad   v   0   , que queda incrustada en el bloque. Como consecuencia del impacto, el bloque (con la bala incrustada) pasa a describir un movimiento arm´ onico simple.  La amplitud del movimiento arm´ onico simple resultante ser´ a: a)  M v   0  r   k m   b   +   M  b)  m   b   v   0  r   k m b   +   M  c)  M v   0  p k ( m   b   +   M   ) d)   m b   v   0  p k ( m   b   +   M   ) e)  v   0  r   k m   b  2018-05-04   7   Forma   # #
+
+--- Page 8 ---
+PONTIFICIA UNIVERSIDAD CAT  ´ OLICA DE CHILE Instituto de F´ ısica & Escuela de Ingenier´ ıa  FIS1513 / ICE1513 — Est´ atica & Din´ amica  Primer Semestre 2018  Interrogaci´ on 02 - Pauta

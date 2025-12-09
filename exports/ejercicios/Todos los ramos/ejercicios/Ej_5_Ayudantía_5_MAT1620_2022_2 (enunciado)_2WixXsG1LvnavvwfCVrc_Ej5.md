@@ -1,0 +1,1 @@
+Encuentre la serie de Maclaurin para   f   ( x ) usando la definici´ on de la serie de Maclaurin. Determine tambi´ en el radio asociado con la convergencia.  f   ( x ) =   x   cos   x

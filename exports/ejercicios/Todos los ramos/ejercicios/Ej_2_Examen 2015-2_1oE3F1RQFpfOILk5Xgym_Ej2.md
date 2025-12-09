@@ -1,0 +1,4 @@
+Para cada una de las siguientes relaciones, demuestre que es de equivalencia y encuentre el ´ ındice 1  de la relaci´ on: a) Sea   W   =   { ( x, y )   ∈   R 2   |   x   6   = 0   ∧   y   6   = 0 } . Definimos la relaci´ on   ∼⊆   W   ×   W : ( a 1 , a 2 )   ∼   ( b 1 , b 2 )   ⇔   a 1 b 1   >   0   ∧   a 2 b 2   >   0 b) Sea   C   el conjunto de los n´ umeros complejos. Definimos la relaci´ on   ∼⊆   C   ×   C :  z 1   ∼   z 2   ⇔ || z 1 ||   =   || z 2 ||  1 Cardinalidad del conjunto cuociente inducido por la relaci´ on.
+
+--- Page 3 ---
+c) Sea   Z   el conjunto de los n´ umeros enteros. Definimos la relaci´ on   ∼⊆   Z   ×   Z :  n 1   ∼   n 2   ⇔   2015   |   ( n 2   −   n 1 )

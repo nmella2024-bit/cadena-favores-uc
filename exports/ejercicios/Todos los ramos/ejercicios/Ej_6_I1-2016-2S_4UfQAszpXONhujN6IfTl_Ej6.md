@@ -1,0 +1,4 @@
+Ahora asuma que el coeficiente de roce est´ atico entre   A   y   C   es   μ s   < μ min s   ,   y que el coeficiente de roce cin´ etico (din´ amico) es   μ k . Determine el m´ odulo de la aceleraci´ on del bloque respecto al carro: a)   a A/C   =   F   ( m C   +   m A )   −   m C   μ k g m A m C  b)   a A/C   =   μ k g ( m C   +   m A )   −   F m C  c)   a A/C   =   F   −   μ k m A g m C  d)   a A/C   =   F   −   μ k m C   g m A
+
+--- Page 5 ---
+Enunciado para los problemas 7-8:  Se tiene un bloque de masa   m   unido a una varilla vertical con dos cordones de igual longitud y sin masa. Cuando el sistema gira con velocidad angular constante en torno al eje de la varilla, los cordones se extienden y quedan tensos.  Figura 3: Problemas 7-8.

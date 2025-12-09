@@ -1,0 +1,1 @@
+El valor del m´ odulo de la fuerza en el elemento   FG   de la armadura es a)   F G   =  5 4 P  b)   F G   =  15 16 P  c)   F G   = 0 d)   F G   =  25 16 P

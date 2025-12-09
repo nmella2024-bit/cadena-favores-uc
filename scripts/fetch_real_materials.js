@@ -61,6 +61,14 @@ const main = async () => {
         await signInWithEmailAndPassword(auth, EMAIL, PASSWORD);
         console.log('Logged in as demo user.');
 
+        console.log('Fetching folders...');
+        const foldersSnapshot = await getDocs(collection(db, 'folders'));
+        const folderMap = {};
+        foldersSnapshot.docs.forEach(doc => {
+            folderMap[doc.id] = doc.data().nombre;
+        });
+        console.log(`Found ${Object.keys(folderMap).length} folders.`);
+
         console.log('Fetching materials...');
         const q = query(collection(db, 'material'));
         const querySnapshot = await getDocs(q);
@@ -73,7 +81,7 @@ const main = async () => {
             if (d.ramo) uniqueCourses.add(d.ramo);
         });
         console.log('Available courses:', Array.from(uniqueCourses));
-        process.exit(0); // Exit early to just see courses
+        // process.exit(0); // Removed early exit to process files
 
         let count = 0;
         for (const doc of querySnapshot.docs) {
@@ -82,12 +90,10 @@ const main = async () => {
             const type = data.tipo; // PDF, DOCX, Enlace
             const url = data.archivoUrl;
             const course = data.ramo;
+            const folderId = data.carpetaId;
 
-            // Filter logic
             // Filter logic - Relaxed
-            // We want to capture as much as possible to ensure the user sees exercises.
-            // Many files have names like "2018-1.pdf" which are exams but don't say "examen".
-            const isRelevant = true; // title.includes('prueba') || title.includes('examen') || title.includes('control') || title.includes('guía') || title.includes('ayudantía') || title.match(/\d{4}/);
+            const isRelevant = true;
 
             // Check for direct file or Drive link
             const isDrive = url && (url.includes('drive.google.com') || url.includes('docs.google.com'));
@@ -101,7 +107,14 @@ const main = async () => {
 
             if (isRelevant && hasFile && course) {
                 const safeCourse = course.replace(/[\/\\?%*:|"<>]/g, '-'); // Sanitize folder name
-                const courseDir = path.join(DOWNLOAD_DIR, safeCourse);
+
+                // Determine subfolder based on carpetaId
+                let subfolder = '';
+                if (folderId && folderMap[folderId]) {
+                    subfolder = folderMap[folderId].replace(/[\/\\?%*:|"<>]/g, '-');
+                }
+
+                const courseDir = subfolder ? path.join(DOWNLOAD_DIR, safeCourse, subfolder) : path.join(DOWNLOAD_DIR, safeCourse);
 
                 if (!fs.existsSync(courseDir)) {
                     fs.mkdirSync(courseDir, { recursive: true });
@@ -112,9 +125,10 @@ const main = async () => {
                 if (isDrive) {
                     const fileId = extractFileIdFromUrl(url);
                     if (fileId) {
-                        const dest = path.join(courseDir, `${safeTitle}_${doc.id}.pdf`); // Assume PDF for Drive for now
+                        // Include Drive ID in filename for frontend extraction
+                        const dest = path.join(courseDir, `${safeTitle}_${fileId}_${doc.id}.pdf`);
                         if (!fs.existsSync(dest)) {
-                            console.log(`Downloading Drive File: ${data.titulo} (${course})...`);
+                            console.log(`Downloading Drive File: ${data.titulo} (${course}/${subfolder})...`);
                             try {
                                 await downloadFileFromDrive(fileId, dest);
                                 count++;
@@ -125,11 +139,13 @@ const main = async () => {
                     }
                 } else {
                     const ext = 'pdf';
-                    const filename = `${safeTitle}_${doc.id}.${ext}`;
+                    // For direct files, we don't have a Drive ID, but we can use a placeholder or just the doc ID
+                    // Frontend regex should handle missing Drive ID gracefully or we can append 'Direct'
+                    const filename = `${safeTitle}_Direct_${doc.id}.${ext}`;
                     const dest = path.join(courseDir, filename);
 
                     if (!fs.existsSync(dest)) {
-                        console.log(`Downloading Direct: ${data.titulo} (${course})...`);
+                        console.log(`Downloading Direct: ${data.titulo} (${course}/${subfolder})...`);
                         try {
                             await downloadFile(url, dest);
                             count++;

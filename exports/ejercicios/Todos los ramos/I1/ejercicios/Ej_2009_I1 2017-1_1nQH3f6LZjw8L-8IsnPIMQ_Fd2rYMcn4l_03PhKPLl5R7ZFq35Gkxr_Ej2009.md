@@ -1,0 +1,1 @@
+Ingresos por Venta   1.500  Costo de Ventas   ( 950 )  Margen de Contribución   550  - Gastos por Dep reciación   (150)  - Gastos por Sueldos   ( 80)  +Ingreso por Intereses   120  +Ingreso por Arriendos   110  Resultados   Antes de Impuestos   550  - Impuestos del Ejercicio   (100)  Utilidad del

@@ -1,0 +1,1 @@
+Se asignaron   2,5 puntos   por mencionar qué es la utilidad espacial y   2,5 puntos   por decir cómo afecta los costos de transporte en ella, es decir, como a mayores costos de transporte disminuye la utilidad. Se asignaron   0 puntos   por responder la pregunta para Utilidad temporal.  Pauta

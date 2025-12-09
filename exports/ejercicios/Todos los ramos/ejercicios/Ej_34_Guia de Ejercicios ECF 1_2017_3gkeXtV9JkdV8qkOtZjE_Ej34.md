@@ -1,0 +1,1 @@
+IIQ1003-2-5  d)   masa, calor específico, cambio de temperatura.

@@ -1,0 +1,1 @@
+Calcule la serie de Taylor para   f   ( x ) centrada en el valor dado de   a . Tambi´ en encuentre el radio de convergencia asociado.  f   ( x ) = sen   x ,   a   =   π/ 2

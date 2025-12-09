@@ -1,0 +1,1 @@
+La relaci´ on entre las variaciones   δx 2   y   δh   para el desplazamiento virtual elegido es a)   δx 2   =   −   2 h  3 x 2  δh  b)   δx 2   =   −   9 x 2  4 h  δh  c)   δx 2   =   −   2 x 2  3 h  δh  d)   δx 2   =   −   9 h  4 x 2  δh

@@ -1,0 +1,3 @@
+[1 punto] Una viga de 5   m   de largo est´ a apoyada simplemente como se muestra en la figura, con una r´ otula fija en el punto   A , y un apoyo deslizante en   B . La viga est´ a sometida a la carga distribuida indicada en la figura.  Considerando que la viga tiene masa despreciable y est´ a en equilibrio est´ atico, ¿cu´ ales son las magnitudes de las fuerzas de reacci´ on vertical en los puntos   A   y  B ? ( A   y   y   B   y   , respectivamente) a)   A   y   = 440 N,   B   y   = 260 N b)   A   y   = 350 N,   B   y   = 350 N c)   A   y   = 260 N,   B   y   = 440 N d)   A   y   = 380 N,   B   y   = 320 N e)   A   y   = 700 N,   B   y   = 0 N 2018-06-25   4   Forma   # #
+
+--- Page 5 ---

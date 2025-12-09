@@ -1,0 +1,1 @@
+IIC1103-2-11  d)   Para cualquier valor de   n   tal que la suma de los cubos de las centenas, decenas y unidades sea igual a   n

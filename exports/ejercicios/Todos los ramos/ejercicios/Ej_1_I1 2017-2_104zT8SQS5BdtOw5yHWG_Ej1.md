@@ -1,0 +1,4 @@
+a)  Ejemplo medidas: trenes de cercanía, que sea más caro circular en vehículo privado, entre  otros.  2 pts diagrama  1,5 pts cada medida  b)  0,5 pts el diagrama o descripción de él  Corto plazo: relación tipo 1 A y T influyen a F [0,5 pts]. Ej : congestión vehicular   [1 pto]
+
+--- Page 5 ---
+Mediano - largo plazo: relación tipo 3 F influye a T [0,5 pts]. Ej: nuevas formas de operación de los  buses [1 pto]  Largo plazo: relación tipo 2 F influye a A[0,5 pts]. Ej: creación de parques [1 pto]  c)  la tarifa mínima es $0   pesos para ambos casos [5 pts]  pero si hablan de tarifa máxima también se considero correcta, en este caso, el vuelo directo  nunca es dominado y el con escala debe tener un Pmax=$45.000 [5 pts]

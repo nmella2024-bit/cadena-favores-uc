@@ -1,0 +1,1 @@
+Los elementos de fuerza cero son a)   AB, BC, CD, DE  b)   AB, BC, CD, DE, HI  c)   AB, BC, CD, DE, HI, IG  d)   AB, BC, CD, DE, CJ, HI, GJ

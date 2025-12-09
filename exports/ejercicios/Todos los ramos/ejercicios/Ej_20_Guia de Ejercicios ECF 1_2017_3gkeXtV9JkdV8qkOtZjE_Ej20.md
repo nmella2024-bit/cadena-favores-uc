@@ -1,0 +1,1 @@
+FIS1533-6-8  b)   La frecuencia de resonancia del circuito es de 5M Hz.  Probabilidades y Estadística

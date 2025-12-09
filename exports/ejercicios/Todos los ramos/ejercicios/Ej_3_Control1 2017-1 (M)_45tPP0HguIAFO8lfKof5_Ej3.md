@@ -1,0 +1,1 @@
+El valor de l´ ım  x →∞  x   + cos( x 2 )  x 2   + cos( x )  es:  a )  1 2  b ) 0 Respuesta correcta  c ) 1  d   ) No existe  e ) Ninguna de las anteriores.

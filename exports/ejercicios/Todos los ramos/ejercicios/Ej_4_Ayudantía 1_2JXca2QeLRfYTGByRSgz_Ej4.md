@@ -1,0 +1,1 @@
+(Propuesto)  Un eje cil´ ındrico vertical de di´ ametro   D   = 2 R   soporta un peso   W   y se apoya en un descanso. Determinar la potencia necesaria para hacerlo girar a velocidad constante   ω   cuando hay un espesor   e   de lubricante con viscosidad din´ amica   μ .  Figura 3 2

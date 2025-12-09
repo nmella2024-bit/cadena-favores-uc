@@ -1,0 +1,4 @@
+Determinar el valor de   a   para que el vector      2  − 1  a      2
+
+--- Page 3 ---
+Ecuaciones del plano y recta sea generado por los vectores:       3  − 1 1       ,      2 4 1       (9) Pivoteando:      3   2   2  − 1   4   − 1 1   1   a       ∼      3   2   2  − 1   4   − 1 1   1   a       ∼      − 1   4   − 1 3   2   2 1   1   a       ∼      − 1   4   − 1 0   14   − 1 1   1   a       ∼      − 1   4   − 1 0   14   − 1 0   5   a   −   1       (10)  ∼      − 1   4   − 1 0   14   − 1 0   0   a   −   9 / 14       (11) Luego viendo la matriz ampliada, para   a   = 9 / 14, los vectores ser´ ain L.I, mientras que para   a   6   = 9 / 14 la soluci´ on ser´ ıa inconsistente. Por lo tanto, los vectores nunca ser´ ıan L.D.

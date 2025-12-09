@@ -1,0 +1,1 @@
+Determine la aseveraci´ on correcta: a) La tensi´ on es la misma en los dos cordones b) La tensi´ on es mayor en el cord´ on superior c) La tensi´ on es mayor en el cord´ on inferior d) Se podr´ ıa cortar el cord´ on inferior y la masa seguir´ ıa describiendo el mismo movimiento

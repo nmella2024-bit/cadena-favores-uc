@@ -1,0 +1,1 @@
+IIQ1003-6-6  b)   0,4 kW  Mecánica de Fluidos

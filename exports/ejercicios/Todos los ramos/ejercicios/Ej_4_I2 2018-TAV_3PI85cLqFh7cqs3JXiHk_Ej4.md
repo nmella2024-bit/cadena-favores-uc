@@ -1,0 +1,1 @@
+1 puntos por paramatrizar las curvas   γ   y   γ 1 .  1 puntos por utilizar el teorema de Green.  1 punto por elegir un campo de vectores   F   = ( P, Q ) que cumpla con   Q x   −   P y   =   x   −   1.  3 puntos por calcular las integrales de l´ ınea.

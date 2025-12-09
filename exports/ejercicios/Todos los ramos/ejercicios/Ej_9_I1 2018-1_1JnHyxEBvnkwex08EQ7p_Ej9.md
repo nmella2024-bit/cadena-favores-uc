@@ -1,0 +1,1 @@
+a)   Tb’ = 1,25*Tb   ( 2 puntos )  Pb’ = 0,231   ( 2 puntos )  Tb = $ 948 ( 2 puntos )  b)   Inocente ( 3 puntos )  Ca_prom = 2875  Tb_prom = 1083  Pa = 0,639  N_viajeros = 5114  Enumeración ( 3 puntos )  Pa = 0,685  N_viajeros = 5264  Tb’ = 1,25*Tb  P b’ = 0,231  Tb = $ 948

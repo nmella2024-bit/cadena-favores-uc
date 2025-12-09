@@ -1,0 +1,1 @@
+La barra   OA   de homog´ enea de masa   M   parte desde el reposo en   θ   = 0 ◦ . Asuma que el largo natural del resorte es cuando   θ   = 0 ◦ . Determine la velocidad angular de la barra y la velocidad en el punto   A  cuando   θ   = 45 ◦ .

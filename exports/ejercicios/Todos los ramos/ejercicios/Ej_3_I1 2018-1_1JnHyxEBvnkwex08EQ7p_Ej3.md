@@ -1,0 +1,1 @@
+Se asignaros   3 puntos   por escribir el circulo vicioso con cada una de sus componentes, además, se asignaron   3 puntos   por mencionar 3 medidas que permiten reducirlo.  Pauta

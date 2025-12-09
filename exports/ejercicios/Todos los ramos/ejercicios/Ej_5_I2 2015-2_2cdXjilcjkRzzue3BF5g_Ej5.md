@@ -1,0 +1,3 @@
+(12 puntos)  a-   Se tiene que invertir los arcos de sentido  b-   Árbol ruta mínima:  Tiempos mínimos:  A  45  B  29  C  48  D->21  E  31  F  33  G  28  H  27.  **si no se resuelve con   Dijkstra   no hay puntaje  c-   min   45𝑥 1   + 29𝑥 2   + 48𝑥 3   + 21𝑥 4   + 31𝑥 5   + 33𝑥 6   + 28𝑥 7   + 27𝑥 8  s.a.   33𝑥 1   + 58𝑥 2   + 76𝑥 3   + 40𝑥 4   + 51𝑥 5   + 58𝑥 6   + 88𝑥 7   + 28𝑥 8   ≤ 300  Con   𝑥 𝑖   variable binaria  Cantidades a mandar desde cada nodo:  A  0  B  58  C  0  D->40  E  51  F  35  G  88  H  28  d-   Agregando una restricción extra que cuente cuanto producto es mandado hasta cada iteración a P y se detenga cuando este sea igual a 300.
+
+--- Page 9 ---

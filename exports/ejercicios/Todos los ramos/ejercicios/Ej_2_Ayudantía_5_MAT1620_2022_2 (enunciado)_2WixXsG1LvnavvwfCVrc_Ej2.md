@@ -1,0 +1,1 @@
+Suponga que   P ∞  n =0   c n x n   converge cuando   x   =   − 4 y diverge cuando   x   = 6. ¿Qu´ e puede decir con respecto a la convergencia o divergencia de la serie siguiente? a)  ∞ X  n =0  c n  c)  ∞ X  n =0  c n ( − 3) n  b)  ∞ X  n =0  c n 8 n  d)  ∞ X  n =0  ( − 1) n   c n   9 n

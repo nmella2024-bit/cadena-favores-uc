@@ -1,0 +1,3 @@
+A-   (2 puntos)  Nombrar y explicar una ventaja asociada a lo dicho en el texto - 1 punto  Nombrar y explicar una desventaja asociada a lo dicho en el texto - 1 punto  B-   (2 puntos)  Explicar que es más recomendable equivocarse de más - 1 punto  Explicar posibles implicancias argumentadas con algún aspecto mencionado en el texto - 1 punto  C-   (2 puntos)  Referirse a la importancia de la evaluación de la experiencia del usuario en sistemas de espera - 1 punto  Ejemplificar aspectos en el que se puede trabajar la experiencia del usuario en sistemas de espera - 1 punto
+
+--- Page 6 ---

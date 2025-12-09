@@ -1,0 +1,30 @@
+--- Page 1 ---
+(PUC)   Clase 16   Agosto 2022   1 / 10  Espacios nulos y espacios columna  Introducci´ on al ´ Algebra Lineal - MAT1279-1299  Facultad de Matem´ aticas, Pontificia Universidad Cat´ olica de Chile  Agosto 2022
+
+--- Page 2 ---
+Espacios nulos y espacios columna  El espacio nulo de una matriz  Definici´ on.  El   espacio nulo   de una matriz   A   de   m   ×   n , que se denota como Nul( A ), es el conjunto de todas las soluciones de la ecuaci´ on homog´ enea   A x   =   0 . En notaci´ on de conjuntos, Nul( A ) =   { x   ∈   R n   :   A x   =   0 }   .  Una descripci´ on m´ as din´ amica del espacio nulo de   A   es el conjunto de todas los   x   en   R n   que se mapean en el vector cero de   R m   a trav´ es de la transformaciones lineal   x   7   →   A x . 0   0 Nul   A  (PUC)   Clase 16   Agosto 2022   2 / 10
+
+--- Page 3 ---
+Espacios nulos y espacios columna  El espacio nulo de una matriz  EJEMPLO 1   Sea   A   la matriz   A   =  [   1   − 3   − 2  − 5   9   1  ]  , y sea   u   =     5 3  − 2    . Determine si   u   pertenece al espacio nulo de   A .  (PUC)   Clase 16   Agosto 2022   3 / 10
+
+--- Page 4 ---
+Espacios nulos y espacios columna  El espacio nulo de una matriz  Teorema.  El espacio nulo de una matriz   A   de   m   ×   n   es un subespacio de   R n . De manera equivalente, el conjunto de todas las soluciones a un sistema  A x   =   0   de   m   ecuaciones lineales homog´ eneas con   n   inc´ ognitas es un subespacio de   R n .  EJEMPLO 2   Sea   H   el conjunto de vectores en   R 4   cuyas coordenadas  a ,   b ,   c ,   d   satisfacen las ecuaciones   a   −   2 b   + 5 c   =   d   y   c   −   a   =   b . Demuestre que   H   es un subespacio de   R 4 .  (PUC)   Clase 16   Agosto 2022   4 / 10
+
+--- Page 5 ---
+Espacios nulos y espacios columna  Una descripci´ on expl´ ıcita de Nul ( A )  EJEMPLO 3   Determine un conjunto generador del espacio nulo de la matriz  A   =     − 3   6   − 1   1   − 7 1   − 2   2   3   − 1 2   − 4   5   8   − 4     NOTA 1  1   EL conjunto generador producido por el m´ etodo del ejemplo anterior es linealmente independiente.  2   Cuando Nul( A ) contiene vectores distintos de cero, el n´ umero de vectores en el conjunto generador para Nul( A ) es igual al n´ umero de variables libres en la ecuaci´ on   A x   = 0.  (PUC)   Clase 16   Agosto 2022   5 / 10
+
+--- Page 6 ---
+Espacios nulos y espacios columna  El espacio columna de una matriz  Definici´ on.  El   espacio columna   de una matriz   A   de   m   ×   n , que se denota como Col( A ), es el conjunto de todas las combinaciones lineales de las columnas de   A . Si   A   =   [ a 1   · · ·   a n  ] , entonces Col( A ) = Gen { a 1 , . . . ,   a n }   .  Teorema.  El espacio columna de una matriz   A   de   m   ×   n   es un subespacio de   R m .  NOTA 2   Observe que un vector tipico de Col( A ) se puede escribir como   A x   para alguna   x , ya que la notaci´ on   A x   representa una combinaci´ on lineal de las columnas de   A .  (PUC)   Clase 16   Agosto 2022   6 / 10
+
+--- Page 7 ---
+Espacios nulos y espacios columna  El espacio columna de una matriz  EJEMPLO 4   Encuentre una matriz   A   tal que   W   = Col( A ).  W   =        6 a   −   b a   +   b  − 7 a      :   a ,   b   ∈   R       .  El espacio columna de una matriz   A   de   m   ×   n   es   R m   si y solo si la ecuaci´ on   A x   =   b   tiene una soluci´ on para cada   b   en   R m .  (PUC)   Clase 16   Agosto 2022   7 / 10
+
+--- Page 8 ---
+Espacios nulos y espacios columna  Contraste entre Nul ( A )   y Col ( A )  EJEMPLO 5   Sea  A   =     2   4   − 2   1  − 2   − 5   7   3 3   7   − 8   6     1   Si el espacio columna de   A   es un subespacio de   R k   , ¿a qu´ e es igual   k ?  2   Si el espacio nulo de   A   es un subespacio de   R k   , ¿a qu´ e es igual   k ?  3   sean   u   =       3  − 2  − 1 0        y   v   =     3  − 1 3     1   Determine si   u   est´ a en Nul( A ). ¿Podr´ ıa   u   estar en Col( A )?  2   Determine si   v   est´ a en Col( A ). ¿Podr´ ıa   v   estar en Nul( A )?  (PUC)   Clase 16   Agosto 2022   8 / 10
+
+--- Page 9 ---
+Espacios nulos y espacios columna  N´ ucleo y rango de una transformaci´ on lineal  Definici´ on.  Una   transformaci´ on lineal   T   de un espacio vectorial   V   en un espacio vectorial   W   es una regla que asigna a cada vector   x   en   V   un ´ unico vector   T   ( x ) en   W   , tal que  1   T   ( u   +   v ) =   T   ( u ) +   T   ( v ) para toda   u ,   v   en   V   , y  2   T   ( c u ) =   cT   ( u ) para toda   u   en   V   y todo escalar   c . El   n´ ucleo   (o espacio nulo) de dicha   T   es el conjunto de todas las   u  en   V   tales que   T   ( u ) =   0   (el vector cero en   W   ). El   rango   de   T   es el conjunto de todos los vectores en   W   de la forma   T   ( x ) para alguna   x  en   V   . Si ocurre que   T   surge como una transformaci´ on matricial, por ejemplo,   T   ( x ) =   A x   para alguna matriz   A , entonces el n´ ucleo y la imagen de   T   son solo el espacio nulo y el espacio columna de   A , como se defini´ o anteriormente.  (PUC)   Clase 16   Agosto 2022   9 / 10
+
+--- Page 10 ---
+Espacios nulos y espacios columna  N´ ucleo y rango de una transformaci´ on lineal  EJEMPLO 6   Sea   V   el espacio vectorial de todas las funciones de valores reales   f   definidas en un intervalo [ a ,   b ] con la propiedad de que son diferenciables, y sus derivadas son funciones continuas en [ a ,   b ]. Sea   W   el espacio vectorial   C   [ a ,   b ] de todas las funciones continuas en [ a ,   b ], y sea   D   :   V   →   W   la transformaci´ on que cambia a   f   en V en su derivada   f   ′ . En c´ alculo, dos reglas sencillas de la diferenciaci´ on son  D ( f   +   g   ) =   D ( f   ) +   D ( g   )   y   D ( cf   ) =   cD ( f   ) Es decir,   D   es una transformaci´ on lineal. Es posible demostrar que el n´ ucleo de   D   es el conjunto de las funciones constantes en [ a ,   b ] y el rango de   D   es el conjunto   W   de todas las funciones continuas en [ a ,   b ].  (PUC)   Clase 16   Agosto 2022   10 / 10
+

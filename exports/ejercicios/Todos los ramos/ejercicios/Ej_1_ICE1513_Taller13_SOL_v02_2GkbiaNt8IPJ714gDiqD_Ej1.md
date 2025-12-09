@@ -1,0 +1,1 @@
+Determine los momentos de inercia de los siguientes cuerpos con respecto al punto   O .  Figura 1: Cuerpo A  Figura 2: Cuerpo B

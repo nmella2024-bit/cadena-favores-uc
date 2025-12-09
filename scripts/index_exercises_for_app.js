@@ -1,152 +1,167 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
 const EXPORTS_DIR = path.join(__dirname, '..', 'exports', 'ejercicios');
 const OUTPUT_FILE = path.join(__dirname, '..', 'src', 'data', 'extractedExercises.json');
 
-// Helper to normalize strings: remove accents, lowercase
+// Syllabus Data (Synchronized with Frontend)
+const SYLLABUS = {
+    "Cálculo I": {
+        topics: ["Números Reales", "Sucesiones", "Límites", "Continuidad", "Derivadas", "Aplicaciones de la Derivada", "Integrales"],
+        bg: "bg-blue-100 dark:bg-blue-900/30",
+        color: "text-blue-600 dark:text-blue-400",
+        icon: "Calculator"
+    },
+    "Cálculo II": {
+        topics: ["Integración", "Series", "Ecuaciones Diferenciales", "Coordenadas Polares", "Vectores"],
+        bg: "bg-indigo-100 dark:bg-indigo-900/30",
+        color: "text-indigo-600 dark:text-indigo-400",
+        icon: "FunctionSquare"
+    },
+    "Cálculo III": {
+        topics: ["Vectores y Geometría en el Espacio", "Funciones Vectoriales", "Derivadas Parciales", "Integrales Múltiples", "Cálculo Vectorial"],
+        bg: "bg-purple-100 dark:bg-purple-900/30",
+        color: "text-purple-600 dark:text-purple-400",
+        icon: "Box"
+    },
+    "Álgebra Lineal": {
+        topics: ["Matrices", "Sistemas de Ecuaciones", "Espacios Vectoriales", "Transformaciones Lineales", "Valores y Vectores Propios", "Ortogonalidad"],
+        bg: "bg-orange-100 dark:bg-orange-900/30",
+        color: "text-orange-600 dark:text-orange-400",
+        icon: "Grid"
+    },
+    "Ecuaciones Diferenciales": {
+        topics: ["Ecuaciones de Primer Orden", "Ecuaciones Lineales de Orden Superior", "Transformada de Laplace", "Sistemas de Ecuaciones Diferenciales", "Series de Potencias"],
+        bg: "bg-teal-100 dark:bg-teal-900/30",
+        color: "text-teal-600 dark:text-teal-400",
+        icon: "Activity"
+    },
+    "Probabilidad y Estadística": {
+        topics: ["Probabilidad", "Variables Aleatorias", "Distribuciones de Probabilidad", "Inferencia Estadística", "Regresión Lineal", "Probabilidad Condicional y Bayes"],
+        bg: "bg-green-100 dark:bg-green-900/30",
+        color: "text-green-600 dark:text-green-400",
+        icon: "BarChart3"
+    },
+    "Física: Mecánica": {
+        topics: ["Cinemática", "Dinámica", "Trabajo y Energía", "Momento Lineal", "Rotación", "Gravitación", "Oscilaciones"],
+        bg: "bg-red-100 dark:bg-red-900/30",
+        color: "text-red-600 dark:text-red-400",
+        icon: "Atom"
+    },
+    "Termodinámica": {
+        topics: ["Temperatura y Calor", "Primera Ley", "Segunda Ley", "Entropía", "Gases Ideales", "Procesos Termodinámicos"],
+        bg: "bg-orange-100 dark:bg-orange-900/30",
+        color: "text-orange-600 dark:text-orange-400",
+        icon: "Flame"
+    },
+    "Electricidad y Magnetismo": {
+        topics: ["Ley de Coulomb y Campo Eléctrico", "Ley de Gauss", "Potencial Eléctrico", "Capacitancia", "Circuitos DC y Ley de Ohm", "Campo Magnético", "Inducción Electromagnética"],
+        bg: "bg-yellow-100 dark:bg-yellow-900/30",
+        color: "text-yellow-600 dark:text-yellow-400",
+        icon: "Zap"
+    },
+    "Química General": {
+        topics: ["Estequiometría", "Estructura Atómica", "Enlace Químico", "Gases", "Termoquímica", "Equilibrio Químico", "Ácido-Base"],
+        bg: "bg-pink-100 dark:bg-pink-900/30",
+        color: "text-pink-600 dark:text-pink-400",
+        icon: "FlaskConical"
+    },
+    "Programación": {
+        topics: ["Variables y Tipos de Datos", "Control de Flujo", "Funciones", "Listas y Tuplas", "Diccionarios", "Archivos", "Clases y Objetos"],
+        bg: "bg-slate-100 dark:bg-slate-800",
+        color: "text-slate-600 dark:text-slate-400",
+        icon: "Terminal"
+    },
+    "Estática y Dinámica": {
+        topics: ["Vectores Fuerza", "Equilibrio de una Partícula", "Equilibrio de un Cuerpo Rígido", "Análisis Estructural", "Fricción", "Cinemática de Partículas", "Cinética de Partículas"],
+        bg: "bg-cyan-100 dark:bg-cyan-900/30",
+        color: "text-cyan-600 dark:text-cyan-400",
+        icon: "Anchor"
+    },
+    "Introducción a la Economía": {
+        topics: ["Oferta y Demanda", "Elasticidad", "Eficiencia y Equidad", "Mercados Competitivos", "Monopolio", "Macroeconomía Básica"],
+        bg: "bg-emerald-100 dark:bg-emerald-900/30",
+        color: "text-emerald-600 dark:text-emerald-400",
+        icon: "DollarSign"
+    }
+};
+
+// Helper: Normalize strings for comparison
 const normalizeKey = (str) => {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
 };
 
-// Syllabus definition for topic tagging
-const SYLLABUS = {
-    "Introducción al Cálculo": [
-        "Números Reales y Desigualdades", "Valor Absoluto", "Funciones: Dominio y Recorrido",
-        "Composición de Funciones", "Funciones Inversas", "Trigonometría Básica"
-    ],
-    "Cálculo I": [
-        "Límites y Continuidad", "Derivadas: Definición y Reglas", "Regla de la Cadena",
-        "Derivación Implícita", "Aplicaciones: Máximos y Mínimos", "Teorema del Valor Medio",
-        "Integrales Indefinidas"
-    ],
-    "Cálculo II": [
-        "Técnicas de Integración", "Integrales Definidas y Áreas", "Volúmenes de Revolución",
-        "Integrales Impropias", "Sucesiones y Series Numéricas", "Series de Potencias y Taylor",
-        "Coordenadas Polares"
-    ],
-    "Cálculo III": [
-        "Vectores y Geometría en el Espacio", "Funciones de Varias Variables", "Derivadas Parciales y Gradiente",
-        "Optimización Multivariable (Lagrange)", "Integrales Dobles y Triples", "Campos Vectoriales",
-        "Teoremas de Green, Stokes y Divergencia"
-    ],
-    "Álgebra Lineal": [
-        "Matrices y Operaciones", "Determinantes e Inversa", "Sistemas de Ecuaciones Lineales",
-        "Espacios Vectoriales y Subespacios", "Independencia Lineal y Bases", "Transformaciones Lineales",
-        "Valores y Vectores Propios (Diagonalización)"
-    ],
-    "Probabilidad y Estadística": [
-        "Probabilidad Condicional y Bayes", "Variables Aleatorias Discretas", "Variables Aleatorias Continuas",
-        "Distribuciones (Normal, Binomial, Poisson)", "Teorema del Límite Central", "Intervalos de Confianza",
-        "Pruebas de Hipótesis"
-    ],
-    "Física: Mecánica": [
-        "Cinemática en 1D y 2D", "Leyes de Newton (Dinámica)", "Trabajo y Energía",
-        "Conservación del Momento Lineal", "Dinámica de Rotación y Torque", "Gravitación Universal",
-        "Oscilaciones y Ondas Mecánicas"
-    ],
-    "Termodinámica": [
-        "Primera Ley y Energía", "Segunda Ley y Entropía", "Ciclos de Potencia",
-        "Propiedades de Sustancias Puras", "Fugacidad y Mezclas", "Equilibrio de Fases"
-    ],
-    "Finanzas": [
-        "Valor del Dinero en el Tiempo", "Tasas de Interés y UF", "Evaluación de Proyectos (VAN/TIR)",
-        "Bonos y Acciones", "Riesgo y Retorno"
-    ],
-    "Química General": [
-        "Estequiometría", "Enlace Químico", "Ácido-Base", "Termoquímica", "Polímeros y Materiales"
-    ],
-    "Electricidad y Magnetismo": [
-        "Ley de Coulomb y Campo Eléctrico", "Ley de Gauss", "Potencial Eléctrico",
-        "Circuitos DC y Ley de Ohm", "Campo Magnético", "Inducción Electromagnética"
-    ],
-    "Todos los ramos": [
-        "Material General", "Pruebas Anteriores", "Guías de Ejercicios", "Ayudantías", "Otros Temas"
-    ]
-};
-
-// Extended keywords for better semantic matching
+// Topic Keywords Mapping
 const TOPIC_KEYWORDS = {
-    // Introducción al Cálculo
-    "Números Reales y Desigualdades": ["desigualdad", "inecuacion", "intervalo", "acotado", "supremo", "infimo", "axioma", "absoluto"],
-    "Valor Absoluto": ["valor absoluto", "modulo", "distancia", "triangular"],
-    "Funciones: Dominio y Recorrido": ["dominio", "recorrido", "rango", "imagen", "preimagen", "codominio", "restriccion"],
-    "Composición de Funciones": ["composicion", "compuesta", "f(g(x))", "g(f(x))"],
-    "Funciones Inversas": ["inversa", "invertible", "biyectiva", "uno a uno", "sobreyectiva"],
-    "Trigonometría Básica": ["seno", "coseno", "tangente", "identidad", "trigonometrica", "periodo"],
-
     // Cálculo I
-    "Límites y Continuidad": ["limite", "continuidad", "continua", "discontinuidad", "asintota", "sandwich", "acotada", "tendencia"],
-    "Derivadas: Definición y Reglas": ["derivada", "cociente incremental", "pendiente", "tangente", "diferenciable", "regla del producto", "regla del cociente"],
-    "Regla de la Cadena": ["regla de la cadena", "composicion", "derivada externa", "derivada interna"],
-    "Derivación Implícita": ["implicita", "dy/dx", "diferenciacion implicita"],
-    "Aplicaciones: Máximos y Mínimos": ["maximo", "minimo", "optimizacion", "crecimiento", "decrecimiento", "concavidad", "inflexion", "grafica", "extremos"],
-    "Teorema del Valor Medio": ["valor medio", "rolle", "tvm", "lagrange"],
-    "Integrales Indefinidas": ["antiderivada", "primitiva", "integral indefinida", "constante de integracion"],
+    "Números Reales": ["desigualdad", "valor absoluto", "supremo", "infimo", "axioma"],
+    "Sucesiones": ["convergencia", "divergencia", "monotona", "acotada", "limite"],
+    "Límites": ["continuidad", "asintota", "sandwich", "l'hopital", "indeterminacion"],
+    "Derivadas": ["tangente", "cadena", "implicita", "razon de cambio", "velocidad"],
+    "Aplicaciones de la Derivada": ["optimizacion", "maximos", "minimos", "grafica", "concavidad"],
+    "Integrales": ["area", "riemann", "sustitucion", "partes", "fracciones parciales"],
 
     // Cálculo II
-    "Técnicas de Integración": ["sustitucion", "por partes", "fracciones parciales", "trigonometrica", "cambio de variable"],
-    "Integrales Definidas y Áreas": ["integral definida", "area", "riemann", "teorema fundamental", "barro"],
-    "Volúmenes de Revolución": ["volumen", "solido", "revolucion", "discos", "arandelas", "casquetes"],
-    "Integrales Impropias": ["impropia", "infinito", "divergente", "convergente", "criterio"],
-    "Sucesiones y Series Numéricas": ["sucesion", "serie", "convergencia", "divergencia", "criterio", "telescopica", "geometrica", "p-serie"],
-    "Series de Potencias y Taylor": ["potencias", "taylor", "maclaurin", "radio de convergencia", "intervalo de convergencia", "polinomio"],
-    "Coordenadas Polares": ["polar", "cardioide", "rosa", "limacon", "area polar"],
+    "Integración": ["impropia", "longitud de arco", "area superficie", "volumen", "revolucion"],
+    "Series": ["taylor", "maclaurin", "potencia", "radio convergencia", "criterio"],
+    "Ecuaciones Diferenciales": ["variables separables", "lineal", "exacta", "bernoulli"],
+    "Coordenadas Polares": ["polar", "cardioide", "rosa", "area polar"],
 
     // Cálculo III
-    "Vectores y Geometría en el Espacio": ["vector", "plano", "recta", "producto punto", "producto cruz", "espacio", "superficie", "cuadrica"],
-    "Funciones de Varias Variables": ["varias variables", "dominio", "curva de nivel", "limite multivariable", "continuidad"],
-    "Derivadas Parciales y Gradiente": ["parcial", "gradiente", "direccional", "plano tangente", "diferencial", "jacobiana"],
-    "Optimización Multivariable (Lagrange)": ["multiplicadores", "lagrange", "hessiano", "punto silla", "extremos condicionados"],
-    "Integrales Dobles y Triples": ["integral doble", "integral triple", "iterada", "fubini", "cambio de orden", "polar", "cilindrica", "esferica"],
-    "Campos Vectoriales": ["campo vectorial", "conservativo", "potencial", "rotacional", "divergencia", "linea de flujo"],
-    "Teoremas de Green, Stokes y Divergencia": ["green", "stokes", "gauss", "divergencia", "flujo", "circulacion", "integral de linea", "integral de superficie"],
+    "Vectores y Geometría en el Espacio": ["producto punto", "producto cruz", "plano", "recta", "superficie cuadrica"],
+    "Funciones Vectoriales": ["curvatura", "torsion", "triedro", "frenet"],
+    "Derivadas Parciales": ["gradiente", "direccional", "plano tangente", "lagrange", "extremos"],
+    "Integrales Múltiples": ["doble", "triple", "cambio variable", "jacobiano", "cilindrica", "esferica"],
+    "Cálculo Vectorial": ["campo vectorial", "linea", "superficie", "green", "stokes", "divergencia"],
 
     // Álgebra Lineal
-    "Matrices y Operaciones": ["matriz", "suma", "producto", "transpuesta", "simetrica", "traza"],
-    "Determinantes e Inversa": ["determinante", "inversa", "adjunta", "cofactor", "singular", "invertible"],
-    "Sistemas de Ecuaciones Lineales": ["sistema", "ecuacion lineal", "gauss", "jordan", "escalonada", "homogeneo", "solucion", "cramer"],
-    "Espacios Vectoriales y Subespacios": ["espacio vectorial", "subespacio", "combinacion lineal", "generador", "clausura"],
-    "Independencia Lineal y Bases": ["independencia lineal", "dependencia", "base", "dimension", "coordenadas"],
-    "Transformaciones Lineales": ["transformacion", "lineal", "nucleo", "imagen", "kernel", "rango", "nulidad", "matriz asociada"],
-    "Valores y Vectores Propios (Diagonalización)": ["valor propio", "vector propio", "eigenvalor", "eigenvector", "caracteristico", "diagonalizacion", "diagonalizable", "semejanza"],
+    "Matrices": ["inversa", "determinante", "rango", "gauss", "escalonada"],
+    "Sistemas de Ecuaciones": ["homogeneo", "solucion", "cramer", "pivote"],
+    "Espacios Vectoriales": ["subespacio", "base", "dimension", "independencia lineal", "generador"],
+    "Transformaciones Lineales": ["nucleo", "imagen", "matriz asociada", "inyectiva", "sobreyectiva"],
+    "Valores y Vectores Propios": ["diagonalizacion", "polinomio caracteristico", "multiplicidad"],
+    "Ortogonalidad": ["gram-schmidt", "proyeccion", "complemento ortogonal", "minimos cuadrados"],
 
-    // Probabilidad y Estadística
-    "Probabilidad Condicional y Bayes": ["condicional", "bayes", "independencia", "total", "evento"],
-    "Variables Aleatorias Discretas": ["variable aleatoria", "discreta", "funcion de probabilidad", "esperanza", "varianza", "bernoulli"],
-    "Variables Aleatorias Continuas": ["continua", "densidad", "acumulada", "uniforme", "exponencial"],
-    "Distribuciones (Normal, Binomial, Poisson)": ["normal", "binomial", "poisson", "gaussiana", "estandar"],
-    "Teorema del Límite Central": ["limite central", "tlc", "aproximacion"],
-    "Intervalos de Confianza": ["intervalo", "confianza", "estimacion", "media", "proporcion"],
-    "Pruebas de Hipótesis": ["hipotesis", "nula", "alternativa", "p-valor", "significancia", "rechazo", "error tipo"],
+    // Probabilidad
+    "Probabilidad": ["evento", "espacio muestral", "axioma", "condicional", "bayes"],
+    "Probabilidad Condicional y Bayes": ["bayes", "teorema", "total", "condicional", "independencia"],
+    "Variables Aleatorias": ["discreta", "continua", "esperanza", "varianza", "funcion masa", "densidad"],
+    "Distribuciones de Probabilidad": ["binomial", "poisson", "normal", "exponencial", "uniforme"],
+    "Inferencia Estadística": ["estimador", "intervalo confianza", "prueba hipotesis", "p-valor"],
+    "Regresión Lineal": ["correlacion", "ajuste", "residuos", "r cuadrado"],
 
-    // Física
-    "Cinemática en 1D y 2D": ["cinematica", "posicion", "velocidad", "aceleracion", "movimiento", "proyectil", "caida libre", "mru", "mrua"],
-    "Leyes de Newton (Dinámica)": ["newton", "fuerza", "masa", "inercia", "accion", "reaccion", "diagrama", "cuerpo libre", "roce", "tension"],
-    "Trabajo y Energía": ["trabajo", "energia", "cinetica", "potencial", "conservacion", "potencia", "mecanica"],
-    "Conservación del Momento Lineal": ["momento", "momentum", "impulso", "choque", "colision", "elastico", "inelastico"],
-    "Dinámica de Rotación y Torque": ["rotacion", "torque", "momento angular", "inercia rotacional", "rodadura"],
-    "Gravitación Universal": ["gravitacion", "kepler", "orbita", "satelite", "fuerza gravitacional"],
-    "Oscilaciones y Ondas Mecánicas": ["oscilacion", "armonico", "simple", "pendulo", "resorte", "onda", "frecuencia", "periodo", "amplitud"],
+    // Física Mecánica
+    "Cinemática": ["posicion", "velocidad", "aceleracion", "proyectil", "circular"],
+    "Dinámica": ["newton", "fuerza", "roce", "tension", "diagrama cuerpo libre"],
+    "Trabajo y Energía": ["cinetica", "potencial", "conservacion", "resorte", "potencia"],
+    "Momento Lineal": ["impulso", "choque", "colision", "centro de masa"],
+    "Rotación": ["torque", "momento inercia", "angular", "rodadura"],
 
-    // Termodinámica
-    "Primera Ley y Energía": ["primera ley", "energia interna", "calor", "trabajo", "sistema cerrado", "sistema abierto"],
-    "Segunda Ley y Entropía": ["segunda ley", "entropia", "irreversibilidad", "clausius", "kelvin-planck"],
-    "Ciclos de Potencia": ["ciclo", "rankine", "otto", "diesel", "refrigeracion", "carnot"],
-    "Propiedades de Sustancias Puras": ["tablas de vapor", "saturacion", "calidad", "diagrama de fase"],
-    "Fugacidad y Mezclas": ["fugacidad", "actividad", "potencial quimico", "mezcla ideal", "mezcla real"],
-    "Equilibrio de Fases": ["equilibrio liquido vapor", "elv", "raoult", "henry", "azeotropo"],
+    // Economía
+    "Oferta y Demanda": ["equilibrio", "excedente", "precio", "cantidad", "mercado"],
+    "Elasticidad": ["precio", "ingreso", "cruzada", "inelastica", "elastica"],
+    "Monopolio": ["poder mercado", "barreras", "ingreso marginal", "costo marginal"],
+    "Macroeconomía Básica": ["pib", "inflacion", "desempleo", "crecimiento"],
+
+    // Programación
+    "Variables y Tipos de Datos": ["int", "float", "string", "boolean", "conversion"],
+    "Control de Flujo": ["if", "else", "while", "for", "break", "continue"],
+    "Funciones": ["parametro", "retorno", "scope", "recursividad"],
+    "Listas y Tuplas": ["append", "slice", "index", "sort", "matriz"],
+    "Diccionarios": ["key", "value", "get", "items"],
+
+    // Estática
+    "Vectores Fuerza": ["resultante", "componente", "cartesiano", "unitario"],
+    "Equilibrio de una Partícula": ["fuerzas concurrentes", "diagrama", "resorte"],
+    "Equilibrio de un Cuerpo Rígido": ["momento", "par", "reacciones", "apoyos"],
+    "Análisis Estructural": ["armadura", "nodo", "seccion", "bastidor"],
 
     // Finanzas
-    "Valor del Dinero en el Tiempo": ["valor presente", "valor futuro", "anualidad", "perpetuidad"],
-    "Tasas de Interés y UF": ["tasa de interes", "interes compuesto", "uf", "nominal", "efectiva"],
-    "Evaluación de Proyectos (VAN/TIR)": ["van", "tir", "flujo de caja", "payback"],
-    "Bonos y Acciones": ["bono", "accion", "dividendo", "precio", "rendimiento"],
+    "Finanzas": ["bono", "accion", "tasa", "interes", "presente", "futuro", "anualidad"],
     "Riesgo y Retorno": ["riesgo", "retorno", "capm", "beta", "diversificacion"],
 
     // Química
@@ -181,11 +196,12 @@ const COURSE_CODES = {
     "ICS1513": "Finanzas"
 };
 
-const determineBestMatch = (content, title, sourceFolder) => {
+const determineBestMatch = (content, title, sourceFolder, subfolder = "") => {
     // Normalize text for searching
     const text = (title + " " + content).toLowerCase();
     const normalizedText = normalizeKey(text);
     const normalizedSource = normalizeKey(sourceFolder);
+    const normalizedSubfolder = normalizeKey(subfolder);
 
     let bestMatch = null;
     let maxScore = 0;
@@ -194,8 +210,8 @@ const determineBestMatch = (content, title, sourceFolder) => {
     for (const [code, mappedCourse] of Object.entries(COURSE_CODES)) {
         if (normalizedText.includes(normalizeKey(code))) {
             // Found a course code!
-            // We still need a topic, so we search for topics within that course
-            const mappedTopics = SYLLABUS[mappedCourse];
+            const courseData = SYLLABUS[mappedCourse];
+            const mappedTopics = courseData ? courseData.topics : null;
             let bestTopic = "General";
             let maxTopicScore = 0;
 
@@ -218,35 +234,45 @@ const determineBestMatch = (content, title, sourceFolder) => {
         }
     }
 
-    // Find the matching course in SYLLABUS based on sourceFolder
-    // We try to find which syllabus key matches the source folder name
+    // Find matching course from sourceFolder
     let targetCourseKey = Object.keys(SYLLABUS).find(k =>
         normalizedSource.includes(normalizeKey(k)) || normalizeKey(k).includes(normalizedSource)
     );
 
+    // 0.5. Check Subfolder for Ayudantias (User suggestion)
+    // If subfolder contains "Ayudantia X", map to SYLLABUS[course].topics[X-1]
+    if (targetCourseKey && SYLLABUS[targetCourseKey]) {
+        const ayudantiaMatch = (normalizedSubfolder + " " + normalizedText).match(/ayudant[ií]a\s*(\d+)/i);
+        if (ayudantiaMatch) {
+            const ayudantiaNum = parseInt(ayudantiaMatch[1]);
+            const topics = SYLLABUS[targetCourseKey].topics;
+            if (ayudantiaNum > 0 && ayudantiaNum <= topics.length) {
+                const mappedTopic = topics[ayudantiaNum - 1];
+                return { course: targetCourseKey, topic: mappedTopic };
+            }
+        }
+    }
+
     // If source is "Todos los ramos", we allow searching across ALL courses
     if (!targetCourseKey && normalizedSource.includes("todos los ramos")) {
         // Fallback to the original logic: find best match across ALL courses
-        for (const [course, topics] of Object.entries(SYLLABUS)) {
+        for (const [course, courseData] of Object.entries(SYLLABUS)) {
+            const topics = courseData.topics;
             for (const topic of topics) {
                 let score = 0;
                 // 1. Check Topic Name Keywords
                 const topicNameKeywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
-                topicNameKeywords.forEach(k => {
-                    if (normalizedText.includes(k)) score += 3;
-                });
+                topicNameKeywords.forEach(k => { if (normalizedText.includes(k)) score += 3; });
+
                 // 2. Check Semantic Keywords
                 const semanticKeywords = TOPIC_KEYWORDS[topic] || [];
                 semanticKeywords.forEach(k => {
                     const normK = normalizeKey(k);
                     if (normalizedText.includes(normK)) score += 2;
                 });
+
                 // 3. Boost if course name mentioned
                 if (normalizedText.includes(normalizeKey(course))) score += 1;
-
-                if (title.includes("Prueba 1") && course === "Cálculo I") {
-                    console.log(`   -> Checking ${course} / ${topic}: Score=${score}`);
-                }
 
                 if (score > maxScore) {
                     maxScore = score;
@@ -258,13 +284,10 @@ const determineBestMatch = (content, title, sourceFolder) => {
     }
 
     if (!targetCourseKey) {
-        // If source is "Todos los ramos" or unknown, we can't strictly classify by course topics.
-        // We can try to match against ALL topics but mark it as "General" course?
-        // Or just return null to let the caller put it in "Todos los ramos".
         return null;
     }
 
-    const topics = SYLLABUS[targetCourseKey]; // Corrected: SYLLABUS[key] directly returns the array of topics
+    const topics = SYLLABUS[targetCourseKey];
 
     if (!topics) {
         return null;
@@ -277,14 +300,14 @@ const determineBestMatch = (content, title, sourceFolder) => {
         // 1. Check Topic Name Keywords
         const topicNameKeywords = normalizeKey(topic).split(' ').filter(k => k.length > 3);
         topicNameKeywords.forEach(k => {
-            if (normalizedText.includes(k)) score += 3; // High weight for exact topic name match
+            if (normalizedText.includes(k)) score += 3;
         });
 
-        // 2. Check Semantic Keywords (The "Smart" Part)
+        // 2. Check Semantic Keywords
         const semanticKeywords = TOPIC_KEYWORDS[topic] || [];
         semanticKeywords.forEach(k => {
             const normK = normalizeKey(k);
-            if (normalizedText.includes(normK)) score += 2; // Medium weight for related concepts
+            if (normalizedText.includes(normK)) score += 2;
         });
 
         if (score > maxScore) {
@@ -293,8 +316,6 @@ const determineBestMatch = (content, title, sourceFolder) => {
         }
     }
 
-    // If no topic matched well, default to the course with a generic topic?
-    // Or just return the course with "General" topic?
     if (!bestMatch) {
         return { course: targetCourseKey, topic: "General" };
     }
@@ -317,80 +338,72 @@ const indexExercises = () => {
         index[normalizeKey(course)] = [];
     });
 
-    // Walk through ALL Course folders
-    const sourceFolders = fs.readdirSync(EXPORTS_DIR).filter(f => fs.statSync(path.join(EXPORTS_DIR, f)).isDirectory());
+    // Walk through Course folders
+    const courseFolders = fs.readdirSync(EXPORTS_DIR).filter(f => fs.statSync(path.join(EXPORTS_DIR, f)).isDirectory());
 
-    for (const sourceFolder of sourceFolders) {
-        console.log(`Processing source folder: ${sourceFolder}`);
-        const exercisesDir = path.join(EXPORTS_DIR, sourceFolder, 'ejercicios');
-        console.log(`Looking in: ${exercisesDir}`);
+    for (const courseFolder of courseFolders) {
+        console.log(`Processing course folder: ${courseFolder}`);
+        const coursePath = path.join(EXPORTS_DIR, courseFolder);
 
-        if (fs.existsSync(exercisesDir)) {
-            const files = fs.readdirSync(exercisesDir).filter(f => f.endsWith('.md'));
-            console.log(`Found ${files.length} MD files`);
+        // Walk through Subfolders (e.g., Ayudantias, I1)
+        const subFolders = fs.readdirSync(coursePath).filter(f => fs.statSync(path.join(coursePath, f)).isDirectory());
 
-            for (const file of files) {
-                const content = fs.readFileSync(path.join(exercisesDir, file), 'utf-8');
-                const parts = file.replace('.md', '').split('_');
-                const number = parts[1];
-                // Try to get a meaningful title from the filename (parts[2] usually)
-                // Format seems to be: Ej_{number}_{title}_{id}_Full.md
-                let meaningfulTitle = parts[2] || "";
+        for (const subFolder of subFolders) {
+            const exercisesDir = path.join(coursePath, subFolder, 'ejercicios');
 
-                // If the title looks like an ID (alphanumeric only, long), ignore it or look elsewhere
-                if (meaningfulTitle.length > 15 && /^[a-zA-Z0-9]+$/.test(meaningfulTitle)) {
-                    meaningfulTitle = "";
-                }
+            if (fs.existsSync(exercisesDir)) {
+                const files = fs.readdirSync(exercisesDir).filter(f => f.endsWith('.md'));
+                console.log(`Found ${files.length} MD files in ${courseFolder}/${subFolder}`);
 
-                const title = `Ejercicio ${number}`;
+                for (const file of files) {
+                    const content = fs.readFileSync(path.join(exercisesDir, file), 'utf-8');
+                    const parts = file.replace('.md', '').split('_');
+                    const number = parts[1];
+                    let meaningfulTitle = parts[2] || "";
 
-                // Use the meaningful title for matching, but keep "Ejercicio X" as the display title if needed
-                // actually, let's use the meaningful title as the display title too if it's good
-                const displayTitle = meaningfulTitle && meaningfulTitle.length > 3 ? meaningfulTitle : `Ejercicio ${number}`;
+                    if (meaningfulTitle.length > 15 && /^[a-zA-Z0-9]+$/.test(meaningfulTitle)) {
+                        meaningfulTitle = "";
+                    }
 
-                // Determine best topic match WITHIN the current course
-                // Pass meaningfulTitle to help with classification
-                const match = determineBestMatch(content, displayTitle, sourceFolder);
+                    const displayTitle = meaningfulTitle && meaningfulTitle.length > 3 ? meaningfulTitle : `Ejercicio ${number}`;
 
-                if (number === '12' || number === '1') { // Debug specific files
-                    console.log(`Debug ${file}: Source=${sourceFolder}, Match=${JSON.stringify(match)}`);
-                }
+                    // Determine best topic match
+                    // Pass courseFolder as sourceFolder, and subFolder as subfolder
+                    const match = determineBestMatch(content, displayTitle, courseFolder, subFolder);
 
-                if (match) {
-                    // Add to specific course
-                    const key = normalizeKey(match.course);
+                    if (match) {
+                        const key = normalizeKey(match.course);
+                        if (!index[key]) index[key] = [];
 
-                    // Ensure the key exists in index
-                    if (!index[key]) index[key] = [];
+                        index[key].push({
+                            id: file.replace('.md', ''),
+                            number: number,
+                            content: content,
+                            filename: file,
+                            title: displayTitle,
+                            topic: match.topic,
+                            originalCourse: courseFolder
+                        });
+                    }
 
-                    index[key].push({
+                    // Add to "Todos los ramos" as fallback
+                    const todosKey = normalizeKey("Todos los ramos");
+                    let genericTopic = "Material General";
+                    if (displayTitle.toLowerCase().includes("prueba") || content.toLowerCase().includes("prueba")) genericTopic = "Pruebas Anteriores";
+                    else if (displayTitle.toLowerCase().includes("guia") || content.toLowerCase().includes("guía")) genericTopic = "Guías de Ejercicios";
+                    else if (displayTitle.toLowerCase().includes("ayudantia") || content.toLowerCase().includes("ayudantía")) genericTopic = "Ayudantías";
+
+                    if (!index[todosKey]) index[todosKey] = [];
+                    index[todosKey].push({
                         id: file.replace('.md', ''),
                         number: number,
                         content: content,
                         filename: file,
                         title: displayTitle,
-                        topic: match.topic,
-                        originalCourse: sourceFolder
+                        topic: genericTopic,
+                        originalCourse: courseFolder
                     });
                 }
-
-                // ALWAYS add to "Todos los ramos" as fallback/archive
-                // But map it to a generic topic if possible
-                const todosKey = normalizeKey("Todos los ramos");
-                let genericTopic = "Material General";
-                if (title.toLowerCase().includes("prueba") || content.toLowerCase().includes("prueba")) genericTopic = "Pruebas Anteriores";
-                else if (title.toLowerCase().includes("guia") || content.toLowerCase().includes("guía")) genericTopic = "Guías de Ejercicios";
-                else if (title.toLowerCase().includes("ayudantia") || content.toLowerCase().includes("ayudantía")) genericTopic = "Ayudantías";
-
-                index[todosKey].push({
-                    id: file.replace('.md', ''),
-                    number: number,
-                    content: content,
-                    filename: file,
-                    title: displayTitle,
-                    topic: genericTopic,
-                    originalCourse: sourceFolder
-                });
             }
         }
     }

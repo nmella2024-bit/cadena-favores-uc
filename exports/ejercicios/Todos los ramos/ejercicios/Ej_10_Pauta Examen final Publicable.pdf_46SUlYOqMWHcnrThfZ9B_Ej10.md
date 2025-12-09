@@ -1,0 +1,1 @@
+Por deudas por U$21 millones a importante constructora a solicitar reorganización. ¿De qué  constructora se trata? (Fuente: Emol 22/06/24)  a. Besalco  b.   Armas  c.   Echeverría Izquierdo  d.   Almagro  e.   Ingevec

@@ -1,0 +1,1 @@
+1 2   puntos por determinar las dos ecuaciones para Vef1 y Vef2 y encontrar el valor de estos.  2 pu ntos por   x1 = 0.57, x2 = 0.71  2 puntos por usar correctamente los valores de amarillo, rojo - rojo, a1 y a2.

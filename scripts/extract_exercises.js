@@ -220,8 +220,9 @@ const processFile = async (filePath, originalUrl = null, customOutputDir = null)
         if (customOutputDir) {
             outputDir = path.join(EXPORT_DIR, customOutputDir, 'ejercicios');
         } else {
-            const parentDir = path.dirname(filePath).split(path.sep).pop();
-            outputDir = path.join(EXPORT_DIR, parentDir, 'ejercicios');
+            // Preserve full directory structure relative to MATERIAL_DIR
+            const relativePath = path.relative(MATERIAL_DIR, path.dirname(filePath));
+            outputDir = path.join(EXPORT_DIR, relativePath, 'ejercicios');
         }
 
         if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });

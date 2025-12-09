@@ -1,0 +1,1 @@
+Una bomba de calor que opera en un ciclo de refrigeración ideal con R-134a como refrigerante es usada para calentar agua de 15 a 45 °C a razón de 0.12 kg/s.   Las   presiones   del   condensador   y   del   evaporador   son   1.4   y   0.32   MPa, respectivamente. Determinar la potencia necesaria para el funcionamiento de la bomba de calor.  Solución

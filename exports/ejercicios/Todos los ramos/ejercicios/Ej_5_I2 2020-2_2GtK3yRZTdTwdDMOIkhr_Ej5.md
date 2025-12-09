@@ -1,0 +1,1 @@
+(7 puntos) Explique por que no sería razonable definir la velocidad mínima de operación  como "La velocidad que desarrolla un vehículo cuando es operado en 1ra marcha con el  mo tor operando en relenti" .

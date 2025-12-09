@@ -1,0 +1,1 @@
+Determine la rapidez   v B   del proyectil en el punto B. a)   v B   = 12 m/s b)   v B   = 24 m/s c)   v B   = 48 m/s d)   v B   = 96 m/s

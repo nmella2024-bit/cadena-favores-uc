@@ -1,0 +1,1 @@
+3 puntos por usar el Teorema de Green y usando la orientaci´ on positiva para las curvas involucradas. 3 puntos por calcular la integral.

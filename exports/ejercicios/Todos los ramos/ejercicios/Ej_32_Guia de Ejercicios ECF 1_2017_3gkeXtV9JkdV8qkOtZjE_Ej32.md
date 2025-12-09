@@ -1,0 +1,1 @@
+FIS1513-6-6  a)    r (R-h) / (R-r)  Termodinámica

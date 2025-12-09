@@ -1,0 +1,4 @@
+Dado un alfabeto finito Σ, una palabra infinita   w   sobre Σ es una secuencia de s´ ımbolos:   w   =   s 0 s 1 s 2   . . .   con  s i   ∈   Σ para todo   i   ≥   0. Se define el conjunto de todas las palabras infinitas sobre el alfabeto Σ como Σ ω   . 1. Demuestre que para todo alfabeto finito Σ con   | Σ | ≥   2 se tiene que Σ ω   es equinumeroso con   { 0 ,   1 } ω   . 1
+
+--- Page 2 ---
+2. Considere el conjunto Σ ω -reg   ⊆   Σ ω   de todas las secuencias “regulares” en Σ ω   tal que   s 0 s 1 s 2   . . .   ∈   Σ ω -reg  si, y solo si, existen palabras   u, v   ∈   Σ ∗   (finitas) tal que:  s 0 s 1 s 2   . . .   =   u   ·   v   ·   v   ·   v . . .  Por ejemplo, la secuencia   aaaabababab . . .   ∈   Σ ω -reg   dado que considerando   u   =   aaa   y   v   =   ab   se tiene que   aaaabababab . . .   =   aaa   ·   ab   ·   ab   ·   ab . . . . Demuestre que el conjunto Σ ω -reg   es numerable.

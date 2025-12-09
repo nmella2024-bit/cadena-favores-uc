@@ -1,0 +1,4 @@
+En t´ erminos de la altura   h B   y la rapidez   v B   determinadas en las preguntas anteriores, ¿cu´ al es la distancia horizontal desde el punto de lanzamiento ( R ) a la cual el misil se estrella con el suelo? a)   R   =   v 2  B  2 g  [  1 +  √  1 +  4 gh B  v 2  B  ]  b)   R   =   v 2  B  g  [  1 +  √  1 +  4 gh B  v 2  B  ]  c)   R   =   v 2  B  g  [  1 +  √  1 +  2 gh B  v 2  B  ]  d)   R   =   v 2  B  2 g  [  1 +  √  1 +  8 gh B  v 2  B  ]
+
+--- Page 4 ---
+Enunciado para los problemas 5-6:  Se tiene un bloque   A   de masa   m A   encima de un carro   C   de masa   m C   . El carro se tira con una fuerza horizontal  F   , tal como se muestra en la figura. Considere que   A   y   C   parten del reposo, y que puede despreciar cualquier tipo de roce en los engranes de las ruedas del carro.  Figura 2: Problemas 5-6.

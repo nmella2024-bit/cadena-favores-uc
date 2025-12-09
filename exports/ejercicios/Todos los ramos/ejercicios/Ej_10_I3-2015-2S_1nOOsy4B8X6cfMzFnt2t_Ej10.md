@@ -1,0 +1,1 @@
+Calcule el m´ odulo de la reacci´ on en   B . a)   B   =   qL  8   +  3 F  4 b)   B   =   qL  8   +   F  4 c)   B   =   qL  4   +   F  4 d)   B   =   qL  4   +  3 F  4

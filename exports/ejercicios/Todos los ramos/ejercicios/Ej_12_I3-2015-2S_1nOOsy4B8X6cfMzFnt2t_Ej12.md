@@ -1,0 +1,1 @@
+Suponga ahora que   F   = 2 N,   L   = 4 m y   q   = 1 N/m. Identifique el gr´ afico de   V   ( x ). (a)   (b)  (c)   (d)

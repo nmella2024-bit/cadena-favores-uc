@@ -1,0 +1,1 @@
+El valor de la distancia   x   para que el sistema permanezca est´ atico y el esfuerzo en la barra  DE   sea nulo es a)   x   =   L  b)   x   =   L  2 c)   x   =  2 L  3 d)   x   = 2 L

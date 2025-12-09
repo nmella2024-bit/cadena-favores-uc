@@ -1,0 +1,4 @@
+[14 puntos]  Considere el problema de un individuo que tiene un ingreso   W   = 1000, y si enferma debe gastar   L   = 200 para recuperar su salud.   La probabilidad de enfermar es   π 2   = 0 ,   1.   Su preferencia se representa mediante la siguiente funci´ on de utilidad esperada:  U   =   π 1  √ c 1   +   π 2  √ c 2  Suponga que le ofrecen dos planes de seguro de salud alternativos: Plan A: indemnizaci´ on   z A   = 200, prima   P   A   = 30 Plan B: indemnizaci´ on   z B   = 100, prima   P   B   = 10 1
+
+--- Page 2 ---
+(a) (6 puntos) Explique (sin calcular utilidad esperada) por qu´ e podemos afirmar que prefiere contratar uno de estos planes a permanecer sin seguro. (b) (8 puntos) Indique cu´ al de los dos planes de salud elige el individuo, y explique a qu´ e se debe su resultado.  III.

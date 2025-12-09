@@ -1,0 +1,1 @@
+La figura 1 muestra la posici´ on de una part´ ıcula en funci´ on del tiempo. En qu´ e instantes o en qu´ e intervalos de tiempo: 1. la velocidad (intant´ anea) es cero ? 2. la velocidad es positiva? 3. la velocidad es negativa? 4. el m´ odulo de la velocidad es m´ aximo? 5. la velocidad es constante? 6. la aceleraci´ on es negativa?  Figura 1:

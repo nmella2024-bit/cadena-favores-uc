@@ -1,0 +1,10 @@
+(12 puntos) Considere una econom´ ıa de intercambio con dos individ- uos. Los individuos tiene funci´ on de utilidad   u 1 ( X, Y   ) = min { 10 X, Y   }   y   u 2 ( X, Y   ) = min { X,   2 Y   } . Ademas tienen asignaci´ on inicial ( X e  1   , Y   e  1   ) = (0 ,   3) y ( X e  2   , Y   e  2   ) = (4 ,   0). Normalice los precios de manera que   p X   = 1 ;   p Y   =   p.   Illustre todos los resultados mas las asignaciones iniciales en una caja de Edgeworth. (a)   (6 puntos)   Encuentre las demandas individuales.  Respuesta.   El individuo 1 resuelve: max  X,Y   { 10 X, Y   }  sujeto a:   X   +   pY   = 3 p  La condici´ on de optimalidad es 10 X   =   Y   , y por lo tanto resolvemos:  X   +   pY   = 3 p ; 2
+
+--- Page 3 ---
+10 X   =   Y  Con lo cual obtenemos las demandas del agente 1:  X 1 ( p ) =   3 p  1 + 10 p   ;   Y 1 ( p ) =   30 p  1 + 10 p  El individuo 2 resuelve: max  X,Y   { X,   2 Y   }  sujeto a:   X   +   pY   = 4 La condici´ on de optimalidad es   X   = 2 Y   , y por lo tanto resolvemos:  X   +   pY   = 4;  X   = 2 Y  Con lo cual obtenemos las demandas del agente 2:  X 2 ( p ) =   8 2 +   p   ;   Y 2 ( p ) =   4 2 +   p  (b)   (2 puntos)   Encuentre la ecuaci´ on que determina el precio de equilibrio.  Respuesta.   Igualamos oferta con demanda en el mercado del bien   X : 3 p  1 + 10 p   +   8 2 +   p   = 4 (c)   (4 puntos)   En la caja de Edgeworth, dibuje las curvas de indiferencia, las asigna- ciones iniciales, las asignaciones de equilibrio e illustre las asignaci´ ones Pareto op- timas (no es necesario encontrar las asignaci´ ones Pareto optimas anal´ ıticamente, basta con mostrarlas gr´ aficamente). Nota: para dibujar la asignaci´ on de equilib- rio puede usar las demandas encontradas mas el hecho que el precio de equilibrio es   p ∗   ≈   1.  Respuesta.  3
+
+--- Page 4 ---
+e  gente   2  Pareto  j  Or  Curve   de  S  A sign   cio  inicid  a  equilibria
+
+--- Page 5 ---
+5

@@ -1,0 +1,1 @@
+Aumenta en $1.000  3.   Respuesta:  Total de Activos   Aumenta en $25.000  Total de Pasivos   Aumenta en $25.000  Total de Patrimonio   No hay efecto  Resultado del

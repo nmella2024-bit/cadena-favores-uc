@@ -1,0 +1,1 @@
+pts,   - 0,5 por cuenta mala o no p uesta)  2 pts por este asiento (0 o 2 pts)  Ut.

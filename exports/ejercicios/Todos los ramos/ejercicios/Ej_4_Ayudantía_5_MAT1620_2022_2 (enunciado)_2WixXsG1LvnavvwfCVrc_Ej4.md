@@ -1,0 +1,1 @@
+Eval´ ue la integral indefinida como una serie de potencias. ¿Cu´ al es el radio de convergencia?  Z  x 2   ln (1 +   x ) d x

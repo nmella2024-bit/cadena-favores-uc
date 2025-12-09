@@ -1,0 +1,1 @@
+¿Cu´ al es la magnitud de la velocidad (i.e. rapidez) del pasador B en ese instante? a)   b   ˙ θ  b) 2 b   ˙ θ   sin   θ  c) 2 b   ˙ θ   cos   θ  d) 2 b   ˙ θ

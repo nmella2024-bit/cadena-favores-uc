@@ -1,0 +1,1 @@
+Inmediatamente despu´ es del choque, ¿cu´ al es la posici´ on del centro de masa del sistema respecto de la posici´ on del centro de masa de la barra? a)  (   m M   +   m  ) (   L  2  )  hacia arriba b)  (   m M   +   m  ) (   L  2  )  hacia abajo c)  (   M M   +   m  ) (   L  2  )  hacia arriba d)  (   M M   +   m  ) (   L  2  )  hacia abajo
