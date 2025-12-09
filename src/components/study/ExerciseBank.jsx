@@ -360,79 +360,7 @@ const ExerciseBank = () => {
     return (
         <div className="h-full flex flex-col bg-white dark:bg-gray-900">
 
-            {/* Exercise Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {displayExercises.map((ex) => {
-                    // Extract Drive ID
-                    const match = ex.filename?.match(/_([a-zA-Z0-9_-]{25,})_/);
-                    const driveId = match ? match[1] : null;
 
-                    return (
-                        <div
-                            key={ex.id}
-                            className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow flex flex-col justify-between h-full"
-                        >
-                            <div>
-                                <div className="flex items-start justify-between mb-2">
-                                    <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                                        <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                                    </div>
-                                    <span className="text-xs font-medium px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
-                                        {ex.topic || "General"}
-                                    </span>
-                                </div>
-                                <h3 className="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
-                                    {ex.title}
-                                </h3>
-                                <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-4">
-                                    {ex.resumen || ex.content.substring(0, 100) + "..."}
-                                </p>
-                            </div>
-
-                            <div className="pt-4 border-t border-gray-100 dark:border-gray-700">
-                                {driveId ? (
-                                    <a
-                                        href={`https://drive.google.com/file/d/${driveId}/view`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium text-sm"
-                                    >
-                                        <ExternalLink className="w-4 h-4" />
-                                        Ver PDF Original
-                                    </a>
-                                ) : (
-                                    <button
-                                        onClick={() => setSelectedExercise(ex)}
-                                        className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg transition-colors font-medium text-sm"
-                                    >
-                                        <Eye className="w-4 h-4" />
-                                        Ver Texto Extraído
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-
-            {/* Fallback Modal for Non-PDF Exercises */}
-            {selectedExercise && (
-                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
-                    <div className="bg-white dark:bg-gray-800 w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
-                        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
-                            <h3 className="font-bold text-gray-900 dark:text-white text-lg">
-                                {selectedExercise.title}
-                            </h3>
-                            <button onClick={() => setSelectedExercise(null)} className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full">
-                                <X className="w-6 h-6 text-gray-500" />
-                            </button>
-                        </div>
-                        <div className="flex-1 overflow-y-auto p-8 bg-white dark:bg-gray-800 prose prose-lg dark:prose-invert max-w-none">
-                            <ReactMarkdown>{selectedExercise.content}</ReactMarkdown>
-                        </div>
-                    </div>
-                </div>
-            )}
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Course Selection */}
@@ -642,7 +570,7 @@ const ExerciseBank = () => {
                                                         </button>
 
                                                         {viewMode === 'topic-choice-expanded' && (
-                                                            <div className="animate-in fade-in slide-in-from-top-2 duration-300 space-y-3 max-h-[400px] overflow-y-auto pr-2">
+                                                            <div className="animate-in fade-in slide-in-from-top-2 duration-300 space-y-3 max-h-[600px] overflow-y-auto pr-2">
                                                                 {!hasStrict && (
                                                                     <div className="p-3 bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 text-sm rounded-lg border border-yellow-100 dark:border-yellow-800 flex items-center gap-2">
                                                                         <Search className="w-4 h-4" />
@@ -650,29 +578,59 @@ const ExerciseBank = () => {
                                                                     </div>
                                                                 )}
 
-                                                                {displayExercises.map((ex) => (
-                                                                    <div key={ex.id} className="p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-purple-300 transition-all cursor-pointer group"
-                                                                        onClick={() => setSelectedExercise(ex)}
-                                                                    >
-                                                                        <div className="flex justify-between items-start mb-2">
-                                                                            <span className="text-xs font-bold px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded text-gray-600 dark:text-gray-300">
-                                                                                {ex.topic || "General"}
-                                                                            </span>
-                                                                            <span className="text-xs text-gray-400">
-                                                                                {ex.title}
-                                                                            </span>
-                                                                        </div>
-                                                                        <div className="prose dark:prose-invert max-w-none text-sm line-clamp-3 mb-2 opacity-70 group-hover:opacity-100 transition-opacity">
-                                                                            <ReactMarkdown>{ex.content.substring(0, 300) + "..."}</ReactMarkdown>
-                                                                        </div>
-                                                                        <button
-                                                                            className="text-sm font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1 mt-2"
-                                                                        >
-                                                                            <FileText className="w-4 h-4" />
-                                                                            Ver Documento Completo
-                                                                        </button>
-                                                                    </div>
-                                                                ))}
+                                                                <div className="grid grid-cols-1 gap-4">
+                                                                    {displayExercises.map((ex) => {
+                                                                        // Extract Drive ID
+                                                                        const match = ex.filename?.match(/_([a-zA-Z0-9_-]{25,})_/);
+                                                                        const driveId = match ? match[1] : null;
+
+                                                                        return (
+                                                                            <div
+                                                                                key={ex.id}
+                                                                                className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow flex flex-col justify-between"
+                                                                            >
+                                                                                <div>
+                                                                                    <div className="flex items-start justify-between mb-2">
+                                                                                        <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
+                                                                                            <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                                                                                        </div>
+                                                                                        <span className="text-xs font-medium px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
+                                                                                            {ex.topic || "General"}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
+                                                                                        {ex.title}
+                                                                                    </h3>
+                                                                                    <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-4">
+                                                                                        {ex.resumen || ex.content.substring(0, 100) + "..."}
+                                                                                    </p>
+                                                                                </div>
+
+                                                                                <div className="pt-4 border-t border-gray-100 dark:border-gray-700">
+                                                                                    {driveId ? (
+                                                                                        <a
+                                                                                            href={`https://drive.google.com/file/d/${driveId}/view`}
+                                                                                            target="_blank"
+                                                                                            rel="noopener noreferrer"
+                                                                                            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium text-sm"
+                                                                                        >
+                                                                                            <ExternalLink className="w-4 h-4" />
+                                                                                            Ver PDF Original
+                                                                                        </a>
+                                                                                    ) : (
+                                                                                        <button
+                                                                                            onClick={() => setSelectedExercise(ex)}
+                                                                                            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg transition-colors font-medium text-sm"
+                                                                                        >
+                                                                                            <Eye className="w-4 h-4" />
+                                                                                            Ver Texto Extraído
+                                                                                        </button>
+                                                                                    )}
+                                                                                </div>
+                                                                            </div>
+                                                                        );
+                                                                    })}
+                                                                </div>
                                                             </div>
                                                         )}
                                                     </div>
@@ -687,6 +645,25 @@ const ExerciseBank = () => {
                 </div>
             </div>
 
+
+            {/* Fallback Modal for Non-PDF Exercises */}
+            {selectedExercise && (
+                <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+                    <div className="bg-white dark:bg-gray-800 w-full max-w-4xl h-[90vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+                        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/50">
+                            <h3 className="font-bold text-gray-900 dark:text-white text-lg">
+                                {selectedExercise.title}
+                            </h3>
+                            <button onClick={() => setSelectedExercise(null)} className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full">
+                                <X className="w-6 h-6 text-gray-500" />
+                            </button>
+                        </div>
+                        <div className="flex-1 overflow-y-auto p-8 bg-white dark:bg-gray-800 prose prose-lg dark:prose-invert max-w-none">
+                            <ReactMarkdown>{selectedExercise.content}</ReactMarkdown>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {isGenerating && (
                 <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50">
