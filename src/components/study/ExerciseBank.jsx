@@ -198,6 +198,7 @@ const ExerciseBank = () => {
             }
 
             setLoadingMaterials(true);
+            setError(null); // Clear previous errors
             try {
                 // 1. Fetch DB Materials (PDFs)
                 const materials = await obtenerMaterialesFiltrados({ ramo: selectedCourse });
@@ -226,13 +227,14 @@ const ExerciseBank = () => {
                 const generalExercises = generalKey ? extractedExercises[generalKey] : [];
                 console.log('DEBUG: General Exercises Count:', generalExercises.length);
 
+                let combined = [];
+
                 if (matchingKey) {
                     const specificExercises = extractedExercises[matchingKey];
                     console.log('DEBUG: Specific Exercises Count:', specificExercises ? specificExercises.length : 0);
 
                     if (Array.isArray(specificExercises)) {
-                        // Merge specific and general
-                        const combined = [...specificExercises];
+                        combined = [...specificExercises];
                         const specificIds = new Set(specificExercises.map(e => e.id));
 
                         generalExercises.forEach(ex => {
@@ -240,19 +242,21 @@ const ExerciseBank = () => {
                                 combined.push(ex);
                             }
                         });
-                        console.log('DEBUG: Combined Exercises Count:', combined.length);
-                        setExtractedList(combined);
                     } else {
                         console.warn("Found matching key but value is not an array:", specificExercises);
-                        setExtractedList(generalExercises);
+                        combined = generalExercises;
                     }
                 } else {
                     console.log('DEBUG: Using only general exercises');
-                    setExtractedList(generalExercises);
+                    combined = generalExercises;
                 }
+
+                console.log('DEBUG: Combined Exercises Count:', combined.length);
+                setExtractedList(combined);
 
             } catch (error) {
                 console.error("Error fetching course materials:", error);
+                setError(error.message); // Set error message
             } finally {
                 setLoadingMaterials(false);
             }
@@ -383,6 +387,7 @@ const ExerciseBank = () => {
                 <p>General Key: {Object.keys(extractedExercises).find(k => normalizeKey(k) === "todos los ramos") || 'none'}</p>
                 <p>Direct Access 'calculo i': {extractedExercises['calculo i']?.length ?? 'undefined'}</p>
                 <p>Extracted List Count: {extractedList.length}</p>
+                <p>Error: {error || 'none'}</p>
                 <p>Data Keys: {Object.keys(extractedExercises).join(', ')}</p>
             </div>
 
