@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/PautaControl_4_1_18_4XnZsiA6o8zZmLZ6Lfvt.pdf"
+sourceFile: "PautaControl_4_1_18_4XnZsiA6o8zZmLZ6Lfvt.pdf"
+---
+
 --- Page 1 ---
 DEPARTAMENTO DE INGENIERÍA INDUSTRIAL Y DE SISTEMAS  FACULTAD DE INGENIERÍA  PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  ECONOMETRÍA APLICADA  Profesora: Natalie Rebolledo  Pauta Control Nº4  Jueves 31 de mayo de 2018  TIEMPO: 15 minutos  NOMBRE:   ____________________________________________  Nº de Alumno:   ____________________________________________  (a)   El estimador de Máxima Verosimilitud es equivalente al estimador de MCO cuando  se cumplen los supuestos requeridos para que MCO sea MELI . Coment e   (1   punto)  Falso, para que MV sea equivalente a MCO se necesita asumir que la distribución de los errores es normal, y este supuesto no es necesario para que MCO sea MELI.  (b)   Se tiene un modelo donde la variable dependiente es los años de educación y   uno  de los regresores es la variable hombre que toma valor 1 si el individuo es hombre y 0  si no lo es. Interprete el beta de Hombre si el coeficiente resultante del modelo es  0.12. (1 punto )  Los hombres tienen en promedio 0.12 años más de educación que las mujeres.  (c)   Especifique un modelo que le permita testear que para cualquier nivel de Capital(K)  y   Trabajo   (L),   países   grandes   tienen   en   promedio   un   producto   mayor   que   países  pequeños. Además plantee explícitamente un test de hipótesis para ver la sig nificancia  estadística de esta diferencia.   (4 puntos)  Recuerde que el producto puede medirse como  𝑌 = 𝐴𝐾 𝛼 𝐿 𝛽  La ayuda nos recuerda que podemos definir el modelo como:  ln 𝑌 𝑖   = 𝑙𝑛𝐴 + 𝛼𝑙𝑛𝐾 𝑖   + 𝛽𝑙𝑛𝐿 𝑖   + 𝑢 𝑖  Lo redefinimos como:  y i   = 𝑐𝑡𝑒 + 𝛼𝑘 𝑖   + 𝛽𝑙 𝑖   + 𝑢 𝑖  Para testear esta hipótesis primero debemos definir la siguiente variable dummy:
 

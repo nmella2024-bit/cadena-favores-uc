@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase26_2XBQCwFzwFd0iMtD3x7M.pdf"
+sourceFile: "Clase26_2XBQCwFzwFd0iMtD3x7M.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA  Primer Semestre 2022  MAT1203 - ´ ALGEBRA LINEAL  Clase 26: Vectores propios, valores propios, espacio propio 1. ¿Es   λ   =   − 2 un valor propio de  [ 3   2 3   8  ]  ? ¿Por qu´ e? 2. ¿Es  [ 1 3  ]  un vector propio de  [ 1   − 1 6   − 4  ]  ? Si lo es, encuentre el valor propio. 3. ¿Es     3  − 2 1      un vector propio de     − 4   3   3 2   −   3   − 2  − 1   0   − 2    ? En caso afirmativo, determine el valor propio. 4. ¿Es   λ   = 4 un valor propio de     3   0   − 1 2   3   1  − 3   4   5    ? Si es as´ ı, determine un vector propio correspondiente. 5. Determine una base para el espacio propio asociado con cada valor propio indicado. (a)   A   =  [ 3   0 2   1  ]  ,   λ   = 1 ,   3. (b)   A   =  [   1   − 3  − 4   5  ]  ,   λ   =   − 1 ,   7. (c)   A   =     4   0   1  − 2   1   0  − 2   0   1    ,   λ   = 1 ,   2 ,   3- (d)   A   =     − 4   0   − 1 3   0   3 2   − 2   5    ,   λ   =   − 5. 6. Determine los valores propios de las matrices (a)     0   0   0 0   3   4 0   0   − 2     1
 

@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Ayudanta11_11kaFQTWJsL4gHrNPeOq.pdf"
+sourceFile: "Ayudanta11_11kaFQTWJsL4gHrNPeOq.pdf"
+---
+
 Suponga que  A   =  [   0   2  − 2   0  ]  Demuestre que   e A t   =   I   cos 2 t   +   1 2   A   sen 2 t .   Aplique este hecho para encontrar una soluci´ on general de   x ′   =   Ax   y verifique que es equivalente a la soluci´ on encontrada por el m´ etodo del valor propio. 6. Resuelva el siguiente sistema de ecuaciones calculando la exponencial de matriz de coeficientes:  x ′   =       3   0   0   0 6   3   0   0 9   6   3   0 12   9   6   3        x ,   x (0) =       1 1 1 1       7. Calcule la matriz   B   si  e B t   =      − 3 e t   + 4 e 2 t   6 e t   −   6 e 2 t   6 e t   −   6 e 2 t  e t   −   e 2 t   − 2 e t   + 3 e 2 t   − 2 e t   + 2 e 2 t  − 3 e t   + 3 e 2 t   6 e t   −   6 e 2 t   6 e t   −   5 e 2 t   

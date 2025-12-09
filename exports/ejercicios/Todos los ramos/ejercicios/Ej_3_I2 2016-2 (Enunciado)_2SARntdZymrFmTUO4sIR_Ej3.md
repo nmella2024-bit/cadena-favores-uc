@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2016-2 (Enunciado)_2SARntdZymrFmTUO4sIR.pdf"
+sourceFile: "I2 2016-2 (Enunciado)_2SARntdZymrFmTUO4sIR.pdf"
+---
+
 ( 2 0   Puntos en total)  Considere el siguiente grafo   𝐺   𝑁 ,   𝐴   , sobre el cual se indica el tiempo de viaje asociado a cada  arco,   𝑐 !" , con   𝑖 ,   𝑗   ∈   𝐴 :  a)   (7   puntos)   Obtenga, aplicando el algoritmo de Dijkstra, el árbol de rutas mínimas y las  distancias mínimas desde el nodo   D   hacia todos los demás nodos de la red. Construya una  tabla que muestre las distancias y predecesores de cada nodo en cada iteración.  b)   (7   puntos)   El algoritmo de   Reverse Dijkstra   permite encontrar un árbol de rutas mínimas  desde todos los nodos hacia un nodo en particular. El algoritmo consiste en aplicar  Dijkstra pero inspeccionando los arcos entrantes de un nodo en lugar de los arcos  salientes (o,   equivalentemente, en aplicar Dijkstra sobre la misma red, pero invirtiendo  previamente los arcos). Aplique el algoritmo de   Reverse Dijkstra   para determinar el árbol  y las distancias mínimas desde todos los nodos hacia el nodo   D . Construya una tabla  como l a de la parte a.  c)   (6   puntos)   Construya la matriz de distancias   𝒟 𝑫 , en la que cada elemento   𝒹 !"  𝑫   representa  el costo mínimo de ir de   𝑖   a   𝑗   pasando por   D , con   𝑖   ∈   𝑁 ,   𝑗   ∈   𝑁 .
 
 --- Page 3 ---

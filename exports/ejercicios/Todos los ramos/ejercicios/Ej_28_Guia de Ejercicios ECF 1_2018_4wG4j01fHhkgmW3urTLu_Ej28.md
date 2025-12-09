@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 28"
+topic: "General"
+number: "28"
+originalUrl: "exports/downloads/Todos los ramos/Guia de Ejercicios ECF 1_2018_4wG4j01fHhkgmW3urTLu.pdf"
+sourceFile: "Guia de Ejercicios ECF 1_2018_4wG4j01fHhkgmW3urTLu.pdf"
+---
+
 TRANS - 7  2
 
 --- Page 33 ---

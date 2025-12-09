@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2014_4JBFFHEVLTxpYXynLK7o.pdf"
+sourceFile: "Examen 2014_4JBFFHEVLTxpYXynLK7o.pdf"
+---
+
 --- Page 1 ---
 s  PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE  E S CUELA DE INGENIERIA  DEPTO. INGENIERIA QUIMICA Y BIOPROCESOS  IIQ 2043 FISICOQUIMICA (1´2014 )  Examen   ( Miércoles 2   Jul io   2013 )  Tiempo :   2   horas   30 minutos  •   No olvides ponerle nombre a todos los cuadernillos y hoja s del enunciado usadas  como parte de las respuestas.  •   La prueba tiene 4 preguntas   obligatorias  Pregunta I1  1,5 puntos  Pregunta I2  1,5 puntos  Pregunta I3  1,5 puntos  Pregunta Examen  1,5 puntos  Nota Examen =   Pregunta I1 + Pregunta I2 + Pregunta I3 + Pregun ta Examen + 1 pto base  •   Cada alumno(a) puede rendir máximo   una   pregunta extra para reemplazar una  interrogación. Quienes no hayan rendido una evaluación   deben   contestar dicha  pregunta recuperativa.  •   La nota de interrogación a reemp lazar se calcula a parti r de la pregunta obligatoria   y  la pre gunta extra corresp ondientes a dicha interrogación. Solo reemplaza si es  mayor o igual a la nota original de dicha interrogación.  Pregunta Ii  1,5 puntos  Extra Ii  1,5 puntos  Nota reemplazo I = (Pregunta Ii + Pregunta   Extra Ii)*2 + 1 punto base  •   Cada   parte de cada   pregunta será evaluada según:  o   Distinguido (Contesta la pregunta correctamente y los cálculos gráficos,  analíticos y/o numéricos están correctos, 100% del puntaje)  o   Competente (Contesta la pregunta correctamente , pero los cálculos gráficos,  analíticos y/o numéricos contienen errores menores, 75% del puntaje)  o   Intermedio (Contesta la pregunta correctamente, pero los cálculos gráficos,  analíticos y/o numéricos contienen errores graves, o bien la respuesta es  contest ada parcialmente, 50% del puntaje)  o   En desarrollo (Contesta la pregunta parcialmente y los cálculos gráficos,  analíticos y/o numéricos contienen errores graves, 25% del puntaje)  o   No logrado (No contesta la pregunta o la contesta de manera incorrecta, 0%  del   puntaje)
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I2 2012-TAV_1rq7az8S2ggaG0PGmSnF.pdf"
+sourceFile: "I2 2012-TAV_1rq7az8S2ggaG0PGmSnF.pdf"
+---
+
 Encuentre la soluci´ on general de la ecuaci´ on  x 2 y ′′ ( x )   −   xy ′ ( x ) + 2 y ( x )   =   x  si se sabe que   y 1   =   x   cos ( ln( x ) ) es soluci´ on de la ecuaci´ on homog´ enea asociada.  Respuesta   : La soluci´ on general es  Y   ( t )   =   y H   ( t ) +   y P   ( t ) ,  donde   y H   es   la   soluci´ on   general   de   la   ecuaci´ on   homog´ enea   asociada ,  x 2 y ′′ ( x )   −   xy ′ ( x ) + 2 y ( x ) = 0 e   y P   es cualquier soluci´ on particular. Para hallar   y H   buscamos una segunda soluci´ on de la forma   y 2 ( x ) =   v ( x ) y 1 ( x ) (y que sea independiente con la primera) Derivando dos veces y exigiendo que   y 2   satisfaga la ecuaci´ on homog´ enea llegamos a 0   =   x 2 y ′′  2   −   xy ′  2   + 2 y 2   =   x 2 y 1 v ′′   + (2 x 2 y ′  1   −   xy 1 ) v ′   + ( x 2 y ′′ ( x )   −   xy ′  1   + 2 y 1 ) v,  donde el ´ ultimo par´ entesis es cero pues   y 1   es soluci´ on. De este modo tenemos que  x 2 y 1 v ′′   + (2 x 2 y ′  1   −   xy 1 ) v ′   =   0   ⇒   v ′′  v ′   =   xy 1   −   2 x 2 y ′  1  x 2 y 1  pero, como   y 1   =   x   cos ( ln( x ) ) tenemos que   y ′  1   =   cos ( ln( x ) )   −   sen ( ln( x ) )   .  Sustituyendo obtenemos  v ′′  v ′   =   2  x   tan ( ln( x ) )   −   1  x  .  Integrando, ln   v ′   =   ln  ( sec 2   ( ln( x ) )  x  )  ⇒   v ′   =   sec 2   ( ln( x ) )  x   .  E integrando de nuevo llegamos finalmente a que  v ( x )   =   tan ( ln( x ) )   ⇒   y 2 ( x )   =   x   sen ( ln( x ) ) y por tanto,  y H   ( x )   =   C 1   x   cos ( ln( x ) ) +   C 2   x   sen ( ln( x ) )   .
 
 --- Page 3 ---

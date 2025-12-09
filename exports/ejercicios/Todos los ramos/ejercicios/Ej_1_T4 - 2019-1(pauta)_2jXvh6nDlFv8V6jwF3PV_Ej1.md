@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/T4 - 2019-1(pauta)_2jXvh6nDlFv8V6jwF3PV.pdf"
+sourceFile: "T4 - 2019-1(pauta)_2jXvh6nDlFv8V6jwF3PV.pdf"
+---
+
 2  En esta pregunta, hab´ ıa que mostrar que la clausura conexa   R C   no siempre existe. Una manera directa de mostrar esto, es creando un contraejemplo. Se propone el siguiente:  R   =   { ( a, a ) ,   ( b, b ) }  Y se definen:  R 1   =   { ( a, a ) ,   ( b, b ) ,   ( a, b ) }  R 2   =   { ( a, a ) ,   ( b, b ) ,   ( b, a ) }  Es f´ acil ver que   R   ⊆   R 1   y   R   ⊆   R 2   y que   R 1   y   R 2   son conexas. La idea entonces era notar que no puede existir la clausura conexa pues esta deber´ ıa estar contenida tanto en   R 1   como en   R 2 , lo cual llevar´ a a una contradicci´ on. 1
 
 --- Page 2 ---

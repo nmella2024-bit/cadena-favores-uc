@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2019-1_514xEdA3OVbeDSQ1LPv0.pdf"
+sourceFile: "Examen 2019-1_514xEdA3OVbeDSQ1LPv0.pdf"
+---
+
 a ) Si   A   y   B   son matrices de 3   ×   3 tal que   det ( A ) = 3 y   det ( B ) = 2 determine el valor de  det  ( 1 3 AB T   A 3 B − 1  )  b ) Demuestre que el rango de la matriz     1   1   1 1   x   3  x   3   1      es 3 para todo   x   ∈   R .  Soluci´ on.  a ) Aplicando propiedades del determinante, tenemos que:  det  ( 1 3 A  )  det   ( B T   )   det   ( A ) 3   det   ( B − 1 ) ( 1 3  ) 3  det   ( A )   det   ( B T   )   det   ( A ) 3   det   ( B − 1 ) ( 1 3  ) 3  det   ( A )   det   ( B )   det   ( A ) 3   det   ( B − 1 ) ( 1 3  ) 3  det   ( A )   det   ( B )   det   ( A ) 3   det   ( B ) − 1  ( 1 3  ) 3  ·   3   ·   2   ·   3 3   1 2  = 3  b ) Notamos que el determinante de la matriz es   − x 2   + 4 x   −   7. Como   − x 2   + 4 x   −   7 ̸   = 0 para todo   x   ∈   R , entonces la matriz es invertible para todo valor de   x , lo que implica que el rango de la matriz es 3 para todo valor de   x .  Puntaje:  0.5 ptos por aplicar correctamente cada propiedad de determinante. (2 ptos) 1 ptos por llegar al resultado correcto en a) 3 ptos por justificar correctamente b)
 
 --- Page 4 ---

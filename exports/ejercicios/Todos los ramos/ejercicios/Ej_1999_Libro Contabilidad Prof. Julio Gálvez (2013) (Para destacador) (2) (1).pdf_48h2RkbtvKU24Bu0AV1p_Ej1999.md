@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1999"
+topic: "General"
+number: "1999"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 Ingresos por Ventas:   2.500 Costo de Ventas:   ?  Margen de Explotación:   ?  Depreciación del Ejercicio   ?  Gasto por Deudores Incobrables   68 Resultado Operacional:   ?  Gastos Financieros   130 Resultado Antes de Impuestos   ?  Gastos por Impuestos del Período (10%)   ?  Resultado del Ejercicio:   388,8
 
 --- Page 226 ---

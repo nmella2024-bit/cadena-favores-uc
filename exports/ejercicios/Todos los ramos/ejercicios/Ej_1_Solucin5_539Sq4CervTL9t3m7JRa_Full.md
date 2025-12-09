@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Solucin5_539Sq4CervTL9t3m7JRa.pdf"
+sourceFile: "Solucin5_539Sq4CervTL9t3m7JRa.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA Segundo semestre 2021  Ayudant´ ıa 5 - MAT1610  1. Determine los siguientes l´ ımites: a) l´ ım  x → 0  √ x 3   + 2 x 2   sen  ( 2 π x  )  b)   l´ ım  x → π/ 2  tan(4 x ) 2 x   −   π  Soluci´ on:  a) Observamos que la funci´ on   x   7   →   sen   ( 2 π x  )   es acotada en   R ∗   y que l´ ım  x → 0  √ x 3   + 2 x 2   = 0. Entonces por el teorema del Sandwich tenemos que l´ ım  x → 0  √ x 3   + 2 x 2   sen  ( 2 π x  )  = 0 .   (1) b) Por cambio de variable   u   = 2 x   −   π , tenemos que 4 x   = 2 u   + 2 π   ypor lo tanto l´ ım  x →   π  2  tan(4 x ) 2 x   −   π   = l´ ım  u → 0  tan(2 u   + 2 π )  u   (2) l´ ım  u → 0  tan(2 u )  u   (3) l´ ım  u → 0  sen(2 u ) 2 u  2 cos(2 u )   (4) = 2 .   (5) 2.   a) Determine, justificadamente, el valor de l´ ım  x →− π   sen(sen( x ) +   x ) b) Demuestre que la ecuaci´ on ln( x ) = 3   −   2 x  tiene, al menos, una ra´ ız real.  Soluci´ on.
 

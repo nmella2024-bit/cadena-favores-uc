@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2016-2_0Y6XQu5Pqmc3kbzJuhYc.pdf"
+sourceFile: "I2 2016-2_0Y6XQu5Pqmc3kbzJuhYc.pdf"
+---
+
 a)   (5 Puntos) En el capítulo 7 texto del curso se identifican los roles de ciertas  personas que resultan claves en una red: (1) “conector central”, (2) “explorador de  fronteras”   o   “embajador”,   (3)   “corredor   de   información”,   y   (4)   “especialista  periférico”. Identifique en la red de arriba qué personas cumplen esta función y  describa para qué roles estas personas pueden resultar esenciales.  En primer lugar ,   se deben distinguir los cuatro grupos dentro de la red (100,200,300,500 )  (0,2 pto. por distinguir las 4 redes o sub - redes)   Luego, las características de los roles, las  personas que cumplen estas funciones y los roles para los que estas personas pueden resultar  esenciales están en la siguiente tabla:  ¿Qué   personas   cumplen   esta  función?  ¿Para   qué   rol   estas   personas  pueden resultar esenciales?  Conector  Central  112 - 127 - 306 - 507  Otros como el 104 - 200 - 307 y 510  también   podrían   considerarse  conectores   centrales,   pero   sin  desempeñar   ese   rol   de   forma  exclusiva  (0,6 pto. por poner   al menos 3  personas; 0,2 pto. c/u)  opción 1)  Definición   (0,65 pts)  Constituye un nodo por el que pasa  toda la información relevante de una  red (o alguna de sus unidades)  opción 2)  ¿Para qué   roles resultan esenciales?     Detectar   problemas   y  comunicarlos   a   los   cargos  superiores     Ser   el   “termómetro”   del  funcionamiento de la red     Difundir ideas en la red     Implementar cambios en la red  (0,65 pto. por poner uno de los  roles de ejemplo o alguno similar)  Explorador de  Fronteras  1 01 - 104 - 106 - 138 - 200 - 203 -  205 - 307 - 500 - 506 - 510  (0,6 pto. por poner al menos 6  personas; 0,1 pto. c/u)  opción 1)  Definición   (0,65 pts)  Actúa como medio de relación entre  las redes de una organización  opción   2)  ¿Para qu é   roles resultan esenciales?
 
 --- Page 6 ---

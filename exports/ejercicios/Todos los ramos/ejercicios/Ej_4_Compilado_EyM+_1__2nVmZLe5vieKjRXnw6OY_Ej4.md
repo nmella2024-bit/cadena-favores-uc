@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Compilado_EyM+_1__2nVmZLe5vieKjRXnw6OY.pdf"
+sourceFile: "Compilado_EyM+_1__2nVmZLe5vieKjRXnw6OY.pdf"
+---
+
 Campos variables en el tiempo  4.1.   Ley de inducci´ on de Faraday-Lenz  (1) Este es un problema meramente cualitativo. Si los imanes se mueven de la forma descrita en la figura, determine la direcci´ on de la corriente inducida en cada una de las espiras.  Soluci´ on:  Recordemos la   Ley de Lenz :  Una f.e.m inducida siempre generar´ a una corriente cuyo campo magn´ etico se oponga al cambio original en el flujo magn´ etico.  En el caso de la izquierda, el movimiento del im´ an tiende a aumentar   el flujo magn´ etico, por lo que se generar´ a una corriente que cree un campo magn´ etico que se oponga a este hecho. Para reducir el flujo magn´ etico, debe aparecer un campo magn´ etico   ~ B   que apunte   fuera de la espira   y, por la regla de la mano derecha, la corriente circular´ a en direcci´ on anti-horaria. En el caso de la derecha, el flujo disminuye; por tanto, se deber´ a generar un campo magn´ etico que  entre a la espira , de modo tal que se oponga a la reducci´ on de flujo. De esta forma, la corriente circulante tendr´ a direcci´ on horaria. Finalmente,    (2) La espira rectangular de la figura se encuentra sumergida en un campo magn´ etico uniforme   ~ B   =   B ˆ ı . Si la espira gira con velocidad angular   ω   utilizando el eje   z   como eje de rotaci´ on, y asumiendo que en   t   = 0 la espira se encuentra en el plano   Y Z , determine la   fem   inducida y la corriente inducida en la espira. 118
 
 --- Page 122 ---

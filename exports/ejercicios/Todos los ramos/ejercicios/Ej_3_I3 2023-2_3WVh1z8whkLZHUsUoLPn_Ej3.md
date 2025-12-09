@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2023-2_3WVh1z8whkLZHUsUoLPn.pdf"
+sourceFile: "I3 2023-2_3WVh1z8whkLZHUsUoLPn.pdf"
+---
+
 Los vectores   b 1   =      1 0 0      ,   b 2   =      − 3 4 0      ,   b 3   =      3  − 6 3      forman una base de   R 3 . (a) Encuentre la matriz de cambio de las coordenadas de   B   =   { b 1 ,   b 2 ,   b 3 }   a la base est´ andar. (b) Escriba la ecuaci´ on matricial que relaciona un vector   x   =    x 1  x 2  x 3      en   R 3   con su vector de coordenadas [ x ] B   =    α β γ    . (c) Calcule el vector de coordenadas de      − 8 2 3      con respecto de la base   B .  Soluci´ on  (a) La matriz de cambio de base de   B   a la base est´ andar es  P B   =    b 1   b 2   b 3     =    1   − 3   3 0   4   − 6 0   0   3      .  (b) Para cada   x   =    x 1  x 2  x 3      ∈   R 3   se cumple  P B [ x ] B   =   x  o equivalentemente     1   − 3   3 0   4   − 6 0   0   3      α β γ      =    x 1  x 2  x 3      .  (c) Resolvemos el sistema    1   − 3   3 0   4   − 6 0   0   3      α β γ      =    − 8 2 3      .  3 γ   = 3   ⇒   γ   = 1 4 β   −   6 = 2   ⇒   β   = 2  α   −   3(2) + 3 =   − 8   ⇒   α   =   − 5 Por lo tanto el vector de coordenadas de    − 8 2 3      con respecto de la base   B   es    − 5 2 1    .
 
 --- Page 4 ---

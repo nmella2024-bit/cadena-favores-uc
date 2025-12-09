@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_47xXo1rCwVhrFJ6uN0mv.pdf"
+sourceFile: "Prueba 1.pdf_47xXo1rCwVhrFJ6uN0mv.pdf"
+---
+
 --- Page 1 ---
 Nombre:___________________________________  1  PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE  ESCUELA DE ADMINISTRACIÓN  CURSO ADMINISTRACIÓN DE RECURSOS HUMANOS (EAA - 240A) y  DIRECCIÓN DE PERSONAS (EAA - 2110) SECCIÓN 4  PRIMER SEMESTRE 2023  Profesor:   Carlos Portales   cportale@uc.cl  Asistente:   Sandra Aguilar   saguilar@uc.cl  Ayudante Coordinador:   Nicolás Guzmán   NicolasGuzman@uc.cl  Ayudantes Correctores:   Catalina Saavedra   c atalina.saavedra@uc.cl  José Miguel de la Barra   jmdelabarra@uc.cl  Magdalena Jaduri   magdalena.jaduri@uc.cl  PRUEBA 1  (30 puntos) Caso Entretenimientos Pura Energía  En 2006, dos estudiantes con formación técnica universitaria ganaron un concurso de desarrollo de juegos para  smartphones. Nunca había sido tan fácil utilizar código informático para hacer feliz a tanta gente,   así que ¿por qué no crear  una empresa para hacerlo?  Tras una serie de inversiones, su empresa pasó a llamarse Entretenimientos Pura Energía, con sede en Santiago de Chile. Su  objetivo era ofrecer a los consumidores historias únicas y novedosas a través d e sus juegos. En 2019, Entretenimientos Pura  Energía había desarrollado más de 50 juegos, pero ninguno de ellos llegó a despegar. También trabajaba en cortometrajes  de animación y aplicaciones de aprendizaje (para niños de preescolar y primaria).  La empre sa estuvo a punto de cerrar cuando salió al mercado la primera versión de "Rompecabezas", un juego de  rompecabezas para el iPhone. Rompecabezas se convirtió en uno de los juegos más importantes del floreciente mercado
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_2uBhiAZjXhE5o3SBw68H.pdf"
+sourceFile: "Prueba 2.pdf_2uBhiAZjXhE5o3SBw68H.pdf"
+---
+
 ( 25   puntos)  Suponga que usted acaba de asumir como asesor del Banco Central de una pequeña economía  abierta, de tipo de cambio flexible y que cumple con la paridad de tasas. En su primera  reunión con el consejo, se entera de   que actualmente existe un desequilibrio que   la autoridad  monetaria debe resolver, por lo cual se decide aumentar la base monetaria (M) de forma  permanente   y sorpresiva   (no se esperaba) .  Se le pide a usted explicar lo siguiente según lo aprendido sobre el modelo de Dornbusch:  a)   (8 puntos)   Explique detalladamente qué ocurrirá   en el corto plazo tras anunciar la  medida.   Apoye su análisis en un gráfico .  b)   (8 puntos)   Explique detalladamente qué ocurrirá en el largo plazo tras anunciar la  medida.   Apoye su análisis en un gráfico .  c)   (4 puntos)   Muestr e gráficamente la evolución de las variables de interés (M, P, i, E)  en el tiempo .  d)   (5 puntos)   ¿Existe una sobrerreacción al anuncio de la medida por parte de la  economía? Señale cómo y por qué se produce (Hint: piense en qué situación no  ocurriría   este fe nómeno) .
 
 --- Page 7 ---

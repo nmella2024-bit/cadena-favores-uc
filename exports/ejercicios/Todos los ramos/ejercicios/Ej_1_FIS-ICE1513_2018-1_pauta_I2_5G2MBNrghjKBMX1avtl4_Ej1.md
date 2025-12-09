@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/FIS-ICE1513_2018-1_pauta_I2_5G2MBNrghjKBMX1avtl4.pdf"
+sourceFile: "FIS-ICE1513_2018-1_pauta_I2_5G2MBNrghjKBMX1avtl4.pdf"
+---
+
 [6 puntos] Una bola de acero de masa   m   y una cuerda de longitud   L   y de masa insignificante conforman un p´ endulo simple que puede pivotar sin fricci´ on como en la figura. Este p´ endulo se libera del reposo en posici´ on horizontal, y cuando la bola est´ a en su punto m´ as bajo golpea un bloque de masa 2 m   que descansa en un estante. Suponiendo que la colisi´ on es perfectamente el´ astica y que el coeficiente de fricci´ on cin´ etica entre el bloque de masa 2 m   y el estante es   μ k . Determine, en funci´ on de   m ,   L   ,   μ k   y la aceleraci´ on de la gravedad   g : a) La magnitud de la velocidad de la bola de masa   m   justo antes del impacto. (1.5 pts.) b) La magnitud de la velocidad del bloque de masa 2 m   justo despu´ es del impacto. (1.5 pts.) c) La magnitud del impulso ejercido por la bola de masa   m   sobre el bloque de masa 2 m . (1.5 pts.) c) La distancia que se desliza el bloque de masa 2 m   antes de detenerse. (1.5 pts.)  1
 
 --- Page 9 ---

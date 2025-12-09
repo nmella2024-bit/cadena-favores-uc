@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Plantilla Trabajo de Título_ZN5tWrKMvDLEae3oAmas.pdf"
+sourceFile: "Plantilla Trabajo de Título_ZN5tWrKMvDLEae3oAmas.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE ESCUELA DE INGENIERÍA  (TITULO TRABAJO)  (NOMBRE COMPLETO)  Trabajo de Título para optar al título de Ingeniero Civil en ... Profesor Guía:  (NOMBRE PROFE)  Santiago de Chile, [Mes], [Año]
 

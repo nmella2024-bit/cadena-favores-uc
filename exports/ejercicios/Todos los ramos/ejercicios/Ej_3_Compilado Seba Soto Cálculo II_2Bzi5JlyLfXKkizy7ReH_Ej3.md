@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Compilado Seba Soto Cálculo II_2Bzi5JlyLfXKkizy7ReH.pdf"
+sourceFile: "Compilado Seba Soto Cálculo II_2Bzi5JlyLfXKkizy7ReH.pdf"
+---
+
 20:   [ Propuesto ] Sea   `   la recta de intersecci´ on de los planos   cx   +   y   +   z   =   c   y  x   −   cy   +   cz   = 1, con   c   ∈   R . (a) Encuentre las ecuaciones sim´ etricas para   ` . (b) Al variar   c   la recta   `   describe una superficie   S . Encuentre una ecuaci´ on para la curva de intersecci´ on de   S   con el plano   z   =   t   (la traza que   S   deja en dicho plano). (c) Encuentre el volumen del s´ olido encerrado por   S   y los planos   z   = 0 y   z   = 1. 267
 
 --- Page 269 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+sourceFile: "Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+---
+
 (14 puntos)  Suponga que la industria de trajes de baño es de competencia perfecta. Todas las  empresas de trajes de baño que operan en ella tienen la siguiente función de costos:  CT = 72 + 2x ଶ ,   donde   CMg = 4x  Donde x representa la cantidad producida.  a)   (2 puntos) Calcule la función de oferta de cada empresa.  La empresa produce donde P = CMg      P = 4x      oferta: X = P/4  b)   (3 puntos) Calcule la cantidad mínima que produce la empresa en el corto plazo  y el precio de cierre temporal en el corto plazo (o bien el mínimo precio requerido  para operar en el corto plazo).  La empresa cierra si el precio es menor al determinado por la cantidad cuando  CMg = CMeV      CMe V = 2X  Por lo tanto: 4X = 2X      X = 0. La empresa siempre produce en el CP (1 punto)  y el precio mínimo de producción en el corto plazo es cero.  c)   (3 puntos) Calcule el precio de salida del mercado en el largo plazo.  La decisión de entrar o salir de un mercado es una decisión de largo plazo. La  empresa sale si no se logra llegar a un precio tal que se cumpla que se producen  unidades según CMg = CMeT      CMeT = 72/X + 2X  Por lo tanto: 4x = 72/x +2x      X = 6  y obtengo el precio reemplazado en cualquiera de las 2 ecuaciones es de: P = 24,  por lo tanto, para precios MENORES a 24 se sale del mercado en el LP.  (6 puntos) Suponga que se encuentra en un mercado competitivo y que la demanda  de mercado es:   X ୢ   = 84 − p  Donde   X ୢ   es la demanda agregada o demanda del mercado  d)   (2 puntos) Calcule los   beneficios   de la empresa en el largo plazo.  Tal cómo se calculó en c, y dado que en el LP las empresas operan en el punto  donde se alcanza el CMeTmin y la escala eficiente (con beneficios económicos  cero), el precio y la cantidad producida por empresa que imperaría en el mercado  es: P = 24 y x = 6. (pueden usar el valor anterior haciendo referencia a él o calcular  de nuevo).  En ese punto, los beneficios son:  IN = IT – CT      24x6 – (72 + 2 (36)) =144 – 144 = 0
 
 --- Page 6 ---

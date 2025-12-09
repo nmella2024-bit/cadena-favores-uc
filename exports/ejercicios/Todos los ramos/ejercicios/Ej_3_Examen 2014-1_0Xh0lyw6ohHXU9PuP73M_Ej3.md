@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2014-1_0Xh0lyw6ohHXU9PuP73M.pdf"
+sourceFile: "Examen 2014-1_0Xh0lyw6ohHXU9PuP73M.pdf"
+---
+
 Una planta de potencia sencilla opera con 20 kg/s de vapor como se muestra en la figura.  Despreciando las p´ erdidas en cada uno de los componentes, calcular: a) la tasa de transferencia de calor en la caldera (  ˙ Q B   ), b) la potencia generada en la turbina (  ˙ W T   ), c) la tasa de transferencia de calor en el condensador (  ˙ Q C   ), d) la potencia requerida por la bomba (  ˙ W P   ), e) la eficiencia t´ ermica del ciclo ( η ).  Soluci´ on:  Todos los dispositivos son de flujo estacionario con una entrada y una salida.   Se desprecian los efectos de energ´ ıa cin´ etica y potencial, ˙ m entra   = ˙ m sale   ˙ Q neto   −   ˙ W neto   = ˙ m   ( h sale   −   h entra ) Valores de entalp´ ıa en cada uno de los estados indicados en la figura:  h 1   =   h f   @40 o C   = 167.53 kJ/kg  h 2   =   h f   @40 o C   = 167.53 kJ/kg  h 3   =   h 10 M P a, 600 o C   = 3625.8 kJ/kg  h 4   =   h g @10 kP a   = 2583.9 kJ/kg 6
 
 --- Page 7 ---

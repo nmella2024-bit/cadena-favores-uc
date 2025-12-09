@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_46CJruJYWyyewdU8k66t.pdf"
+sourceFile: "Prueba 2.pdf_46CJruJYWyyewdU8k66t.pdf"
+---
+
 (a) Si la funcion de produccion es homotetica la respuesta es la siguiente. La produc- cion va a aumentar. La cantidad demandada de todos los insumos va a aumentar. La razon de la cantidad demandada de cada insumo se mantendra constante. Si la funcion de produccion no es homotetica la respuesta es la siguiente.   La produccion va a aumentar.   Necesariamente la cantidad demandada de algunos insumos aumentara, pero la cantidad de algunos insumos se podria ver reducida o aumentar menos. La razon entre el uso de insumos no se mantendra constante. (b) En el largo plazo la oferta sera 100% elastica. Por esta razon la incidencia sobre los consumidores sera igual al impuesto y la incidencia sobre los productores sera 0. (c) La harina es un insumo superior ya que a mayor produccion se necesita mas ha- rina. El capital es un insumo superior, para lo cual basta comparar la produccion casera con la produccion de panaderias industriales. El trabajo podria ser un in- sumo inferior al necesitarse menos mano de obra cuando se produce mas cantidad (usando mas capital). 2.

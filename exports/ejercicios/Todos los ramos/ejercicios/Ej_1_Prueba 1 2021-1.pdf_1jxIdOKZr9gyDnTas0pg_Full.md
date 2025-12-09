@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1 2021-1.pdf_1jxIdOKZr9gyDnTas0pg.pdf"
+sourceFile: "Prueba 1 2021-1.pdf_1jxIdOKZr9gyDnTas0pg.pdf"
+---
+
 --- Page 1 ---
 1  Pontifica Universidad Católica de Chile  Instituto de Economía  Macroeconomía I   –   EAE220D  Primer Semestre de 2021  Profesor: Rodrigo Cifuentes  Ayudantes: Matías Flores, Francisco Kinzel y María Antonia Yung  3   de mayo de 2021  Prueba 1  9 2   puntos y minutos  Enviar repuestas a cuenta   pruebasmacro1.rc@gmail.com   a   l as 10: 2 0 hrs.   como máximo.  I.   Comente   las siguientes afirmaciones indicando si son Verdadera s, Falsas o Inciertas y  justificando su respuesta   (1 0   puntos) .  1.   (5 puntos)   En el caso de Chile   la   únic a   diferencia entre   usar el deflactor del PIB y el IPC como  medida de los precios es que el primero usa ponderadores variables, mientras el segundo  usa ponderadores fijos.  Falso. (1) Si bien es correcto lo que se dice sobre los ponderadores, (2) la canasta de referencia en  ambos conceptos es distinta: en el caso del IPC es una canasta representativa de la producción,  mientras que en el PIB se representa toda la producción de la economía.  2.   (5 puntos) Según la teoría del ingreso permanente de Friedman, un cambio permanente en  el ingreso que se anticipa que ocurrirá en el futuro, tendrá un impacto permanente de la  misma magnitud en el consumo solo desde el momento en que ocurra, es decir, no se verán  cambios ante el mero anuncio.  Dos posibilidades:  Falso : Aun cuando vaya a oc urrir más adelante, el cambio tiene impacto desde que se conoce.   (5  puntos)  Incierto: Aun cuando vaya a ocurrir más adelante, el cambio tiene impacto desde que se conoce,  pero si hay restricciones de liquidez podría no poder materializarse. Por ejemplo si   es un aumento  de ingreso que se quisiera empezar a consumir antes.   (5 puntos +   2 de premio ) .  II.   Conteste las siguientes preguntas breves (20 puntos).
 

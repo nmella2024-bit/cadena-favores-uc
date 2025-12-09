@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantía_9_3d1vktjQHePuZ3k6ybwR.pdf"
+sourceFile: "Ayudantía_9_3d1vktjQHePuZ3k6ybwR.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Cat´ olica de Chile Escuela de Ingenier´ ıa Departamento de Ingenier´ ıa Industrial y de Sistemas ICS1513 - Introducci´ on a la Econom´ ıa  Ayudant´ ıa 9  27 de junio de 2025 Secci´ on 5 Rafael Abbagliati - rabbagliati@uc.cl  Curva de Phillips: relaci´ on entre inflaci´ on y desempleo  La curva de Phillips muestra en el   corto plazo   una relaci´ on inversa entre la tasa de inflaci´ on y la tasa de desempleo, que se puede modelar seg´ un tasa de desempleo = tasa natural de desempleo   −   α   ·   ( π r   −   π e ) donde   α   mide cu´ an sensible es el desempleo frente a la inflaci´ on inesperada,   π e   es la inflaci´ on espe- rada y   π r   es la inflaci´ on real. A corto plazo, no existe una sola curva de Phillips, sino que varias, y dependen del nivel esperado de inflaci´ on (mientras m´ as arriba est´ a la curva, mayor es la inflaci´ on esperada); pero a largo plazo, la pol´ ıtica monetaria no puede reducir el desempleo por debajo de su tasa natural, por lo que la curva de Phillips es vertical.  La curva de Phillips, adem´ as, se integra con el modelo de DA y OA: Demanda Agregada: pol´ ıticas monetarias a largo plazo solo afectan variables nominales, no las reales. As´ ı, un incremento en la oferta de dinero desplaza la demanda agregada hacia arriba, aumentando los precios y la inflaci´ on, pero dejando al desempleo y la producci´ on en sus niveles normales. Oferta Agregada: shocks negativos en la oferta elevan costos y reducen producci´ on, incremen- tando los precios y por ende la inflaci´ on esperada, lo que conduce a un aumento de la curva de Phillips. 1
 

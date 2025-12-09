@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2 Pauta Tema 4.pdf_1GpOvXOrgnl5FFICRyub.pdf"
+sourceFile: "Prueba 2 Pauta Tema 4.pdf_1GpOvXOrgnl5FFICRyub.pdf"
+---
+
 --- Page 1 ---
 SOLUCIÓN   TEMA IV  PRUEBA 2 COSTOS  PRIMER SEMESTRE 2024  a)  Actualmente se están utilizando completamente las 1.000 horas de capacidad de M.O. , y se asignan $30.000  por hora (500 horas a producción de material de relleno y 500 horas a producción de kriptonita), es decir,  existe un total de $30 millones de GIF. Estos   gastos indirectos de fabricación de $30.000.000 no son  relevantes en la decisión.   Luego,  Si se dedica a producir sólo material de relleno:  Costo por Ton.   Costo por Ton.  de material de   de kriptonita  relleno ($)   ($)  Materia Prima Directa (100% variable)   50.000  Mano de Obra Directa (100% variable)   10.000  Costo Total por   Tonelada   60.000  Precio de Venta   100.000  Margen Bruto   40.000  Es decir se gana $40.000 por hora si se dedica a producir sólo material de relleno.  Si se dedica a producir sólo kriptonita:  Costo de Procesamiento:  Costo de   Material de Relleno   60.000  Materia Prima Directa Adicional (100% variable)   20.000  Mano de Obra Directa (100% variable)   10.000  Costo Total por Tonelada   90.000  Precio de Venta   140 .000  Ganancia   50 .000  Obtener kriptonita toma 2   horas, por lo   que el margen por hora es de $25.000 (=$50.000/2 ). Como se ve es  más rentable dedicar la producción a   material de relleno, aunque   no por las razones que presenta el gerente  de ventas .  b )  Como se demoran dos horas en producir kriptonita, el margen de ésta debe ser al menos $80.000, luego el   pre c io  debe ser   de al menos:  Costo de Procesamiento:  Costo de Material de Relleno   60.000  Materia Prima Directa Adicional (100% variable)   20.000  Mano de Obra Directa (100% variable)   10.000  Costo Total por Tonelada   90.000  Precio de Venta   __P___  Ganancia   80.000  P = $170.000
 

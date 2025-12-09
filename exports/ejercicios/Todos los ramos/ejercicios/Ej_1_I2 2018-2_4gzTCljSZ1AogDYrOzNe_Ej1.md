@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-2_4gzTCljSZ1AogDYrOzNe.pdf"
+sourceFile: "I2 2018-2_4gzTCljSZ1AogDYrOzNe.pdf"
+---
+
 (14 puntos): a) (7 pts)   Considere el poliedro definido por el siguiente sistema de desigualdades: 2 x 1   + x 2   ≥   1  x 1   − x 2   ≤   1  x 1   ≤   1  i) (3 pts)   Usando solamente el concepto de cono de recesion, muestre que este poliedro no es acotado.  Respuesta:   El cono de recesion asociado al poliedro viene dado por el siguiente conjunto de desigualdades:  x 2   ≥ − 2 x 1  x 2   ≥   x 1  x 1   ≤   0 Basta con encontrar cualquier punto distinto del vector cero que cumpla con el conjunto de desigualdades. Como el (0 ,   1) cumple con todas las desigualdades, el poliedro es no acotado.  ii) (4 pts)   El punto (0 ,   2) es evidentemente factible, como se deduce por inspeccion. Escriba explici- tamente ese punto usando la descomposicion en puntos y rayos extremos para el poliedro de mas arriba.  Respuesta:  x 1  x 2  1   2   3  − 2  − 1  0  1  2  R1  R2  R3  Para escribir el punto (0 ,   2) utilizando el teorema de Minkowski, primero debemos encontrar los vertices y rayos que definen el poliedro. Estos son:  •   Vertices:   A   = (   2 3   ,   −   1 3   ) ,   B   = (1 ,   0)  •   Rayos:   y 1   = (0 ,   1) ,   y 2   = ( − 1 ,   2) Ahora, debemos encontrar los valores de   λ 1 , λ 2 , μ 1   y   μ 2   tales que:  ( 0 2  )  =   λ 1  (   2 / 3  − 1 / 3  )  +   λ 2  ( 1 0  )  +   μ 1  ( 0 1  )  +   μ 2  ( − 1 2  )  λ 1   +   λ 2   = 1  μ 1 , μ 2   ≥   0
 
 --- Page 2 ---

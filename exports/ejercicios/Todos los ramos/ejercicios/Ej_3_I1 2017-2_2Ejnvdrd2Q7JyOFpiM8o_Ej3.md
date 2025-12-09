@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-2_2Ejnvdrd2Q7JyOFpiM8o.pdf"
+sourceFile: "I1 2017-2_2Ejnvdrd2Q7JyOFpiM8o.pdf"
+---
+
 Parte 1  Sea   N   ( t ) el proceso de llegada de pasajeros a la mesa de recepci´ on. Por descomposici´ on de procesos de Poisson, se define  N m ( t ) como el proceso de llegada de maletas a la cinta, cuyo par´ ametro es   γp . Se tiene tambi´ en que   D   ∼   Uniforme(0 , l/ 2), por lo tanto, el intervalo a revisar es [ D, D   +   l/ 2]. Adem´ as, sea   δ   la tasa en maletas por segundo, es decir   δ   =   γ · p  60   .  Parte 1.a  El problema se puede expresar en t´ erminos de tiempo, ya que se sabe que la cinta se mueve a una velocidad constante  r . El tiempo que demora una maleta en llegar al intervalo de revisi´ on es   D/r   y el largo del intervalo corresponde a   l/ 2, por lo tanto, el tiempo en que se recorre el intervalo de revisi´ on es   l/ 2 r .   De esta forma, se necesita obtener la siguiente probabilidad:  P  (  N m  (   D r   +   l  2 r  )  −   N m  (   D r  )  = 0  )  Por incrementos estacionarios:  P  (  N m  (   D r   +   l  2 r  )  −   N m  (   D r  )  = 0  )  =   P  (  N m  (   l  2 r  )  = 0  )  =  (   δl  2 r   ) 0   ·   e −   δl  2 r  0! =   e −   δl  2 r  Parte 1.b  Siguiendo la l´ ogica anterior, la probabilidad pedida corresponde a:  P  (  N m  (   l  2 r  )  = 0  ∣ ∣ ∣ ∣   N m  (   l r  )  = 20  )  Ya que se desea que en el mismo intervalo anteriormente definido no lleguen maletas, dado que en todo el intervalo correspondiente al tiempo en el que se recorre la cinta entera, llegaron 20 maletas. La probabilidad anterior, como el primer intervalo est´ a contenido en el segundo, distribuye Binomial de parametros  n   = 20 y   p   =   1 2   . Con lo anterior, la probabilidad pedida es:  P  (  N m  (   l  2 r  )  = 0  ∣ ∣ ∣ ∣   N m  (   l r  )  = 20  )  =  ( 20 0  ) (   1 2  ) 0   (   1 2  ) 20 − 0  =  (   1 2  ) 20  8
 
 --- Page 9 ---

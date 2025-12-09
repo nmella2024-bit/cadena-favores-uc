@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I2 2016-2 (Enunciado)_2SARntdZymrFmTUO4sIR.pdf"
+sourceFile: "I2 2016-2 (Enunciado)_2SARntdZymrFmTUO4sIR.pdf"
+---
+
 ( 2 0   Puntos en total)  La tasa de llegada de vehículos a la entrada de u n estacionamiento es:  𝜆   𝑡   =  20   −   𝑡  6   ,   0   ≤   𝑡   ≤   96  4   ,   96   ≤   𝑡  , donde   λ (t) está en vehículos por minuto, t en minutos y t = 0 representa 8:00AM.  Durante la primera hora la máquina o barrera de acceso alcanza una tas a de atención de 14  vehículos por minuto. Después de la primera hora se disminuye el número de máquinas que  atienden vehículos, alcanzándose una tasa de atención de 6 veh/min. Asumiendo que la cola es  D/D/1 con   atención FIFO.  a)   (7   Puntos)   ¿Cuál es el largo de cola máximo y en qué instante se produce?  b)   (5 Puntos)   ¿En qué instante entra al estacionamiento el vehículo que llega en   t   = 96?  c)   (5 Puntos)   Determine el instante (hora) en que se disipa la cola.  d)   (3   Puntos)   Encuentre una expresión que p ermita calcular la demora total en la cola de  entrada para todos los vehículos que llegan al estacionamiento.

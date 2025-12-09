@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 4 2019-1_3ZH2WWPPxc7Hfejaku9j.pdf"
+sourceFile: "Control 4 2019-1_3ZH2WWPPxc7Hfejaku9j.pdf"
+---
+
 Suponga que el rendimiento de un equipo de f´ utbol en la copa Chile depende del resultado obtenido en el partido anterior de la siguiente forma: Si el equipo perdi´ o la fecha anterior, la probabilidad de volver a perder es 0 , 5, y la de ganar es 0 , 1. Si el equipo empat´ o la fecha pasada, tiene una probabilidad de 0 , 5 de volver a obtener ese resultado y 0 , 25 de obtener 3 puntos en la siguiente fecha. Finalmente, si el equipo gan´ o, tiene una probabilidad de 0 , 3 en seguir la racha ganadora y una probabilidad de 0 , 4 de perder el partido. Por otra parte, una importante p´ agina de apuestas le ofrece pagarle a usted 18 veces lo que apueste si el equipo en cuesti´ on gana la tercera y cuarta fecha. No obstante, si este resultado no se cumple, usted perder´ a la apuesta. (a) Explique porqu´ e se puede modelar el problema con una CMTD. Mencione los supuestos que considere necesarios. (b) Modele el rendimiento del equipo con una CMTD. (c) Si hasta ahora usted solo conoce el resultado de la primera fecha, en donde el equipo gan´ o. ¿Es conveniente apostarle al equipo?  Soluci´ on  (a) 1. Estacionareidad: Probabilidades no dependen de la fecha. (0.05 p) 2. Propiedad Markoviana: Probabilidad de resultado del pr´ oximo partido solo depende de la fecha anterior. (0.05 p) (b)  P   =     0 , 5   0 , 4   0 , 1 0 , 25   0 , 5   0 , 25 0 , 4   0 , 3   0 , 3     La matriz podr´ ıa tener otro orden. Para la soluci´ on se tom´ o como   f   ( n )   = [ P   ( perder ) , P   ( empatar ) , P   ( ganar )] T  (3 p) (c) 1
 
 --- Page 2 ---

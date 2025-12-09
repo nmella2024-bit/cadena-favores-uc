@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+sourceFile: "I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+---
+
 a)   Cálculo probabilidad de elegir auto según enumerac ión muestral  Individuo   V A   V T  1   -   1,7   -   2,6  2   -   5,5   -   2,3  3   -   1,9   -   2,3  Incógnita   Resultado  P A1   0,71095  P A2   0,03917  P A3   0,59869  P A   0,4496   –   45%  Distribución de puntaje:     Cálculos de V A /V T : 2 puntos     Cálculos de P Ai : 2 puntos     Cálculo probabilidad 45%: 2 puntos  b)   Cálculo probabilidad elegir auto, según enfoque inocente  En primer lugar, se calculan los promedios de las variables:  T A   T T   C A   C T  3,6666   1,333   9,666   10  A partir de los datos obtenidos se calcula:
 
 --- Page 6 ---

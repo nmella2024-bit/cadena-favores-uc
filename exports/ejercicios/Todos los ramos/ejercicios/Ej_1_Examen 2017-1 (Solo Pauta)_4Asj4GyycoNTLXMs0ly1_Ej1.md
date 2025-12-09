@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2017-1 (Solo Pauta)_4Asj4GyycoNTLXMs0ly1.pdf"
+sourceFile: "Examen 2017-1 (Solo Pauta)_4Asj4GyycoNTLXMs0ly1.pdf"
+---
+
 El esquema del círculo vicioso del transporte público se representa a continuación: Distribución de puntaje: 1 punto por las medidas (en rojo), 0.3 puntos por cada concepto de cada recuadro (2.7 puntos) y 0.3 puntos a distribuir por la correcta relación lógica de los conceptos.  a.   Explique cuáles son los datos de entrada y resultados de cada una de las etapas del modelo de cuatro etapas, también conocido como modelo de Chicago. Considerando este modelo, explique qué implicancias tiene un error en el cálculo de la generación de viajes en el modelo de partición modal.  Las respuestas se presentan en la siguiente tabla resumen:  Etapa   Datos de Entrada   Datos de Salida  Generación   Características socio -  económicas de los hogares y uso de suelo  O i   y D j  Distribución   O i   y D j de la etapa anterior y  niveles de servicios (costos C ij )  Cantidad de viajes d e i a j:V ij  Partición Modal   V ij de la etapa anterior y  características modales  Cantidad de viajes de i a j, por  el modo m:V ij m  Asignación   V ij m de la etapa anterior y  redes de transporte  Cantidad de viajes por la ruta  r, en el modo m, desde i a j: V ij mr  Al producirse un error en la etapa de generación, se altera la relación:  㔳 ᠰᡢ  〷  =   ᡁᡡ
 
 --- Page 2 ---

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/2019-1/Pauta Control 4_1OPAJhf8tO_gpGznNjedpDYXFcXaj6mwj_07ICw1vn71IDSpxyOR9i.pdf"
+sourceFile: "Pauta Control 4_1OPAJhf8tO_gpGznNjedpDYXFcXaj6mwj_07ICw1vn71IDSpxyOR9i.pdf"
+---
+
 --- Page 1 ---
 CONTABILIDAD20191   05/23/2019  Control N° 4 2019-01   Total de preguntas: 4  La mayoría de las respuestas correctas:   #1   Menos respuestas correctas:   #4  1.   El saldo que aparece en la cartola del banco siempre representa el saldo correcto de la cuenta corriente de la empresa, y es el monto al cual debe ajustarse la cuenta contable "Banco" de la empresa.  7/92   A   True  84/92   B   False  2.   Al 31/dic/2018, y antes de registrar los asientos de ajuste, el saldo de las cuentas por cobrar brutas era de M$200.000 y la provisión por deudores incobrables tenía un saldo acreedor de M$2.500. Si se estima que el saldo que debiera tener al cierre del 2018 la provisión por deudores incobrables usando el método de antigüedad es de M$8.500, ¿cuál es el monto del gasto por incobrables que se debe registrar en el correspondiente ajuste?  8/92   A   M$2.500  61/92   B   M$6.000  8/92   C   M$8.500  15/92   D   M$11.000  3.   Una empresa tiene acciones de 4N que originalmente adquirió por M$100.000. Al 31/mar/2019, esta inversión estaba valorada en M$130.000 en el estado de situación financiera. El 4/abr/2019 la empresa vende las acciones por M$110.000. La empresa contabiliza esta inversión en valores negociables usando el método de instrumentos disponibles para la venta (DPV). ¿Cómo afecta la venta de acciones al estado de resultados?  20/92   A   Pérdida por venta de acciones por M$20.000.  1/92   B   Pérdida por venta de acciones por M$10.000.  61/92   C   Ganancia por venta de acciones por M$10.000.  4/92   D   Ganancia por venta de acciones por M$20.000.  4/92   E   No afecta el estado de resultados.  4.   El saldo de la provisión por deudores incobrables al momento de emitir estados financieros nunca será deudor.  60/92   A   True  29/92   B   False  Page 1 of 1
 

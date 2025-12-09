@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Stewart Solucionario.pdf_4tdNqfDMPKE3YzUM3wQG.pdf"
+sourceFile: "Stewart Solucionario.pdf_4tdNqfDMPKE3YzUM3wQG.pdf"
+---
+
 --- Page 1 ---
 Free ebooks ==>   www.ebook777.com  www.ebook777.com
 

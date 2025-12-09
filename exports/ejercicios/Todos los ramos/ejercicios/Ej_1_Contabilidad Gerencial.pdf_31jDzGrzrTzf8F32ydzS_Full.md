@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Contabilidad Gerencial.pdf_31jDzGrzrTzf8F32ydzS.pdf"
+sourceFile: "Contabilidad Gerencial.pdf_31jDzGrzrTzf8F32ydzS.pdf"
+---
+
 --- Page 1 ---
 1  Contabilidad Gerencial  Profesor:   Ignacio   Rodríguez  Vicente García Casassus  vsgarcia@uc.cl  Índice  Introducción   2  Reconocimiento de Ingresos   10  Contab ilización de Activos   16  Provisiones y Contingencias   30  Impuestos   32  Contabilización de Instrumentos Financieros   42  Participación en Otras Sociedades y Consolidación   57  Este material está basado   principalmente   en los libros :   Normas Internacionales de Información  Financiera,   Contabilidad de Costos: Un Enfoque Gerencial,   Horngren, C.   y   Manual of IFRS 2011 .  L as   palabras   subrayadas   corresponden a conceptos nuevos.  Más materi al   en:   https://drive.google.com/drive/folders/0Bx20jJIsUiAOU1RTUFg2QlU3V2M
 

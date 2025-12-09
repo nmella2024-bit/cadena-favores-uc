@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_3ClHakTWfu6inNEkJ6nY.pdf"
+sourceFile: "Prueba 1.pdf_3ClHakTWfu6inNEkJ6nY.pdf"
+---
+
 (30 puntos)  La preferencia por bienes (1 y 2) de un individuo es representada por la siguiente funci´ on de utilidad:  u ( x 1 , x 2 ) =   x 1 1 / 2   +   x 2 1 / 2 .  El individuo enfrenta precios   p 1   y   p 2   por los bienes y cuenta con ingreso   m.  (a) (8 puntos) Obtenga la demanda marshalliana por los bienes 1 y 2 y verifique que la elasticidad ingreso de ambas demandas es unitaria:   η M km   = 1 para   k   ∈ { 1 ,   2 } . (b) (4 puntos) Usando su respuesta anterior, explique intutivamente por qu´ e debe ser cierto que la fracci´ on del ingreso que se gasta en cada bien,   α k   =   x k   p k  m   , no depende del nivel de ingreso. (c) (4 puntos) ¿Qu´ e deber´ ıa ocurrir con el consumo del bien 1 si cambian   p 1 ,   p 2   y   m  simult´ aneamente en la misma proporci´ on?   Suponga que los precios son tales que la elasticidad precio propia de la demanda marshalliana por el bien 1 es   η M  11   =   − 1 . 5, ¿c´ omo debe ser entonces la elasticidad cruzada de esta demanda,   η M  12   ? (d) (5 puntos) Si adem´ as de saber que   η M  11   =   − 1 . 5, usted sabe que la fracci´ on del ingreso que se gasta en ambos bienes es la misma:   α 1   =   α 2 . ¿Qu´ e puede decir entonces acerca de la elasticidad precio propia y cruzada de la demanda hicksiana,   η H  11   y   η H  12 ? (e) (5 puntos) Suponga ahora que el precio del bien 1 aumenta en un 10%.   Usando las elasticidades calculadas estime el cambio porcentual en la cantidad demandada del bien 1 (efecto total en la demanda marshalliana), descomponiendo esta magnitud en el efecto sustituci´ on y el efecto ingreso. 2
 
 --- Page 3 ---

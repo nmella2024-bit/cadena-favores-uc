@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Libro Parte 6.pdf_0pcYeIkS0e4tPylnLibd.pdf"
+sourceFile: "Libro Parte 6.pdf_0pcYeIkS0e4tPylnLibd.pdf"
+---
+
 134 para deducir que, si   k   es un entero entre 1 y   n   – 1,  P ( Y 1   ≤   k ) =  k i =   0  n i   (   p 1 ) i   ( 1   −   p 1 ) n − i   =  1  p 1  t   k   ( 1   −   t ) n − k − 1  B ( k   +   1,   n   −   k )   dt.
 
 --- Page 28 ---

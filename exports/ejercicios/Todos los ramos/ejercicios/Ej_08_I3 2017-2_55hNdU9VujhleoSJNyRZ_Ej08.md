@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 08"
+topic: "General"
+number: "08"
+originalUrl: "exports/downloads/Todos los ramos/I3 2017-2_55hNdU9VujhleoSJNyRZ.pdf"
+sourceFile: "I3 2017-2_55hNdU9VujhleoSJNyRZ.pdf"
+---
+
 Viscoelasticidad  (20 pts.) Un material puede ser representado mediante el modelo viscoelástico que se muestra en la Figura 7.1. En un ensayo se aplica una tensión de tracción constante   GPa (10 9   Pa) durante un segundo, y luego la  tensión se retira in stantáneamente (descarga). El resultado de este ensayo se muestra en la curva de la Figura 7.2,  donde las ordenadas A, B, C y D de los puntos que se muestran son desconocidas.  Recuerde que para un elemento Maxwell y para un elemento Kelvin – Voigt las expresiones de la respuesta para un ensayo de   creep   son las siguientes:  Maxwell:   Kelvin   –   Voigt:   (   )  Solución:  a)   (12 pts.) Determine los valores de las ordenadas A, B, C y D en la curva del resultado del ensayo. Escríbalos a continuación:  A=_____________   B=_____________   C=_____________   D=_____________  Claramente el modelo viscoelástico corresponde a un elemento tipo Maxwell en serie con un elemento tipo Kelvin   –   Voigt. Entonces, la deformación total del elemento compuesto será la suma de la deformación en el elemento Maxwell y la deformación en el elemento Kelvin   –   Voigt:  (   )  Luego,   para   t=0:  14 GPa  10 GPa  4 GPa∙s  1,4 GPa∙s (a)   (b)   (c)   (d) (a)   (b)   (c)   (d)  𝜎   𝑡  A  B  C  D  Resultado del ensayo  𝜀   𝑡  𝑡   𝑠  Figura 7.1   Figura 7.2
 
 --- Page 8 ---

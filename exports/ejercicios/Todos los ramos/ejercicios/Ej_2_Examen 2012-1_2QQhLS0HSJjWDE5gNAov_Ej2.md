@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2012-1_2QQhLS0HSJjWDE5gNAov.pdf"
+sourceFile: "Examen 2012-1_2QQhLS0HSJjWDE5gNAov.pdf"
+---
+
 (i) Resuelva el problema  {   y ′′   −   5 y ′   + 6 y   = 10 sen   t   −   2 te 2 t   −   6 , y (0) =   − 1 , y ′ (0) = 1 .   (1) (ii) Encuentre criterio sobre los par´ ametros reales   b, c   para que cada soluci´ on   y   de la ecuaci´ on  y ′′   +   by ′   +   cy   = 0 satisfaga lim t →∞   y ( t ) = 0.  Soluci´ on : (i) Podemos resolver el problema utilizando:  •   M´ etodo de coeficientes indeterminados;  •   M´ etodo de variaci´ on de par´ ametros;  •   Transformada de Laplace. (a)   M´ etodo de coeficientes indeterminados .   La soluci´ on general de la ecuaci´ on ho- mogen´ ea   y ′′ − 5 y ′ +6 y   = 0 es   c 1 e 2 t + c 2 e 3 t   con constantes arbitrarias   c 1 , c 2 . Buscamos una soluci´ on particular de la ecuaci´ on en (1) en la forma   A   cos   t + B sen   t +( Ct 2   + Dt ) e 2 t   + E . Determinando los coeficientes   A, B, C, D, E , encontramos que la soluci´ on general de la ecuaci´ on diferencial en (1) es  y ( t ) =   c 1 e 2 t   +   c 2 e 3 t   [ 1 pt ] + cos   t   + sen   t   [ 1 pt ] + ( t 2   + 2 t ) e 2 t   [ 1 pt ]   −   1 [ 0 . 5 pt ] .  Satisfaciendo las condiciones iniciales, obtenemos   c 1   =   − 1,   c 2   = 0   [0.5 pts] . Por lo tanto, la solci´ on del problema de Cauchy (1) es  y ( t ) =   − e 2 t   + cos   t   + sen   t   + ( t 2   + 2 t ) e 2 t   −   1 .   (2) (b)   M´ etodo de variaci´ on de par´ ametros .   Buscamos una soluci´ on particular de la ecuaci´ on en (1) en la forma   y p ( t ) =   e 2 t u 1 ( t ) +   e 3 t u 2 ( t ) donde las funciones   u 1 , u 2  satisfacen el sistema  {   e 2 t u ′  1 ( t ) +   e 3 t u ′  2 ( t ) = 0 ,  2 e 2 t u ′  1 ( t ) + 3 e 3 t u ′  2 ( t ) = 10 sen   t   −   2 te 2 t   −   6 .   [ 1pt ] Entonces,  u 1 ( t ) =  ∫   t  0  (10 e − 3 s   sen   s   −   2 se − s   −   6 e − 3 s ) ds   = 2
 
 --- Page 3 ---

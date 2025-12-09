@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/ICE1513_Taller06_SOL_v02_0gNbw29JzXtucFsZLZLG.pdf"
+sourceFile: "ICE1513_Taller06_SOL_v02_0gNbw29JzXtucFsZLZLG.pdf"
+---
+
 La fuerza viscosa tiene una componente tangencial y otra en   z :  f r   =   f cθ   ˆ e θ   +   f cz   ˆ k   =   c   v   =   c v θ   ˆ e θ   +   c v z   ˆ k  f cθ   =   c v θ   y   f cz   =   c v z  , donde se puede ver que est´ an desacopladas. La part´ ıcula describe un movimiento circular en   ˆ e r   –   ˆ e θ   , y usando la 2 a   ley de Newton resulta:  ∑   f   =   m   a  ( − N   )   ˆ e r   + ( − c v θ   )   ˆ e θ   + ( − mg   −   c v z   )   ˆ k   =   m  (  − R   ˙ θ 2 )  ˆ e r   +   m  (  R   ¨ θ  )  ˆ e θ   +   m ¨ z   ˆ k   (1) , que constituyen 3 ecuaciones desacopladas. La primera ecuaci´ on de (1), ecuaci´ on en   ˆ e r   , sirve para calcular la fuerza normal de la part´ ıcula con el cilindro. La tercera ecuaci´ on de (1) nos permite calcular ˙ z   y   z :  − mg   −   c   ˙ z   =   m ¨ z  − g   −   c m   ˙ z   =  d ˙ z  d t  − d t   =  (   1  g   +   c m   ˙ z  )  d ˙ z  (   m c  )  log ( mg   +   c   ˙ z ) =   − t   +   C 1  ˙ z   =   Ae −   c m   t   −   mg c  , pero sabemos de las condiciones iniciales que ˙ z   ( t   = 0) = ˙ z 0   = 0, y con ello: 0 =   Ae 0   −   mg c A   =   mg c  →   ˙ z   =   mg c  [ e −   c m   t   −   1 ]  Integrando nuevamente la expresi´ on para ˙ z   ( t ) se obtiene:  z   =   −  (   m 2 g c 2  )  e −   c m   t   −  (   mg c  )  t   +   C 2  v0.2 (2018-09-16)   ICE1513 – Taller 06 (Tom´ as Zegard)   P´ agina 4 de 5
 
 --- Page 5 ---

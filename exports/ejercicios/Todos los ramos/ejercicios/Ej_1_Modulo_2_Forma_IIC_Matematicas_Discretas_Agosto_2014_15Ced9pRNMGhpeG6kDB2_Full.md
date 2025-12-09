@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Modulo_2_Forma_IIC_Matematicas_Discretas_Agosto_2014_15Ced9pRNMGhpeG6kDB2.pdf"
+sourceFile: "Modulo_2_Forma_IIC_Matematicas_Discretas_Agosto_2014_15Ced9pRNMGhpeG6kDB2.pdf"
+---
+
 --- Page 1 ---
 P ONTIFICA   U NIVERSIDAD   C ATÓLICA DE   C HILE  E SCUELA DE   I NGENIERÍA  P RIMERA   P ARTE  E XAMEN DE   T ÍTULO  C URRÍCULO 2009  M ÓDULO 2  F ORMA   IIC  31 DE JULIO DE 2014
 

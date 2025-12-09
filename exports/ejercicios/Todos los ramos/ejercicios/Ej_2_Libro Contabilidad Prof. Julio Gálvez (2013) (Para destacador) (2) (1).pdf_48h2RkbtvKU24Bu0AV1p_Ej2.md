@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 269
 
 --- Page 422 ---

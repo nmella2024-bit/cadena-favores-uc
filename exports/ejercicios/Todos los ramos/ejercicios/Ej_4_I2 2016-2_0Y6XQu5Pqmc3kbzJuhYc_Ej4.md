@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2016-2_0Y6XQu5Pqmc3kbzJuhYc.pdf"
+sourceFile: "I2 2016-2_0Y6XQu5Pqmc3kbzJuhYc.pdf"
+---
+
 Respuesta a):  La charla de René Rebolledo habla sobre la cultura del líder educador. La cual es un nuevo  estil o de liderazgo,   que hoy en día   es necesario para un buen   desempeño a nivel  organizacional. Se basa en 5 pilares importantes: Motivación, Capacidades, Trabajo en  Redes, Liderazgo Inspirador y Empowerment. [ 1 punto   por pilar]. En el caso de Lyft se  puede ver :     Motivación: es de los puntos que más se puede aplicar a Lyft. Los mandos más altos  quieren que los conductores sientan que están haciendo un favor a un amigo más que  sentirse el chofer de un desconocido, es decir, que estén motivados por su trabajo. Se  les   pide que sean auténticos y que lo pasen bien mientras manejan.
 
 --- Page 8 ---

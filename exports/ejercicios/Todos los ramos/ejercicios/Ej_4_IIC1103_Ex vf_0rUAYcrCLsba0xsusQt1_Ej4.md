@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/IIC1103_Ex vf_0rUAYcrCLsba0xsusQt1.pdf"
+sourceFile: "IIC1103_Ex vf_0rUAYcrCLsba0xsusQt1.pdf"
+---
+
 Gary est´ a de vacaciones en Chile. Su club le ha dado   D   d´ ıas para visitar el pa´ ıs, y quiere saber como podr´ ıa utilizar esos d´ ıas. Gary tiene una lista de ciudades que le gustar´ ıa visitar. Cada elemento de esa lista es una lista de dos elementos: el nombre de la ciudad ( n i ) y la cantidad de d´ ıas ( d i ) que necesita para visitar esa ciudad. Escribe un programa en Python que en forma   RECURSIVA   obtenga todas las combinaciones de ciudades que Gary podr´ ıa visitar en los   D   d´ ıas, para una lista de ciudades y d´ ıas. Cada combinaci´ on debe cumplir con que la suma de los d´ ıas sea   < =   D . Por ejemplo, si las lista de ciudades es:  ciudades = [ [‘‘Arica’’,6], [‘‘La Serena’’, 3], [‘‘Valdivia’’,7] ]  y   D   = 12, entonces su salida debe ser:  6 dias: Arica 9 dias: Arica, La Serena 3 dias: La Serena 9 dias: La Serena, Arica 10 dias: La Serena, Valdivia 7 dias: Valdivia 10 dias: Valdivia, La Serena  En el ejemplo se muestran como alternativas diferentes algunas que cambian el orden las ciudades, por ej.   (Arica, La Serena)   y   (La Serena, Arica) . En tu soluci´ on puedes considerar todas estas combinaciones o puedes indicar solo una de ellas. Hazlo como te resulte m´ as f´ acil. Por otro lado, ten presente que podr´ ıa haber alguna situaci´ on en que no alcance el tiempo para visitar ni una sola ciudad. 4
 
 --- Page 5 ---

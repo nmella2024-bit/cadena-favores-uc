@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2021-1_4nRUuUiQi5GS7WfJG1LT.pdf"
+sourceFile: "I2 2021-1_4nRUuUiQi5GS7WfJG1LT.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA Primer semestre 2021  Pauta Interrogación 2 - MAT1610  1.   a) Sea   h ( x ) =   g ( xg − 1 ( x ))   con   g   una función invertible tal que  x   1   -1   0   2   -2  g ( x )   -2   2   3   1   5  g ′ ( x )   1   4   2   6   3 Si   g − 1   denota la inversa de   g , determine   h ′ (2) .  Solución:  Observe que por la regla de la cadena tenemos que  h ′ ( x ) =   g ′ ( xg − 1 ( x ))   ·   ( xg − 1 ( x )) ′  ahora, por regla del producto y derivada de la inversa tenemos que  h ′ ( x ) =   g ′ ( xg − 1 ( x ))   ·  (  g − 1 ( x ) +   x g ′ ( g − 1 ( x ))  )  obteniendo que  h ′ (2) =   g ′ (2 g − 1 (2)) ·  (  g − 1 (2) +   2  g ′ ( g − 1 (2))  )  =   g ′ ( − 2) ·  (  − 1 +   2  g ′ ( − 1)  )  = 3  (  − 1 +  2 4  )  =   − 3 2  Distribución de puntajes: –   (1 punto) por realizar correctamente la regla de la cadena.  –   (1 punto) por realizar correctamente la derivada de la inversa.  –   (1 punto) por obtener   h ′ (2) . b) Determine la pendiente de la recta tangente a la curva  x y   =   y x  en el punto   (2 ,   4) .  Solución:  Al aplicar logarítmo natural a la igualdad   x y   =   y x   obtenemos  y   ln( x ) =   x   ln( y )
 

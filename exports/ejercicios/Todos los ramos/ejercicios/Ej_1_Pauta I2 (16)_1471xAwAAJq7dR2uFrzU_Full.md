@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Pauta I2 (16)_1471xAwAAJq7dR2uFrzU.pdf"
+sourceFile: "Pauta I2 (16)_1471xAwAAJq7dR2uFrzU.pdf"
+---
+
 --- Page 1 ---
 
 

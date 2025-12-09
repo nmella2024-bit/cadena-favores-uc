@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Tema 01 - La Economía y sus Principios_3EfBviPQYakVHwWNxFbP.pdf"
+sourceFile: "Tema 01 - La Economía y sus Principios_3EfBviPQYakVHwWNxFbP.pdf"
+---
+
 --- Page 1 ---
 Tema 01: La Economía y sus   Principios  ICS1513   –   Introducción   a la Economía  1 ICS1513   -   La Economía y sus Principios
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Pauta Examen [4-07-2019]_1MG0AGzgxY0di6VMj057.pdf"
+sourceFile: "Pauta Examen [4-07-2019]_1MG0AGzgxY0di6VMj057.pdf"
+---
+
 (30 puntos)  a)   Una mezcla de 3.9   moles de NO y 0.89 moles de CO 2   se hizo reaccionar   en un matraz  de dos litros a 100°C, de acuerdo con la siguiente ecuación:  NO (g) + CO 2   (g)      NO 2   (g) +   CO (g)  Calcule   el valor de   K c   si se sabe que e n   el equilibrio hay 0.10   moles de CO 2 .  b)   0,50 gramos de un ácido HA, de   masa   molecular 100   g mol - 1 ,   se disolvieron en H 2 O  ( HA   ↔   H +   +   A - )   para obtener 125 mL de   disolución cuyo pH   =   2,00. ¿Cuál es el grado de  disociación del ácido   HA ?  c)   En el laboratorio, un estudiante de ingeniería desea obtener una disolución buffer   con un  pH   =   4,569. Calcular   qué   volumen   de disolució n 0,1 mol L - 1   de KOH se debe   añ adir a 500  mL   de d isolución de ácido acético 0,1 mol L - 1 . (Para el ácido   acético,   Ka   =   1,8   x 10 - 5 ).  Considere que:  CH 3 COOH + H 2 O ↔CH 3 COO -   + H 3 O +  CH 3 COOH + KOH → CH 3 COOK + H 2 O  Desarrollo  a)   (10 puntos)  NO (g) +   CO 2   (g)      NO 2   (g) +   CO (g)  Inicial   3.9   0.89   ---   ---  Cambio   - x   - x   x   x  Equilibrio   3.9 - x   0.89 - x   x   x  Si en el equilibrio hay 0.1 moles de CO 2   entones:   0.89 -   x = 0.1  x = 0.79   moles   (3   punt os)  Las concentraciones en el equilibrio   (en mol/L)   son:  [NO] = (3.9 - 0.79)/2 = 1.55   (1 punto)  [CO 2 ] = (0.89 - 0.79)/2 = 0.05   (1 punto)  [NO 2 ] = (0.79)/2 =0.395   (1 punto)  [CO] = (0.79)/2 = 0.395   (1 punto)  Kc = ( 0.395)*(0.395)/ (1.55)*(0.05) =   2.01   (3   puntos)
 
 --- Page 3 ---

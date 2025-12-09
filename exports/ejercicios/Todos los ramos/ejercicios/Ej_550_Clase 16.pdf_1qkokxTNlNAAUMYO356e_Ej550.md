@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 550"
+topic: "General"
+number: "550"
+originalUrl: "exports/downloads/Todos los ramos/Clase 16.pdf_1qkokxTNlNAAUMYO356e.pdf"
+sourceFile: "Clase 16.pdf_1qkokxTNlNAAUMYO356e.pdf"
+---
+
 Pérdida por Venta Activo Fijo   250  Ajustes por Resultados que No Provienen de la Operación  Gasto Financiero   950  Ajustes por Cuentas Circulantes  Disminución Cuentas por Cobrar   700  Aumento de Existencias   (2.500)  Aumento Cuentas por Pagar   2.000  Aumento Sueldos por Pagar   200  2. -   Proveniente de la Inversión   4.000  Venta de Máquina   4.000  3. -   Proveniente del Financiamiento   50  Aumento de Capital   2.000  Nueva Deuda   4.000  Disminución de Deuda Corto Plazo   (5.000)  Pago de Intereses   (950)  Efectivo Final   2.150  Cambio Neto (1) + (2) + (3)   150  Ejercicio  PRESENTAR EL EFUF EN BASE A EFECTIVO   –   Método   Indirecto  EAA 1210 | PRIMER SEMESTRE 2022| SECCIÓN 5   –   ANDRÉS MEDINA A.
 
 --- Page 19 ---

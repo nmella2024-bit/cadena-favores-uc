@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_3ClHakTWfu6inNEkJ6nY.pdf"
+sourceFile: "Prueba 1.pdf_3ClHakTWfu6inNEkJ6nY.pdf"
+---
+
 (30 puntos)  Considere un individuo con funci´ on de utilidad   U   ( X, Y   ) =   X   ·   Y   3 . Los bienes tienen precios  p X   y   p Y   y el individuo tiene un ingreso   m . (a) (4 puntos) Encuentre las demandas marshallianas del individuo y la funci´ on de utilidad indirecta. Puede asumir sin demostrar que se cumple la condici´ on de segundo orden. 3
 
 --- Page 4 ---

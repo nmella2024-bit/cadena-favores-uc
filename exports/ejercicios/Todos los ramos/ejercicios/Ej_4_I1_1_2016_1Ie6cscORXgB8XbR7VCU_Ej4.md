@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I1_1_2016_1Ie6cscORXgB8XbR7VCU.pdf"
+sourceFile: "I1_1_2016_1Ie6cscORXgB8XbR7VCU.pdf"
+---
+
 (30 %)  Has sido seleccionado como voluntario para los Juegos Ol´ ımpicos 2016, y te han asignado como ayudante de los jueces en la prueba de gimnasia. Se te pide que lleves el registro de los puntajes en el “All Around” masculino, y que al final de la ronda entregues los nombres de los dos competidores con puntajes m´ as altos, el competidor con puntaje m´ as bajo y la cantidad de gimnastas que participaron. Escribe un programa en Python que permita ingresar, consecutivamente, el nombre y puntaje de cada participante hasta que el usuario ingrese “FIN” en el nombre del competidor. Cuando termine el ingreso de participantes, tu programa deber´ a mostrar los resultados solicitados. Un ejemplo de di´ alogo es:  >> Nombre de competidor: Tomas Gonzalez >> Ingrese puntaje: 9.8 >> Nombre de competidor: Louis Smith >> Ingrese puntaje: 8.3 >> Nombre de competidor: Zou Kai >> Ingrese puntaje: 7.7 >> Nombre de competidor: Diego Hypolito >> Ingrese puntaje: 8.5 >> Nombre de competidor: FIN >> Puntaje maximo: 9.8, Tomas Gonzalez >> Segundo puntaje maximo: 8.5, Diego Hypolito >> Puntaje minimo: 7.7, Zou Kai >> Numero de competidores: 4  Nota:   asume que siempre se ingresar´ an los datos de al menos un competidor, y que un mismo competidor no ser´ a ingresado dos veces. Solo se ingresar´ an los datos de los competidores masculinos. 3
 
 --- Page 4 ---

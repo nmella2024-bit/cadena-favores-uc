@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 13"
+topic: "General"
+number: "13"
+originalUrl: "exports/downloads/Todos los ramos/I3-2015-2S_1nOOsy4B8X6cfMzFnt2t.pdf"
+sourceFile: "I3-2015-2S_1nOOsy4B8X6cfMzFnt2t.pdf"
+---
+
 Nuevamente considere que   F   = 2 N,   L   = 4 m y   q   = 1 N/m. Identifique el gr´ afico de   M   ( x ). (a)   (b)  (c)   (d)
 
 --- Page 7 ---

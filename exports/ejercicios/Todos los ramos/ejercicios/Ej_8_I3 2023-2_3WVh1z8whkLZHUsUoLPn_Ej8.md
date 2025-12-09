@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 8"
+topic: "General"
+number: "8"
+originalUrl: "exports/downloads/Todos los ramos/I3 2023-2_3WVh1z8whkLZHUsUoLPn.pdf"
+sourceFile: "I3 2023-2_3WVh1z8whkLZHUsUoLPn.pdf"
+---
+
 Considere los espacios vectoriales de polinomios reales   P 2   y   P 4   de grados menor o igual 2 y 4, incluido el polinomio nulo, respectivamente. Sea   T   :   P 2   →   P 4   la transformaci´ on lineal que convierte un polinomio   p ( t ) en el polinomio  p ( t ) + 2 t 2 p ( t ). (a) Determine la imagen de   p ( t ) = 3   −   2 t   +   t 2   (simplifique la expresi´ on). (2 pts) (b) Encuentre la matriz para   T   respecto a las bases   { 1 , t, t 2 }   y   { 1 , t, t 2 , t 3 , t 4 } . (4 pts)  Soluci´ on  (a)   T   ( p ( t )) =   p ( t ) + 2 t 2 p ( t ) = (3   −   2 t   +   t 2 ) + 2 t 2 (3   −   2 t   +   t 2 ) = 3   −   2 t   + 7 t 2   −   4 t 3   + 2 t 4 .  (b) La matriz de   T   con respecto de las bases est´ andar de   P 2   y   P 4   es: [ T   ] =    [ T   (1)]   [ T   ( t )]   [ T   ( t 2 )]    =    [1 + 2 t 2 ]   [ t   + 2 t 3 ]   [ t 2   + 2 t 4 ]    =         1   0   0 0   1   0 2   0   1 0   2   0 0   0   2         Puntaje  •   2 puntos por determinar correctamente la imagen de   T   ( p ( t )).  •   1 punto por establecer correctamente como se calcula la matriz de   T   .  •   1 punto por calcular correctamente cada columna de [ T   ] (3 en total).

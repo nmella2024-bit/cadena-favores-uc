@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/T2 2017-1_1amUJWG5iVSzWTLurP7J.pdf"
+sourceFile: "T2 2017-1_1amUJWG5iVSzWTLurP7J.pdf"
+---
+
 a )   i) Como se puede observar el gr´ afico, la soluci´ on estar´ ıa en todo el segmento formado entre el punto ( −   8 7   ,   8 7   ) y el punto (2 ,   7 2   ). A B C D E F G H I ii) El problema queda:  min   3( x ′  1   −   x ′′  1   )   −   4 x 2  s.a. x ′  1   −   x ′′  1   +   x 3   =   2  − ( x ′  1   −   x ′′  1   )   −   x 2   +   x 4   =   0  −   3 4   ( x ′  1   −   x ′′  1   ) +   x 2   +   x 5   =   2  1 2   ( x ′  1   −   x ′′  1   )   −   2 x 2   +   x 6   =   1  x ′  1 , x ′′  1   , x 2 , x 3 , x 4 , x 5 , x 6   ≥   0 En los puntos (A,B,...,H,I) se encuentran gr´ aficamente las bases del problema. En cada punto, las variables que est´ an en la base son las distintas a cero. Por ejemplo, en el punto A (infactible), se forma por la intersecci´ on de las restricciones 3 y 4, por lo que esas holguras ( x 5 yx 6 ) valen cero y est´ an fuera de la base. El resto de las variables est´ an dentro. Ahora, con respecto a   x 1   =   x ′  1   −   x ′′  1   , solo uno de las dos variables estar´ a en la base. Si   x 1   >   0, entonces   x ′  1   estar´ a en la base. Si   x 1   <   0, entonces   x ′′  1   estar´ a en la base. Si   x 1   = 0, entonces ninguna estar´ a en la base (con excepci´ on de un caso de degenerancia). En los puntos que habr´ ıa degenerancia (y por lo tanto, m´ as de una base en el punto) ser´ ıan en G y F, en donde se podr´ ıa permitir que una de las variables que vale cero en ese punto est´ e dentro de la base.
 
 --- Page 6 ---

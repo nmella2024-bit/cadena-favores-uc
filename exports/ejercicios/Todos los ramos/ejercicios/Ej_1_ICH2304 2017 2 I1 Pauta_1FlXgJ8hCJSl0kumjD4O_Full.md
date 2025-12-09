@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/ICH2304 2017 2 I1 Pauta_1FlXgJ8hCJSl0kumjD4O.pdf"
+sourceFile: "ICH2304 2017 2 I1 Pauta_1FlXgJ8hCJSl0kumjD4O.pdf"
+---
+
 --- Page 1 ---
 1  P ONTIFICIA   U NIVERSIDAD   C ATOLICA DE   C HILE  ESCUELA DE INGENIERIA  DEPARTAMENTO DE INGENIERIA HIDRAULICA Y AMBIENTAL  INGENIERÍA AMBIENTAL ICH2304 - 01  INTERROGACIÓN   1  Miércoles   20   de   septiembre   de 201 7  Sin apuntes   –   Sin preguntas en sala   –   2   horas  PAUTA  1.   (10   p untos )   Un estanque de reproducción de una piscicultura tiene un volumen de 800 m 3   y  está lleno de agua y con alevines. Accidentalmente se descarga en el estanque un contaminante  que alcanza instantáneamente una concentración igual a 4 mg/L. Se sabe que la   exposición  prolongada a concentraciones superiores a 0,25 mg/L es fatal para los peces y para evitar su  muerte, se adicionará agua pura por un extremo del estanque y se sacará el agua contaminada  por el otro. Si el estanque se puede modelar como un reactor   completamente mezclado en  sistema estacionario, el contaminante se degrada a una tasa k=0,1 h - 1 , y si se agrega agua pura  a un caudal Q e =100 m 3 /h. ¿Cuánto tiempo se requiere para que la concentración del  contaminante en el estanque sea igual o inferior a   0,25 mg/L? En su respuesta preocúpese de  plantear la ecuación diferencial, la ecuación para obtener C(t), y el tiempo requerido.  Solución  Planteamiento de la ecuación diferencial  (2 puntos) punto   por balance   de masa  correcto  L a condición inicial es: C(0) =  Integrando, aplicando exponencial y la condición inicial:  C(t) =   (4 puntos)   por ecuación C(t) correcta  Despejando t, y reemplazando C(t) = 2,5 mg/L  t =   = 12,3 horas   (4 puntos)   por t correcto.  2.   (10 puntos)   En su calidad de experto, usted recibe el siguiente análisis de laboratorio de una  muestra de agua (Tabla 1). Antes de que llegara la carpeta con los análisis a sus manos,   le
 

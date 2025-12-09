@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/2021-2 Enunciado.pdf_3Owl2LeQ9sjRsldkdNby.pdf"
+sourceFile: "2021-2 Enunciado.pdf_3Owl2LeQ9sjRsldkdNby.pdf"
+---
+
 [25 puntos] An´ alisis Media-Varianza  Suponga que usted puede invertir solo en dos activos: ABC y XYZ. La correlaci´ on entre los retornos de ABC y XYZ es 0.2. Los retornos esperados y desviaciones est´ andar son las siguientes: Activo   E ( R i )   σ ( R i ) ABC   20 %   20 % XYZ   15 %   25 % (a)   (5 puntos)   Pareciera ser que el activo ABC domina al activo XYZ porque tiene mayor retorno esperado y menor desviaci´ on est´ andar. ¿Es posible que exista un inversionista interesado en invertir en XYZ? ¿Por qu´ e? (b)   (5 puntos)   Suponga que usted desea un portafolio con retorno esperado de 19.5 %, ¿qu´ e proporciones inver- tir´ ıa en ABC y XYZ? ¿Qu´ e desviaci´ on est´ andar tendr´ ıan los retornos de su portafolio? 13
 
 --- Page 14 ---

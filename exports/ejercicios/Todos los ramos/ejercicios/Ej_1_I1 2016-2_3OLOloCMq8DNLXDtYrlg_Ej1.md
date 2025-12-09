@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2016-2_3OLOloCMq8DNLXDtYrlg.pdf"
+sourceFile: "I1 2016-2_3OLOloCMq8DNLXDtYrlg.pdf"
+---
+
 Considere la siguiente definici´ on del conjunto   L N   de las listas enlazadas sobre los naturales:  Definici´ on.   El conjunto de las listas enlazadas sobre los naturales   L N   es el menor conjunto que cumple las siguientes reglas: 1.   ∅   ∈ L N . 2. Si   L   ∈ L N   y   k   ∈   N , entonces   L   →   k   ∈ L N . Por ejemplo, las siguientes son listas en   L N :  ∅  →   5   →   7   →   1   →   0   →   3   →   1   →   4  →   10   →   6
 
 --- Page 2 ---

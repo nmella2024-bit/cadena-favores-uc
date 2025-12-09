@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/fin2020I1pauta_1h8LYlZRKGW9wNbLM9an.pdf"
+sourceFile: "fin2020I1pauta_1h8LYlZRKGW9wNbLM9an.pdf"
+---
+
 [15 puntos]  Para maximizar la utilidad del individuo, su consumo en   T   = 1 debe ser 100. Dado esto para el individuo ser´ a importante ahorrar para conseguir su consumo en   T   = 1 y lo restante consumirlo en   T   = 0. Por lo tanto, la tasa relevante ser´ a la tasa de captaci´ on. a) El consumo en   T   = 1 ser´ a 100 ( C 1   = 100) [0.5 puntos]. Para calcular el consumo debemos calcular la inversi´ on ´ optima y lo que ahorra el individuo. La inversi´ on ´ optima estar´ a dada en el punto en que la Tasa de Transformaci´ on iguale a la tasa de captaci´ on:  T M T   =   − (1 +   r cap )  −   dy dx   =   − (1 +   r cap )  −   25 100   −   C 0   + 1  =   − (1 + 0 ,   05)  − 25 =   − 105 + 1 ,   05 C 0   −   1 ,   05  C ∗  0   = 77 ,   19   [0.5 puntos] Inversi´ on ∗   = 100   −   77 ,   19 = 22 ,   81 Con esta inversi´ on el consumo en   T   = 1 ser´ a:  C ∗  1   = 25 ln(22 ,   81 + 1)  C ∗  1   = 79 ,   25   [0.5 puntos] 3
 
 --- Page 4 ---

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Pauta - Examen 2020.pdf_2kISg2wESG3WXkt3jgtl.pdf"
+sourceFile: "Pauta - Examen 2020.pdf_2kISg2wESG3WXkt3jgtl.pdf"
+---
+
 --- Page 1 ---
 C ó   digo de Honor: Como miembro de la comunidad de la Pontificia Universidad Cat ó   lica de Chile,  me comprometo a respetar los principios y normativas que la rigen. Asimismo, me comprometo a  actuar con rectitud y honestidad   en esta evaluaci ó   n.  Adicionalmente declaro estar en condiciones de salud adecuadas para rendir esta evaluaci ó   n y que  me presento a  é   sta bajo mi responsabilidad. En caso de sentirme mal o tener alguna complicaci ó   n,  deber é   informarlo inmediatamente al ayudante o profesor en   sala.  No. Alumno: ................................ Firma: ................................  PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  FACULTAD DE CIENCIAS ECONÓMICAS Y ADMINISTRATIVAS  EMPRESA Y LEGISLACIÓN  Primer Semestre 2020  PROF: K . MOORE  Examen  Instrucciones:  Lea atentamente cada pregunta y responda según los requerimientos de cada ítem. Las preguntas  de desarrollo deben ser contestadas con letra clara y legible. Las respue stas ilegibles serán  consideras en blanco. Cuide su redacción y ortografía. Preste atención a las indicaciones de los  ayudantes. No se aceptarán signos ni abreviaturas. El incumplimiento de estas instrucciones se  penalizará con 0,5 puntos menos de la nota   final del alumno.  Preguntas  1. Refierase la principio de autonomía de la voluntad.   ( 12   puntos)  a)   Señale en   qué consiste  "la libertad de que gozan los particulares para pactar los contratos que les plazcan, y de determinar  su contenido, efectos y duración", y   señala que   esta voluntad es soberana, que el contrato nace del  acuerdo de voluntades.  b)   E xplique cómo opera respecto de las sociedades de personas, versus,   las sociedades anónimas.  Existe mayor libertad de los particulares para pactar lo que   estimen conveniente a sus fines e  intereses en los contratos de sociedades de personas. Pueden modificar el “desde” que la ley les  ofrece y acordar cláusulas modificatorias e introducir clásulas nuevas. Siempre y cuando esto no  vaya contra la ley, el ord en público y la seguridad del Estado.
 

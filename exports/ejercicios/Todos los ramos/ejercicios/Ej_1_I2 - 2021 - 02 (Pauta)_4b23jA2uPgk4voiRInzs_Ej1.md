@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 - 2021 - 02 (Pauta)_4b23jA2uPgk4voiRInzs.pdf"
+sourceFile: "I2 - 2021 - 02 (Pauta)_4b23jA2uPgk4voiRInzs.pdf"
+---
+
 Pese a las advertencias que la Comisi´ on M´ edica de la ANFP envi´ o hace unas semanas, con respecto a la prevenci´ on de contagios por COVID, algunos equipos profesionales fallaron en su cumplimiento. Hasta el momento en un equipo hay 100 personas entre jugadores, cuerpo t´ ecnico, staff medico y dirigentes en cua- rentena preventiva por ser contacto estrecho hasta ma˜ nana mi´ ercoles. Suponga que un test de ant´ ıgenos clasifica como Covid+ a una persona con probabilidad   [p]   un d´ ıa antes de finalizar la cuarentena preventiva. ¿Cu´ al es la probabilidad que hoy, despu´ es de realizar un examen de ant´ ıgenos, al menos   [x]   de los que se encontraban en cuarentena preventiva sean clasificados como Covid+?  Soluci´ on  Sea   X   el n´ umero Covid+ que el test de ant´ ıgenos reporto hoy entre los 100 que se encontraban en cuarentena preventiva.  X   ∼   Bernoulli( n   = 100 , p   =   [p] ) Se pide   P   ( X   ≥   [x] ) =   1 - pbinom(x-1, size = 100, prob = p) .  ## EJEMPLO: n = 100 p = 0.03 x = 5 1 - pbinom(x-1, size = n, prob = p, lower.tail = T) [1] 0.1821452 pbinom(x-1, size = n, prob = p, lower.tail = F) [1] 0.1821452  Puntaje: Respuesta correcta con margen de error   ± 0 . 005   [1.0 puntos]. Responder correctamente el complemento   ± 0 . 005   [0.5 puntos]. Sin respuesta en canvas, pero respaldo correcto   ± 0 . 005   [0.5 puntos]. Para otros casos correctamente justificados por parte del alumno, los ayudantes podr´ an asignar m´ aximo [0.5 puntos].  EYP1113 - Probabilidad y Estad´ ıstica Segundo Semestre 2021  1   Profesores: Ricardo Aravena Cuevas Ricardo Olea Ortega Felipe Ossa Monge Pilar Tello Hern´ andez
 
 --- Page 2 ---

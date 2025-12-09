@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1-2017-1S_4wXIlQS6Ia9wp8yE24NC.pdf"
+sourceFile: "I1-2017-1S_4wXIlQS6Ia9wp8yE24NC.pdf"
+---
+
 Se utiliza una manguera para llenar de agua un estanque cil´ ındrico de diametro   D   y altura 2 D . La manguera lanza el agua a 45 o   sobre la horizontal, desde el mismo nivel que la base del estanque, y est´ a a una distancia de 6 D   de ´ este. ¿Cu´ ales son las velocidades iniciales m´ ınima y m´ axima tales que el agua entra al estanque? Ignore la resistencia el aire.  a )   v o, min   = 3 √ gD   y   v o, m´ ax   =   √ 36 gD/ 5  b )   v o, min   =   √ 6 gD   y   v o, m´ ax   =   √ 36 gD/ 5  c )   v o, min   = 2 √ gD   y   v o, m´ ax   =   √ 49 gD/ 5  d   )   v o, min   = 3 √ gD   y   v o, m´ ax   =   √ 49 gD/ 5 4. Se lanza una piedra hacia el aire con un ´ angulo por encima de la horizontal, y se desprecia la resistencia del aire. ¿Cu´ al de las gr´ aficas en la figura describe mejor la rapidez   v   de la piedra en funci´ on del tiempo  t   mientras est´ a en el aire?
 
 --- Page 4 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Tarea 3 2019-1_0ttZ0F2SHNUkdG9zyZFP.pdf"
+sourceFile: "Tarea 3 2019-1_0ttZ0F2SHNUkdG9zyZFP.pdf"
+---
+
 (a) Nos piden: (i) N´ umero promedio de personas en el sistema en un instante cualquiera, en el largo plazo:  L   =  ∞ ∑  n =0  nP n  (ii) Tasa promedio de atenci´ on de alumnos en los microondas , en el largo plazo. Utilizando probabilidades totales:  μP 1   + 2 μP 2   + 3 μP 3   +  9 ∑  n =4  4 μP n   +  12 ∑  n =10  4 . 8 μP n   +  ∞ ∑  n =13  6 μP n  (iii) Tasa media de p´ erdida de alumnos, en el largo plazo:  ∞ ∑  n =11  P n β ( n   −   4) +  ∞ ∑  n =11  (1   −   p n ) P n λ  Si solo se consider´ o la p´ erdida dada por abandonar la cola, el resultado tambi´ en fue considerado correcto. Adem´ as, se tom´ o correcto si el aburrimiento se consider´ o desde que la cola ten´ ıa 1 persona (Esto corre para el resto del problema). (iv) Primero se debe calcular la tasa de entrada efectiva:  λ e   =   λ  10 ∑  n =0  P n   +   λ  ∞ ∑  n =11  p n P n  Luego, por la ecuaci´ on de Little:  W   =   L λ e  =  ∑ ∞  n =0   nP n  λ   ∑ 10  n =0   P n   +   λ   ∑ ∞  n =11   p n P n  (v) Siempre que hay cola existe la posibilidad de que se pierdan clientes por aburrimiento:  ∞ ∑  n =11  P n  (b) Definamos las variables de estado como   X ( t ) = 0 ,   1 ,   2 ,   3 ...   la cantidad de clientes en el sistema (microondas + cola). (c) Las transiciones posibles son: De un estado   i   →   i   + 1 para todo   i   = 0 ,   1 ,   2 ,   3 ...  De un estado   i   →   i   −   1 para todo   i   = 1 ,   2 ,   3 ... v 0   =   λ v 1   =   λ   +   μ v 2   =   λ   + 2 μ v 3   =   λ   + 3 μ v 4   =   λ   + 4 μ  8
 
 --- Page 9 ---

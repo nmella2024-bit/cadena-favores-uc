@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2016-2_0fu8gtSvzppIPemxaecz.pdf"
+sourceFile: "Examen 2016-2_0fu8gtSvzppIPemxaecz.pdf"
+---
+
 Refrigerante 134a entra al compresor de un refrigerador a una tasa de 0 , 12 kg / s como vapor sobrecalentado a una presi´ on de 0 , 14 MPa y   − 10   ◦ C de temperatura y sale de ´ este a 0 , 7 MPa y 50   ◦ C. El refrigerante se enfr´ ıa en un condensador a 24   ◦ C y 0 , 65 MPa y luego se estrangula en una v´ alvula hasta 0 , 15 MPa. Asumiendo que el compresor y la v´ alvula son adiab´ aticos, a) identifique qu´ e partes del diagrama corresponden al compresor, al condensador y a la v´ alvula,   ( 1 pto. ) b) calcule la tasa de transferencia de calor desde el espacio refrigerado y la potencia entregada al compresor, ( 2 pts. ) c) encuentre la eficiencia isoentr´ opica del compresor,   ( 1,5 pts. ) d) determine el coeficiente de funcionamiento (CDF) del refrigerador.   ( 1,5 pts. ) Ayuda: para interpolar una variable   y   en t´ erminos de otra variable   x   use la f´ ormula  y ( x ) =   y a   +   x   −   x a  x b   −   x a  ( y b   −   y a )   .
 
 --- Page 2 ---

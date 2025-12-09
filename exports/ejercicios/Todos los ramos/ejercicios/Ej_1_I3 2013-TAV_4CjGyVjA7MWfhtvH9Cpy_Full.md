@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3 2013-TAV_4CjGyVjA7MWfhtvH9Cpy.pdf"
+sourceFile: "I3 2013-TAV_4CjGyVjA7MWfhtvH9Cpy.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CAT  ´ OLICA DE CHILE FACULTAD DE MATEM  ´ ATICAS DEPARTAMENTO DE MATEM  ´ ATICA TAV 2013  MAT 1610 - C´ alculo I Interrogaci´ on 3  1. Grafique la siguiente funci´ on indicando claramente: m´ aximos y m´ ınimos locales, as´ ıntotas, concavidad e intersecci´ on con los ejes coordenados.  f   ( x ) =  {   2 x 3  x 2 − 2 x +1   si 0   ≤   x, x   6   = 1  xe 1 /x   si   x <   0  Soluci´ on:  Si   x <   0 entonces   f   ( x ) =   xe   1  x   diferenciable en ( −∞ ,   0), y   f   ′ ( x ) =   e   1  x  ( 1   −   1  x  )   >   0. Luego   f  es creciente en ( −∞ ,   0) y no tiene punto criticos en ese intervalo.  f   ′′ ( x ) =   1  x 3   e   1  x   <   0 luego   f   es c´ oncava hacia abajo. Asintotas: Como   f   es continua en ( −∞ ,   0) luego no tiene asintotas verticales. l´ ım  x →−∞   xe   1  x   =   −∞   f   no tiene asintotas horizontales l´ ım  x →−∞  xe   1  x  x   =   l´ ım  x →−∞   e   1  x   = 1,   l´ ım  x →−∞   x ( e   1  x   −   1) =   l´ ım  x →−∞  e   1  x   −   1  1  x  =   l´ ım  x →−∞  e   1  x  − 1  x 2  − 1  x 2  = 1 Entonces   y   =   x   + 1 es as´ ıntota oblicua. Estudio en   x   = 0 l´ ım  x → 0 −  xe   1  x   = 0 luego f es continua en 0. l´ ım  x → 0 −   f   ′ ( x ) =   l´ ım  x → 0 −   e   1  x  (  1   −   1  x  )  = 0 Si   x >   0  f   ′ ( x ) =  2 x 2 ( x   −   3) ( x   −   1) 3  Asi como   l´ ım  x → 0 −  f   ( x ) =   l´ ım  x → 0 +  f   ( x ) =   f   ′ (0) = 0 entonces   f   ′ ( x ) es continua en 0. y   x   = 0 es un punto cr´ ıtico de   f   . Estudio en   x >   0 , x   6   = 1  f   ′ ( x ) = 0 ssi   x   = 3, adem´ as f   ′′ ( x ) =   12 x  ( x   −   1) 4   >   0 en (0 ,   ∞ )   \ { 1 }   luego f es c´ oncava hacia arriba,   x   = 0 es un punto de inflexi´ on y en   x   = 3 hay un m´ ınimo relativo. As´ ıntotas para   x >   0. l´ ım  x → 1   f   ( x ) =   ∞   asi en   x   = 1 tenemos as´ ıntota vertical l´ ım  x →∞   f   ( x ) =   ∞   luego f no tiene as´ ıntotas horizontales
 

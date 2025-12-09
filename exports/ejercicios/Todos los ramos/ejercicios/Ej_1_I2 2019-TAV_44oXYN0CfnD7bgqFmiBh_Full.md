@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2019-TAV_44oXYN0CfnD7bgqFmiBh.pdf"
+sourceFile: "I2 2019-TAV_44oXYN0CfnD7bgqFmiBh.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Cat´ olica de Chile Facultad de Matem´ aticas Departamento de Matemticas Temporada Acadmica de Verano 2019  MAT1630 – C´ alculo III  Soluci´ on Interrogaci´ on N ◦   1  1. Considere el campo vectorial  F   ( x, y ) = (   y  ( x   −   1) 2   +   y 2   ,   1   −   x  ( x   −   1) 2   +   y 2   )  a ) Calcular   ∫  C 1  F   ·   dr  donde   C 1   es la curva   r ( t ) = (cos   t   + 1 ,   sin   t ) con 0   ≤   t   ≤   2 π  Soluci´ on:  C 1   es  r ( t ) = (cos   t   + 1 ,   sin   t ) con 0   ≤   t   ≤   2 π . Luego   r ′ ( t ) = ( −   sin   t,   cos   t ) y   F   ( r ( t )) = (sen   t,   −   cos   t ) Se tiene entonces que  ∫  C 1  F   ·   dr   =  ∫   2 π  0  F   ( r ( t ))   ·   r ′ ( t ) dt   =  ∫   2 π  0  − 1 dt   =   − 2 π.  b ) Calcular   ∫  C 2  F   ·   dr  donde   C 2   =   { ( x, y )   ∈   R 2   : 16 x 2   +   y 2   = 4 }  Soluci´ on:  ∂Q ∂x   =   ( x   −   1) 2   −   y 2  [( x   −   1) 2   +   y 2 ] 2  ∂P ∂y   =   ( x   −   1) 2   −   y 2  [( x   −   1) 2   +   y 2 ] 2  1
 

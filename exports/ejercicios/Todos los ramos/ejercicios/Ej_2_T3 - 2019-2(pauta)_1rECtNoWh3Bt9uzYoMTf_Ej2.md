@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/T3 - 2019-2(pauta)_1rECtNoWh3Bt9uzYoMTf.pdf"
+sourceFile: "T3 - 2019-2(pauta)_1rECtNoWh3Bt9uzYoMTf.pdf"
+---
+
 Sean   A ,   B   y   C   conjuntos. Dadas relaciones binarias   R   de   A   en   B   y   S   de   B   en   C , la  composición   de   R   y   S   se define como:  R   ◦   S   =   { ( x, z )   | ∃ y   ∈   B   tal que   xRy   ∧   ySz }  Note que   R   ◦   S   también es una relación binaria, esta vez de   A   en   C . Sea ahora   R   una relación binaria sobre un conjunto   A . En este caso podríamos tomar la composición de   R   consigo misma:  R   ◦   R   =   { ( x, z )   | ∃ y   ∈   A   tal que   xRy   ∧   yRz }  A esta relación la denotamos como   R 2 , y en general, a la relación que se obtiene de componer  R n   veces consigo misma la denotamos como   R n . Dada una relación binaria   R   sobre un conjunto   A , demuestre que: a) Si   R   es simétrica, entonces   R n   es simétrica para todo   n   ∈   N , n >   0 . b) Si   R   es refleja y transitiva, entonces   R n   =   R   para todo   n   ∈   N , n >   0 . 4
 
 --- Page 5 ---

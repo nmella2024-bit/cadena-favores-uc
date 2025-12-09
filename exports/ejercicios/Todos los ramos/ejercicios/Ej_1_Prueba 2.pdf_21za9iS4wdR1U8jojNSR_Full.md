@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_21za9iS4wdR1U8jojNSR.pdf"
+sourceFile: "Prueba 2.pdf_21za9iS4wdR1U8jojNSR.pdf"
+---
+
 --- Page 1 ---
 Pon$ficia Universidad Católica de Chile   30   de   octubre   2023  Escuela de Administración  P rueba   2  Fundamentos de Finanzas  Código de Honor : Como miembro de la comunidad de la Pon9ficia Universidad Católica de Chile,  me comprometo a respetar los principios y norma9vas que la rigen. Asimismo, me comprometo  a actuar con rec9tud y hones9dad en esta evaluación.  Adicionalmente declaro estar en condiciones de salud adecuadas para rendir esta evaluación y  que me presento a ésta bajo mi responsabilidad. En caso de sen9rme mal o tener alguna  complicación, deberé informarlo inmediatamente al ayudante o profesor en sal a.  Nombre/Rut/N° lista: __________________________ Firma: _______________________  Profesores:  Vincent van Kervel  Ayudantes:  Milagros Opazo  Leonardo   Hernández   Isidora González  Tomás Irarrázaval  Patricio Gutiérrez  Ayudante Coordinador:   Tomás Zamorano  Cristóbal Gompertz  Tiempo:   91   minutos  Puntaje Total:   91   puntos  Alberto Blanche  Colomba Prieto  Martin Kalm  Luis Sepúlveda  María   Fernández  Antonia Tocornal  Paula Troncoso
 

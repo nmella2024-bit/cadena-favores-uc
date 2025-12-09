@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-1_0VSzShpOR5kyzUwwK5lS.pdf"
+sourceFile: "I2 2018-1_0VSzShpOR5kyzUwwK5lS.pdf"
+---
+
 (16 puntos)  (a)   (8 puntos)   Considere el siguiente problema de programaci´ on lineal: m´ ın   2 x 1   −   8 x 2  s.a.   2 x 1   −   x 2   ≥ − 2 3 x 1   +   x 2   ≥ − 3  − x 1   + 4 x 2   ≤   15  x 1   ≥   0  x 2   libre (i)   (2 puntos)   Grafique el dominio del problema. (ii)   (2 puntos)   Determine la(s) soluci´ on(es) ´ optima(s) y el valor ´ optimo del problema. Para su respuesta, escriba el conjunto soluci´ on.
 
 --- Page 4 ---

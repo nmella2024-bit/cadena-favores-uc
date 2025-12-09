@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Control 1 2024_1.pdf_0dWYlBlhmCappbOPfXLE.pdf"
+sourceFile: "Control 1 2024_1.pdf_0dWYlBlhmCappbOPfXLE.pdf"
+---
+
 [14 puntos]  Considere el problema de un individuo que tiene un ingreso   W   = 1000, y si enferma debe gastar   L   = 200 para recuperar su salud.   La probabilidad de enfermar es   π 2   = 0 ,   1.   Su preferencia se representa mediante la siguiente funci´ on de utilidad esperada:  U   =   π 1  √ c 1   +   π 2  √ c 2  Suponga que le ofrecen dos planes de seguro de salud alternativos: Plan A: indemnizaci´ on   z A   = 200, prima   P   A   = 30 Plan B: indemnizaci´ on   z B   = 100, prima   P   B   = 10 1
 
 --- Page 2 ---

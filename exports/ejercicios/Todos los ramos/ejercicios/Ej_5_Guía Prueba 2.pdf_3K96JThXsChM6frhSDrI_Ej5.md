@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Guía Prueba 2.pdf_3K96JThXsChM6frhSDrI.pdf"
+sourceFile: "Guía Prueba 2.pdf_3K96JThXsChM6frhSDrI.pdf"
+---
+
 4  La Unión E uropea se caracteriza por ser   un mercado único para el   mercado del trabajo y el mercado  de bienes . Por otra parte, el 31 de octubre vence el plazo para que el Reino Unido acuerde un plan  de salida de esta   u nión   (lo que se conoce como Brexit).  Por simplicidad, suponga lo siguiente:  -   En Europa solo se produce co n trabajo.  -   El tamaño del Reino Unido dentro de Europa es 1/10, tanto en número de trabajadores  como en número de empresas. Además, en el Reino Unido, la mitad de las empresas y de  los trabajadores no son británicos (sino que de otro país de Europa).  -   E n el   resto de Europa no hay empresas ni trabajadores británicos.  -   La productividad marginal de toda empresa en la Unión Europea (incluido el Reino Unido)  está dado por:   𝑃𝑚𝑔𝐿   =   8 √ 𝐿 .
 
 --- Page 7 ---

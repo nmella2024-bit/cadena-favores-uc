@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/I1-2016-2S_4UfQAszpXONhujN6IfTl.pdf"
+sourceFile: "I1-2016-2S_4UfQAszpXONhujN6IfTl.pdf"
+---
+
 Ahora asuma que el coeficiente de roce est´ atico entre   A   y   C   es   μ s   < μ min s   ,   y que el coeficiente de roce cin´ etico (din´ amico) es   μ k . Determine el m´ odulo de la aceleraci´ on del bloque respecto al carro: a)   a A/C   =   F   ( m C   +   m A )   −   m C   μ k g m A m C  b)   a A/C   =   μ k g ( m C   +   m A )   −   F m C  c)   a A/C   =   F   −   μ k m A g m C  d)   a A/C   =   F   −   μ k m C   g m A
 
 --- Page 5 ---

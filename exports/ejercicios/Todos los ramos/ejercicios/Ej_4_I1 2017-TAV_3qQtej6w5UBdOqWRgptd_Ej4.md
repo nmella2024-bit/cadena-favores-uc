@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-TAV_3qQtej6w5UBdOqWRgptd.pdf"
+sourceFile: "I1 2017-TAV_3qQtej6w5UBdOqWRgptd.pdf"
+---
+
 a ) Pruebe que la serie   ∞ ∑  n =1  1 ( n   + 1) √ n   +   n √ n   + 1 converge.  b ) Determine si las series que se indican convergen o divergen 1)  ∞ ∑  n =1  (  1 +  1  n  ) 2  e − n   2)  ∞ ∑  n =1  1  n 1+   1  n  Soluci´ on:  a ) Comparando con  ∞ ∑  n =1  1  n √ n  l´ ım  n →∞  a n  b n  = l´ ım  n →∞  n √ n  ( n   + 1) √ n   +   n √ n   + 1  =  1 2 Luego como la serie  ∞ ∑  n =1  1  n √ n   converge ( p >   1), entonces la serie pedida con- verge.  b )   1)   ∞ ∑  n =1  (  1 +  1  n  ) 2  e − n   =  ∞ ∑  n =1  e − n   +  ∞ ∑  n =1  2  n e − n   +  ∞ ∑  n =1  1  n 2   e − n  Luego la serie converge, pues es la suma de tres series convergentes. La primera es una serie geom´ etrica con raz´ on   r   =   1  e   <   1 y las dos restantes por comparaci´ on con   ∑   1  n 2   . 2)   ∞ ∑  n =1  1  n 1+   1  n  =  ∞ ∑  n =1  1  n   n  √ n  Comparando con   ∑   1  n  l´ ım  n →∞  a n  b n  = l´ ım  n →∞  1  n  √ n   = 1   6   = 0 luego como la serie   ∑   1  n   diverge, entonces la serie pedida tambi´ en diverge. 5.   a ) Determine el radio y el intervalo de convergencia de  ∞ ∑  n =0  ( x   −   1) n  n 2017 9 n  b ) Encuentre el desarrollo en series de potencias de   f   ( x ) =   3 x  1 +   x 3   e indique su radio de convergencia.  Soluci´ on:
 
 --- Page 4 ---

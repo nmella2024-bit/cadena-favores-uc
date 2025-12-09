@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba2 - pauta.pdf_53SqG4oqCxHexGj7MHpq.pdf"
+sourceFile: "Prueba2 - pauta.pdf_53SqG4oqCxHexGj7MHpq.pdf"
+---
+
 [4p] Relaciones verticales  Considere una industria en la que un único proveedor vende un insumo a un único cliente, que vende a su vez los bienes producidos con ese insumo a los consumidores finales. Suponga que el proveedor tiene un costo marginal   𝑐   para producir cada unidad del insumo, y que el cliente usa una unidad del insumo para producir cada unidad del bien final y que no tiene otros costos de producción. (a) [2p] ¿Debería la autoridad de defensa de la competencia permitir la utilización de tarifas de dos partes por parte del proveedor? Explique. (b) [2p] Suponga que entra un competidor en el mercado del cliente, que produce bienes idénticos a este. Suponga que el proveedor está dispuesto a vender el insumo al competidor al mismo precio que se lo vende al cliente. ¿Son necesarias las restricciones verticales si el competidor y el cliente compiten a la Bertrand y terminan fijando precios iguales al costo marginal? Explique.  Solución.  (a) La utilización de tarifas de dos partes permite eliminar el problema de la doble marginalización, reducir los precios y aumentar las cantidades vendidas. Además de 2
 
 --- Page 3 ---

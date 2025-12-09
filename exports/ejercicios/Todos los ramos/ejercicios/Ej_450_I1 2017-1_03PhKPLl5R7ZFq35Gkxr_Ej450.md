@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 450"
+topic: "General"
+number: "450"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-1_03PhKPLl5R7ZFq35Gkxr.pdf"
+sourceFile: "I1 2017-1_03PhKPLl5R7ZFq35Gkxr.pdf"
+---
+
 Ut. Retenidas 450.  (Post EERR)   2 pts por este asiento (0 o 2 pts)  UT. Retenidas 150  Div. X Pagar 150.  TEMA IV  Las siguientes son las transacciones ocurridas durante el año 2009 en la empresa “Los  Estudiosos”:  (01/01/09) Se inicia la empresa   emitiendo   10.000 acciones a $1 c/u, las   que le son  pagadas al contado a $2 c/u.   0, 1 o 2 pts  Alternativa 1: Se corrigió el   error de enunciado.
 
 --- Page 15 ---

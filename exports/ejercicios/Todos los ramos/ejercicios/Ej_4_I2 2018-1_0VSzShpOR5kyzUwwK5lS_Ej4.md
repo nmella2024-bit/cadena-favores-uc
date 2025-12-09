@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-1_0VSzShpOR5kyzUwwK5lS.pdf"
+sourceFile: "I2 2018-1_0VSzShpOR5kyzUwwK5lS.pdf"
+---
+
 (15 puntos)  Como encargado del ´ area de marketing del canal LRC, se le ha encomendado la misi´ on de planificar las menciones comerciales para las transmisiones del pr´ oximo partido de la selecci´ on. Para ello, usted conoce a los   I   auspiciadores de la selecci´ on, los cuales le han presentado cada uno de ellos un cat´ alogo con   K   diferentes alternativas de publicidades a mencionar durante el partido. A trav´ es del par´ ametro   d ik   usted conoce la cantidad de segundos que le tomar´ a al relator realizar la menci´ on del auspiciador   i   mediante el formato   k . No obstante, los altos ejecutivos del canal le han indicado que para solventar las operaciones del canal, se deber´ an levantar   B   pesos mediante el pago de los auspiciadores. De acuerdo a los contratos ofrecidos al canal, los auspiciadores est´ an dispuestos a pagar una tarifa fija de   γ i   pesos por cada segundo de menci´ on que usted realice por el auspiciador  i   durante el partido, y un bono extra de    i   si realiza al menos   ρ i   menciones comerciales (de ese auspiciador, sin importar el formato) a lo largo del partido.
 
 --- Page 11 ---

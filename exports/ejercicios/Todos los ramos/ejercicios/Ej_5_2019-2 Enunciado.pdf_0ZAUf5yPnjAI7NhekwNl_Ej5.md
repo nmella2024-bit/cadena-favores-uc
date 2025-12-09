@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/2019-2 Enunciado.pdf_0ZAUf5yPnjAI7NhekwNl.pdf"
+sourceFile: "2019-2 Enunciado.pdf_0ZAUf5yPnjAI7NhekwNl.pdf"
+---
+
 [20 puntos] Opciones  a.   (10 puntos)   Suponga que la acci´ on de XYZ se cotiza actualmente por $16 y aumentar´ an a $50 por acci´ on o caer´ an a $2 por acci´ on en un a˜ no. Usted posee un portafolio que contiene una opci´ on de compra (call option) y una opci´ on de venta (put option). Ambas opciones tienen un precio de ejercicio de $15, y ambas expiran en un a˜ no. La tasa libre de riesgo por un a˜ no es del 8 %. ¿Cu´ al es el valor de su portafolio? 12
 
 --- Page 13 ---

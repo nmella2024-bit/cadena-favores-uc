@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Tarea_2_con_pauta.pdf_0fU3lnhmTrBVGDGqblVv.pdf"
+sourceFile: "Tarea_2_con_pauta.pdf_0fU3lnhmTrBVGDGqblVv.pdf"
+---
+
 (30 puntos) Considere un modelo en que hay un principal y agente, ambos neu- trales al riesgo, con el agente pudiendo elegir esforzarse ( e   = 1 ) o no ( e   = 0 ), en un entorno donde   e   no es verificable, pero el beneficio generado por el agente sí es verificable. El agente tiene una utilidad de reserva   w   = 1   y su costo de esforzarse está dado por   c   ≥   0 . Si el agente se esfuerza, él genera un beneficio de   π H   = 10   a la empresa con probabilidad  p 1   = 0 , 8   y un beneficio de   π L   = 5   con probabilidad   1   −   p 1 . Si el agente no se esfuerza, él genera un beneficio de   π H   = 10   a la empresa con probabilidad   p 0   = 0 , 4   y un beneficio de   π L   = 5   con probabilidad   1   −   p 0 . La ley determina que el principal no puede pagar un salario por debajo de   a   = 1 . En la primera etapa del juego, el principal ofrece un contrato   ( w H   , w L ) . El agente acepta o rechaza el contrato. Si él acepta el contrato, él elige su nivel de esfuerzo   e   ∈ { 0 ,   1 } . a) (10 puntos) Muestre que, dados estos parámetros, la condición técnica  a   ≥   w   −   p 0 c p 1   −   p 0  7
 
 --- Page 8 ---

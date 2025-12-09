@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2017-1_1maduy3Yp8VKDPK025rd.pdf"
+sourceFile: "I2 2017-1_1maduy3Yp8VKDPK025rd.pdf"
+---
+
 Sea   A   una matriz de 5   ×   3 tal que existe una matriz   C   de 3   ×   5 tal que   CA   =   I 3 , y sea   b  →  ∈   R 5  tal que la ecuaci´ on   A   x →   =   b  →   tiene soluci´ on. Demuestre que la soluci´ on de la ecuaci´ on   A   x →   =   b  →   es ´ unica.  Soluci´ on:  Sean   x → 1   y   x → 2   dos soluciones de la ecuaci´ on   A   x →   =   b  → . En otras palabras,   x → 1   y   x → 2   son dos vectores tales que   A   x → 1   =   A   x → 2   =   b  → . As´ ı, si pre-multiplicamos la igualdad   A   x → 1   =   A   x → 2   por   C , obtenemos   C ( A   x → 1 ) =   C ( A   x → 2 ), o sea, ( CA )   x → 1   = ( CA )   x → 2 , o lo que es lo mismo,   I 3   x → 1   =   I 3   x → 2 , o   x → 1   =   x → 2 , por lo que todas las soluciones de la ecuaci´ on son la misma.  Puntaje:  Por dar una demostraci´ on correcta (esta, u otra), 6 puntos. Si la demostraci´ on est´ a esencialmente buena, pero tiene algunos errores menores, 4 puntos. A lo anterior se le suma el punto base.
 
 --- Page 10 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+sourceFile: "I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+---
+
 ¿Cómo puede no haber excedente en una región?
 
 --- Page 9 ---

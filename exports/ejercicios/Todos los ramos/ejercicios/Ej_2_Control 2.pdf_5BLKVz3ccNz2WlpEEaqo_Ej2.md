@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Control 2.pdf_5BLKVz3ccNz2WlpEEaqo.pdf"
+sourceFile: "Control 2.pdf_5BLKVz3ccNz2WlpEEaqo.pdf"
+---
+
 (20 puntos)  El llamado camino de la seda era una ruta comercial que un´ ıa a China con los pa´ ıses de occidente desde el siglo I d.C.. Se transportaban diferentes mercanc´ ıas desde China hasta el mism´ ısimo imperio romano. A medida que el comerciante pasaba por diferentes imperios (como el Persa, por ejemplo) deb´ ıa pagar impuestos para poder continuar su camino. Imagine que un noble romano es un frecuente consumidor de seda (bien   x 1 ). Llame   x 2   al consumo de todos los otros bienes por este individuo. Este ciudadano es un t´ ıpico representante de su clase; tiene una funci´ on de utilidad dada por   u   = ( x 1   + 2) x 2 , posee un ingreso igual a   m   y enfrenta precios de la seda igual a   p 1   y un precio de los otros bienes igual a   p 2   = 1. (a)   (4 puntos)   Encuentre la funci´ on de utilidad indirecta de este consumidor. ¿Hay posibilidades de que este noble ciudadano no consuma seda? Explique. 2
 
 --- Page 3 ---

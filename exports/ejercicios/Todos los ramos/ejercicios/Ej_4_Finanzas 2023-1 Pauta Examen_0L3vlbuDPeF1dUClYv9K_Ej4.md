@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Finanzas 2023-1 Pauta Examen_0L3vlbuDPeF1dUClYv9K.pdf"
+sourceFile: "Finanzas 2023-1 Pauta Examen_0L3vlbuDPeF1dUClYv9K.pdf"
+---
+
 [ 25   pts.].  Una empresa tiene deuda pe rpetua y razón deuda - a - capital   propio   (D/E) de 2,5. Además, la  empresa cuenta con 4 millones (MM) de acciones   en circulación , de serie única   A . Estas  acciones se transan hoy a un precio de $60 cada una. La empresa anuncia   que está  considerando hacer un pre pago de $ 30 0MM de deuda, financiado por la emisión de una  nueva serie de acciones, la serie   B . Las acciones serie   B   tendrán los mismos derechos que las  serie   A , pero recibirán solo un tercio de los dividendos por acción q ue reciben las acciones  serie   A . Su ponga que ni la estructura   (perpetua)   ni el riesgo de la deuda cambian con la  reestructuración de capital y que la tasa de impuestos corporativos es 27%.  a)   [ 9   ptos.]   ¿ En qué monto   cambia el valor de la firma producto de   la reestructuración ?  b)   [ 8   ptos.]   ¿ Cuál es el precio de cada acción serie   A   justo después del anuncio   de la  reestructuración ?  c)   [ 8   ptos.]   ¿Cuántas acciones serie   B   se deben emitir   producto de la reestructuración ?  a)   En una empresa con deuda perpetua el tax shield se obtiene como   𝜏   ⋅   𝐷𝑒𝑢 𝑑 𝑎   . En este  caso, al anunciar que la deuda disminuirá en $300MM, la disminución en el valor de la  empresa es:  (4,5 pt por plantear la disminución del valor de la empresa ; 4,5 p t por el valor  correcto)  ∆ 𝑉𝑎𝑙𝑜𝑟   𝑑𝑒   𝑙𝑎   𝑒𝑚𝑝𝑟𝑒𝑠𝑎   =   ∆ 𝑇𝑎𝑥   𝑆 ℎ 𝑖 𝑒𝑙𝑑   =   0 , 27   ⋅   300 𝑀𝑀   =   81 𝑀𝑀  b)   Antes del anuncio se tiene que:  ( 1   pt por determinar E   antes del anuncio )  𝐸   =   4 𝑀𝑀   ⋅   $60   =   $240 𝑀𝑀  Sabemos que (D/E) es 2,5, por lo   tanto,   D = $600MM  (1 pt por determinar D   antes del anuncio )
 
 --- Page 9 ---

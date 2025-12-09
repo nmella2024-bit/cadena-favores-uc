@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I3 - 2019-1_0en5e3jCI3aOAOqIT9QO.pdf"
+sourceFile: "I3 - 2019-1_0en5e3jCI3aOAOqIT9QO.pdf"
+---
+
 Para esta pregunta considere el siguiente algoritmo   A :  Require:   S   =   { a 1 , a 2 , ..., a n }  if   | S |   es par   then for   i   ∈ { 1 ,   2 , ...,   | S |}   do print   a i  end for else for   i   ∈ { 1 ,   2 , ...,   | S |}   do for   j   ∈ { 1 ,   2 , ...,   | S |}   do print   a i , a j  end for end for end if  Para el an´ alisis del algoritmo considere el tama˜ no del input como   | S |   =   n . Tambi´ en considere que cada operaci´ on toma tiempo constante. En particular, la funci´ on   print   toma tiempo constante en imprimir un objeto   a i   o   a i , a j   . 1. Encuentre una funci´ on   f   para el tiempo   T A   del algoritmo tal que   T A   ∈   Θ( f   ). Explique su respuesta. 2. Demuestre que para todo   k   se tiene que   T A   / ∈   Θ( n k ).

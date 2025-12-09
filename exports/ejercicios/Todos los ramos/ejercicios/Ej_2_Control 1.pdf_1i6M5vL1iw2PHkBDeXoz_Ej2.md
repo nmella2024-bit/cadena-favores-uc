@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_1i6M5vL1iw2PHkBDeXoz.pdf"
+sourceFile: "Control 1.pdf_1i6M5vL1iw2PHkBDeXoz.pdf"
+---
+
 (50pts)  Considere el caso de un monopolio de un bien durable cuyo mercado dura solo dos periodos.   Suponga que la demanda por los servicios de un bien durable por periodo de tiempo es   P t   = 12   −   3 Q t , donde   Q t   es el stock del bien durable ofrecido en el periodo t. Suponga que el factor de descuento intertemporal para la firma y para los consumidores es el mismo e igual a   δ . El bien durable puede producirse a un costo marginal de cero.  Letra A (25 pts)  ¿Cu´ ales son los beneficios del monopolista del bien durable que se puede com- prometer a mantener el precio del durable el segundo periodo?   Encuentre el beneficio en funci´ on de   δ  La disposici´ on a pagar ser´ a: (12   −   3 q ) +   δ (12   −   3 q ) La FO: max  q   (12   −   3 q )(1 +   δ )   ∗   q  Y de la CPO encontramos el q ´ optimo:  q ∗   = 2 Esto implica un   p ∗   = 6(1 +   δ ) Finalmente, el beneficio encontrado es: Π compromiso   = 12(1 +   δ ) 3
 
 --- Page 4 ---

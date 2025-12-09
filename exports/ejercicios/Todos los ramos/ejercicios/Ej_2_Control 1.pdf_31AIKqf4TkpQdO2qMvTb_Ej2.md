@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_31AIKqf4TkpQdO2qMvTb.pdf"
+sourceFile: "Control 1.pdf_31AIKqf4TkpQdO2qMvTb.pdf"
+---
+
 (26 puntos)  Considere el problema de elecci´ on de un individuo que disfruta dedicando tiempo a jugar f´ utbol y leer. Denotaremos por   x 1   al n´ umero de partidos de f´ utbol y   x 2   el n´ umero de libros al mes. Suponga primero que s´ olo enfrenta una restricci´ on presupuestaria: tiene un ingreso de   m   al mes, y debe pagar   p 1   por cada partido y   p 2   por cada libro. Suponga que la utilidad que representa su preferencia por estas actividades es:  u ( x 1 , x 2 ) = ln   x 1   + 2 ln   x 2  2
 
 --- Page 3 ---

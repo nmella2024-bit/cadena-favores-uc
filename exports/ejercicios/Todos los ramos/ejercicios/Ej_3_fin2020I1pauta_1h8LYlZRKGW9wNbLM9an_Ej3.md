@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/fin2020I1pauta_1h8LYlZRKGW9wNbLM9an.pdf"
+sourceFile: "fin2020I1pauta_1h8LYlZRKGW9wNbLM9an.pdf"
+---
+
 [20 puntos]  a) La tasa de descuento que se debe aplicar a estos proyectos corresponde a la tasa WACC. Para esto se calcular´ a la deuda emitida por la empresa y su capital. El valor de mercado de la deuda emitida es D = 90 . 000 MM [0.5 puntos], mientras que el capital es E = 1 . 100   ·   100 MM 110 . 000 MM [0.5 puntos]. Ahora que se sabe la deuda y capital de la empresa es posible calcular el WACC:  r WACC   =   r E   ·   E E + D  +   r D   ·   (1   −   τ   )   ·   D E + D [1.5 puntos] si no consider´ o los impuestos 0.5 puntos  r WACC   = 0 ,   15   ·   110 200  + 0 ,   04   ·   (1   −   0 ,   27)   ·   90 200  r WACC   = 0 ,   0956   [0.5 punto] La tasa de descuento que se debe aplicar a estos proyectos es: 9,56 %. b) Para calcular que proveedor es m´ as conveniente se deben considerar los flujos de caja que se generan producto de la compra, la depreciaci´ on de los equipos y si venta. Para el caso del   proveedor A   se tiene que el flujo de caja es: Flujo de Caja =   − $ Compra +  6 ∑  i =1  Depreciaci´ on i   ·   τ  (1 +   r ) i   +  $ Venta   ·   (1   −   τ   ) + $Libro   ·   τ  (1 +   r ) 6  [2.5 puntos] 6
 
 --- Page 7 ---

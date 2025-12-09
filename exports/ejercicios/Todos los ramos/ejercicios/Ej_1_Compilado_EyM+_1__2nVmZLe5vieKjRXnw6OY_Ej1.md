@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Compilado_EyM+_1__2nVmZLe5vieKjRXnw6OY.pdf"
+sourceFile: "Compilado_EyM+_1__2nVmZLe5vieKjRXnw6OY.pdf"
+---
+
 Electrost´ atica  1.1.   Integrales de Coulomb: fuerza y campo el´ ectrico  (1) Considere la distribuci´ on de cargas puntuales de la figura:  d   d  − q   − q +2 q  P r  b  b b  b  a ) Calcule el campo el´ ectrico en   P  b ) Evalu´ e el caso l´ ımite   r   ≫   d , ¿c´ omo var´ ıa la magnitud del campo el´ ectrico con la distancia en este caso?  Soluci´ on:  a ) El campo el´ ectrico en   P   puede ser obtenido utilizando el   Principio de Superposici´ on . El campo el´ ectrico producido por +2 q   es simplemente:  ~ E 1   =   1  4 πǫ 0  2 q  r 2   ˆ   Si hacemos   ~ r   =   r   ˆ    y   ~ R   =   − d   ˆ ı , entonces el campo producido por la carga de la derecha es:  ~ E 2   =   −   q  4 πǫ 0  ~ r   −   ~ R  ‖ ~ r   −   ~ R ‖ 3   =   −   q  4 πǫ 0  r   ˆ    +   d   ˆ ı  ( r 2   +   d 2 ) 3 / 2  De manera an´ aloga, por simetr´ ıa, el campo producido por la carga de la izquierda es:  ~ E 3   =   −   q  4 πǫ 0  r   ˆ    −   d   ˆ ı  ( r 2   +   d 2 ) 3 / 2  As´ ı, el campo total   ~ E P   viene dado por:  ~ E P   =  3 ∑  j =1  ~ E j   =   1  4 πǫ 0  2 q  r 2   ˆ    −   1  4 πǫ 0  2 qr   ˆ   ( r 2   +   d 2 ) 3 / 2   =   q  2 πǫ 0  (   1  r 2   −   r  ( r 2   +   d 2 ) 3 / 2  )  ˆ   1
 
 --- Page 5 ---

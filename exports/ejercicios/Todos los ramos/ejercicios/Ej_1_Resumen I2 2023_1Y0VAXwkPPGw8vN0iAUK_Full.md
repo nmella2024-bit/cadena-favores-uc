@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Resumen I2 2023_1Y0VAXwkPPGw8vN0iAUK.pdf"
+sourceFile: "Resumen I2 2023_1Y0VAXwkPPGw8vN0iAUK.pdf"
+---
+
 --- Page 1 ---
 
 

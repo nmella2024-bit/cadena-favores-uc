@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2017-1_1HRV8yJcWyr9rEuW0p7D.pdf"
+sourceFile: "I2 2017-1_1HRV8yJcWyr9rEuW0p7D.pdf"
+---
+
 (5 puntos):   3 pts por el IVA a pagar (1 pto si tiene mal el número pero bien  la explicación). 2 pts por el plazo   exacto   (20 d í as) .  TRAMOS DE MORA   % PERDIDA ESTIMADA   DEUDA  30/jun/2017   PROVISION  De 0 a 30 días   5%   8.000.000   400.000  De 31 a 50 días   15%   -   -  De 51 a 70 días   30%   -   -  De 71 a 90 días   50%   -  De 91 a 150 días   65%   -  Más de 151 días   95%   -   -  8.000.000   400.000
 
 --- Page 8 ---

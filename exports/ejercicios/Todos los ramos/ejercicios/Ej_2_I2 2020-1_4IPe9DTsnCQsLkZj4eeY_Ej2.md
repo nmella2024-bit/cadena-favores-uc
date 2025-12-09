@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I2 2020-1_4IPe9DTsnCQsLkZj4eeY.pdf"
+sourceFile: "I2 2020-1_4IPe9DTsnCQsLkZj4eeY.pdf"
+---
+
 (25 puntos)  Considere la siguiente instancia de un PFCM sobre un grafo   G   = ( N ,   A )   con cotas de flujo en arco. En cada nodo se detalla la informaci´ on de oferta neta y en cada arco   a   ∈   A   se detalla un vector   ( $ c a , ` a ,   u a )   que posee informaci´ on de costo por unidad de flujo ($ c a ), cota m´ ınima de flujo ( ` a ) y capacidad m´ axima de flujo ( u a ). 1 2 3 4 5  -9  16  -9  6  -4  ( $4 ,   1 ,   7 )  ( $3 ,   0 ,   15 )  ( $1 ,   1 ,   ∞ )  ( − $1 ,   1 ,   ∞ )  ( $3 ,   0 ,   4 )  ( $1 ,   0 ,   5 )  ( $0 ,   0 ,   6 )   ( $3 ,   0 ,   ∞ )  (a)   (5p) Construya una soluci´ on b´ asica factible en donde todos los arcos horizontales y verticales esten fuera de base. ¿Cu´ ales ser´ ıan las variables b´ asicas, en   upper   y en   lower ? ¿Cuanto ser´ ıa el flujo en cada arco?  Respuesta:   Hay dos posibles configuraciones de base que cumplen lo solicitado:   B 1   =   { ( 2 ,   5 ) ,   ( 5 ,   1 ) ,   ( 5 ,   3 ) ,   ( 4 ,   5 ) } ,  L 1   =   { ( 4 ,   2 ) ,   ( 3 ,   1 ) }   y   U 1   =   { ( 4 ,   3 ) ,   ( 2 ,   1 ) } .   B 2   =   { ( 2 ,   5 ) ,   ( 5 ,   1 ) ,   ( 5 ,   3 ) ,   ( 4 ,   5 ) } ,   L 2   =   { ( 4 ,   2 ) ,   ( 4 ,   3 ) ,   ( 3 ,   1 ) }  y   U 2   =   { ( 2 ,   1 ) } .Este es su flujo respectivamente: 1 2 3 4 5  -9  16  -9  6  -4  7,   u  10 1,   `  1,   `  4,   u  1 1   6 1 2 3 4 5  -9  16  -9  6  -4  7,   u  10 1,   `  1,   `  0,   l  5 1   10  (b)   (10p) Obtenga la soluci´ on ´ optima y justifique por qu´ e lo es.  Respuesta:  Calculamos potenciales y se tiene que   r 2 , 1   =   1 estando en   upper . Esto implica que hay incentivo a bajar ese flujo.
 
 --- Page 4 ---

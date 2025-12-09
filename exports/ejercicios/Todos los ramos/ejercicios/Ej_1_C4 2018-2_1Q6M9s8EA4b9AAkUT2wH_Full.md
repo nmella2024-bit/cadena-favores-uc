@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/C4 2018-2_1Q6M9s8EA4b9AAkUT2wH.pdf"
+sourceFile: "C4 2018-2_1Q6M9s8EA4b9AAkUT2wH.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  ESCUELA DE INGENIERÍA  DEPARTAMENTO DE INGENIERÍA DE TRANSPORTE Y LOGÍSTICA  ICT 2213   –   Modelos de Demanda de Transport e  Profes or : Sebastián Raveau  Segundo   Semestre de 201 8  Prueba   4  Pauta  1 -   [ 4   puntos] Considere un modelo Logit Jerárquico con la estructura   de decisión   de  la figura. Escriba las funciones de utilidad de todas las alternativas (incluyendo sus  componentes determinísticos y estocásticos). Identifique todos   los   términos que  siguen una   distribución   Logística   y determine su varianza   en función de los  parámetros de escala . A   A   AB   A B   B   AB   B C   C   CDE   C D   D   CDE   DE   D E   E   CDE   DE   E  U   V U   V U   V U   V U   V                            =   +   + =   +   + =   +   + =   +   +   + =   +   +   +  Existen cuatro términos que siguen una distribución Logística: (   )   2   2 2   2  6   6  AB Var             =   −     (   )   2   2 2   2  6   6  CDE Var             =   −     (   )   2   2 2   2  6   6  DE Var             =   −     (   )   2   2 2   2  6   6  CDE   DE Var                +   =   −      [0,8 pts por la estructura de errores y utilidades]  [0,3 pts por cada término Logístico correctamente identificado]  [0,5 pts por cada varianza correcta]  A   B   E  λ  β  D C  γ  θ
 

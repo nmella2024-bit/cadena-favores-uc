@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2021-1_4PCX5tamZMLQfMIgXNEL.pdf"
+sourceFile: "I1 2021-1_4PCX5tamZMLQfMIgXNEL.pdf"
+---
+
 [6 puntos] Un kilo de aire, inicialmente a   5   bar ,   350   K y 3 kg de dióxido de carbono ( CO 2 ) inicialmente a   2   bar,   450 K están confinados en lados opuesto de un contenedor rígido y aislante perfecto, separados por una pared como se muestra en la figura. La pared es libre de moverse y permite la conducción de calor de un gas al otro sin almacenar energía en la pared. Considere que el aire y el   CO 2   se comportan como gases ideales con calores específicos constantes. Recordar   1   bar   = 100   kPa.  (a) Determine los volumenes iniciales y la temperatura de equilibrio termodinámico ( 2.5 pts ). (b) Calcule la presión y los volumenes finales de cada gas ( 3.5 pts ).  6
 
 --- Page 7 ---

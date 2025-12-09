@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Capitulo 3.pdf_4Ya8w5aCC3msrekIWOEp.pdf"
+sourceFile: "Capitulo 3.pdf_4Ya8w5aCC3msrekIWOEp.pdf"
+---
+
 --- Page 1 ---
 EAA1520 - Inferencia Estad´ ıstica  M. Ignacia Vicu˜ na - Felipe Ossa - Ricardo Olea 2do Semestre 2023 Cap´ ıtulo 3  : ,   1
 

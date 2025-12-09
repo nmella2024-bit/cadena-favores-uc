@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/2019-2 Enunciado.pdf_0ZAUf5yPnjAI7NhekwNl.pdf"
+sourceFile: "2019-2 Enunciado.pdf_0ZAUf5yPnjAI7NhekwNl.pdf"
+---
+
 [20 puntos] Modelo Binomial  El precio actual de una acci´ on es $50. Durante cada uno de los siguientes dos meses, el precio de la acci´ on se espera que suba en 10 % o baje en 10 %. La tasa libre de riesgo es 1 % mensual (12.68 % anual). Existe en el mercado un derivado financiero cuyo activo subyacente es la acci´ on, el que puede ser ejercido s´ olo en la fecha de ejercicio (es decir, es de estilo Europeo). La fecha de ejercicio (fecha de expiraci´ on) del derivado es dentro de dos meses a partir de hoy. El flujo que entrega este activo derivado a su due˜ no depende del precio de mercado que tenga la acci´ on en la fecha de expiraci´ on,   S T   , y est´ a descrito por la siguiente expresi´ on  max   ( | S T   −   X | −   Y,   0) donde   X   e   Y   son dos par´ ametros del derivado que se fijan hoy. Asuma que   X   = $50 e   Y   = $5. a)   (5 puntos)   Grafique detalladamente los flujos que entrega este derivado como funci´ on del precio del activo subyacente al momento de expiraci´ on,   S T   . ¿Qu´ e portafolio de opciones call y put entrega los mismos flujos en expiraci´ on que el activo derivado descrito? 14
 
 --- Page 15 ---

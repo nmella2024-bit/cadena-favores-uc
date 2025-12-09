@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 03"
+topic: "General"
+number: "03"
+originalUrl: "exports/downloads/Todos los ramos/I3 2017-2_55hNdU9VujhleoSJNyRZ.pdf"
+sourceFile: "I3 2017-2_55hNdU9VujhleoSJNyRZ.pdf"
+---
+
 Tenacidad a la fractura  (5 pts.) ¿Cuál o cuáles de las siguientes   afirmaciones   referidas a la   tenacidad a la fractura   son correctas?  I.   La tenacidad a la fractura es una medida de la energía total necesaria para producir una grieta en el material.  II.   La fractura ocurre cuando la tensión aplicada excede un valor crítico,   σ c,   en presencia de algún defecto como una grieta.  III.   La tenacidad a la fractura es alta para materiales cerámicos.  IV.   Un material con estructura BCC tiene una menor tenacidad a la fractura que un material FCC a bajas temperaturas.  Respuesta:  a)   I y III  b)   I, II y IV  c)   II y III  d)   II y IV

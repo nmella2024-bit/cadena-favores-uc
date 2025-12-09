@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantía3_MAT1620_2023_2 (enunciado)_1mo5ukH8gLZsH7fPJ0OQ.pdf"
+sourceFile: "Ayudantía3_MAT1620_2023_2 (enunciado)_1mo5ukH8gLZsH7fPJ0OQ.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA Segundo semestre 2023  Ayudant´ ıa 3 - MAT1620  1. Determine si las siguientes series convergen absolutamente, convergen condicionalmente o di- vergen. (a)  ∞ ∑  k =1  1  k   + 3 k   . (b)  ∞ ∑  k =1  ( − 1) k k k 2   + 2  . (c)  ∞ ∑  k =1  3 k k 2  k !   . (d)  ∞ ∑  k =1  k 2 e − k 3  . (e)  ∞ ∑  k =2  1  k   ln( k ) . (f)  ∞ ∑  k =1  ( − 1) k √ k k   + 5   . (g)  ∞ ∑  k =1  k sen  (   1  k  )  . (h)  ∞ ∑  k =1  (   k k   + 1  ) k 2  . 2. Determine todos los valores de   k >   0 para los que la serie  ∞ ∑  n =1  ( n !) 2  ( kn )! es convergente. 3. Determine el radio e intervalo de convergencia de las siguientes series de potencia. (a)  ∞ ∑  k =1  ( − 4) k ( x   + 1) k  √ 2 k   + 1   .   (b)  ∞ ∑  k =1  k 2 ( x   −   3) k  2 k − 1   .   (c)  ∞ ∑  k =1  k !(2 x   −   1) k . 4. Encuentre una serie de potencias cuyo intervalo de convergencia sea [ − 1 ,   8).
 

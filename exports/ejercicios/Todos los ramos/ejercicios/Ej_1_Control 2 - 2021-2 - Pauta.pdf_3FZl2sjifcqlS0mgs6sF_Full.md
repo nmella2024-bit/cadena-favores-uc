@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 2 - 2021-2 - Pauta.pdf_3FZl2sjifcqlS0mgs6sF.pdf"
+sourceFile: "Control 2 - 2021-2 - Pauta.pdf_3FZl2sjifcqlS0mgs6sF.pdf"
+---
+
 --- Page 1 ---
 Macroeconomía II – 2021/2  1. Verdadero y Falso (50 Puntos)  1. Falso. Las medidas tuvieron como consecuencia la expansión de la base mone- taria, generando in fine un aumento de la cantidad de dinero en circulación. 2.   Falso. La tasa a la cual un banco comercial presta fondos a otro de un día para el otro es la tasa interbancaria. La tasa de política monetaria se refiere a préstamos del banco central a bancos comerciales. 3.   Verdadero. La respuesta se obtiene a partir de la ecuación de Euler del modelo. La mayor inflación futura implica un mayor costo de oportunidad del dinero a futuro. Dado que el dinero es el único activo que permite consumir en el modelo de dinero por adelantado, la mayor inflación implica un mayor costo por consumir a futuro. Por lo tanto, el agente representativo debe elevar el consumo presente relativamente mas. 4.   Falso. La respuesta se obtiene a partir de la ecuación de Euler del modelo. Se puede ver que cambios en la tasa nominal de interés (que depende de la inflación) pueden distorsionar la decisión intertemporal de consumo 5.   Verdadero. El dificil acceso a los bancos comerciales se puede pensar como un aumento en el costo fijo de sacar dinero en el modelo de Baumol-Tobin. Un aumento en este costo fijo implica que el agente retira mas dinero por que elige retirar con menor frecuencia. Por lo tanto sube la demanda por dinero. 1
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_15meuuh2LbcpJqrFmfKA.pdf"
+sourceFile: "Prueba 2.pdf_15meuuh2LbcpJqrFmfKA.pdf"
+---
+
 ( 21   puntos)  Juana Estrella acaba de nacer. Su padre, Ignacio, es el encargado de proveer los  pañales y las mamaderas. El ingreso semanal del que dispone Ignacio para gastar  en pañales y mamaderas es de   $33 . 000 , siendo el precio de las mamaderas de  $1 . 000   y el de los pañales, 3 veces el de las mamaderas.   Suponga que tanto los  pañales como las mamaderas pueden consumirse en cantidades divisibles.  La función de utilidad de Ignacio de pañales y mamaderas es:  𝑈 ( 𝑞 𝑀 ,   𝑞 𝑃 )   =   𝑞 𝑀  0 . 5 𝑞 𝑃  0 . 5 ,  donde   𝑞 𝑀   e s la cantidad de mamaderas y   𝑞 𝑃   ,   la   cantidad de pañales . L a tasa  marginal de sustitución de las mamaderas es   | 𝑇𝑀𝑆 𝑀 , 𝑃 |   =   𝑞 𝑃  𝑞 𝑀  .  1)   ( 6   puntos)   Encuentre cuántos pañales y mamaderas consume Ignacio en el  óptimo. Dibuje un gráfico y muestre l a   canasta   óptim a   alcanzad a .   Trabaje  con las   mamaderas   en el eje   horizontal   y con los   pañales   en el eje   vertical .  Respuesta  Condición de óptimo  𝑇𝑀𝑆 𝑀 , 𝑃   =   𝑞 𝑃  𝑞 𝑀  =   1000  3000 .  Entonces,   3 𝑞 𝑃   =   𝑞 𝑀 .  Reemplazando en la   restricción presupuestaria :  33000   =   ( 1000   ×   3 𝑞 𝑃 )   +   ( 3000   ×   𝑞 𝑃 )  obteniéndose  𝑞 𝑃   =   5 . 5  𝑞 𝑀 =16.5
 
 --- Page 6 ---

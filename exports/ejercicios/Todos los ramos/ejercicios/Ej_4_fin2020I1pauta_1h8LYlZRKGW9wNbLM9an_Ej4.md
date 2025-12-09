@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/fin2020I1pauta_1h8LYlZRKGW9wNbLM9an.pdf"
+sourceFile: "fin2020I1pauta_1h8LYlZRKGW9wNbLM9an.pdf"
+---
+
 [20 puntos]  Alternativa 1  Para que a la persona le convenga el retiro del 10 %, debe cumplirse que: (Situaci´ on sin 10 %)   ≤   (Situaci´ on con 10 %) 6   ≤   3 ,   6 + Valor presente 10 % 2 ,   4   ≤   Valor presente 10 %   [5 punto] El valor presente del monto del 10 % considerando el cobro anual por comisiones a una tasa c es: Valor presente 10 % =  4   ·   (1   −   c ) 20 (1 +   r ) 20  (1 +   r ) 20  8
 
 --- Page 9 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2013-2_0daM7HmG7vo6w4vlsJnw.pdf"
+sourceFile: "I2 2013-2_0daM7HmG7vo6w4vlsJnw.pdf"
+---
+
 a) Calcule la siguiente integral  ∫   1 0  ∫   π/ 2 arcsin( y )  cos( x ) √ 1 + cos 2 ( x ) dxdy.
 
 --- Page 5 ---

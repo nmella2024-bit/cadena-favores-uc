@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 5 - Funciones recursivas.pdf_1vTbk9DDKtwTYyKoovMp.pdf"
+sourceFile: "Clase 5 - Funciones recursivas.pdf_1vTbk9DDKtwTYyKoovMp.pdf"
+---
+
 --- Page 1 ---
 IIC1103  Clase 5: Funciones recursivas. Nicol´ as Alvarado - Francisca Cattan  Universidad Cat´ olica de Chile  8 de enero, 2024
 

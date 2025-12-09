@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 7"
+topic: "General"
+number: "7"
+originalUrl: "exports/downloads/Todos los ramos/I2 2020-2_2GtK3yRZTdTwdDMOIkhr.pdf"
+sourceFile: "I2 2020-2_2GtK3yRZTdTwdDMOIkhr.pdf"
+---
+
 (7 puntos) La rueda trasera izquierda de un vehículo gira a 430 rpm cuando el motor del  vehículo opera a 2400 rpm en 3ra marcha que tiene una relación de desmultiplicación de
 
 --- Page 2 ---

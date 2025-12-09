@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_0dOTaIww2BmYksEZOEOF.pdf"
+sourceFile: "Examen.pdf_0dOTaIww2BmYksEZOEOF.pdf"
+---
+
 [22 puntos]  En los ´ ultimos meses hemos visto el gran impacto que ha tenido a nivel global el anuncio de alza de aranceles en los EEUU. Los mismos ciudadanos estadounidenses han salido a manifestarse en contra de esta medida, como ilustra la fotograf´ ıa.  Para ilustrar la situaci´ on, considere un mercado en que un bien se produce localmente con una tecnolog´ ıa tal que la funci´ on de oferta est´ a representada por  q s   =   p  2   ,  y en que la demanda local est´ a representada por:  q d   = 50   −   p  2   .  1
 
 --- Page 2 ---

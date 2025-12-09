@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3 2016-TAV_2F7deawuD1bWkHZuJuaY.pdf"
+sourceFile: "I3 2016-TAV_2F7deawuD1bWkHZuJuaY.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CAT  ´ OLICA DE CHILE FACULTAD DE MATEM  ´ ATICAS DEPARTAMENTO DE MATEM  ´ ATICA TEMPORADA ACAD ´ EMICA DE VERANO 2016  MAT1630   ⋆   CALCULO III INTERROGACI ´ ON 3  1. Considere la regi´ on   R   acotada por ( x   + 3) 2   +   y 2   + ( z   + 2) 2   = 4 ,   ( z   + 2) 2   = ( x   + 3) 2   +   y 2 .  Escriba en coordenadas esf´ ericas y cil´ ındricas, la integral triple que representa el volumen de  R . Calcule dicho volumen. 2. Un s´ olido tiene forma de cilindro circular recto con radio   R   y altura   h . Si la densidad es directamente proporcional a la distancia a una de las bases, determine las coordenadas del centro de masa del s´ olido. 3. Considere   F   ( x, y ) =  (   y 2  x 2   +   y 2   ,   − x 2  x 2   +   y 2  )  definido para ( x, y ) en   R 2   \ { (0 ,   0) } .  a ) Calcule la integral de l´ ınea del del campo   F   ,  ∫  γ  F dγ , para la curva   γ ( t ) = ( a   cos( t ) , a   sen( t )) con   t   ∈   [0 , π ],   a   ∈   R + .  b ) Determine si   F   es, o no, un campo conservativo. 4. Considere   R   la regi´ on interior al cuadrado de v´ ertices (1 ,   1) ,   ( − 1 ,   1) ,   (1 ,   − 1) ,   ( − 1 ,   − 1) y exterior a la circunferencia de radio 1 y centrada en el origen. Considere  F   ( x, y ) =  (   y x 2   +   y 2   ,   − x x 2   +   y 2  )  + ( − y, x ) .  Sea   γ   la curva que recorre la frontera de   R   orientada positivamente. Calcule la integral de l´ ınea  ∫  γ  F dγ .  Observaci´ on:   Para la pregunta 2 pueden ser de ayuda las siguientes f´ ormulas, para calcular el centro de masa de una regi´ on   R   con densidad   ρ ( x, y, z ).  M   =  ∫   ∫   ∫  R  ρ ( x, y, z )   dxdydz,   M xy   =  ∫   ∫   ∫  R  zρ ( x, y, z )   dxdydz,   M xz   =  ∫   ∫   ∫  R  yρ ( x, y, z )   dxdydz M yz   =  ∫   ∫   ∫  R  xρ ( x, y, z )   dxdydz   ( x, y, z ) =  ( M yz  M  ,  M xz  M  ,  M xy  M  )
 

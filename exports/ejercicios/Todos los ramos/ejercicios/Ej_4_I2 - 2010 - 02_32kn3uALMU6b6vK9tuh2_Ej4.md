@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 - 2010 - 02_32kn3uALMU6b6vK9tuh2.pdf"
+sourceFile: "I2 - 2010 - 02_32kn3uALMU6b6vK9tuh2.pdf"
+---
+
 Antes de iniciar el rescate de los 33 mineros, las pruebas iniciales de la Fenix 1 indicaban que demorar´ ıan aproximadamente una hora en sacar a cada uno. A las 23:19 horas del d´ ıa 12 de octubre se inicio el descenso de la Fenix 2, volviendo 51 minutos despu´ es con el primer de ellos. A las 07:58 horas ya se ten´ ıa al noveno minero en la superficie y los datos hasta ese instante nos indicaban que en promedio el tiempo de rescate era de 40,8 minutos con una desviaci´ on est´ andar de 7,4 minutos. Las autoridades en ese instante informaron que esperaban tener a los 33 mineros a salvo antes de medianoche. En ese momento, ¿cu´ al era la probabilidad que eso efectivamente ocurriese? Suponga que los tiempos de rescate de los mineros restantes son independientes y distribuyen Normal con los datos que hasta ese momento se ten´ ıan.  Nota:   Tiempo de rescate, se consideran todas las instancias, es decir: preparaci´ on en la superficie, tiempo de bajada, abrazos, preparaci´ on en la mina, tiempo de subida y recepci´ on en la superficie (incluyendo abrazos, fotos y breves palabras).  Soluci´ on  Definamos   X 10 ,. . . , X 33   como los tiempos de rescate de los 24 mineros que a´ un permanec´ ıan en la mina a esa hora. Se pide calcular  P  (   33 ∑  i =10  X i   ≤   962  )  [1.0 Ptos]  Si suponemos que  X 10 , . . . , X 33 iid  ∼   Normal( μ X   = 40 , 8;   σ X   = 7 , 4) ,  entonces   33 ∑  i =10  X i   ∼   Normal( μ   = 24   ·   μ X   , σ   =   √ 24   ·   σ X   )   [2.0 Ptos]  Luego,  P  (   33 ∑  i =10  X i   ≤   962  )  = Φ  (   962   −   24   ·   μ X  √ 24   ·   σ X  )  [0.5 Ptos]  = Φ  (   962   −   24   ·   40 , 8 7 , 4   ·  √ 24  )  [0.5 Ptos]  = Φ ( − 0 , 4744507)   [0.5 Ptos]  = 1   −   Φ (0 , 4744507)   [0.5 Ptos]  ≈   1   −   Φ (0 , 48) = 1   −   0 , 6844 = 0 , 3156   [1.0 Ptos] + 1 Punto Base  EYP1113 - Probabilidad y Estad´ ıstica Segundo Semestre 2010  9   Profesores: Ricardo Aravena Ricardo Olea
 
 --- Page 10 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_46CJruJYWyyewdU8k66t.pdf"
+sourceFile: "Prueba 2.pdf_46CJruJYWyyewdU8k66t.pdf"
+---
+
 (a) En equilibrio 3 p   = 1000   −   p  4
 
 --- Page 5 ---

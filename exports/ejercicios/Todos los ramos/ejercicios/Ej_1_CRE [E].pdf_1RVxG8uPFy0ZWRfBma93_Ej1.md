@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/CRE [E].pdf_1RVxG8uPFy0ZWRfBma93.pdf"
+sourceFile: "CRE [E].pdf_1RVxG8uPFy0ZWRfBma93.pdf"
+---
+
 (14 puntos)   Considere el siguiente ejercicio: se tira una moneda dos veces, y se asigna  como resultado del experiment o   un 1 si se obtiene cara, y   un cero si se obtiene sello.  Se definen las siguientes variables aleatorias:     X: suma de resultados de ambas monedas     Y: resultado de   primera   moneda menos el resultado de la   segunda   moneda  a.   (5 puntos)   Complete   es su cuadernillo   l a siguiente tabla con la distribución conjunta para  X e Y:  X   \   Y   - 2   - 1   0   1   2  - 2  - 1  0  1  2  b.   (4 puntos)   Demuestre que X e Y NO son independientes, pero que si tienen correlación  cero.  c.   (5 puntos)   Calcule E[Y|X=x] para   aquellos valores de x donde P(X=x)>0. L uego verifique  que E[E[Y|X]]=E[Y] .  2)   (10 puntos) Se ha obtenido una muestra aleatoria simple del consumo anual de  ibuprofeno de 100 personas. Para cada una de estas personas, se cuenta con datos de la  cantidad de ibup rofeno que consumió en el último año. Usted cuenta con la siguiente  información:  ∑   𝑥 𝑖   =   500  𝑖  ,   ∑   𝑥 𝑖  2   =   4084  𝑖  Suponiendo que el consumo de ibuprofeno sigue una distribución normal.  a.   (7 puntos) Evalúe formalmente la hipótesis nula de que el consumo promedio   de  ibuprofeno en el último año fue de 7, frente a la hipótesis alternativa de que fue distinto  a 7. Considere un nivel de significancia del 5%. Justifique cada uno de sus pasos.
 
 --- Page 3 ---

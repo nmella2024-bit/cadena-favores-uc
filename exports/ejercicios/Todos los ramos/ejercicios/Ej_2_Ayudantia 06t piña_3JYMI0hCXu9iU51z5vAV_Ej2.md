@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Determine si la serie   ∞ ∑  n =1  ( − 1) n +1   n 2  n 3 +1   converge. Solución: Podemos ver que la serie dada es alternante. De esta forma, podemos determinar si la serie converge comprobando las condiciones del criterio de la serie alternante o Leibnitz.  Criterio de Leibnitz.   Sea la serie alternante de la forma   ∑   ( − 1) n a n   o   ∑   ( − 1) n +1 a n  o similar. Se puede decir que la serie converge si se cumplen las siguientes condiciones:  a n   ≥   0 l´ ım  n →∞   a n   = 0  a n   decreciente Comprobando:  a n   ≥   0  Se conoce que   n   ≥   0 , por lo que   n 2   ≥   0   y   n 3   + 1   ≥   1   >   0 . Entonces,  a n   =   n 2  n 3   + 1   ≥   0 l´ ım  n →∞   a n   = 0 l´ ım  n →∞   a n   = l´ ım  n →∞  n 2  n 3   + 1  = 0  a n   decreciente No es fácil demostrar que   a n   es decreciente sólo partiendo con   a n +1   ≤   a n   (de la forma tradicional). Sin embargo, para este caso podemos considerar la función relacionada al término   a n   y luego obtener su derivada. De esta forma,  f   ( x ) =   x 2  x 3   + 1  Y luego,  f   ′ ( x ) =   x (2   −   x 3 ) ( x 3   + 1) 2  3
 
 --- Page 4 ---

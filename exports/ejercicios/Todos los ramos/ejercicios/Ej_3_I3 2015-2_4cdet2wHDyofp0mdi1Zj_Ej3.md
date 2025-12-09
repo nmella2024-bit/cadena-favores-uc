@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2015-2_4cdet2wHDyofp0mdi1Zj.pdf"
+sourceFile: "I3 2015-2_4cdet2wHDyofp0mdi1Zj.pdf"
+---
+
 (12 puntos)  Una compa˜ n´ ıa industrial posee un conjunto de plantas en las que fabrica productos para satisfacer demandas en ciertos centros de consumo.   Esta empresa quiere planificar sus operaciones sobre un horizonte consistente en   T  periodos. Sea   F   el conjunto de f´ abricas y sea   D   el conjunto de centros de demanda. Sea   P   el conjunto de productos. En cada centro de demanda   j   ∈   D   se conoce la demanda   d k jt   por el producto   k   ∈   P   en el periodo   t   ∈ { 1 , . . . , T   } . Cada f´ abrica tiene una capacidad productiva total igual a   Q it , i   ∈   F   en el periodo   t . Cada unidad del producto   k   ∈   P
 
 --- Page 3 ---

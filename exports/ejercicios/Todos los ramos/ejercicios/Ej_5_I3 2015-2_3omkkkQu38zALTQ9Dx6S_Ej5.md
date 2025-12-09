@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I3 2015-2_3omkkkQu38zALTQ9Dx6S.pdf"
+sourceFile: "I3 2015-2_3omkkkQu38zALTQ9Dx6S.pdf"
+---
+
 Demuestre que el volumen de una pir´ amide de altura   h   y base rectangular con dimensiones   a   y  b   es   abh  3   .  Soluci´ on:  Tomaremos como eje   X   el eje de la pir´ amide, que va perpendicularmente desde su c´ uspide a su base, perpendicularmente a esta. As´ ı, 0   ≤   x   ≤   h . La secci´ on de pir´ amide perpendicular a este eje es un rect´ angulo semejante a la base, por lo que sus lados son proporcionales a los lados de esta. M´ as precisamente, la secci´ on que se obtiene al cortar a una distancia   x   de la c´ uspide es un rect´ angulo de lados   ax h   y   bx h   , por lo que su ´ area es  A ( x ) =  ( ax h  )  ·  ( bx h  )  =   abx 2  h 2   . As´ ı, el volumen de la pir´ amide es  V   =  ∫   h  0  A ( x )   dx   =  ∫   h  0  abx 2   dx h 2   =   ab h 2  ∫   h  0  x 2   dx   =   ab h 2  x 3  3  ∣ ∣ ∣ ∣ ∣  h  0  =   ab h 2   ·   h 3  3   =   abh  3   .
 
 --- Page 6 ---

@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I3 - 2019-1_0en5e3jCI3aOAOqIT9QO.pdf"
+sourceFile: "I3 - 2019-1_0en5e3jCI3aOAOqIT9QO.pdf"
+---
+
 Para un conjunto finito   D   =   { a 1 , . . . , a n } ⊆   N   con   a 1   < . . . < a n   se define median( D ) como la   mediana   del conjunto   D   tal que: median( D )   =  a d   n +1 2   e   +   a b   n +1 2   c  2 Esto es, la mediana de   D   es un valor tal que divide el conjunto   D   en dos conjuntos de igual tama˜ no. Por ejemplo, si   D   =   { 1 ,   4 ,   8 ,   11 ,   15 }   entonces median( D ) = 8. En cambio, si   D   =   { 1 ,   4 ,   8 ,   11 ,   15 ,   20 }   entonces median( D ) =   8+11 2   = 9 , 5. Sea   I   = [ a, b ] =   { x   ∈   R   |   a   ≤   x   ≤   b }   un intervalo en los reales con   a, b   ∈   N . Demuestre usando inducci´ on fuerte que para todo conjunto finito   D , si   I   contiene m´ as de la mitad de los elementos de   D , entonces la mediana de   D   esta en el intervalo   I . Formalmente, demuestre que si   | I   ∩   D |   >   | D |  2   , entonces median( D )   ∈   I . 2

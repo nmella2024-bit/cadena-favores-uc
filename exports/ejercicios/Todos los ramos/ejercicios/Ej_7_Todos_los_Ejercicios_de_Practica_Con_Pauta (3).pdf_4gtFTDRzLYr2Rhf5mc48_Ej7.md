@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 7"
+topic: "General"
+number: "7"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 7   Suponga que una consultora de tecnología decide adoptar el siguiente mecanismo de compensación para sus analistas: les paga un salario  w   =   α   +   βm,  donde  m   =   e 1   +  1 2 e 2  es una señal que captura el nivel de esfuerzo   e 1   ≥   0   del analista en desarrollar soluciones innovadoras (por ejemplo, mejorar algoritmos y optimizar procesos), pero también refleja par- cialmente el esfuerzo   e 2   ≥   0   en cortar esquinas de manera no ética (por ejemplo, violar normas de privacidad de datos). Suponga que a la consultora le gustaría que   e 1   fuera lo más alto posible, pero desea que   e 2  fuera lo más bajo posible (es decir, lo más cercano a   0   posible), ya que cuanto mayor es   e 2 , mayor es la probabilidad de que la consultora enfrente problemas legales. Por lo tanto, vamos a suponer que los ingresos de la consultora como función de   e 1   y   e 2   estarán dados por  e 1   −   e 2 .  Suponga que el costo para el analista en hacer el esfuerzo   e 1   está dado por   1 4   e 2 1 , mientras que el costo asociado al esfuerzo   e 2   está dado por   1 4   e 2 2 . En una primera etapa, la consultora elige   α   y   β . Observado eso, el analista decide si acepta o rechaza el contrato ofrecido. Si no lo acepta, el analista recibe su opción externa   w , mientras que la empresa recibe   0 . Si acepta la oferta, el analista elige   e 1   y   e 2   que maximizan su utilidad:  u ( e 1 , e 2 ) =   α   +   β ( e 1   +  1 2 e 2 )   −   1 4 e 2 1   −   1 4 e 2 2 ,  y la empresa obtiene una ganancia de  π ( e 1 , e 2 ) =   e 1   −   e 2   −   α   −   β ( e 1   +  1 2 e 2 ) .
 
 --- Page 84 ---

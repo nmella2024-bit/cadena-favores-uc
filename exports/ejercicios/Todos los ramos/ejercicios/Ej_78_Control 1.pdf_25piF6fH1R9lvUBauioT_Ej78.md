@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 78"
+topic: "General"
+number: "78"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_25piF6fH1R9lvUBauioT.pdf"
+sourceFile: "Control 1.pdf_25piF6fH1R9lvUBauioT.pdf"
+---
+
 000   128.550  TOTAL ACTIVOS   1.445.600   1.437.650   TOTAL PASIVOS Y PAT.   1.445.600   1.437.650  ESTADO DE   RESULTADOS 2021  Ingreso por Ventas   819.000  Costo de Ventas   - 409.500  Margen Bruto   409.500  Gastos de Administración y Ventas  Gasto por Arriendos   - 120.000  Gasto por Seguro   -   12.450  Gasto por Depreciación   -   13.500  Gasto en   Sueldos   - 150.000  Ingresos/Gastos No Operacionales  Gasto por Intereses   -   15.000  Utilidad por Venta de Terreno   30.000  Utilidad por Venta de Edificio   0  Resultado del

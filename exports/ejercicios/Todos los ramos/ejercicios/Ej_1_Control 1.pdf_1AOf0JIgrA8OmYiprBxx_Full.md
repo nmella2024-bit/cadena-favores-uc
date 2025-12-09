@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_1AOf0JIgrA8OmYiprBxx.pdf"
+sourceFile: "Control 1.pdf_1AOf0JIgrA8OmYiprBxx.pdf"
+---
+
 --- Page 1 ---
 1  PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE  ESCUELA DE ADMINISTRACION  1 9   de   abril   202 4  Pauta   Control 1  EAA 305A  DIRECCION DE EMPRESAS Y ESTRATEGIA  7 0 minutos   -   5 5   puntos  Profesor  JOSE RIVERA IZAM  No se responden preguntas durante   el control .   Si tiene alguna duda respecto del enunciado   en  alguna pregunta, usted debe dejar expresa y claramente indicado en su hoja de respuesta los supuestos  para responder la pregunta en cuestión. En   el   caso que ese supuesto haya sido necesario para responder  la pregunta (evaluación que hará el profesor), será considerado para evaluar su respuesta, de lo contrario  se omitirá.  BUENA SUERTE
 

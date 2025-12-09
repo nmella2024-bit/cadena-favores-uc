@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1 [P] [P2].pdf_0CT2D5gOdFqv5TLcFhjC.pdf"
+sourceFile: "Prueba 1 [P] [P2].pdf_0CT2D5gOdFqv5TLcFhjC.pdf"
+---
+
 --- Page 1 ---
 Macroeconomía II  Prueba 1  Profesores :   Javier Turén y Juan Urquiza  Ayudantes :   Isidora Schudeck, Constanza Aguilera,   Nicolás   Argomedo, Laura Covarrubias,  María   Jos é́́   Giacoman y Francisco Rosende.  Sección 3   –   Dinero en la función de utilidad   (45   puntos)  Considere la versión simplificada del modelo dinámico de equilibrio general con dinero  que revisamos en clase. En particular, considere el problema de optimización que enfrenta  un agente representativo que busca maximizar el valor presente de su ut ilidad:  𝑉   =   𝑈   ( 𝑐 𝑡 ,   𝑀 𝑡  𝑃 𝑡  )   +   𝛽   ×   𝑈   ( 𝑐 𝑡 + 1 ,   𝑀 𝑡 + 1  𝑃 𝑡 + 1  )  donde   𝑐 𝑡   es el consumo en el período   𝑡 ,   ( 𝑀 𝑡   𝑃 𝑡 ⁄   )   =   𝑚 𝑡   son los saldos reales en el período  𝑡 ,   𝑈 ( ∙ )   es una función de utilidad creciente en sus dos argumentos, estrictamente cóncava  y continuamente diferenciable, y   0   <   𝛽   <   1   representa el factor de descuento .  En   𝑡   =   1 , el agente recibe un ingreso exógeno cuyo valor nominal es igual a   𝑌 1   =   𝑃 1 𝑦 1 ,  y sus tenen cias de dinero nominal (exógenas) son iguales a   𝑀 1 .  El agente debe decir cuánto consumir en cada período, cuánto dinero llevar al período 2,  y cuánto invertir en capital para poder producir en el período 2 de acuerdo con la siguiente  función de producció n:  𝑦 2   =   𝑓 ( 𝑘 1 ) ,   𝑓 ′ ( ∙ )   >   0 ,   𝑓 ′′ ( ∙ )   <   0  El capital se deprecia a una tasa   𝛿 .  Además, en   𝑡   =   1   el agente puede ahorrar/endeudarse a una tasa nominal igual a   𝑖 1 .  De esta forma, la restricción presupuestaria inter - temporal viene dada por:  𝑃 2 𝑓 ( 𝑘 1 )   +   𝑃 2 ( 1   −   𝛿 ) 𝑘 1   +   ( 1   +   𝑖 1 ) [ 𝑃 1 𝑦 1   +   𝑀 1   −   𝑃 1 𝑐 1   −   𝑃 1 𝑘 1 ]   −   𝑖 1 𝑀 2   =   𝑃 2 𝑐 2  a.   ( 4   puntos) Explique cómo se justifica el supuesto de que los saldos reales generan  utilidad.
 

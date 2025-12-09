@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1 E 2022-1.pdf_4RCyhWGLsZ7guVIF98Vq.pdf"
+sourceFile: "Prueba 1 E 2022-1.pdf_4RCyhWGLsZ7guVIF98Vq.pdf"
+---
+
 (9   puntos)  Álvaro   es   un   productor   de   música.   Está   buscando   armar   una   nueva   banda   de   K - pop,   y  haciendo   audiciones   para   encontrar   los   integrantes   de   dicha   banda.   Hay   tres   atributos   que  Álvaro   evalúa   en   cada   candidato:  (1)   el   número   de   instrumentos   que   toca   (mientras   m ás   instrumentos   mejor);  (2)   el   rango   vocal   del   artista   (cantidad   de   notas   que   pueden   cantar,   mientras   más   notas  mejor);  ( 3)   su   manejo   del   idioma   coreano   (determinado   por   la   nota   obtenida   en   el   examen   TOPIK  de   coreano).  Álvaro   prefiere   un   artista   A   a   un   a rtista   B   cuando   A   es   mejor   en   al   menos   dos   de   los   tres  atributos   que   B;   si   no ,   Álvaro   está   indiferente   entre   ellos.  Los   candidatos   que   se   presentaron   son:  Berni:   toca   el   bajo,   la   guitarra   y   la   batería;   tiene   un   rango   vocal   de   16   notas,   y   obtuvo   230  puntos   en   el   examen   TOPIK.  Alejandro:   toca   el   bajo   y   la   guitarra;   tiene   un   rango   vocal   de   24   notas   y   obtuvo   120   puntos  en   el   examen   TOPIK .  Gómez:   toca   sólo   batería;   tiene   un   rango   vocal   de   20   notas,   y   obtuvo   300   puntos   en   el  examen   TOPIK.
 
 --- Page 3 ---

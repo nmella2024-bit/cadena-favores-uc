@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 9"
+topic: "General"
+number: "9"
+originalUrl: "exports/downloads/Todos los ramos/I3-2015-2S_1nOOsy4B8X6cfMzFnt2t.pdf"
+sourceFile: "I3-2015-2S_1nOOsy4B8X6cfMzFnt2t.pdf"
+---
+
 El valor del m´ odulo de la fuerza en el elemento   CG   de la armadura es a)   GC   =  15 16 P  b)   GC   =  8 5 P  c)   GC   =  3 2 P  d)   GC   =  5 4 P
 
 --- Page 5 ---

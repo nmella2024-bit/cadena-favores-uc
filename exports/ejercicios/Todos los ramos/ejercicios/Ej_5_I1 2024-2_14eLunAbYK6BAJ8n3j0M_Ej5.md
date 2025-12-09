@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I1 2024-2_14eLunAbYK6BAJ8n3j0M.pdf"
+sourceFile: "I1 2024-2_14eLunAbYK6BAJ8n3j0M.pdf"
+---
+
 Determine cuáles de los sistemas de ecuaciones lineales que aparecen en la columna de la izquierda, podrían corresponder a las posiciones relativas de planos ilustradas en la columna de la derecha. Justifique su respuesta en cada caso.  Solución:  Dado que las dos primeras ecuaciones de los tres sistemas son las mismas, podemos construir una matriz ampliada que contenga a todas las ecuaciones y escalonarla para realizar el análisis.         1   1   − 1   3 1   − 1   − 1   1 2   1   − 2   0 1   2   − 1   4 1   2   1   1          ∼         1   1   − 1   3 0   1   0   1 0   0   0   1 0   0   0   0 0   0   1   − 3 / 2         Así, tenemos formas escalonadas de cada uno de los sistemas anteriores:  A   =     1   1   − 1   3 0   1   0   1 0   0   0   1      B   =     1   1   − 1   3 0   1   0   1 0   0   0   0      C   =     1   1   − 1   3 0   1   0   1 0   0   1   − 3 / 2     Como se puede ver, el sistema   A   no tiene solución, porque su tercera ecuación se transforma en una contradicción. Esta situación corresponde al gráfico III, donde no hay intersección de los tres planos. Para el sistema   B   hay dos variables principales y una libre, por lo que el sistema tiene infinitas soluciones, que se representan por una recta. Esta situación se describe en el gráfico I.
 
 --- Page 7 ---

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Chamorro (2017) Creativity and diversity in teams.pdf_3TsRBrMKFQaVICQNYGRq.pdf"
+sourceFile: "Chamorro (2017) Creativity and diversity in teams.pdf_3TsRBrMKFQaVICQNYGRq.pdf"
+---
+
 --- Page 1 ---
 REPRINT H 03 R 50  PUBLISHED ON HBR.ORG JUNE   28 ,   2017  ARTICLE TALENT MANAGEMENT  Does Diversity Actually Increase Creativity?  by Tomas Chamorro-Premuzic  This document is authorized for use only by HECTOR MADRID (HPMADRID@GMAIL.COM). Copying or posting is an infringement of copyright. Please contact customerservice@harvardbusiness.org or 800-988-0886 for additional copies.
 

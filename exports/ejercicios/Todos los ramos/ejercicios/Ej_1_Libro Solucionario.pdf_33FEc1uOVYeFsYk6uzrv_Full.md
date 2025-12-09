@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Libro Solucionario.pdf_33FEc1uOVYeFsYk6uzrv.pdf"
+sourceFile: "Libro Solucionario.pdf_33FEc1uOVYeFsYk6uzrv.pdf"
+---
+
 --- Page 1 ---
 Pdf-solucionario-macroeconomia-jose-de-gregorio compress  Macreoconomía 2 (Universidad Privada del Norte)  Escanea para abrir en Studocu  Studocu no está patrocinado ni avalado por ningún colegio o universidad.  Pdf-solucionario-macroeconomia-jose-de-gregorio compress  Macreoconomía 2 (Universidad Privada del Norte)  Escanea para abrir en Studocu  Studocu no está patrocinado ni avalado por ningún colegio o universidad.  Descargado por Sebastián Rengifo (srengifo616@gmail.com)  lOMoARcPSD|47138481
 

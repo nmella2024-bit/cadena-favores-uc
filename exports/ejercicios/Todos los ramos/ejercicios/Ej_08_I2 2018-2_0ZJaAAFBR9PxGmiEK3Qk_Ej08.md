@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 08"
+topic: "General"
+number: "08"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-2_0ZJaAAFBR9PxGmiEK3Qk.pdf"
+sourceFile: "I2 2018-2_0ZJaAAFBR9PxGmiEK3Qk.pdf"
+---
+
 En un punto sobre la superficie de un   material ,   se   tiene   el   estado plano de tensiones   que   se   muestra   en la figura.  (20 pts.)  Usando   el   C írculo de Mohr ,   determine:  a)   El tensor de tensiones con respecto a un sistema de ejes   rotados en un   ángulo de   𝜽   =   𝟒𝟓 °   en sentido  antihorario.  b)   Las tensiones   y direcciones   principales .  c)   El estado de tensión de corte máximo .  PAUTA  El centro del círculo de Mohr está dado por:  ( 2 pts)  𝐶   =   − 50 + 10  2   𝑀𝑃𝑎   =   − 20   𝑀𝑃𝑎 .   (1pto)  El punto A, que representa las tensiones sobre la cara   x   del elemento ,   tiene coordenadas :  𝜎 𝑥   =   − 50 𝑀𝑃𝑎   𝜏 𝑥𝑦   =   − 40 𝑀𝑃𝑎  Similarmente, las coordenadas del punto   B , que representan las tensiones sobre la cara   y , son :  𝜎 𝑦   =   10 𝑀𝑃𝑎   𝜏 𝑦𝑥   =   − 40 𝑀𝑃𝑎  El diámetro AB corresponde al estado de tensiones del elemento según los ejes   x   e   y .   Ahora   se traza el círculo por  los puntos A y   B , con centro en C y radio   R   igual a:  𝑅   =   √ ( 𝜎 𝑥 − 𝜎 𝑦  2   ) 2  +   𝜏 𝑥𝑦 2   =   50   𝑀𝑃𝑎   ( 1 pto)
 
 --- Page 10 ---

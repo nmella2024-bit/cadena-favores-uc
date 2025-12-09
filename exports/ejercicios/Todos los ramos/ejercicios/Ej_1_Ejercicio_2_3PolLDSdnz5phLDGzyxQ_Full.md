@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ejercicio_2_3PolLDSdnz5phLDGzyxQ.pdf"
+sourceFile: "Ejercicio_2_3PolLDSdnz5phLDGzyxQ.pdf"
+---
+
 --- Page 1 ---
 Utilizando el criterio de diseño último (y los ábacos), dimensionar la sección y armaduras de una columna de hormigón armado en flexo-compresión, sin pandeo. Los materiales son hormigón H30 y acero A630-420H, con   𝐸 𝑐 =250.000 kg/cm 2   y   𝐸 𝑠 =2.100.000 kg/cm 2 . Las cargas debidas a peso proprio son: esfuerzo normal = 100 Ton y momento flector = 20 Ton-m. Las correspondientes a sobrecargas de uso son: esfuerzo normal = 150 Ton y momento flector = 28 Ton-m.
 

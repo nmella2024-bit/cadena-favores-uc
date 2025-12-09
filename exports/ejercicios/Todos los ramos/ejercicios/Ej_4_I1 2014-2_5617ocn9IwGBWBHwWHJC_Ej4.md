@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I1 2014-2_5617ocn9IwGBWBHwWHJC.pdf"
+sourceFile: "I1 2014-2_5617ocn9IwGBWBHwWHJC.pdf"
+---
+
 a) Se esperaba que el alumno fuera capaz de expresar:  -En qué consiste: proceso iterativo de innovación basado 100% en las necesidades del cliente, que busca generar valor para el consumidor. Se rechaza la idea de mejorar productos ya existentes o con el mero fin de generar ganancias. Debe ser la convergencia de tecnología, economía y valor humano.  -Beneficios:   necesidad   bien identificada   +   procesos   en conjunto   con   cliente=   baja probabilidad de fracaso (se reduce dicho riesgo), pauteado de manera  que no se necesita ser “genio   de la  innovación”   y   bajos   costos   (al  prototipar   tempranamente   del proceso).  - Las respuestas más completas fueron   aquellas   que   incluyeron además de lo anterior, los 5 pasos guías del Design Thinking (que se detallaran   en   la   siguiente pregunta),   así   como   una   breve explicación   de   ellos.   A continuación se adjunta respuesta ejemplo:
 
 --- Page 8 ---

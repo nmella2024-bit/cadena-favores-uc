@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I3 2015-2_3omkkkQu38zALTQ9Dx6S.pdf"
+sourceFile: "I3 2015-2_3omkkkQu38zALTQ9Dx6S.pdf"
+---
+
 Demuestre que si   f   es continua en [0 , π ] entonces  ∫   π  0  x f   (sen   x )   dx   =   π  2  ∫   π  0  f   (sen   x )   dx.  Ayuda:   Use la sustituci´ on   u   =   π   −   x .  Soluci´ on:  Usando la sustituci´ on dada en la ayuda, se tiene   u   =   π   −   x , de donde   x   =   π   −   u   y   dx   =   − du , por lo que —aprovechando adem´ as el hecho de que sen( π   −   α ) = sen   α — se tiene  ∫   π  0  x f   (sen   x )   dx   =  ∫   0  π  ( π   −   u )   f   (sen( π   −   u )) ( − du ) =   −  ∫   0  π  ( π   −   u )   f   (sen( π   −   u ))   du  =  ∫   π  0  ( π   −   u )   f   (sen( π   −   u ))   du  =  ∫   π  0  ( π   −   u )   f   (sen   u )   du  =   π  ∫   π  0  f   (sen   u )   du   −  ∫   π  0  u f   (sen   u )   du.  Pero la variable de integraci´ on es muda, por lo que  π  ∫   π  0  f   (sen   u )   du   −  ∫   π  0  u f   (sen   u )   du   =   π  ∫   π  0  f   (sen   x )   dx   −  ∫   π  0  x f   (sen   x )   dx.  As´ ı,   ∫   π  0  x f   (sen   x )   dx   =   π  ∫   π  0  f   (sen   x )   dx   −  ∫   π  0  x f   (sen   x )   dx,  por lo que —pasando la ´ ultima integral al lado izquierdo— llegamos a 2  ∫   π  0  x f   (sen   x )   dx   =   π  ∫   π  0  f   (sen   x )   dx,  o sea,   ∫   π  0  x f   (sen   x )   dx   =   π  2  ∫   π  0  f   (sen   x )   dx.
 
 --- Page 5 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 - 2016 - 02_0Rd3Inf5cMSl12JEFYcH.pdf"
+sourceFile: "I1 - 2016 - 02_0Rd3Inf5cMSl12JEFYcH.pdf"
+---
+
 Hoy usted se enfrenta a la disyuntiva de rendir una buena evaluaci´ on y demorar poco tiempo, dado que tiene inter´ es en ver el partido de hoy completo. Basado en comportamiento en evaluaciones anteriores ha determi- nado que el tiempo   T   que le toma desarrollar de buena manera este tipo de evaluaciones se comporta como una variable aleatoria Log-Normal( λ, ζ ) trasladada en   α , es decir,   T   − α   se comporta como Log-Normal( λ, ζ ). Los datos del estudio muestran el siguiente comportamiento emp´ ırico:  Min.   1st Qu.   Median   Mean   3rd Qu.   Max. 10.00000 40.84671 50.00000 53.08132 61.86939 100.00000  (a)   [2.0 Ptos.]   En base a la informaci´ on emp´ ırica, determine los valores de   α ,   λ   y   ζ . (b)   [2.0 Ptos.]   En base los valores propuestos en (a), ¿cu´ al ser´ ıa la probabilidad que logre terminar en menos de una hora? (c)   [2.0 Ptos.]   Si su objetivo es terminar su evaluaci´ on en menos de una hora con probabilidad 0.9, ¿cu´ al deber´ ıa ser el c.o.v de la distribuci´ on propuesta en el enunciado manteniendo los valores   α   y   λ  propuestos en (a)?  Soluci´ on  (a) Tenemos que  T   −   α >   0   y   μ T   =   e λ + ζ 2 / 2   +   α   [0.2 Ptos.]  y si   t p   es el percentil   p   ×   100 %, entonces  P   ( T   ≤   t p ) =   P   ( T   −   α   ≤   t p   −   α ) = Φ  [   ln( t p   −   α )   −   λ ζ  ]  =   p   →   t p   =   e λ + ζ   Φ − 1 ( p )   +   α  es decir,  t 0 . 00   =   α   (m´ ınimo valor posible)   [0.2 Ptos.]  t 0 . 25   =   e λ − ζ   0 . 6745   +   α   [0.2 Ptos.]  EYP1113 - Probabilidad y Estad´ ıstica Segundo Semestre 2016  1   Profesores: Ricardo Aravena Cuevas Ricardo Olea Ortega
 
 --- Page 2 ---

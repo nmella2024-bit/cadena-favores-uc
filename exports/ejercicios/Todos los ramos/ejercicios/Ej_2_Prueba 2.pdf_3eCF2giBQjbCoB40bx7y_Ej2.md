@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_3eCF2giBQjbCoB40bx7y.pdf"
+sourceFile: "Prueba 2.pdf_3eCF2giBQjbCoB40bx7y.pdf"
+---
+
 Comente brevemente las siguientes afirmaciones (28 puntos, 4 puntos cada una)  a)   En una economía cerrada, la tasa de interés de equilibrio caerá durante una recesión  Si la recesión se interpreta como una caída temporal en ingreso, la gente querrá suavizar su consumo endeudándose. Como ello no es posible a nivel agregado en una economía cerrada, la tasa de interés debiese subir.  b)   Una caída en la tasa de interés acelera la convergencia al capital óptimo, ya que reduce los costos de ajuste  No, una caída en la tasa de interés cambia el capital optimo, sin tener por que estar relacionada con los costos de ajuste .  c)   Las acciones de una empresa con retornos muy volátiles debiesen transarse a un precio bajo  Lo que importa no es cuan estable o riesgosa es la empresa en términos absolutos (cual es la varianza de sus retornos), sino que como covarían con el resto de mi portafolio (con mi consumo). Un empresa puede ser muy riesgosa, pero si covaría de manera negativa con el mercado (el consumo), será muy valorada ya que provee un seguro. Por tanto se le exigirá un bajo retorno y se transará a un precio alto.  d)   Un empresario de 70 años que no tiene herederos y cuya utilidad solo depende del consumo nunca invertirá en un proyecto que entregara flujos recién en 25 años más  Falso, ya que si quiere consumir antes puede vender el proyecto y recibir el valor presente de los flujos
 
 --- Page 11 ---

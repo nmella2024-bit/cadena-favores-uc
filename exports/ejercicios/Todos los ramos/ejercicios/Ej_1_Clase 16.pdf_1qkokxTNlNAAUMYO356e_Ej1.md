@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 16.pdf_1qkokxTNlNAAUMYO356e.pdf"
+sourceFile: "Clase 16.pdf_1qkokxTNlNAAUMYO356e.pdf"
+---
+
 000   (6.050)  Patrimonio   9.400   5.350  Pasivo + Patrimonio   25.200   22.350  ACTIVOS   2019   2020  Caja   2.000   2.150  Cuentas por Cobrar   1.000   300  Existencias   5.000   7.500  Activo Circulante   8.000   9.950  Terrenos   10.000   10.000  Máquinas   8.000   3.000  Depreciación   Acum .   (800)   (600)  Activo Fijo   17.200   12.400  Total Activos   25.200   22.350  E STADO DE RESULTADOS   2020  Ingreso por Venta   3.000  Costo por Venta   (2.500)  Margen Bruto   500  Gasto en Sueldos   (4.800)  Gasto en Depreciación   (550)  Pérdida por Venta Activo Fijo   (250)  Gasto Financiero   (950)  Resultado Antes de Impuesto   (6.050)  Impuestos   -  Resultado del Ejercicio   (6.050)  INFO ADICIONAL  EAA 1210 | PRIMER SEMESTRE 2022| SECCIÓN 5   –   ANDRÉS MEDINA A.
 
 --- Page 16 ---

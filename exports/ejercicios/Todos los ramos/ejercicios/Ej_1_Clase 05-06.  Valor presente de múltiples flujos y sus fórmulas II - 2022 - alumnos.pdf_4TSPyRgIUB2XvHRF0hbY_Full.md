@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 05-06.  Valor presente de múltiples flujos y sus fórmulas II - 2022 - alumnos.pdf_4TSPyRgIUB2XvHRF0hbY.pdf"
+sourceFile: "Clase 05-06.  Valor presente de múltiples flujos y sus fórmulas II - 2022 - alumnos.pdf_4TSPyRgIUB2XvHRF0hbY.pdf"
+---
+
 --- Page 1 ---
 Fundamentos de Finanzas  EAA1220  Vincent van Kervel  Nota: parte importante de estos apuntes corresponde a material original  de M. del Sante y de L. Hernández, con cambios de forma y fondo, más  material nuevo  05. Valor presente de múltiples flujos   –   y algunas  fórmulas (II)
 

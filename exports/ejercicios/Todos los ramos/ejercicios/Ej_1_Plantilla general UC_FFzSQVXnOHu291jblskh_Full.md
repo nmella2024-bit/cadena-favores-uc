@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Plantilla general UC_FFzSQVXnOHu291jblskh.pdf"
+sourceFile: "Plantilla general UC_FFzSQVXnOHu291jblskh.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CAT  ´ OLICA DE CHILE  Escuela de Ingenier´ ıa  Plantilla UC - Documento de Ejemplo  IIC2233 - Programaci´ on Avanzada Nicol´ as Gonz´ alez Silva  ngonzalez@uc.cl Profesor: Dr. Juan Carlos L´ opez  Noviembre 2025
 

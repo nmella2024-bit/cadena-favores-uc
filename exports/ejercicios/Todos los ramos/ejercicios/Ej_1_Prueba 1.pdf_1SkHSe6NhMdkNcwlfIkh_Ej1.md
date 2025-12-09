@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_1SkHSe6NhMdkNcwlfIkh.pdf"
+sourceFile: "Prueba 1.pdf_1SkHSe6NhMdkNcwlfIkh.pdf"
+---
+
 ( 3 0   puntos)  Miraland, es un país   próspero cuyos habitantes basan su bienestar en función de un nivel de  consumo de cupcakes   𝐶 𝑡   y descanso   𝐿 𝑡 . El habitante representativo tiene una función de  utilidad que se puede expresar de la siguiente manera:  𝑈 ( 𝐶 𝑡 ,   𝐿 𝑡 )   =   𝐶 𝑡  𝛼 𝐿 𝑡  1 − 𝛼 , con α   ∈   (0,1)   (1)  Además, el descanso también se determina por una función de tecnología de las transacciones:  𝜓 ( 𝐶 𝑡 , 𝑀 𝑡 , )   ≡   𝐿 𝑡   =   (   𝑀 𝑡  𝐶 𝑡 𝑃 𝑡  ) 𝜃 , donde   𝜃   > 0   (2)  Por último, la restricción presupuestaria que enfrenta el indi viduo en cada periodo   t   es la siguiente:  𝑃 𝑡 𝑌 𝑡   +   𝑀 𝑡 − 1   +   ( 1   +   𝑖 𝑡 − 1 ) 𝑏 𝑡 − 1   =   𝑃 𝑡 𝐶 𝑡   +   𝑀 𝑡   +   𝑏 𝑡  Nota:  𝑀 𝑡   es el dinero.  𝑃 𝑡   es el nivel de precios.  𝑌 𝑡   es el ingreso.  𝑖 𝑡   es la tasa de interés.  𝑏 𝑡   son la cantidad de bonos.
 
 --- Page 4 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2013-2_2KOnxiLLimoLLj0dUww6.pdf"
+sourceFile: "I3 2013-2_2KOnxiLLimoLLj0dUww6.pdf"
+---
+
 a) Calcule la integral   ∫  C  e − ( x 2 − y 2 ) (cos (2 xy )   dx   + sen (2 xy )   dy )  donde   { ( x, y )   ∈   R 2   |   x 2   +   y 2   =   R 2 } ,   R >   0 . b) Encuentre un campo vectorial  − →  F   =   P   − →  i   +   Q − →  j  tal que para todo camino   C   seccionalmente   C 1   que va de   (1 ,   0)   a   ( − 1 ,   1)   se tenga que  ∫  C  ( P dx   +   Qdy ) = 25 .  2
 
 --- Page 3 ---

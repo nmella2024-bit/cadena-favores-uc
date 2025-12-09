@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Guia de Ejercicios ECF 1_2017_3gkeXtV9JkdV8qkOtZjE.pdf"
+sourceFile: "Guia de Ejercicios ECF 1_2017_3gkeXtV9JkdV8qkOtZjE.pdf"
+---
+
 MAT1640-6-24  b)   𝐾𝑝 0  (𝐾−𝑝 0 )𝑒 −𝑟𝑡 +𝑝 0  Pregunta N°5 MAT1203-  c)   𝑏 = 5/2  Pregunta N°6 ICS1113-3-2  a)   𝑥 1   = 5; 𝑥 2   = 0; 𝑥 3   = 0
 
 --- Page 36 ---

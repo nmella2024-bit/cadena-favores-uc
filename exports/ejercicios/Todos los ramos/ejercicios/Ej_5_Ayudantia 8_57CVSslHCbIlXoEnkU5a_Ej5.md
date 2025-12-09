@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 8_57CVSslHCbIlXoEnkU5a.pdf"
+sourceFile: "Ayudantia 8_57CVSslHCbIlXoEnkU5a.pdf"
+---
+
 Se tienen dos esferas conductoras de radio   R 1   y   R 2   separadas entre sí a una distancia lo suficientemente grande que asegura que cualquier carga sobre ellas se distribuye uniformemente sin que la presencia de una esfera afecte a la otra . Se desea distribuir una carga   Q   de manera que la energía potencial electroestática del sistema de las dos esferas sea mínima. Claramente en una esfera habrá   Q   −   q   y en la otra   q . ¿Cuánto vale   q , cual es la energía total y cual es el potencial de cada esfera cuándo se alcanza la condición de mínima energía?  —   3 de 3   —

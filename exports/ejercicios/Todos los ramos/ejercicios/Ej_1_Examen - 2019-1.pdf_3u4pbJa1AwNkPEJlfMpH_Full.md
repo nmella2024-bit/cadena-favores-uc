@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen - 2019-1.pdf_3u4pbJa1AwNkPEJlfMpH.pdf"
+sourceFile: "Examen - 2019-1.pdf_3u4pbJa1AwNkPEJlfMpH.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Católica de Chile Facultad de Ciencias Económicas y Administrativas July 3, 2019  Final exam  Macroeconomía II  Instructions  •   The duration of this test is 2 hours.  •   Do not write the answer of two questions on the same sheet   (of course, different items of the same question can be on the same sheet). You can use both sides of each sheet to answer.  •   Answers can be written in English or in Spanish.  1   True or False (25 points)  Answer TRUE or FALSE to the following sentences. You must justify your answers. 1. If the central bank wants to reduce inflation, one thing it can do is to use open market operations. To reduce inflation through open market operations, the central bank should sell bonds to the public, increasing the interest rate. (5 points) 2. If the proportion of firms that has fixed prices in an economy increases, then the gap between inflation and expected inflation   ( π t   −   π e t   )   affects less the output gap   ( y t   −   y t ) . (5 points) 3. In an economy with a fixed exchange rate regime and perfect capital mobility, an increase in taxes ( T   ) will be necessarily followed by a reduction of the money supply. (5 points) 4. In the Lucas model of imperfect information, the relationship between output and the price level is determined (among other things) by the volatility of aggregate shocks to the price level and by the volatility of idiosyncratic shocks to the relative prices of each producer (islands). (5 points) 5. Given that agents are rational in the Lucas model, an unexpected increase in the money supply (which leads to an unexpected increase in the price level) will have no real effects. (5 points)  2   IS-LM-PC (25 points)  In the last monetary policy meeting, the Central Bank of Chile (BC) decided to lower the interest rate in 0.5 points, achieving an annual interest rate of 2.5%. This reduction is the largest since 2009, Page 1
 

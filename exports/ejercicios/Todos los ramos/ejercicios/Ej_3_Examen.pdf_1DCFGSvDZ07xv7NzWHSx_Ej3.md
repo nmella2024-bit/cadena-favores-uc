@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_1DCFGSvDZ07xv7NzWHSx.pdf"
+sourceFile: "Examen.pdf_1DCFGSvDZ07xv7NzWHSx.pdf"
+---
+
 Sistema Lineal (30 puntos)  Considere el siguiente sistema lineal homog´ eneo de 2 variables:  x t +1   =   x t   −   1 2   y t  y t +1   =  3 2   x t   −   y t  1. (10 puntos) Encuentre la soluci´ on general   { x t } t ≥ 0   y   { y t } t ≥ 0   como funci´ on de   t   y de coeficientes   c 1  y   c 2   arbitrarios. 2. (10 puntos) ¿El sistema es estable? Justifique. 3. (10 puntos) A partir de la soluci´ on en el ´ ıtem 1 y del estado inicial ( x 0 , y 0 ) = (2 ,   1), encuentre los valores de   c 1   y   c 2   y obtenga la soluci´ on (trayectoria) de   { x t } t ≥ 0   y   { y t } t ≥ 0 . 1. El sistema lineal se puede escribir en forma matricial  [   x t +1  y t +1  ]  =  [   1   − 0 , 5 1 , 5   − 1  ] [   x t  y t  ]  Con matriz asociada   A   =  [   1   − 0 , 5 1 , 5   − 1  ]  . La soluci´ on general al sistema lineal corresponde a  [   x t  y t  ]  =   c 1 λ t  1 w 1   +   c 2 λ t  2 w 2  donde   λ 1   y   λ 2   son los valores propios de   A , y   w 1   y   w 2   son los vectores propios respectivos. Para encontrar los valores propios de   A , se puede calcular y encontrar las ra´ ıces del polinomio caracter´ ıstico  p ( λ ) =   | A   −   λI |  =  ∣ ∣ ∣ ∣   1   −   λ   − 0 , 5 1 , 5   − 1   −   λ  ∣ ∣ ∣ ∣  = (1   −   λ )( − 1   −   λ ) + 0 , 75 =   − 1 +   λ 2   + 0 , 75 =   λ 2   −   0 , 25 5
 
 --- Page 6 ---

@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 01"
+topic: "General"
+number: "01"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-2_0ZJaAAFBR9PxGmiEK3Qk.pdf"
+sourceFile: "I2 2018-2_0ZJaAAFBR9PxGmiEK3Qk.pdf"
+---
+
 Si se d eforma una barra de c o bre en ciclos de trabajo en fr í o ,   ¿ q ué pasa con la microestructura y las   propiedades  mecánicas durante la deformación?   (5 pts.)  a)   Los c iclos de deformación   aportan   más energía   al   material y   aumenta   su   temperatura,   por lo tanto   la ductilidad  sube con cada ciclo.  b)   Los c iclos de deformación   aportan   más energía   a l material y   aumenta   su   temperatura,   por lo tanto   la resistencia  baja con cada ciclo.  c)   Durante la deformación plástica   las   dislocaciones   se desplazan y   se   multiplican ,   siendo supresores de  movimiento de las dislocaciones , por lo tanto   el l í mite de   fluencia del material   disminuye   con cada ciclo.  d)   Durante la deformación plástica las dislocaciones se desplazan y se multiplican, siendo supresores de  movimiento de las dislocaciones , por lo tanto   el límite de fluencia   aumenta   con cada ciclo.

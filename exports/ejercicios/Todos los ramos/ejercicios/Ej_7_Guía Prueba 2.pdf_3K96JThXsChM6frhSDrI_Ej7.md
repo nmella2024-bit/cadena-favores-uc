@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 7"
+topic: "General"
+number: "7"
+originalUrl: "exports/downloads/Todos los ramos/Guía Prueba 2.pdf_3K96JThXsChM6frhSDrI.pdf"
+sourceFile: "Guía Prueba 2.pdf_3K96JThXsChM6frhSDrI.pdf"
+---
+
 3  Considere el caso de un individuo que vive 2 períodos, y que en cada período recibe una dotación  del bien de consumo:   𝑦 1   e   𝑦 2 , respectivamente. Note que es te individuo   no debe trabajar   para  obtener dichas dotaciones.  Sabemos que sus preferencias están representadas por la siguiente función de utilidad:  𝑈 ( 𝑐 1 ,   𝑐 2 )   =   ln ( 𝑐 1 )   +   𝛽   ln ( 𝑐 2 )   ,   | 𝑇𝑀𝑆 |   =   𝑐 2  𝛽 𝑐 1  donde   𝑐 1   representa el consumo en el período 1,   𝑐 2   el consumo en el período 2, y   0   <   𝛽   <   1   es un  parámetro que refleja que el individuo es impaciente y valora más el consumo presente que el  consumo futuro .   Además, sabemos que el individuo puede ahorrar y/o endeudars e a la tasa de  interés real   𝑟 .
 
 --- Page 19 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+sourceFile: "I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+---
+
 a)   Análisis por categoría s   (8 puntos):  2 o menos personas   3 o mas personas   Total  Ingreso Bajo   6*90=540 viajes   10.5*95=997.5 viajes   1537,5  Ingreso Alto   8.5*150=1275 viajes   13*110=1430 viajes   2705  Total=4242.5  [Puntuación]
 
 --- Page 7 ---

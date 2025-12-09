@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2018-1_569sYCGPu9wZyv9XBjMy.pdf"
+sourceFile: "Examen 2018-1_569sYCGPu9wZyv9XBjMy.pdf"
+---
+
 [6 puntos] Una bandeja de masa   M   = 5 m   se sostiene por dos barras id´ enticas,   AB   y   CD , y un resorte horizontal   CE   cuyo extremo se puede mover a lo largo de una gu´ ıa vertical. Sobre la bandeja, se sit´ ua un recipiente de masa   m   y altura   h , como se muestra en la figura. Considere que las barras tienen masa despreciable, y que el resorte est´ a en su largo natural para   θ   = 90 ◦ . Los puntos   G 1 y  G 2 corresponden al centro de gravedad del recipiente y de la bandeja, respectivamente.  a) Utilizando el sistema de ejes   x   −   y   mostrado en la figura, calcule los desplazamientos virtuales de los puntos   C ,   G 1 y   G 2 para un peque˜ no aumento   δθ   del ´ angulo que forman las barras con la horizontal (2 pts.) b) Calcule los trabajos virtuales realizados por la fuerza el´ astica, el peso de la bandeja y el peso del recipiente para un desplazamiento virtual   δθ   (2 pts.) c) Si el sistema est´ a en equilibrio para   θ   = 30 ◦ , ¿cu´ al es la constante el´ astica   k   del resorte? (2 pts.)  2.1   Soluci´ on:  a) Los puntos G1 y G2 est´ an sometidos s´ olo a fuerzas verticales (el peso del recipiente y de la bandeja, respectivamente), por lo tanto interesan los desplazamientos virtuales en direcci´ on   y . Sobre el punto   C , act´ ua la fuerza horizontal del resorte, por lo tanto en este caso necesitamos calcular el desplazamiento vistual en direcci´ on   x . 4
 
 --- Page 12 ---

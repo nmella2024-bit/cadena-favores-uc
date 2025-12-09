@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/C4 2019-1_0VwojZEsZf2ksV01jeOr.pdf"
+sourceFile: "C4 2019-1_0VwojZEsZf2ksV01jeOr.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  ESCUELA DE INGENIERÍA  DEPARTAMENTO DE INGENIERÍA DE TRANSPORTE Y LOGÍSTICA  ICT 2213   –   Modelos de Demanda de Transport e  Profes or es : Sebastián Raveau   y Jaime Soza  Primer   Semestre de 201 9  Interrogación   4  Enunciado y asignación de puntajes  1 -   [ 4   puntos]   Usted sabe que para diseñar y aplicar una encuesta de Preferencias  Declaradas existen 10 etapas. Explique la importancia que tienen las etapas de  determinación de objetivos y la realización de grupos focales o encuestas piloto  dentro del proceso.  D eterminación de objetivos .   2 puntos por expli car   cómo   permit e   responder las preguntas  originalmente planteadas .  G rupos focales o encuestas piloto . 2 puntos por exp licar   cómo permite obte ner resultados  confiables.  2 -   [ 6   puntos]   Considere una encuesta PR de   elección de ruta a 2.100 viajeros en punta  mañana. La encuesta además incluyó 8 escenarios de PD respecto al potencial uso  de un tranvía en el eje Alameda - Providencia - Apoquindo. Suponga que se midieron  tiempos,   costos,   transbordos   y   niveles   de   ocupación   en   PR.   El   diseño   PD  consideró dichas variables y, además, confiabilidad y seguridad. Al estimar los  modelos de PR y PD separadamente se obtuvieron los siguientes valores para los  parámetros (todos los parámetros son estadísticamente significativos al 90%):  Atributo   Datos PR   Datos PD  Tiempo de Viaje   - 0 , 452   - 0 , 751  Tiempo de Caminata   - 1 , 311   - 2 , 139  Tiempo de Espera   - 0 , 878   - 1 , 870  Costo   - 1 , 114   - 1 , 766  Transbordos   - 0 , 107   - 0 , 228  Ocupación   - 2 , 018   - 4 , 353  Confiabilidad   -   0,677  Seguridad   -   1,002
 

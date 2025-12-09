@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 1 Pauta.pdf_51gJLRNz2A903yur3P89.pdf"
+sourceFile: "Control 1 Pauta.pdf_51gJLRNz2A903yur3P89.pdf"
+---
+
 --- Page 1 ---
 Depto. Diseño   Depto. Ejecución  Cantidad INV   10   6  Cantidad HH   15   20  Depto. Mantención Depto. Vanguardia Depto. Procesos  Cantidad INV   0   1   4  Cantidad HH   2   3   6  Costos del depto. durante enero/2022   $5.000.000   $15.000.000   $20.000.000  Orden:   1   2   3  ¿Cuánto entregan a otros?   50,00%   20,00%   12,50%  A)  3   puntos  B)  Mantención parte:  a Diseño   $1.250.000,00   0,5   puntos  a Vang   $1.250.000,00   0,75   puntos  a Proceso   $1.250.000,00   0,75   puntos  Vang sigue:  a Diseño   $8.125.000,00   0,75   puntos  a Proceso   $3.250.000,00   0,75   puntos  Procesos termina:  a Diseño   $10.500.000,00   1   puntos  Total a Diseño:   $19.875.000,00   0,5   puntos  C)  Primero hay que determinar las ecuaciones  3   puntos  Soluciones de costos artificiales/auxiliares/"inflados"  M=   6.262.886,60 $   1   puntos  V=   18.460.051,55 $   1   puntos  P=   25.257.731,96 $   1   puntos  Mant a Ejec   1.565.721,65 $   0,5   puntos  Vang a Ejec   5.538.015,46 $   0,75   puntos  Proc a Ejec   12.628.865,98 $   0,75   puntos  Mant a Dis   1.565.721,65 $  Vang a Dis   9.230.025,77 $  Proc a Dis   9.471.649,48 $  Depto. Diseño   Depto. Ejecución  Costos indirectos totales   $30.000.000   $40.000.000  Hace sentido porque Mantención tiene relativamente bajos niveles de "drivers" de los costos que  entregan Van y Proc (que son las INV y HH); luego Van es el siguiente que tiene menores  valores de esos drivers y luego Proc. Así, existe una "secuencia natural" que puede derivarse de  la info. Se acepta un análisis similar (esto es aparte del criterio formal que mira % de entrega de  costos)
 

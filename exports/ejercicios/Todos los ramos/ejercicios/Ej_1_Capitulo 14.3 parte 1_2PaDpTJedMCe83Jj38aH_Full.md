@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Capitulo 14.3 parte 1_2PaDpTJedMCe83Jj38aH.pdf"
+sourceFile: "Capitulo 14.3 parte 1_2PaDpTJedMCe83Jj38aH.pdf"
+---
+
 --- Page 1 ---
 Page 1 Capitulo 14.3 parte 1
 

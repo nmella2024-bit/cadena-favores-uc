@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2018-2.pdf_2Q1AV3shKgbaqYgMxXTZ.pdf"
+sourceFile: "Examen 2018-2.pdf_2Q1AV3shKgbaqYgMxXTZ.pdf"
+---
+
 Participaciones no Controladoras   630  (Interés Minoritario)
 
 --- Page 16 ---

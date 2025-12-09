@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 1 - Introduccion OB.pdf_59dNOvMM5e8cCtXmSpch.pdf"
+sourceFile: "Clase 1 - Introduccion OB.pdf_59dNOvMM5e8cCtXmSpch.pdf"
+---
+
 --- Page 1 ---
 Edgar Kausel  ekausel@uc.cl  Escuela de Administración  PUC  Comportamiento  Organizacional
 

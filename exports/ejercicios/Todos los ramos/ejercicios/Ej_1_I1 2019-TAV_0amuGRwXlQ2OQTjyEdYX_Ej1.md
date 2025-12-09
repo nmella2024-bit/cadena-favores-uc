@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2019-TAV_0amuGRwXlQ2OQTjyEdYX.pdf"
+sourceFile: "I1 2019-TAV_0amuGRwXlQ2OQTjyEdYX.pdf"
+---
+
 Considere la EDO ( x   −   1)   y ′   =   ( y 2   −   1 )   .  (a) Encuentre una soluci´ on general y determine el dominio de las soluciones obtenidas. (b) Encuentre, si existe, una soluci´ on singular. (c) Determine valores de   a   y   b   para los cuales se puede asegurar que   y ( a ) =   b   siempre tiene una ´ unica soluci´ on local. (d) Considere la condici´ on inicial   y (1) =   b . Determine los valores de   b   para los cuales existe una ´ unica soluci´ on, existen infinitas soluciones, o no existen soluciones.  Soluci´ on.  (a) La ecuaci´ on es separable por lo que ln   | x   −   1 |   +   C   =  ∫   1  x   −   1 dx   =  ∫   1  y 2   −   1 dy   =  1 2  ∫   (   1  y   −   1   −   1  y   + 1  )  dy   =  1 2  ln  ∣ ∣ ∣ ∣  y   −   1  y   + 1  ∣ ∣ ∣ ∣   .  Simplificando obtenemos   ∣ ∣ ∣ ∣  y   −   1  y   + 1  ∣ ∣ ∣ ∣   =   C ( x   −   1) 2   , C >   0 y, permitiendo   C   ∈   R , simplemente  y ( x ) =   C ( x   −   1) 2   + 1 1   −   C ( x   −   1) 2   .  (  es posible, y correcto, llegar a   y ( x ) =  ( x   −   1) 2   +   C C   −   ( x   −   1) 2  )  (1 punto)  Esta soluciones tienen como dominio todo   R   excepto los puntos   x   tales que   C ( x   −   1) 2   = 1. Luego, si   C   ≤   0 el dominio es todo   R , mientras que si   C >   0 entonces el dominio es   R   \ { 1   − √   1  C   ,   1 +  √   1  C   } .   (En caso de haber obtenido la segunda familia, los puntos problem´ aticos son 1   ±  √ C ,   C >   0).   (1 punto)  (b) La funci´ on   y ( x ) =   − 1 es soluci´ on de la ecuaci´ on, y es singular pues  − 1 =   C ( x   −   1) 2   + 1 1   −   C ( x   −   1) 2   si y solo si   −   1 = 1 y entonces   y ( x ) =   − 1 no es elemento de la familia. (Si en la parte anterior se obtuvo la segunda familia, entonces   y ( x ) = 1 es singular).   (1 punto)  1
 
 --- Page 2 ---

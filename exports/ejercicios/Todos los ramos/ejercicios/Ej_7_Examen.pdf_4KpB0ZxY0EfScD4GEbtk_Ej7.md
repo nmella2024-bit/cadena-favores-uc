@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 7"
+topic: "General"
+number: "7"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+sourceFile: "Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+---
+
 (9 puntos)  La empresa “19 al rescate” es la única socorrista de urgencias en el poblado de Setela  y tiene una estructura de costos que se muestra en el gráfico a continuación. La  empresa no cuenta con costos fijos.  La empresa “19 al rescate” enfrenta una curva de demanda por los servicios de  rescate de urgencias lineal e igual a aquella que se muestra en el gráfico.  Entendiendo que “19 al rescate” opera como un monopolio,   dibuje/muestre en  el gráfico   los siguientes elementos (sea lo más preciso posible):  Q  CMg  P  300
 
 --- Page 10 ---

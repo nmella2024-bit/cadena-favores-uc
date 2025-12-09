@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantía 3 Enunciado_4Zpt1N3mlL3XmnFvoQfS.pdf"
+sourceFile: "Ayudantía 3 Enunciado_4Zpt1N3mlL3XmnFvoQfS.pdf"
+---
+
 --- Page 1 ---
 1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8 A   A B   B C   C D   D E   E F   F  fconc   31-03-2025  Designed by   Checked by   Approved by   Date  1 / 1  Edition   Sheet Date
 

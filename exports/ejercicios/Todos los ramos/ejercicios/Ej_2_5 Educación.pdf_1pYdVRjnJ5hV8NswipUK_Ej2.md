@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/5 Educación.pdf_1pYdVRjnJ5hV8NswipUK.pdf"
+sourceFile: "5 Educación.pdf_1pYdVRjnJ5hV8NswipUK.pdf"
+---
+
 Formación de habilidades: tecnología  Cunha y Heckman (2010)  ▶   θ t + 1   =   g t   ( h , θ t   ,   I t   )  ▶   Donde:  ▶   θ   es el stock de capital humano, compuesto de aspectos cognitivos y no cognitivos.  ▶   h   son determinantes que no cambian en el tiempo (capital cultural, genética, etc.)  ▶   I   son inversiones en capital humano. 12-abr-2023 40/49
 
 --- Page 41 ---

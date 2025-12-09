@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Capitulo 10.3 parte 2_3Z7qzqSGQCS07y57wFHo.pdf"
+sourceFile: "Capitulo 10.3 parte 2_3Z7qzqSGQCS07y57wFHo.pdf"
+---
+
 --- Page 1 ---
 Page 1 Capitulo 10.3 parte 2
 

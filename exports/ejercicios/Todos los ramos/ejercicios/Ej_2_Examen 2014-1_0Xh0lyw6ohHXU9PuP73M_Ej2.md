@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2014-1_0Xh0lyw6ohHXU9PuP73M.pdf"
+sourceFile: "Examen 2014-1_0Xh0lyw6ohHXU9PuP73M.pdf"
+---
+
 Un estanque aislado contiene inicialmente 1 . 4 kg de agua l´ ıquida saturada a 200   ◦ C, la que ocupa un 25 por ciento del volumen total del estanque. Se coloca una resistencia el´ ectrica en el estanque, la que se enciende por 20 minutos, hasta que el estanque contiene s´ olo vapor saturado. Determine: a) El volumen total del estanque. b) La temperatura final del vapor. c) La potencia entregada por la resistencia.  Soluci´ on:  a) En el estado inicial ( x   = 0) el volumen que ocupa el agua es  V 1   =   mν 1  = 0 . 0016198 m 3   ,  donde hemos usado que   m   = 1 . 4 kg y la tabla A-4 para conocer   ν 1   =   ν f   @ 200   ◦ C   = 0 . 001157 m 3 / kg. El volumen del estanque es entonces  V T   = 4 V 1  = 0 . 0064792 m 3   ,   (2 pts.) 4
 
 --- Page 5 ---

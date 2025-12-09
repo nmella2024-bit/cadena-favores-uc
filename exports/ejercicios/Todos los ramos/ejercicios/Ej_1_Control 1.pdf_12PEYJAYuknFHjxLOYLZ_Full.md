@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_12PEYJAYuknFHjxLOYLZ.pdf"
+sourceFile: "Control 1.pdf_12PEYJAYuknFHjxLOYLZ.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Católica de Chile  Escuela de Administración  16 de abril   de 2021  Control 1  Fundamentos de Finanzas  Profesores:   Ayudantes  Marta Del Sante A.   José Ignacio Cruz B.  Leonardo Hernández T.   Germán Concha G.  Tomás Saieh   Eduardo Cuevas C.  Andres   Schilkrut L.  Ayudante Coordinador   Julian Sabat C.;  María José Valdivieso   Iván Alvarado V.  Sebastián Pavez M.  Tiempo: 6 5   minutos  Puntaje Total: 56 puntos  Instrucciones generales:  •   Si su respuesta requiere de algún supuesto, debe   dejarlo explicitado.  •   Toda respuesta debe estar debidamente justificada. Aquellas respuestas que no cumplan con esta  exigencia no serán consideradas aun cuando su resultado esté correcto.  •   La sospecha de copia por parte del profesor y/o los ayudantes. d urante la evaluación o en su  corrección posterior, tiene como sanción   mínima   una nota   1.0   en la evaluación y un informe a  la Dirección de la Escuela.  •   No se pueden utiliz a r apuntes ni hacer   cálculos   en Excel o calculadoras inteligentes.  •   Luego de los 65 minutos tendrán 10 minutos para escanear las respuestas y subirlas a la  plataforma de Canvas, después de eso no se aceptarán respuestas. Si tiene p r oblemas con  Canvas puede enviar sus respuestas a   fundamentosdefinanzas2021@gmail.com  •   Recuerde poner su nombre en la primera página y el número de página en todas las páginas  •   En caso de tener problemas de conexión puede llamar al +56 9 7963 8819   (María José  Valdivieso, Ayudante Coordinador)  Código de Honor : Como miembro de la comunidad de la Pontificia Universidad Católica de Chile,  me comprometo a respetar los principios y normativas que la rigen. Asimismo, me comprometo a  actuar con rectitud y   honestidad en esta evaluación.  Adicionalmente declaro estar en condiciones de salud adecuadas para rendir esta evaluación y que  me presento a ésta bajo mi responsabilidad. En caso de sentirme mal o tener alguna complica ción,  deberé informarlo inmediatamente al ayudante o profesor en sala.  Nombre/Rut/N° lista: __________________________   Firma: _______________________
 

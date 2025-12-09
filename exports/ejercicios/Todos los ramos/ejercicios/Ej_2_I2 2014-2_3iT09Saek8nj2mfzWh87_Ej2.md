@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I2 2014-2_3iT09Saek8nj2mfzWh87.pdf"
+sourceFile: "I2 2014-2_3iT09Saek8nj2mfzWh87.pdf"
+---
+
 (15 puntos)  (a) ( 7 puntos ) El siguiente es un tableau intermedio en alguna iteraci´ on de la Fase I del m´ etodo Simplex. El problema posee dos variables no negativas ( x 1 , x 2 ) y cuatro restricciones. La funci´ on objetivo es de maximizaci´ on y una variables de holgura fue incorporada ( y 1 ). 1   0   0   1/5   2/5   0   2 0   1   0   2/5   -1/5   0   c  0   0   0   -1   -1   1   b  0   0   1   -2/5   1/5   0   2 0   0   0   2   d   0   a x 1   x 2   y 1   t 1   t 2   t 3   ¯ b  Entregue las condiciones de   a ,   b ,   c   y   d   que se necesitan para que las siguientes aseveraciones sean verdaderas. (i) ( 2 puntos ) La soluci´ on actual es ´ optima y el problema original es factible. (ii) ( 2 puntos ) La soluci´ on actual es ´ optima y el problema original es infactible. (iii) ( 3 puntos ) La soluci´ on actual es ´ optima y el problema original es degenerado.  Pauta  (i) Para que la soluci´ on actual sea ´ optima y el problema original factible se requiere que  a   = 0,   b   = 0,   c   ≥   0 y   d   ≥   0. (ii) Para que la soluci´ on actual sea ´ optima y el problema original infactible se requiere que  a >   0,   b >   0,   c   ≥   0 y   d   ≥   0. (iii) Para que la soluci´ on actual sea ´ optima y el problema original degenerado se requiere que  a   = 0,   b   = 0,   c   = 0 y   d   ≥   0. (b) ( 8 puntos ) Considere el siguiente problema de Programaci´ on Lineal:  P   ) Max   x 1   −   x 2   +   x 3  s.a.   2 x 1   −   x 2   +   2 x 3   ≤   4 2 x 1   −   3 x 2   +   x 3   ≤   − 5  − x 1   +   x 2   −   2 x 3   ≤   − 1  x 1   ,   x 2   ,   x 3   ≥   0 (i) ( 2 puntos ) Formule el problema de Fase I utilizando la menor cantidad de variables artificiales y resu´ elvalo usando Simplex Tabular (Tableau). (ii) ( 2 puntos ) Usando el resultado de la Fase I, identifique una base factible para el problema P) e indique cu´ al es su matriz b´ asica. ¿C´ omo es la soluci´ on ´ optima del problema de Fase I? ¿tiene sentido que eso ocurra?
 
 --- Page 4 ---

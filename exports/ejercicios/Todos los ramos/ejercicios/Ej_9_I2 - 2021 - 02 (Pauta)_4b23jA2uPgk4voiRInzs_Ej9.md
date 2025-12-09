@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 9"
+topic: "General"
+number: "9"
+originalUrl: "exports/downloads/Todos los ramos/I2 - 2021 - 02 (Pauta)_4b23jA2uPgk4voiRInzs.pdf"
+sourceFile: "I2 - 2021 - 02 (Pauta)_4b23jA2uPgk4voiRInzs.pdf"
+---
+
 En un juego del tiro al blanco, se debe lanzar un dardo hacia un tablero circular. Consideremos el siguiente tablero con radios 3,6 y 9 cm, como muestra la siguiente figura:  Suponga que un jugador lanza un dardo y cae en las coordenadas   X   e Y del plano, las cuales pueden ser consideradas como variables aleatorias independientes con distribuci´ on Uniforme(-9, +9). Si el jugador al lanzar cae dentro del tablero, ¿cu´ al es la probabilidad de que haya ca´ ıdo en el anillo gris?  Soluci´ on  Por independencia se tiene que  f X,Y   ( x, y ) =   1 18   ·   1 18 Se pide   P   ( A   |   B ) =   P   ( A   ∩   B )  P   ( B )   , con   A   el evento caer en zona gris y   B   el evento caer en el tablero. Como la densidad conjunta es constante se tiene que las probabilidades es simplemente el ´ area multiplicada por la densidad:  P   ( A   ∩   B ) =   π   ·   6 2   −   π   ·   3 2  18 2   y   P   ( B ) =   π   ·   9 2  18 2  Por lo tanto  P   ( A   |   B ) =  1 3  Puntaje: Respuesta correcta con margen de error   ± 0 . 005   [1.0 puntos]. Sin respuesta en canvas, pero respaldo correcto   ± 0 . 005   [0.5 puntos]. Para otros casos correctamente justificados por parte del alumno, los ayudantes podr´ an asignar m´ aximo [0.5 puntos].  EYP1113 - Probabilidad y Estad´ ıstica Segundo Semestre 2021  10   Profesores: Ricardo Aravena Cuevas Ricardo Olea Ortega Felipe Ossa Monge Pilar Tello Hern´ andez
 
 --- Page 11 ---

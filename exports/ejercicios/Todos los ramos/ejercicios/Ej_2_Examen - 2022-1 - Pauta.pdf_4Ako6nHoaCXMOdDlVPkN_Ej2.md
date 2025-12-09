@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Examen - 2022-1 - Pauta.pdf_4Ako6nHoaCXMOdDlVPkN.pdf"
+sourceFile: "Examen - 2022-1 - Pauta.pdf_4Ako6nHoaCXMOdDlVPkN.pdf"
+---
+
 IS-LM-PC (30 puntos)  En modelos tradicionales de macroeconom´ ıa, un shock positivo de oferta (entendido como un shock que aumenta el PIB potencial) aumenta el PIB real de la econom´ ıa en equilibrio. Sin embargo, muchos economistas argumentan que este resultado no necesariamente se cumple para econom´ ıas afectadas por la cota inferior de la tasa de inter´ es nominal. As´ ı, se concluye que en algunas situaciones shocks positivos de oferta pueden ser contractivos (reducen el PIB real). Vamos a analizar si este tipo de conclusi´ on hace sentido usando el modelo IS-LM-PC. En lo que sigue responda suponiendo siempre expectativas adaptativas. Denotamos por   r  la tasa de inter´ es real, por   r   n   la tasa de inter´ es real natural y por   fi   e   = 0 la inflaci´ on esperada. El PIB potencial es denotado por   Y   n   . 1. (10 puntos) Considere una econom´ ıa que est´ a en un equilibrio con   r   = 0,   fi   e   = 0,   r   n   = 0. Ahora suponga que hay un shock de oferta que aumenta   Y   n   . ¿Este shock es contractivo (reduce el PIB real) o expansivo (aumenta el PIB real)? Justifique su respuesta con gr´ aficos y palabras. El aumento de   Y   n   desplaza la curva de Philips a la derecha y hace con que la econom´ ıa se mueva del punto   A   al punto   A Õ   en el gr´ afico abajo. El Banco Central gustar´ ıa de reaccionar y bajar   r , pero no puede hacerlo porque en el punto   A   ya tiene   i   =   r   +   fi   e   = 0. En el punto   A Õ   las expectativas de inflaci´ on son negativas, lo que hace con que el Banco Central se vea forzado a dejar con que la tasa real suba, y la econom´ ıa tiene una reducci´ on del PIB real (punto   A ÕÕ   ). El proceso sigue mientras m´ as negativas se vuelvan las expectativas de inflaci´ on (punto   A   ÕÕÕ   ). El shock es, por lo tanto, contractivo.  3
 
 --- Page 3 ---

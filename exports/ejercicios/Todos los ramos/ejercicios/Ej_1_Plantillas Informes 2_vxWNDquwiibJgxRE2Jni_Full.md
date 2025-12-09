@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Plantillas Informes 2_vxWNDquwiibJgxRE2Jni.pdf"
+sourceFile: "Plantillas Informes 2_vxWNDquwiibJgxRE2Jni.pdf"
+---
+
 --- Page 1 ---
 Informe de Laboratorio An´ alisis de Sistemas y Tecnolog´ ıa  Nicol´ as Gonz´ alez Departamento de Ingenier´ ıa Pontificia Universidad Cat´ olica de Chile November 19, 2025  Abstract  Este informe presenta los resultados del laboratorio de an´ alisis de sistemas din´ amicos, incluyendo mediciones experimentales y an´ alisis computacional.  1   Introducci´ on  El an´ alisis de sistemas din´ amicos es fundamental en ingenier´ ıa moderna.   Este laboratorio explora las propiedades de sistemas de segundo orden.  2   Marco Te´ orico  2.1   Sistemas de Segundo Orden  La funci´ on de transferencia de un sistema de segundo orden:  G ( s ) =   ω 2  n  s 2   + 2 ζω n s   +   ω 2  n  donde:  •   ω n   = frecuencia natural  •   ζ   = factor de amortiguamiento  3   Metodolog´ ıa  3.1   Equipamiento  •   Osciloscopio digital  •   Generador de funciones  •   Sistema masa-resorte-amortiguador 1
 

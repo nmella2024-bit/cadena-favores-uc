@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Plantilla Thesis_UtYB0jGNMKC82q4uLiJP.pdf"
+sourceFile: "Plantilla Thesis_UtYB0jGNMKC82q4uLiJP.pdf"
+---
+
 --- Page 1 ---
 
 

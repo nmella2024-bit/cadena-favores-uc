@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_15meuuh2LbcpJqrFmfKA.pdf"
+sourceFile: "Prueba 2.pdf_15meuuh2LbcpJqrFmfKA.pdf"
+---
+
 (14 puntos)  En una cierta ciudad   sólo existen dos bienes:   calabazas y zapallos . Además,  suponga que existen dos posibles canales de comercialización o formas   de  adquirirlos:   en   el   supermercado o   en   la feria que se instala cada fin de semana .  Juan, que   nunca fue a la feria,   siente que su ingreso mensual de   $7 00 no le  alcanza para comprar los za pallos que le gustaría . L a última vez que fue al  supermercado sólo pu d o   comprar   6   zapallos y   2 calabazas.  Pedro , qu ien   sí   ha ido a comprar a ambos lugares,   sabe que   en la feria puede  comprar un máximo de   8 zapallos, mientras que ,   en el supermercado, sólo   puede  comprar, como máximo,   4 zapallos.  S uponga que   el ingreso mensual de Pedro es de $400 , y l as calabazas   en la feria  cuestan   la mitad   que l os zapallos .  1)   ( 7   puntos) Determine y g rafique la restricción presupuestaria de   Juan,  indicando   claramente   los interceptos y su   pendiente . Trabaje con las  calabazas en el eje   horizontal   y con los   zapallos en el eje   vertical .  Ayuda : recuerde que Juan solo compró en el supermercado.  Respuesta  Necesitamos la información de   ambas personas para poder   determinar la  restricción presupuestaria de Juan (en el supermercado). En su caso, sabemos  que:  M$ = X*Px + Y*Py  700$= 2*Px + 6* Py  De la información que nos   entrega Pedro, y como su ingreso es de $400, podemos  obtener el precio de los zapallos en el supermercado: 400/4 = 100$ c/u.  Reemplazando entonces ese precio en la Rp de Juan:  700$ = 2xPx + 6*100 ; obtenemos que el precio de las calabazas ( X ) en el  supermercado es de $50
 
 --- Page 3 ---

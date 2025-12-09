@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Capitulo 10.4 parte 1_1J9Qfhw5FUVliSkYN99f.pdf"
+sourceFile: "Capitulo 10.4 parte 1_1J9Qfhw5FUVliSkYN99f.pdf"
+---
+
 --- Page 1 ---
 Page 1 Capitulo 10.4 parte 1
 

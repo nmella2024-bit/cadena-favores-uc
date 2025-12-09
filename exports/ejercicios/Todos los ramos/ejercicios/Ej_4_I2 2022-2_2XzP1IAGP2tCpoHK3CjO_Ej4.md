@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2022-2_2XzP1IAGP2tCpoHK3CjO.pdf"
+sourceFile: "I2 2022-2_2XzP1IAGP2tCpoHK3CjO.pdf"
+---
+
 Calcule el determinante de la matriz      − 3 a   d   g   −   4 d  − 3 b   e   h   −   4 e  − 3 c   f   i   −   4 f     sabiendo que det      a   b   c d   e   f g   h   i      =   − 6.  Soluci´ on   Aplicamos operaciones elementales a la matriz:  − 3 a   d   g   −   4 d  − 3 b   e   h   −   4 e  − 3 c   f   i   −   4 f  = ( − 3)  a   d   g   −   4 d b   e   h   −   4 e c   f   i   −   4 f  = ( − 3)  a   d   g b   e   h c   f   i  = ( − 3)  a   b   c d   e   f g   h   i  .  Como det      a   b   c d   e   f g   h   i      =   − 6, entonces  − 3 a   d   g   −   4 d  − 3 b   e   h   −   4 e  − 3 c   f   i   −   4 f  = ( − 3)( − 6) = 18 .  Puntaje  •   6 puntos por calcular correctamente el determinante (incluso si usa cofactores).  •   Descontar 2 puntos por cada error que el/la estudiante tenga en su c´ alculo. 5. Sea   S   el paralelogramo determinado por los vectores   b 1   =     − 2 3    y   b 2   =     − 2 5    , y sea  A   =     6   − 2  − 3   2    . Calcule el ´ area de la imagen de   S   bajo la transformaci´ on   T   ( x ) =   Ax .  Soluci´ on   T   ( S ) es un paralel´ ogramo cuya ´ area es ´ area   T   ( S ) =   |   det( A ) | (´ area de   S ) Calculamos: det( A ) = det     6   − 2  − 3   2    = 12   −   ( − 3)( − 2) = 6 .  ´ area de S =   det    b 1   b 2     =   det   − 2   − 2 3   5    =   | −   10 + 6 |   = 4 .  Por lo tanto ´ area   T   ( S ) = 24 .
 
 --- Page 5 ---

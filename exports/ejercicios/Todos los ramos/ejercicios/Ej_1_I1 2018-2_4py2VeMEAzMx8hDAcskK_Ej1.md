@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2018-2_4py2VeMEAzMx8hDAcskK.pdf"
+sourceFile: "I1 2018-2_4py2VeMEAzMx8hDAcskK.pdf"
+---
+
 -   Responda en forma clara:  a)   Explique por qué   se usa la FRM para estimar la FRP y no estimar ésta  directamente.   (1 punto)  Resp:  Se   estima la FRP a través de la FRM porque en la mayoría de los estudios no  se cuenta con datos de la población, usados para estimar la FRP   (0.5 puntos) .  Por lo tanto, esta se debe estimar a partir de alguna muestra obtenida de la  población y con ella determi nar la FRM, que se usa para estimar la FRP.   (0.5  puntos)  b)   Detalle   qué   representa   y   las   razones   por   qué   se   usa   el   término   de  perturbación estocástica o error estocástico   𝑢 𝑖   (2 puntos)  Resp:  Representa los   efectos de variables no consideradas   en el   modelo de manera  explícita .   (0.4 puntos)  Se usa   por   las siguientes razones :  •   L a teoría   que apoya el fenómeno es   incompleta   (0.2 puntos)  •   N o se conocen algunas variables que deben ser incluidas   (0.2 puntos)  •   Se usan variables regresoras inadecuadas   (0.2   puntos)  •   N o   es posible   dispon er de datos para algunas variables   (0.2 puntos)  •   Los datos disponibles tiene n   errores originados en la medición   (0.2 puntos)  •   La forma funcional entre las variables del modelo se ha definido de manera  incorrecta   (0.2 puntos)  •   E l   problema   estocástico   modela do siempre tendrá   efectos aleatorios   (0.2  puntos)  •   Se desea mantener la simplicidad del modelo   (0.2 puntos)  c)   Señale los supuestos del MCRL y explique lo que cada uno   significa   ( 1.8  puntos)  Resp:  1)   El modelo de regresión es lineal   en los parámetros.   (0.1 punto)  •   Esto   significa   que   la   relación   entre   la   variable   regresada   y   los  parámetros de intercepto y de pendiente   se relacionan de manera  lineal   o intrínsecamente lineal   (0.1 punto)  2)   Valores fijos de X o Valores de X independientes   del término de error   (0.1  punto)  •   Esto significa que los valores de las variables regresoras pueden ser  establecidos de manera fija,   (0.1 punto)   o
 
 --- Page 3 ---

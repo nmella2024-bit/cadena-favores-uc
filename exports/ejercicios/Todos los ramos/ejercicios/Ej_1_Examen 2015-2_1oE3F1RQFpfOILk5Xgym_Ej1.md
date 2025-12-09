@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2015-2_1oE3F1RQFpfOILk5Xgym.pdf"
+sourceFile: "Examen 2015-2_1oE3F1RQFpfOILk5Xgym.pdf"
+---
+
 a) Sea Σ un conjunto de f´ ormulas en   L ( P   ). Demuestre que Σ es inconsistente si y s´ olo si Σ   | =    . b) Considere el siguiente predicado:  R ( x, y ) : “ x   se relaciona con   y ” Para cada una de las siguientes afirmaciones encuentre una f´ ormula que utilice s´ olo el predicado  R ( · ,   · ), tal que la f´ ormula sea satisfacible s´ olo por una estructura que cumpla la afirmaci´ on. (i)   R   es una relaci´ on de equivalencia. (ii)   R   es un orden total (iii)   R   es una funci´ on biyectiva  Soluci´ on  a) ( ⇒ ) Dado que Σ es inconsistente, debemos demostrar que Σ   | =    . Como Σ es inconsistente, sabemos que toda valuaci´ on   σ   es tal que   σ (Σ) = 0, y luego se cumple trivialmente que Σ   | =    . ( ⇐ ) Dado que Σ   | =    , debemos demostrar que Σ es inconsistente. Por contradicci´ on, supongamos que Σ es satisfacible. Luego, existe una valuaci´ on   σ   tal que   σ (Σ) = 1. Como      es una contradicci´ on, tenemos que   σ (  ) = 0, y por lo tanto obtenemos que   σ (Σ) = 1 pero   σ (  ) = 0, lo que contradice que Σ   | =    .     Pauta  •   1.5 pts. por ( ⇒ )  •   1.5 pts. por ( ⇐ )  •   Puntajes intermedios y demostraciones alternativas a criterio del corrector.
 
 --- Page 2 ---

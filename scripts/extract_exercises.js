@@ -230,7 +230,17 @@ const processFile = async (filePath, originalUrl = null, customOutputDir = null)
         const outputFileName = `Ej_${ex.numero}_${ex.id}.md`;
         const outputPath = path.join(outputDir, outputFileName);
 
-        fs.writeFileSync(outputPath, ex.content);
+        // Create YAML Frontmatter
+        const frontmatter = `---
+title: "${ex.titulo}"
+topic: "${ex.topic || 'General'}"
+number: "${ex.numero}"
+originalUrl: "${ex.ruta_origen || ''}"
+sourceFile: "${fileName}"
+---
+
+`;
+        fs.writeFileSync(outputPath, frontmatter + ex.content);
 
         const hash = generateHash(ex.content);
 

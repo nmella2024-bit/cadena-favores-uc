@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2023-TAV_4lS0fCDhq6kneYPvqxet.pdf"
+sourceFile: "I1 2023-TAV_4lS0fCDhq6kneYPvqxet.pdf"
+---
+
 Encuentre el valor de   h   que hace a los siguientes vectores linealmente dependientes:      2  − 2 4      ,      4  − 6 7      ,      − 2 2  h      .  Soluci´ on   Los vectores son LD si y s´ olo si el sistema correspondiente a la matriz am- pliada      2   4   − 2   0  − 2   − 6   2   0 4   7   h   0      tiene infinitas soluciones. Buscamos su forma escalonada:      2   4   − 2   0  − 2   − 6   2   0 4   7   h   0      ∼    2   4   − 2   0 0   1   0   0 0   0   h   + 4   0     De esta forma, los vectores son LD si y s´ olo si   h   =   − 4.  Puntaje  •   2 puntos por establecer alguna manera de determinar si los vectores son LD. No importa si no desarrolla la idea.  •   2 puntos por desarrollar la idea anterior hasta obtener el resultado.  •   2 puntos por obtener el resultado correcto. 4. Sea   T   :   R 2   →   R 3   una transformaci´ on lineal que convierte el vector     3 4    en      1  − 1 0     y el vector     3 3    en      0 1 1    . (a) Determine la matriz est´ andar de la transformaci´ on   T   . (b) Justifique si   T   es inyectiva y/o sobreyectiva.  Soluci´ on  a) Notamos que    0 1    =   3 4    −   3 3    por lo que  T   0 1    =   T   3 4    −   T   3 3    =      1  − 1 0      −    0 1 1      =      1  − 2  − 1      .
 
 --- Page 4 ---

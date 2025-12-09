@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 - 2020 - 01 (Preguntas)_3xXc4z7OXgkoe2IkZozK.pdf"
+sourceFile: "I2 - 2020 - 01 (Preguntas)_3xXc4z7OXgkoe2IkZozK.pdf"
+---
+
 --- Page 1 ---
 Puntos   12   !   Publicado  !   Los estudiantes ya han tomado este examen o la han comenzado, por lo que deberá tener  cuidado al editarla. Si cambia cualquier pregunta de forma significativa, quizás deba  considerar volver a calificar a los estudiantes que tomaron la versión anterior del examen.  "  Mostrar los detalles de la pregunta  Detalles   Preguntas  #   Modelo Normal   Escoja   1   preguntas,   1   pts por pregunta $   %   &   '  #   Pregunta  En el Instituto de Salud Publica los tiempo de procesamiento de  PCR distribuyen Normal.  Si el 30% de las pruebas es informada dentro de las primeras 6  horas, y el tiempo mediano de procesamiento es de 10 horas.  ¿Cuál es la probabilidad que una prueba de PCR sea informada  después de las primeras 24 hrs?  puestas correctas puestas correctas   0.0332   (con margen:   0.0002 )  Comentarios de respuestas erróneas  mu   =   10  sigma   =   (6-mu)/qnorm(0.3)  1-pnorm(24,   mean   =   mu,   sd   =   sigma)
 

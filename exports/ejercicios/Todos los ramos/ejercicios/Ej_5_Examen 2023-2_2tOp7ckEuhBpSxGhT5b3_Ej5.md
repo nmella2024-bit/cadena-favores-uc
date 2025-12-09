@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2023-2_2tOp7ckEuhBpSxGhT5b3.pdf"
+sourceFile: "Examen 2023-2_2tOp7ckEuhBpSxGhT5b3.pdf"
+---
+
 (a) Demuestre que los vectores   { u 1 ,   u 2 ,   u 3 }   son ortogonales, donde  u 1   =       1 1 0 1        ,   u 2   =       0 1 1  − 1        ,   u 3   =       − 1 0 1 1        .  (b) Encuentre la proyecci´ on de   v   =       4  − 2  − 3 2        sobre el subespacio generado por   { u 1 ,   u 2 ,   u 3 } .  Soluci´ on  (a)  u 1   ·   u 2   =       1 1 0 1        ·       0 1 1  − 1        = 0 + 1 + 0   −   1 = 0  u 2   ·   u 3   =       0 1 1  − 1        ·       − 1 0 1 1        = 0 + 0 + 1   −   1 = 0  u 1   ·   u 3   =       1 1 0 1        ·       0 1 1  − 1        = 0 + 1 + 0   −   1 = 0 .  (b) Sea   W   = Gen { u 1 ,   u 2 ,   u 3 } .   Ya que los vectores   u 1 ,   u 2 ,   u 3   son ortogonales, la proyecci´ on se calcula de la siguiente forma: proy W   ( v ) = proy u 1   ( v ) + proy u 2   ( v ) + proy u 3   ( v ) =   u 1   ·   v  || u 1 || 2   u 1   +   u 2   ·   v  || u 2 || 2   u 2   +   u 3   ·   v  || u 3 || 2   u 3  =  4 3       1 1 0 1        +   − 7 3       0 1 1  − 1        +   − 5 3       − 1 0 1 1        =       3  − 1  − 4 2       Puntaje  •   1 punto por probar que cada producto punto es 0 (3 puntos en total).  •   1 punto por establecer una manera correcta de calcular el vector proyecci´ on.  •   1 punto por calcular correctamente la proyecci´ on sobre cada vector   u 1 ,   u 2 ,   u 3 .  •   1 punto por calcular el vector proyecci´ on buscado.
 
 --- Page 6 ---

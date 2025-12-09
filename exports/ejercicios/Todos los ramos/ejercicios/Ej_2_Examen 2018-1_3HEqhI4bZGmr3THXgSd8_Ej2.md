@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2018-1_3HEqhI4bZGmr3THXgSd8.pdf"
+sourceFile: "Examen 2018-1_3HEqhI4bZGmr3THXgSd8.pdf"
+---
+
 (16 puntos): a) (8 pts)   Responda las siguientes dos preguntas en forma breve pero precisa. i) (4 pts) En el art´ ıculo “Robust Optimization for Emergency Logistic Planning: Risk Mitigation in Hu- manitarian Relief Supply Chains”, de A. Ben-Tal et al., y que tuvo que leer y preparar para este examen, se presenta un modelo de optimizaci´ on que busca determinar el flujo de veh´ ıculos en ciertos lugares de modo que satisfagan demandas por transporte de evacuaci´ on. Explique qu´ e es lo que motiva a usar un enfoque de Optimizaci´ on Robusta en vez de un enfoque “estoc´ astico” m´ as bien basado en distribuciones de probabilidades.  Respuesta:   Est´ a explicado en el primer p´ arrafo de la p´ agina 1178, se debe a la dificultad de estimar distribuciones para situaciones asociadas a desastres naturales. ii) (4 pts) Sobre el mismo art´ ıculo que tuvo que leer, ah´ ı se presenta un enfoque que se llama “Afinely Adjustable Robust Optimization” (AARC). Por otro lado, en el curso estudiamos b´ asicamente dos enfoques de optimizaci´ on estoc´ astica: Restricciones Probabil´ ısticas y Modelos estoc´ asticos de 2 etapas. ¿A cu´ al de estos dos enfoques es an´ alogo (aunque no equivalente) el enfoque AARC? Justifique con precisi´ on.  Respuesta:   Para responder esto hab´ ıa que entender, aunque fuera superficielmente, el modelo y la estructura de pol´ ıticas de decisi´ on y algo tambi´ en est´ a explicado en la p´ agina 1178.   Hay decisiones de primera y segunda etapa en el modelo: las variables   x   son de primera etapa y las   y , las que ajustan la cantidad de veh´ ıculos en las celdas, dado   x   y la realizaci´ on incierta, son las de segunda etapa. Luego, el uso de AARC es totalmente an´ alogo a usar un modelo estac´ astico de 2 etapas, pero sin distribuciones de probabilidad.  b) (8 pts)   Considere el siguiente problema de Optimizaci´ on en   n   variables, que aparece en algunas aplica- ciones de reconstrucci´ on de im´ agenes: min   n − 1 ∑  j =1  | x j +1   −   x j   |  s.a.   Ax   =   b  donde   A   ∈   R m × n   (matriz de   m   ×   n ),   b   ∈   R m .
 
 --- Page 3 ---

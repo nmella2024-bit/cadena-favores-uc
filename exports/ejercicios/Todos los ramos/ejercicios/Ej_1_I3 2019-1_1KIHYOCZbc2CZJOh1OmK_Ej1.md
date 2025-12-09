@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3 2019-1_1KIHYOCZbc2CZJOh1OmK.pdf"
+sourceFile: "I3 2019-1_1KIHYOCZbc2CZJOh1OmK.pdf"
+---
+
 (20 puntos)  Suponga que desea obtener una reformulación de Dantzig-Wolfe para (1)-(6), donde (3) y (4) se consideran complicantes y   x   se mantiene en el problema maestro.   Sea   P k   =   { y k   ∈   R A   :  y k   satisface   (2) ,   (6) }   =   conv ( V k )+ cone ( R k ) , donde   V k   =   { h kl   :   l   ∈   L k }   y   R k   =   { w kg   :   g   ∈   G k } . 1.   (3 puntos)   De (2) y (6), indique por qué los poliedros   P k   pueden ser no acotados.  Solución:   Si el grafo tiene algún ciclo dirigido, entonces, a partir de una solución   y k  factible, podemos construir otra solución factible aumentando arbitrariamente el flujo a
 
 --- Page 2 ---

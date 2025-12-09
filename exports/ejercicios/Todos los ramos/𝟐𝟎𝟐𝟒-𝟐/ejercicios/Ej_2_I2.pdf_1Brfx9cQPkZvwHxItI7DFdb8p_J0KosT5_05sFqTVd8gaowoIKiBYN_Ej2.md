@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/𝟐𝟎𝟐𝟒-𝟐/I2.pdf_1Brfx9cQPkZvwHxItI7DFdb8p_J0KosT5_05sFqTVd8gaowoIKiBYN.pdf"
+sourceFile: "I2.pdf_1Brfx9cQPkZvwHxItI7DFdb8p_J0KosT5_05sFqTVd8gaowoIKiBYN.pdf"
+---
+
 Sea   T   :   R 2   →   R 3   una transformaci´ on lineal que mapea   1 1    en     1 1 0      y     1  − 1    en     0 1 1    .  a )   (2pts)   Escriba los vectores can´ onicos   1 0    y   0 1    como una combinaci´ on lineal de los vectores   1 1    y     1  − 1    .  b )   (3pts)   Determine la matriz est´ andar de la transformaci´ on   T   .  c )   (1pt)   Encuentre   T   a b    , donde   a b    es cualquier vector de   R 2 .  Soluci´ on.  a ) Para expresar   1 0    y   0 1    como una combinaci´ on lineal de los vectores   1 1    y     1  − 1    debemos determinar los par´ ametros en la siguiente ecuaci´ on:   1 0    =   α 1   1 1    +   α 2     1  − 1    .   0 1    =   β 1   1 1    +   β 2     1  − 1    .  Esto nos da el sistema de ecuaciones:  α 1   +   α 2   = 1 ,   α 1   −   α 2   = 0 .   Entonces   α 1   =   α 2   =  1 2 . β 1   +   β 2   = 0 ,   β 1   −   β 2   = 1 .   Entonces   β 1   =   − β 2   =  1 2 .  Es decir    1 0    =  1 2   1 1    +  1 2     1  − 1    .   0 1    =  1 2   1 1    −   1 2     1  − 1    .  b ) Para determinar la matriz est´ andar de la transformaci´ on   T   , debemos calcular   T   1 0    y  T   0 1    . Usando la linealidad de   T   , tenemos:  T   1 0    =  1 2 T   1 1    +  1 2 T     1  − 1    =  1 2     1 1 0      +  1 2     0 1 1      =        1 2 1 1 2         .
 
 --- Page 4 ---

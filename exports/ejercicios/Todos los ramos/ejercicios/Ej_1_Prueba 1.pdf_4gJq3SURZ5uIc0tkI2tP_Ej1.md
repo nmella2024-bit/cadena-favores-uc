@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_4gJq3SURZ5uIc0tkI2tP.pdf"
+sourceFile: "Prueba 1.pdf_4gJq3SURZ5uIc0tkI2tP.pdf"
+---
+
 ( 15   puntos )  Parte A :   Considere los siguientes indicadores macroeconómicos de un país:  Indicadores Macroeconómicos, 2014  (Miles de Millones de $ corrientes)  PIB   Y   575.982  Renta neta de factores   F   - 26.476  Consumo   C   363.071  Consumo Público   G   70.366  Importaciones   M   138.004  Exportaciones   X   129.063  Transf erencias   Corrientes   TC   12.408  Ingresos del Gobierno Neto de Transferencias   T - TR   104.297  (a)   Hallar los tres tipos de ahorro (privado, público y externo).   2   puntos cada una  (b)   ¿Qué valor tomaría la inversión?   1 punto .  Parte B :   Defina los siguientes conceptos.   2 puntos cada una  a.   Población   en Edad de Trabajar (PET)  b.   Población Económicamente Activa (PEA)  c.   Fuerza de Trabajo  d.   Tasa de ocupación
 
 --- Page 2 ---

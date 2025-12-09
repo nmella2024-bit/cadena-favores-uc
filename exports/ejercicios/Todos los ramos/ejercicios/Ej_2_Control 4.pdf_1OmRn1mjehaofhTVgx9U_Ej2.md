@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Control 4.pdf_1OmRn1mjehaofhTVgx9U.pdf"
+sourceFile: "Control 4.pdf_1OmRn1mjehaofhTVgx9U.pdf"
+---
+
 (12 puntos) Considere una econom´ ıa de intercambio con dos individ- uos. Los individuos tiene funci´ on de utilidad   u 1 ( X, Y   ) = min { 10 X, Y   }   y   u 2 ( X, Y   ) = min { X,   2 Y   } . Ademas tienen asignaci´ on inicial ( X e  1   , Y   e  1   ) = (0 ,   3) y ( X e  2   , Y   e  2   ) = (4 ,   0). Normalice los precios de manera que   p X   = 1 ;   p Y   =   p.   Illustre todos los resultados mas las asignaciones iniciales en una caja de Edgeworth. (a)   (6 puntos)   Encuentre las demandas individuales.  Respuesta.   El individuo 1 resuelve: max  X,Y   { 10 X, Y   }  sujeto a:   X   +   pY   = 3 p  La condici´ on de optimalidad es 10 X   =   Y   , y por lo tanto resolvemos:  X   +   pY   = 3 p ; 2
 
 --- Page 3 ---

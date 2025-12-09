@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+sourceFile: "I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+---
+
 1,5 puntos por calcular correctamente   W s (1 ,   0).  1,5 puntos por calcular correctamente   W t (1 ,   0).  1,5 puntos por calcular correctamente   ∂z/∂x .  1,5 puntos por calcular correctamente   ∂z/∂y .
 
 --- Page 3 ---

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Red apoyo Fundamentals Solidaria🚩/fe-handbook-10-1 (2)_16ooixNAei8fuF_HVXRGO4NDz0dB5xV1r_0DIjnrQT6k3nouisWcve.pdf"
+sourceFile: "fe-handbook-10-1 (2)_16ooixNAei8fuF_HVXRGO4NDz0dB5xV1r_0DIjnrQT6k3nouisWcve.pdf"
+---
+
 --- Page 1 ---
 FE Reference Handbook 10.1  This document may be printed from the NCEES Web site for your personal use, but it may not be copied, reproduced, distributed electronically or in print, or posted online without the express written permission of NCEES. Contact permissions@ncees.org for more information.
 

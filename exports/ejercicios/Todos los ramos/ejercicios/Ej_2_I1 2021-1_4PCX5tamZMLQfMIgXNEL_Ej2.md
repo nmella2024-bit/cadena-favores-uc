@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I1 2021-1_4PCX5tamZMLQfMIgXNEL.pdf"
+sourceFile: "I1 2021-1_4PCX5tamZMLQfMIgXNEL.pdf"
+---
+
 [6 puntos] Un cilindro con un pistón contiene 1 kg de agua, inicialmente a   0 , 6   Mpa y 200 o C. El agua experimenta dos procesos en serie: un proceso isobárico seguido de un proceso isovolumétrico. Al final de este último proceso, el agua se encuentra en forma de mezcla con calidad   x   = 0 , 6   a una temperatura de 145 o C. (a) Dibuje un bosquejo de los procesos en diagramas   P   −   ν   y   T   −   ν . Indique claramente los estados del sistema durante el proceso.   (2 pts) . (b) Determine la magnitud del trabajo y el calor para cada proceso. Indique la dirección para cada una de estas cantidades   (4 pts) .  Solución:  a)   (1 punto)   cada figura con todos los detalles  b) En el estado 1, la presión es   P 1   = 0 , 6   Mpa y la temperatura es   T 1   = 200 o C. De la Tabla A-6 vemos que la temperatura de saturación es   T sat@600kPa   = 158 , 83 o C, por lo tanto el agua está en estado de vapor sobrecalentado  (0.1 puntos) . Entonces, de la Tabla A-6 se tiene que  ν 1   =   0 , 35212 m 3 / kg   (0.1 puntos)  u 1   =   2639 , 4 kJ / kg   (0.1 puntos)  Para el estado 2 se tiene que la presión es   P 2   =   P 1   = 0 , 6   Mpa y el volumen específico satisface   ν 2   =   ν 3  (0.1 puntos) . En el estado 3 la temperatura es   T 3   = 145 o C y calidad   x 3   = 0 , 6 . De la Tabla A-4, tenemos que el volumen específico y la energía interna específica para el líquido saturado son  ν f   @145 o C   =   0 , 001085 m 3 / kg   (0.1 puntos)  u f   @145 o C   =   610 , 19 kJ / kg   (0.1 puntos)  4
 
 --- Page 5 ---

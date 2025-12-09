@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/ICM1002 - Examen 2025-1 Pauta_544CIws6Z0Gu7cdx0Fsn.pdf"
+sourceFile: "ICM1002 - Examen 2025-1 Pauta_544CIws6Z0Gu7cdx0Fsn.pdf"
+---
+
 --- Page 1 ---
 ICM 1002   -   DISEÑO GRÁFICO EN INGENIERÍA MECÁNICA  Examen   -   202 5  Nombre: ______ _________________________________________________________________  Fecha: ________________________________  Puntaje: _ ______________________________   Nota: _ _________________________________  I.   a)   Para la siguiente figura indique las cotas necesarias para la fabricación de la pieza .  Reemplace los números por letras . Deben utilizarse cotas acumuladas. ( 3 0 puntos)  2 puntos cada uno
 

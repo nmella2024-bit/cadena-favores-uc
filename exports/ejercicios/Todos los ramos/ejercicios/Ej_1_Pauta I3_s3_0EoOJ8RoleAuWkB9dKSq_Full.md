@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Pauta I3_s3_0EoOJ8RoleAuWkB9dKSq.pdf"
+sourceFile: "Pauta I3_s3_0EoOJ8RoleAuWkB9dKSq.pdf"
+---
+
 --- Page 1 ---
 
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2018-1_4fTIuCH9UV3zeWxXCK3T.pdf"
+sourceFile: "I3 2018-1_4fTIuCH9UV3zeWxXCK3T.pdf"
+---
+
 -   R esponda  a) Explique los   cuatro   problemas y sus consecuencias, del modelo lineal de  probabilidades   (4 puntos)  Resp:  i. -   Las   perturbaciones ui   no   est á n normalmente   distribuidas . Esto ocurre porque,  al igual que Yi,   los   ui sólo toma n   dos valores : el 0 y el 1.por lo que también  distribuyen Binomial (Bernoulli).   (0.5 puntos)  Esto trae como consecuencia que no se pueden hacer inferencias sobre los  verdaderos parámetros p oblacionales.   (0.5 puntos)  i i. -   L as perturbaciones   no   son homoscedásticas , porque dado que el problema  de modela a través de   una distribución   Binomial ( Bernoulli ) ,   con   media   p y  varianza p(1 − p), con p la probabilidad de éxito , las varianzas ya no son  constantes, sino que dependen de la dicha probabilidad de éxito, es decir de  la media.   (0.5 puntos)  Esto   trae   como   consecuencia   q ue los   estimadores   de   MCO   ya   no   son  eficientes (no tienen varianza mínima)   y por lo tanto,   las pruebas t y F pueden  llevar a co nclusiones   erradas.   (0.5 puntos)  iii. -   N o hay garantía que los   𝑌 ̂ 𝑖 , estimadores de   𝐸 ( 𝑌 𝑖 | 𝑋 𝑖 )   obtenidos a partir del  método de MCO y que representan probabilidades, estén entre 0 y 1.   (0.5  puntos)  Esto tiene como consecuencia que no se cumple la restricción fundamental de  toda probabilidad y debilita el modelamiento del problema.   (0.5 puntos)  iv. -   La probabilidad   𝑃 𝑖   =   𝐸 ( 𝑌 𝑖 | 𝑋 𝑖 )   aumenta linealmente con Xi, es decir, la  variable regresora tiene un e fecto incremental   sobre la regresada que   es  constante siempre .   (0.5 puntos)  Esto tiene como consecuencia que el modelo puede, en la mayoría de los  casos, no ser realista en la representación del fenómeno analizado .   (0.5  puntos)
 
 --- Page 8 ---

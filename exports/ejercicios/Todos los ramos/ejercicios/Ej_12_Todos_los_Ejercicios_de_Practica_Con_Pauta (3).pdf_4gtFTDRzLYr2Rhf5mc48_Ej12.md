@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 12"
+topic: "General"
+number: "12"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 8   (Este juego sexista nada más es que un juego de coordinación) Considera el juego de la batalla de los sexos donde los tipos de uno de los jugadores es desconocido por el otro.   Acá vamos a hacer un supuesto un poco sexista (¡ojo que la versión original del juego ya es sexista!), vamos a suponer que el hombre es el agente que es ignorante con respeto a las preferencias de la mujer. La mujer descubre su tipo (si prefiere mirar un partido de boxing o una performance de ballet), y le envía al hombre una señal que indica su preferencia. Para dejar las cosas simple, vamos a suponer que si la mujer prefiere boxing a ballet, siempre va a preferir mirar el partido de boxing a mirar el partido de ballet, no importa lo que hace el hombre. De forma semejante, si ella prefiere ballet, ella preferirá mirar ballet no importa lo que haga el hombre. Mientras, el hombre prefiere la acción que toma la mujer. Esta situación estratégica
 
 --- Page 123 ---

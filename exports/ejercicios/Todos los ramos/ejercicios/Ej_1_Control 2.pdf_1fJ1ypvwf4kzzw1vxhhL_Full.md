@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 2.pdf_1fJ1ypvwf4kzzw1vxhhL.pdf"
+sourceFile: "Control 2.pdf_1fJ1ypvwf4kzzw1vxhhL.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  INSTITUTO DE ECONOMÍA  PAUTA CONTROL N° 2  MACROECONOMÍA II  (EAE 22 20 )  Profesor: Rodrigo Vergara  Ayudantes:   Juan Andrés Álamos  Valentina Catalán  Pilar Ostalé  1er   Semestre 202 3  Puntaje: 24 puntos  Tiempo: 2 5   minutos  Nombre:   ____ PAUTA _________  1. (5 puntos)   Producto de   una buena noticia   inesperada   en relación con   su deuda externa ,   el  riesgo país de Macrolandia baja .   ¿Qué espera que   pase con el tipo de cambio en Macrolandia  ceteris paribus ?   Explique su respuesta con el modelo visto en   clases.  Respuesta:   Al bajar en forma inesperada   el riesgo país,   el costo de endeudarse en el exterior  cae , debido a que se le exige un premio   menor al país . Ello hace más rentable   endeudarse  en el exterior y traer   capitales al país . C on ello baja el tipo   de cambio. Gráficamente:
 

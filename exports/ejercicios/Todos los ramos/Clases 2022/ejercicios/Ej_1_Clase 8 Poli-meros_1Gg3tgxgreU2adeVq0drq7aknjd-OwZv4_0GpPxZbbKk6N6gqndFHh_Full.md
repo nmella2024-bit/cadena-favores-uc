@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clases 2022/Clase 8 Poli-meros_1Gg3tgxgreU2adeVq0drq7aknjd-OwZv4_0GpPxZbbKk6N6gqndFHh.pdf"
+sourceFile: "Clase 8 Poli-meros_1Gg3tgxgreU2adeVq0drq7aknjd-OwZv4_0GpPxZbbKk6N6gqndFHh.pdf"
+---
+
 --- Page 1 ---
 CLASE 8  TRANSICIONES DE FASE DE  SEGUNDO ORDEN Y  POLIMEROS  Loreto Valenzuela Roediger  lvalenzr@ing.puc.cl  IIQ2043  FISICOQUÍMICA  Departamento de Ingeniería Química y Bioprocesos
 

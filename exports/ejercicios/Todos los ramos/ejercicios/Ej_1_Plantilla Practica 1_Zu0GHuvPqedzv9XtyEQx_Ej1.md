@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Plantilla Practica 1_Zu0GHuvPqedzv9XtyEQx.pdf"
+sourceFile: "Plantilla Practica 1_Zu0GHuvPqedzv9XtyEQx.pdf"
+---
+
 TUTORIAL: Imágenes 1.1.   Imagen centrada  En esta plantilla hay 2 formas de incluir imágenes. La primera es la más compleja y manual que aparece en el código comentado. La segunda forma de incluir imágenes es la más sencilla, solo se tiene que usar el comando personalizado: \fig[label]{Titulo}{tamaño}{ruta_imagen} Ejemplo: \fig[referencia1]{Titulo de la imagen 1}{width = 0.2\textwidth}{img/cuadradoejemplo.png}  Figura 1-1: Titulo de la imagen 1  1.2.   Imágenes alineadas  Si se desea incluir una imagen a la izquierda o derecha de un párrafo, se puede consultar nuevamente el codigo comentado o usar el siguiente comando (Poniendo {r} o {l} dependiendo del caso): \figposition[label]{Titulo}{tamaño}{ruta_imagen}{posicion_r/l} Ejemplo: \figposition[referencia2]{Imagen referencia }{height=3cm}{img/cuadradoejemplo.png}{r}  Figura 1-2: Imagen referencia  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.   It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 5
 
 --- Page 7 ---

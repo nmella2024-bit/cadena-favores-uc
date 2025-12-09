@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 7"
+topic: "General"
+number: "7"
+originalUrl: "exports/downloads/Todos los ramos/I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+sourceFile: "I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+---
+
 2 puntos por obtener la intersecci´ on de las curvas y dar el bosquejo de la regi´ on   R .  2 puntos por describir correctamente la regi´ on   R   como una regi´ on tipo I.  2 puntos por calcular correctamente las primitivas y obtener el valor del volumen.
 
 --- Page 8 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Control 3.pdf_3aQPb5Khe7V4cbfV8JDS.pdf"
+sourceFile: "Control 3.pdf_3aQPb5Khe7V4cbfV8JDS.pdf"
+---
+
 (20   puntos)  La famosa empresa danesa de juguetes, LEGO, en  la década de los 90 tuvo que tomar una fuerte  decisión para su estrategia de largo plazo. La  patente de su icónico ladrillo iba a expirar, por  ende, los esfuerzos de los ejecutivos, equipo de  marketing y equip o de innovación condujeron a la  empresa a doblar el número de ladrillos a más de  12.000 tipos diferentes en sus diferentes líneas de  mercado.  En retrospectiva, la estrategia fue por ampliar diversas líneas de mercado con set demasiados  extravagantes, apostando por piezas raras y de muchos colores. Además de conseguir licencias  de películas como es el caso de Star Wars  Sin embargo, esto no fue lo único, también se movieron a diferentes unidades de negocio como  juegos de PC, juegos de consolas, ropa para niños y parques temáticos relacionados a la marca.  Todo esto creó un   portafolio diverso   de productos relacionado al consumo de la marca.  Basado en la lectura Strategies to reduce product proliferation responda:  a.   ¿Cuáles son los problemas que puede tener Lego con sus estrategia s   de productos?  Mencione y explique a lo menos 3.   6 puntos.  b.   Mencione y explique 2 razones/factores que llevaron a los marketers a crear la  estrategia de ampliar las líneas de mercado.   6 puntos.  c.   Usando la metodología de Tiers, cómo podemos segmentar el comportamiento del  consumidor.   8 puntos.  Respuestas :  a.   Problemas con la estrategia de productos. 6 puntos.  i.   Añadir   costos a la producción:   Con la estrategia de ampliar líneas de  mercados, los diseños nuevos crearon una mayor complejidad en las  líneas de producción lo que llevó a un mayor costo  ii.   Confusión al cliente : Tanta líneas de mercado puede crear overlaps  entre preferencias de consumidores lo que lleva a crear una confusión  en la percepción del cliente  iii.   Incrementar los costos de promociones y slotting fees : Al tener una  mayor variedad de líneas de mercado se tiene que aumentar las
 
 --- Page 5 ---

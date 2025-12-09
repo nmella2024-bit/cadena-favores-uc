@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3 2022-2_3lP5bwZ4F95Pc7Gps7rR.pdf"
+sourceFile: "I3 2022-2_3lP5bwZ4F95Pc7Gps7rR.pdf"
+---
+
 --- Page 1 ---
 ★  𝑓 ( 𝑥 ,   𝑦 ,   𝑧 )   =   𝑦𝑧  𝑥  𝑓 ( 𝑥 ,   𝑦 ,   𝑧 )   =   6  𝑃 ( 1 , 2 , 3 )  ∇ 𝑓 ( 𝑥 ,   𝑦 ,   𝑧 )   =   −   𝑦𝑧  𝑥 2   𝑖 ⃗   +   𝑧  𝑥   𝑗 ⃗   +   𝑦  𝑧   𝑘 ⃗ ⃗  𝑃 ( 1 , 2 , 3 )  𝑛 ⃗ ⃗   =   ∇ 𝑓 ( 1 , 2 , 3 )   =   − 6 𝑖 ⃗   +   3 𝑗 ⃗   +   2 𝑘 ⃗ ⃗  − 6 ( 𝑥   −   1 )   +   3 ( 𝑦   −   2 )   +   2 ( 𝑧   −   3 )   =   0  𝑢 ⃗ ⃗   =   𝑖 ⃗   +   𝑐 𝑗 ⃗   −   𝑐 𝑘 ⃗ ⃗   𝑐   𝑐  𝐷𝑓 𝑢 ⃗ ⃗ ⃗   ( 𝑃 )   =   0  ( 𝐷 𝑢 ⃗ ⃗ ⃗   𝑓 ) ( 𝑃 )   =   ∇ 𝑓 ( 1 , 2 , 3 )   ⋅   𝑢 ⃗ ⃗  =   ( − 6 𝑖 ⃗   +   3 𝑗 ⃗   +   2 𝑘 ⃗ ⃗   )   ⋅   ( 𝑖 ⃗   +   𝑐 𝑗 ⃗   −   𝑐 𝑘 ⃗ ⃗   )  =   − 6   +   𝑐  𝑐   =   6
 

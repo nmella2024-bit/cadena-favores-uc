@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/𝐏𝐫𝐮𝐞𝐛𝐚𝐬 𝐀𝐧𝐭𝐢𝐠𝐮𝐚𝐬/Control 2 2020-1.pdf_1VzIKPyDjREnaWjdUOxFgMpyQqAaaF-iU_03XRsQlEb9qOw79eFiJ8.pdf"
+sourceFile: "Control 2 2020-1.pdf_1VzIKPyDjREnaWjdUOxFgMpyQqAaaF-iU_03XRsQlEb9qOw79eFiJ8.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  INSTITUTO DE ECONOMÍA  PAUTA CONTROL N°2  MACROECONOMÍA II  (EAE 221 - B)  Profesores: Rodrigo Vergara  Ayudantes:   Álvaro Cordero  Vicente Munita  Dominga Selman  1er Semestre 20 20  Puntaje: 24 puntos  Tiempo:   25   minutos  Nombre:   PAUTA  1.   ( 5   puntos)   En días recientes se ha producido una importante baja en las tasas de largo  plazo en Chile. El BCP 10 ,   por ejemplo,   hace dos meses estaba en 3,2% y hoy está  en 2,6%.   Pero por otro lado la tasa corta (TPM) sigue siendo inferior a la tasa larga  ¿Cómo se puede explicar esta situación?  Respuesta:   Según la teoría de las expectativas las tasas de largo plazo son el  promedi o ponderado de las tasas   cortas   esperadas. Por lo tanto, si la tasa larga está  bajando, es porque los agentes esperan que las tasas cortas suban a futuro menos de  lo que esperaban hace dos meses atrás.   Esperan menores tasas producto de la  debilidad de la e conomía, lo que implicaría menores presiones inflacionarias a  futuro. Con todo ,   la tasa a 10 años es mayor que la TPM (0,5%) porque igual se  espera que la tasa corta suba a futuro y además puede haber un diferencial explicado  por la teoría de la preferenci a por liquidez que implica que hay un premio por  mantener papeles más largos (menos líquidos).
 

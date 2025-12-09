@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/!Rengifo (Apuntes feos)_3efsE2Nj53dXT0pEEgN4.pdf"
+sourceFile: "!Rengifo (Apuntes feos)_3efsE2Nj53dXT0pEEgN4.pdf"
+---
+
 --- Page 1 ---
 RESUMEN   CON PREGUNTAS TIPO  PRUEBA DE   INTRODUCCIÓN  A LA MICROECONOMÍA  Sebastián Rengifo  (La materia estará explica da con ejercicios para un mayor entendimiento del contenido)  (Cualquier duda, enviar Gmail a   srengifo@uc.cl)
 

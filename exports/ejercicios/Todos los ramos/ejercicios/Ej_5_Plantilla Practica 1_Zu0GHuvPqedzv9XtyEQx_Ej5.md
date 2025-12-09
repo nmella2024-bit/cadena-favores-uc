@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Plantilla Practica 1_Zu0GHuvPqedzv9XtyEQx.pdf"
+sourceFile: "Plantilla Practica 1_Zu0GHuvPqedzv9XtyEQx.pdf"
+---
+
 Descripción general y estructura de la empresa 5.1.   Descripción general, propiedad y ubicación 5.2.   Tamaño, actividad y productos 5.3.   Estructura de la institución 5.4.   Organigrama y explicación 5.5.   Descripción del área de trabajo 6.   Trabajadores 6.1.   Descripción de los trabajadores 6.2.   Relación con los trabajadores 7.   Actividades desarrolladas en la práctica 7.1.   Descripción del trabajo realizado 7.2.   Descripción del proceso de adaptación 7.3.   Opinión respecto a las actividades realizadas 8.   Análisis de la percepción del trabajador sobre el trabajo y relación entre compañeros 8.1.   Análisis de la relación con el trabajo 8.2.   Análisis de la relación entre compañeros de trabajo 9.   Relación entre los jefes y trabajadores 9.1.   Descripción desde el punto de vista del trabajador 9.2.   Descripción desde el punto de vista del jefe  11
 
 --- Page 13 ---

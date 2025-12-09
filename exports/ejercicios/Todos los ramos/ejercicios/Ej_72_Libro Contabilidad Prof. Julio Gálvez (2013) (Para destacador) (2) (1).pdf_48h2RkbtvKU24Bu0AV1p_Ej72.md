@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 72"
+topic: "General"
+number: "72"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 700   23.000  Total de Patrimonio   630.700   573.000 Total Pasivo y Patrimonio   $   972.250   $   808.000
 
 --- Page 210 ---

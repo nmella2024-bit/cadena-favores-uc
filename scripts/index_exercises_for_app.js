@@ -357,6 +357,19 @@ const indexExercises = () => {
 
                 for (const file of files) {
                     const content = fs.readFileSync(path.join(exercisesDir, file), 'utf-8');
+
+                    // Parse Frontmatter
+                    let originalUrl = "";
+                    let cleanContent = content;
+                    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+
+                    if (frontmatterMatch) {
+                        const frontmatter = frontmatterMatch[1];
+                        cleanContent = frontmatterMatch[2];
+                        const urlMatch = frontmatter.match(/originalUrl: "(.*?)"/);
+                        if (urlMatch) originalUrl = urlMatch[1];
+                    }
+
                     const parts = file.replace('.md', '').split('_');
                     const number = parts[1];
                     let meaningfulTitle = parts[2] || "";
@@ -368,8 +381,7 @@ const indexExercises = () => {
                     const displayTitle = meaningfulTitle && meaningfulTitle.length > 3 ? meaningfulTitle : `Ejercicio ${number}`;
 
                     // Determine best topic match
-                    // Pass courseFolder as sourceFolder, and subFolder as subfolder
-                    const match = determineBestMatch(content, displayTitle, courseFolder, subFolder);
+                    const match = determineBestMatch(cleanContent, displayTitle, courseFolder, subFolder);
 
                     if (match) {
                         const key = normalizeKey(match.course);
@@ -378,35 +390,38 @@ const indexExercises = () => {
                         index[key].push({
                             id: file.replace('.md', ''),
                             number: number,
-                            content: content,
+                            content: cleanContent,
                             filename: file,
                             title: displayTitle,
                             topic: match.topic,
-                            originalCourse: courseFolder
+                            originalCourse: courseFolder,
+                            originalUrl: originalUrl
                         });
                     }
 
                     // Add to "Todos los ramos" as fallback
                     const todosKey = normalizeKey("Todos los ramos");
                     let genericTopic = "Material General";
-                    if (displayTitle.toLowerCase().includes("prueba") || content.toLowerCase().includes("prueba")) genericTopic = "Pruebas Anteriores";
-                    else if (displayTitle.toLowerCase().includes("guia") || content.toLowerCase().includes("guía")) genericTopic = "Guías de Ejercicios";
-                    else if (displayTitle.toLowerCase().includes("ayudantia") || content.toLowerCase().includes("ayudantía")) genericTopic = "Ayudantías";
+                    if (displayTitle.toLowerCase().includes("prueba") || cleanContent.toLowerCase().includes("prueba")) genericTopic = "Pruebas Anteriores";
+                    else if (displayTitle.toLowerCase().includes("guia") || cleanContent.toLowerCase().includes("guía")) genericTopic = "Guías de Ejercicios";
+                    else if (displayTitle.toLowerCase().includes("ayudantia") || cleanContent.toLowerCase().includes("ayudantía")) genericTopic = "Ayudantías";
 
                     if (!index[todosKey]) index[todosKey] = [];
                     index[todosKey].push({
                         id: file.replace('.md', ''),
                         number: number,
-                        content: content,
+                        content: cleanContent,
                         filename: file,
                         title: displayTitle,
                         topic: genericTopic,
-                        originalCourse: courseFolder
+                        originalCourse: courseFolder,
+                        originalUrl: originalUrl
                     });
                 }
             }
         }
     }
+
 
     // Ensure output dir exists
     const outputDir = path.dirname(OUTPUT_FILE);

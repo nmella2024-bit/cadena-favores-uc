@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/T2 2017-1_1amUJWG5iVSzWTLurP7J.pdf"
+sourceFile: "T2 2017-1_1amUJWG5iVSzWTLurP7J.pdf"
+---
+
 a )   i) Primero, llevemos el problema a forma est´ andar. Ocuparemos   x 1   =   − x, x 2   =   y :  min   − x 1   −   x 2  s.a.  4 x 1   −   x 2   +   x 3   =   12  − x 1   + 4 x 2   +   x 4   =   12  x 1   +   x 2   −   x 5   =   2 3 x 1   +   x 2   −   x 6   =   3  x 1 , x 2 , x 3 , x 4 , x 5 , x 6   ≥   0 Dado que no se indica punto inicial, lo haremos desde el punto original (-2,0), que en simplex ser´ ıa (2,0,4,14,0,3).  B   =       4   1   0   0  − 1   0   1   0 1   0   0   0 3   0   0   − 1        R   =       − 1   0 4   0 1   − 1 1   0        b   =       12 12 2 3       B − 1 R   =       1   − 1  − 5   4 5   − 1 2   − 3        B − 1 b   =       2 4 14 3       Calculando, llegamos a que el vector de costos reducidos es (0,-1), por lo que no estpy en el ´ optimo. Iteraci´ on 1: La variable   x 5   entrar´ a a la base. La variable que sale, seg´ un el criterio del m´ ınimo cuociente, es   x 3 . Calculando nuevamente las matrices:  B   =       4   0   0   0  − 1   0   1   0 1   − 1   0   0 3   0   0   − 1        R   =       − 1   1 4   0 1   0 1   0       B − 1 R   =       − 1 / 4   1 / 4  − 5 / 4   1 / 4 15 / 4   1 / 4  − 7 / 4   3 / 4        B − 1 b   =       3 1 15 6       Ahora, el vector de costos reducidos queda (-5/4, 1/4). No estamos en el ´ optimo. Iteraci´ on 2: Entra la variable   x 2 , y sale la variable   x 4 . Calculamos las matrices nuevamente:  B   =       4   0   − 1   0  − 1   0   4   0 1   − 1   1   0 3   0   1   − 1        R   =       0   1 1   0 0   0 0   0       El vector de costos reducidos queda (1/3, 1/3). Por lo tanto, estamos en el punto ´ optimo, dado por el vector:  B − 1 b   =       4 6 4 13       Esto, en el problema original, ser´ ıa el punto ( x, y ) = (-4,4). Gr´ aficamente:
 
 --- Page 9 ---

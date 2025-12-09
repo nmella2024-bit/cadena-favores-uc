@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1 E 2022-1.pdf_4RCyhWGLsZ7guVIF98Vq.pdf"
+sourceFile: "Prueba 1 E 2022-1.pdf_4RCyhWGLsZ7guVIF98Vq.pdf"
+---
+
 (26   puntos)  Considere   dos   pa íses:   Musilandia   y   Digitopía .   En   ambos   países   se   pueden   producir   dos  bienes:   CDs   y   Vinilos .   La   siguiente   matriz   muestra   los   costos   de   producción,   medidos   en  horas   de   trabajo,   de   una   unidad   de   V inilos   y   de   una   unidad   de   CDs,   en   cada   uno   de   esos   dos  paí ses.  Horas   de   Trabajo  Musilandia   Digitopía  CDs   10   2 , 5  Vinilos   2   5  Los   dos   países   son   de   distinto   tamaño:   Musilandia   dispone   de   100   horas   de   trabajo,  mientras   que   en   Digitopía   hay   10.000   horas   disponibles.   Los   países   consumen   las   cantidades  de   bienes   que   producen,   más   lo   que   puedan   intercambiar   con   el   otro   país.   Suponga   que  ambos   bienes   son   perfectamente   divisibles.  a)   (4   puntos)   Grafique   lo   más   detalladamente   posible   la   Frontera   de   Posibilidades   de  Producción   (FPP)   de   cada   país.
 
 --- Page 2 ---

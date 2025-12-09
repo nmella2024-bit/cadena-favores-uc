@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I1 2018-2_4py2VeMEAzMx8hDAcskK.pdf"
+sourceFile: "I1 2018-2_4py2VeMEAzMx8hDAcskK.pdf"
+---
+
 Se puede aprovechar la propiedad   que señala que   cualquier función lineal  de   variables   normalmente   distribuidas   estará   también   normalmente  distribuida.   (0.5 puntos)  6)   Se facilitan las pruebas de hipótesis   sobre los coeficientes del modelo,  pues   dado que   los   𝑢 𝑖   es tán   normalmente distribuid os ,   los estimadores de los  coeficientes   de   intercepto   y   de   pendiente,   𝛽 ̂ 1   y   𝛽 ̂ 2 ,   también   estarán  normalmente distribuid o s.   (0.5 puntos)  7)   Para   el caso que   se trabaje con   muestras pequeñas , se pueden derivar las  distribuciones de probabilidad exactas de los estimadores de MCO y también  usar las pruebas estadísticas   t ,   F   y   X 2 (0.5   puntos)  c)   Responda de manera concisa:  i.   ¿Cuál es la hipótesis nula de   l a prueba t   de los coeficientes de  regresión estimados y qué significa dicha hipótesis en el modelo de  regresión?   (0.5 puntos)  Resp:  Que el coeficiente de regresión (de intercepto o de p endiente) es cero,  es decir, en el caso de que el intercepto es cero, que la regresión pasa  por el origen; en el caso de los coeficientes de pendiente, que la variación  de la variable que acompaña a dicho coeficiente, no influye en la  variación de la regre sada.   (0.5 puntos)  ii.   ¿Cuál es la hipótesis nula de   l a prueba   F del análisis de varianza   en  un modelo con una variable regresora ?   (0.5 puntos)  Resp:  En el modelo estudiado de una variable regresora,   la hipótesis nula  corresponde a que el coeficiente de pendiente   es cero, es decir   que la  variación de   dicha   variable   regresora   no influye en la variación de la  regresada.   (0.5 puntos)  ii.   ¿Cuál es la hipótesis nula   de la prueba   Jarque - Bera?   (0.5 puntos)  Resp:  La   h ipótesis   nula   de   l a   prueba   de   JB   es   Ho:   Los   residuos   están  normalmente distribuidos .   (0.5 puntos)  3.   Interprete los resultados   al estimar la siguiente regresión , que fue estimada a  partir de datos registrados entre los años 1996 y 2014 :  𝑌 𝑖   =   𝛽 1   +   𝛽 2 𝑙𝑛 𝑋 𝑖   +   𝑢 𝑖
 
 --- Page 6 ---

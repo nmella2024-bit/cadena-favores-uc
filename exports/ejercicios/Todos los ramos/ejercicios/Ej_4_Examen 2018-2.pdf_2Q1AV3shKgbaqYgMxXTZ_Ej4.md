@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2018-2.pdf_2Q1AV3shKgbaqYgMxXTZ.pdf"
+sourceFile: "Examen 2018-2.pdf_2Q1AV3shKgbaqYgMxXTZ.pdf"
+---
+
 1 2   puntos  El cuadro que se presenta a continuación muestra la relación existente para un grupo de empresas que tiene  como matriz a la compañía San Francisco y 4 filiales (1, 2, 3 y 4   respectivamente). Adicionalmente, se indican  los porcentajes de propiedad correspondientes entre cada una de las empresas que conforman el grupo:  Al 31 de diciembre de 2017, los patrimonios (en millones de pesos) de las distintas sociedades de este grupo  de empresas era el siguiente:  Sociedad   Patrimonio (MM$)  San Francisco   1.000  Filial 1   300  Filial 2   400  Filial 3   1.200  Filial 4   100  En base a la información anterior, y suponiendo que las únicas inversiones que mantienen cada una de las  empresas son las señaladas en el cuadro anterior,   responda,   en la siguiente página ,   cada una de las preguntas  que se le formulan a continuación, mostra ndo todos los cálculos y explicaciones necesarias:  a)   (2 puntos)   ¿Cuál es el saldo de la cuenta "Interés Minoritario" (o “Participaciones No Controladoras”)  en el balance consolidado al 31/12/17?  b)   (2 puntos)   ¿Cuál es el patrimonio que aparece en el bala nce consolidado al 31/12/17?  c)   (3 puntos)   Si la Filial 4 reparte un dividendo el día 2 de enero de 2018 de MM$ 10 en efectivo, ¿Cuál  será el efecto de ese dividendo en el saldo de la cuenta "Inversión en Sociedades Relacionadas" en el  balance individual   de las empresas San Francisco, Filial 1, Filial 2 y Filial 3?  d)   (5   puntos)   Suponga que durante el año 2018 San Francisco compra a Filial 4 el 100% de su producción.  El costo de esa producción fue de $200 millones y Filial 4 la vendió ganando un margen de   utilidad de  20% sobre el costo. Del total comprado por San Francisco, el 60% fue vendido al consumidor final con  un margen de utilidad de 30% sobre el costo y el 40% restante permaneció en las bodegas de San  Francisco durante el resto del año 2018.  d1) (2   puntos)   ¿Qué utilidad debiera reconocer San Francisco en su balance? San Francisco  Filial 2  Filial 4  Filial 1   Filial 3  30%  4 0%  70%  6 0% 6 0%  4 0%  4 0% 6 0%
 
 --- Page 11 ---

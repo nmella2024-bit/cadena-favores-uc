@@ -586,49 +586,55 @@ const ExerciseBank = () => {
                                                                         // We look for the long ID surrounded by underscores.
                                                                         const driveIdMatch = ex.filename.match(/_([a-zA-Z0-9_-]{25,})_/);
                                                                         const driveId = driveIdMatch ? driveIdMatch[1] : null;
+                                                                        const originalUrl = ex.originalUrl;
 
                                                                         return (
                                                                             <div
                                                                                 key={ex.id}
-                                                                                className="bg-white dark:bg-gray-800 rounded-xl p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow flex flex-col justify-between"
+                                                                                className="bg-card border border-border rounded-xl p-4 hover:border-brand transition-all hover:shadow-md group flex flex-col gap-3"
                                                                             >
-                                                                                <div>
-                                                                                    <div className="flex items-start justify-between mb-2">
-                                                                                        <div className="p-2 bg-purple-100 dark:bg-purple-900/30 rounded-lg">
-                                                                                            <FileText className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                                                                                        </div>
-                                                                                        <span className="text-xs font-medium px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full">
-                                                                                            {ex.topic || "General"}
-                                                                                        </span>
-                                                                                    </div>
-                                                                                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1 line-clamp-2">
-                                                                                        {ex.title}
-                                                                                    </h3>
-                                                                                    <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-3 mb-4">
-                                                                                        {ex.resumen || ex.content.substring(0, 100) + "..."}
-                                                                                    </p>
+                                                                                <div className="flex items-start justify-between">
+                                                                                    <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-brand/10 text-brand">
+                                                                                        {ex.topic}
+                                                                                    </span>
+                                                                                    <span className="text-xs text-text-muted">
+                                                                                        {ex.originalCourse !== 'Todos los ramos' ? ex.originalCourse : ''}
+                                                                                    </span>
                                                                                 </div>
 
-                                                                                <div className="pt-4 border-t border-gray-100 dark:border-gray-700">
-                                                                                    {driveId ? (
-                                                                                        <a
-                                                                                            href={`https://drive.google.com/file/d/${driveId}/view`}
-                                                                                            target="_blank"
-                                                                                            rel="noopener noreferrer"
-                                                                                            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors font-medium text-sm"
-                                                                                        >
-                                                                                            <ExternalLink className="w-4 h-4" />
-                                                                                            Ver PDF Original
-                                                                                        </a>
-                                                                                    ) : (
-                                                                                        <button
-                                                                                            onClick={() => setSelectedExercise(ex)}
-                                                                                            className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 rounded-lg transition-colors font-medium text-sm"
-                                                                                        >
-                                                                                            <Eye className="w-4 h-4" />
-                                                                                            Ver Texto Extraído
-                                                                                        </button>
-                                                                                    )}
+                                                                                <h4 className="font-medium text-text-primary line-clamp-2 group-hover:text-brand transition-colors">
+                                                                                    {ex.title}
+                                                                                </h4>
+
+                                                                                <p className="text-sm text-text-muted line-clamp-3">
+                                                                                    {ex.resumen}
+                                                                                </p>
+
+                                                                                <div className="flex items-center gap-2 mt-auto pt-3 border-t border-border">
+                                                                                    <button
+                                                                                        onClick={(e) => {
+                                                                                            e.stopPropagation();
+                                                                                            if (originalUrl && originalUrl.startsWith('http')) {
+                                                                                                window.open(originalUrl, '_blank');
+                                                                                            } else if (driveId) {
+                                                                                                window.open(`https://drive.google.com/file/d/${driveId}/view`, '_blank');
+                                                                                            } else {
+                                                                                                alert("No se pudo encontrar el enlace original.");
+                                                                                            }
+                                                                                        }}
+                                                                                        className="flex-1 inline-flex items-center justify-center gap-2 rounded-lg border border-brand/30 bg-brand/10 px-3 py-1.5 text-sm font-medium text-brand transition-colors hover:bg-brand/20"
+                                                                                    >
+                                                                                        Ver PDF Original
+                                                                                        <ExternalLink className="h-4 w-4" />
+                                                                                    </button>
+
+                                                                                    <button
+                                                                                        onClick={() => setSelectedExercise(ex)}
+                                                                                        className="inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-card px-3 py-1.5 text-sm font-medium text-text-muted transition-colors hover:bg-accent hover:text-text-primary"
+                                                                                        title="Ver texto extraído"
+                                                                                    >
+                                                                                        <FileText className="h-4 w-4" />
+                                                                                    </button>
                                                                                 </div>
                                                                             </div>
                                                                         );

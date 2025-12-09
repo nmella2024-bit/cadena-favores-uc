@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2017-2 (Pauta)_0Tt4FMJkVTsTTMWf8Pfq.pdf"
+sourceFile: "I2 2017-2 (Pauta)_0Tt4FMJkVTsTTMWf8Pfq.pdf"
+---
+
 --- Page 1 ---
 1  ICS1513   -   Introducción a la Economía   -   Sec. 6  Interrogación 2   -   PAUTA  Me comprometo a no entregar ni recibir ayuda indebida en esta evaluación. También declaro que si  me percato que existe fraude de cualquier tipo en esta evaluación, tengo el deber de comunicárse lo al  Profesor, quien seguirá los procedimientos de la Escuela de Ingeniería y de la Universidad Católica  de Chile para perseguir y sancionar cualquier acto de deshonestidad académica.  Nombre completo:  Número de lista:  Fecha:  Firma:  _____________________ ____________________________________________________  Instrucciones:  -   Escriba su nombre y número de lista en todas las hojas.  -   Dispone de 90 minutos para resolver la prueba.  -   Responda   cada   pregunta   de   la   manera   más completa   posible,   sin exceder   los   límites  as ignados a cada pregunta. Si la respuesta requiere cálculos, incluya el desarrollo de éstos.  -   Solo podrá realizar preguntas durante los primeros 15 minutos de la interrogación. Todas las  preguntas deberán ser realizadas en voz alta.  -   En las respuestas que req uieran gráficos, recuerde que debe explicar lo que ocurre en él y  poner nombre a ejes, curvas, puntos relevantes, etc.  -   En cada parte de la prueba, si contesta una cantidad mayor a las preguntas requeridas, sólo  se considerarán para el cálculo de la nota la s primeras respuestas de cada parte.  -   En caso que empiece a contestar una pregunta y luego se arrepienta, tache con una cruz todo  lo   que   alcanzó   a   escribir   en   esa   pregunta.   Debe   quedar   absolutamente   claro   cuáles  preguntas decidió contestar.
 

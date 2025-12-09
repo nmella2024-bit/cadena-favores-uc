@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/ICE1513_Taller06_SOL_v02_0gNbw29JzXtucFsZLZLG.pdf"
+sourceFile: "ICE1513_Taller06_SOL_v02_0gNbw29JzXtucFsZLZLG.pdf"
+---
+
 Con la segunda ley de Newton, cuando el proyectil va subiendo, se tiene:  m   ·   a   =   − mg   −   F D   =   − mg   −   0 , 01 v 2  a   ( v ) =   − g   −  (   1  m  )  ( 0 , 01 v 2 )   =   − g   −   v 2  1000 Es decir, tenemos una expresi´ on para la aceleraci´ on en funci´ on ´ unicamente de la velocidad. Sabemos que   v   = d z/ d t , lo que multiplicado por d v   es:  v   d v   =  d z  d t   d v   =  d v  d t   d z v   d v   =   a   d z  v0.2 (2018-09-16)   ICE1513 – Taller 06 (Tom´ as Zegard)   P´ agina 3 de 5
 
 --- Page 4 ---

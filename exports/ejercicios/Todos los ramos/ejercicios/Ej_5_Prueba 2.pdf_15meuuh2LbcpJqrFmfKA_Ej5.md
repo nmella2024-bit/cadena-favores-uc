@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_15meuuh2LbcpJqrFmfKA.pdf"
+sourceFile: "Prueba 2.pdf_15meuuh2LbcpJqrFmfKA.pdf"
+---
+
 (11 puntos)  Para Miguel, los bienes   𝑋   e   𝑌   son bien comportados y tienen algún grado de  sustituibilidad ( “bien comportados” significa que   las curvas de indiferencia  entre   𝑋   e   𝑌   tienen la forma “común”   o   con   función de utilidad es Cobb -  Douglas ). Si   para Miguel   el bien   𝑌   es inferior, no puede observarse que frente  a   una disminución del precio del bien X , éste   aumente su   consumo  de   𝒀 .   Muestre gráficamente si est a última afirmación   es verdader a , fals a   o  inciert a,   Explique paso a paso cómo operan el efecto sustitución e ingreso en  cada uno de los bienes en cuestión.  R: Si Y es inferior, necesariamente X debe ser normal.  Ante una disminución del precio de X, Miguel consumirá menos de Y por  efecto sustitución (y más X)   . Por otro lado, el ingreso real de Miguel  aumenta. Como Y es inferior, Miguel consumirá más de X (que es normal) y  menos de Y cuando aumenta su ingreso real . Luego, necesariamente Miguel  terminará consumiendo menos de Y ante una baja del precio de X. Entonces,  el comente es verdadero.
 
 --- Page 12 ---

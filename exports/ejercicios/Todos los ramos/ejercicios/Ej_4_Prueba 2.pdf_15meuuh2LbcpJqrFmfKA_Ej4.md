@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_15meuuh2LbcpJqrFmfKA.pdf"
+sourceFile: "Prueba 2.pdf_15meuuh2LbcpJqrFmfKA.pdf"
+---
+
 (2 0   puntos)  El administrador de la pizzería L ittle Caesars   ubicada a la salida de la estación  San Joaquín ha estado recolectando información y evaluando el mercado de los  palitos de queso. Luego de su   investigación descubrió que la demanda por este  producto se compone por tres tipos distintos de consumidores, provenientes de  tres campus colindantes a la pizzería, estos son: Santo Tomás (ST), DuocUC  (DU) y San Joaquín UC (UC).  Las demandas INDIVIDUALES, de cada tipo de consumidor, por palitos de  Queso son:  𝑞 𝑆𝑇   =   400   −   𝑝  8 ,  𝑞 𝐷𝑈   =   250   −   𝑝  10 ,  𝑞 𝑈𝐶   =   250   −   𝑝  16 ,  donde   𝑞 𝑆𝑇 ,   𝑞 𝐷𝑈   y   𝑞 𝑈𝐶   son las cantidades demandadas por cada grupo,  respectivamente, y   𝑝   el precio de los palitos de queso.   Suponga que el grupo  “Santo Tomás” está compuesto por 10 estudiantes, el grupo “Duoc UC ” también  está compuesto por 10 estudiantes ,   y el grupo San Joaquín UC   está conformado  por 20   estudiantes .  1)   (6   puntos) Calcule y grafique la demanda por palitos de   q ueso de cada  grupo de estudiantes. Es decir, la demanda CONJUNTA DE CADA  GRUPO, compuesta por todos los estudiantes que son parte de ese grupo.  Las demandas conjuntas de cada grupo son:  𝑄 𝑆𝑇   =   4 . 000   −   10   ∙   𝑃  8   =   4 . 000   −   5  4   ∙   𝑃  𝑄 𝐷𝑈   =   2 . 500   −   10   ∙   𝑃  10   =   2 . 500   −   𝑃  𝑄 𝑈𝐶   =   5 . 000   −   20   ∙   𝑃  16   =   5 . 000   −   5  4   ∙   𝑃
 
 --- Page 9 ---

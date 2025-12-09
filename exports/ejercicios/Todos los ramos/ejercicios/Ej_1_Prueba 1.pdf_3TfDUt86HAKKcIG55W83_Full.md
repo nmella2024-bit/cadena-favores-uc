@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_3TfDUt86HAKKcIG55W83.pdf"
+sourceFile: "Prueba 1.pdf_3TfDUt86HAKKcIG55W83.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Católica de Chile  Instituto de Economía  Macroeconomía I   –   EAE220D  Segundo Semestre de 2021  Profesor: Rodrigo Cifuentes  Ayudantes: Matías Flores, Ángela Hurtado   y   Francisco Kinzel.  4 de Octubre   de   2021  Prueba 1   –   Pauta  Código de Honor  Como miembro de la comunidad de la Pontificia Universidad Católica de Chile, me comprometo a  resp etar los principios y normativas que la rigen. Asimismo, me comprometo a actuar con rectitud  y honestidad en esta evaluación. Adicionalmente declaro estar en condiciones de salud adecuadas  para rendir esta evaluación y que me presento a ésta bajo mi respon sabilidad. En caso de sentirme  mal o tener alguna complicación, deberé informarlo inmediatamente al ayudante o profesor. Al  comenzar a responder esta prueba, se entiende que el alumno/a esta de acuerdo con el código.  I.   ( 25   puntos) Al final de este docum ento usted encontrará siete (7) cuadros del último boletín de  estadísticas del Banco Central: los cuadros 2.4, 2.5, 2.8, 2.9, 2.17, 2.19 y 2.30 (puede obviar el cuadro  2.18).  En base a estos cuadros responda las siguientes preguntas:  1.   ( 8   puntos) Elija un hecho destacado de la variación del gasto del PIB en 2021. Elija un cuadro  en el que basar su comentario, indiqué cuáles son los elegibles y justifique su elección de  cuadro. Comente el hecho a la luz de lo que sabe de la coyuntura macro   de ese período y  de otros efectos, como por ejemplo, la base de comparación (en caso de que haya elegido  una tabla que muestra tasas de crecimiento).  Los cuadros elegibles son los cuadros 2.4, 2.5, 2.8 y 2.9   ya que esos son los que se refieren  a gasto .   ( 2 puntos )  De   ellos los relevantes son el 2.8 y 2.9 ya que están “encadenados”, es decir, suponen  precios constantes y por lo tanto muestran una variación real.   ( 2 puntos )  La variación del gasto se ve en el cuadro 2.9, en el que se destaca el fuerte crecimiento del  consumo de bie nes durables. Esto se puede conectar con la coyuntura, ya que sabemos que  tanto los retiros de los fondos de pensiones como las transferencias (‘ayudas’) del gobierno
 

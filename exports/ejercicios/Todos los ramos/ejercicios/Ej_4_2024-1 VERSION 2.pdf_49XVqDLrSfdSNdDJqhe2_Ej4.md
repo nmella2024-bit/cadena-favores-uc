@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/2024-1 VERSION 2.pdf_49XVqDLrSfdSNdDJqhe2.pdf"
+sourceFile: "2024-1 VERSION 2.pdf_49XVqDLrSfdSNdDJqhe2.pdf"
+---
+
 a )   (10 ptos)   El lanzamiento de un cohete es seguido por una c´ amara situada a 4 km del punto de lanzamiento (en el suelo). Cuando el cohete ha subido verticalmente 3 km y viaja a 600 m/seg, ¿con qu´ e rapidez var´ ıa el ´ angulo   θ   de inclinaci´ on de la c´ amara (medido respecto a la horizontal)?  θ  4   km  Nota.   Para realizar sus c´ alculos use las mismas unidades de medida.  b )   (6 ptos)   Sea   f   ( x ) una funci´ on derivable en todo   R , estrictamente positiva,   f   ′ ( x )   >   0 y tal que   f   (0) =   e − 1   con   e   el n´ umero de Euler. Demuestre que la funci´ on   g ( x ) =   f   ( x ) f   ( x )   tiene un m´ aximo absoluto (m´ aximo global).  Soluci´ on .  a ) Si   y   =   y ( t ) corresponde a la altura del cohete en el instante de tiempo   t >   0, medida en metros, se satisface que tan( θ ( t )) =   y ( t )  4 000 Derivando esta ecuaci´ on respecto a   t   tendremos sec 2 ( θ ) θ ′   =   y ′  4 000   ⇒   θ ′   =   y ′   cos 2 ( θ )  4 000 Cuando   y   = 3000   m , se tiene que   y ′   = 600   m/seg   y cos( θ ) =  cat. adyacente  hipotenusa   =  4 000  5 000  =  4  5 . Por lo tanto,  θ ′   =  600   ·   (4 / 5) 2  4 000   =   12  125  = 0 , 096   rad/seg  b ) Para calcular   g ′ ( x ) debemos usar derivaci´ on logar´ ıtmica. ln( g ( x )) =   f   ( x ) ln( f   ( x ))   ⇒   g ′ ( x ) =   g ( x ) f   ′ ( x ) (   ln( f   ( x )) + 1 )  donde   g ( x ) =   f   ( x ) f   ( x )   >   0, ya que   f   ( x )   >   0, y   f   ′ ( x )   >   0 por el enunciado del ejercicio. De lo anterior, todos los n´ umeros cr´ ıticos de   g   corresponde a la soluci´ on de la ecuaci´ on ln( f   ( x )) + 1 = 0 que tiene por soluci´ on   f   ( x ) =   e − 1 .
 
 --- Page 7 ---

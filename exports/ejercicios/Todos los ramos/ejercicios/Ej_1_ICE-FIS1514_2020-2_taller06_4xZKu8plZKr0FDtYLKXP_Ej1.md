@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/ICE-FIS1514_2020-2_taller06_4xZKu8plZKr0FDtYLKXP.pdf"
+sourceFile: "ICE-FIS1514_2020-2_taller06_4xZKu8plZKr0FDtYLKXP.pdf"
+---
+
 Dos p´ endulos (de oscilaciones peque˜ nas) comienzan a oscilar con las condiciones iniciales (en   t   = 0   s ) que se indican en la Figura 1. Asumiendo que   g   = 10   m/s 2 , se pide determinar: a) El per´ ıodo de oscilaci´ on para cada p´ endulo   T 1   y   T 2 . b) Las ecuaciones   θ 1 ( t ) y   θ 2 ( t ) para cada p´ endulo. c) ¿Cu´ anto tarda el p´ endulo 2 en alcanzar su amplitud m´ axima? d) Determine el primer instante en que los dos p´ endulos tienen el mismo ´ angulo de deflexi´ on. e) Si ahora el p´ endulo 2 comienza con velocidad   v 0   =  1 2   m/s , y lo hace en la posici´ on   θ 0   =   − √ 3 / 4   rad : determine la amplitud del movimiento del p´ endulo. 2.5 m 10 m 5 m/s 2   Rad g g  1 2  Figura 1: Posiciones iniciales de p´ endulos  Soluci´ on  a. Se conoce que la frecuencia angular de un p´ endulo viene dada por   ω   =  √   g L   . Luego, los per´ ıodos de los p´ endulos vienen de  ω 1   =  √   g L 1  = 1  1  s   ω 2   =  √   g L 2  =   √ 4 = 2  1  s T 1   =  2 π ω 1  = 2 π s   T 2   =  2 π ω 2  =   π s  b. La ecuaci´ on de un movimiento arm´ onico simple es la siguiente.  θ ( t ) =   θ 0   cos ( ωt ) +  ˙ θ 0  ω   sin ( ωt ) Donde   θ 0   y  ˙ θ 0   son las condiciones iniciales. Para el p´ endulo 1 las condiciones iniciales son:  θ 1 0   =   √ 2   rad   ˙ θ 1 0   =   v r   =   0 10  = 0  1  s  v0.1 (2020-10-16)   ICE1514 – Taller 06   P´ agina 1 de 3
 
 --- Page 2 ---

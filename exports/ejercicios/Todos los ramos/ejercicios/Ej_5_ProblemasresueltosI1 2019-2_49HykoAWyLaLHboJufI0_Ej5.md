@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/ProblemasresueltosI1 2019-2_49HykoAWyLaLHboJufI0.pdf"
+sourceFile: "ProblemasresueltosI1 2019-2_49HykoAWyLaLHboJufI0.pdf"
+---
+
 Sea   T   :   R 2   →   R 3 , tal que:  T  (  4  − 2  )  =      1 2 0       , T  (  1 3  )  =      4  − 2 1       (12) Encontrar la matriz asociada de la transformaci´ on lineal. Determinar si es inyectiva y/o sobreyectiva.  (  4  − 2  )  = 4  (  1 0  )  +  (  0 1  )  (13)  (  1 3  )  =  (  1 0  )  + 3  (  0 1  )  (14) Aplicando la transformaci´ on lineal:  T  (  4  − 2  )  = 4 T  (  1 0  )  +   T  (  0 1  )  (15)  T  (  1 3  )  =   T  (  1 0  )  + 3 T  (  0 1  )  (16) Luego:       1 2 0       = 4 T  (  1 0  )  +   T  (  0 1  )  (17) 3
 
 --- Page 4 ---

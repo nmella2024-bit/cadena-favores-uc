@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Pauta Interrogación 1_1W6SMWrwUpzWhoCitM2t.pdf"
+sourceFile: "Pauta Interrogación 1_1W6SMWrwUpzWhoCitM2t.pdf"
+---
+
 (15 puntos)  3.1   (5 puntos) Usando la definici´ on matricial de una regresi´ on lineal, derive el vector de coeficientes estimados usando el m´ etodo de m´ ınimos cuadrados ordinarios (MCO) ( hint:   e   =   y   −   Xβ ). Buscamos minimizar el cuadrado de la norma 2 del vector de errores, es decir, buscamos minimizar la siguiente funci´ on:  M CO ( β ) =   ϵ ′ ϵ   = ( y   −   Xβ ) ′ ( y   −   Xβ ) =   || y   −   Xβ || 2 2   (4) Podemos utilizar los conocimientos en ´ algebra matricial:  M CO ( β ) = ( y   −   Xβ ) ′ ( y   −   Xβ ) =   y ′ y   −   β ′ X ′ y   −   y ′ Xβ   +   β ′ X ′ Xβ  =   y ′ y   −   2 y ′ Xβ   +   β ′ X ′ Xβ  Sabemos que podemos minimizar una funci´ on utilizando el gradiente e igualando a cero  ∂M CO ( β )  ∂ β   =   ∇ M CO ( β ) =   − 2 X ′ y   + 2 X ′ Xβ   (5) Podemos utilizar (5) para obtener un candidato a m´ ınimo seg´ un  − 2 X ′ y   + 2 X ′ Xβ   = 0  X ′ Xβ   =   X ′ y   (6) De esta manera, las ecuaciones (6) se conocen como ecuaciones normales.   Verificamos que tenemos un m´ ınimo seg´ un el hessiano:  ∂ 2 M CO ( β )  ∂ β ∂ β ′   = 2 X ′ X   (7) Bajo el supuesto que las columnas de la matriz de dise˜ no son independientes, es decir, que la matriz es de rango columna completo, tenemos que la matriz hessiana presentada en (7) es definida positiva, luego tratamos con un m´ ınimo. Adem´ as, esto garantiza la existencia de la inversa de   X ′ X , luego podemos resolver las ecuaciones normales en (6) para   β : ˆ β   =   ( X ′ X ) − 1 X ′ y  Luego se tiene el resultado que se buscaba.  (1 punto)   Por determinar que la ecuaci´ on a minimizar es (4)  (3 puntos)   Por obtener correctamente el gradiente de la funci´ on en (4), i.e., por obtener la ecuaci´ on (6)  (1 punto)   Por concluir matem´ aticamente que se trata de un m´ ınimo, i.e. ecuaci´ on en (7)  3.2   (5 puntos) Demuestre por qu´ e es necesario incluir un vector de 1’s en   X   para que la suma de los errores sea cero. Denotemos   X 1   =   1 n   = [1 1   ...   1] ′   como el vector de 1’s de dimensi´ on   n . Luego,  X ′  1 e   =   1 ′  n e   =  n X  i =1  e i   (8) 5
 
 --- Page 6 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_3ClHakTWfu6inNEkJ6nY.pdf"
+sourceFile: "Prueba 1.pdf_3ClHakTWfu6inNEkJ6nY.pdf"
+---
+
 (25 puntos)  (a) (5 puntos) En un mundo de dos bienes, la elecci´ on de una soluci´ on de esquina (con- sumo de uno solo de ellos) ser´ a siempre sub´ optima. ¿Es esta aseveraci´ on verdadera? Demuestre que es cierto o entregue un contraejemplo. (b) (5 puntos) Si las preferencias de un individuo cumplen monotonicidad (consumir m´ as es estrictamente preferido a consumir menos), la utilidad marginal del ingreso es positiva. ¿Es esta aseveraci´ on verdadera? Demuestre que es cierto o entregue un contraejemplo. (c) (6 puntos) Se viene el 18 y sube el precio de la carne.   A Jaime le gustan tanto los asados que compra mucho m´ as carne que el consumidor promedio (es decir, m´ as que el consumidor representado en la canasta del IPC). Si a Jaime le reajustan su ingreso  m   en base a un ´ ındice de precios como el IPC, explique por qu´ e no necesariamente va a estar mejor que si le reajustaran en base a su variaci´ on compensatoria. (d) (4 puntos) Si aumenta el precio de un bien cuya demanda es el´ astica, entonces el gasto del consumidor en ese bien aumentar´ a. Comente, justificando su respuesta. (e) (5 puntos) Un individuo tiene preferencias por   x 1   y   x 2   que se pueden describir con la funci´ on de utilidad   U   ( x 1 , x 2 ) = min { αx 1 , βx 2 } , con   α   y   β   par´ ametros positivos. ¿Es posible que alguno de estos bienes sea inferior? Justifique su respuesta. (Nota: no es necesario que calcule las demandas, basta con explicar usando un gr´ afico).  Respuesta.  (a) (5 puntos) Falso, la soluci´ on ´ optima puede ser soluci´ on de esquina.   Por ejemplo, con sustitutos perfectos ( U   ( X, Y   ) =   X   +   Y   y   p X ̸   =   p Y   ) o preferencia cuasi-lineal ( U   ( X, Y   ) =   X   +   lnY   si el precio de   X   es mayor que   m   es ´ optimo consumir 0 del bien  X ). 1
 
 --- Page 2 ---

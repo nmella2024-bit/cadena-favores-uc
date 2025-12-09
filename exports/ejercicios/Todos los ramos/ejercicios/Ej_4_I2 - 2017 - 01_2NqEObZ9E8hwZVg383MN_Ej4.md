@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 - 2017 - 01_2NqEObZ9E8hwZVg383MN.pdf"
+sourceFile: "I2 - 2017 - 01_2NqEObZ9E8hwZVg383MN.pdf"
+---
+
 El n´ umero de alumnos de Ingenier´ ıa que se ausenta al menos a una interrogaci´ on durante un a˜ no es una variable aleatoria. Por ejemplo, datos hist´ oricos indican que un 15 % de los alumnos se ausentaron al menos a una interrogaci´ on durante el a˜ no. Un curso actualmente tienen 100 alumnos inscritos, si tom´ asemos una muestra aleatoria de tama˜ no 25. (a) ¿Cual es la probabilidad que una muestra con reemplazo contenga al menos un alumno que haya faltado al menos a una interrogaci´ on durante el ´ ultimo a˜ nos? Identifique el modelo. (b) Si el muestreo fuese sin reemplazo, ¿que modelo ser´ ıa adecuado?, ¿cu´ al seria ahora la probabilidad del evento calculado en (a)? Comente.  Soluci´ on  (a) Si   X   es el n´ umero de alumnos que han faltado al menos a un interrogaci´ on en el ´ ultimo a˜ no en una muestra con reemplazo, entonces  X   ∼   Binomial( n   = 25 , p   = 0 . 15)   [1.0 Ptos.]  Se pide  [1.0 Ptos.]   P   ( X   ≥   1) = 1 − p X   (0) = 1 −  ( 25 0  )  · 0 . 15 0 · 0 . 85 25 − 0   = 1 − 0 . 01719781 = 0 . 9828022   [1.0 Ptos.]  (b) Si el muestreo es sin reemplazo,  X   ∼   Hipergeom´ etrica( N   = 100 , m   = 15 , n   = 25)   [1.0 Ptos.]  Se pide  P   ( X   ≥   1) = 1   −   p X   (0) = 1   −  ( 15 0  )( 85 25  ) ( 100 25  )   = 1   −   0 . 008999868 = 0 . 9910001   [1.0 Ptos.]  Debido a que el curso es una poblaci´ on peque˜ na y el tama˜ no de la muestra un 25 % de ella la aproxi- maci´ on con la Binomial no es tan cercana o exacta.   [1.0 Ptos.] + 1 Punto Base  EYP1113 - Probabilidad y Estad´ ıstica Primer Semestre 2017  5   Profesores: Ricardo Aravena Cuevas Ricardo Olea Ortega

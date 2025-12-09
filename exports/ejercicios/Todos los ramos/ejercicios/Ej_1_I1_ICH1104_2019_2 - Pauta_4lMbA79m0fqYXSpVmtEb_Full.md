@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1_ICH1104_2019_2 - Pauta_4lMbA79m0fqYXSpVmtEb.pdf"
+sourceFile: "I1_ICH1104_2019_2 - Pauta_4lMbA79m0fqYXSpVmtEb.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIV ERSID AD CATÓLICA DE CHILE  DEPTO. DE ING. HIDRÁULICA Y AMBIENTAL  ICH1104 MECÁNICA DE FLUIDOS  SEGUNDO   SEMESTRE DE 20 1 9   INTERROGACIÓN Nº 1  Lunes 9 de septiembre   de 201 9  Sin Apuntes , con   calculadora . Tiempo total: 2: 3 0   hrs.  NOMBRE………………………………………………………………………………..  SECCI Ó N………………………………………..  INSTRUCCIONES  La prueba es estric tamente individual, sin apuntes ni   formularios . Puede usar   calculadora.  No se permiten consultas durante la interrog ación.  Al iniciar la prueba ponga su nombre en esta página.   No separe las hojas de este  cuadernillo.  Este cuadernillo contiene el enunciado de   cuatro   problemas .   Este cuadernillo NO se  entrega . Se corregirá sólo lo entregado en el cuadernillo de sus res puestas definitivas. Ud.  es responsable de completar el cuadernillo definitivo y presentarlo de manera que se facilite  la corrección.
 

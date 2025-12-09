@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia6_Solucionario_26ztlX7IBvC9aU5h8dis.pdf"
+sourceFile: "Ayudantia6_Solucionario_26ztlX7IBvC9aU5h8dis.pdf"
+---
+
 Determine los puntos sobre la curva dada por 2 ( x 2   +   y 2 ) 2   = 25 ( x 2   −   y 2 ) donde la recta tan- gente es horizontal.  Soluci´ on:  2   ( x 2   +   y 2 ) 2   = 25   ( x 2   −   y 2 )   ⇒   d dx  (  2   ( x 2   +   y 2 ) 2 )  =   d dx  ( 25   ( x 2   −   y 2 ))  ⇒   4   ( x 2   +   y 2 )  (  2 x   + 2 y  dy dx  )  = 25  (  2 x   −   2 y  dy dx  )  ⇒   dy dx  ( 2 y   ( 4   ( x 2   +   y 2 )   + 25 ))   = 2 x   ( 25   −   4   ( x 2   +   y 2 ))  ⇒   dy dx   =  2 x   (25   −   4 ( x 2   +   y 2 )) 2 y   (4 ( x 2   +   y 2 ) + 25)  ⇒   dy dx   =   x   (25   −   4 ( x 2   +   y 2 ))  y   (4 ( x 2   +   y 2 ) + 25) As´ ı,  dy dx   = 0   ⇒   x   ( 25   −   4   ( x 2   +   y 2 ))   = 0  ⇒   x   = 0   ∨   25   −   4   ( x 2   +   y 2 )   = 0 Si   x   = 0, entonces, por la ecuaci´ on original se tiene que  x   = 0   ⇒   2 y 4   =   − 25 y 2  ⇒   y 2   ( 2 y 2   + 25 )  ⇒   y   = 0   ya que 2 y 2   + 25   >   0 pero,   dy dx   no existe si   x   =   y   = 0. Por lo tanto,  dy dx   = 0   ⇔   25   −   4   ( x 2   +   y 2 )   = 0  ⇔   x 2   +   y 2   =  25 4  ⇔   2  ( 25 4  ) 2  = 25   ( x 2   −   y 2 )  ⇔   25 8   =   ( x 2   −   y 2 )  As´ ı,  x 2   +   y 2   =   25 4  x 2   −   y 2   =   25 8
 
 --- Page 6 ---

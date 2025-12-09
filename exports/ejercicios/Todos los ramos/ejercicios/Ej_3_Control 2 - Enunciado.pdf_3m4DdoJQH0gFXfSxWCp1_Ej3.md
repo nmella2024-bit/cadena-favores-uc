@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Control 2 - Enunciado.pdf_3m4DdoJQH0gFXfSxWCp1.pdf"
+sourceFile: "Control 2 - Enunciado.pdf_3m4DdoJQH0gFXfSxWCp1.pdf"
+---
+
 ( 37   puntos)  Usted tiene que analizar   el mercado de los calcetines . Suponga que dicho mercado  es   de competencia perfecta. La demanda de mercado por calcetines es:  𝑄 𝑑   =   220   −   2 𝑝 ,  donde   𝑄 𝑑   es la cantidad demandada del mercado y   𝑝 , el precio del bien.  En el mercado de los calcetines hay 10 empresas en total ,   y todas   son   tomadoras de  precios. Estas 10 empresas se pueden separar en dos   grupos, donde cada grupo está  compuesto por 5 empresas   idénticas. A   continuación ,   se presenta la curva de   c osto  t otal y   c osto   m arginal de   una   empresa   de cada grupo .  Los c ostos de   una   empresa de l grupo   1   son :  𝐶𝑇 ( 𝑞 1 )   =   120   +   4 𝑞 1   +   1  2   ( 𝑞 1 ) 2  𝐶𝑀𝑔 ( 𝑞 1 )   =   4   +   𝑞 1  donde   𝑞 1   es la cantidad producida por   una   empresa del grupo 1.  Los c ostos de   una   empresa de l grupo   2   son:  𝐶𝑇 ( 𝑞 2 )   =   60   +   5 𝑞 2   +   ( 𝑞 2 ) 2  𝐶𝑀𝑔 ( 𝑞 2 )   =   5   +   2 𝑞 2  donde   𝑞 2   es la cantidad producida por   una   empresa del grupo 2.
 
 --- Page 5 ---

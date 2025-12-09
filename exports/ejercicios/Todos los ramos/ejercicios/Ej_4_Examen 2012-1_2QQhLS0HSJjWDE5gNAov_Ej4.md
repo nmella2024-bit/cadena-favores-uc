@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2012-1_2QQhLS0HSJjWDE5gNAov.pdf"
+sourceFile: "Examen 2012-1_2QQhLS0HSJjWDE5gNAov.pdf"
+---
+
 (i) El punto (0 ,   0) es una soluci´ on de equilibrio del sistema  {   dx dt   =   − x   −   y   −   3 x 2 y,  dy dt   =   − 2 x   −   4 y   +   y   sen   x.  Utilizando el m´ etodo de linealizaci´ on clasif´ ıquelo, si es posible, como atractor, repulsor o silla. (ii) Verifique que la funci´ on   E ( x, y ) =   xe y   + cos   x   −   x   es una constante de movimiento (funci´ on de Hamilton) para el sistema,  {   dx dt   =   xe y ,  dy dt   = sen   x   −   e y   + 1   .   (4) Encuentre adem´ as sus puntos de equilibrio y decida si son estables o inestables.  Soluci´ on : (i) Para el punto de equilibrio (0 ,   0), el sistema linealizado es,  {   dx dt   =   − x   −   y,  dy dt   =   − 2 x   −   4 y.  Su matriz de coeficientes (la matriz de Jacobi del sistema no lineal evaluado en (0 ,   0)) es  J   =  (   − 1   − 1  − 2   − 4  )  [ 1 pt ] 4
 
 --- Page 5 ---

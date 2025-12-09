@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/I2 2015-2_2cdXjilcjkRzzue3BF5g.pdf"
+sourceFile: "I2 2015-2_2cdXjilcjkRzzue3BF5g.pdf"
+---
+
 (12 puntos)  a)   Primero tenemos que calcular las llegadas acumuladas:  Para   𝑡 ≤ 120  𝐴(𝑡) = ∫ 𝜆(𝑥)𝑑𝑥  𝑡 0  = ∫ (600 − 5𝑥)𝑑𝑥  𝑡 0  = 600𝑡 −  5 2  𝑡 2  Y para   𝑡 > 120  𝐴(𝑡) = ∫   (600 − 5𝑥)𝑑𝑥  120 0  + ∫   0𝑑𝑥  𝑡 120  = 600 ∗ 120 −  5 2  ∗ 120 2   = 36000  Por lo tanto:  𝐴(𝑡) = { 600𝑡 −  5 2  𝑡 2   𝑠𝑖 𝑡 ≤ 120 36000   𝑠𝑖 𝑡 > 120  Y también tenemos que dado que buscamos una tasa de servicio constante:  𝐷(𝑡)   =   ∫   𝜇 ( 𝑥 ) 𝑑𝑥  𝑡  0   =   𝜇   ∗   𝑡   (1 punto)  Por otro lado, la cola   𝐿 ( 𝑡 )   se puede representar como:  𝐿 ( 𝑡 )   =   𝐴 ( 𝑡 )   −   𝐷 ( 𝑡 )  𝐿 ( 𝑡 )   =   600 𝑡   −   5  2   𝑡 2   −   𝜇   ∗   𝑡  𝐿(𝑡)   =   ( 600   −   𝜇 ) 𝑡   −   5  2   𝑡 2   (1 punto)  Por lo tanto, la cola máxima será en:  𝜕𝐿 ( 𝑡 )  𝜕𝑡   =   600   −   𝜇   −   5 𝑡   =   0   →   600   −   𝜇   =   5 𝑡   →   120   −   𝜇  5   =   𝑡  Reemplazando y buscando que la cola no supere los 50 veh:  50   =   ( 600   −   𝜇 )   ∗   ( 120   −   𝜇  5 )   −   5  2   ( 120   −   𝜇  5 ) 2  50   =   ( 600   −   𝜇 ) 2  5   ∗   ( 1   −   1  2 )  500   =   ( 600   −   𝜇 ) 2   =   360000   −   1200 𝜇   +   𝜇 2  𝜇 2   −   1200 𝜇   +   359500   =   0   →   𝜇   =   577 , 64   𝑣𝑒 ℎ / 𝑚𝑖𝑛  Por lo tanto, necesitamos atender a 578 vehículos por minuto. (1 punto)  b)   La cola se disipa cuando ambas curvas se igualen: (1 punto)  Si   𝑡 ≤ 120
 
 --- Page 10 ---

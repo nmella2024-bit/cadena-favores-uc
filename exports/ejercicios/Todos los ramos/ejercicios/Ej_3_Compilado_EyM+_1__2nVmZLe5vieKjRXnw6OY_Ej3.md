@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Compilado_EyM+_1__2nVmZLe5vieKjRXnw6OY.pdf"
+sourceFile: "Compilado_EyM+_1__2nVmZLe5vieKjRXnw6OY.pdf"
+---
+
 Magnetost´ atica  3.1.   Fuerza de Lorentz y torque sobre una espira  (1) Se lanza un electr´ on ( e − ) con velocidad inicial   ~ v   en el medio de dos placas entre las cuales existe un campo magn´ etico   ~ B   constante (entrando a la hoja). Ignore todo efecto gravitacional.  a ) ¿Hacia d´ onde se deflecta la trayectoria?  b ) ¿Cu´ al es la magnitud de la velocidad si la part´ ıcula choca exactamente con el fin de la placa?  Soluci´ on:  a ) La fuerza de Lorentz corresponde a la uni´ on entre electromagnetismo y mec´ anica cl´ asica, y establece que:  ~ F   =   q  (   ~ E   +   ~ v   ×   ~ B  )  En este caso,   q   =   − e   y   ~ E   ≡   ~ 0. Dado que la velocidad inicial es perpendicular al campo magn´ etico, la trayectoria ser´ a una circunferencia en el plano   XY   :  Para analizar hacia d´ onde se deflectar´ a la part´ ıcula, basta con analizar lo que ocurre en el instante inicial   t   = 0,  ~ v (0)   ×   ~ B   =   v 0   ˆ ı   × − B   ˆ k   =   v 0 B   ˆ   Luego, la fuerza inicial es:   ~ F   (0) =   − ev 0 B   ˆ   y, por tanto, se deflectar´ a hacia abajo .  b ) Dado que el electr´ on impactar´ a al extremo derecho de la placa inferior, entonces debe realizar una trayectoria como la siguiente: 89
 
 --- Page 93 ---

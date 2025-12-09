@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 - 2015 - 01_56wqljOpMPlXnWh2YOsM.pdf"
+sourceFile: "I1 - 2015 - 01_56wqljOpMPlXnWh2YOsM.pdf"
+---
+
 El SII tiene sospechas que una peque˜ na empresa mediante facturas o boletas ideol´ ogicamente falsas ha evadido el pago de impuestos. El SII realizar´ a una auditor´ ıa, seleccionando al azar el 20 % de las boletas o facturas recibidas el ´ ultimo a˜ no. Suponga que la empresa recibi´ o una proporci´ on   p , con   p >   0, de boletas o facturas ideol´ ogicamente falsas entre las cien que declar´ o recibir el ´ ultimo a˜ no. (a)   [3.0 Ptos.]   Expresen en t´ erminos de   p   la probabilidad que el SII detecte al menos una de estas boletas o facturas idelol´ ogicamente falsas durante la auditor´ ıa. (b)   [1.5 Ptos.]   Si   p   = 5 %, evalu´ e la expresi´ on obtenida en (a). (c)   [1.5 Ptos.]   ¿Cu´ al ser´ ıa el m´ ınimo valor para la proporci´ on   p   que asegur´ e al SII una probabilidad mayor a 0 . 9 de detectar la menos una boleta o factura ideol´ ogicamente falsa?  Soluci´ on  (a) Definamos como   A   al evento en que el SII detecta al menos una boleta o factura ideol´ ogicamente falsas. Por ley del complemento se tiene que  P   ( A ) = 1   −   P   ( A )   [0.5 Ptos.]  donde   A   representa el evento donde el SII no detecta boletas o facturas ideol´ ogicamente falsas. Como la selecci´ on es al azar, entonces la idea cl´ asica de probabilidad (casos favorables sobre casos totales) es adecuada para esta situaci´ on. Los casos totales, est´ an dados por todas las muestras distintas posibles correspondiente al 20 % entre las cien boletas o facturas recibidas: # S   =  ( 100 20  )  [1.0 Ptos.]  Por otra parte, los casos favorables del evento   A   est´ an dados por: # A   =  ( 100   −   100   ·   p  20  )  [1.0 Ptos.]  Luego  P   ( A ) = 1   −  ( 100   −   100   ·   p  20  ) ( 100 20  )   [0.5 Ptos.]  EYP1113 - Probabilidad y Estad´ ıstica Primer Semestre 2015  1   Profesores: Ricardo Aravena Cuevas Ricardo Olea Ortega
 
 --- Page 2 ---

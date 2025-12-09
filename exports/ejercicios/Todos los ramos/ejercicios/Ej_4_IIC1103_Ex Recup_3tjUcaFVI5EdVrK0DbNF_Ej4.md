@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/IIC1103_Ex Recup_3tjUcaFVI5EdVrK0DbNF.pdf"
+sourceFile: "IIC1103_Ex Recup_3tjUcaFVI5EdVrK0DbNF.pdf"
+---
+
 Est´ as preparando la mudanza de tu primo que viene a estudiar a Santiago y quieres ayudarlo a ahorrar dinero en el traslado de sus cosas. Para eso, le prometes que har´ as un programa que maximizar´ a la cantidad de pertenencias que puede trasladar en un solo viaje. Hay disponible un cami´ on de mudanzas con capacidad   C   m 3 , y tu primo te entrega dos listas: una con el contenido de cada caja (como “ropa” y “libros”) y otra con el volumen en   m 3   de cada una de esas cajas, respectivamente. Escribe un programa en Python que en forma   RECURSIVA   entregue una lista con el nombre de las cajas cuyo volumen en conjunto sea el m´ aximo que se puede trasladar en el cami´ on, sin sobrepasar su capacidad. Pueden existir soluciones alternativas donde cambia el orden de las cajas, por ej.   [Ropa, Zapatos]   y   [Zapatos, Ropa] . En tu soluci´ on puedes considerar todas estas combinaciones o puedes indicar solo una de ellas. Hazlo como te resulte m´ as f´ acil. Por otro lado, ten presente que podr´ ıa haber alguna situaci´ on en que no se pueda transportar ninguna caja porque la capacidad del cami´ on es muy peque˜ na. 3
 
 --- Page 4 ---

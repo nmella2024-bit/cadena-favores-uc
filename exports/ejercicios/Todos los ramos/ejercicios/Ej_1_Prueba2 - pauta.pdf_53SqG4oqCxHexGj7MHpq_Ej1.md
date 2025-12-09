@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba2 - pauta.pdf_53SqG4oqCxHexGj7MHpq.pdf"
+sourceFile: "Prueba2 - pauta.pdf_53SqG4oqCxHexGj7MHpq.pdf"
+---
+
 [4p] Modelo de Hotelling  Considere un modelo de Hotelling con   𝑁   consumidores distribuidos de manera uniforme a lo largo de un segmento unitario y dos vendedores   𝑖   =   0 ,   1 ubicados en los extremos. Cada consumidor quiere comprar una unidad de alguno de los dos productores. La función de utilidad de un consumidor ubicado a una distancia   𝑥   de la empresa   𝑖   si consume el bien de esta empresa es   𝑢 𝑖𝑥   =   𝑤 𝑖   −   𝑝 𝑖   − 𝑡 𝑥 , donde   𝑤 𝑖   y   𝑝 𝑖   son la disposición bruta a pagar por el bien   𝑖   y el precio de ese bien, y   𝑡   es un parámetro. (a) [2p] La demanda de la empresa 0 es  𝑞 𝑑  0   ( 𝑝 0 , 𝑝 1 )   =     1 2   +   𝑤 0   −   𝑝 0   − ( 𝑤 1   −   𝑝 1 )  2   𝑡    𝑁 .  ¿Qué sucede con la cantidad demandada a medida que aumenta   𝑡 ? Explique por qué. (b) [2p] Si   𝑤 0   =   𝑤 1   y las dos empresas tienen costos unitarios de producción constantes e iguales a   𝑐 , el precio de equilibrio es   𝑝 ∗   =   𝑐   + 𝑡 . Explique por qué el precio de equilibrio aumenta con   𝑡 .  Solución.  1
 
 --- Page 2 ---

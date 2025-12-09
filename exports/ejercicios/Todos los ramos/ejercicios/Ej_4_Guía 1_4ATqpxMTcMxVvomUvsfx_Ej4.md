@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Guía 1_4ATqpxMTcMxVvomUvsfx.pdf"
+sourceFile: "Guía 1_4ATqpxMTcMxVvomUvsfx.pdf"
+---
+
 Para evaluar el desempe˜ no de una turbina hidrocin´ etica de di´ ametro   D   que se encuentra cerca de la superficie, se asume que la potencia   P   depende de la velocidad de flujo   V   , la velocidad de rotaci´ on   ω , la densidad y viscosidad din´ amica del fluido,   ρ   y   μ , respectivamente, adem´ as de la gravedad   g   y la altura de la ola superficial  h . (a) Usando an´ alisis dimensional con la base ( ρ, V, D ), determine una relaci´ on para expresar la potencia   P   . (b) Para construir un modelo f´ ısico de escala 1:40, se considera que la fuerza de gravedad es el factor fundamental. ¿Cu´ al es la escala de velocidad? Escriba claramente todos los supuestos. (c) ¿C´ omo se distorsiona el n´ umero de Reynolds para el modelo f´ ısico? Comente si la escala es adecuada. (d) En el prototipo se espera que la turbina funcione con una velocidad de flujo de 3 m/s, rotando a 0.6  π   rad/s. Si la velocidad m´ axima del flujo que se puede lograr en el canal de laboratorio es de 1 m/s, determine la velocidad de rotaci´ on del modelo.  Respuestas  Viscosidad  1. a)   ωrcW  b) 2 πμω 2 r 3   a e  2.   π  2   ·   μωr 4 0  hsinθ  3.   Q   =   b (   U h  2   +   h 3  12 μ P L   )  τ h   =   μU h   +   h  2  P L   );   τ 0   =   μU h   −   h  2  P L   )  Gases Ideales  1.   P   ( z ) =   P 0  (   ( T 0 − λz )  T 0  ) (   g Rλ   )  2.   z   =   −   log 0 , 9  λ   ≈   1000   m  3.   P 1   = 200   (   310 295  )   1 1 −   1 1 , 5  P 1   = 232 kP a  5
 
 --- Page 6 ---

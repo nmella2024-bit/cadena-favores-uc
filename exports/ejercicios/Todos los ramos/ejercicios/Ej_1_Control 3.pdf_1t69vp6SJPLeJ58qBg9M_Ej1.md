@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 3.pdf_1t69vp6SJPLeJ58qBg9M.pdf"
+sourceFile: "Control 3.pdf_1t69vp6SJPLeJ58qBg9M.pdf"
+---
+
 (8 puntos)   Considere una econom´ ıa de intercambio con dos individuos. Las utilidades est´ an dadas por  u 1 ( X, Y   ) = min { X, Y   } ;   u 2 ( X, Y   ) = 2 X   +   Y.  Las dotaciones iniciales son ( X e  1   , Y   e  1   ) y ( X e  2   , Y   e  2   ), con las dotaciones agregadas iguales a 1:  X e  1   +   X e  2   = 1;   Y   e  1   +   Y   e  2   = 1 .  Al encontrar los equilibrios, normalice   p X   = 1 y   p Y   =   p . (a)   (2 puntos)   Encuentre la asignaciones Pareto optimas. (b)   (3 puntos)   Encuentre las asignaciones de equilibrio y el precio de equilibrio. Nota: debe expresar las asignaciones de equilibrio y precio en t´ erminos de las dotaciones iniciales. (c)   (3 puntos)   Dibuje en una caja de Edgeworth las curvas de indiferencia, el equilib- rio, las asignaciones Pareto optimas, las canastas disponibles para cada individuo en equilibrio, la dotaci´ on inicial.   Para hacer la caja de Edgeworth, asuma que ( X e  1   , Y   e  1   ) = (1 / 4 ,   3 / 4) y ( X e  2   , Y   e  2   ) = (3 / 4 ,   1 / 4).  Respuesta.  (a) En cualquier asignacion Pareto optima necesitamos que   Y 1   =   X 1 , y por lo tanto todas las asignaciones que cumplen esta igualdad son Pareto optimas. (b) La demanda del individuo 1 es:  Y 1 ( p ) =   X 1 ( p ) =   X e  1   +   pY   e  1  p   + 1   .  La demanda del individuo 2 es   X 2 ( p ) es 0 o infinito a menos que   p   = 1 / 2. Por lo que en equilibrio tenemos que   p   = 1 / 2. Con lo cual tenemos que:  Y   ∗  1   =   X ∗  1   =  2( X e  1   +   1 2   Y   e  1   ) 3   .  1
 
 --- Page 2 ---

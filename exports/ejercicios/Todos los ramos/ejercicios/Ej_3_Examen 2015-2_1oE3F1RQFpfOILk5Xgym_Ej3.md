@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2015-2_1oE3F1RQFpfOILk5Xgym.pdf"
+sourceFile: "Examen 2015-2_1oE3F1RQFpfOILk5Xgym.pdf"
+---
+
 a) Sean   f   ( n ) =   n ∑  i =0  i ! y   g ( n ) = ( n   + 1)!. ¿Es cierto que   f   ∈ O ( g )? Demuestre. b) Sean   a, m, n   ∈   Z . Demuestre que   a m   mod   n   = ( a   mod   n ) m   mod   n .  Soluci´ on  a) Basta notar que   n ∑  i =0  i !   ≤  n ∑  i =0  n ! Desarrollando este ´ ultimo resultado:  n ∑  i =0  n ! = ( n   + 1)   ·   n ! = ( n   + 1)! Luego, tomando   c   = 1 y   n 0   = 0, se cumple que   ∀ n   ≥   n 0 ,   f   ( n )   ≤   c   ·   g ( n ), y por lo tanto  f   ∈ O ( g ).   Pauta  •   1 pto. por acotar.  •   1 pto. por desarrollar.  •   1 pto. por concluir.  •   Puntajes intermedios y demostraciones alternativas a criterio del corrector. b) Sabemos que:  a   ≡ n   b   si y solo si   a   mod   n   =   b   mod   n   (1)  a   ≡ n   a   mod   n   (2) Si   a   ≡ n   b   y   c   ≡ n   d , entonces   a   ·   c   ≡ n   b   ·   d   (3) Si aplicamos (3) usando (2) dos veces, obtenemos que   a 2   ≡ n   ( a   mod   n ) 2 . Si hacemos esto   m  veces, tenemos que  a m   ≡ n   ( a   mod   n ) m   (4) Finalmente, aplicando (1) sobre (4), obtenemos que   a m   mod   n   = ( a   mod   n ) m   mod   n , que era lo que quer´ ıamos demostrar. 
 
 --- Page 4 ---

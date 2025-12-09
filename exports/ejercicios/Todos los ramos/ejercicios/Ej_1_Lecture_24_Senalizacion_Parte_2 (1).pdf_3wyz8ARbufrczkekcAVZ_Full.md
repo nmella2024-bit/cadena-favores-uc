@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Lecture_24_Senalizacion_Parte_2 (1).pdf_3wyz8ARbufrczkekcAVZ.pdf"
+sourceFile: "Lecture_24_Senalizacion_Parte_2 (1).pdf_3wyz8ARbufrczkekcAVZ.pdf"
+---
+
 --- Page 1 ---
 C LASE   24: S EÑALIZACIÓN PARTE   2  Gustavo Saraiva  PUC de Chile, Escuela de Negocios  28 de mayo de 2024
 

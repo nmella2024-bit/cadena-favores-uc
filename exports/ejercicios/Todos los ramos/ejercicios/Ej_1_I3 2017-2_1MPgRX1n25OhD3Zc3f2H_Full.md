@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3 2017-2_1MPgRX1n25OhD3Zc3f2H.pdf"
+sourceFile: "I3 2017-2_1MPgRX1n25OhD3Zc3f2H.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE  ESCUELA DE INGENIERIA  Nombre   _______________________________________  ICS 2613 CONTABILIDAD Y CONTROL DE GESTION  INTERROGACIÓ N   3  2 do   SEMESTRE 2017  Profesores:   Andrés Bastías  Mauricio González  Claudio Olivares  Instrucciones Generales:  •   Antes de comenzar a responder la evaluación,   debe   poner su nombre completo, número de lista  y sección en cada uno   de los cuadernillos por pregunta. Debe entregar   cada uno   de los  cuadernillos. En caso contrario, se descontarán 4 pu ntos de la evaluación.  •   Durante la evaluación   no debe   usar otras hojas que no sean las que usted ha recibido del Profesor  o ayudante.  •   No debe   descorchetear lo que se le ha entregado corcheteado.  •   No   se aceptan peticiones de recorrección de controles   o pruebas respondidas con   lápiz mina   o  grafito. Tampoco se recorrigen respuestas con   números enmendados .  •   La sospecha de copia por parte del profesor y/o los ayudantes, durante la evaluación o en su  corrección posterior, tiene como sanción   mínima una nota   1.0   en la evaluación y un informe a la  Dirección de la Escuela  •   Si su respuesta requiere de algún supuesto,   debe dejarlo explicitado.  Tiempo: 120   minutos   10 0   puntos
 

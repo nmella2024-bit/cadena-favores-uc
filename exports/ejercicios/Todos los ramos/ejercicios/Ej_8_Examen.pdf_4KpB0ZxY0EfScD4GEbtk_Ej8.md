@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 8"
+topic: "General"
+number: "8"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+sourceFile: "Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+---
+
 (4   puntos)   lectura:   Pregunta   de   Lectura:   Fontaine   &  Schenone “Nuestra Economía de Cada Día”. Cap 4  ¿A qué se refiere con la neutralidad en un impuesto? Explique y presente un ejemplo  de un impuesto considerado neutral que apuntan en la lectura, justificando por qué.  Asimismo, identifique un ejemplo de un impuesto no neutral y explique las razones  detrás.  La neutralidad de un impuesto consiste en que los sacrificios que éste le impone a la  comunidad debieran ser exactamente iguales a lo recaudado por el Estado. Es decir,  lo que pierden los consumidores y productores por la existencia del impuesto es  exactamente compensado por lo que recauda el fisco.  Un ejemplo que puede ser considerado neutral (aunque no totalmente, pero muy  cerca) es el IVA. Según los autores, si este IVA fuera de tasa uniforme, digamos 20%  a todos los productos finales, esto no afectaría los precios relativos de la economía  por lo que la composición del gasto de los consumidores no se viese afectado. Sin  embargo, este impuesto de 20% reflejado en los precios de los productos finales,  reduciría el total de gasto de consumo en un 20%, que es exactamente lo recaudado  por el fisco.  Por su parte, un impuesto no neutral puede ser algunos impuestos al trabajo. Según  los autores, el impuesto al trabajo encarece el costo de contratación y al mismo  tiempo reduce el salario del bolsillo de los trabajadores. Por tanto, si hay un impuesto  al trabajo, las empresas contratarían menos, muchos desempleados (no insertados  en empresas formales) se desempeñarían   en el sector informal. Entonces, el  sacrificio de este impuesto vendría por menor números de trabajadores formales  (quienes asumen el costo de lo que el fisco recaudará) pero además hay un sacrificio  de haber inducido a las empresas a contratar menos. Esto implica para la comunidad  menor producción y consumo, sin que ello genere recaudación alguna para el fisco.
 
 --- Page 13 ---

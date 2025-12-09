@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2020"
+topic: "General"
+number: "2020"
+originalUrl: "exports/downloads/Todos los ramos/Control de Repaso.pdf_4YXsbkay6t3DJAKM9rkk.pdf"
+sourceFile: "Control de Repaso.pdf_4YXsbkay6t3DJAKM9rkk.pdf"
+---
+
 6.000.000  Dividendo   por   Pagar   6.000.000   1 punto  01/09 : se paga a los accionistas de la compañía el dividendo declarado el mes anterior.  Dividendo   por   Pagar   6.000.000  Caja   6.000.000   1   punto
 
 --- Page 5 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/T3 - 2019-2(pauta)_1rECtNoWh3Bt9uzYoMTf.pdf"
+sourceFile: "T3 - 2019-2(pauta)_1rECtNoWh3Bt9uzYoMTf.pdf"
+---
+
 Sean   A   y   B   conjuntos. Demuestre que: a)   A   ∩   B   =   A \ ( A \ B ) . b)   ( A \ B )   ∪   ( B \ A ) = ( A   ∪   B ) \ ( A   ∩   B ) . c)   A   ⊆   B   si y sólo si   B c   ⊆   A c .  Solución  Primero, será útil demostrar que   A   \   B   =   A   ∩   B c :  ( ⊆ )   Sea   a   ∈   A   \   B   arbitrario. Se tiene entonces por definición que   a   ∈   A   ∧   a   6   ∈   B . Como  a   6   ∈   B , entonces   a   ∈   B c . Por lo tanto   a   ∈   A   ∧   a   ∈   B c   ⇒   a   ∈   A   ∩   B c   por definición de   ∩ .  ( ⊇ )   Sea   a   ∈   A   ∩   B c   arbitrario. Por definición   a   ∈   A   ∧   a   ∈   B c . Como   a   ∈   B c , se tiene que  a   6   ∈   B   por definición. Luego,   a   ∈   A   ∧   a   6   ∈   B , y entonces   a   ∈   A   \   B . Ahora demostraremos cada una de las propiedades. a)   ( ⊆ )   Sea   a   ∈   A   ∩   B   arbitrario. Entonces:  a   ∈   A   ∧   a   ∈   B   (def. de   ∩ )  a   ∈   A   ∧   a   6   ∈   B c   ( a   ∈   B   ↔   a   6   ∈   B c )  a   ∈   A   ∧   a   6   ∈   ( A   ∩   B c )   ( def. de   ∩ )  a   ∈   A   ∧   a   6   ∈   ( A   \   B )   ( A   ∩   B c   =   A   \   B )  a   ∈   A   \   ( A   \   B )   (def. de   \ )  ( ⊇ )   Sea   a   ∈   A   \   ( A   \   B )   arbitrario. Entonces:  a   ∈   A   ∧   a   6   ∈   A   \   B   (def. de   \ )  a   ∈   A   ∧   a   6   ∈   A   ∩   B c   ( A   ∩   B c   =   A   \   B )  a   ∈   A   ∧   a   ∈   ( A   ∩   B c ) c   (def. de   ∈ )  a   ∈   A   ∧   a   ∈   ( A c   ∪   B )   (de Morgan)  a   ∈   A   ∧   ( a   ∈   A c   ∨   a   ∈   B )   (def. de   ∪ )  ( a   ∈   A   ∧   a   ∈   A c )   ∨   ( a   ∈   A   ∧   a   ∈   B )   (distributividad de   ∧ )  a   ∈   A   ∧   a   ∈   B   (término izq. es siempre falso)  a   ∈   A   ∩   B   (def. de   ∩ ) 2
 
 --- Page 3 ---

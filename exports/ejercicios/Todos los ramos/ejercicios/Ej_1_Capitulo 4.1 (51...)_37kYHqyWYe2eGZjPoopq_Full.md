@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Capitulo 4.1 (51...)_37kYHqyWYe2eGZjPoopq.pdf"
+sourceFile: "Capitulo 4.1 (51...)_37kYHqyWYe2eGZjPoopq.pdf"
+---
+
 --- Page 1 ---
 Page 1 Capitulo 4.1 (51...)
 

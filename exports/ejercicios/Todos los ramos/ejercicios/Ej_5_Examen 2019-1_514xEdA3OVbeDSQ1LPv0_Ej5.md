@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2019-1_514xEdA3OVbeDSQ1LPv0.pdf"
+sourceFile: "Examen 2019-1_514xEdA3OVbeDSQ1LPv0.pdf"
+---
+
 Considere la forma cuadr´ atica.  Q ( x, y, z ) =   x 2   + 2 axy   +   y 2   + 2 yz   +   z 2 .  a ) Determine todos los valores de   a   ∈   R   de modo que   Q   es definida positiva.  b ) Sea   a   =  1 2 . Utilice la descomposici´ on de Cholesky ( LDL T   ) de la matriz   A   asociada a la forma cuadr´ atica para eliminar los productos cruzados de   Q .  Soluci´ on.  a ) La matriz que representa a la forma cuadr´ atica   Q   es   A   =     1   a   0  a   1   1 0   1   1    . Luego para que la forma cuadratica   Q   sea definida positiva se necesita que los vectores propios de   A   sean positivos.  P A ( λ ) = |   A   −   λI   | =     1   −   λ   a   0  a   1   −   λ   1 0   1   1   −   λ      = (1   −   λ )( λ 2   −   2 λ   −   a 2 ) Luego los valores propios son 1 ,   1 +   √ 1 +   a 2 ,   1   −  √ 1 +   a 2   como el tercer valor propio para cualquier valor de   a   es menor o igual que cero tenemos que no existe valor de   a   tal que   Q  sea definida positiva.  b ) Sea   Q ( x, y, z ) =   x 2   +   xy   +   y 2   + 2 yz   +   z 2 , la matriz que representa a la forma cuadr´ atica  Q   es   A   =     1   1 2   0  1 2   1   1 0   1   1    , cuya descomposici´ on de Cholesky es:  A   =     1   0   0  1 2   1   0 0   4 3   1       1   0   0 0   3 4   0 0   0   − 1 3       1   1 2   0 0   1   4 3  0   0   1     Luego si tomamos el cambio de variable ⃗ y   =   L T ⃗ x   As´ ı  Q ( x, y, z ) =   x 2   +   xy   +   y 2   + 2 yz   +   z 2   =   x 2   +  3 4  ( 1 2 x   +   y  ) 2  −   1 3  ( 4 3 y   +   z  ) 2  Puntaje:  0.5 ptos por determinar la matriz   A . 0.5 ptos por argumentar que los valores propios deben ser positivos. 1 pto determinar correctamente los 3 valores propios. 1 pto por concluir que no existe valor de   a . 1 ptos por determinar correctamente la matriz   L .
 
 --- Page 7 ---

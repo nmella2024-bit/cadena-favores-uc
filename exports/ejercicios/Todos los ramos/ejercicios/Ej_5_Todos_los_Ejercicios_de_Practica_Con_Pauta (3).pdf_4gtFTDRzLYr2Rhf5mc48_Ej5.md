@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 6   Hay un principal y agente, ambos neutrales al riesgo, con el agente pudiendo elegir esforzarse ( e   = 1 ) o no ( e   = 0 ) en un entorno donde   e   no es verificable, pero el beneficio generado por el agente sí es verificable.   El agente tiene una utilidad de reserva   u   y su costo de esforzarse está dado por   c >   0 . Si el agente se esfuerza, él genera un beneficio de   π H   a la empresa con probabilidad   p 1   y un beneficio de   π L   con probabilidad   1   −   p 1 . Si el agente no se esfuerza, él genera un beneficio de   π H   a la empresa con probabilidad   p 0   y un beneficio de   π L  con probabilidad   1   −   p 0 , donde   π H   > π L   y que   p 1   > p 0 , así que, es de interés de la empresa que el empleado se esfuerce.
 
 --- Page 65 ---

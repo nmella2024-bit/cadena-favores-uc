@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba Tapia 2021-2.pdf_4C9qohQV9oGcSeSJ4xbP.pdf"
+sourceFile: "Prueba Tapia 2021-2.pdf_4C9qohQV9oGcSeSJ4xbP.pdf"
+---
+
 Consumo y un sistema de pensiones (23 puntos)  La economía de Patolandia tiene 2 tipos de agentes: jóvenes y viejos. Los jóvenes trabajan y ganan un ingreso fijo   y , mientras que los viejos no participan del mercado laboral y no reciben ingreso. Las personas viven por 2 períodos (el primer período son jóvenes, el segundo viejos).  La utilidad intertemporal de un agente joven cualquiera se puede escribir como:  𝑈𝑈 ( 𝐶𝐶 1 ,   𝐶𝐶 2 ) =   𝑙𝑙𝑙𝑙 ( 𝐶𝐶 1 ) +   𝛽𝛽 𝑙𝑙𝑙𝑙 ( 𝐶𝐶 2 )  La gente tiene acceso a un mercado de capitales   de ahorro   con tasa de interés real r ( no  existe mercado de deuda).  Suponga que el gobierno decide implementar un sistema de pensiones de capitalización individual. Para ello, decide cobrar un impuesto al ingreso de los jóvenes, a una tasa t, donde 0< t <1. La recaudación de ese impuesto (es decir, t*y por persona) es invertida por el gobierno en el mercado de ahorro, para ser devuelta a cada agente (con los intereses correspondientes) cuando éste alcanza la edad de retiro.  a)   (5 puntos) Resuelva la decisión de ahorro óptima de los jóvenes, con y sin el programa de gobierno. Escriba la restricción presupuestaria relevante en cada caso. ¿Afecta este programa el bienestar de los agentes? ¿Bajo qué condiciones?  En general, la restricción para cada período más la restricción del mercado de deuda son:  𝒚𝒚   =   𝑪𝑪   𝟏𝟏   +   𝒔𝒔  ( 𝟏𝟏   +   𝒓𝒓 ) 𝒕𝒕 𝒚𝒚   + ( 𝟏𝟏   +   𝒓𝒓 ) 𝒔𝒔   =   𝑪𝑪   𝟐𝟐  𝒔𝒔 ≥ 𝟎𝟎  , donde la última restricción representa la imposibilidad de tomar deuda.
 
 --- Page 4 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_31AIKqf4TkpQdO2qMvTb.pdf"
+sourceFile: "Control 1.pdf_31AIKqf4TkpQdO2qMvTb.pdf"
+---
+
 (34 puntos)  La funci´ on de utilidad de un individuo que consume bienes   x 1   y   x 2   es la siguiente:  u ( x 1 , x 2 ) = 3 x 1 / 2 1   +   x 1 / 2 2  El individuo enfrenta un precio   p 1   por unidad de   x 1 , un precio   p 2   por unidad de   x 2 , y tiene un ingreso de   m . (a) (2 puntos) Plantee el problema de maximizaci´ on del individuo y Lagrangeano asociado. (b) (10 puntos) Encuentre las demandas marshallianas de los bienes   x 1   y   x 2 .   Justifique su respuesta, escribiendo condiciones de KKT e indicando c´ omo se descartan los casos que no son relevantes. (c) (2 puntos) Muestre que la funci´ on de utilidad indirecta se puede expresar como  V   ( p 1 , p 2 , m ) =   m ( p 1   + 9 p 2 )  p 1 p 2   1 / 2  (d) (20 puntos) Suponga que inicialmente   p 0 1   = 3,   p 0 2   = 1, y que   m   = 100. (i) (4 puntos) Encuentre las cantidades consumidas y la utilidad alcanzada por el individuo con esos precios e ingreso. (ii) (8 puntos) Si   p 2   cayera a la mitad (es decir, si   p 1 2   =   1 2   ), ¿qu´ e valor deber´ ıa tomar   p 1 1  para que el individuo alcance la utilidad que alcanzaba con los precios originales? (iii) (8 puntos) Muestre que el comportamiento (las cantidades consumidas) con los precios originales y con los precios nuevos satisface el axioma d´ ebil de preferencias reveladas.  Respuesta.  1
 
 --- Page 2 ---

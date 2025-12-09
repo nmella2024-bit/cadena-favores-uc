@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-2_2Ejnvdrd2Q7JyOFpiM8o.pdf"
+sourceFile: "I1 2017-2_2Ejnvdrd2Q7JyOFpiM8o.pdf"
+---
+
 Parte 1  Primero definamos los goles de los delanteros, los cuales siguen procesos Poisson:  •   G P   ( t ) := n´ umero de goles anotados por Pedro. Tiene tasa   15 100   δ .  •   G J   ( t ) := n´ umero de goles anotados por Juan. Tiene tasa   15 100   μ . 4
 
 --- Page 5 ---

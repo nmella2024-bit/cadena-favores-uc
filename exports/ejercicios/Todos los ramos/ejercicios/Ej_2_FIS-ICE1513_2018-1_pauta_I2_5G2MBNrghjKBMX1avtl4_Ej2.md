@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/FIS-ICE1513_2018-1_pauta_I2_5G2MBNrghjKBMX1avtl4.pdf"
+sourceFile: "FIS-ICE1513_2018-1_pauta_I2_5G2MBNrghjKBMX1avtl4.pdf"
+---
+
 [6 puntos] Jane, de masa   m , se lanza sujeta al extremo de una liana de largo   L , sobre un r´ ıo de ancho   D   infestado de cocodrilos, para salvar a Tarz´ an, de masa   M   , que est´ a al otro lado. En la posici´ on de Jane, la liana forma un ´ angulo de 60 ◦   con respecto a la vertical. En la posici´ on de Tarz´ an, el mismo ´ angulo es de 30 ◦ , medido en la direcci´ on contraria. Hay un fuerte viento que provoca una fuerza horizontal de magnitud constante   F  sobre cada una de las dos personas.  a) ¿Qu´ e valor debe tener   F   (expresado en t´ erminos de la aceleraci´ on de gravedad   g   y las variables   L ,   D ,  m   o   M   ) para que Jane, partiendo del reposo, alcance apenas a llegar al otro lado? (2 puntos) b) Si   F   tiene exactamente el valor calculado en la parte (a), ¿qu´ e condici´ on deben satisfacer las masas   m  y   M   para que Jane y Tarz´ an puedan volver juntos al otro lado, sin darse un impulso inicial? (2 puntos) c) Suponga que cuando pasan por el punto m´ as cercano al r´ ıo (punto B), Tarz´ an entra en p´ anico y se suelta de la cuerda. ¿Cu´ al ser´ a la velocidad de Jane inmediatamente despu´ es de la ca´ ıda de Tarz´ an?. (2 puntos) Nota: Tarz´ an logra nadar de vuelta a la orilla del r´ ıo, sin ser comido por los cocodrilos.  4
 
 --- Page 12 ---

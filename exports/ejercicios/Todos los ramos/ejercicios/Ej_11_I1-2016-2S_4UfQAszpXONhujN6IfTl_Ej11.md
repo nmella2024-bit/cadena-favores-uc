@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 11"
+topic: "General"
+number: "11"
+originalUrl: "exports/downloads/Todos los ramos/I1-2016-2S_4UfQAszpXONhujN6IfTl.pdf"
+sourceFile: "I1-2016-2S_4UfQAszpXONhujN6IfTl.pdf"
+---
+
 Considere que el sistema se deja evolucionar libremente desde el reposo, de manera tal que los bloques se comienzan a mover. ¿Cu´ al es la aceleraci´ on del bloque de masa   m 1 ? a)   a 1   =   g  11  (2   −   3(sen   θ   +   μ c   cos   θ )) b)   a 1   =   g  11  (2 + 3(sen   θ   −   μ c   cos   θ )) c)   a 1   =   g  11  (2   −   3(sen   θ   −   μ c   cos   θ )) d)   a 1   =   g  11  (2 + 3(sen   θ   +   μ c   cos   θ ))  Enunciado para los problemas 12-13:  El brazo ranurado   OA   gira en sentido contrario al de las manecillas del reloj alrededor de   O , de modo que cuando se encuentra formando un ´ angulo   θ   respecto de la horizontal, el brazo   OA   gira con una velocidad angular de   ˙ θ   y una aceleraci´ on angular de  ¨ θ . El movimiento del pasador   B   est´ a limitado a la superficie circular fija y a lo largo de la ranura en   OA , como se muestra en la figura. Note que   r   es equivalente a coordenada radial   ρ .  Figura 5: Problemas 12-13.
 
 --- Page 8 ---

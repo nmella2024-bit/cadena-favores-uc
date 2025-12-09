@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2017-1_0ys9C0W4Qc7jTywpc5fU.pdf"
+sourceFile: "Examen 2017-1_0ys9C0W4Qc7jTywpc5fU.pdf"
+---
+
 Considere la matriz  A   =     1   − 2   0  − 2   0   2 0   2   − 1      .  Determine matrices   P, D   con   P   ortogonal y   D   diagonal tales que   A   =   P DP   T   .  Soluci´ on:  Lo primero es calcular el polinomio caracter´ ıstico de   A : det( A   −   λI ) =  ∣ ∣ ∣ ∣ ∣ ∣  1   −   λ   − 2   0  − 2   − λ   2 0   2   − 1   −   λ  ∣ ∣ ∣ ∣ ∣ ∣   = (1   −   λ )  ∣ ∣ ∣ ∣   − λ   2 2   − 1   −   λ  ∣ ∣ ∣ ∣   + 2  ∣ ∣ ∣ ∣   − 2   2 0   − 1   −   λ  ∣ ∣ ∣ ∣  = (1   −   λ )( λ 2   +   λ   −   4) + 4( λ   + 1) =   λ 2   +   λ   −   4   −   λ 3   −   λ 2   + 4 λ   + 4 λ   + 4 =   − λ 3   + 9 λ   =   − λ ( λ 2   −   9) =   − λ ( λ   + 3)( λ   −   3) .  As´ ı, los valores propios de   A   son 0, 3 y   − 3. En seguida, buscamos vectores propios para cada uno de estos valores propios:  λ   = 0 :   Buscamos una soluci´ on de     1   − 2   0  − 2   0   2 0   2   − 1       x 1  x 2  x 3      =     0 0 0      .  Para ello llevamos la matriz a su forma escalonada reducida (omitimos los c´ alculos por brevedad):  A   ∼     1   0   − 1 0   1   − 1 / 2 0   0   0      ,  de donde   x 1   =   x 3 ,   x 2   =  1 2   ·   x 3 , por lo que un vector propio es, por ejemplo, ( x 1 , x 2 , x 3 ) = (2 ,   1 ,   2).  λ   = 3 :   Buscamos una soluci´ on de     − 2   − 2   0  − 2   − 3   2 0   2   − 4       x 1  x 2  x 3      =     0 0 0      .  Llevando la matriz a su forma escalonada reducida, obtenemos:  A   ∼     1   0   2 0   1   − 2 0   0   0      ,  de donde   x 1   =   − 2 x 3 ,   x 2   = 2 x 3 , por lo que un vector propio es, por ejemplo, ( x 1 , x 2 , x 3 ) = ( − 2 ,   2 ,   1).
 
 --- Page 6 ---

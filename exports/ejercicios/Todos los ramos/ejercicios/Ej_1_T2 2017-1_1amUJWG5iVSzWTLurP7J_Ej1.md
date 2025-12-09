@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/T2 2017-1_1amUJWG5iVSzWTLurP7J.pdf"
+sourceFile: "T2 2017-1_1amUJWG5iVSzWTLurP7J.pdf"
+---
+
 a ) Si   f i ( x ) es una funci´ on convexa, entonces el conjunto de nivel definido por esa funci´ on es convexa, dado que es menor o igual a una constante. Adem´ as, se sabe que la intersecci´ on de conjuntos convexos es un conjunto convexo, y como   D   es la intersecci´ on de los conjuntos definidos por   f i ( x ), entonces   D   es convexo.  b )   i) Para ver si est´ a bien definida, analicemos si existe la posibilidad de que la funci´ on se indefina. Para que esto pase, debe ocurrir que el argumento de la ra´ ız cuadrada presente en la funci´ on sea negativo. Es decir, m´ ın { x 1   −   x 2 ,   | x 2   −   7 |}   <   0. Como el segundo t´ ermino es siempre no negativo, debe ocurrir que   x 1   −   x 2   <   0 dentro del dominio, lo cual es claro que s´ ı puede ocurrir. Por lo tanto, no est´ a bien definida en todo el dominio.
 
 --- Page 3 ---

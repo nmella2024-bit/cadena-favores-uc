@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3 2013-2_2KOnxiLLimoLLj0dUww6.pdf"
+sourceFile: "I3 2013-2_2KOnxiLLimoLLj0dUww6.pdf"
+---
+
 a) Calcule la integral   ∫ ∫ ∫  Ω  dxdydz  (1 +   x   +   y   +   z ) 3  donde   Ω   ⊂   R 3   es el dominio acotado limitado por los planos definidos por las ecua- ciones siguientes   x   +   y   +   z   = 1 ,   x   = 0 ,   y   = 0 ,   z   = 0 . b) Calcule   F   ′ ( t )   si  F   ( t ) :=  ∫ ∫ ∫  U t  f   ( x 2   +   y 2   +   z 2 ) dxdydz  donde   U t   :=   { ( x, y, z )   ∈   R 3   |   t 2   < x 2   +   y 2   +   z 2   < t } ,   t   ∈   (0 ,   1) , y   f   : [0 ,   1]   →   R   es una funci´ on continua.  Soluci´ on : a) Tenemos  ∫ ∫ ∫  Ω  dxdydz  (1 +   x   +   y   +   z ) 3   =  ∫   1 0  [∫   1 − x  0  (∫   1 − x − y  0  dz  (1 +   x   +   y   +   z ) 3  )  dy  ]  dx  =   − 1 2  ∫   1 0  [∫   1 − x  0  ( 2 − 2   −   (1 +   x   +   y ) − 2 )   dy  ]  dx  =   − 1 2  ∫   1 0  [ 2 − 2 (1   −   x ) + 2 − 1   −   (1 +   x ) − 1 ]   dx  =   −   5 16  +  1 2  ln 2 .  Soluci´ on : b) Pasando a coordenadas esf´ ericas y calculando las integrales con respecto a   ϕ   y  θ , obenemos  F   ( t ) =  ∫   2 π  0  ∫   π  0  ∫   √ t t  f   ( r 2 ) r 2 sen ( θ )   dr dθ dϕ  = 4 π  ∫   √ t t  f   ( r 2 ) r 2 dr.  1
 
 --- Page 2 ---

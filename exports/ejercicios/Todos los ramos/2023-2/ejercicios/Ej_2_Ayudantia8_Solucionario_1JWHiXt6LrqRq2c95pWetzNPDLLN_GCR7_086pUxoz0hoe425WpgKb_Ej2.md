@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/2023-2/Ayudantia8_Solucionario_1JWHiXt6LrqRq2c95pWetzNPDLLN_GCR7_086pUxoz0hoe425WpgKb.pdf"
+sourceFile: "Ayudantia8_Solucionario_1JWHiXt6LrqRq2c95pWetzNPDLLN_GCR7_086pUxoz0hoe425WpgKb.pdf"
+---
+
 Determine los números críticos de la función   f   en cada caso: (a)   f   ( x )   es una función derivable en   R   tal que   e 1+ x 2  f   ( x ) +   ( f   ( x )) 5  5   +   π   ( f   ( x ) + 1) =   π . (b)   f   ( x ) =   3  √ 2 ax 2   −   x 3 , con   a   ∈   R .  Solución:  (a) Dado que   f   es derivable en   R , los únicos números críticos, si existen, corresponden a aquellos valores tales que   f   ′ ( x ) = 0 . En este caso, la función derivada se obtiene derivando implicitamente, como sigue  e 1+ x 2  f   ( x ) +  ( f   ( x )) 5  5   +   π   ( f   ( x ) + 1) =   π   ⇒   e 1+ x 2  2 xf   ( x ) +   e 1+ x 2  f   ′ ( x ) + ( f   ( x )) 4   f   ′ ( x ) +   πf   ′ ( x ) = 0  ⇒   e 1+ x 2  2 xf   ( x ) +   f   ′ ( x )  (  e 1+ x 2  + ( f   ( x )) 4   +   π  )  = 0  ⇒   f   ′ ( x ) =   −   e 1+ x 2  2 xf   ( x )  e 1+ x 2   + ( f   ( x )) 4   +   π   ( denominador no nulo )  Entonces,  f   ′ ( x ) = 0   ⇔   −   e 1+ x 2  2 xf   ( x )  e 1+ x 2   + ( f   ( x )) 4   +   π   = 0  ⇔   e 1+ x 2  2 xf   ( x ) = 0  ⇔   xf   ( x ) = 0  ⇔   x   = 0   ∨   f   ( x ) = 0  ⇔   x   = 0   ∨   x   =   f   − 1 (0)( está garantizada su existencia ** )  ** Se garantiza la existencia de   x   =   f   − 1 (0)   porque si   f   ( x ) = 0 , se cumple la ecuación original ya que,  e 1+ x 2  f   ( x ) +  ( f   ( x )) 5  5   +   π   ( f   ( x ) + 1) =   e 1+ x 2  ·   0 +  (0) 5  5   +   π   (0 + 1) = 0 + 0 +   π   =   π  Así, los valores críticos de   f   son:   x   = 0   y   x   =   f   − 1 (0)  (b) Dominio de   f   :   R ,  f   ′ ( x ) =   4 ax   −   3 x 2  3   3  √  (2 ax 2   −   x 3 ) 2  =   x   (4 a   −   3 x ) 3   3  √  (2 ax 2   −   x 3 ) 2  Dominio de   f   ′ :   R   − { 0 ,   2 a }   y  f   ′ ( x ) = 0   ⇔   x   (4 a   −   3 x ) 3   3  √  (2 ax 2   −   x 3 ) 2  = 0   ∧   x ̸   = 0   ∧   x ̸   = 2 a  ⇔   x   (4 a   −   3 x ) = 0   ∧   x ̸   = 0   ∧   x ̸   = 2 a  ⇔   4 a   −   3 x   = 0  ⇔   x   =  4 a  3  Así, los valores críticos de   f   son:   x   = 0 ,   x   = 2 a   y   x   =   4 a  3
 
 --- Page 4 ---

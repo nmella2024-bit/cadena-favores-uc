@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 08"
+topic: "General"
+number: "08"
+originalUrl: "exports/downloads/Todos los ramos/I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+sourceFile: "I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+---
+
 Criterio de Mohr-Coulomb  (20 pts.)   Un   material   frágil   tiene   una   tensión   última   a   la   tracción   de   𝜎 𝑢𝑡   =   300   MPa.   En   combinación   a  esta   resistencia,   en   compresión,   tiene   un   comportamiento   tipo   Mohr - Coulomb,   con   𝜏 𝑖   =   387   MPa   y  𝜇 = 0,259 .  a)   (10 pts.) Dibuje este nuevo criterio de fluencia  en coordenadas σ versus |τ|. (La figura de la  izquierda solo muestra el criterio de Mohr- Coulomb   con   los   fines   de   mostrar   los parámetros de la pregunta (b)).  b)   (5   pts.)   Calcule   la   máxima   compresión   y tracción   uniaxial   permisible   𝜎 𝑢𝑐 ′   y   𝜎 𝑢𝑡 ′   , mostrado en la figura.  c)   (5   pts.)   Dibuje   nuevamente   el   criterio   de fluencia en el dominio   𝜎 1   y   𝜎 2   , considerando  𝜎 𝑢𝑡 ,   𝜎 𝑢𝑐 ′   y   𝜎 𝑢𝑡 ′   .  PAUTA  a)   Como existe un límite para la tensión de tracción, entonces la tensión máxima en tracción pura no podrá superar un valor de 300MPa. Primero, de la ecuación de la envolvente de falla de Mohr   –   Coulomb sabemos que:  𝜇 = 𝑡𝑔𝜙  𝜙 = 14,52°  Además, de la ecuación de la recta envolvente de falla, la intersección con el eje horizontal será:  𝜎 𝑜   =  𝜏 𝑖  𝜇  =   387 0,259  = 1494,2 𝑀𝑃𝑎  Entonces, se debe limitar el estado de tensiones para que la tracción no supere los 300MPa, es decir:  | 𝜏 |  3 8 7  30 0 𝑀 𝑃𝑎   𝜎 𝑜   =   1 494 , 2  6 pts
 
 --- Page 9 ---

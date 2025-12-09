@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 15"
+topic: "General"
+number: "15"
+originalUrl: "exports/downloads/Todos los ramos/I1-2016-1S_2hiTzV8dx12MWgi025mi.pdf"
+sourceFile: "I1-2016-1S_2hiTzV8dx12MWgi025mi.pdf"
+---
+
 Un motociclista ejecuta el globo de la muerte, en movimiento uniforme, en el sentido indicado por la flecha curva. Los vectores usados para representar magnitudes relacionadas con el movimiento, en diferentes puntos de la trayectoria, son correctos excepto: (a)   #   velocidad del motociclista en B. (b)   !   aceleraci´ on de la motocicleta en D. (c)   "   fuerza resultante sobre el motociclista en A. (d)   #   fuerza resultante sobre el globo cuando el mo- tociclista pasa por C. (e)   &   aceleraci´ on del motociclista en E.  16. Una gota de lluvia parte del reposo desde una gran altura y cae verticalmente.   Se sabe que sobre ella act´ ua una fuerza de resistencia del aire, que es tanto mayor cuanto mayor es la velocidad de la gota.   Suponga que representamos, en un mismo gr´ afico, la velocidad y la aceleraci´ on de la gota en funci´ on del tiempo. De las opciones siguientes, indique la que podr´ ıa corresponder a la situaci´ on planteada.  6
 
 --- Page 7 ---

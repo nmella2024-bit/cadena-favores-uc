@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2014-2_3iT09Saek8nj2mfzWh87.pdf"
+sourceFile: "I2 2014-2_3iT09Saek8nj2mfzWh87.pdf"
+---
+
 (15 puntos)  (a) ( 3 puntos ) Indique, justificando con precisi´ on, si la siguiente afirmaci´ on es verdadera o no: “Si un problema de Programaci´ on Lineal en forma est´ andar tiene soluciones degeneradas, esto significa que tiene restricciones redundantes”.  Respuesta:   No es verdad en general. El ejemplo cl´ asico es el del poliedro cuya imagen en tres dimensiones corresponde a una pir´ amide de cuatro lados. La c´ uspide de la pir´ amide est´ a sobredeterminado y produce soluciones b´ asicas degeneradas. Sin embargo ninguna de las cuatro restricciones que lo definen es redundante para el conjunto. (b) ( 3 puntos ) Considere un problema de Programaci´ on Lineal de la forma  P   ) m´ ax   c T   x s.a.   Ax   ≤   b x   ≥   0 Suponga que   x ∗   es soluci´ on ´ optima de   P   ) e   y ∗   es soluci´ on ´ optima del correspondiente dual. Suponga que se quiere agregar la siguiente restricci´ on al problema   P   ):   α T   x   ≤   β , para crear el problema:  P 1 ) m´ ax   c T   x s.a.   Ax   ≤   b α T   x   ≤   β x   ≥   0 Suponga que   x ∗   no cumple la restricci´ on nueva, es decir,   α T   x ∗   > β . Muestre que, sin embargo, es f´ acil encontrar una soluci´ on que sea factible para el dual del nuevo problema   P 1 ).  Respuesta:   El dual de P) es  D ) m´ ın   b T   y s.a.   A T   y   ≥   c y   ≥   0 y el dual de P1) es:  D 1 ) m´ ın   b T   y   +   βt s.a.   A T   y   +   αt   ≥   c y   ≥   0  t   ≥   0
 
 --- Page 2 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 650"
+topic: "General"
+number: "650"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 Total Activos   42.225   Total Pasivos y Patrimonio   42.225 Información Adicional: 1.   La empresa hace la Provisión por Deudores Incobrables cada 31 de Diciembre. Las estimaciones son sumamente exactas, ya que siempre lo que han estimado en esta fecha, ha resultado ser a lo largo del siguiente año efectivamente incobrable.  2.   Las construcciones tienen una vida útil de 20 años, sin valor residual.
 
 --- Page 228 ---

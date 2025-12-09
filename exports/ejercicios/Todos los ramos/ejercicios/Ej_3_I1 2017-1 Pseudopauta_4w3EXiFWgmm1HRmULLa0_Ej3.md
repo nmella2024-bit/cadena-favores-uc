@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-1 Pseudopauta_4w3EXiFWgmm1HRmULLa0.pdf"
+sourceFile: "I1 2017-1 Pseudopauta_4w3EXiFWgmm1HRmULLa0.pdf"
+---
+
 [12 puntos]   Considere el modelo de intercambio con dos localidades visto en clases.   Si no es factible transportar unidades del bien entre las localidades, se produce y se consume en ambas localidades y el precio de equilibrio competitivo en la localidad 1 es   p 1   y en la localidad 2 es 1
 
 --- Page 2 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-2_4gzTCljSZ1AogDYrOzNe.pdf"
+sourceFile: "I2 2018-2_4gzTCljSZ1AogDYrOzNe.pdf"
+---
+
 (14 puntos):  Una empresa del area agricola posee varios campos en los cuales hay disponible cantidades de un cultivo que debe ser cosechado y transportado hasta ciertas plantas de procesamiento, donde hay una demanda cono- cida. El problema es que la empresa debe construir caminos para poder llevar adelante toda la operacion de transporte, ya que de un a˜ no al siguiente, esos caminos son destruidos por las condiciones climaticas. La empresa ha decidido representar su situacion en un grafo ( N, A ), donde   N   es el conjunto de los nodos (que pueden ser campos, plantas de procesamiento o, simplemente, puntos de paso), y   A   son los posibles caminos que podrian construirse.   Vamos a asumir que en cada nodo hay una oferta (o demanda, segun el signo) igual a   d i , i   ∈   N   y supondremos que la oferta esta balanceada con la demanda. La empresa ha formulado un modelo de Optimizacion usando variables   x ij   , que representan la cantidad transportada entre el nodo   i   y el nodo   j , y variables binarias   y ij   que indican si el camino ( i, j ) es construido o no. Obviamente, si un camino no es construido, no puede haber transporte por ahi. Sea   c ij   el costo unitario de transporte por el camino ( i, j ), y   K ij   el costo fijo de inversion por construir el camino ( i, j ).   Existe tambien una capacidad   U ij   de transporte en el camino ( i, j ), en caso que este sea construido.   Adicionalmente, por razones ambientales, hay restricciones a los caminos que pueden ser construidos. Mas especificamente, existen algunas areas ge- ograficas en donde el numero de caminos construidos no puede exceder un limite dado. Esto es representado por   p   conjuntos   B 1 , . . . , B p , donde   B k   ⊂   A, k   = 1 , . . . , p .   La restriccion es que para el area representada por los posibles caminos del conjunto   B k , no pueden construirse mas de   n k   caminos. El modelo es el siguiente:
 
 --- Page 6 ---

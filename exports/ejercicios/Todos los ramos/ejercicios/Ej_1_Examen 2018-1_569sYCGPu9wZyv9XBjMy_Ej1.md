@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2018-1_569sYCGPu9wZyv9XBjMy.pdf"
+sourceFile: "Examen 2018-1_569sYCGPu9wZyv9XBjMy.pdf"
+---
+
 [6 puntos] Una viga de 6 m, anclada en una pared, est´ a sometida a las fuerzas que se muestran en la siguiente figura. Despreciando la masa de la viga, determine: a) La magnitud y la posici´ on respecto al punto   A   de la fuerzas equivalentes (resultantes) corre- spondientes a las dos cargas distribuidas a las que est´ a sometida la viga. (1.5 pts.) b) Las reacciones en el punto   A . (1.5 pts.) c) Los esfuerzos internos a los que est´ a sometida la viga en el punto   B . (1.5 pts.) d) Los diagramas (gr´ aficas) de corte y momento para dicha viga desde la pared hasta una distancia a 3 metros de la misma. (1.5 pts.)  1
 
 --- Page 9 ---

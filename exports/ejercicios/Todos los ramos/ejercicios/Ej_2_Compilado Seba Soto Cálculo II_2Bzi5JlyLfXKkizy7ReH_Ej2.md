@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Compilado Seba Soto Cálculo II_2Bzi5JlyLfXKkizy7ReH.pdf"
+sourceFile: "Compilado Seba Soto Cálculo II_2Bzi5JlyLfXKkizy7ReH.pdf"
+---
+
 46:   Un disco uniformemente cargado tiene radio   r   y densidad de carga superficial   σ , tal como se muestra en la figura. Se puede demostrar mediante la Ley de Coulomb que el potencial el´ ectrico   V   a una distancia   d   a lo largo de la perpendicular que atraviesa el eje del disco viene dada por  V   = 2 πk e σ  ( √ d 2   +   r 2   −   d  )  donde   k e   es una constante conocida como Constante de Coulomb. Demuestre que para   d   muy grande:  V   ≈   ˜ V   =   πk e r 2 σ d  221
 
 --- Page 223 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2017-1_0ys9C0W4Qc7jTywpc5fU.pdf"
+sourceFile: "Examen 2017-1_0ys9C0W4Qc7jTywpc5fU.pdf"
+---
+
 Sea   A   la matriz sim´ etrica que representa a la forma cuadr´ atica,  Q ( x ) =   Q ( x 1 , x 2 , x 3 ) = 9 x 2 1   + 7 x 2 2   + 11 x 2 3   −   8 x 1 x 2   + 8 x 1 x 3 .  a ) Encuentre una matriz ortogonal   P   tal que el cambio de variable   x   =   P   y   transforma la forma   x T   A x   en una forma cuadr´ atrica sin productos cruzados.  b ) Escriba la forma cuadr´ atica en la nuevas variables y clasif´ ıquela.  Soluci´ on:  a ) La matriz es   A   =     9   − 4   4  − 4   7   0 4   0   11    . Como se indic´ o durante la prueba, sus valores propios son 3, 9 y 15. Vectores propios correspondientes a estos valores propios son, respectivamente, (2 ,   2 ,   − 1), (1 ,   − 2 ,   − 2) y (2 ,   − 1 ,   2). Estos tres vectores tienen norma 3, por lo que tras normalizarlos obtenemos, respectivamente,  ( 2 3 ,   2 3 ,   − 1 3  )  ,  ( 1 3 ,   − 2 3 ,   − 2 3  )  ,  ( 2 3 ,   − 1 3 ,   2 3  )  . As´ ı, la matriz  P   =             2 3 1 3 2 3 2 3   − 2 3   − 1 3  − 1 3   − 2 3 2 3             es una matriz ortogonal tal que   A   =   P DP   T   con   D   =     3   0   0 0   9   0 0   0   15      (o, equivalentemente,  D   =   P   T   AP   ), y es la matriz ortogonal buscada.  b ) Si hacemos el cambio de variable   x   =   P   y , tenemos  Q ( x ) =   x T   A x   = ( P   y ) T   A ( P   y ) = ( y T   P   T   ) A ( P   y ) =   y T   ( P   T   AP   ) y  =   y T   D y   =   y T     3   0   0 0   9   0 0   0   15      y   = 3 y 2 1   + 9 y 2 2   + 15 y 2 3   ,  que es la forma cuadr´ atrica escrita sin productos cruzados. Como todos los elementos de la diagonal de   D   son positivos, la forma cuadr´ atica es positiva definida.  Puntaje:  a )   Por encontrar vectores propios de   A , 1 punto. Por normalizar los vectores propios, 1 punto. Por encontrar la matriz   P   , 1 punto.  b )   Por escribir la forma cuadr´ atica en las nuevas variables (sin productos cruzados), 1,5 puntos. Por indicar que la forma es positiva definida (y dar una buena justificaci´ on), 1,5 puntos. A lo anterior se le suma el punto base
 
 --- Page 11 ---

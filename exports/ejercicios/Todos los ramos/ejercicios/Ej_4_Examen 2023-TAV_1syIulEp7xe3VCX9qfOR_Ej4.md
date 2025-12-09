@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2023-TAV_1syIulEp7xe3VCX9qfOR.pdf"
+sourceFile: "Examen 2023-TAV_1syIulEp7xe3VCX9qfOR.pdf"
+---
+
 Sean   A   =      5   − 4   − 2  − 4   5   2  − 2   2   2      ,   v 1   =      − 2 2 1      y   v 2   =      1 1 0      .  (a) Compruebe que   v 1   y   v 2   son vectores propios de   A . (b) Identifique un tercer vector propio de   A   recordando que este debe ser ortogonal a los dos anteriores. (c) Diagonalice ortogonalmente la matriz   A .  Soluci´ on  (a) Notamos que  A v 1   =      5   − 4   − 2  − 4   5   2  − 2   2   2        − 2 2 1      =    − 20 20 10      = 10 v 1  y  A v 2   =      5   − 4   − 2  − 4   5   2  − 2   2   2        1 1 0      =    1 1 0      =   v 2 .  Esto significa que   v 1   es un vector propio de   A   asociado al valor propio 10 y   v 2   es un vector propio de   A   asociado al valor propio 1. (b) Un vector   u   ortogonal a   v 1   y   v 2   cumple que   v 1   ·   u   = 0 y   v 2   ·   u   = 0, es decir,   − 2   2   1 1   1   0    u   =   0 0    y resolviendo el sistema tenemos   u   =   α    − 1 1  − 4      , α   ∈   R .   Por lo tanto, un vector ortogonal a los dos anteriores es   v 3   =    − 1 1 4    .   Comprobamos ahora que   v 3   es tambi´ en un vector propio de   A :  A v 3   =      5   − 4   − 2  − 4   5   2  − 2   2   2        − 1 1  − 4      =    − 1 1  − 4      =   v 3 .  Por lo tanto   v 3   es otro valor vector propio de   A   asociado al valor propio 1. (c) Como   { v 1 ,   v 2 ,   v 3 }   son una base ortogonal de vectores propios de   A , basta definir  P   como la matriz cuyas columnas son los vectores normalizados y   D   la matriz diagonal de valores propios correspondientes, es decir,  P   =     − 2 / √ 5   1 / √ 2   − 1 / √ 18 2 / √ 5   1 / √ 2   1 / √ 18 1 / √ 5   1 / √ 2   1 / √ 18      y   D   =    10   0   0 0   1   0 0   0   1     para que   A   =   P DP   T   .
 
 --- Page 4 ---

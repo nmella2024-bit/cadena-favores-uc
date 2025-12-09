@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3 2015-2_4cdet2wHDyofp0mdi1Zj.pdf"
+sourceFile: "I3 2015-2_4cdet2wHDyofp0mdi1Zj.pdf"
+---
+
 (12 puntos): a) (3 pts)   Consideremos un problema no lineal general de la forma  P   )  z ∗   = min   f   ( x )  s.a.   g i ( x )   ≤   b i , i   = 1 , . . . , m x   ∈   C  donde   f   y las funciones   g i   son convexas y   C   es un conjunto convexo. Entonces el valor ´ optimo del dual de este problema es siempre igual al valor   z ∗   del   P   ). ¿Es verdad esta afirmaci´ on o no? Justifique con claridad.  Respuesta:   En el caso general convexo se requiere adem´ as la condici´ on de Slater.  b) (3 pts)   Supongamos que hemos formulado el dual del problema   P   ) de la parte a) y queremos resolverlo maxi- mizando la funci´ on dual,   θ ( λ ), mediate el m´ etodo del “supgradiente” ¿Por qu´ e no se quiere hacer “linesearch” cuando se aplica ese m´ etodo?  Respuesta:   Cualquier m´ etodo de linesearch requeire evaluar la funci´ on en cuesti´ on,   θ ( λ ), en este caso, repeti- das veces. En este caso evaluar   θ ( λ ) implica resolver un problema de optimizaci´ on, lo cual puede ser dif´ ıcil o largo. Por esa raz´ on no queremos iterar en un linsearch.  c) (3 pts)   Explique qu´ e significa hacer “multiple pricing” en Generaci´ on de Columnas.  Respuesta:   Es agregar varias columnas de costo reducido negativo a la vez y trabajar en el Mestro con ellas hasta que se agoten.  d) (3 pts)   Considere nuevamente un problema general como el P) de la parte a).   Explique qu´ e dice el Teorema D´ ebil de Dualidad.  Respuesta.   Dice que el valor del dual acota por abajo al valor del primal.

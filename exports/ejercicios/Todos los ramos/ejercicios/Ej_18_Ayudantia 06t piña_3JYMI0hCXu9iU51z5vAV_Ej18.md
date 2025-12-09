@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 18"
+topic: "General"
+number: "18"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Determine si las siguientes series convergen o divergen: a)   ∞ ∑  k =1  tan 3   (   1  k  )  Solución: Observe que   tan 3   (   1  k  )   se comporta como   1  k 3   cuando   k   → ∞ . Esto es debido a lo siguiente:  l´ ım  x → 0  tan( x )  x   = l´ ım  x → 0 sin( x ) cos( x )  x   = l´ ım  x → 0 sin( x )  x  cos( x )  = 1  Y así,   tan( x )   ≈   x   cuando   x   es cercano a   0 . Del mismo modo,   tan 3 ( x )   ≈   x 3   cuando   x   es cercano a   0 . Y de esta forma,   tan 3   (   1  k  )   ≈   1  k 3   cuando   k   → ∞ . Usando el criterio de comparación al límite,  L   = l´ ım  k →∞  tan 3   (   1  k  )  1  k 3  = 1  Como el límite es finito, ambas series se comportan igual. Ahora, como la serie de   1  k 3  converge (serie   p ), entonces   tan 3   (   1  k  )   también converge. b)   ∞ ∑  n =1 (2 n )!  n ! 2  Solución: En el caso de factoriales, es recomendable partir por el criterio de la razón (para que se eliminen). En este caso, entonces, se tiene que:  L   = l´ ım  n →∞  ∣ ∣ ∣ ∣  a n +1  a n  ∣ ∣ ∣ ∣   = l´ ım  n →∞  ∣ ∣ ∣ ∣ ∣  (2( n +1))! ( n +1)! 2  (2 n )!  n ! 2  ∣ ∣ ∣ ∣ ∣   = l´ ım  n →∞  ∣ ∣ ∣ ∣ ∣  (2 n +2)! ( n +1)! 2  (2 n )!  n ! 2  ∣ ∣ ∣ ∣ ∣   = l´ ım  n →∞  (2 n   + 1)(2 n   + 2) ( n   + 1) 2   = 4   >   1  Como el límite es mayor que   1 , entonces por el criterio de la razón la serie diverge. c)   ∞ ∑  n =0 2 n 2  n !  Solución: Usando el criterio de la razón, se tiene que:  L   = l´ ım  n →∞  ∣ ∣ ∣ ∣  a n +1  a n  ∣ ∣ ∣ ∣   = l´ ım  n →∞  ∣ ∣ ∣ ∣ ∣ ∣  2 ( n +1) 2  ( n +1)! 2 n 2  n !  ∣ ∣ ∣ ∣ ∣ ∣   = l´ ım  n →∞  2 2 n +1  n   + 1  = 2   ·   l´ ım  n →∞  4 n  n   + 1  = 2   ·   l´ ım  n →∞  4 n   ·   ln(4) 1 + 0   =   ∞  Como el límite es infinito (se aplicó L’Hôpital en el último paso), por el criterio de la razón la serie diverge. 37
 
 --- Page 38 ---

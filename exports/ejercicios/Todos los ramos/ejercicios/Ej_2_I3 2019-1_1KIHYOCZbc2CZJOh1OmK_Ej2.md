@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I3 2019-1_1KIHYOCZbc2CZJOh1OmK.pdf"
+sourceFile: "I3 2019-1_1KIHYOCZbc2CZJOh1OmK.pdf"
+---
+
 (20 puntos)  Considere la relajación lagrangiana de (1)-(6) obtenida de penalizar (2) en la función objetivo. 1.   (4 puntos)   Escriba la función dual asociada a un vector de penalización   π   y la forma del dual lagrangiano correspondiente.  Solución:   Para   k   ∈   K   e   i   ∈   N   , sea   p k   ∈   R N   definido por   p k s k   =   d k ,   p k t k   =   − d k   y   p k i   = 0  para   i   6   =   s k , t k . Así, para   π   ∈   R K × N   , tenemos  θ ( π ) =   min   ∑  a ∈ A  f a x a   +   ∑  k ∈ K  ∑  a ∈ A  c k a y k a   +   ∑  k ∈ K  ∑  i ∈ N  π k i      ∑  a ∈ δ + ( i )  y k a   −   ∑  a ∈ δ − ( i )  y k a   −   p k i     s.a   y k a   ≤   b k a   +  ¯ b k a x a   k   ∈   K, a   ∈   A  ∑  k ∈ K  v k y k a   ≤   u a   + ¯ u a x a   a   ∈   A x a   ∈ { 0 ,   1 }   a   ∈   A y k a   ≥   0   k   ∈   K, a   ∈   A.  Finalmente, el dual lagrangiano corresponde a   max   { θ ( π ) :   π   ∈   R K × N   } . 2.   (4 puntos)   Indique por qué la función dual es separable y escríbala como suma de funciones adecuadas y definidas de forma precisa.  Solución:   La función objetivo es lineal y las restricciones son separables sobre   a   ∈   A . Por lo tanto   θ ( π ) =   ∑  a ∈ A   θ a ( π )   −   ∑  k ∈ K  ∑  i ∈ N   π k i   p k i   , donde para   a   = ( i, j )   ∈   A   definimos  θ a ( π ) =   min   f a x a   +   ∑  k ∈ K  c k a y k a   +   ∑  k ∈ K  (  π k i   −   π k j  )  y k a  s.a   y k a   ≤   b k a   +  ¯ b k a x a   k   ∈   K  ∑  k ∈ K  v k y k a   ≤   u a   + ¯ u a x a  x a   ∈ { 0 ,   1 }  y k a   ≥   0   k   ∈   K.  3.   (4 puntos)   Muestre que cada una de las funciones previamente definidas se puede evaluar resolviendo dos problemas de programación lineal.  Solución:   Claramente, tenemos   θ a ( π ) = min   { θ 0  a ( π ) , θ 1  a ( π ) } , donde para   q   = 0 ,   1   defini- mos  θ q a ( π ) =   min   f a q   +   ∑  k ∈ K  c k a y k a   +   ∑  k ∈ K  (  π k i   −   π k j  )  y k a  s.a   y k a   ≤   b k a   +  ¯ b k a q   k   ∈   K  ∑  k ∈ K  v k y k a   ≤   u a   + ¯ u a q y k a   ≥   0   k   ∈   K.
 
 --- Page 5 ---

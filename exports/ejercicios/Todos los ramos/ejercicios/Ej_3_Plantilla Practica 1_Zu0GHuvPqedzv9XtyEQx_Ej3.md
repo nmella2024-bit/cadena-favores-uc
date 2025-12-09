@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Plantilla Practica 1_Zu0GHuvPqedzv9XtyEQx.pdf"
+sourceFile: "Plantilla Practica 1_Zu0GHuvPqedzv9XtyEQx.pdf"
+---
+
 TUTORIAL: Citación  Para citación extensa en formato APA, citas con más de 40 palabras, se sugiere el uso del siguiente comando personalizado: \quotex{cita} Ejemplo: \quotex{\lipsum (Autor, Año)} 8
 
 --- Page 10 ---

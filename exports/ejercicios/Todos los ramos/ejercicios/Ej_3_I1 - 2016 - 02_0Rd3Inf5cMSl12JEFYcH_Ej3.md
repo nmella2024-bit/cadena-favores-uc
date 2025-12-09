@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 - 2016 - 02_0Rd3Inf5cMSl12JEFYcH.pdf"
+sourceFile: "I1 - 2016 - 02_0Rd3Inf5cMSl12JEFYcH.pdf"
+---
+
 Recientemente se produjo en Plaza Baquedano un gran revuelo por la aparici´ on de un Pokemon en particular. Ahora vamos a cazar Pokemones con una variante: cada jugador dispone de 5 pokebolas y una habilidad   p  de ´ exito en cada lanzamiento (o intento). Asumiendo independencia entre los tiros, y frente a la aparici´ on de varios pokemones en su entorno, determine en funci´ on de   p : (a)   [2.0 Ptos.]   La probabilidad de capturar solo un Pokemon antes de utilizar su ´ ultima pokebola (b)   [2.0 Ptos.]   La probabilidad de capturar solo dos Pokemones utilizando todas sus pokebolas. (c)   [2.0 Ptos.]   La probabilidad de capturar su primer Pokemon justo antes de utilizar su ´ ultima pokebola, suponiendo que en cada tiro su habilidad se incrementa en un 20 %.  Soluci´ on  (a) La probabilidad de “capturar solo un” Pokemon antes de la ´ ultima pokebola est´ a dada por 4   p   (1   −   p ) 3   [2.0 Ptos.]  (b) La probabilidad de “capturar solo dos” Pokemon antes de utilizar tdas las pokebolas est´ a dada por  ( 5 2  )  p 2   (1   −   p ) 3   = 10   p 2   (1   −   p ) 3   [2.0 Ptos.]  (c) Primeros tres lanzamientos no logran captura y en el cuarto si, sin importar lo que suceda en el quinto lanzamiento y con un incremento del 20 % en la habilidad en cada lanzamiento. (1   −   p ) (1   −   1 . 2   p ) (1   −   1 . 2 2   p ) 1 . 2 3   p   [2.0 Ptos.] + 1 Punto Base  EYP1113 - Probabilidad y Estad´ ıstica Segundo Semestre 2016  5   Profesores: Ricardo Aravena Cuevas Ricardo Olea Ortega
 
 --- Page 6 ---

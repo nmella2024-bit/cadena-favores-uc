@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 11 Mezclas LL y LV_1WMM1D98EVu0jLCkyX0v.pdf"
+sourceFile: "Clase 11 Mezclas LL y LV_1WMM1D98EVu0jLCkyX0v.pdf"
+---
+
 --- Page 1 ---
 CLASE   11  FISICOQUÍMICA DE MEZCLAS  LÍQUDO-LÍQUIDO  LÍQUIDO-VAPOR  Loreto Valenzuela Roediger  lvalenzr@ing.puc.cl  IIQ2043  FISICOQUÍMICA  Departamento de Ingeniería Química y Bioprocesos
 

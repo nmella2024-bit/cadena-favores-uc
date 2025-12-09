@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ex Guia 2019-2_4YxRhctKZNMFDuN607st.pdf"
+sourceFile: "Ex Guia 2019-2_4YxRhctKZNMFDuN607st.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA Segundo semestre 2019  MAT1630 - C´ alculo III Gu´ ıa  (1) La longitud de la curva   r ( t ) = (2 t,   1   −   3 t,   5 + 4 t ), con   t   ∈   [0 ,   2] es (a) 2 (b)  ∫   2 0  r ′ ( t ) dt  (c) 2 √ 29   X  (d)  ∫   2 0  ‖ r ( t ) ‖   dt  (2) Dada la integral de linea  A   =  ∫  C  ds  donde   C   es una curva simple cerrada. Se puede concluir I.   A   es la masa del alambre   C   cuya densidad es constante. II.   A   es el ´ area de un cilindro de base   C   y altura 1. (a) S´ olo I. (b) S´ olo II. (c) I y II.   X  (d) Ninguna de las anteriores. (3) Considere el campo vectorial   − →  F   que se ilustra en la figura. Si   C 2   es la circunferencia orientada en el sentido contrario al de las manecillas del reloj con centro en el origen y radio 2 entonces   ∫  C 2  − →  F   ·   d − → r   es (a) positiva.   X  (b) negativa. (c) cero. (d) no se puede determinar.
 

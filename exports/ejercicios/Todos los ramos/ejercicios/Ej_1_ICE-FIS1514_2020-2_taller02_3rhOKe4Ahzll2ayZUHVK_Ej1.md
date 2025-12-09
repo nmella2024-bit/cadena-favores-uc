@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/ICE-FIS1514_2020-2_taller02_3rhOKe4Ahzll2ayZUHVK.pdf"
+sourceFile: "ICE-FIS1514_2020-2_taller02_3rhOKe4Ahzll2ayZUHVK.pdf"
+---
+
 Se lanza una piedra hacia arriba desde la terraza de un edificio de   H   = 40   m   de altura, con una rapidez inicial   v o   = 15   m/s   . Suponiendo que la trayectoria de la piedra es solo vertical (puede ser modelada como una ca´ ıda libre) y se define el sistema de referencia desde el pie del edificio determine: a. El tiempo para que la piedra alcance su altura m´ axima. b. La altura m´ axima de la piedra c. El tiempo que tarda la piedra en volver a pasar por el punto del que fue lanzada d. La velocidad de la piedra en el punto anterior e. El tiempo que tarda en llegar al pie del edificio f. La velocidad con que llega al pie del edificio g. Si dos segundos luego de que la piedra fue lanzada se eleva un dron desde el suelo con velocidad constante de   v d   = 20   m/s . Determine la altura en que el dron y la piedra colisionaran.  Respuesta:   Definiendo   y ( t ) en la Figura 2 y l H v   o y(t) g t=t* t=t   f t=t**  Figura 1: Trayectoria de la piedra Ya que esto es una ca´ ıda libre la aceleraci´ on   a ( t ) =   − g   y que la pelota es lanzada en   t   = 0   s , se tiene  a   =   dv dt   =   − g /  ∫   t = t t =0  dt v ( t )   −   v ( t   = 0) =   − gt  Por lo tanto   v ( t ) =   v o   −   gt . Definiendo   y ( t   = 0) =   H v   =   dy dt   =   v o   −   gt /  ∫   t = t t =0  dt  v0.1 (2020-08-21)   ICE1514 – Tarea 01   P´ agina 1 de 6
 
 --- Page 2 ---

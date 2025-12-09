@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/ICE-FIS1514_2020-2_taller02_3rhOKe4Ahzll2ayZUHVK.pdf"
+sourceFile: "ICE-FIS1514_2020-2_taller02_3rhOKe4Ahzll2ayZUHVK.pdf"
+---
+
 Determine el gr´ afico de velocidad   v ( t ) para un auto cuya aceleraci´ on en el tiempo es mostrada en la Figura 3. Considere adem´ as que el auto se encuentra en reposo en   t   = 0 s   y que se encuentra situado en la posici´ on del sistema de referencia ( u ( t   = 0 s ) = 0). Determine adem´ as la distancia recorrida en  t   = 2   s . 2   3   5 6 4 -1 7 a(m/s   2   ) t(s)  Figura 3: Gr´ afico de aceleraci´ on en funci´ on al tiempo v0.1 (2020-08-21)   ICE1514 – Tarea 01   P´ agina 3 de 6
 
 --- Page 4 ---

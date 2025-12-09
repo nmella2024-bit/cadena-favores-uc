@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 5 Potencial Qui-mico_4NdzIoh60WfXEtemMint.pdf"
+sourceFile: "Clase 5 Potencial Qui-mico_4NdzIoh60WfXEtemMint.pdf"
+---
+
 --- Page 1 ---
 CLASE 5  EQUILIBRIO QUIMICO  Loreto Valenzuela Roediger  lvalenzr@ing.puc.cl  IIQ2043  FISICOQUÍMICA  Departamento de Ingeniería Química y Bioprocesos
 

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 8 Predicción.pdf_4ILOrtjmnkCG4uYMSMHp.pdf"
+sourceFile: "Clase 8 Predicción.pdf_4ILOrtjmnkCG4uYMSMHp.pdf"
+---
+
 --- Page 1 ---
 ˇˇ  Econometr´ ıa I - EAE- 250-A  Prediccion Ezequiel Garcia-Lembergman  Instituto de Econom´ ıa - Pontificia Universidad Cat ´ olica de Chile
 

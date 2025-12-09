@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/capitulo 16.6 parte 1_4ZgiCyBoBj9nSXTniIX0.pdf"
+sourceFile: "capitulo 16.6 parte 1_4ZgiCyBoBj9nSXTniIX0.pdf"
+---
+
 --- Page 1 ---
 Page 1 capitulo 16.6 parte 1
 

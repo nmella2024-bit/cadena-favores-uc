@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_0sRAXB4zfRvdEQdnPNPg.pdf"
+sourceFile: "Prueba 1.pdf_0sRAXB4zfRvdEQdnPNPg.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Católica de Chile Escuela de Administración  EAA2320: Marketing Analytics  PRUEBA 1  Profesor: Andr és Elberg  Código de Honor:  Como   miembro   de   la   comunidad   de   la   Pontificia   Universidad   Católica   de   Chile,   me comprometo a respetar los principios y normativas que la rigen. Asimismo, me comprometo a actuar con rectitud y honestidad en esta evaluación.  Adicionalmente declaro estar en condiciones de salud adecuadas para rendir esta evaluación y que me presento a ésta bajo mi responsabilidad. En caso de sentirme mal o tener alguna complicación, deberé informarlo inmediatamente al profesor.  Declaro   haber   leído   este   código   de   Honor   y   estoy   de   acuerdo   con   éste.   Además,   me comprometo a no comunicarme con compañeros de este curso en cualquiera de sus secciones durante la prueba  PAUTA DE CORRECCIÓN  Por favor, escriba además su nombre en cada pregunta al interior del cuadernillo  Tiempo: 80 minutos  Puntaje Total: 65 puntos
 

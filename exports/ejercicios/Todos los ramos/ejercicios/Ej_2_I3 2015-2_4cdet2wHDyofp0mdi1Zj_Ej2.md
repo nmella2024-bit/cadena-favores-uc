@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I3 2015-2_4cdet2wHDyofp0mdi1Zj.pdf"
+sourceFile: "I3 2015-2_4cdet2wHDyofp0mdi1Zj.pdf"
+---
+
 (12 puntos)  Una empresa necesita definir la cantidad de empleados que debe asignar en distintos turnos de trabajo para un periodo de 24 horas. Los turnos est´ an dise˜ nados para que sea posible atender ciertas ventanas de tiempo en las que se requieren cantidades m´ ınimas de personal. Por ejemplo, la siguiente tabla muestra un esquema de cuatro turnos y 8 ventanas de tiempo:
 
 --- Page 2 ---

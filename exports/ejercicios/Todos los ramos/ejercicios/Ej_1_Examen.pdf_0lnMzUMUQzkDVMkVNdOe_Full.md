@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_0lnMzUMUQzkDVMkVNdOe.pdf"
+sourceFile: "Examen.pdf_0lnMzUMUQzkDVMkVNdOe.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Católica de Chile  Facultad de Economía y Administración  Instituto de Economía  Examen  Econometría   –   EAE 250A  Segundo   Semestre 2021  Total:   83   puntos  1)   ( 32   puntos)   Queremos analizar el efecto de fumar sobre el peso de los bebés al   nacer. Considere  el modelo de regresión lineal simple :  𝑙𝑜𝑔 ( 𝑏𝑤𝑔 ℎ 𝑡 )   =   𝛽 0   +   𝛽 1 𝑝𝑎𝑐𝑘𝑠   +   𝑢   (1)  donde   𝑏𝑤𝑔 ℎ 𝑡   es el peso del bebé (medido en onzas) y   𝑝𝑎𝑐𝑘𝑠   el número promedio de paquetes  de cigarrillos fumado por la madre al día durante el embarazo.  a.   ( 6   puntos)   A   continuación se adjunta el gráfico de dispersión de   𝑙𝑜𝑔 ( 𝑏𝑤𝑔 ℎ 𝑡 )   sobre   𝑝𝑎𝑐𝑘𝑠 ,  así como los resultados de la estimación por Mínimos Cuadrado s Ordinarios (MCO) de la  ecuación (1) usando errores estándar robustos a heterocedasticidad. Se pide (i) interpretar el  coeficiente estimado de la variable   𝑝𝑎𝑐𝑘𝑠   ( 𝛽 ̂ 1 ), (ii) evaluar su significancia estadística , y (iii )  discutir si cree oportuno usar   errores estándar robustos a heterocedasticidad. Justifique su  respuesta .
 

@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/ProblemasresueltosI1 2019-2_49HykoAWyLaLHboJufI0.pdf"
+sourceFile: "ProblemasresueltosI1 2019-2_49HykoAWyLaLHboJufI0.pdf"
+---
+
 Sea la recta       2 4 2       +   α      1 2  a       (1) y el plano:  β      3  − 1 0       +   γ      2 0 1       (2) Encontrar el valor de   a   para que la recta est´ e contenida en el plano.      3   2   1  − 1   0   2 0   1   a       ∼      − 1   0   2 3   2   1 0   1   a       ∼      − 1   0   2 0   2   7 0   1   a       ∼      − 1   0   2 0   1   a  0   2   7       ∼      − 1   0   2 0   1   a  0   0   − 2 a   + 7       (3) Luego, para   a   = 7 / 2 la recta est´ a contenida en el plano.

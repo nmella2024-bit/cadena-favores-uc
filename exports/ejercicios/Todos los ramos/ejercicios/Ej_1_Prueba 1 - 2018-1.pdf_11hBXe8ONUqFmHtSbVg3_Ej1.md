@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1 - 2018-1.pdf_11hBXe8ONUqFmHtSbVg3.pdf"
+sourceFile: "Prueba 1 - 2018-1.pdf_11hBXe8ONUqFmHtSbVg3.pdf"
+---
+
 Show that the household choice satisfies:  u m   ( c t , m t ) =   i t  1 +   π t +1  βu c ( c t +1 , m t +1 ) .  Interpret this equation. (0.5 points) 2. Assume that   u ( c, m ) = ln   c   −   ( m   −   5) 2 .   What is the nominal interest rate and inflation rate that maximize the representative household utility in the steady state? If the nominal interest rate is chosen to maximize the household’s utility at the steady state, how much money is demanded at the steady state?   Provide an intuition for the optimal nominal interest rate. (Tip: remember that money is superneutral in this model.) (0.5 points)  Question 5 (1 point)  Consider the basic Cagan’s model in which the log of the price level ( p t ) and the log of the money supply ( m t ) satisfy the following difference equation:  m t   −   p t   =   − η   ( p t +1   −   p t )   (1) where is a constant larger than zero. For simplicity, suppose that   m t   is constant and equal to ˜ m , for every   t . We know that a solution to (1) is given by  p t   =   1 1 +   η  ∞ ∑  i =0  (   η  1 +   η  ) i  m t + i   = ˜ m  The solution above is called the fundamental solution, but we know that there are other solutions to (1). Answer the questions below: 1. Propose another (non-fundamental) solution and show that it also satisfies (1). (0.5 points) 2. Discuss the economic intuition behind the non-fundamental solutions in which prices in- crease over time, even though the money supply is constant. (Tip: you may want to start with   “Suppose everyone expects prices to increase a lot in the future. Then...” ) (0.5 points) Page 5

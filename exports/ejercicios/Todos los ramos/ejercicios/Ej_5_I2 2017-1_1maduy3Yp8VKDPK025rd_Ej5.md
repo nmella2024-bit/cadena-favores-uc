@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I2 2017-1_1maduy3Yp8VKDPK025rd.pdf"
+sourceFile: "I2 2017-1_1maduy3Yp8VKDPK025rd.pdf"
+---
+
 Determine todos los valores de   x   ∈   R   que satisfacen  ∣ ∣ ∣ ∣ ∣ ∣ ∣ ∣  1   x   x 2   x 3  1   2   4   8 1   3   9   27 1   4   16   64  ∣ ∣ ∣ ∣ ∣ ∣ ∣ ∣  = 0  Primera Soluci´ on:  Desarrollando el determinante, tenemos  ∣ ∣ ∣ ∣ ∣ ∣ ∣ ∣  1   x   x 2   x 3  1   2   4   8 1   3   9   27 1   4   16   64  ∣ ∣ ∣ ∣ ∣ ∣ ∣ ∣  =   − 2 x 3   + 18 x 2   −   52 x   + 48 =   − 2( x 3   −   9 x 2   + 26 x   −   24) = 0 .  As´ ı, la condici´ on pedida es equivalente a   x 3   −   9 x 2   + 26 x   −   24 = 0. Las ra´ ıces de esta ecuaci´ on son exactamente 2 ,   3 y 4. Esto puede ser justificado, por ejemplo, encontrando una ra´ ız, factorizando la ecucaci´ on (y transform´ andola en una ecuaci´ on cuadr´ atica). ¿C´ omo encontrar una ra´ ız de la ecuaci´ on? buscando las posibles ra´ ıces racionales de la ecuaci´ on, o buscando una ra´ ız al tanteo, u observando que al reemplazar   x   por uno de los valores 2, 3 o 4 el determinante resultante tiene dos filas iguales y por lo tanto vale cero,  Segunda Soluci´ on:  Otra soluci´ on posible consiste en notar que el reemplazar   x   por 2, 3 o 4 el determinante se anula (dos filas iguales), por lo que al menos estos tres valores est´ an entre los buscados. Sin embargo, usando este enfoque es necesario demostrar que NO HAY OTRO valor que satis- faga la condici´ on pedida. Una forma de justificar esto es notar que el determinante dado es un polinomio de grado 3, y por lo tanto NO PUEDE TENER M  ´ AS DE TRES RA ´ ICES.  Puntaje:  Si usan la primera soluci´ on (expresar el determinante como polinomio de grado 3 y hallar sus ra´ ıces):  •   Por calcular correctamente el polinomio c´ ubico que es el determinante, 2 ptos.  •   Por encontrar una ra´ ız del polinomio, 2 ptos.  •   Por encontrar las otras ra´ ıces, 2 ptos. Si parten indicando que   x   = 2,   x   = 3 y   x   = 4 son soluciones:  •   Por indicar esas soluciones (con alguna justificaci´ on correcta, t´ ıpicamente que en dichos casos el determinante tiene dos filas iguales), 3 puntos.  •   Por dar una justificaci´ on de que la ecuaci´ on planteada no puede tener m´ as de tres ra´ ıces, 3 puntos. A lo anterior se le suma el punto base.
 
 --- Page 11 ---

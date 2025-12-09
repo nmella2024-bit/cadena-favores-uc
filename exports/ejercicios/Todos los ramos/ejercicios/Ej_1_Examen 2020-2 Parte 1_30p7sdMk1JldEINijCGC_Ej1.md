@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2020-2 Parte 1_30p7sdMk1JldEINijCGC.pdf"
+sourceFile: "Examen 2020-2 Parte 1_30p7sdMk1JldEINijCGC.pdf"
+---
+
 Codificar el SAA no debiera costarles mucho, usen el c´ odigo del problema del granjero en dos etapas como inspiraci´ on.   En su informe reporte el modelo SAA y tambi´ en incluya la imagen del c´ odigo que realiz´ o. Suponga que los datos actuales del aserradero son tales que   β   = 0 ,   27, es decir las estimaciones de rendimiento tienen una desviaci´ on est´ andar con variabilidad de un 27%.   Ejecute el problema para distinto n´ umero de escenarios hasta obtener una estimaci´ on razonable del costo del modelo, tanto en costo de primera etapa como de segunda etapa. Tenga cuidado en observar que lo que el SAA hace es una estimaci´ on estad´ ıstica de los costos: distinto n´ umero de escenarios y distintas repeticiones con distintos n´ umeros aleatorios (que se controlan mediante la “semilla”) dar´ an distintos costos; prueben para ver que efectivamente puede ser as´ ı. Luego, queremos que nos entreguen estimaciones que ustedes consideren razonables desde el punto de vista estad´ ıstico.   En su respuesta debiera explicar bien c´ omo llegaron a la estimaci´ on final de costos, su metodolog´ ıa y fundamento, mostrar los resultados y, en particular, gr´ aficos de c´ omo cambian los costos obtenidos en funci´ on del n´ umero de escenarios.  Respuesta:   En primer lugar se define el problema estoc´ astico de dos etapas:  P   ) min   z   =   ∑  t ∈ T  ∑  k ∈ K  [( CT kt   +   CA kt ) s kt   +   E ( Q ( s kt ))]  s.t.   ∑  k ∈ K  s kt   ≤   P A t   ∀ t   ∈   T s kt   ≥   0   ∀ k   ∈   K,   ∀ t   ∈   T  donde:  Q ( s kt ) = min   ∑  t ∈ T  ∑  m ∈ M  [ CB mt w +  mt   +   CI mt w −  mt  ]  s.t.   ∑  m ∈ M  w +  mt   ≤   P B t   ∀ t   ∈   T w mt − 1   −   w mt   =   D mt   −   ∑  k ∈ K  R km s kt   ∀ m   ∈   M,   ∀ t   ∈   T w mt   =   w +  mt   −   w −  mt   ∀ m   ∈   M,   ∀ t   ∈   T w +  mt , w −  mt   ≥   0   ∀ m   ∈   M,   ∀ t   ∈   T  Para el problema SAA se usa la distribuci´ on propia del rendimiento del proceso, es decir, la distribuci´ on nor- mal de los par´ ametros   R km , para generar N escenarios diferentes. Denotamos cada escenario por   R 1  km , ..., R N km  4
 
 --- Page 5 ---

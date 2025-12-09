@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 17"
+topic: "General"
+number: "17"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 000 +   Pérdida [(utilidad)] en Venta de Activos Fijos   0 Resultado del Ejercicio Ajustado   (1)   37.000  I.2   Más Disponibilidades Netas de Caja:  ∆ -  de Activos Circulantes de la Operación (excluidos Caja y A. E. C. )   0  ∆ +  de Pasivos Circulantes de la Operación  •   Aumento de Cuentas por Pagar a Proveedores   20.000 •   Aumento de Otras Cuentas por Pagar   2.000 •   Aumento de Salarios por Pagar   1.000 Aumentos Netos de Caja   (2)   23.000  I.3   Menos: Disminuciones Netas de Caja:  ∆ +  de Activos Circulantes de la Operación (excluidos Caja y A. E. C.)  • Aumento de Cuentas por Cobrar   35.000 •   Aumento de Existencias   10.000 45.000  ∆ -  de Pasivos Circulantes de la Operación   0  Disminuciones Netas de Caja   (3)   45.000  Total Flujo de Efectivo Operacional Neto [(1)+(2)-(3)]:   15.000  II   EFECTIVO GENERADO O UTILIZADO EN ACTIVIDADES DE INVERSIÓN  (Actividades Fuera de la Operación):  Recibidos por la Venta de Activos Fijos   3.000 Usados en la Compra de Activos Fijos   (135.000)  Total Flujo de Efectivo por Actividades de Inversiones:   (132.000) III EFECTIVO   GENERADO   O   UTILIZADO   EN   ACTIVIDADES   DE FINANCIAMIENTO ( Actividades Fuera de la Operación)  III.1   Financiamiento de Terceros:  Préstamos a Largo Plazo Obtenidos   100.000 Menos: Pagos de Préstamos a Largo Plazo   0 Total Financiamiento de Terceros:   100.000  III.2   Financiamiento de los Dueños:  Emisiones de Acciones (o Aportes)   0 Menos: Dividendos (Retiros)   (10.000) Total Financiamiento de los Dueños:   (10.000)  Total Flujo de Efectivo por Actividades de Financiamiento:   90.000 VARIACIÓN DE EFECTIVO DURANTE EL PERIODO:   $   (27.000)  (= Cambio en el Saldo de Caja y Activos Equivalentes)  SALDO INICIAL DE   EFECTIVO ( CAJA Y AEC)   $   30.000 SALDO FINAL DE   EFECTIVO ( CAJA Y AEC)   $   3.000
 
 --- Page 362 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_2U8trlr0auTWzgbTP7iR.pdf"
+sourceFile: "Prueba 2.pdf_2U8trlr0auTWzgbTP7iR.pdf"
+---
+
 [ 22 puntos total ]   CAPM  Ud. posee la siguiente información acerca del activo libre de riesgo, del portafolio de mercado, de un portafolio eficiente   H   y de dos acciones Alfa y Omega. Asuma que el CAPM se cumple, es decir no hay oportunidades de arbitraje. Activo libre de riesgo   Portafolio del Mercado   Portafolio   H   Alfa   Omega Retorno Esperado   0.05   0.08   ?   0.11   0.14  β   ?   ?   ?   ?   ?  σ   ?   0.24   0.17   0.7   0.8 (a)   [ 5 puntos ]   Complete toda la información que falta en la tabla. (b)   [ 3 puntos ]   Dada la información en la tabla, ¿cuál es el sharpe ratio máximo que se puede alcanzar? (c)   [ 4 puntos ]   Construya un portafolio que tenga un 11% de retorno esperado y la mínima volatili- dad posible. Proporcione 1) activos que componen su portafolio, 2) proporción de su riqueza invertida en cada uno de los activos que componen el portafolio y 3) desviación estándar del portafolio. (d)   [ 5 puntos ]   Considere un inversionista que financia con su dinero el 50% de la inversión total en el portafolio de mercado y el resto lo pide prestado a la tasa libre de riesgo. Calcule el retorno esperado y la desviación estándar de su portafolio. (e)   [ 5 puntos ]   Suponga que los residuos de Alfa y Omega no estan correlacionados. Construya un portafolio con los activos Alfa y Omega que no tenga exposición al riesgo sistemático o común en este mercado. Interprete sus resultados. ¿Qué riesgos sigue teniendo este portafolio? Muestre el riesgo (varianza) que tiene este portafolio.  Respuesta  (a)  r f   =   0.05  E [ r i   ]   −   r f   =   β i   ( E [ r m ]   −   r f   )  β Alfa   =   0.11   −   0.05 0.08   −   0.05   =   0.06 0.03   =   2.0  β Omega   =   0.14   −   0.05 0.03   =   3 Using the CML:  E [ r H   ] =   r f   +   E [ r m ]   −   r f  σ m  σ H   =   5%   +   8%   −   5% 0.24   0.17   =   7.125% 4
 
 --- Page 5 ---

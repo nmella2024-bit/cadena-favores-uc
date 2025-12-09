@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+sourceFile: "Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+---
+
 (18 puntos)  El concepto de elasticidad precio de la demanda resulta fundamental para el análisis  de políticas públicas. En efecto, la aplicación de ciertas políticas puede conllevar  diversas consecuencias, dependiendo de la elasticidad precio de la demanda.
 
 --- Page 7 ---

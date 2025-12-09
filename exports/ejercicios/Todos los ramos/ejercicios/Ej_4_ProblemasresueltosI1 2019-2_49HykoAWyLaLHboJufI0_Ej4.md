@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/ProblemasresueltosI1 2019-2_49HykoAWyLaLHboJufI0.pdf"
+sourceFile: "ProblemasresueltosI1 2019-2_49HykoAWyLaLHboJufI0.pdf"
+---
+
 Determinar el valor de   a   para que el vector      2  − 1  a      2
 
 --- Page 3 ---

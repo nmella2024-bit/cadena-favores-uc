@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 7 Gobierno Explicación.pdf_2cFQG6TtjnGwyE4TcYuJ.pdf"
+sourceFile: "Clase 7 Gobierno Explicación.pdf_2cFQG6TtjnGwyE4TcYuJ.pdf"
+---
+
 --- Page 1 ---
 Explicaci´ on m´ as detallada del movimiento de las curvas en el caso transitorio  En las pr´ oximas l´ aminas veremos paso a paso c´ omo van movi´ endose las curvas con cada efecto que se produce en el impacto  Partiremos por la demanda (sin considerar el efecto ingreso sobre “L” y la oferta de bienes).  Luego incorporaremos el efecto del mayor trabajo producto del efecto ingreso negativo.  Finalmente, juntaremos todos los efectos.  Ver´ onica Mies   (IE-PUC)   EAE1210A   II-2022   33 / 103
 

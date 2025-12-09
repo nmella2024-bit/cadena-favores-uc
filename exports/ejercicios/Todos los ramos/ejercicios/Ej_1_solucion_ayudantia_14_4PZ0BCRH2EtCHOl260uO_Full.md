@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/solucion_ayudantia_14_4PZ0BCRH2EtCHOl260uO.pdf"
+sourceFile: "solucion_ayudantia_14_4PZ0BCRH2EtCHOl260uO.pdf"
+---
+
 --- Page 1 ---
 I  VCAMOS   As   maths   od   Charo   :  !   ↑   \   Corrientes   er   Sentioo  →   •   ✗  ↓   f   TOTAL   mete   Azbitmrlo  ①  Cons ,   Dentro   la   Conuerciin   De   Que   his   Resistencia   s   Siempre   Oa   UNA   Caioaoe   Tension   y   si   who   Oe   -   at  hay   Subba   De   Tension   Y   Oe   t   -  hay   cairn   Oe   Tension   .  Hacienoo   KVL   a   tamales   ,   :   ZE   -   Ist   -  Izt   -  8=0  Haaenoo   KVL   en   la   Malla   2   :   ZE   -  Ist   -  I ,R   -  I.   t   -   E   =D  Hacievoo   KCL   end   nooo   ✗   :   -1-3=-1-2+-1-1  Se   Tiene   :   E   -   Ist   -  Izt   =O  E-   I >   t   -  I ,R   -  I.   1-   =D  I3=Iz+I  E-   (   Iz   +   I , )t   -  Izt   =0  E-(Iz+Ii)t-I,R-Iit  =)  E-ZT-zt-I.r-OE-T-zt-I.at/-R#  2   Izt   +   I ,   t   =   Izt   +   I.   (   zttr )  Izt   =   I .tt   Iir  =)   Iz   =   I.   (   I   +  )
 

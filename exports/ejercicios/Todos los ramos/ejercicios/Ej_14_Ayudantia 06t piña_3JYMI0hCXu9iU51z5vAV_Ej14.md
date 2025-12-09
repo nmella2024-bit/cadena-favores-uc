@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 14"
+topic: "General"
+number: "14"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Determine si la serie   ∞ ∑  n =2  ln  (   n 2  n 2 − 1  )  converge o diverge. Si converge, calcule el valor. Si diverge, explique por qué. Solución: Observe que:  ln  (   n 2  n 2   −   1  )  = ln  (  1 +   1  n 2   −   1  )  Ahora, el comportamiento de   ln   ( 1 +   1  n 2 − 1  )   cuando   n   tiende a infinito es similar al com- portamiento de   1  n 2 − 1   . Esto es debido a la relación siguiente:  l´ ım  a → 0   ln(1 +   a ) = 1  Además, se tiene que   1  n 2 − 1   en el infinito se comporta como   1  n 2   . Comparemos   ∞ ∑  n =2  ln  (   n 2  n 2 − 1  )  con   ∞ ∑  n =2 1  n 2   . Por el teorema de comparación al límite se tiene que:  L   = l´ ım  n →∞  ln  (   n 2  n 2 − 1  )  1  n 2 − 1  = l´ ım  n →∞  n 2 − 1  n 2   ·   2 n  ( n 2 − 1) 2  1 2 n 3  = l´ ım  n →∞  2 n 3  n ( n 2   −   1)  = 2   >   0  Ya que el límite es mayor que cero y menor que infinito, ambas series se comportan igual. Ahora, como   ∞ ∑  n =2 1  n 2   converge, entonces   ∞ ∑  n =2  ln  (   n 2  n 2 − 1  )  también converge. ¿Pero a cuánto? Bien se sabe que una serie es una suma infinita de términos que puede ser obtenida como un límite. Reescribamos la serie:  ∞ ∑  n =2  ln  (   n 2  n 2   −   1  )  = l´ ım  z →∞  z ∑  n =2  ln  (   n 2  n 2   −   1  )  Ahora, recuerde que   ln( x · y ) = ln( x )+ln( y ) . De esta forma, una suma de varios logaritmos equivale al logaritmo de una multiplicación de varios términos. Introduzcamos la productoria (o pitatoria):  ∞ ∑  n =2  ln  (   n 2  n 2   −   1  )  = l´ ım  z →∞  z ∑  n =2  ln  (   n 2  n 2   −   1  )  = l´ ım  z →∞   ln  (   z ∏  n =2  n 2  n 2   −   1  )  Tratemos de calcular la productoria:  z ∏  n =2  n 2  n 2   −   1  =  z ∏  n =2  n 2  z ∏  n =2  n 2   −   1 =  z ∏  n =2  n 2  z ∏  n =2  ( n   + 1)( n   −   1) =  z ∏  n =2  n   z ∏  n =2  n  z ∏  n =2  ( n   + 1)   z ∏  n =2  ( n   −   1)  30
 
 --- Page 31 ---

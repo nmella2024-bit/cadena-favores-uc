@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Pauta Examen.pdf_4zLjAEKvbTBiD08C3eRX.pdf"
+sourceFile: "Pauta Examen.pdf_4zLjAEKvbTBiD08C3eRX.pdf"
+---
+
 --- Page 1 ---
 Nombre__________________________________  1  PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  INSTITUTO DE ECONOMÍA  EXAMEN  MACROECONOMIA I  Profesor: Matías Tapia  I Semestre 2024  Puntaje Total: 120 puntos  Tiempo: 120 minutos  Recuerde poner su nombre en todas las hojas  Lea con atenci ón todas las preguntas antes de responder. ¡Suerte!  1)   Consumo y gasto en equilibrio general (20 puntos)  Patolandia   es una economía cerrada donde individuos idénticos viven exactamente dos periodos y tienen un ingreso exógeno   ( 𝑦𝑦 1 ,   𝑦𝑦 2 ) .  La función de utilidad de los individuos es  𝑈𝑈 ( 𝑐𝑐 1 ,   𝑐𝑐 2 ) =   𝑢𝑢 ( 𝑐𝑐 1 ) +   𝛽𝛽 𝑢𝑢 ( 𝑐𝑐 2 )  , donde   𝑢𝑢 ( 𝑐𝑐 𝑡𝑡 ) = ln( 𝑐𝑐 𝑡𝑡 )   . Los mercados financieros son perfectos, por lo que los individuos pueden ahorrar y endeudarse a la tasa de interés de equilibrio, r.  El gobierno de Patolandia tiene una trayectoria de gasto definida y exógena,   ( 𝑔𝑔 1 ,   𝑔𝑔 2 ) . El gobierno cuenta con ingresos propios en el período 2,   𝑦𝑦 𝑔𝑔2   ,   los cuales son independientes del ingreso de los individuos. El gobierno no tiene ingreso propio en el período 1. Además, el gobierno puede recaudar recursos adicionales con un impuesto de tasa   𝜏𝜏   sobre los   intereses  que ganan las familias. El gobierno tiene acceso al mismo mercado de deuda/ahorro que las familias.  a)   (5 puntos) Escriba la restricción presupuestaria intertemporal de los individuos y la del gobierno de Patolandia, suponiendo que las familias le prestan al gobierno en el periodo 1. ¿Por qué es razonable este supuesto?  Suponga ahora que el gobierno elimina el impuesto a los intereses y lo sustituye por impuestos de suma alzada en cada periodo   ( 𝑇𝑇 1 ,   𝑇𝑇 2 ) .  b)   (5 puntos) Escriba la nueva restricción presupuestaria intertemporal de los individuos y la del gobierno de Patolandia, suponiendo que son las familias las que le prestan al gobierno.   ¿Es necesario este supuesto?
 

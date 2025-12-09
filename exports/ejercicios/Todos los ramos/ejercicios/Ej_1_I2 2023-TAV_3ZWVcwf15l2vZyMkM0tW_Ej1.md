@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2023-TAV_3ZWVcwf15l2vZyMkM0tW.pdf"
+sourceFile: "I2 2023-TAV_3ZWVcwf15l2vZyMkM0tW.pdf"
+---
+
 2 puntos por encontrar una parametrizaci´ on para la curva   C . 2 puntos por obtener la igualdad  Z  C  x 2   + 2 y  √ 33   −   8 z  ds   =  Z   2  − 2  2 + 3 t 2  √ 1 + 8 t 2   ·   p 1 + 8 t 2   dt  2 puntos por calcular la integral.
 
 --- Page 2 ---

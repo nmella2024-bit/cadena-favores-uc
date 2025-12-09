@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase_20_IIC1103_S2_3ilWIF5CV2apRGW4pvXg.pdf"
+sourceFile: "Clase_20_IIC1103_S2_3ilWIF5CV2apRGW4pvXg.pdf"
+---
+
 --- Page 1 ---
 IIC1103 - Secci´ on 2  Clase 20: Programaci´ on orientada a objetos 2 Prof. Francisca Cattan  Universidad Cat´ olica de Chile  27 de octubre, 2022
 

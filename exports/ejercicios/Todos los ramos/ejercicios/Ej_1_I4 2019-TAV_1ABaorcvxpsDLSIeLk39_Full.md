@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I4 2019-TAV_1ABaorcvxpsDLSIeLk39.pdf"
+sourceFile: "I4 2019-TAV_1ABaorcvxpsDLSIeLk39.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA TAV 2019 MAT1610 – C ´ ALCULO 1 Interrogaci´ on 3  (1)   (a) Calcule el ´ area de la regi´ on   R   delimitada por las curvas   y   =   x 2   ln   x   e  y   = 2 ln   x . (b) Determine el volumen del s´ olido obtenido por rotaci´ on de la regi´ on   R  alrededor de la recta   x   =   − 1.  Soluci´ on.  (a) Para determinar la regi´ on delimitada por las curvas dadas, determi- namos los puntos de interseci´ on de estas. Las soluciones de la ecuaci´ on  x 2   ln   x   = 2 ln   x,  son   x   = 1 y   x   =   √ 2. De hecho el ´ area de la regi´ on es  A   =  ∫   √ 2 1  (2   −   x 2 ) ln   x   d x.  Por integraci´ on por partes, tenemos  A   =  [  (2 x   −   x 3  3  ) ln   x  ] √ 2 1  −  ∫   √ 2 1  (2   −   x 2  3  ) d x  =  [  (2 x   −   x 3  3  ) ln   x  ] √ 2 1  −  [  2 x   −   x 3  9  ] √ 2 1  =  3 √ 2   −  √ 2 3   ln 2   −   16 9  √ 2 +  17 9   .  Puntaje.  •   1 punto por establecer la integral que corresponde al ´ area.  •   1 punto por la integraci´ on.  •   1 punto pr calcular el valor. (b) El volumen del s´ olido es  V   =  ∫   √ 2 1  2 π ( x   + 1)(2   −   x 2 ) ln   x   d x  Puntaje.  •   3 puntos para expresar correctamente el volumen.  1
 

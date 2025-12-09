@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2016-1_1vnTDlNJMUMShaUB1xpG.pdf"
+sourceFile: "Examen 2016-1_1vnTDlNJMUMShaUB1xpG.pdf"
+---
+
 (Continuación): e)  Para el aluminio:  7.746 unidades  Para las ruedas:  48.990 ruedas  Luego el costo anual total de la fábrica es de $569.018.914, que es $16.711.062 menor al costo de la situación anterior, porque se genera un ahorro en inventario.
 
 --- Page 7 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1989"
+topic: "General"
+number: "1989"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 (4):   El   1/10/88,   la   empresa   firmó   un   documento   por   $1.000 correspondiente al monto de un préstamo a un año plazo, que en esa fecha le concedió el Banco.   Los $1.000 del monto total de este préstamo, se pagarían en una sola cuota al terminar el plazo de 12 meses otorgado por el Banco.   El préstamo tenía un interés anual de 12% (1% mensual simple) y estos intereses debían ser pagados por la empresa cada 6 meses (vencido). La empresa cumplió oportunamente con el pago de todos sus compromisos.  (5):   Corresponde a un local de ventas comprado el 1/1/80. La vida útil del local se ha estimado en 40 años y su valor residual en $1.000. El local se deprecia linealmente.  (6):   Corresponden a 19 pares de zapatos con un costo de $60 c/u.
 
 --- Page 230 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/T2 2017-1_1amUJWG5iVSzWTLurP7J.pdf"
+sourceFile: "T2 2017-1_1amUJWG5iVSzWTLurP7J.pdf"
+---
+
 a ) Variables de decisi´ on:  x ijr   =  {   1   Si el instrumento   i   es tocado por el m´ usico   j   durante la pieza   r  0   En otro caso  y rt   =  {   1   Si la pieza   r   es tocada en el lugar   t , t   = 1 , ...,   | R |  0   En otro caso  γ rs   =  {   1   Si la pieza   r   es tocada justo antes de   s  0   En otro caso  α r   =   Duraci´ on de la pieza   r z i   =  {   1   Si se toca el instrumento   i  0   En otro caso  w jkr   =  {   1   Si el m´ usico   j   toca junto al m´ usico   k   durante la pieza   r  0   En otro caso  q j   =  {   1   Si se contrata al m´ usico   j  0   En otro caso Dado que la multiplicaci´ on de variables no es permitida en un problema lineal, ser´ a necesario agregar las siguientes variables auxiliares:  β ijr   :   Representar´ a   x ijr   ·   α r  δ jkr   :   Representar´ a   w jkr   ·   α r  Funci´ on objetivo:  M ax   ∑  i  ∑  j  ∑  r  B ijr   ·   β ijr   +   ∑  r  ∑  j  ∑  k  D jk   ·   δ jkr   +   ∑  r  y r 1 AI r   +   ∑  r  y r | R | AF r   +   ∑  r  ∑  s  E rs γ rs  Sujeto a las siguientes restricciones: Definici´ on de variable auxiliar   β :  β ijr   ≤   x ijr U r   ∀ i   ∈   N, j   ∈   M, r   ∈   R α r   −   (1   −   x ijr ) U r   ≤   β ijr   ≤   α r   ∀ i   ∈   N, j   ∈   M, r   ∈   R  Definici´ on de variable auxiliar   δ :  δ jkr   ≤   w jkr   U r   ∀ j, k   ∈   M, r   ∈   R α r   −   (1   −   w jkr   ) U r   ≤   δ jkr   ≤   α r   ∀ j, k   ∈   M, r   ∈   R  Cada pieza tiene que estar en una posici´ on, y en cada posici´ on debe haber una pieza:  ∑  t  y rt   = 1   ∀ r   ∈   R  ∑  r  y rt   = 1   t   = 1 , ... | R |  Relaci´ on entre el orden y si vienen seguidas o no:  y rt   +   y st +1   −   1   ≤   γ rs   ∀ r, s   ∈   R, t   = 1 , ...,   | R | −   1
 
 --- Page 12 ---

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Guia 10_2tpUqmmxbP3mg7dyPAkB.pdf"
+sourceFile: "Guia 10_2tpUqmmxbP3mg7dyPAkB.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Católica de Chile Facultad de Matemáticas Departamento de Matemática TAV 2023  MAT1610-Cálculo I Guía 10: Integral de Riemann  1. Use la interpretación geométrica de la integral de Riemann para calcular las siguientes integrales indefinidas:  a)  ∫   5 2  (7   −   2 x ) dx  b)  ∫   5 1  | x   −   3 | dx  c)  ∫   7  − 7  x 3 dx  2. Utilice sumas de Riemann para calcular la integral definida:  ∫   3 1  ( x 2   + 3 x   + 1 )   dx . 3. Escribir los siguientes límites como una integral definida de la forma:  ∫   b a  f   ( x ) dx . a)   lim  n →∞  (   1  n 2   +  2  n 2   +   · · ·   +   n   −   1  n 2  )  b)   lim  n →∞  (   n n 2   + 1 2   +   n n 2   + 2 2   +   · · ·   +   n n 2   +   n 2  )  c)   lim  n →∞  1  n  (  sin   π n   + sin  2 π n   +   · · ·   + sin  ( n   −   1) π n  )  4. Demuestre que  1 2  +  1 33   ≤  ∫   2 0  1  x 5   + 1   dx   ≤   2
 

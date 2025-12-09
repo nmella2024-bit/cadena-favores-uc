@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Control de Repaso.pdf_4YXsbkay6t3DJAKM9rkk.pdf"
+sourceFile: "Control de Repaso.pdf_4YXsbkay6t3DJAKM9rkk.pdf"
+---
+
 526.400  Total   Activos   No   Corrientes   86.000.000   Total   Patrimonio   69.526.400  Total   Activos   116.848.000   Total   Pasivos   y   Patrimonio   116.848.000  3)  EE.RR   "CALENTANDO   MOTORES"   AÑO   2021   (4   puntos)  No   castigar   por   errores   de   arrastre;   lo   importante   es   la   presentación   del   EE.RR.   en   el   formato   requerido)  Ventas   58.700.000  Costo   de   Ventas   (19.100.000)  Margen   Bruto   39.600.000  Gastos   de   Adm.   y Ventas   (33.112.000)  Arriendo   5.500.000  Depreciación   9.500.000  Sueldos   18.000.000  Incobrables   112.000  Resultado   Operacional   6.488.000  Intereses   (2.080.000 )  Resultado   antes   de   Imptos.   4.408.000  Impuestos   (20%)   (881.600)  Resultado   Neto   3.526.400
 
 --- Page 7 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2014-1_0Xh0lyw6ohHXU9PuP73M.pdf"
+sourceFile: "Examen 2014-1_0Xh0lyw6ohHXU9PuP73M.pdf"
+---
+
 Un tanque r´ ıgido contiene 5 kg de vapor de agua saturado a 100 ◦ C. El vapor se deja enfriar hasta alcanzar la temperatura ambiente de 25 ◦ C. a) Dibuje este proceso con respecto a las lineas de saturaci´ on en un diagrama   T   −   ν . b) Determine el cambio de entrop´ ıa del vapor. c) Determine el cambio de entrop´ ıa del entorno. c) Considerando el sistema total, vapor m´ as entorno.   Determine la entrop´ ıa generada   S gen  asociada a este proceso.  Soluci´ on  a)   El vapor de agua est´ a saturado, la calidad   x 1   = 1, luego se encuentra sobre la linea de saturaci´ on. Como el tanque es r´ ıgido el volumen y la masa se conservan, por lo tanto, el volumen espec´ ıfico se conserva   v 1   =   v 2   y el proceso corresponde a una l´ ınea vertical.  (1.5 pts)  1
 
 --- Page 2 ---

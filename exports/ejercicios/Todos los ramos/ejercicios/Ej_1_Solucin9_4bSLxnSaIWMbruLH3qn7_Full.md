@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Solucin9_4bSLxnSaIWMbruLH3qn7.pdf"
+sourceFile: "Solucin9_4bSLxnSaIWMbruLH3qn7.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA Primer semestre 2021  Ayudantía 9- MAT1610  1. Suponga que   f   es una función continua en   [0 ,   3]   la cual satisface que:  f   (0) =   − 1  f   ′ ( x ) = 2   para todo   x   ∈   (0 ,   1)  f   ′ ( x ) = 1   para todo   x   ∈   (1 ,   2)  f   ′ ( x ) =   − 1   para todo   x   ∈   (2 ,   3)  Encuentre una fórmula para la función   f   .  Solución:  Notemos que una antiderivada para la función   f   sobre el intervalo   (0 ,   1)   es de la forma   2 x   +   C 1  una antiderivada para la función   f   sobre el intervalo   (1 ,   2)   es de la forma   x   +   C 2  una antiderivada para la función   f   sobre el intervalo   (2 ,   3)   es de la forma   − x   +   C 3  como   f   es continua y   f   ( x ) =   − 1   se deduce que   C 1   =   − 1 , nuevamente por continuidad se tiene que   2   ·   1   −   1 = 1 +   C 2   y por tanto   C 2   = 0   y que   2 =   − 2 +   C 3   y por tanto   C 3   = 4 , luego tenemos que  f   ( x ) =              2 x   −   1   si   x   ∈   [0 ,   1]  x   si   x   ∈   (1 ,   2]  − x   + 4   si   x   ∈   (2 ,   3]  2.   (a) Determine la antiderivada general de la función  g ( x ) =  2 +   x 2   +   x √ 1 +   x 2  1 +   x 2  (b) Determine la función   f   tal.  f   ′′ ( x ) =   sen ( x ) + cos( x )   y   f   (0) = 3   y   f   ′ (0) = 7  (c) Determine la antiderivada de la función   f   ( x ) = 10   ∗   2 x   −   1   que pasa por el punto   (0 ,   20) .
 

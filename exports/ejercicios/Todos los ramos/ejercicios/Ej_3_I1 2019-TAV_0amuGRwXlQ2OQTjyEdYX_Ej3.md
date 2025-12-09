@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2019-TAV_0amuGRwXlQ2OQTjyEdYX.pdf"
+sourceFile: "I1 2019-TAV_0amuGRwXlQ2OQTjyEdYX.pdf"
+---
+
 Suponga que la tasa a la que decrece la temperatura absoluta   T   ( t ) de un cuerpo enfri´ andose en un medio de temperatura constante   A , es proporcional a la diferencia entre la temperatura del medio al cuadrado y la temperatura del cuerpo al cuadrado. Suponga que en una situaci´ on espec´ ıfica   A   = 200 K. Si en el tiempo   t   = 0 la temperatura del cuerpo es de 400 K, y en el tiempo   t   = 1 es de 300 K, determine la constante de proporcionalidad y la funci´ on   T   .  Soluci´ on.  De acuerdo a lo que se indica  T   ′   =   k   ( 200 2   −   T   2 )   (2 puntos)  Esta ecuaci´ on es separable con  kt   +   C   =  ∫  kdt   =  ∫   1 200 2   −   T   2   dT   =   1 400  ∫   1 200   −   T   +   1 200 +   T  dT   =   1 400  ln  (∣ ∣ ∣ ∣  200 +   T  200   −   T  ∣ ∣ ∣ ∣ )  .  De aqu´ ı obtenemos que   200 +   T  200   −   T   =   Ce 400 kt  y  T   ( t ) =  200 Ce 400 kt   −   200 1 +   Ce 400 kt   (2 puntos)  Usando que   T   (0) = 400 tenemos 200 + 400 200   −   400  =   C , C   =   − 3 .   (1 punto)  Sustituyendo el valor de   C   y usando   T   (1) = 300 tenemos 200 + 300 200   −   300  =   − 3 e 400 k   , k   =   1 400  ln  ( 5 3  )  .  Luego  T   ( t ) =   − 600(5 / 3) t   + 200 1   −   3(5 / 3) t   = 200  (   3(5 / 3) t   + 1 3(5 / 3) t   −   1  )  (1 punto)  5
 
 --- Page 6 ---

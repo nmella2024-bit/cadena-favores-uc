@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Trini Correa.pdf_3VzokzgQNY2U3NBCTvL0.pdf"
+sourceFile: "Trini Correa.pdf_3VzokzgQNY2U3NBCTvL0.pdf"
+---
+
 --- Page 1 ---
 Diferencial  Lebiniz  Elasticidad sustitucion  Tms  Elasticidad precio  Derivada implicita  Homogeneidad  Regla de la cadena  con dos variables  R  e   c  o  d a  R  R  Formulas  Elasticidad producto total  Plano tangente  Rendimientos crecientes a escala  Rendimientos constantes a escala  Rendimientos decrecientes a escala  La tms es homogenea de grado 0  Las derivada de una homogenea es de grado k-1  Teorema de euler  Funciones de varias variables y tecnicas de  estatica comparativa  Trini Correa  -  /  -  2   2   .  s   2   E   ,  °   ?  2   5   2   5   °  a  °  a  cuaaioua   :c .   .   →  ,   f   a ,   ,   f   a ,   ,  "  a   f   a ,s  "  o  si   .  :3 .  :3 .  /  ✓   /   u   -  r  l   .  I   .  F   f  -   -  F   f  f   f  Lf   ,  Lf   ,   F   ,  2   2  C  a.   {   ¡   f. ,   a   F   →   s   .   i   -  F   →   a   _  á   .  {   ¡   2 £ ,   a  { .  %   .  f. ,   a  F   →   a   _   a  '  -  ¿   %   -  f. ,   a   F   →   s   .   i   -
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Determine si la serie   ∞ ∑  n =1  ln  (  1 + sin  (  n −   3 2  ))  converge. Solución: Uno de los métodos más simples y tradicionales para determinar si una serie es convergente o no es el criterio de comparación al límite. Sin embargo, para emplear este método debemos encontrar alguna serie de la cual conozcamos si converge o no. Para esta serie, trataremos de aproximar el término   a n   por algún otro más simple (y que se comporte de forma similar cuando   n   tiende al infinito). Veamos lo siguiente:  sin( x )  Sabemos que   sin( x )   ≈   x   cuando   x   es cercano a cero. Para ello recordemos el siguiente límite notable:  l´ ım  x → 0  sin   x x   = 1  Luego, podemos decir que para cercanías de   x   = 0   se tiene que   sin( x )   ≈   x . Ya teniendo esto en cuenta, podemos decir que cuando   n   → ∞   se tiene que   n − 3 / 2   →   0 , por lo que:  sin( n − 3 / 2 )   ≈   n − 3 / 2  ln(1 +   x )  Ya que   sin( n − 3 / 2 )   ≈   n − 3 / 2 , lo que debemos aproximar ahora es   ln(1+ n − 3 / 2 ) . De manera análoga al caso anterior, se tiene que cuando   x   →   0   observamos que   ln(1 +   x )   ≈   x . Así, tenemos que   ln(1 +   n − 3 / 2 )   ≈   n − 3 / 2 . Finalmente, 1
 
 --- Page 2 ---

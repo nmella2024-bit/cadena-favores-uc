@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/12-Tipos Propios_51oNNFFOUthG1mTx26bg.pdf"
+sourceFile: "12-Tipos Propios_51oNNFFOUthG1mTx26bg.pdf"
+---
+
 --- Page 1 ---
 12   –   TIPOS PROPIOS  Jorge Muñoz  IIC1103   –   Introducción a la Programación
 

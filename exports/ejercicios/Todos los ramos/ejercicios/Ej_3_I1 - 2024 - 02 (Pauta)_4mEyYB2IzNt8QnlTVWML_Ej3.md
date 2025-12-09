@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 - 2024 - 02 (Pauta)_4mEyYB2IzNt8QnlTVWML.pdf"
+sourceFile: "I1 - 2024 - 02 (Pauta)_4mEyYB2IzNt8QnlTVWML.pdf"
+---
+
 El jueves pasado el INE informó que el desempleo para el trimestre móvil mayo - julio alcanzó a un   8 . 7   %, el cual se calcula sobre la fuerza de trabajo (FdeT), que está compuesta por todas las personas en edad de trabajar que trabajan y desean trabajar. Además, se sabe que entre todas las personas en edad de trabajar, un 54 % son mujeres y el resto hombres.  Por otra parte, el INE informó que el   71 . 6   % de las personas de sexo masculino, y el   52 . 6   % de sexo femenino conforman la FdeT. Además, el INE indicó que el   8 . 3   % de las personas de sexo masculino de la FdeT se encuentra desempleado. (a) Si seleccionamos al azar una persona en edad de tra- bajar y resulta estar fuera de la FdeT, ¿cuál es la proba- bilidad de que sea hombre? (b) Considerando únicamente a la FdeT, ¿cuál es la proba- bilidad que una persona de sexo femenino seleccionada al azar se encuentre desempleada? Figura 1: Clasificación de la población dentro y fuera de la fuerza de trabajo.  Solución  Definamos los siguientes eventos:  A : Persona en edad de trabajar es hombre.  B : Persona en edad de trabajar es parte de la FdeT.  D : Persona en edad de trabajar está desempleada. (a) Del enunciado tenemos que  P   ( B   |   A ) = 0 . 284 ,   P   ( A ) = 0 . 46   →   P   ( A ) = 0 . 54 ,   y   P   ( B   |   A ) = 0 . 474 .  Por teorema de Bayes se tiene que  P   ( A   |   B ) =   P   ( B   |   A )   ·   P   ( A )  P   ( B   |   A )   ·   P   ( A ) +   P   ( B   |   A )   ·   P   ( A )  =   0 . 284   ·   0 . 46 0 . 284   ·   0 . 46 + 0 . 474   ·   0 . 54  = 0 . 3379 .  (a) Se pise la probabilidad de que una persona de sexo femenino esté desempleada, considerado como nuevo espacio muestral la FdeT, es decir,   P   ( D   |   A   ∩   B ) . Del enunciado se tiene que  P   ( D   |   B ) = 0 . 087 ,   P   ( B   |   A ) = 0 . 716 ,   P   ( B   |   A ) = 0 . 526   y   P   ( D   |   A   ∩   B ) = 0 . 083 .  EYP1113 - Probabilidad y Estadística Segundo Semestre 2024  5   Profesores: Ricardo Aravena C., Cristian Capetillo C., Ingrid Guevara R., Ricardo Olea O., Daniel Saavedra T.
 
 --- Page 6 ---

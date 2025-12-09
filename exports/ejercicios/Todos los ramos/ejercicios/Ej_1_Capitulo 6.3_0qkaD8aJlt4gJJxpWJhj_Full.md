@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Capitulo 6.3_0qkaD8aJlt4gJJxpWJhj.pdf"
+sourceFile: "Capitulo 6.3_0qkaD8aJlt4gJJxpWJhj.pdf"
+---
+
 --- Page 1 ---
 Page 1 Capitulo 6.3
 

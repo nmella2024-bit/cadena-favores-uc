@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2017-2_4tYNCoXW9BiLtz4Z250c.pdf"
+sourceFile: "I2 2017-2_4tYNCoXW9BiLtz4Z250c.pdf"
+---
+
 (20 puntos)  Parte 1 (10 puntos)  Smith est´ a en la carcel y tiene 3 monedas.  ´ El podr´ a pagar su fianza y salir de la carcel si es que logra tener 8 monedas. Un guardia acepta realizar una serie de apuestas con ´ el. Si Smith apuesta   A   monedas, gana   A   monedas con probabilidad 0 . 4 y pierde   A   monedas con probabilidad 0 . 6. En caso de que Smith se quede sin monedas, se tendr´ a que quedar para siempre en la c´ arcel. Su ´ unica opci´ on para salir de la c´ arcel es juntar 8 monedas. Calcule la probabilidad de que Smith logre salir de la c´ arcel bajo cada una de las siguientes estrategias: 1. (5 puntos) Apuesta las monedas de una a la vez (estrategia t´ ımida). 2. (5 puntos) Apuesta, cada vez, la mayor cantidad de monedas que pueda, pero no m´ as de las necesarias para juntar 8 monedas en caso de ganar la apuesta (estrategia atrevida).  Parte 2 (10 puntos)  Cinco pelotas blancas y cinco pelotas negras se distribuyen en dos urnas de tal forma que cada urna contiene exactamente cinco pelotas. En cada etapa se extrae una pelota aleatoriamente de cada urna y se intercambian de lugar. 1. (2 puntos) Sea   X n   el n´ umero de pelotas blancas en la urna izquierda en la etapa   n . ¿Puede ser este proceso modelado como una Cadena de Markov en Tiempo Discreto con   X n   como ´ unica variable de estado? 2. (5 puntos) Encuentre la matriz de probabilidades de transici´ on en una etapa para   X n . 3. (3 puntos) Justifique por qu´ e el modelo desarrollado tiene una ´ unica distribuci´ on estacionaria de probabilidades, y escriba expl´ ıcitamente un sistema de ecuaciones cuya soluci´ on entregue esta distribuci´ on (no es necesario resolverlo). 2
 
 --- Page 3 ---

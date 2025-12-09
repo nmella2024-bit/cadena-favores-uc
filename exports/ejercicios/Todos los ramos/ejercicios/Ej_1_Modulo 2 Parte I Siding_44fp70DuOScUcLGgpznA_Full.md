@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Modulo 2 Parte I Siding_44fp70DuOScUcLGgpznA.pdf"
+sourceFile: "Modulo 2 Parte I Siding_44fp70DuOScUcLGgpznA.pdf"
+---
+
 --- Page 1 ---
 Estimad@s estudiantes En este documento encontrarás preguntas que te servirán como apoyo a la preparación del Módulo 2 de la Primera Parte del Examen de Título Currículo 2009. Estos son sólo ejemplos, y no reflejan la totalidad de los contenidos a evaluar. Saludos, Dirección de Pregrado Escuela de Ingeniería PUC
 

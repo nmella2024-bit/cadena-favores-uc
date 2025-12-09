@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 17"
+topic: "General"
+number: "17"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Determine los valores de   a   para los cuales las siguientes series convergen: a)   ∞ ∑  n =0  a n  n !  Solución: Usemos el criterio de la razón:  L   = l´ ım  n →∞  ∣ ∣ ∣ ∣  b n +1  b n  ∣ ∣ ∣ ∣   = l´ ım  n →∞  ∣ ∣ ∣ ∣ ∣  a n +1  ( n +1)!  a n  n !  ∣ ∣ ∣ ∣ ∣   = l´ ım  n →∞  | a |  n   + 1  = 0  El límite es menor que   1   para todo valor de   a . Por esta razón, la serie converge para  a   ∈   R . b)   ∞ ∑  n =1 ( − 1) n  n   a n  Solución: Usemos el criterio de la razón:  L   = l´ ım  n →∞  ∣ ∣ ∣ ∣  b n +1  b n  ∣ ∣ ∣ ∣   = l´ ım  n →∞  ∣ ∣ ∣ ∣ ∣  ( − 1) n +1  n +1   a n +1 ( − 1) n  n   a n  ∣ ∣ ∣ ∣ ∣   = l´ ım  n →∞  | a | n n   + 1  =   | a |  Por el criterio de la razón se requiere que dicho límite sea menor que   1   para que la serie converja. De esta forma, la serie converge para   | a |   <   1 . ¿Pero qué ocurre en   | a |   = 1 ? Probe- mos. Cuando   a   =   − 1   se tiene la serie armónica la cual diverge. De esta forma, la serie en cuestión diverge cuando   a   =   − 1 . Cuando   a   = 1   se tiene la serie armónica alternante la cual converge. De esta forma, la serie en cuestión converge cuando   a   = 1 . Finalmente, la serie   ∞ ∑  n =1 ( − 1) n  n   a n   converge para   − 1   < a   ≤   1 . c)   ∞ ∑  n =1  na n   −   ( a − 1) n  n  Solución: La serie puede ser reescrita como:  ∞ ∑  n =1  na n   −   ( a   −   1) n  n   =  ∞ ∑  n =1  na n   −  ∞ ∑  n =1  ( a   −   1) n  n  Para que converja la serie original se requiere que al menos ambas series converjan por separado. Si aplicamos el criterio de la razón a estas series se tiene que: 35
 
 --- Page 36 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 9"
+topic: "General"
+number: "9"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 7   (Pago en 2 partes) Un principal y un agente interactúan de forma repetida e indefinida, siendo un período cualquiera denotado por la variable   t   = 0 ,   1 , ...   y el agente elige  e t   ∈ { 0 ,   1 }   para que el principal gane   π t   = 12 e t   en el período   t . Al empezar cada periodo   t , el empleado elige su nivel de esfuerzo   e t   ∈ { 0 ,   1 }   (es decir, el empleado elige su esfuerzo antes de recibir su sueldo).   El costo de esforzarse (es decir, de elegir   e   = 1 ) está dado por $ 8 . Tras observar   e t , el empleador elige el sueldo   w t   que le paga al empleado en el periodo   t . Las ganancias que el jefe obtiene al final del periodo   t   como función de   w t   y   e t   están dadas por  π t   = 12 e t   −   w t ,  mientras que la utilidad del trabajador al final del periodo está dada por  π t   =   w t   −   8 e t .  Supón que tanto el jefe como el empleado tienen   el mismo   factor de descuento   δ   ∈   [0 ,   1) . a) (10 puntos) Supón que los jugadores adoptan la siguiente estrategia de gatillo:  Estrategia del Jefe:  i) En el periodo   1   paga un sueldo   w 1   = 10   si el empleado ha elegido   e 1   = 1 . ii) En los periodos siguientes, paga un sueldo   w t   = 10   si el empleado se ha esforzado en el periodo   t   y en todos los periodos anteriores y si el jefe le ha pagado por lo menos $ 10  en todos los periodos anteriores (es decir, si ambos han cooperado en todos los periodos anteriores), de lo contrario, le paga   w t   = 0 .  Estrategia del Empleado:  i) En el periodo   1   elige   e 1   = 1 . ii) En los periodos siguientes, elige   e t   = 1   si él se ha esforzado en todos los periodos anteriores y si el jefe le ha pagado por lo menos $ 10   en todos los periodos anteriores (es decir, si ambos han cooperado en todos los periodos anteriores), de lo contrario elige  e t   = 0 . Encuentre el mínimo   δ   tal que este perfil de estrategias es un ENPS.   Pauta:   Cómo el jefe le paga al empleado después que este elige su esfuerzo, será el jefe la persona quien
 
 --- Page 99 ---

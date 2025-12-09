@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 19"
+topic: "General"
+number: "19"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 A partir de la región   R   acotada por   ρ ( θ ) =   √ 2 + cos( θ ) + sin( θ )   y exterior al círculo   ρ ( θ ) =   √ 2 , determine: a) El área de la región R. Solución: El gráfico de la situación expuesta está representada a continuación. Representa un círculo centrado en el origen y un cardioide rotado.  Para poder encontrar el área de la región descrita debemos encontrar la intersección de las curvas. Para ello igualamos el círculo con el cardioide.  √ 2 + cos( θ ) + sin( θ )   =   √ 2 cos( θ )   =   −   sin( θ ) tan( θ )   =   − 1  Dada nuestra situación, los valores de   θ   que satisfacen la ecuación son   3 π  4   y   7 π  4  Podríamos pensar que debemos integrar entre   7 π  4   ≤   θ   ≤   3 π  4   , sin embargo esto es erróneo. Lo que sí podemos hacer es decir que ese   7 π  4   es en realidad su equivalente   − π  4   . Por lo tanto nuestro segmento de integración es   − π  4   ≤   θ   ≤   3 π  4   . Usando la fórmula de área en polares se tiene que:  A   =  1 2  ∫   3 π  4  −   π  4  ρ 2  ext   −   ρ 2  int ( θ ) d θ   =  1 2  ∫   3 π  4  −   π  4  ( √ 2 + cos( θ ) + sin( θ )) 2   −   ( √ 2) 2 ( θ ) d θ  Resolviendo la integral se llega a:  A   = 4 +   π  4  Nótese que también nos pudimos haber dado cuenta de que la figura era simétrica con respecto al eje   θ   =   π  4   . Bajo esta observación, pudimos haber dicho que el área total encerrada entre el cardioide y el círculo está determinada por el doble del área entre   π  4   ≤   θ   ≤   3 π  4   . 40
 
 --- Page 41 ---

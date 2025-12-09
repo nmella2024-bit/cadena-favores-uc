@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 38"
+topic: "General"
+number: "38"
+originalUrl: "exports/downloads/Todos los ramos/Guia de Ejercicios ECF 1_2018_4wG4j01fHhkgmW3urTLu.pdf"
+sourceFile: "Guia de Ejercicios ECF 1_2018_4wG4j01fHhkgmW3urTLu.pdf"
+---
+
 ICH1104 - 4 - 6 - 15  Ensanche brusco desde   𝑑   a   𝐷 , donde   𝐷   ≫   𝑑 .  Matemáticas Discretas  Pregunta N°39  MAT1253 - 2.9 - 15  1337   es inverso de   3   en módulo   4010 .  Pregunta N°40  MAT1253 - 3. 3 - 15  ∃ 𝑥 ∀ 𝑦 ( ¬ ( 𝑥   =   𝑦 )   →   𝑥   <   𝑦 )  Pregunta N°41  MAT1253 - 7.9 - 15  Θ ( 1 )  Pregunta N°42  IIC1253 - 7.2 - 1 5  𝐼 ( 𝑘 ) :   ( 𝑚   ∈   𝐴 )   ∧   ( 𝑚   ≥   𝐴 [ 0 ] ,   …   ,   𝐴 [ 𝑘   −   1 ] )  Materiales Eléctricos  Pregunta N°43  IEE1133 - 3 - 4 - 16  𝐸 𝑛   =   𝐴   ( 𝑛  𝑎 )  2
 
 --- Page 35 ---

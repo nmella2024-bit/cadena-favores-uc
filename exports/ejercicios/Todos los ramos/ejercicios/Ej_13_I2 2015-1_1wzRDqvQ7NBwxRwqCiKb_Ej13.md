@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 13"
+topic: "General"
+number: "13"
+originalUrl: "exports/downloads/Todos los ramos/I2 2015-1_1wzRDqvQ7NBwxRwqCiKb.pdf"
+sourceFile: "I2 2015-1_1wzRDqvQ7NBwxRwqCiKb.pdf"
+---
+
 pero hecho de materiales de distinta conductividad. La conductividades   σ   (o   g   en otra notaci´ on) de los tramos   A ,   B   y   C   est´ an en la raz´ on   σ A   :   σ B   :   σ C   = 2 : 1 : 5 y la raz´ on entre los di´ ametros es   A   :   B   :   C   = 2 : 1 : 3 .   Entonces, una vez establecido el r´ egimen estacionario ( ~ ∇ ·   ~ j   = 0) podemos afirmar que la densidad de corriente es menor en a) Regi´ on   A  b) Regi´ on   B  c)   Regi´ on   C  d) Es igual en todas las regiones. e) Depende de la diferencia de potencial que se aplique. Es menor en la regi´ on C independientemente de las conductividades puesto que una vez establecido el r´ egimen estacionario la corrient es constante. 8
 
 --- Page 9 ---

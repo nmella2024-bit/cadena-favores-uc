@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 15"
+topic: "General"
+number: "15"
+originalUrl: "exports/downloads/Todos los ramos/Guía de ejercicios 4_2WVYI4D5ouBTrc4EudhB.pdf"
+sourceFile: "Guía de ejercicios 4_2WVYI4D5ouBTrc4EudhB.pdf"
+---
+
 ¿Qué supuesto simplificador realiza el modelo   stop   &   go   de frecuencia de viaje al plantear su  estructura jerárquica de probabi lidades? ¿Le parece razonable dicho supuesto?  16. ¿Por qué el modelo stop   –   go para modelar frecuencia de viajes es mejor que el ACM?  17. ¿Cómo se integran los modelos de localización residencial y los modelos de transporte, en  términos de datos de entra da y salida?  18. Usted obtiene un modelo de partición modal que tiene un coeficiente para el tiempo de viaje  distinto si el modo es de transporte público o privado. ¿Cómo tomaría la decisión de aceptar o  rechazar el modelo, dada la siguiente información?   Determine cuál sería su decisión. Los datos  son:  Tv_TPúblico   Tv_TPrivado  Parámetro   - 0,0303   - 0,09986  Desviación estándar   0,0137   0,0287  19 .   Considere el siguiente MNL:  i i i   V U  ε + =  con:   (   ) i i c i t i   C t V  θ  θ  θ   + + =   … y considere que   0 1   =  θ  y   (   ) 2 2   6 0, Gumbel IID ~  α  π  ε   i  Considere ahora el siguiente HL:  1   2   3   4   5  1   2   3   4   5  λ  β  χ  6  7
 
 --- Page 4 ---

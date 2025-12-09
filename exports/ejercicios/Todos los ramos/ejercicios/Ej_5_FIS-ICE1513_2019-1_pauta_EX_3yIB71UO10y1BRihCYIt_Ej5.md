@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/FIS-ICE1513_2019-1_pauta_EX_3yIB71UO10y1BRihCYIt.pdf"
+sourceFile: "FIS-ICE1513_2019-1_pauta_EX_3yIB71UO10y1BRihCYIt.pdf"
+---
+
 [1 punto] Un bloque de 20 kg se mueve sobre una superficie horizontal lisa bajo la acci´ on de una fuerza neta   F   inclinada en 60 o   con respecto a la horizontal. El ´ angulo de la fuerza no cambia, pero su magnitud depende de la posici´ on del bloque de acuerdo a la funci´ on   F   ( x ) = 60 x 2 , donde   F   se mide en Newton y   x  en metros. Si en   x   = 0 el bloque tiene una velocidad de 1 m/s hacia la derecha ¿cu´ al es la posici´ on del bloque cuando alcanza una rapidez de 3 m/s 2 ? a) 3.0 m b) 2.5 m c) 2.0 m d) 1.5 m e) 1.0 m  06/05/2019   7
 
 --- Page 8 ---

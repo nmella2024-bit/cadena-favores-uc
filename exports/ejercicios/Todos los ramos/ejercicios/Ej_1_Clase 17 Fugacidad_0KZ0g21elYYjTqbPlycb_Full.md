@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 17 Fugacidad_0KZ0g21elYYjTqbPlycb.pdf"
+sourceFile: "Clase 17 Fugacidad_0KZ0g21elYYjTqbPlycb.pdf"
+---
+
 --- Page 1 ---
 CLASE   17  FUGACIDAD  Loreto Valenzuela Roediger  lvalenzr@ing.puc.cl  IIQ2043  FISICOQUÍMICA  Departamento de Ingeniería Química y Bioprocesos
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 06"
+topic: "General"
+number: "06"
+originalUrl: "exports/downloads/Todos los ramos/I3 2017-2_55hNdU9VujhleoSJNyRZ.pdf"
+sourceFile: "I3 2017-2_55hNdU9VujhleoSJNyRZ.pdf"
+---
+
 Fatiga de materiales  (20 pts.) El comportamiento a la fatiga de un acero al carbón (DIN 50CrMo4) fue determinado mediante ensayo de fatiga rotatoria con tensiones medias de   m   = 0, pudiendo describirse la relación entre la amplitud alternante   a  y el número de ciclos   N   mediante la siguiente relación: 1 . 0  1250        N a    Adicionalmente   fueron   realizados   cuatro   ensayos   a   distintas   tensiones   medias   produciendo   los   siguientes resultados:   m   /MPa   a   /MPa   N   ar   /MPa   a /  ar   - 100   457   155.300   378 ,3   1, 2 1  120   306   340.600   349,7   0 , 8 6  300   217   91.800   398,7   0,54  400   13 7   262.000   35 9,0   0 , 38  Estime   gráficamente   el valor de   tensión de fluencia a la fatiga   (    u ) del criterio de   Goodman .  Solución:  Para determinar el valor de    u   se utilizará el criterio de Goodman. 1 '      u m ar a       ( 2 ptos)  Los valores de amplitud de tensiones equivalentes    ar   se determinan de la relación   empírica indicada   para   m   = 0 .  Por ejemplo para el   m   = 300 MPa, el número de ciclos hasta falla es 91.800, lo que corresponde a   amplitud  alternate   ar   = 1250·91.800 - 0.1   =   398,68   MPa.   Los valores   obtenidos est án   resumidos en   la tabla   (Correctos  cálculos de   ar   y   a /  ar   (6 ptos) ).   Aproximado la relación entre   razón ar a      /   y la tensión media permite determinar el valor de    u   como intercepción con el eje   m  Ejes gráficos (2 ptos) obtener el valor estimado (6 ptos) gráfica (4 ptos)
 
 --- Page 5 ---

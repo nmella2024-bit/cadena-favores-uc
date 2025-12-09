@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 18   Consider the Bertrand duopoly model with homogeneous goods. Letting   p 1   and  p 2   denote the prices of firm 1 and 2, respectively, we have that the aggregate demand function for the homogeneous good is given by   Q ( p 1 , p 2 ) = 20   −   min { p 1 , p 2 } .   Because the product is homogeneous, all customers will only purchase a product from the firm that charges the lowest price.   In the eventuality both firms charge the same price, the demand is split evenly among the firms. Both firms have constant marginal costs. The marginal cost form firm 1 is given by  10 , while the marginal cost from firm 2 is given by   4 . Find the pure strategy Nash equilibrium from this game.  Pauta:   Notice that if firm 1 operated as a monopolist, it would choose   p 1   that maximizes  max  p 1  (20   −   p 1 ) p 1   −   10(20   −   p 1 ) .  Taking the FOC., we get:  20   −   2 p 1   + 10 = 0  p 1   = 15 .
 
 --- Page 33 ---

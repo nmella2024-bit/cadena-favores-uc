@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 05"
+topic: "General"
+number: "05"
+originalUrl: "exports/downloads/Todos los ramos/I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+sourceFile: "I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+---
+
 Criterio de falla  (4pts) Los gráficos mostrados en la figura 5.1 muestran las tensiones de falla esperadas en dos materiales distintos de acuerdo al tamaño máximo de los defectos presentes en ellos.  Material A   Material B  Figura 5.1 tensión de falla vs tamaño de defecto  a)   ¿Qué tipo de comportamiento caracteriza a cada material? (A y B)  Material A: ___ Dúctil ______________________________________________ (1 pt.)  Material B: ___ Frágil ______________________________________________ (1 pt.)  b)   Para el material A, describa el tipo de falla que se espera para tamaños de defecto:  Menores que   a t   : ____ Plastificación (o falla por deformación plástica) ____________ (1 pt.)  Mayores que   a t   : ____ Fractura (o falla por propagación de fractura) ______________ (1 pt.)
 
 --- Page 4 ---

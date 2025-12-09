@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-1_41TGg5kRcszQssIvOZqR.pdf"
+sourceFile: "I1 2017-1_41TGg5kRcszQssIvOZqR.pdf"
+---
+
 a ) Considere la curva   C   =   { ( x,   1 /x ) :   x   ≥   1 } . Sea   V   el s´ olido obtenido al rotar el ´ area bajo la curva   C   en torno al eje   x . ¿Es el volumen de este s´ olido finito o infinito?. Sea   S   la superficie de revoluci´ on obtenida al rotar la curva   C   en torno al eje   x . ¿Es el ´ area de esta superficie finita o infinita?. Justifique su respuesta.  b ) Sea   C   la curva en polares parametrizada por   r   =   e − θ , θ   ≥   0. Bosqueje la curva. ¿Es el largo de esta curva finito o infinito? Si es infinito demu´ estrelo, si es finito calcule el largo de la curva.  Soluci´ on:  a ) Considerando la curva parametrica dada, con par´ ametro   x , el volumen de el s´ olido   V   es: Vol( V   ) =  ∫  C  πy 2   dx   =   π  ∫   ∞  1  1  x 2   dx   =   l´ ım  R →∞   π  ∫   R  1  1  x 2   dx   =   l´ ım  R →∞   −   1  R   + 1 = 1 .  Por otro lado, el elemento de arco de la curva   C   es  ds   =   √ ( x ′ ) 2   + ( y ′ ) 2 dt   =  √  1 +   1  x 4   dx.  Y el area de la superficie de rotaci´ on   S   es:  Area ( S ) =  ∫  C  2 πy ds   = 2 π  ∫   ∞  1  1  x  √  1 +   1  x 4   dx  ≥   2 π  ∫   ∞  1  1  x  dx   =   l´ ım  R →∞   2 π  ∫   R  1  1  x  dx   =   l´ ım  R →∞   2 π   ln( R )   −   0 =   ∞  Donde la desigualdad se cumple ya que   1  x  √  1 +   1  x 4   ≥   1  x   para todo   x >   0, en particular en todo el intervalo de integraci´ on. Por lo tanto el area de   S   es infinita.  b ) La curva   C   es un espiral que comienza en (1 ,   0) y al aumentar el ´ angulo   θ   el radio disminuye hacia 0.  1  − 1 1 − 1   x y  Para calcular el largo calculamos el elemento de arco que en coordenadas polares es  ds   =   √ r 2   +   r ′ 2   dθ   =  √  e − 2 θ/ 2 π   +   e − 2 θ/ 2 π  4 π 2   dθ   =  √  1 +   1  4 π 2   e − θ/ 2 π   dθ  As´ ı el largo de curva es  L ( C ) =  ∫  C  ds   =  ∫   ∞  0  √  1 +   1  4 π 2   e − θ/ 2 π   dθ   =   l´ ım  R →∞  ∫   R  0  √  1 +   1  4 π 2   e − θ/ 2 π   dθ  =   l´ ım  R →∞   −  √  1 +   1  4 π 2  e − R/ 2 π  2 π   +  √  1 +   1  4 π 2  e 0  2 π   =  √  1 +   1  4 π 2  2 π   .
 
 --- Page 3 ---

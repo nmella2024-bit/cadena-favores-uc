@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 4   (Trabajo en equipos y coordinación) Supón que 2 agentes, agente 1 y agente 2, forman una cooperativa. Ellos deben elegir simultáneamente sus respectivos niveles de esfuerzo:  e 1 , e 2   ∈ { 0 ,   1 } . Sus beneficios por el esfuerzo están dados por  π ( e 1 , e 2 ) = 4( e 1   +   e 2 ) + 7 e 1 e 2 ,  mientras que sus costos por esfuerzo están dados por  C ( e i ) = 6 e i .  Se supone que cada agente paga por sus costos individualmente, es decir, si, por ejemplo, el agente   1   elige un esfuerzo de   e 1   = 1 , mientras que el agente 2 elige un esfuerzo de   e 2   = 0 , solamente el agente 1 pagará el costo   C (1) = 6 . Si ambos agentes se esfuerzan, cada uno solo arca con su propio esfuerzo, es decir cada uno tiene   6   sustraído de sus pagos (no   12 ). Por lo tanto, este es un juego donde los agentes podrían tienen incentivos en “free ride” en el esfuerzo del otro agente. Supón que los agentes no pueden elegir un contrato que paga cada uno contingente a su nivel de esfuerzo (e.g., pq uno no puede probar a un juez su nivel de esfuerzo, aunque esto sea  1 Hay una pequeña excepción ahí en los puntos extremos, ya que en estos puntos uno de los agentes estará exactamente indiferente en no hacer desviación y hacer desviación y elegir   e i   = 0 .
 
 --- Page 74 ---

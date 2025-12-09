@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Repaso Calculo II (PDF)_3SqZ3WlcEgciGC8rfxuP.pdf"
+sourceFile: "Repaso Calculo II (PDF)_3SqZ3WlcEgciGC8rfxuP.pdf"
+---
+
 --- Page 1 ---
 
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2015 s2_3Z7VEajiuOkiEhlwDmAn.pdf"
+sourceFile: "Examen 2015 s2_3Z7VEajiuOkiEhlwDmAn.pdf"
+---
+
 (60 puntos) Resolver una   ecuación diofántica   de la forma:  a 1 x 1   +   a 2 x 2   +   · · ·   +   a n x n   =   C  consiste en encontrar valores dentro de un conjunto   D   de números enteros para las variables  x 1 , . . . , x n , dados los valores de   a 1 , . . . , a n   y el valor de   C . Escribe una función para resolver este tipo de ecuaciones, la que debe ser de tipo recursiva (fun- ciones sólo iterativas no serán evaluadas). De haber una solución, tu función deberá imprimir en pantalla una lista con los valores de   x 1   hasta   x n . En caso contrario, deberá imprimir “no hay solu- ción”. Tu función deberá recibir una lista no vacía de números enteros para los coeficientes   a 1 , . . . , a n , y un número entero para la constante   C . Además, deberá suponer que los valores de   x i   son números enteros entre   − 10   y   10 , es decir,   D   =   {− 10 ,   − 9 , . . . ,   9 ,   10 } . Por ejemplo, si quieres resolver la siguiente ecuación diofántica  2 x 1   + 3 x 2   = 5 ,  deberás llamar a tu función usando como argumentos la lista   [2, 3]   y el número   5 , y debería imprimir en pantalla, por ejemplo,   [-8, 7] , ya que   2   ×   ( − 8) + 3   ×   (7) = 5 . Nota que puede haber más de una solución; basta con que el programa imprima una solución válida (si la hay), no todas las soluciones. 2
 
 --- Page 3 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Estudie la convergencia de las siguientes series. Solución: a)   ∞ ∑  n =1  sin   (   1  n 2  )  b)   ∞ ∑  n =1 1  e n +tan (   1  n   )  9
 
 --- Page 10 ---

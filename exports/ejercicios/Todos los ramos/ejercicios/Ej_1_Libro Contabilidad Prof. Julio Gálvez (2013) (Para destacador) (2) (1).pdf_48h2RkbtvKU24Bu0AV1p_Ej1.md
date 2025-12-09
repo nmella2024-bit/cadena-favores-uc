@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 000 (Utilidad del Ejercicio) Dividendos por Pagar   300 Utilidades Retenidas   700 Del   mismo   modo   que   en   el   ejemplo   previo,   producto   de   esta   decisión,   el Patrimonio disminuyó en $300.   Contablemente una empresa puede declarar un dividendo mayor a la utilidad del último ejercicio.   Frente a esta situación corresponderá disminuir las utilidades acumuladas de períodos anteriores por la diferencia que se origine y que corresponderá al exceso de dividendos declarados sobre la utilidad del ejercicio.   Esa diferencia representará un cargo a Utilidades Retenidas. La declaración de dividendos en un período pero en un momento posterior al del cierre de la cuenta de Resultado del Ejercicio, generará una disminución directa a la cuenta de Utilidades Retenidas. Como se ha visto el uso de la Cuenta Pérdidas y Ganancias es temporal y esta cuenta se crea con el solo propósito de resumir en ella el resultado final del ejercicio presentando los Ingresos y Gastos en forma detallada. Esta cuenta es, en definitiva, el Estado de Resultados de la Empresa.   Para efectos de presentar el Resultado en el Balance se deberá cerrar dicha cuenta procediendo como ya se ha indicado.
 
 --- Page 214 ---

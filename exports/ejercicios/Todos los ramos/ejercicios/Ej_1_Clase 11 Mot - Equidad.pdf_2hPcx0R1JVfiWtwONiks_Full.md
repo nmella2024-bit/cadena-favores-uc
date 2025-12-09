@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 11 Mot - Equidad.pdf_2hPcx0R1JVfiWtwONiks.pdf"
+sourceFile: "Clase 11 Mot - Equidad.pdf_2hPcx0R1JVfiWtwONiks.pdf"
+---
+
 --- Page 1 ---
 Motivación 2: Perspectiva de la  Equidad y la Justicia
 

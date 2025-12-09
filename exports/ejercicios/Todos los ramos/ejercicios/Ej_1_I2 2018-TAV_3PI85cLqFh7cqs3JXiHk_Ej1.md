@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-TAV_3PI85cLqFh7cqs3JXiHk.pdf"
+sourceFile: "I2 2018-TAV_3PI85cLqFh7cqs3JXiHk.pdf"
+---
+
 2 puntos por concluir que   A   =  ∫  λ  z ( x ( t ) , y ( t )) ds  2 puntos por calcular   z ( x ( t ) , y ( t ))   · ‖ λ ′ ( t ) ‖   =   t   ·  √ 1 +   t 2  2 puntos por calcular la integral  ∫   3 π  2  0  t √ 1 +   t 2   dt
 
 --- Page 2 ---

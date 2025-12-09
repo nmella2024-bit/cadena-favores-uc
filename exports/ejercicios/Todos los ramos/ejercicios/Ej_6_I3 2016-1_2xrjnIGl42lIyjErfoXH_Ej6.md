@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+sourceFile: "I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+---
+
 3 puntos por plantear correctamente la integral doble que permite calcular el volumen.  3 puntos por calcular correctamente las primitivas.
 
 --- Page 7 ---

@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Ayudant¡a 05_1ry9AJYwvND94EAPOvx7.pdf"
+sourceFile: "Ayudant¡a 05_1ry9AJYwvND94EAPOvx7.pdf"
+---
+
 Una barra rectangular de ancho b, altura 2b y largo 20b está sometida a una fuerza en tracción   P . Determinar el estado de tensiones en un punto de un plano YZ, y también en el plano VZ (rotado en un ángulo   θ   respecto al anterior). Con esta información: i)   Calcule el estado de tensiones en un plano a   θ   = 60° ii)   Calcule   θ   tal que: a) Tensión normal   σ   sea máxima, y b) Tensión tangencial   τ   sea máxima.

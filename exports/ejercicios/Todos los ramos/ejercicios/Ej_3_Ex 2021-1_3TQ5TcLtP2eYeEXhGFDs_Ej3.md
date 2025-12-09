@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Ex 2021-1_3TQ5TcLtP2eYeEXhGFDs.pdf"
+sourceFile: "Ex 2021-1_3TQ5TcLtP2eYeEXhGFDs.pdf"
+---
+
 Sea   f   la función cuyo gráfico se muestra a continuación  y   G   la función definida por  G ( x ) =  ∫   x 2 +1 1  f   ( t ) dt  a) Calcule   G (1) . b) Determine los intervalos de crecimiento y decrecimiento de   G .  Solución:  Del gráfico se puede ver que   G (1) =  ∫   2 1  f   ( t ) dt   = 1 . Del TFC tenemos que   G ′ ( x ) = 2 xf   ( x 2   + 1) , por lo tanto, para determinar los intervalos de monotonía de   G   debemos estudiar los signos de   2 xf   ( x 2   + 1) . Observe que   G ′ ( x ) = 2 xf   ( x 2   + 1) = 0   si y solo si   x   = 0 ,   x   = 1 , o   x   =   − 1 .   Al realizar una tabla de signos obtenemos por lo tanto la función   G   es creciente en   ( −∞ ,   − 1)   y en   (0 ,   1) , es  G ′ ( x )   +   -   +   -  f   ( x 2   + 1)   -   +   +   -  2 x   -   -   +   + intervalo   ( −∞ ,   − 1)   ( − 1 ,   0)   (0 ,   1)   (1 ,   ∞ )  decreciente en el intervalo   ( − 1 ,   0)   y en el intervalo   (1 ,   ∞ ) .
 
 --- Page 5 ---

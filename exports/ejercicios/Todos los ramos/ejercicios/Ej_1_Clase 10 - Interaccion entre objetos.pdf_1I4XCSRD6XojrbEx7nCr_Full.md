@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 10 - Interaccion entre objetos.pdf_1I4XCSRD6XojrbEx7nCr.pdf"
+sourceFile: "Clase 10 - Interaccion entre objetos.pdf_1I4XCSRD6XojrbEx7nCr.pdf"
+---
+
 --- Page 1 ---
 IIC1103 - Secci´ on 2  Clase 21: Interacci´ on entre objetos Prof. Francisca Cattan  Universidad Cat´ olica de Chile  14 de noviembre
 

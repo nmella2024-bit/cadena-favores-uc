@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/2019-2 Enunciado.pdf_0ZAUf5yPnjAI7NhekwNl.pdf"
+sourceFile: "2019-2 Enunciado.pdf_0ZAUf5yPnjAI7NhekwNl.pdf"
+---
+
 [20 puntos] Activos Arrow-Debreu y mercados completos  a. Definamos la siguiente situaci´ on: Existen S estados de la naturaleza:   s   = 1 , ..., S P x : precio del activo   x x s : pago del activo   x   en el estado   s P ADs : precios del activo AD que paga en el estado   s P x   =  S ∑  s =1  x s   ·   P ADs  (5 puntos) Para un bono sin riesgo que paga 1 en   t   = 1: ¿Cu´ anto es la tasa de inter´ es libre de riesgo en la situacion descrita con S estados de la naturaleza? 5
 
 --- Page 6 ---

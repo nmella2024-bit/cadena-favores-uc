@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2023-2_2YpyL5QpmsNzkjNyuZa1.pdf"
+sourceFile: "I2 2023-2_2YpyL5QpmsNzkjNyuZa1.pdf"
+---
+
 (10 puntos): a) (5 pts)   Considere el siguiente problema de Programaci´ on Lineal en 2 variables: max   − 4 x 1   +   αx 2  s.a.   x 1   +   x 2   ≥   1  x 2   ≤   4  x 1 , x 2   ≥   0 Determine si existe alg´ un valor de   α   que haga el problema no acotado.   Justifique su argumento (ya sea s´ ı o no) en funci´ on de los resultados del curso.  Soluci´ on:  Sabemos que si el dual es infactible, entonces el primal es no acotado. Para este problema, el dual viene dado por min   − y 1   + 4 y 2  s.a.   − y 1   ≥ − 4  − y 1   +   y 2   ≥   α y 1 , y 2   ≥   0 Esto resulta en el siguiente gr´ afico (tomamos un   α >   0 para ilustrar):
 
 --- Page 6 ---

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/PUC ICM 1002 - Clase 04_13lAZjloDdhYijA0MPA6.pdf"
+sourceFile: "PUC ICM 1002 - Clase 04_13lAZjloDdhYijA0MPA6.pdf"
+---
+
 --- Page 1 ---
 José Ignacio Vergara   -   UC   1  Diseño gráfico en Ingeniería Mecánica  Clase 4 : Lista y referencias  José Ignacio Vergara R.  jverr@uc.cl
 

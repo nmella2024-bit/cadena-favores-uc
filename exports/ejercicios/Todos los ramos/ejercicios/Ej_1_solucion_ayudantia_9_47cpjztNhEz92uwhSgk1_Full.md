@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/solucion_ayudantia_9_47cpjztNhEz92uwhSgk1.pdf"
+sourceFile: "solucion_ayudantia_9_47cpjztNhEz92uwhSgk1.pdf"
+---
+
 --- Page 1 ---
 p re   DUNTA   I  [   Dime   to   miso   ?   #   =   °   ( Justice   douses   )  .  [   Done   seven .   mi   d   ?   F "=   RF 2  (   Siempre   esta   en   Oheccién   RADIAL   A   UNA   PISTACIA   Cte   R )  my   Olferevcnloe   Area   er   enforces  Éa   u_em   ,   dot   ?   d=odA   d=   oisnododo   d=   orisnododo  esunr  Cte   !   !   !  21T   IT  dE= ¥ e .  " '   ' ER "   '  de=i÷oñ{Y ∅ F   É=- ¥ SS ʳ n•d ʳ ʰ   "  0   IT -2  21T   IT  É >  =   -  ¥   SS   tsnoasoisnosnoiaso )   sinododo  0   11--2  Intesa   ∅   en   UNA   Vuelta ,   Asi   Que   Mune   .  - μ   # ! É  Sen   cos  21T   IT  IT  É >  =  -0-55   Gosnododotz   É=   Tiko   as :| a- a  ¥  41T   Eo   o   it - ✗  É   =   ITKO   (   1-   Gilt -4 )   É >  =   ltkosntz  21T   IT  Para   El   Rotenone   :   Yet ,   =   kg   ¥   ya ,   =   KSS   k0ÑSh ⊖ dod ∅  TO IT   -9  IT  Pct )   =  21T   KOR   §   Sno   do   4k ,   =   21T   FOR   C-   as   ↑ IT -2  IT -  ✗  ✗   =   21T   Korg   -  ax ,   ✓   s   '   ✗ →   'T   ,  Y   →   41T   Kor  [ s ,   ✗   →   it   ,   E   →   0
 

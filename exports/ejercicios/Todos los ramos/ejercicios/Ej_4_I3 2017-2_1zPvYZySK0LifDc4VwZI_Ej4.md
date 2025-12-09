@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I3 2017-2_1zPvYZySK0LifDc4VwZI.pdf"
+sourceFile: "I3 2017-2_1zPvYZySK0LifDc4VwZI.pdf"
+---
+
 Se quiere multiplicar dos enteros   x   e   y . Considere el siguiente algoritmo:  function   Multiplicar ( x ,   y )  1:   n   ←   m´ ax(largo( x ) ,   largo( y ))  2:   if   n   = 1   then  3:   return   x   ·   y  4:   end if  5:   x L   ←   los   d n/ 2 e   d´ ıgitos m´ as a la izquierda   de   x  6:   x R   ←   los   b n/ 2 c   d´ ıgitos m´ as a la derecha   de   x  7:   y L   ←   los   d n/ 2 e   d´ ıgitos m´ as a la izquierda   de   y  8:   y R   ←   los   b n/ 2 c   d´ ıgitos m´ as a la derecha   de   y  9:   P 1   ←   Multiplicar   ( x L , y L )  10:   P 2   ←   Multiplicar   ( x R , y R )  11:   P 3   ←   Multiplicar   ( x L   +   x R , y L   +   y R )  return   P 1   ·   10 n   + ( P 3   −   P 1   −   P 2 )   ·   10 n/ 2   +   P 2
 
 --- Page 6 ---

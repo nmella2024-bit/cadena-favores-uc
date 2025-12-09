@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/fin2020I1pauta_1h8LYlZRKGW9wNbLM9an.pdf"
+sourceFile: "fin2020I1pauta_1h8LYlZRKGW9wNbLM9an.pdf"
+---
+
 [15 puntos]  i. El valor presente de este proyecto es: VAN =   − 500 +  1100   ·   (1 +   g ) 1 . 1   =   − 500 + 1000 + 1000   ·   g  VAN = 500 + 1000   ·   (1 +   g ) = 500 [2 puntos] puntos, 1 por darse cuenta que no era replicable, 1 por calcular el VAN ii. En este caso tenemos un proyecto replicable [1 punto] por lo que primero se calcula el VAN de realizar el proyecto una vez: VAN 1   =   − 500 +   X  (1 + 0 ,   1) 5   [1 punto] Luego, se calcula el VAN de realizar el proyecto infinitas veces: VAN = VAN 1   +   VAN 1  (1 + 0 ,   1) 5   +   . . .  VAN =  ∞ ∑  i =0  VAN 1  (   1 (1 + 0 ,   1) 5  ) i  [1 punto] VAN = VAN 1  (  1 1   −   1 (1+0 , 1) 5  )  500 =  (  − 500 +   X  (1 + 0 ,   1) 5  )  ·   2 ,   638 = ⇒   X   = 1110 ,   507   [1 punto] 1
 
 --- Page 2 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Compilado_EyM+_1__2nVmZLe5vieKjRXnw6OY.pdf"
+sourceFile: "Compilado_EyM+_1__2nVmZLe5vieKjRXnw6OY.pdf"
+---
+
 Ecuaciones de Maxwell  5.1.   Introducci´ on a la teor´ ıa electromagn´ etica  (1) Considere las leyes de la electrodin´ amica que hemos usado en el curso:  ( i )   ∇ ·   ~ E   =   ρ  ǫ 0  ( ii )   ∇ ·   ~ B   = 0 ( iii )   ∇ ×   ~ E   =   − ∂  ~ B  ∂t  ( iv )   ∇ ×   ~ B   =   μ 0   ~ J  Discuta su validez y analice la contribuci´ on de Maxwell.  Soluci´ on:  Recordando que la divergencia del rotor es cero, analicemos la consistencia de la ecuaci´ on ( iii ):  ∇ ·   ( ∇ ×   ~ E ) =   ∇ ·  (  − ∂  ~ B  ∂t  )  =   −   ∂  ∂t   ( ∇ ·   ~ B ) El lado izquierdo es cero porque la divergencia del rotor es nula; el lado derecho es cero debido a la ecuaci´ on ( ii ). Si aplicamos el mismo razonamiento a la ecuaci´ on ( iv ):  ∇ ·   ( ∇ ×   ~ B ) =   μ 0 ( ∇ ·   ~ J ) El lado izquierdo sigue siendo cero; pero el lado derecho, en general,   no lo es . Para corrientes  estacionarias , la divergencia de   ~ J   es nula, pero en otros casos hay una error en la ley de Amp` ere. Existe otra forma de ver que la ley de Amp` ere falla para corrientes   no estacionarias . Supongamos que estamos en el proceso de carga de un capacitor, y deseamos aplicar la ley de Amp` ere al   loop   de la figura:  ¿C´ omo determinar   I enc ? Bueno, es la corriente total que pasa por el   loop , o m´ as precisamente, la corriente que atraviesa la superficie que tiene como frontera a dicho   loop . En este caso: 144
 
 --- Page 148 ---

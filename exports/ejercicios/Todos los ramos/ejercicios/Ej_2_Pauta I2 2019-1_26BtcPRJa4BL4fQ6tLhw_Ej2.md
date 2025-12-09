@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Pauta I2 2019-1_26BtcPRJa4BL4fQ6tLhw.pdf"
+sourceFile: "Pauta I2 2019-1_26BtcPRJa4BL4fQ6tLhw.pdf"
+---
+
 [10 puntos]  Preguntas sobre el paper “Explaining changes and trends in the airline industry: Economies of density, multiproduct scale, and spatial scope”.  a)   ¿Cuáles   son los resultados generales principales del paper sobre economías de densidad  (RTD0) y economías de escala multiproducto (S)? ¿qué implicancias tienen? [6 puntos]  Respuesta:  Sobre RTD, obtuvieron valores mayores, lo que significa que las ventajas de costo de expansiones de flujo son mayores, aunque ligeramente, de lo que se pensaba anteriormente. Además, encontraron rendimientos crecientes en economías de escala multiproducto y de densidad.
 
 --- Page 2 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I1 2016-2_3OLOloCMq8DNLXDtYrlg.pdf"
+sourceFile: "I1 2016-2_3OLOloCMq8DNLXDtYrlg.pdf"
+---
+
 En menos de un mes es el matrimonio de su mejor amigo y usted se ha ofrecido para ayudarlo con la gesti´ on de la cena nupcial. Dada la gran cantidad de invitados, sus profesores de Matem´ aticas Discretas le recomiendan modelar el problema utilizando l´ ogica proposicional. En concreto, usted debe construir una f´ ormula   ϕ   ∈   L ( P   ) tal que:  ϕ   es satisfacible  ⇔  existe una forma de asignar a todos los asistentes del matrimonio entre las mesas disponibles. Para construir su f´ ormula usted debe considerar los siguientes aspectos: Existen   n   personas invitadas al matrimonio, las personas 1 y 2 son los novios, mientras que las personas 3 , . . . , n   son invitados. Existen   m   mesas disponibles en el sal´ on de eventos. Toda persona debe conocer por lo menos a otras tres personas con las que se sienta.
 
 --- Page 4 ---

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2016-1_04o2jstkaCvsWWshVexE.pdf"
+sourceFile: "I2 2016-1_04o2jstkaCvsWWshVexE.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CAT  ´ OLICA DE CHILE FACULTAD DE MATEM  ´ ATICAS CURSO:   ECUACIONES DIFERENCIALES ORDINARIAS (MAT1640)  SOLUCI ´ ON Interrogaci´ on I2  (Mi´ ercoles 4 de Mayo, 2016) 1. Resuelva el problema de valor inicial  {  y ′′′   + 3 y ′′   −   4 y   = 0  y (0) = 1 , y ′ (0) =   − 2 , y ′′ (0) = 13 (Sugerencia:   r 3   + 3 r 2   −   4 = ( r   −   1)( r   + 2) 2 ) SOLUCI  ´ ON: La ecuaci´ on diferencial es lineal, homog´ enea y tiene coeficientes constantes. Su ecua- ci´ on caracter´ ıstica es   r 3   + 3 r 2   −   4 = ( r   −   1)( r   + 2) 2   y tiene las ra´ ıces   r 1   = 1 con multiplicidad 1 y   r 2   =   − 2 con multiplicidad 2. Por la teor´ ıa general la soluci´ on general esta dada por  y ( t ) =   C 1 e t   + ( C 2   +   C 3 t ) e − 2 t  donde   C 1 , C 2 , C 3   son constantes reales. Tambi´ en  y ′ ( t ) =   C 1 e t   + ( − 2 C 2   +   C 3   −   2 C 3 t ) e − 2 t  y ′′ ( t ) =   C 1 e t   + (4 C 2   −   4 C 3   + 4 C 3 t ) e − 2 t  Para cumplir a los valores iniciales tenemos que resolver el siguiente sistema de tres ecuaciones lineales en tres desconocidas   C 1 , C 2 , C 3 :        C 1   + ( C 2 ) =   y (0) = 1  C 1   + ( − 2 C 2   +   C 3 ) =   y ′ (0) =   − 2  C 1   + (4 C 2   −   4 C 3 ) =   y ′′ (0) = 13 Si restamos de la primera ecuaci´ on y la tercera ecuaci´ on la segunda ecuaci´ on obte- nemos las ecuaciones  {  3 C 2   −   C 3   = 3 6 C 2   −   5 C 3   = 15 ,  cuya soluci´ on es   C 2   = 0,   C 3   =   − 3. Usando la primera ecuaci´ on del primer sistema obtenemos   C 1   = 1. Entonces la soluci´ on del problema de valor inicial es  y ( t ) =   e t   −   3 te − 2 t  1
 

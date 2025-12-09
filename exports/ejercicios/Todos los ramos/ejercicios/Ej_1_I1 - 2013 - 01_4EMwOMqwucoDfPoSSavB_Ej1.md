@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 - 2013 - 01_4EMwOMqwucoDfPoSSavB.pdf"
+sourceFile: "I1 - 2013 - 01_4EMwOMqwucoDfPoSSavB.pdf"
+---
+
 (a) (3 puntos) Demuestre que si   B 1 , . . . , B n   corresponde a una colecci´ on de sucesos mutuamente excluyentes cuya uni´ on es el suceso   B , y   P   ( A | B j   ) =   p , para todo   j   = 1 , . . . , n , entonces   P   ( A | B ) =   p .  Soluci´ on:   Se tiene   B   =   ∪ n j =1 B j   . Notemos que, dado que los sucesos   B 1 , . . . , B n   son mutuamente excluyentes, entonces los conjuntos   A   ∩   B 1 , . . . , A   ∩   B n   tambi´ en lo son.  P   ( A | B )   =   P   ( A   ∩   B )  P   ( B )   por definici´ on de probabilidad condicional =   P   ( A   ∩   ( B 1   ∪   . . .   ∪   B n ))  P   ( B )   por enunciado =   P   (( A   ∩   B 1 )   ∪   . . .   ∪   ( A   ∩   B n ))  P   ( B )   por distributividad =  ∑ n j =1   P   ( A   ∩   B j   )  P   ( B )   pues los sucesos   A   ∩   B j   son mutuamente excluyentes =  ∑ n j =1   P   ( A | B j   ) P   ( B j   )  P   ( B )   por regla multiplicativa =   p   ∑ n j =1   P   ( B j   )  P   ( B )   por enunciado =   p P   ( B 1   ∪   . . .   ∪   B n )  P   ( B )   pues los   B j   son disjuntos =   p P   ( B )  P   ( B )   por enunciado =   p.  Puntajes:  •   [0.3]   por correcta definici´ on de probabilidad condicional  •   [0.6]   por uso de distributividad  •   [0.6]   por uso de ley multiplicativa  •   [0.6]   por uso de aditividad de los   P   ( B j   ).  •   [0.6]   por uso de aditividad de los   P   ( A   ∩   B j   ).  •   [0.3]   llegar a resultado  EYP1113 - Probabilidad y Estad´ ıstica Primer Semestre 2013  1   Profesores: Ana Mar´ ıa Araneda Ricardo Aravena Cuevas Ricardo Olea Ortega
 
 --- Page 2 ---

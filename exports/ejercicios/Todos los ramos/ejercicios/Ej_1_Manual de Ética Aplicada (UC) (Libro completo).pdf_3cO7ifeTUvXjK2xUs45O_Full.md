@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Manual de Ética Aplicada (UC) (Libro completo).pdf_3cO7ifeTUvXjK2xUs45O.pdf"
+sourceFile: "Manual de Ética Aplicada (UC) (Libro completo).pdf_3cO7ifeTUvXjK2xUs45O.pdf"
+---
+
 --- Page 1 ---
 
 

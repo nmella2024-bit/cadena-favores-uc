@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Calcule el valor de la serie   ∞ ∑  k =2  (   1  k 2 − 1  ) . Solución: Se tiene que:  ∞ ∑  k =2  (   1  k 2   −   1  )  =  ∞ ∑  k =2  (   1 ( k   + 1)( k   −   1)  )  Por fracciones parciales:  1 ( k   + 1)( k   −   1)  =   A k   + 1  +   B k   −   1  =   A ( k   −   1) +   B ( k   + 1) ( k   + 1)( k   −   1)   =  ( A   +   B ) k   + ( B   −   A ) ( k   + 1)( k   −   1)  Luego, se obtiene   A   +   B   = 0   y   B   −   A   = 1 . Esto entrega los valores de   A   =   − 1 / 2   y  B   = 1 / 2 . Así, la serie se reescribe como:  ∞ ∑  k =2  (   1  k 2   −   1  )  =  1 2  ∞ ∑  k =2  1  k   −   1   −   1  k   + 1  Definamos   a k   =   1  k   . Reemplazando, se tiene que:  1 2  ∞ ∑  k =2  1  k   −   1   −   1  k   + 1  =  1 2  ∞ ∑  k =2  a k − 1   −   a k +1   =  1 2  l´ ım  n →∞  n ∑  k =2  a k − 1   −   a k +1  Claramente tenemos una serie telescópica. Podemos desarrollarla de dos formas: la pri- mera es tratar de visualizar lo que nos resulta y expresar la serie como una suma de términos.  1 2  l´ ım  n →∞   a 1   −   a 3   +   a 2   −   a 4   +   a 3   −   a 5   +   a 4   −   a 6   +   · · ·   +   a n − 2   −   a n   +   a n − 1   −   a n +1  Lo que resulta,  1 2  l´ ım  n →∞   ( a 1   +   a 2   −   a n   −   a n +1 ) =  1 2  ( a 1   +   a 2 ) − 1 2  l´ ım  n →∞   ( a n   +   a n +1 ) =  1 2  ( a 1   +   a 2 ) − 0 =  1 2  (  1 +  1 2  )  =  3 4  La otra forma es sumar y restar   a k   al término general de la serie. Con esto se obtiene que:  1 2  l´ ım  n →∞  n ∑  k =2  a k − 1   −   a k +1   =  1 2  l´ ım  n →∞  n ∑  k =2  a k − 1   −   a k   +   a k   −   a k +1  1 2  l´ ım  n →∞  [   n ∑  k =2  ( a k − 1   −   a k ) +  n ∑  k =2  ( a k   −   a k +1 )  ]  Esto es más fácil verlo: cuando tenemos una suma de una sucesión con las resta de dos términos consecutivos (como se observa en la suma anterior), se dice lo siguiente: 7
 
 --- Page 8 ---

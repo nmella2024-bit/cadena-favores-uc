@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2018-1_3HEqhI4bZGmr3THXgSd8.pdf"
+sourceFile: "Examen 2018-1_3HEqhI4bZGmr3THXgSd8.pdf"
+---
+
 (14 puntos): a) (7 pts.)   Volviendo al problema original, suponga que le dicen que los factores de uso de tiempo aso- ciados a las camas,   α it , son inciertos (debido a la naturaleza impredecible de las enfermedades de los pacientes).   Asumamos, entonces, que los coeficientes   α it   son variables aleatorias que siguen una distribuci´ on normal con media ¯ α it   y desviaci´ on est´ andar   σ it . Postule un modelo de optimizaci´ on con restricciones probabil´ ısticas para abordar este problema, donde quiere cumplir con las restricciones (4) con probabilidad   β , 1 / 2   < β <   1, en cada semana.  Respuesta:   Ac´ a lo que queremos es que  P rob  (   p ∑  i =1  α it x it   ≤   L t  )  ≥   β   , t   = 1 , . . . , T
 
 --- Page 7 ---

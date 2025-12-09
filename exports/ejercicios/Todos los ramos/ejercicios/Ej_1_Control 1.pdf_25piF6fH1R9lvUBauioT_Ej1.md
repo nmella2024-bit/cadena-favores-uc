@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_25piF6fH1R9lvUBauioT.pdf"
+sourceFile: "Control 1.pdf_25piF6fH1R9lvUBauioT.pdf"
+---
+
 200.000  A.P.P.A. (Bodega) (L.P.)   600.000  Total Activos   4.830.000   4.830.000
 
 --- Page 14 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 9"
+topic: "General"
+number: "9"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Considere la serie armónica   ∞ ∑  k =1 1  k   . Demuestre que   R n   =   S n   −   ln( n )   es una sucesión positiva y decreciente donde   S n   =   n ∑  k =1 1  k   . Solución: Se tiene que   S n   =   n ∑  k =1 1  k   y   R n   =   S n   −   ln( n ) . Veamos el siguiente gráfico:  Podemos notar que el área bajo la curva   f   ( x ) =   1  x   (achurada) es menor que el área de los rectángulos, que representan a la serie   S n   =   n ∑  k =1 1  k   . Por esta razón, se tiene que (comparación serie-integral):  n ∑  k =1  1  k  >  ∫   n  1  1  x d x   = ln( n )  Donde se tiene que:  n ∑  k =1  1  k  >   ln( n )  R n   =  n ∑  k =1  1  k   −   ln( n )   >   0  Por lo que queda demostrado que   R n   es una sucesión positiva. Luego, debemos demostrar que   R n   sea decreciente. De esta forma, se quiere probar una de las tres opciones siguientes: a)   R n +1   < R n  b)   R n +1  R n   <   1  c)   R n   →   R ( x ) :   R ′ ( x )   <   0  Para este caso usaremos la primera opción (note que en este caso no es tan sencillo derivar debido a la formulación de   R n : se compone de una sumatoria y una función). Luego, 20
 
 --- Page 21 ---

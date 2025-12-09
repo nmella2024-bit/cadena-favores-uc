@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ayudanta12_3HIzuPnJdxblgIlF4g1C.pdf"
+sourceFile: "Ayudanta12_3HIzuPnJdxblgIlF4g1C.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA Primer semestre 2022  Ayudantía 12 - MAT1610  1. Use la regla de sustitución para determinar las siguientes integrales indefinidas: (a)  ∫   arctan( √ x )  √ x (1 +   x )   dx  (b)  ∫   sen (4 x ) 1 + cos 2 (2 x ) dx  (c)  ∫  ln (cos( x ))   tan ( x ) dx  (d)  ∫   dx e x √ 1   −   e − 2 x  2.   (a) Si   f   es continua tal que  ∫   9 0  f   ( x ) dx   = 4 , determine  ∫   3 0  xf   ( x 2 ) dx  (b) Sea   g ( x ) =   √ x − 1 2( x +1)   , demuestre que  ∫   1 0  g ′ ( x ) dx  √ 1   −   g 2 ( x )  =   π  6  3. Suponga que   f   : [3 ,   5]   →   R   es una función continua tal que  ∫   x  3  f   ( t ) dt   = ( x 2   −   4 2 ) arcos (4   −   x )  Calcule: (a)  ∫   5 / 2 2  3 f   (2 x ) dx  (b)   f   (4) .  4. Si   a   y   b   son números positivos, demuestre que  ∫   1 0  x a (1   −   x ) b dx   =  ∫   1 0  x b (1   −   x ) a dx
 

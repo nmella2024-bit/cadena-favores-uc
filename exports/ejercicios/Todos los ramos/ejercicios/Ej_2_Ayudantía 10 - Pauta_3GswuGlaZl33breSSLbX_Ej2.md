@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantía 10 - Pauta_3GswuGlaZl33breSSLbX.pdf"
+sourceFile: "Ayudantía 10 - Pauta_3GswuGlaZl33breSSLbX.pdf"
+---
+
 a)  La funci´ on compleja, en este caso de superposici´ on de flujo con fuente, se escribe de la siguiente forma:  F   ( z ) =   U z   +   Aln ( z ) Con z como el t´ ermino complejo. Dado que se trabaja con curvatura, conviene utilizar la definici´ on polar del t´ ermino complejo:  z   =   re iθ   =   rcosθ   +   irsinθ  Por lo tanto, la funci´ on compleja puede escribirse como:  F   ( z ) =   U rcosθ   +   iU rsinθAln ( re iθ   ) = [ U rcosθ   +   Aln ( r )] +   i [ U rsinθ   +   Aθ ] Sabemos por definici´ on que la funci´ on compleja puede escribirse como:  F   ( z ) =   φ ( r, θ ) +   iψ ( r, θ ) Por lo tanto:  φ ( r, θ ) =   U rcosθ   +   Aln ( r )  ψ ( r, θ ) =   U rsinθ   +   Aθ  Las velocidades en cada direcci´ on son:  v r   =   −   ∂φ ∂r   =   − U cosθ   −   A r  1
 
 --- Page 2 ---

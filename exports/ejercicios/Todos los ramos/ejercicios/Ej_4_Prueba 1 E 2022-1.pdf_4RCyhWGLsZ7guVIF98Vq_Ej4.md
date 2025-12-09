@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1 E 2022-1.pdf_4RCyhWGLsZ7guVIF98Vq.pdf"
+sourceFile: "Prueba 1 E 2022-1.pdf_4RCyhWGLsZ7guVIF98Vq.pdf"
+---
+
 (15   puntos)  A   su   amiga   Olivia,   le   gustan   los   Superochos   y   las   Chokitas.   Ella   siempre   querrá   intercambiar  3   Chokitas   por   1   Superocho,   independiente   de   cu á ntas   Chokitas   o   Superochos   haya  consumido.   Suponga   que   ambos   bienes   son   perfectamente   divisibles.  a)   (3   puntos)   Dibuje   las   curvas   de   indiferencia   de   Superochos   y   Chokitas   de   su   amiga  Olivia.  b)   (3   puntos)   Olivia   cuenta   con   $500   al   mes   para   gastar   en   ambos   bienes.   Si   el   precio   de  las   Chokitas   es   de   $100   y   el   precio   de   los   Superochos   es   de   $200,   escriba   la   restricción  presupuestaria   de   Olivia.   Grafique   su   conjunto   presupuestario.  c)   (5   puntos)   Si   Olivia   deseara   consumir   2   Superochos   y   1   Chokita.   ¿cree   usted   que   Olivia  ha   elegido   óptimamente   su   canasta   de   consumo?   ¿Podría   Olivia   mejorar   su   bienestar?  ¿Cómo?   Responda   y   muestre   claramente   en   un   gráfico   su   respuesta .  d)   (4 puntos)   Suponga nuevamente que Olivia cuenta con $500 al mes para gastar en  ambos bienes y que el precio de los Superochos es de $200. Indique un precio de  Chokitas   que implique que Olivia no esté dispuesta a consumir ningún Superocho.

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2019-1_1KIHYOCZbc2CZJOh1OmK.pdf"
+sourceFile: "I3 2019-1_1KIHYOCZbc2CZJOh1OmK.pdf"
+---
+
 (20 puntos)  Considere la relajación lineal de (1)-(6), la cual desea resolver mediante descomposición de Benders utilizando   y   como variables de primera etapa. 1.   (5 puntos)   Indique la forma de la descomposición, donde el problema maestro queda en función del valor óptimo de un subproblema adecuado.  Solución:   La descomposición queda de la forma  min   ∑  k ∈ K  ∑  a ∈ A  c k a y k a   +   η  s.a   Q ( y )   ≤   η  ∑  a ∈ δ + ( i )  y k a   −   ∑  a ∈ δ − ( i )  y k a   =      d k   i   =   s k  − d k   i   =   t k  0   i   6   =   s k , t k  k   ∈   K, i   ∈   N y k a   ≥   0   k   ∈   K, a   ∈   A,  donde  Q ( y ) =   min   ∑  a ∈ A  f a x a  y k a   ≤   b k a   +  ¯ b k a x a   k   ∈   K, a   ∈   A  ∑  k ∈ K  v k y k a   ≤   u a   + ¯ u a x a   a   ∈   A x a   ≤   1   a   ∈   A x   ≥   0 .  2.   (5 puntos)   Indique por qué el subproblema es separable y escríbalo como suma de funciones adecuadas y definidas de forma precisa.  Solución:   La función objetivo es lineal y las restricciones son separables sobre   a   ∈   A .
 
 --- Page 6 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2014-1_4dPgtNCYsCYhhyxufVrF.pdf"
+sourceFile: "I3 2014-1_4dPgtNCYsCYhhyxufVrF.pdf"
+---
+
 Sea   P 3 ( R ) es el espacio vectorial de los polinomios con coeficientes reales de grado menor o igual a 3, y       1   1   1   1 0   1   0   0 0   1   2   0 0   1   0   0       ,  la matriz que representa la transformaci´ on lineal   T   :   P 3 ( R )   →   P 3 ( R ) con respecto a las bases   B 1   en dominio y   B 2   en recorrido, dadas por:  B 1   =   { 1 ,   1 +   x,   1 +   x 2 ,   1   −   x 3 }   y   B 2   =   { 1 ,   2 x,   3 x 2 ,   4 x 3 } .  a ) Encuentre una base de Ker (N´ ucleo) de   T   y una base de Im (Rango) de   T   . Soluci´ on: Al escalonar la matriz queda:      1   1   1   1 0   1   0   0 0   1   2   0 0   1   0   0       ∼      1   0   0   1 0   1   0   0 0   0   1   0 0   0   0   0     . El Ker de la matriz est´ a generado por      1 0 0  − 1     . Luego el Ker de la transformaci´ on est´ a generado por 1   −   (1   −   x 3 ) =   x 3 . La Im de la matriz est´ a generada por      1 0 0 0       ,      1 1 1 1       ,      1 0 2 0     . Luego la Im de la transformaci´ on est´ a generada por 1 ,   1+2 x +3 x 2   +4 x 3 ,   1+6 x 2 . 4
 
 --- Page 5 ---

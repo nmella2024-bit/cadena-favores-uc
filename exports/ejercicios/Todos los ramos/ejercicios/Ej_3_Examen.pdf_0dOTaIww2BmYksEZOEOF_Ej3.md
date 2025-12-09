@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_0dOTaIww2BmYksEZOEOF.pdf"
+sourceFile: "Examen.pdf_0dOTaIww2BmYksEZOEOF.pdf"
+---
+
 [25 puntos]  Considere una compuesta por dos sectores perfectamente competitivos que pueden usar los factores   L   y   K   en la producci´ on de los bienes 1 y 2 respectivamente, con tecnolog´ ıas decritas por las siguientes funciones de producci´ on: sector 1:   F   ( L 1 , K 1 ) =   p L 1 K 1  sector 2:   G ( L 2 ) =   L 2  Las dotaciones totales de trabajo y capital son   L   y   K   respectivamente. (a) (4 puntos) Muestre que las isocuantas en el sector 2 son verticales, mientras que en el sector 1 son convexas (y con pendiente negativa). 4
 
 --- Page 5 ---

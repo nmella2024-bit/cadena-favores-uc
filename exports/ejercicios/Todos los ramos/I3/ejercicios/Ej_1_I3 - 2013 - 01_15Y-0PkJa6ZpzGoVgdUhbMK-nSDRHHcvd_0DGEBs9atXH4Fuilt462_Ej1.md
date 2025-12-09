@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3/I3 - 2013 - 01_15Y-0PkJa6ZpzGoVgdUhbMK-nSDRHHcvd_0DGEBs9atXH4Fuilt462.pdf"
+sourceFile: "I3 - 2013 - 01_15Y-0PkJa6ZpzGoVgdUhbMK-nSDRHHcvd_0DGEBs9atXH4Fuilt462.pdf"
+---
+
 Sean   X   la proporci´ on del volumen de cierta roca que corresponde a cobre s´ olido, e   Y   la proporci´ on del vol´ umen de cobre s´ olido que corresponde a cristales de tipo A. Suponga que estas dos variables tienen funciones de densidad, respectivamente,  f X   ( x )   =   6 x (1   −   x ) ,   0   ≤   x   ≤   1 , f Y   ( y )   =   3 y 2 ,   0   ≤   y   ≤   1 ,  y cero en otros casos. Sea   Z   =   XY   la proporci´ on del volumen de las rocas de este tipo que corresponde a cristales de tipo A, a) (3 puntos) Determine la funci´ on de densidad de   Z .  Soluci´ on:   La distribuci´ on conjunta de   X   e   Y   corresponde a  f X,Y   = 18 x (1   −   x ) y 2 ,   0   ≤   x   ≤   1 ,   0   ≤   y   ≤   1 ,   [0.5]  cero en otro caso   [0.25] . Por otra parte,  X   =   g − 1 ( Z ) =   Z Y   = ⇒|   dx dz   | =  1  y  ,   [0.5]  pues   y >   0. Tambi´ en notamos que, si   X   ≤   1 entonces   Z   ≤   Y   , por lo tanto:  f Z   ( z )   =  ∫   1  z  18   z y  (  1   −   z y  )  y 2   1  y  dy   [0.5] integral   [0.5] l´ ımites  =   18  (∫   1  z  z dy   −   z 2  ∫   1  z  1  y  dy  )  =   18( z (1   −   z )   −   z 2 (log 1   −   log   z )) =   18( z   −   z 2   +   z 2   log   z ) ,   [0.5]  para 0   ≤   z   ≤   1, y cero en otro caso.   [0.25]  EYP1113 - Probabilidad y Estad´ ıstica Primer Semestre 2013  1   Profesores: Ana Mar´ ıa Araneda Ricardo Aravena Cuevas Ricardo Olea Ortega
 
 --- Page 2 ---

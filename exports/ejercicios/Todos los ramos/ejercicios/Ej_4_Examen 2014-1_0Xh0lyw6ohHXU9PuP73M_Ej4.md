@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2014-1_0Xh0lyw6ohHXU9PuP73M.pdf"
+sourceFile: "Examen 2014-1_0Xh0lyw6ohHXU9PuP73M.pdf"
+---
+
 Un ciclo de Brayton ideal usa aire como fluido de trabajo, operando entre una temperatura m´ axima de 727   ◦ C y una temperatura m´ ınima de 27   ◦ C. El dispositivo est´ a dise˜ nado para que las presiones m´ axima y m´ ınima del ciclo sean 2000 kPa y 100 kPa, respectivamente. Determine el trabajo neto por unidad de masa producido en un ciclo y la eficiencia t´ ermica de ´ este. Considere el aire como un gas ideal con   c P   = 1 . 005 kJ/kg · K y   γ   = 1 . 4 constantes.  Soluci´ on:  En un ciclo de Brayton tenemos:  •   1   →   2 compresi´ on adiab´ atica (compresor)  •   2   →   3 adici´ on de calor isob´ arica (intercambiador de calor)  •   3   →   4 expansi´ on adiab´ atica (turbina)  •   4   →   1 rechazo de calor isob´ arico (intercambiador de calor) 9-64  as the working fluid operates between the specified temperature thermal efficiency are to be determined.  s exist.   2   The air-standard assumptions are applicable.   3   Kinetic e.   4   Air is an ideal gas with constant specific heats.  mperature are   c p   = 1.005 kJ/kg·K and   k   = 1.4 (Table A-2a).  r an ideal gas, K .1 706 a a   0.4/1.4  ¸ ¹ ·  K 9 . 424 Pa Pa   0.4/1.4  ¸ ¹ ·  sure heat kJ/kg 4 . 295 K ) 1 . 706 1000 )( K kJ/kg 005      kJ/kg 5 . 125 K ) 300 9 . 424 )( K kJ/kg 005      kJ/kg 169.9  s T  1  2 4 3  q   in  q   out 1000   K  300   K  El trabajo especi´ ıfico neto es  w   =   q 2 → 3   −   q 4 → 1   .   (1 pts.) 9
 
 --- Page 10 ---

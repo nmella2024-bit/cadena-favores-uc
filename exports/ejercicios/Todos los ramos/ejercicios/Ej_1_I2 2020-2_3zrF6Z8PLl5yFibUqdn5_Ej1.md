@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2020-2_3zrF6Z8PLl5yFibUqdn5.pdf"
+sourceFile: "I2 2020-2_3zrF6Z8PLl5yFibUqdn5.pdf"
+---
+
 Considere la matriz  A   =    0   0   1 0   1   0 1   0   0      2   0   0 0   1   0 0   0   1      1   0   0 2   1   0 0   0   1      1   0   0 0   1   − 3 0   0   1      .  Sin calcular expl´ ıcitamente   A   ni   A − 1 , escriba la inversa de   A   como producto de matrices elementales.  Soluci´ on : Si aplicamos el operador de matriz inversa a ambos lados de la ecuaci´ on obtenemos:  A − 1   =    1   0   0 0   1   − 3 0   0   1     − 1     1   0   0 2   1   0 0   0   1     − 1     2   0   0 0   1   0 0   0   1     − 1     0   0   1 0   1   0 1   0   0     − 1  =    1   0   0 0   1   3 0   0   1        1   0   0  − 2   1   0 0   0   1       1 2   0   0 0   1   0 0   0   1      0   0   1 0   1   0 1   0   0      .  Puntaje:  •   2 puntos por usar correctamente la propiedad ( BC ) − 1   =   C − 1 B − 1 .  •   1 punto por determinar correctamente la inversa de cada matriz elemental.
 
 --- Page 2 ---

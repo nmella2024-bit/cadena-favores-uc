@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Apuntes/Resumen ICS1113_1ZeAmWNviDUNa07xfOtZS04WWDb1sJnAl_03IxuxktxBGB30uecftE.pdf"
+sourceFile: "Resumen ICS1113_1ZeAmWNviDUNa07xfOtZS04WWDb1sJnAl_03IxuxktxBGB30uecftE.pdf"
+---
+
 --- Page 1 ---
 Resumen Optimización  ICS1113 - Prof. José Tomás Marquinez V. - 2016  Capítulo 0.- Investigación de Operaciones.  Denición:   La   Investigación de Operaciones   es una disciplina cientíca que aplica métodos analí- ticos avanzados para ayudar a tomar mejor decisiones. La metodología incluye la   Denición del problema , la   Contrucción del problema , la   Solución del modelo , la   Vericación del modelo , y la   Implementación y Control del modelo .  Capítulo 1.- Introducción al Modelamiento.  Denición:   Un   modelo   es un esquema teórico, generalmente en forma matemática, de un sistema o de una realidad compleja. Es una herramienta que ayuda a la toma de decisiones. Debe ser una simplicación de la realidad.  Denición:   En particular, los   modelos matemáticos   pretenden optimizar. Existen: Dinámicos.  Estáticos .  Continuos .  Discretos .  Determinísticos . Estocásticos.  Lineales .  No Lineales .  Terminología:   Un modelo matemático cuenta con:  Variables de Decisión : Cantidades que se buscan determinar y que inciden en el objetivo.  Variables de Estado : Cantidades que buscan denir el estado del sistema o modelo.  Variables Auxiliares : Cantidades que buscan relacionar variables entre sí, principalmente.  Restricciones del problema : Relaciones entre las variables que limitan sus valores, de la forma  h j   ( ~ x ) = 0 , g i ( ~ x )   ≤   0 .  Restricciones de las variables : Limitaciones en los valores que pueden tomar las variables por sí solas, de la forma   ~ x   ∈   Ω : Ω   ⊂   R n . Acá caen las restricciones de   Naturaleza de las Variables .  Función Objetivo : Medida para comparar las alternativas posibles. Se busca maximizar o minimizar este objetivo.  1
 

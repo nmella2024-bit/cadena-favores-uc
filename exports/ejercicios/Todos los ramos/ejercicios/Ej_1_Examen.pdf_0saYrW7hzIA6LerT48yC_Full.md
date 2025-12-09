@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_0saYrW7hzIA6LerT48yC.pdf"
+sourceFile: "Examen.pdf_0saYrW7hzIA6LerT48yC.pdf"
+---
+
 --- Page 1 ---
 Nombre:   _____________________________________  PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE  ESCUELA DE ADMINISTRACION  EXAMEN FINAL  MERCADOS I & FUNDAMENTOS DE MARKETING  EAA 230A   -   EAA 2310  Profesores  HERNAN PALACIOS (sección 1)  CLAUDIO GUZMAN (sección 2)  FRANCISCO ROCCA (sección 3   –   sección 5)  MARIA JESUS FERNANDEZ (sección 4)  Ayudante coordinadora  JOSEFINA UGARTE  FECHA:   4   DE   DIC IEMBRE, 2023  NOMBRE: _____________________________________________________________  SECCION: ___  INSTRUCCIONES:  La prueba cuenta con 100 puntos (+ 10   puntos de bono) y usted cuenta con 120 minutos  para contestarl a  Lea atentamente la pregunta antes de responder  Responda únicamente lo que se está preguntando con letra legible y clara  Sí puede usar las contratapas para contestar  Debe escanear la totalidad de la prueba y subirla a Canvas (a su sección)
 

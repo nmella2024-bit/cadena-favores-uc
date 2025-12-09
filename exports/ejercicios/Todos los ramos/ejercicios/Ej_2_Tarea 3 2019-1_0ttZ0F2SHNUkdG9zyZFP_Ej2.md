@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Tarea 3 2019-1_0ttZ0F2SHNUkdG9zyZFP.pdf"
+sourceFile: "Tarea 3 2019-1_0ttZ0F2SHNUkdG9zyZFP.pdf"
+---
+
 (a) El grafo se muestra a continuaci´ on: 0 ,   0   1 ,   0   2 ,   0   3 ,   0   4 ,   0   5 ,   0   6 ,   0   7 ,   0   8 ,   0   9 ,   0   10 ,   0   11 ,   0 0 ,   1   1 ,   1   2 ,   1   3 ,   1   4 ,   1   5 ,   1   6 ,   1   7 ,   1   8 ,   1   9 ,   1   10 ,   1   11 ,   1 0 ,   2   1 ,   2   2 ,   2   3 ,   2   4 ,   2   5 ,   2   6 ,   2   7 ,   2   8 ,   2   9 ,   2   10 ,   2   11 ,   2  λ   λ   λ   λ   λ   λ   λ   λ   λ λ   λ  α   α   α   α   α   α   α   α   α α   α   α γ   γ   γ   γ   γ   2 γ   2 γ   1 . 5 γ   1 . 5 γ   1 . 5 γ   ω  α   α   α   α   α   α   α   α   α   α   α   α γ   γ   γ   γ   γ   2 γ   1 . 5 γ   1 . 5 γ   1 . 5 γ   ω  λ   λ   λ   λ   λ   λ   λ   λ   λ   λ   λ  α   α   α   α   α   α   α   α   α   α   α   α  2 γ  Donde   ω   es equivalente a:  ω   =   γ   + (1   −   q )   γ  2 Los nodos quedan definidos como:     ( i, j ) = (cantidad de mails siendo procesados por amigos ayudantes, cantidad de mails siendo proce- sados por coordinador). Aclaraci´ on: mails procesados se consider´ o a los borradores o mails que no hab´ ıan sido enviados ni leidos a su destinatario. Para los mails enviados por alumnos los destinatarios son los ayudantes amigos. Por otro lado, para los borradores el destinatario es el coordinador. As´ ı, las tasas instant´ aneas son las siguientes:  q ( i,j ) , ( i,j − 1)   =   α   i   = 0 , ...,   ∞   j   = 1 , ...,   ∞  q ( i,j ) , ( i +1 ,j )   =   λ   i   = 0 , ...,   ∞   j   = 1 , ...,   ∞  q ( i,j ) , ( i − 1 ,j +1)   =   γ   i   = 1 , ...,   4   j   = 1 , ...,   ∞  q ( i,j ) , ( i − 1 ,j +1)   = 2 γ   i   = 6 ,   7   j   = 1 , ...,   ∞  5
 
 --- Page 6 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2016-1_2AYkR3zLUQw1fxviiJTb.pdf"
+sourceFile: "I1 2016-1_2AYkR3zLUQw1fxviiJTb.pdf"
+---
+
 (1 punto )  Para decir que un sistema esté en equilibrio, éste debe e star en equilibrio térmico,  mecánico y químico,  a)   (0,2 puntos)   ¿Qué propiedad se usa para identificar cada uno de estos equilibrios?  ¿qué condición debe darse para saber que se está en una situación de equilibrio en  cada caso?  b)   (0,2 puntos)   Da   un ejemplo de un sistema que está en equ ilibrio térmico y químico,  pero no mecánico. ¿Qué condiciones se dan en este caso en términos de las  propiedades mencionadas en (a)?  c)   (0,2 puntos)   Da un ejemplo de un sistema que está en equilibrio mecánico y  químico, pero no térmico. ¿Qué condiciones se dan en este ca so en términos de las  propiedades mencionadas en (a)?  d)   (0,2 puntos)   Da un ejemplo de un sistema que está en equilibrio térmico y mecánico,  pero no químico. ¿Qué condiciones se dan en este caso en términos de las  propiedades mencionadas en (a)?  e)   (Bonus   0,1 punto ) Da un ejemplo de   un sistema que está en equilibrio mecánico,  pero no térmico ni químico. ¿Qué condiciones se dan en este caso en términos de  las propiedades mencionadas en (a)?  f)   (0,2 puntos)   Enuncia los balances de masa y energía en alguno de los ejemplos antes  dados (b -­‐ e).
 
 --- Page 2 ---

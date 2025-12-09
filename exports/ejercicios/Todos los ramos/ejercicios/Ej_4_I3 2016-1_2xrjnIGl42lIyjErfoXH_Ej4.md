@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+sourceFile: "I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+---
+
 1 punto por calcular correctamente los puntos cr´ ıticos de   f   al interior de   D .  1 punto por calcular correctamente los extremos en el lado   L 1  1 punto por calcular correctamente los extremos en el lado   L 2  1 punto por calcular correctamente los extremos en el lado   L 3  1 punto por calcular correctamente los extremos en el lado   L 4  1 punto por concluir correctamente cuales son los extremos de   f   en la regi´ on   D .
 
 --- Page 5 ---

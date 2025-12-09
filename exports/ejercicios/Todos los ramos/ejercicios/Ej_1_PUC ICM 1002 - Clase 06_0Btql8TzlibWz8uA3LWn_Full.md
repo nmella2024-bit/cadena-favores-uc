@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/PUC ICM 1002 - Clase 06_0Btql8TzlibWz8uA3LWn.pdf"
+sourceFile: "PUC ICM 1002 - Clase 06_0Btql8TzlibWz8uA3LWn.pdf"
+---
+
 --- Page 1 ---
 José Ignacio Vergara   -   UC   1  Diseño gráfico en Ingeniería Mecánica  Clase 6: Sistemas Mecánicos  José Ignacio Vergara R.  jverr@uc.cl
 

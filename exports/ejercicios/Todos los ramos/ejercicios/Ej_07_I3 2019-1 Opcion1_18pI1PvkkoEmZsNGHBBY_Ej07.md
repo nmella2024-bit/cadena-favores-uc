@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 07"
+topic: "General"
+number: "07"
+originalUrl: "exports/downloads/Todos los ramos/I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+sourceFile: "I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+---
+
 Roseta de deformaciones  (20 pts) Considere una probeta plana de acero SAE 4340 de largo L=10 cm, sometida a un ensayo de tracción uniaxial como se indica en la figura, la cual posee un espesor suficiente como para considerar que está sometida a un estado de deformaciones planas. Sobre una de sus caras exteriores se ha ubicado una roseta de deformación (con un ángulo de 30 o   como se indica en la Figura 7.1). Lamentablemente las lecturas de esta roseta entregan la deformación solo en 2 de las 3 direcciones:  𝜀 𝑎   = ?  𝜀 𝑏   =   0 , 00025  𝜀 𝑐   =   0 , 004  a)   Estime el valor de la deformación en mm que la roseta debió entregar para el término   𝜀 𝑎   (8 pts)  b)   Encuentre el tensor de deformaciones unitarias en ese punto. (5 pts)  c)   Calcule la razón de Poisson de este acero. (3 pts)  d)   Si se sabe que además el módulo de elasticidad de este acero es de 200 GPa, determine el tensor de Cauchy (en MPa) que actúa en la ubicación de la roseta. (4 pts)  𝑦  𝑥  𝑧  𝐹  𝐹  30 °  𝜀 𝑎  Figura 7.1  𝜀 𝑏  𝜀 𝑐
 
 --- Page 7 ---

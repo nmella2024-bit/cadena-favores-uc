@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/WEB Control 2-Sem 2-20 + Solución (1).pdf_21NMUkTwn1R9RyPE6VsC.pdf"
+sourceFile: "WEB Control 2-Sem 2-20 + Solución (1).pdf_21NMUkTwn1R9RyPE6VsC.pdf"
+---
+
 --- Page 1 ---
 1  PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  ESCUELA DE ADMINISTRACIÓN  CONTABILIDAD  SEGUNDO SEMESTRE 2020  CONTROL N° 2  Profesores:   Ayudante Jefe:  Sec. 1:   M. Jesús Jiménez G   Laura Nacrur B.  Sec.   2: Begoña Bilbao D.  Sec.   3 :   Gonzalo Milic V .   Ayudantes:  José Ignacio Cruz B.  María Pía   Fernández   R .  Profesor Auxiliar:   María Jesús Quevedo S.  Manuel Matte G.   Anja Uslar B.  María Fernanda Arteaga  Puntaje total:   6 5   puntos  Duración :   7 0 minutos
 

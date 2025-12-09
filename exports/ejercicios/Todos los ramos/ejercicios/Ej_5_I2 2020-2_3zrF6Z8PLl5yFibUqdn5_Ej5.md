@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I2 2020-2_3zrF6Z8PLl5yFibUqdn5.pdf"
+sourceFile: "I2 2020-2_3zrF6Z8PLl5yFibUqdn5.pdf"
+---
+
 Determine justificadamente para qu´ e valores de   a   ∈   R   la matriz      1   a   0  a   2 a   0 0   0   a     es positiva definida y en tales casos escriba la forma cuadr´ atica asociada como suma pon- derada de cuadrados.  Soluci´ on : Sea   B   =      1   a   0  a   2 a   0 0   0   a    . Notamos que  B   ∼      1   a   0 0   2 a   −   a 2   0 0   0   a     si aplicamos la operaci´ on elemental que consiste en multiplicar la primera fila por   − a   y sumarla a la segunda (para   a   6   = 0). Esto implica que   B   =   LU   donde  L   =      1   0   0  a   1   0 0   0   1      y   U   =      1   a   0 0   2 a   −   a 2   0 0   0   a      .  La matriz   B   es positiva definida si y s´ olo si cada elemento de la diagonal principal de   U  es un n´ umero positivo, es decir,   a >   0 y   a (2   −   a )   >   0, lo que equivale a 0   < a <   2.
 
 --- Page 7 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2015-1_2fdq7uK1hZRMQUnwNcX3.pdf"
+sourceFile: "I1 2015-1_2fdq7uK1hZRMQUnwNcX3.pdf"
+---
+
 (Continuación):  Los que hicieron el supuesto de 50% en cada área del proceso de Selección:
 
 --- Page 10 ---

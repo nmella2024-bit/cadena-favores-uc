@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2013-2_0daM7HmG7vo6w4vlsJnw.pdf"
+sourceFile: "I2 2013-2_0daM7HmG7vo6w4vlsJnw.pdf"
+---
+
 Determine los m´ aximos y m´ ınimos de la funci´ on   f   ( x, y, z ) =   x − y   + z   sujetos a la restricci´ on   x 2   +   y 2   +   z 2   ≤   1 con   z   ≥   0.  Solucion :  Debemos buscar puntos criticos interiores, luego buscarlos en el interior de los bordes y finalmente en el los bordes de los bordes.  1) Puntos criticos interiores:  ∇ f   ( x, y, z ) = (1 ,   − 1 ,   1) que no se anula nunca por lo panto NO hay puntos criticos interiores  2) Puntos criticos en el borde:  El borde consiste de dos partes; la cascara de la semi esfera y el disco de la base. Para la cascara de la esfera planteamos Lagrange. (1 ,   − 1 ,   1) = (2 λx,   2 λy,   2 λz ) Luego  x   =   1 2 λ y   =   −   1 2 λ z   =   1 2 λ  Substituyendo en la ecuacion de la esfera obtenemos  λ   =   ±   2  √ 3 y por lo tanto los puntos criticos  P 1   = (  √ (3) 4   ,   −  √ (3) 4   ,  √ (3) 4   ) y  P 2   = ( −  √ (3) 4   ,  √ (3) 4   ,   −  √ (3) 4   ) La otra parte del borde, que consiste del disco   x 2   +   y 2   ≤   1 en el plano   XY  puede tratarse de varias maneras. Por ejemplo, en el disco la funcion   f   tiene la forma  f   ( x, y,   0) =   x   −   y.
 
 --- Page 3 ---

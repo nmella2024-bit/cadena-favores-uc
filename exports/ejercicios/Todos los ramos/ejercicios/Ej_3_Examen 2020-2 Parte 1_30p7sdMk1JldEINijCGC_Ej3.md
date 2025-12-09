@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2020-2 Parte 1_30p7sdMk1JldEINijCGC.pdf"
+sourceFile: "Examen 2020-2 Parte 1_30p7sdMk1JldEINijCGC.pdf"
+---
+
 (10 pts):  Ahora se presenta la siguiente situaci´ on: una empresa del ´ area de “analytics” le propone a la empresa fores- tal usar modelos estad´ ısticos alternativos y mejorar la estimaci´ on de los rendimientos, m´ as espec´ ıficamente, 6
 
 --- Page 7 ---

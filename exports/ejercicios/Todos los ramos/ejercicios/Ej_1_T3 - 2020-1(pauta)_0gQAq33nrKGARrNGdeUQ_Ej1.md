@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/T3 - 2020-1(pauta)_0gQAq33nrKGARrNGdeUQ.pdf"
+sourceFile: "T3 - 2020-1(pauta)_0gQAq33nrKGARrNGdeUQ.pdf"
+---
+
 2  Se pide demostrar que para cualquier operador   C ( p 1 , ..., p n ) en l´ ogica proposicional, su operador respectivo  R C   para conjuntos se puede definir s´ olo utilizando los operadores de uni´ on, intersecci´ on y complemento. Sea   C ( p 1 , ..., p n ). Por el teorema de formas normales, tenemos  C ( p 1 , ..., p n )   ≡   ∨  i : b i =1  ((   ∧  j : v ij   =1  p j   )   ∧   (   ∧  j : v ij   =0  ¬ p j   )) 1
 
 --- Page 2 ---

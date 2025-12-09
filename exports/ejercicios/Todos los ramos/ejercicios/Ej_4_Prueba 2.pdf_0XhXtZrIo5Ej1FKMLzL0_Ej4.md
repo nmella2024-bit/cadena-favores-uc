@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_0XhXtZrIo5Ej1FKMLzL0.pdf"
+sourceFile: "Prueba 2.pdf_0XhXtZrIo5Ej1FKMLzL0.pdf"
+---
+
 ( 15   pts.)  MasterClass es un servicio de   streaming   online que ofrece clases de diversos temas impartidas por personas expertas  en sus respectivas áreas. Los y las instructoras van desde escritores ganadores del Premio Nobel hasta chefs con  estrellas Michelin, directores de cine premiados con el Oscar y má s. Las clases cubren una amplia gama de temas  como escritura, cine, cocina, música, deportes, entre otros. En cada clase, los instructores comparten sus  experiencias, habilidades y consejos a través de videos de alta calidad y materiales complementarios.  Actualmente, Masterclass ofrece tres planes: individual, duo y familiar; y está pensando modificar el   plan de  suscripción individual   y para eso diseñó e implementó un análisis conjunto   basado en ratings con los atributos y  niveles presentados en la tabla 1 .  1000   encuestados evaluaron distintos perfiles utilizando una escala de 1 a 10. Una vez obtenidas las respuestas, se  estimó un modelo de regresión lineal obteniéndose los siguientes resultados:  Tabla 1. Resultados de la estimación  Atributo   Nivel   Segmento 1  (40%)  Segmento 2  (60%)  Precio Mensual  $9   0   0  $11   - 0,3   - 0,7  $13   - 0,5   - 0,9  Acceso a todas las  clases  No   0   0  Si   0,3   0,1  Interacción con  instructores  No   0   0  Si   0,6   0,2
 
 --- Page 6 ---

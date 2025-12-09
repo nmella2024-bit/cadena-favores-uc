@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2018-1_3HEqhI4bZGmr3THXgSd8.pdf"
+sourceFile: "Examen 2018-1_3HEqhI4bZGmr3THXgSd8.pdf"
+---
+
 (14 puntos):  Suponga que en el problema reci´ en descrito nos enfrentamos a la situaci´ on en que la demanda por camas,  d it   es aleatoria, pero sabemos que sigue una cierta distribuci´ on de probabilidad conocida. Si la asignaci´ on de camas que se ha decidido no es suficiente para cubrir la demanda, entonces la demanda que no puede ser cubierta debe ser transferida a otros hospitales, lo que representa un aspecto negativo.  a) (8 pts.)   Proponga una reformulaci´ on del problema anterior que tome en cuenta un “costo”   β it   por cada unidad de demanda no cubierta de la especialidad   i   en la semana   t , y haga su reformulaci´ on como un modelo estoc´ astico de dos etapas. Sea expl´ ıcito en lo que considerar´ a variables de primera etapa (“here and now”) y de segunda etapa (de ajuste o “wait and see”). Justifique su elecci´ on con claridad. Tambi´ en sea expl´ ıcito en la escritura de los modelos. (Ind: si necesita, si´ entase libre de hacer reescrit- uras del modelo).  Respuesta:   Vamos primera a hacer lo siguiente: juntar las restricciones (1) y (2) y de esta manera el modelo queda:
 
 --- Page 5 ---

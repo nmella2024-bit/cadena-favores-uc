@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Copia de Clase 24 Electroquimica_3nk1I3S86LvTDoUJbnqD.pdf"
+sourceFile: "Copia de Clase 24 Electroquimica_3nk1I3S86LvTDoUJbnqD.pdf"
+---
+
 --- Page 1 ---
 CLASE   24  ELECTROQUÍMICA  Loreto Valenzuela Roediger  lvalenzr@ing.puc.cl  IIQ2043  FISICOQUÍMICA  Departamento de Ingeniería Química y Bioprocesos
 

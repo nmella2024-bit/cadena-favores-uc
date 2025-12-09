@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2015-2_1oE3F1RQFpfOILk5Xgym.pdf"
+sourceFile: "Examen 2015-2_1oE3F1RQFpfOILk5Xgym.pdf"
+---
+
 Considere el siguiente problema:
 
 --- Page 7 ---

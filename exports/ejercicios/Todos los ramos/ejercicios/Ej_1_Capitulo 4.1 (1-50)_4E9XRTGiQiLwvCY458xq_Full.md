@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Capitulo 4.1 (1-50)_4E9XRTGiQiLwvCY458xq.pdf"
+sourceFile: "Capitulo 4.1 (1-50)_4E9XRTGiQiLwvCY458xq.pdf"
+---
+
 --- Page 1 ---
 Page 1 Capitulo 4.1 (1-50)
 

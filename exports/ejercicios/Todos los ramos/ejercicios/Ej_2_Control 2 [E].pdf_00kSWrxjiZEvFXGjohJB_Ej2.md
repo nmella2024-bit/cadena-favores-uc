@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Control 2 [E].pdf_00kSWrxjiZEvFXGjohJB.pdf"
+sourceFile: "Control 2 [E].pdf_00kSWrxjiZEvFXGjohJB.pdf"
+---
+
 [18 puntos]  Microsoft (M) y Nintendo (S), debido a una nueva regulaci´ on, tienen que desarrollar un joystick inal´ ambrico que pueda ser usado en cualquiera de las consolas. Para sacar adelante el producto, cada empresa se compromete a invertir en el desarrollo del mismo. Unas inversiones   x M   y   x S   por parte de Microsoft y Nintendo, respectivamente, llevan a unos ingresos de   IT i   =   x M   +   3 4   x S   −   x M   x S   para cada firma por las ventas del nuevo producto. El costo de inversi´ on de Microsoft es   x 2  M   y el de Nintendo es   x 2  S   y no existen otros costos de producci´ on. Microsoft (M) y Nintendo (S) eligen sus niveles de inversi´ on simult´ aneamente y de manera no coope- rativa para maximizar sus beneficios individuales (ingresos por venta de cada firma netos de su costo de inversi´ on). a. [4 puntos] Encuentre las funciones de mejor respuesta de cada empresa. Justifique su respuesta. b. [4 puntos] Encuentre el equilibrio de Nash (cantidad de inversi´ on de cada empresa) y los beneficios de cada empresa. Justifique su respuesta. Suponga ahora, que Microsoft (M) y Nintendo (S) eligen sus niveles de inversi´ on de manera secuen- cial (asumiendo que las decisiones de inversi´ on son irrevocables), siendo Microsoft la l´ ıder y Nintendo la seguidora. c. [6 puntos] Encuentre el equilibrio Perfecto en Subjuegos (cantidad de inversi´ on de cada empresa) y los beneficios de cada empresa. Justifique su respuesta. c. [4 puntos] Compare los resultados de la decisi´ on secuencial con los de la decisi´ on simult´ anea. ¿Alguna empresa tiene ventaja? ¿por qu´ e? Justifique su respuesta. 2

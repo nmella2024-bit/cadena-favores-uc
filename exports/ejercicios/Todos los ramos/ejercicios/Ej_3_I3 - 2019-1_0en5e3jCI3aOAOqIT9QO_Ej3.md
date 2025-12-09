@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 - 2019-1_0en5e3jCI3aOAOqIT9QO.pdf"
+sourceFile: "I3 - 2019-1_0en5e3jCI3aOAOqIT9QO.pdf"
+---
+
 Dado un alfabeto finito Σ, una palabra infinita   w   sobre Σ es una secuencia de s´ ımbolos:   w   =   s 0 s 1 s 2   . . .   con  s i   ∈   Σ para todo   i   ≥   0. Se define el conjunto de todas las palabras infinitas sobre el alfabeto Σ como Σ ω   . 1. Demuestre que para todo alfabeto finito Σ con   | Σ | ≥   2 se tiene que Σ ω   es equinumeroso con   { 0 ,   1 } ω   . 1
 
 --- Page 2 ---

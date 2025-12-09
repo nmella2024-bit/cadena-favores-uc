@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Interrogaciones Tomas Reyes/Finanzas 2023-1 Pauta Examen_13qarrryJaT3OVwyhZHbMCNMTwb4jjc5a_0L3vlbuDPeF1dUClYv9K.pdf"
+sourceFile: "Finanzas 2023-1 Pauta Examen_13qarrryJaT3OVwyhZHbMCNMTwb4jjc5a_0L3vlbuDPeF1dUClYv9K.pdf"
+---
+
 [ 20   pts.]  Suponga que en el mercado Ud.   hay   tres bonos   X ,   Y   y   Z .  •   X   es un bono amortizable a 2 años ,   recién emitido ,   con cupones anuales e iguales cuya  tasa de emisión es 4% anual compuesta anual (ACA) ,   y TIR de 2,9% ACA.  •   Y   es un bono   bullet   que le queda solo 1 año ,   con cupones anuales (solo pagará un flujo  más), tasa   cu pón de   3% ACA ,   y TIR de 5,2% ACA.  •   Z   es un bono c ero cupón   a   2 años , recién emitido .  Todos los bonos tienen   valor nominal ( principal )   de $1.000.  a)   [ 8   pts.]   Determine cuánto debería invertir (comprar o vender en pesos hoy) en los   bonos  X   e   Y   para replicar   los flujos de un bono   Z .  b)   [ 6   pts.]   Determine c uál es la tasa libre de riesgo   ACA   a 2 años. ¿Cómo se le   denomina   en  el mercado a esta tasa?  c)   [ 6   pts.]   Suponga que   Z   se transa   en   $ 8 00. Determine si existen op ortunidades   de arbitraje.  Si las hay, indique qu é   posiciones debería tomar en cada bono (como f racción de los valores  nominales) y cuánta ganancia puede generar sin riesgo hoy (por cada bono Z arbitrado) .  a)   Determinamos el cupón del bono amortizable:  (2 pts. por ca lcular el cupón)  1 . 000   =   𝐶  0 , 04   ∗   ( 1   −   1  1 , 04 2 )  𝐶   =   530 , 196  Pagos:  Año 1   Año 2  Bono X   530 , 196   530 , 196  Bono Y   1030  Bono Z   1000  (2 pts. por calcular los pagos de los bonos)  Para replicar los pagos de Z comprando “a” bonos X y “b” bonos Y necesitamos que:  530 , 196   𝑎   +   1030   𝑏   =   0
 
 --- Page 5 ---

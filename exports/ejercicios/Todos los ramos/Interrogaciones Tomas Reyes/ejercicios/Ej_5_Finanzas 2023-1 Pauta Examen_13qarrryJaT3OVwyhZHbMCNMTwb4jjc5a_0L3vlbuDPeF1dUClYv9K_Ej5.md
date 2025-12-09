@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Interrogaciones Tomas Reyes/Finanzas 2023-1 Pauta Examen_13qarrryJaT3OVwyhZHbMCNMTwb4jjc5a_0L3vlbuDPeF1dUClYv9K.pdf"
+sourceFile: "Finanzas 2023-1 Pauta Examen_13qarrryJaT3OVwyhZHbMCNMTwb4jjc5a_0L3vlbuDPeF1dUClYv9K.pdf"
+---
+
 [ 25   pts.].  Ud. posee una mina de oro y espera extraer durante este año un total de 1.000 onzas para  venderlas   en un año m ás.   Sin embargo, está muy preocupado porque la inestabilidad de la  economía mundial   podría provocar   grandes variaciones en el precio del oro. El precio del oro  hoy   es USD$1.900/oz y la volatilidad (instantánea) anualizada de sus retornos es 15%. La  tasa li bre   de riesgo en USD es 4% anual compuesta anual.  Su   asesor de inversiones   le comenta   sobre   dos alternativas usando derivados para cubrirse  del riesgo del cambio de precio del oro: (i)   forwards , y (ii) opciones.  a)   [ 10   ptos.]   Determine qué posición tomarí a (l arga o corta) en   forwards   para transar 1   onza  de oro en 1 año más y qu é   precio fijaría para esta transacción   (precio   forward ) . ¿Cuánto  pagaría hoy por ese contrato?  Pasamos la tasa 4 ACA a   anual compuesta   continua:  1 , 04   =   𝑒 𝑟 𝐴𝐶𝐶   →   𝑟 𝐴𝐶𝐶   =   3 , 92%  Para precio forward   𝐹   =   𝑆 𝑒 𝑟 ⋅ 𝑡   =   1900   ⋅   𝑒 0 , 0392 ⋅ 1   =   1975 , 96  Se deben vender 1.000 contratos forward (posición corta) a precio $ 197 5 , 96   cada uno,  pagando $0 por el contrato.  ( 4   ptos. por obtener   la tasa ACC )  ( 4   ptos. por obtener el precio del for ward)  ( 2   pto s por indicar la   posición   y cantidad de contratos for wa rd )  b)   [ 8   ptos.]   Usando   la fórmula de   Black & Scholes y la   Put - Call Parity   determine cuánto  pagaría por una opción para vender 1   onza   de oro en 1 año más   con precio de ejercicio igual  al   p recio   forward   calculado en (a).  Para la put primer   se debe calcular la call:  𝑑 1   =   ln   ( 𝑆  𝐾 )   +   𝑟𝑡  𝜎   ⋅   √ 𝑡   +   1  2   𝜎 √ 𝑡   =   ln   (   1900  1975 . 96 )   +   0 , 0392  0 , 15   +   1  2   0 , 15   =   0 , 075  𝑑 2   =   𝑑 1   −   𝜎 √ 𝑡   =   0 , 075   −   0 , 15   =   − 0 , 075
 
 --- Page 11 ---

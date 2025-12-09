@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Repaso_I3_3U6xTZcH3ksNByCfSxYf.pdf"
+sourceFile: "Repaso_I3_3U6xTZcH3ksNByCfSxYf.pdf"
+---
+
 Calcule   R  C   F   ·   dr   donde el campo   F   está definido como  F   ( x, y, z ) = (   − y x 2   +   y 2   ,   x x 2   +   y 2   , e sen 2 ( z ) )  y la curva   C   está parametrizada por   r ( t ) = (2 cos ( t ) ,   2 sen ( t ) , cos 3 ( t )   −   sen 5 ( t )) , con   t   ∈   [0 ,   2 π ]

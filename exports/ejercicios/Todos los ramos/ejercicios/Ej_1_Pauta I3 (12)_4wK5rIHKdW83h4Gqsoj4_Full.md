@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Pauta I3 (12)_4wK5rIHKdW83h4Gqsoj4.pdf"
+sourceFile: "Pauta I3 (12)_4wK5rIHKdW83h4Gqsoj4.pdf"
+---
+
 --- Page 1 ---
 
 

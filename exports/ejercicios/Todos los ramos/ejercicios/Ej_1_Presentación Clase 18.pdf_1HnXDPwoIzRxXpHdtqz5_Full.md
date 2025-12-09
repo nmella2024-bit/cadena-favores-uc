@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Presentación Clase 18.pdf_1HnXDPwoIzRxXpHdtqz5.pdf"
+sourceFile: "Presentación Clase 18.pdf_1HnXDPwoIzRxXpHdtqz5.pdf"
+---
+
 --- Page 1 ---
 (PUC)   Clase 18   Agosto 2022   1 / 10  Sistemas de coordenadas  Introducci´ on al ´ Algebra Lineal - MAT1279-1299  Facultad de Matem´ aticas, Pontificia Universidad Cat´ olica de Chile  Agosto 2022
 

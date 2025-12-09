@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2019-1_3qSA2tZDcFO6WQ060wK1.pdf"
+sourceFile: "I1 2019-1_3qSA2tZDcFO6WQ060wK1.pdf"
+---
+
 --- Page 1 ---
 Nombre y Apellido:   Número de lista:  1  Interrogación 1  CURSO   :   Introducción a la Economía  SIGLA   :   ICS 1513  Sección   :   1  PROFESOR   :   Miguel Pérez de Arce Jeria.  Antes de responder la prueba, usted debe leer detenidamente y completar  lo siguiente:  1.   Escriba en todas las hojas de este   cuadernillo   su nombre, apellido(s) y el  número de lista .   Penalización por no estar disponible dicha información  equivalente a 20 puntos del puntaje total.  2.   El tiempo de Duración es de 90 minutos .  3.   Puntos Totales:   103   Puntos  4.   Durante la realización de la prueba, sólo pueden estar sobre la mesa  lápices, goma de borrar y regla. Ello significa que calculadora, celular y/o  cualquier artefacto tecnológico debe estar guardado en su respectivo bolso  y/o mochila.  5.   La prueba consta de d os partes. Para responder las preguntas de la Parte I  usted debe utilizar los espacios destinados para ello en las mismas hojas  del enunciado. Si necesita hoja adicional puede solicitar al ayudante y/o  profesor. En el caso de la parte II, se les pide utili zar la tabla adjunta al final.
 

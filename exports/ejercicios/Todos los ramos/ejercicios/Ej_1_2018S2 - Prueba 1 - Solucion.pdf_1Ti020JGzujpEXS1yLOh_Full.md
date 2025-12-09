@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/2018S2 - Prueba 1 - Solucion.pdf_1Ti020JGzujpEXS1yLOh.pdf"
+sourceFile: "2018S2 - Prueba 1 - Solucion.pdf_1Ti020JGzujpEXS1yLOh.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE EAA220B - Finanzas I Profesor : David Buchuk  Ayudantes : Emilio Ascarrunz y Carolina Sierpe  PRUEBA 1  Segundo Semestre 2018 Tiempo: 2 horas Total puntos: 100 Instrucciones:  •   Los ayudantes leerán en voz alta todas las instrucciones de la prueba antes de que comiencen a contestar.  •   Tiene 2 minutos para poner   nombre y número de lista a todas las hojas por el anverso.  No es necesario escribir su nombre en el reverso de cada hoja.  •   Recuerde escribir el número de pregunta que está respondiendo en cada hoja de respuestas.  •   El tiempo (2 horas) se contabiliza desde terminada la lectura inicial de las instrucciones y después del tiempo para escribir su nombre y número de lista.  •   Se puede usar calculadora, pero no computadores, celulares o relojes inteligentes.  •   Los ayudantes sólo contestarán preguntas de enunciado.  •   Las preguntas que sean contestadas con lápiz grafito (a mina) no tendrán derecho a recorec- ción.  •   Conteste cada pregunta en hojas separadas para facilitar la corrección.  •   Respuestas correctas, sin justificación recibirán   cero puntos .
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I3 2013-2_2KOnxiLLimoLLj0dUww6.pdf"
+sourceFile: "I3 2013-2_2KOnxiLLimoLLj0dUww6.pdf"
+---
+
 a) Sea   C   ⊂   R 2   curva cerrada, simple y suave. Sea   − → p   ∈   R 2   un punto fijo tal que   − → p   / ∈   C . Calcule la integral   ∫  C  ( − → x   −  − → p   )   ·   ˆ n  || − → x   −  − → p   ) || 2   ds  donde   ˆ n   es el vector unitario normal exterior a   C . b) Sea   C   ⊂   R 2   curva cerrada, simple y suave que encierra una regi´ on de ´ area   3 . Calcule la integral   ∫  C  − → x   ·   ˆ n ds   donde   ˆ n   es el vector unitario normal exterior a   C .  Soluci´ on : a) Tenemos  − → x   −  − → p  || − → x   −  − → p   ) || 2   ∈ C 1 ( R 2   \ { − → p   } ) ,   div  (   − → x   −  − → p  || − → x   −  − → p   || 2  )  = 0 ,   − → x   6   =   − → p .  Sea   S   el dominio abierto encerrado por   C . Supongamos que   − → p   6   ∈   S . Entonces  ∫  C  ( − → x   −  − → p   )   ·   ˆ n  || − → x   −  − → p   ) || 2   ds   =  ∫ ∫  S  div  (   − → x   −  − → p  || − → x   −  − → p   || 2  )  dx dy   = 0 ,  3
 
 --- Page 4 ---

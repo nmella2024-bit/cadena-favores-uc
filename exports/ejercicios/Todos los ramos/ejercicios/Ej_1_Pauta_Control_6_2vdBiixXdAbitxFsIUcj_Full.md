@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Pauta_Control_6_2vdBiixXdAbitxFsIUcj.pdf"
+sourceFile: "Pauta_Control_6_2vdBiixXdAbitxFsIUcj.pdf"
+---
+
 --- Page 1 ---
 DEPARTAMENTO DE INGENIERÍA INDUSTRIAL Y DE SISTEMAS  FACULTAD DE INGENIERÍA  PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  ECONOMETRÍA APLICADA  Profesora: Javiera Vásquez  Pauta   Control Nº6  Martes 7   de   noviembre   de 2017  TIEMPO: 15 minutos  Suponga que está interesado en estimar un modelo donde la variable dependiente es  categórica, en partic ular, es una variable que toma 3   posibles valores:  1.   Trabajador por cuenta propia  2.   Asalari ado del sector privado  3.   Asalariado del sector público  Y Usted está interesado en estudiar   cómo   los años de escolaridad afectan la probabilidad  de trabajar en cada una de estas categorías ocupacionales.   Además,   controlando   por la  edad de la persona y el sexo.  a) Plantee el modelo que le permite estudiar lo antes señalado (2 puntos)  R:   Dado   que   la   variable   dependiente   es   categórica   no   ordenada,   y   las   variables  explicativas no varían con las alternativas, se debe utilizar un modelo multinomial logit,  en el que:  𝑝 𝑖𝑗   =   𝑃𝑟 [ 𝑦 𝑖   =   𝑗 ]   =   𝑒𝑥𝑝 ( 𝑥 𝑖  ′ 𝛽 𝑗 )  1   +   ∑   𝑒𝑥𝑝 ( 𝑥 𝑖  ′ 𝛽 𝑘 ) 𝑀  𝑘 = 2  b )   Indique cuál es la metodología apropiada para estimar este tipo de modelo   (2 puntos)  R: este modelo se estima por máxima verosimilitud  c )   Indique   paso a paso que tendría que hacer si quiere graficar la relación entre la  probabilidad de trabajar como cuenta propia y los años de escolaridad. Sea preciso en  su   explicación. (6   puntos)  R:  1 -   Estimar el modelo con el comando mlogit de stata:  m logit   y   esc   edad   dhombre
 

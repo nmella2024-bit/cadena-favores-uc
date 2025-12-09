@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I3 - 2013 - 01_0DGEBs9atXH4Fuilt462.pdf"
+sourceFile: "I3 - 2013 - 01_0DGEBs9atXH4Fuilt462.pdf"
+---
+
 Suponga que el tiempo de falla de cierta m´ aquina productiva,   Y   , sigue una distribuci´ on Gaussiana Inversa de par´ ametros   μ   y   λ , cuya densidad est´ a dada por  f y   ( y ) =  √  λ  2 πy 3   exp  {  −   λ  2 μ 2  ( y   −   μ ) 2  y  }  ,  cuando   y >   0, y cero en otro caso. Se sabe que la media de esta densidad corresponde a   μ   y la varianza a  μ 3 /λ . a) (1.5 puntos) Encuentre los estimadores de momentos de   μ   y   λ   en base a   n   observaciones independientes  Y 1 , . . . , Y n .  Soluci´ on: Alternativa 1:   Igualamos media y varianza poblacionales a media y varianza muestrales: ˆ μ   =   ¯ Y   [0.4]  ˆ μ 3  ˆ λ   =   S 2  n ,   con   S 2  n   =  1  n  n ∑  i =1  ( Y i   −   ¯ Y   ) 2 .   [0.4]  Despejando se obtiene los estimadores de momentos ˆ μ   =  ¯ Y   [0.3]   ˆ λ   =  ¯ Y   3  S 2  n  .   [0.4] Alternativa 2:   Igualamos media y momento de orden 2 poblacionales a media y momento de orden 2 muestrales: ˆ μ   =   ¯ Y   [0.4]  ˆ μ 3  ˆ λ   + ˆ μ 2   =   1  n  n ∑  i =1  Y   2  i   .   [0.4]  Despejando se obtiene los estimadores de momentos ˆ μ   =  ¯ Y   [0.3]   ˆ λ   =   n   ¯ Y   3  ∑   Y   2  i   −   n   ¯ Y   2   =  ¯ Y   3  S 2  n  .   [0.4]  b) (1.5 puntos) Encuentre los estimadores m´ aximo veros´ ımiles de   μ   y   λ   en base a   n   observaciones indepen- dientes   Y 1 , . . . , Y n . No es necesario mostrar que el punto cr´ ıtico encontrado corresponde a un m´ aximo.  Soluci´ on:   la funci´ on de verosimilitud corresponde a:  L ( y , μ, λ )   =  (   λ  2 π  ) n/ 2   1  ∏ n i =1   y 3 / 2  i  exp  {  −   λ  2 μ 2  n ∑  i =1  ( y i   −   μ ) 2  y i  }  .   [0.3]  Su logaritmo corresponde a log   L ( y , μ, λ )   =   n  2  log   λ  2 π   −   3 2  n ∑  i =1  log   y i   −   λ  2 μ 2  n ∑  i =1  ( y i   −   μ ) 2  y i  .   [0.3]  EYP1113 - Probabilidad y Estad´ ıstica Primer Semestre 2013  9   Profesores: Ana Mar´ ıa Araneda Ricardo Aravena Cuevas Ricardo Olea Ortega
 
 --- Page 10 ---

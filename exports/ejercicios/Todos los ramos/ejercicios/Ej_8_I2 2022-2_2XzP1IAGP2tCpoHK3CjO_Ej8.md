@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 8"
+topic: "General"
+number: "8"
+originalUrl: "exports/downloads/Todos los ramos/I2 2022-2_2XzP1IAGP2tCpoHK3CjO.pdf"
+sourceFile: "I2 2022-2_2XzP1IAGP2tCpoHK3CjO.pdf"
+---
+
 El conjunto   B   =   { 1 +   t,   1 +   t 2 , t   +   t 2 }   es una base para   P 2 .   Encuentre el vector de coordenadas de   p ( t ) = 6 + 3 t   −   t 2   con respecto a la base   B .  Soluci´ on   Buscamos   α, β, γ   escalares tales que  α (1 +   t ) +   β (1 +   t 2 ) +   γ ( t   +   t 2 ) = 6 + 3 t   −   t 2 .  Esto es: ( α   +   β ) + ( α   +   γ ) t   + ( β   +   γ ) t 2   = 6 + 3 t   −   t 2  = ⇒   α   +   β   = 6 ,   α   +   γ   = 3 ,   β   +   γ   =   − 1 = ⇒   α   = 5 ,   β   = 1 ,   γ   =   − 2 .  Por lo tanto [   p ( t )] B   =      5 1  − 2     Puntaje  •   2 puntos por plantear una manera de encontrar las coordenadas de   p ( t ).   Esto puede ser por tanteo, con sistemas de ecuaciones o con matrices.  •   1 punto por determinar cada coordenada correctamente (3 en total).  •   1 punto por escribir el vector de coordenadas pedido.

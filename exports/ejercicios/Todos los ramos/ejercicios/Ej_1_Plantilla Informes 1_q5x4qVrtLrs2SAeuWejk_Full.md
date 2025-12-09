@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Plantilla Informes 1_q5x4qVrtLrs2SAeuWejk.pdf"
+sourceFile: "Plantilla Informes 1_q5x4qVrtLrs2SAeuWejk.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  ESCUELA DE INGENIERÍA DEPARTAMENTO DE INGENIERÍA CIVIL  INFORME DE LABORATORIO  Análisis de Sistemas Dinámicos y Mecánica FIS1503 - Mecánica  Sección 2 Profesor: Dr. Juan Carlos López  Integrantes:  Nicolás González S.   202345678 María Fernanda Pérez   202345679 Diego Rodríguez M.   202345680 Catalina Silva B.   202345681  Santiago de Chile  ?today?
 

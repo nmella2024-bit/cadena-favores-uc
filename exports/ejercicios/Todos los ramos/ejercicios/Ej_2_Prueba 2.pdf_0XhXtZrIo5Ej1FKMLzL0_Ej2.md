@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_0XhXtZrIo5Ej1FKMLzL0.pdf"
+sourceFile: "Prueba 2.pdf_0XhXtZrIo5Ej1FKMLzL0.pdf"
+---
+
 ( 10   pts.)  El ejercicio realizado en ayudantía sobre las compras trimestrales de arroz estima un modelo   Poisson   -   Gamma   con  parámetros r=0.50 y s=0.15. La figura siguiente muestra la frecuencia empírica de compras mediante los puntos en  la figura, y los modelos Poisson   –   Gamma (Binomial Negativo), en línea continua y el modelo Poisson en línea  discontinua.
 
 --- Page 3 ---

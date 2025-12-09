@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1 Pauta.pdf_4uHW0LwvPFbMgAP8BJKJ.pdf"
+sourceFile: "Prueba 1 Pauta.pdf_4uHW0LwvPFbMgAP8BJKJ.pdf"
+---
+
 --- Page 1 ---
 Prueba 1  Macroeconomía II  (EAE 2220)  Viernes, 10 de mayo de 2024.  Nombre:_______________________________________  Profesor: Alberto Naudon   Ayudantes: Gianfranco Quequezana  Oscar Herrera  Tamara Rodríguez  Paulete Pastén  ________________________________________________________________________________  I.   Preguntas de desarrollo (60 puntos). Elija 4 de las siguiente 5  A.   (15 puntos)   (15 puntos) Explique los principales elementos del trabajo de Maurice Obs�eld, Jay Shambaugh y Alan M. Taylor: “The trilemma in history: tradeoffs among exchange rates,  monetary policies, and capital mobility”.  R.   Maurice Obs �eld, Jay Shambaugh y Alan M. Taylor testean la existencia del trilema   de la polí�ca  monetaria durante el �empo, analizando la transmisión internacional de tasas de interés desde 1870, es  decir, estudiando la existencia del trilema durante el patrón oro, Breton Woods y posteriores . Estos períodos  se caracterizan por tener regímenes cambiarios, grados de   ac�vismo   de las   polí�c as   económicas   y apertura  de capitales dis�ntos, lo que permite a los autores estudiar la existencia de las restricciones   señaladas por el  trilema.  E l trilema establece que no es posible tener simultáneamente libre flujo de capitales, �po de cambio fijo y  polí�ca monetaria independiente, por lo cual un país debe optar por   2. Por ejemplo, un país que opta por  �po de cambio fijo y libre flujo de capitales no puede tener una polí�ca monetaria independiente, ya que el  banco central deberá intervenir el mercado de divisas para mantener el �po de cambio fijo, lo que limitaría  su capacidad para ajustar la oferta monetaria de manera independiente.  Como instrumento de polí�ca   monetaria los autores   usan las tasas de interés nominal de mercado de corto  plazo y como medida de independencia   la correlación de las tasas entre países .   En par�cular , los autores  analizan   si los regímenes cambiarios y de control de capitales influyen en el grado en que las tasas de interés  locales divergen de la tasa de interés "mundial". Para esto realizaron un estudio sobre la transmisión
 

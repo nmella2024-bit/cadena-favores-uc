@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 2009"
+topic: "General"
+number: "2009"
+originalUrl: "exports/downloads/Todos los ramos/I1/I1 2017-1_1nQH3f6LZjw8L-8IsnPIMQ_Fd2rYMcn4l_03PhKPLl5R7ZFq35Gkxr.pdf"
+sourceFile: "I1 2017-1_1nQH3f6LZjw8L-8IsnPIMQ_Fd2rYMcn4l_03PhKPLl5R7ZFq35Gkxr.pdf"
+---
+
 Ingresos por Venta   1.500  Costo de Ventas   ( 950 )  Margen de Contribución   550  - Gastos por Dep reciación   (150)  - Gastos por Sueldos   ( 80)  +Ingreso por Intereses   120  +Ingreso por Arriendos   110  Resultados   Antes de Impuestos   550  - Impuestos del Ejercicio   (100)  Utilidad del

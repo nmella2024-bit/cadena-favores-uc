@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2 [S].pdf_07Qg6Z4AmgR5TcUKDmn3.pdf"
+sourceFile: "Prueba 2 [S].pdf_07Qg6Z4AmgR5TcUKDmn3.pdf"
+---
+
 --- Page 1 ---
 NOMBRE :  PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE ESCUELA DE ADMINISTRACION EAA – 321B SOLUCIÓN RESUMIDA PRUEBA N° 2 Semestre:   1/23   Profesores:  Ignacio Rodríguez Ll. (secciones 1 y 2) Felipe Joannon V. (sección 3) Rodrigo Muñoz M. (sección 4)  Puntaje total:   85 puntos   Tiempo:   85 minutos  TEMA I   (20 puntos; 5 ptos. cada una)  Estudio personal.  TEMA II (20 puntos) a)   Presupuesto de caja mensual con las entradas y salidas de caja mensuales proyectadas y los saldos requeridos al final de cada mes:  Enero   Febrero   Marzo  Exceso o (déficit) de caja mes   -70.000   -50.000   150.000  b)   Plan financiero mensual  Enero   Febrero   Marzo  Deuda inicial   0   71.400   123.828 Créditos de corto plazo mes corriente   70.000   50.000   0 Total créditos de corto plazo   70.000   121.400   123.828 Intereses   1.400   2.428   2.477 Total créditos de corto plazo con intereses   71.400   123.828   126.305 Amortización crédito de CP   0   0   126.305 Deuda final   71.400   123.828   0  c)   Deuda proyectada a fines de marzo 2024 = 0  d)   Saldo de caja a fines de marzo 2024 = 73.695 Exceso de caja (sobre el mínimo) a fines de marzo 2024 = 23.695  e)   Intereses primer trimestre 2024 = 6.305  TEMA III (16 puntos) a)   Ventas diarias = $ 27.000.000 / 30 = $ 900.000 Compras diarias a proveedores = $ 900.000 / 1,125 = $ 800.000  VPN (política actual) = $ 106.693,54
 

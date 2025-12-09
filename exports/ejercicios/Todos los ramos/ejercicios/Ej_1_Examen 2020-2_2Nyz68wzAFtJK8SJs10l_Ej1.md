@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2020-2_2Nyz68wzAFtJK8SJs10l.pdf"
+sourceFile: "Examen 2020-2_2Nyz68wzAFtJK8SJs10l.pdf"
+---
+
 [25 puntos] Considere un ciclo que consiste de cuatro procesos termodinámi- cos: compresión isotérmica   ab , calentamiento isocórico   bc , expan- sión isotérmica   cd   y enfriamiento isocórico. Para esta operación se utilizan   0 , 350   moles de un gas monoatómico ideal y los estados  a ,   b ,   c   y   d   se muestran en la tabla de la derecha. Obtenga:  Estado   p   V   T  atm   litros   K  a   1 , 00   7 , 18   250  b   2 , 50   2 , 87   250  c   4 , 00   2 , 87   400  d   1 , 60   7 , 18   400  (a) ( 10 puntos ) El trabajo que realiza el gas en cada proceso y el trabajo total en un ciclo. (b) ( 5 puntos ) La variación de energía interna en cada proceso. (c) ( 5 puntos ) El calor intercambiado en el proceso a alta temperatura y el calor intercambiado en el proceso a baja temperatura. (d) ( 5 puntos ) La eficiencia de una máquina térmica funcionando con este ciclo.  Solución  (a)   (10 pts.)   El trabajo que realiza el gas en cada proceso y el trabajo total en un ciclo.  i   Proceso   ab : proceso   isotérmico  pV   =   nRT   = ⇒   p   =   nRT V   = ⇒   W ab   =  ∫   b a  pdV   =   nRT a  ∫   b a  dV V  ,  que conduce a  W ab   =   nRT a   ln  (   V b  V a  )  = 0 , 350 mol × 8 , 314   J mol   ·   K   × 250 K × ln  (   2 , 87 l 7 , 18 l  )  =   − 667 J .   (2 puntos)  ii   Proceso   bc : proceso   isocórico  dV   = 0   = ⇒   W bc   =  ∫   c b  pdV   = 0 , 0 J .   (2 puntos)  iii   Proceso   cd : proceso   isotérmico , repetimos lo realizado para el proceso   ab W cd   =   nRT c   ln  (   V d  V c  )  = 0 , 350   ×   8 , 314   ×   400   ×   ln  (   7 , 18 2 , 87  )  = 1 067 J = 1 , 07 kJ .   (2 puntos)  iv   Proceso   da : proceso   isocórico   W da   = 0 , 0 J   (2 puntos) . El trabajo total es la suma de los trabajos  W total   =   W ab   +   W bc   +   W cd   +   W da   =   − 667 + 1 067 = 400 J .   (2 puntos)  (b)   (5 pts.)   La variación de energía interna en cada proceso, se obtiene utilizando la capacidad calorífica molar a volumen constante   ¯ c V   . 2
 
 --- Page 3 ---

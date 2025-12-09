@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2015 s2_3Z7VEajiuOkiEhlwDmAn.pdf"
+sourceFile: "Examen 2015 s2_3Z7VEajiuOkiEhlwDmAn.pdf"
+---
+
 (60 puntos) Escribe un programa Python que permita realizar acciones sobre un tablero de   buscaminas . Para esto, considera que tienes un archivo llamado   buscaminas.txt   con el estado de un tablero. En éste, cada celda es un string de dos caracteres. El primero (de izquierda a derecha) dice si la celda está descubierta o no ( ’1’   o   ’0’ ), mientras que el segundo caracter indica si en esa casilla hay una bomba o no ( ’1’   o   ’0’ ). Con esto, existen 4 posibilidades para cada celda:  ’00’ : La celda no está descubierta y no tiene bomba.  ’01’ : La celda no está descubierta, pero tiene bomba.  ’10’ : La celda está descubierta y no tiene bomba.  ’11’ : La celda está descubierta y además tiene una bomba. El archivo   buscaminas.txt   tiene cada una de las celdas separadas por comas “ , ”. Por ejemplo, se muestra el contenido de un ejemplo del archivo   buscaminas.txt , y al lado derecho el tablero que representa. buscaminas.txt  00,01,00,00 01,00,10,10 00,00,00,00 10,10,00,10  Con esta información se te pide: 1. (10 puntos) Crear la función   esta_descubierta(x,y)   que reciba las coordenadas   x   e  y   de una celda y retorne   True   si la celda está descubierta o   False   si no está descubierta (está oculta) en el tablero. Por ejemplo,   esta_descubierta(2,3)   retorna   False , pues la celda es   ’00’ , por lo tanto no está descubierta. 2. (20 puntos) Crear la función   descubrir(x,y)   que reciba las coordenadas   x   e   y   de una celda y le cambie el estado a la celda (el primer dígito) siempre y cuando sea posi- ble (es decir, no está descubierta) y actualiza el estado de todo el tablero en el archivo  buscaminas.txt . 3. (30 puntos) Crear la función   dar_pista(x,y)   que recibe las coordenadas   x   e   y   de una celda y retorne la cantidad de bombas adyacentes a dicha celda (considerando 8 direcciones). Por ejemplo,   dar_pista(2,1)   retorna   1 , dado que hay una bomba en la coordenada (1,0). Nota que no puedes agregar más parámetros a las funciones. 10
 
 --- Page 11 ---

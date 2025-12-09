@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/IIC1103_Ex vf_0rUAYcrCLsba0xsusQt1.pdf"
+sourceFile: "IIC1103_Ex vf_0rUAYcrCLsba0xsusQt1.pdf"
+---
+
 Para bajar el estr´ es luego de los ex´ amenes, una buena idea es invitar a tus compa˜ neros de curso a jugar naipes. Piensan en juntarse luego de esta prueba, y decides empezar a ejercitar tus habilidades con las cartas al mismo tiempo que practicas programaci´ on.  Parte a) (30 puntos)  Escribe una funci´ on   ordenar cartas   que reciba una lista de cartas y retorne una lista con las cartas ordenadas seg´ un pinta y n´ umero. La lista de cartas est´ a en el formato [[ n 1 , p 1 ] ,   [ n 2 , p 2 ] , ... ] donde   n i   es el n´ umero de la carta   i   y   p i   es su pinta. La pinta   p   puede ser   C   (corazones),   P   (picas),   D   (diamantes) o   T   (tr´ eboles). Considera que el orden de las pintas, de izquierda a derecha es corazones, picas, diamantes y tr´ eboles. Un ejemplo de mano ordenada de cartas se muestra en la Figura 2. Los n´ umeros de las cartas van del 1 al 13. (El As se representa por 1 y las cartas literales (J,Q,R) por 11, 12 y 13.)  Parte b) (30 puntos)  Una compa˜ nera encontr´ o una caja con cartas ordenadas en el centro de alumnos, adem´ as de otras cartas sueltas. Implementa una funci´ on que reciba la baraja y una carta, inserte la carta en la baraja, y retorne una lista con la baraja ordenada incluyendo la nueva carta. Tanto la baraja como la carta se encuentran en el formato se˜ nalado anteriormente.  Figura 2: Conjunto de cartas ordenado seg´ un n´ umero y pinta, de izquierda a derecha 3
 
 --- Page 4 ---

@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+sourceFile: "Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+---
+
 (5 puntos)  Su amiga Pilar está estudiando para la prueba, pero faltó a algunas clases. En  especial, no recuerda cómo es la relación entre el excedente del productor y los  beneficios económicos de las empresas en competencia perfecta. ¿Qué podría  explicarle usted a Pilar? Sea minucioso/a en su explicación distinguiendo entre el  corto y largo plazo.  En el corto plazo, siempre que haya costos fijos, el excedente del productor será  mayor que los beneficios económicos de la empresa. El excedente se calcula  comparando lo que recibe la ingresa, menos lo que estaba dispuesta a recibir por  vender una determinada cantidad, y en el corto plazo está dispuesta a recibir menos  que el costo fijo. (1 punto) Sin embargo, en el largo plazo los costos fijos dejan de ser  inevitables, por lo que excedente y beneficios serán lo mismo. Y como se produce en  el punto de CMeT mínimo, ambos serán iguales a 0.

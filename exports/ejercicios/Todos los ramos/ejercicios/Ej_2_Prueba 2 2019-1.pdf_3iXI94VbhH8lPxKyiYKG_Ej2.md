@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2 2019-1.pdf_3iXI94VbhH8lPxKyiYKG.pdf"
+sourceFile: "Prueba 2 2019-1.pdf_3iXI94VbhH8lPxKyiYKG.pdf"
+---
+
 ( 20   puntos)  Suponga que Macrolandia es   una economía   pequeña y   abierta ,   donde se cumple la  condición de paridad de tasas   y el tipo de cambio es flexible .  a)   (10 puntos)   Suponga que el Banco   C entral de   Macrolandia   i mplementa una política  contractiva permanente. Grafique y explique detalladamente qu é   es lo que sucede tanto  en   el corto como el largo plazo. Haga un gráfico individual para todas las variables  relevantes. Sea preciso en su lenguaje.  Respuesta: Es clave notar que en palabras nos están describiendo el modelo de Dornsbuch.  a)   Corto Plazo  Dada la política contractiva, M baja. Ello hace que M/P baje también (P no cambia dado  que en el corto plazo los precios son rígidos). Este movimiento en los saldos reales hace  que se   aprecie   el tipo de cambio y la tasa de interés suba.  Ya que la   expansión es permanente, también se ajustan las expectativas de la gente con  respecto al tipo de cambio, lo que hace que baje la curva de retorno  Largo plazo  Ya que los precios en el largo plazo se ajustan, P va a subir a tal punto que hará que M/P  vuelva   a donde estaba antes. La tasa de interés real volverá a su punto original. El tipo de  cambio se   depreciará,   pero no volverá a su punto original.
 
 --- Page 9 ---

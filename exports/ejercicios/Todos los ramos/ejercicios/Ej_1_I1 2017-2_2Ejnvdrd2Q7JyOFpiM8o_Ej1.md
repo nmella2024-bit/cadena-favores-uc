@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-2_2Ejnvdrd2Q7JyOFpiM8o.pdf"
+sourceFile: "I1 2017-2_2Ejnvdrd2Q7JyOFpiM8o.pdf"
+---
+
 Parte 1  Sea   k   un entero no negativo. Entonces:  P ( X   +   Y   =   k ) =   P ( X   =   k   −   Y   ) =  ∞ ∑  i =0  P ( X   =   k   −   Y   | Y   =   i )   ·   P ( Y   =   i ) =  ∞ ∑  i =0  P ( X   =   k   −   i )   ·   β i e − β  i !   =  k ∑  i =0  α k − i e − α  k   −   i !   ·   β i e − β  i ! =   e − ( α + β )  k !  k ∑  i =0  k ! ( k   −   i )! i !   ·   α k − i β i  =   e − ( α + β ) ( α   +   β ) k  k ! Con esto,   X   +   Y   sigue una distribuci´ on Poisson de par´ ametro   α   +   β .  Parte 2  Sea   Z   = [ S k | N   ( s ) =   k ] y sea   t   ∈   [0 , s ]. Entonces:  P   ( Z   ≤   t ) =   P   ( S k   ≤   t | N   ( s ) =   k ) =   P   ( max  i =1 ,...,k   U i   ≤   t )   donde los   U i   son uniformed i.i.d en [0 , t ] =   P   ( U i   ≤   t,   ∀ i   = 1 , ..., k ) Con esto, vemos que para cualquier   t   ∈   [0 , s ] tenemos que  F Z   ( t ) =  (   t s  ) k  Luego derivamos   F Z   ( t ) para encontrar la funci´ on de densidad de   Z .  f Z   ( t ) =   ∂F Z   ( t )  ∂t   =   k s  (   t s  ) k − 1  Ahora para encontrar la probabilidad de que la   k -esima persona haya llegado en los primeros   s/ 2 minutos, reemplazamos  t   =   s/ 2 en   F Z   ( t ).  F Z   (   s  2  ) =  (   s  2 s  ) k  =  (   1 2  ) k  Parte 3  Sea   N   ( t ) , t   ≥   0 Poisson tasa   λ .  P   (8   < S 5   ≤   12 | N   (20) = 10) =   P   ( N   (8)   <   5 , N   (12)   ≥   5 | N   (20) = 10)  P   ( N   (12)   ≥   5 , N   (8)   <   5 , N   (20) = 10)  P   ( N   (20) = 10) =  4 ∑  j =0 10 ∑  i = j  P   ( N   (12) =   i, N   (8) =   j, N   (20) = 10)  P   ( N   (20) = 10) =  4 ∑  j =0 10 ∑  i = j  P   ( N   (8) =   j )   ·   P   ( N   (12)   −   N   (8) =   i   −   j )   ·   P   ( N   (20)   −   N   (12) = 10   −   i )  P   ( N   (20) = 10) 3
 
 --- Page 4 ---

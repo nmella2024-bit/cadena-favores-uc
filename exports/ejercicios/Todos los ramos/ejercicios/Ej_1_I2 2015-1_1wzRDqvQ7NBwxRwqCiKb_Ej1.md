@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2015-1_1wzRDqvQ7NBwxRwqCiKb.pdf"
+sourceFile: "I2 2015-1_1wzRDqvQ7NBwxRwqCiKb.pdf"
+---
+
 ¿Cu´ al es la carga inducida (o ligada) en la superficie externa del diel´ ectrico   ε 2 ?  a )   9 10   Q  b )   2 5   Q  c )   4 5   Q  d   ) 0 C  e )   9 20   Q  2
 
 --- Page 3 ---

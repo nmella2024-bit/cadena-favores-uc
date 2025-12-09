@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Ayudant¡a 12_1hFmqlKXzXFNlRDImRws.pdf"
+sourceFile: "Ayudant¡a 12_1hFmqlKXzXFNlRDImRws.pdf"
+---
+
 La estructura de la figura consiste en una barra BC horizontal (radio R y largo 2L) sujeta a una manivela CD rígida (largo 1.5L), la cual está rotulada a una barra DF vertical (largo L, área A y coeficiente de dilatación térmica  α   )   que   es   sometida   a   una   diferencia   de temperatura   T Δ   . Producto de esto la barra vertical cambiará de longitud, la manivela girará en torno a C, y la barra horizontal sufrirá torsión. Todos los materiales tienen propiedades E y G. Se pide calcular a partir de los datos: a)   La fuerza en la barra DF vertical b)   El giro del extremo C de la barra horizontal c)   La   distribución   de   tensiones   ( ) r  τ   en cualquier sección de la barra horizontal.  L 2L L L  P 2GI   p GI   p  A   B   F D C E  φ  2 R T M L  , A E  α  T Δ  φ  2 R  B C D F  2L 1.5L
 
 --- Page 2 ---

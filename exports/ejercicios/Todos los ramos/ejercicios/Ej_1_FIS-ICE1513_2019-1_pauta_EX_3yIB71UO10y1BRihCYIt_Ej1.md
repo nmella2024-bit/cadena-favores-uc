@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/FIS-ICE1513_2019-1_pauta_EX_3yIB71UO10y1BRihCYIt.pdf"
+sourceFile: "FIS-ICE1513_2019-1_pauta_EX_3yIB71UO10y1BRihCYIt.pdf"
+---
+
 [6 puntos]  La rueda de la figura se asemeja a un disco de masa   M   y radio   R , y baja   sin deslizar   a lo largo de una tabla delgada de masa   m   y largo   L . La tabla est´ a apoyada en la esquina A y en el apoyo liso B, y forma un ´ angulo de 30   ◦   con la horizontal. a) Determine el valor de la fuerza de roce sobre la rueda [2 puntos]. b) Calcule el m´ ınimo coeficiente de roce est´ atico requerido para que la rueda baje por la tabla sin deslizar [2 puntos]. c) Si la rueda se suelta desde el reposo en el punto   B , ¿cu´ anto demorar´ a en llegar al extremo inferior de la tabla? [2 puntos]  Soluci´ on: a) Determine el valor de la fuerza de roce sobre la rueda [2 puntos].  3
 
 --- Page 12 ---

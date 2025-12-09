@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+sourceFile: "I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+---
+
 a)  Ejemplo medidas: trenes de cercanía, que sea más caro circular en vehículo privado, entre  otros.  2 pts diagrama  1,5 pts cada medida  b)  0,5 pts el diagrama o descripción de él  Corto plazo: relación tipo 1 A y T influyen a F [0,5 pts]. Ej : congestión vehicular   [1 pto]
 
 --- Page 5 ---

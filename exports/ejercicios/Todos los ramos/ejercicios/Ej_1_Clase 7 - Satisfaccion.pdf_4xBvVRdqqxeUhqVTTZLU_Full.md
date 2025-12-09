@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 7 - Satisfaccion.pdf_4xBvVRdqqxeUhqVTTZLU.pdf"
+sourceFile: "Clase 7 - Satisfaccion.pdf_4xBvVRdqqxeUhqVTTZLU.pdf"
+---
+
 --- Page 1 ---
 B IENESTAR   S UBJETIVO   G ENERAL  (“F ELICIDAD ”) / S ATISFACCIÓN  L ABORAL
 

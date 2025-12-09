@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Guía 1_4ATqpxMTcMxVvomUvsfx.pdf"
+sourceFile: "Guía 1_4ATqpxMTcMxVvomUvsfx.pdf"
+---
+
 Para estudiar el nado de dos especies distintas de peces se decide expresar la velocidad de desplazamiento horizontal de cada una V , como como funci´ on de la longitud del pez L, la frecuencia de oscillaci´ on de la cola f, y la densidad y viscosidad din´ amica del agua,   ρ   y   μ , respectivamente.  (a) Seleccionando como variables b´ asicas L, f, y   ρ , encuentre los par´ ametros adimensionales que permiten representar el problema. 4
 
 --- Page 5 ---

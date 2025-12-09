@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 3   En Brasil, los impuestos sobre las ventas actualmente funcionan mediante una tasa de impuesto “baja” acumulativa a lo largo del proceso de producción, lo que lleva a que el gobierno recaude más que el valor de la alícuota sobre el precio final del producto. Abajo va un ejemplo:  •   Una polera tiene una alícuota de 10%.  3
 
 --- Page 4 ---

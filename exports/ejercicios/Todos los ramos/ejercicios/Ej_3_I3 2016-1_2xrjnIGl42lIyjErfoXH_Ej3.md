@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+sourceFile: "I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+---
+
 1 punto por calcular correctamente las derivadas parciales de   f   de orden 1.  1 punto por calcular correctamente las derivadas parciales de   f   de orden 2.  2 puntos por obtener los 5 puntos cr´ ıticos de   f   .  1 punto por calcular correctamente el determinante del Hessiano   D .  1 punto por determinar la naturaleza de los puntos cr´ ıticos mediante el test de las segundas derivadas parciales.
 
 --- Page 4 ---

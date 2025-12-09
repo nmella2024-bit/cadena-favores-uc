@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+sourceFile: "I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+---
+
 4 puntos por plantear el sistema del m´ etodo de multiplicadores de Lagrange y encontrar los puntos   P 1   y   P 2  1 punto por descartar justificadamente el punto   P 2 .  1 punto por argumentar correctamente por que el punto   P 1   no es m´ ınimo.
 
 --- Page 6 ---

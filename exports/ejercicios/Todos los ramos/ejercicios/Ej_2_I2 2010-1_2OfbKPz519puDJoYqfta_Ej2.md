@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I2 2010-1_2OfbKPz519puDJoYqfta.pdf"
+sourceFile: "I2 2010-1_2OfbKPz519puDJoYqfta.pdf"
+---
+
 Se propone el uso de una fuente geot´ ermica (digamos, un Geiser), para generar electricidad por medio de una turbina de vapor. El dise˜ no propuesto es el de la figura. Agua a alta presi´ on   𝑃 1   = 2 . 0 𝑀𝑃 𝑎   y 180 ∘ C pasa a trav´ es de una v´ alvula de expansi´ on (proceso de Joule- Thomson, que mantiene la entalp´ ıa constante) a una c´ amara de evaporaci´ on ”flash”que forma una mezcla saturada vapor-agua a 400 𝑘𝑃 𝑎 . El l´ ıquido se deshecha, y el vapor entra a la turbina, saliendo a una presi´ on de 10 𝑘𝑃 𝑎   y una calidad   𝑥 3   = 0 . 9. Si queremos que la turbina produzca 1MW de potencia, calcule el flujo de agua geotermal requerido en kilogramos por hora.  1 2 3  Turbina Válvula de expansión  W   T .  Líquido saturado Cámara de evaporación flash Vapor sarurado Entrada de vapor desde el Geiser  ayuda : Considere que la turbina est´ a t´ ermicamente aislada y relacione la cantidad de vapor que entra a la turbina con la calidad a la salida del evaporador ”flash”. Obtenga los datos necesarios de las tablas termodin´ amicas que se adjuntan.  Soluci´ on  En la entrada de la valvula, (etiquetada con el n´ umero 1) el estado termodin´ amico del agua est´ a dado por la presi´ on   𝑃 1   = 2 . 0 𝑀𝑃 𝑎   y la temperatura   𝑇 1   = 180 𝑜 C. Usando las tablas de agua comprimida, encontramos que  ℎ 1   = 763 . 71 𝐾𝐽/𝐾𝑔.  Esta entalp´ ıa se conserva a trav´ es de la v´ alvula de expansi´ on, de donde sabemos que dentro de la c´ amara de evaporaci´ on,  ℎ 𝑐   =   ℎ 1   = 763 . 71 𝐾𝐽/𝐾𝑔.  La presi´ on dentro de la c´ amara la conocemos,   𝑃 2   = 400 𝐾𝑃 𝑎 , y sabemos adem´ as que el agua est´ a en un estado de mezcla saturada. Usamos las tablas de vapor para encontrar 4
 
 --- Page 5 ---

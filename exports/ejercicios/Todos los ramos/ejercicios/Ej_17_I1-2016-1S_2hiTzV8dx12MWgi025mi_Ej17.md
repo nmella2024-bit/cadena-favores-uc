@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 17"
+topic: "General"
+number: "17"
+originalUrl: "exports/downloads/Todos los ramos/I1-2016-1S_2hiTzV8dx12MWgi025mi.pdf"
+sourceFile: "I1-2016-1S_2hiTzV8dx12MWgi025mi.pdf"
+---
+
 En la figura se ilustran dos cuerpos, A y B, de pesos   P   A   = 20 N y   P   B   = 40 N, unidos por una alambre que pasa por una polea ideal. El bloque B est´ a apoyado en el suelo. Si se desprecia el peso del alambre y el rozamiento, ¿cu´ al es el m´ odulo de la fuerza que ejerce el suelo en el bloque B? (a) 20 N (b) 40 N (c) 60 N (d) 30 N (e) cero  18. En la figura se muestra la trayectoria que sigue una abeja al volar y el gr´ afico que describe la rapidez de la abeja en funci´ on del tiempo. Se˜ nale la afirmaci´ on correcta. (a) En el tramo AB, la resultante de fuerzas que act´ uan sobre la abeja es igual a cero. (b) En el tramo BC, el movimiento es rectil´ ıneo uni- forme (rapidez constante). (c) En el tramo CD no existe aceleraci´ on. (d) En el tramo BC, el m´ odulo y la direcci´ on de la velocidad no var´ ıan. (e) En el tramo AB, el movimiento es uniforme (rapidez constante) y tiene aceleraci´ on.  7

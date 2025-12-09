@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/1 Introducción.pdf_2IDHyUg7Ny8YmqGE2KzO.pdf"
+sourceFile: "1 Introducción.pdf_2IDHyUg7Ny8YmqGE2KzO.pdf"
+---
+
 --- Page 1 ---
 Tema 1: Introducción & Metodología  Análisis Económico & Experiencia Chilena Josefa Aguirre, Miriam Artiles, José Díaz Francisco Gallego, Macarena García & Rolf Lüders  Pontificia Universidad Católica de Chile  Primer Semestre, 2023 06-mar-2023 1/51
 

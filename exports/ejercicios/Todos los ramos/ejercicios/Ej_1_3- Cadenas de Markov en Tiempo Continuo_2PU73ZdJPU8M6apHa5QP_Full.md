@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/3- Cadenas de Markov en Tiempo Continuo_2PU73ZdJPU8M6apHa5QP.pdf"
+sourceFile: "3- Cadenas de Markov en Tiempo Continuo_2PU73ZdJPU8M6apHa5QP.pdf"
+---
+
 --- Page 1 ---
 Problemas Resueltos de Modelos Estocásticos  Marzo de 2005
 

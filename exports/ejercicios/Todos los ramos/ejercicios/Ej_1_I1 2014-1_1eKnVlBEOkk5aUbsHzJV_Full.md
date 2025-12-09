@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2014-1_1eKnVlBEOkk5aUbsHzJV.pdf"
+sourceFile: "I1 2014-1_1eKnVlBEOkk5aUbsHzJV.pdf"
+---
+
 --- Page 1 ---
 N  In  ombre : _  n struccion     Pon     No     La p     No     Se d     La p     No     Se l en l esto  _________ Pontific Escuela Departa  n es:  n er nombr descorche prueba co se permite descontará prueba tie se pueden leerá la pr a mitad d os interval ________ cia Univer a de Ingen amento de e y númer etear el cu nsta de 4 en resúme á 10 punto ene 120 + n utilizar l rueba al c de la prueb los. Si su d _________ rsidad Cat niería e Ingenierí IC S ro a todas uadernillo secciones enes de cl os por no 6 puntos laptops ni comienzo ba se volv duda pers ________ tólica de C ía Industr  Inte  C S 3213 G Sección Prof. Al s y cada un en ningún s. Debe co lases, ni d cumplir a y dura 12 celulares de clases verá a perm siste indiq ¡M ______   N Página   1  C hile rial y de S  e rroga  G estión 2 – 1 er   s lejandro na de las h n moment ontestar ca de casos, n alguna de 0 minutos s. s y despué mitir preg que el supu Muy Buena Numero L de   16  istemas  a ción  de Oper emestre Mac Ca hojas del to durante ada una de ni formula estas instr s. és se perm guntas en v uesto y co a Suerte! Lista de A  n   1  r aciones 2014 awley cuadernill e la prueb e las preg arios. rucciones mitirán pre voz alta. N ontinúe. Alumno: __ lo. a. guntas en e s. eguntas en No se per ________ el espacio n voz alta rmitirán pr _________ o asignado a. Posterio reguntas f _____ o. ormente fuera de
 

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_2ADzohDS7nYdbveUrAZJ.pdf"
+sourceFile: "Control 1.pdf_2ADzohDS7nYdbveUrAZJ.pdf"
+---
+
 --- Page 1 ---
 Pauta Control   1  EAF200 A   –   II Seme s tre 2020  Problema  a)   Para cada una de las siguientes funciones, grafique las correspondientes curvas de nivel.  1 a )   (20 puntos)   𝑓 ( 𝑥 ,   𝑦 )   =   6   −   3 𝑥   −   2 𝑦 , cuando la s   constantes son   𝑐   =   12   ;   𝑐   =   6   ;   𝑐   =   0 . En cada de  las tres   curvas de nivel, identifique dos puntos  2 a )   (20 puntos)   𝑓 ( 𝑥 ,   𝑦 )   =   √ 9   −   𝑥 2   −   𝑦 2 , cuando las constantes son:   𝑐   =   0   ;   𝑐   =   3 . En cada una de las  dos curvas de nivel, identifique un punto.  •   Con   𝑐   =   0   →   √ 9   −   𝑥 2   −   𝑦 2   =   0   →   9   −   𝑥 2   −   𝑦 2   =   0   →   𝑥 2   +   𝑦 2   =   9   =   3 2  Por lo tanto, la curva de nivel en este caso es una circunferencia de radio r = 3   Por lo tanto, para  cualquier punto a elegir, basta con asegurarse que el punto pertenezca a la curva de nivel (por ejemplo,  (3,0), (0,3), ( √ 3 ,   √ 6 ), (1,2 √ 2 ), todos sirven).   (O jo, es posible que la curva de nivel la expresen como  𝑦   =   ± √ 9   −   𝑥 2 , o bien   𝑥   =   ± √ 9   −   𝑦 2 )  •   Con   𝑐   =   3   →   √ 9   −   𝑥 2   −   𝑦 2   =   3   →   9   −   𝑥 2   −   𝑦 2   =   9   →   𝑥 2   +   𝑦 2   =   0   =   0 2  Por lo tanto, la curva de nivel en este caso es una circunferencia de radio r = 0, es decir, la curva de  nivel es el punto   (0,0)  (3,0)  (0,0)   ( 0 , 3 ) y(c=12) =   - 1,5x   -   3  y(c=6) =   - 1,5x  y(c=0) =   - 1,5x + 3  -11,0  -10,0  -9,0  -8,0  -7,0  -6,0  -5,0  -4,0  -3,0  -2,0  -1,0  0,0  1,0  2,0  3,0  4,0  5,0  6,0  7,0  8,0  9,0  10,0  11,0  -5   -4   -3   -2   -1   0   1   2   3   4   5 x y(c=12) y(c=6) y(c=0) -5   4,5   7,5   10,5 -4   3,0   6,0   9,0 -3   1,5   4,5   7,5 -2   0,0   3,0   6,0 -1   -1,5   1,5   4,5 0   -3,0   0,0   3,0 1   -4,5   -1,5   1,5 2   -6,0   -3,0   0,0 3   -7,5   -4,5   -1,5 4   -9,0   -6,0   -3,0 5   -10,5   -7,5   -4,5
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 7"
+topic: "General"
+number: "7"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2023-2_2tOp7ckEuhBpSxGhT5b3.pdf"
+sourceFile: "Examen 2023-2_2tOp7ckEuhBpSxGhT5b3.pdf"
+---
+
 Diagonalice ortogonalmente la matriz  C   =     1   1 1   1    .  Soluci´ on   Calculamos el polinomio caracter´ ıstico:  p ( λ ) =   1   −   λ   1 1   1   −   λ   = (1   −   λ ) 2   −   1 =   λ 2   −   2 λ   =   λ ( λ   −   2) .  Los valores propios son   λ   = 0 y   λ   = 2. Sean   E (0) y   E (2) los espacios propios asociados.  E (0) = Nul     1   1 1   1    = Nul     1   1 0   0    = Gen     1  − 1    . E (2) = Nul     1   −   2   1 1   1   −   2    = Nul     − 1   1 0   0    = Gen   1 1    Los vectores propios     1  − 1    y   1 1    son ortogonales.   Luego de normalizarlos, definimos las matrices  P   =     1 / √ 2   1 / √ 2  − 1 / √ 2   1 / √ 2    ,   D   =   0   0 0   2    que cumplen que  A   =   P DP   T   .  Puntaje  •   2 puntos por determinar valores propios correctos.  •   2 puntos por determinar vectores propios correctos.  •   1 punto por definir correctamente   P   .  •   1 punto por definir correctamente   D .
 
 --- Page 8 ---

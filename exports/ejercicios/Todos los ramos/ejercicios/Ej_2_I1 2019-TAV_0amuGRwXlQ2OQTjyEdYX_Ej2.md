@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I1 2019-TAV_0amuGRwXlQ2OQTjyEdYX.pdf"
+sourceFile: "I1 2019-TAV_0amuGRwXlQ2OQTjyEdYX.pdf"
+---
+
 Encuentre soluciones para dos, y s´ olo dos, de los siguientes PVI: (a)   y ′   =   2 yx 2 + y 3  x 3   ,   y (1) = 2. (b) (3 x 2 y 3   + 2 xy   +   y ) dx   + (4 x 3 y 2   + 2 x 2   + 2 x ) dy   = 0,   y (1) = 1. (c)   [ x   sin( y ) +   e −   cos( y ) ]   y ′   = 1,   y (1) = 0. (d) (2 x   sin( y ) cos( y ))   y ′   = 4 x 2   + sin 2 ( y ),   y (1) =   π/ 4.  Soluci´ on.  (a) El lado derecho de la EDO es homog´ eneo de grado 0, por lo que ponemos   u   =   y/x . Tenemos  xu ′   +   u   =   y ′   y entonces  xu ′   +   u   =  2 yx 2   +   y 3  x 3   = 2   y x   +   y 3  x 3   = 2 u   +   u 3  por lo que  u ′   −   u x   =   u 3  x  .  Esta ecuaci´ on es de Bernoulli, por lo que ponemos   v   =   u − 2 . Entonces   v ′   =   − 2 u − 3 u ′   y  − 1 2 u 3 v ′   −   u x   =   u 3  x   , v ′   + 2   v x   =   − 2  1  x   (1 punto)  Esta ecuaci´ on es lineal con factor integrante   ρ ( x ) = exp   (∫   2 /xdx )   =   x 2 .   Al multiplicar por   x 2  tenemos   d dx  ( vx 2 )   =   − 2 x , v ( x ) =   1  x 2  ( − x 2   +   C )   .  Finalmente, obtenemos  u ( x ) =   ±  √   x 2  C   −   x 2   , y   =   ± x  √   x 2  C   −   x 2   (1 punto)  Para cumplir la condici´ on inicial tomamos 2 =   y (1) =  √   1  C   −   1   ,   4( C   −   1) = 1   , C   =  5 4   (1 punto)  (b) Vemos si la ecuaci´ on es exacta. Tenemos   M   = 3 x 2 y 3   + 2 xy   +   y ,   N   = 4 x 3 y 2   + 2 x 2   + 2 x ∂ y M   −   ∂ x N   =   ( 9 x 2 y 2   + 2 x   + 1 )   −   ( 12 x 2 y 2   + 4 x   + 2 )   =   − 3 x 2 y 2   −   2 x   −   1 as´ ı que no es exacta, pero tenemos   ∂ y M   −   ∂ x N M   =   −   1  y  por lo que usamos el factor integrante exp   (∫   1 /ydy )   =   y .   (1 punto)  Renombramos   M   = 3 x 2 y 4   + 2 xy 2   +   y 2 ,   N   = 4 x 3 y 3   + 2 x 2 y   + 2 xy , y calculamos  F   =  ∫  M dx   =   x 3 y 4   +   x 2 y 2   +   y 2 x   +   g ( y )   ,   4 y 3 x 3   + 2 x 2 y   + 2 yx   +   g ′ ( y ) =   N , g ′   = 0   , g ( y ) =   C.  3
 
 --- Page 4 ---

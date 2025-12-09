@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Forma 3 I1_2zGU3EmH1O1jEbtpcmZP.pdf"
+sourceFile: "Forma 3 I1_2zGU3EmH1O1jEbtpcmZP.pdf"
+---
+
 --- Page 1 ---
 INTERROGACIÓN 1  1)   Respecto a las fuerzas intermoleculares, indica cuál de las siguientes  afirmaciones es   FALSA :  a)   Son atracciones de tipo electrostáticas.  b)   En fase condensada, el nitrógeno, N 2 , presenta interacción por fuerzas de  dispersión de London.  c)   En fase condensada, el monóxido de carbono, CO, presenta interacción  por puente de hidrógeno.  d)   El   sulfuro de hidrógeno ,   H 2 S,   presenta una menor temperatura de ebullición  que el agua, H 2 O.  e)   Mientras mayor sea la polari zabilidad de los átomos y/o moléculas, mayor  será la interacción por fuerzas de dispersión de London.  2) En base al diagrama de fases de dióxido de carbono, CO 2 , es   VERDADERO  afirmar:  a) A presión de 1 bar, CO 2   se puede encontrar en estado sólido, líquido y gaseoso.  b) En el punto C se produce la fusión de CO 2 .  c)   En el punto A, se encuentra el punto crítico de CO 2  d)   El CO 2   presenta dos puntos triples.  e)   En el punto B se encuentra el punto crítico de C O 2 .  3)   Según la celda de fluorita, CaF 2 , podemos afirmar:
 

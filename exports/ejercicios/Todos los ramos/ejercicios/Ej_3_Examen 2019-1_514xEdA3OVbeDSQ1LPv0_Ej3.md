@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2019-1_514xEdA3OVbeDSQ1LPv0.pdf"
+sourceFile: "Examen 2019-1_514xEdA3OVbeDSQ1LPv0.pdf"
+---
+
 Sean   V   subespacio de   M 2   definido por   V   =  {(   a   b c   d  )  |   a   +   b   +   c   = 0  }  y   T   :   M 2   →   P 2   una transformaci´ on lineal definida por  T  (   a   b c   d  )  =   − ax 2   + ( d   −   b ) x   + ( c   +   d )  a ) Determine una base para   V   .  b ) Determine la dimensi´ on de la Imagen de   V   , es decir   T   ( V   ) =   { T   ( v )   |   v   ∈   V   } .  Soluci´ on.  a )   V   =  {(   a   b c   d  )  |   a   +   b   +   c   = 0  }  =  {(   a   b c   d  )  |   a   =   − b   −   c  }  =  {(   − b   −   c   b c   d  )}  . Luego  V   =   Gen  {(   − 1   1 0   0  )  ,  (   − 1   0 1   0  )  ,  (   0   0 0   1  )}  y estos tres vectores son linealmente independientes, entonces  {(   − 1   1 0   0  )  ,  (   − 1   0 1   0  )  ,  (   0   0 0   1  )}  es una base para   V   .  b )   T   ( V   ) =   { T   ( v )   |   v   ∈   V   }   =  {  T   ( v )   |   v   =   b  (   − 1   1 0   0  )  +   c  (   − 1   0 1   0  )  +   d  (   0   0 0   1  )}  =  {  T  (  b  (   − 1   1 0   0  )  +   c  (   − 1   0 1   0  )  +   d  (   0   0 0   1  ))}  =  {  bT  (   − 1   1 0   0  )  +   cT  (   − 1   0 1   0  )  +   dT  (   0   0 0   1  )}  =   { b ( x 2   −   x ) +   c ( x 2   + 1) +   d ( x   + 1) }   .  Luego   T   ( V   ) =   Gen   { ( x 2   −   x ) ,   ( x 2   + 1) ,   ( x   + 1) } , falta analizar si estos vectores son li, para eso analizamos sus vectores coordenadas en la base canonica   { x 2 , x,   1 }     1   1   0  − 1   0   1 0   1   1      ∼     1   1   0 0   1   1 0   0   0     luego los dos primeros vectores son linealmente independientes, entonces   { ( x 2   −   x ) ,   ( x 2   + 1) }  es una base para   T   ( V   ) y as´ ı la dimensi´ on de   T   ( V   )es 2.
 
 --- Page 5 ---

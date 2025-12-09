@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2015-2_2cdXjilcjkRzzue3BF5g.pdf"
+sourceFile: "I2 2015-2_2cdXjilcjkRzzue3BF5g.pdf"
+---
+
 A-   (6 puntos)  Buscamos el equilibrio de usuario por lo que minimizamos respecto a los costos medios de cada arco. Según el primer principio de Wardrop, tendremos:  min 𝑍 = ∫   (50 + 𝑥)𝑑𝑥  𝑓12 0  + ∫   (20 + 𝑥)𝑑𝑥  𝑓13 0  + ∫   (30 + 2𝑥)𝑑𝑥  𝑓24 0  + ∫   (10 + 𝑥)𝑑𝑥  𝑓25 0  + ∫   (40 + 3𝑥)𝑑𝑥  𝑓34 0  + ∫   (2𝑥)𝑑𝑥  𝑓35 0  + ∫   (50 + 𝑥)𝑑𝑥  𝑓54 0  3 puntos.  Definimos las rutas:  Par 1-4  ℎ1 = 1 − 2 − 4  ℎ2 = 1 − 2 − 5 − 4  ℎ3 = 1 − 3 − 4  ℎ4 = 1 − 3 − 5 − 4
 
 --- Page 7 ---

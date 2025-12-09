@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 17 Variables Instrumentales II.pdf_4PYb8bErq85cPqQs2jDj.pdf"
+sourceFile: "Clase 17 Variables Instrumentales II.pdf_4PYb8bErq85cPqQs2jDj.pdf"
+---
+
 --- Page 1 ---
 ˇˇ  Econometr´ ıa I - EAE- 250-A  Estimaci ´ on con Variables Instrumentales Ezequiel Garcia-Lembergman  Instituto de Econom´ ıa - Pontificia Universidad Cat ´ olica de Chile 2023
 

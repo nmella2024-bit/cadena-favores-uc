@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Guía 10 (PB).pdf_3VnRuR7jy17LwdJq9Ltc.pdf"
+sourceFile: "Guía 10 (PB).pdf_3VnRuR7jy17LwdJq9Ltc.pdf"
+---
+
 --- Page 1 ---
 Introducción a la Microeconomía 2022-1  Guía #10: Clases 18 y 19  Tema I: Comente  a)   La curva de oferta de una empresa sólo depende de su costo marginal.  Falso, ya que también serán relevantes los costos medios variables.  b)   Determine si las siguientes situaciones provocarán un desplazamiento de la curva de   oferta/demanda   (y   en   qué   dirección),   o   un   cambio   sobre   la   cantidad ofrecida/emandada por lácteos.  i.   Un nuevo estudio demuestra posibles efectos dañinos para la salud de los lácteos.  La demanda por lácteos se desplazará hacia abajo/izquierda. Habrá una menor cantidad demandada para cada precio dado.  Asumiendo que la oferta no cambia, disminuirá el precio de equilibrio.  ii.   Una sequía afecta al país.  La oferta de lácteos se desplazará hacia arriba/izquierda. Habrá una menor cantidad ofrecida para cada precio dado.  Asumiendo que la demanda no cambia, aumentará el precio de equilibrio.  iii.   Aumenta la población de niños en el país.  La demanda por lácteos se desplazará hacia arriba/derecha. Habrá una mayor cantidad demandada para cada precio dado.  Asumiendo que la oferta no cambia, aumentará el precio de equilibrio.  iv.   Disminuye el precio del alimento para ganado.  La oferta de lácteos se desplazará hacia abajo/derecha. Habrá una mayor cantidad ofrecida para cada precio dado.  Asumiendo que la demanda no cambia, disminuirá el precio de equilibrio.  Tema II: Bien X 1  El bien X se produce en un mercado de competencia perfecta, cuya demanda es  𝑄 𝑑   = 200 − 𝑝,  donde   𝑄 𝑑   es la cantidad demandada del mercado y   𝑝 , el precio del bien.  En este mercado existen dos tipos de empresas: las empresas de tipo 1 y las de tipo 2. Todas las empresas son tomadoras de precios en el mercado de factores. Además, todas las  1   Para resolver este ejercicio se sugiere trabajar con fracciones.
 

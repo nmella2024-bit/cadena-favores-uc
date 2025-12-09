@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 4 Modelo Básico Con Intercambio 1.pdf_2qJsGe2AX78vpWcC3w8N.pdf"
+sourceFile: "Clase 4 Modelo Básico Con Intercambio 1.pdf_2qJsGe2AX78vpWcC3w8N.pdf"
+---
+
 --- Page 1 ---
 EAE1210 Introducci´ on a la Macroeconom´ ıa  Cap´ ıtulo 4: Modelo B´ asico con Intercambio Parte 1 Ver´ onica Mies  Instituto de Econom´ ıa Pontificia Universidad Cat´ olica de Chile  Segundo semestre 2022  Ver´ onica Mies   (IE-PUC)   EAE1210   II-2022   1 / 36
 

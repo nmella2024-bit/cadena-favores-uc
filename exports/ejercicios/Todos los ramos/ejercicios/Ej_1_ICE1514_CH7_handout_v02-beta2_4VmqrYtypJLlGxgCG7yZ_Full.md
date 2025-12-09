@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/ICE1514_CH7_handout_v02-beta2_4VmqrYtypJLlGxgCG7yZ.pdf"
+sourceFile: "ICE1514_CH7_handout_v02-beta2_4VmqrYtypJLlGxgCG7yZ.pdf"
+---
+
 --- Page 1 ---
 BORRADOR APUNTES DE CLASE Tomás Zegard Cap´ ıtulo 7  Din´ amica de cuerpos r´ ıgidos  Hasta ahora hemos estudiado a fondo la din´ amica de part´ ıculas (o cuerpos que pueden analizarse como part´ ıculas). En el caso de las part´ ıculas, basta con conocer su posici´ on para definir su estado actual. Los cuerpos pueden trasladarse (cambio de posici´ on), pero adem´ as pueden rotar. Es decir, en el caso de cuerpos la posici´ on no basta para definir su estado actual. Todos los cuerpos son tridimensionales 1 . Si un cuerpo es relativamente delgado y todos sus movimientos y rotaciones est´ an contenidos en el mismo plano del cuerpo; s´ olo entonces se puede hacer un an´ alisis plano (2D), como muestra la Figura 7.1. Un sistema r´ ıgido de part´ ıculas con vinculaciones se comporta y analiza como un cuerpo r´ ıgido: puede trasladarse y rotar. y x  Figura 7.1: Cuerpo “plano” que se traslada y rota.  7.1.   Momento (torque)  Las fueras que hemos estudiado hasta ahora tienden a mover un cuerpo en la misma direcci´ on en que est´ a aplicada la fuerza. Los   momentos , tambi´ en conocidos como   torque   o   momento torsor , tienden a rotar un cuerpo sobre alg´ un eje.  Recordatorio:  Los ingenieros civiles suelen referirse a este tipo de fuerza como   momento   y usan la letra   m . Los f´ ısicos en cambio, suelen llamar a la misma fuerza   torque   y emplean la letra   τ   . Igualmente, en el caso de los textos/libros de din´ amica: si el autor es m´ as cercano a la ingenier´ ıa usar´ a el t´ ermino   momento ; mientras que si es m´ as cercano a la f´ ısica usar´ a   torque . El profesor de esta secci´ on es un ingeniero civil (estructural), por lo que ´ el est´ a acostumbrado a usar la terminolog´ ıa  momento   (adem´ as que la secci´ on   ICE   es de ingenier´ ıa). No obstante, se espera que usted se familiarice con ambas terminolog´ ıas y evite confundir   momento   con   momentum .  1 Lo que es obvio al considerar que vivimos en un mundo tridimensional.  v2021.02–beta2   ICE1514 (Tom´ as Zegard)
 

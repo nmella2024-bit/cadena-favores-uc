@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Pauta Examen final Publicable.pdf_46SUlYOqMWHcnrThfZ9B.pdf"
+sourceFile: "Pauta Examen final Publicable.pdf_46SUlYOqMWHcnrThfZ9B.pdf"
+---
+
 ¿Con que país acaba de firmar Chile un acuerdo de Working Holiday?   (Fuente: Emol 24/06/24)  a.   Nueva Zelanda  b.   Portugal  c.   Noruega  d.   Islandia  e.   Canadá  6.   Fuerte polémicas se vienen produciendo entre el Ministro de Energía y el Banco Central debido al  impacto inflacionario de las alzas de la luz. ¿Cómo se llama el Ministro de Energía de nuestro país?  (Fuente: Emol 25/06/24)  a.   Esteban Valenzuela  b.   Albert Van Klaveren  c.   Nicolás Grau  d.   Diego Pardow  e.   Juan Carlos Muñoz  7.   ¿Cuál de las siguientes comunas es que la tiene la mayor oferta de departamentos con precios  que parten desde las 3,000 UF?   (Fuente: Emol 21/06/24)  a.   Macul  b.   Las Condes  c.   Nuñoa  d.   Cerrillos  e.   La Florida  8.   ¿Cómo se llama la heladería de nuestro país que fue elegida la mejor de Sudamérica y entre las 100  mejores del mundo?   (Fuente: Emol   21 /0 6 /24)  a.   Emporio La Rosa  b.   La Obra  c.   El Toldo Azul  d.   Tavelli  e.   Timaukel  9.   ¿En cuánto subieron las ventas del comercio durante el mes de mayo logrando su mayor alza en dos  años? (Fuente: Emol 26/06/24)  a.   5%  b.   8%  c.   12%  d.   15%  e.   20%
 
 --- Page 10 ---

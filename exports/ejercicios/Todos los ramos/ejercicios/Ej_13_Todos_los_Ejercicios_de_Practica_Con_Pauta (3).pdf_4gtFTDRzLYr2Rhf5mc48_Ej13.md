@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 13"
+topic: "General"
+number: "13"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 2   Supón que una empresa del sector privado quiere contratar a un empleado. El empleado es del tipo alto ( H ) con probabilidad   1 4   y es del tipo bajo ( L ) con probabilidad   3 / 4 , y estas probabilidades son de conocimiento común. Sin embargo, solo el empleado conoce su tipo: la empresa no. Supón que el tipo alto genera un ingreso de   θ H   = $10   a la empresa, mientras que el tipo bajo genera un ingreso de solo   θ L   = $2 . Supón además que el tipo alto tiene opción  125
 
 --- Page 126 ---

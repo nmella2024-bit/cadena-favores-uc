@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Capitulo 7.5 (1-50)_426vilagsMCuc79HCRoy.pdf"
+sourceFile: "Capitulo 7.5 (1-50)_426vilagsMCuc79HCRoy.pdf"
+---
+
 --- Page 1 ---
 Page 1 Capitulo 7.5 (1-50)
 

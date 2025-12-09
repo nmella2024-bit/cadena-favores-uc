@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2024-2_14eLunAbYK6BAJ8n3j0M.pdf"
+sourceFile: "I1 2024-2_14eLunAbYK6BAJ8n3j0M.pdf"
+---
+
 Suponga que el sistema   A x = 0   tiene como solución el conjunto          t       1 2 0  − 1        +   s       2  − 1 3 0        ;   t, s   ∈   R          (a) ¿Es       − 1 3  − 6  − 1        solución del sistema   A x = 0 ? (b) ¿Existe un vector   c   de modo que el sistema   Ax   =   c   tenga como solución el conjunto              − 1 3  − 6  − 1        +   t       1 2 0  − 1        +   s       2  − 1 3 0        ;   t, s   ∈   R          ?  Solución:  Observe que el vector       − 1 3  − 6  − 1        solución del sistema   A x   =   0   si y solo si existen   s   y   t   ∈   R  tales que           t   + 2 s   =   − 1 2 t   −   s   =   3 3 s   =   − 6  − t   =   − 1  de las últimas dos ecuaciones tenemos que   t   = 1   y   s   =   − 2 , pero con estos valores no se satisfacen las primeras dos ecuaciones, por lo tanto el vector no es solución de   Ax   = 0 . Para la segunda pregunta basta tomar   c = A       − 1 3  − 6  − 1      , ya que si  x   =       − 1 3  − 6  − 1        +   t       1 2 0  − 1        +   s       2  − 1 3 0        ,  tendremos que  Ax   =   A       − 1 3  − 6  − 1        +   A      t       1 2 0  − 1        +   s       2  − 1 3 0            =   A       − 1 3  − 6  − 1        + 0 =   c .
 
 --- Page 4 ---

@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2020-2_2GtK3yRZTdTwdDMOIkhr.pdf"
+sourceFile: "I2 2020-2_2GtK3yRZTdTwdDMOIkhr.pdf"
+---
+
 (7 puntos) Suponga que conduce un vehículo por una carretera en subida con una  pendiente del 3% con viento de cola (o viento a favor) de 40 km/h. Con esta información,  indique que resistencias enfrenta el vehículo, si le parece razonable que pueda despreci ar  alguna de ellas y si todos son opuestas a la dirección del vehículo o hay alguna que sea en  la misma dirección .

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/ICE1514_Taller02_SOL_v02_2McFJT0coKlhBQXr0bZy.pdf"
+sourceFile: "ICE1514_Taller02_SOL_v02_2McFJT0coKlhBQXr0bZy.pdf"
+---
+
 El paquete al momento de ser lanzado se encontrar´ a a altura   H   y continuar´ a brevemente la trayectoria del avi´ on; es decir:  u 0   =  {   0  H  }  y   ˙ u 0   =   v 0  { 1 0  }  Conocemos el vector de aceleraci´ on de la piedra, y luego integramos dos veces para obtener velocidad y aceleraci´ on:  ¨ u   ( t ) =  {   0  − g  }  ˙ u   ( t ) =  {   0  − g  }  t   +  { C 1 x  C 1 y  }  u   ( t ) =  {   0  − g  }   t 2  2  +  { C 1 x  C 1 y  }  t   +  { C 2 x  C 2 y  }  Usando las condiciones iniciales del problema, resulta:  ˙ u   ( t ) =  {   0  − g  }  t   +   v 0  { 1 0  }  y   u   ( t ) =  {   0  − g  }   t 2  2  +   v 0  { 1 0  }  t   +  {   0  H  }  v0.2 (2019-09-03)   ICE1514 – Taller 02 (Tom´ as Zegard)   P´ agina 3 de 5
 
 --- Page 4 ---

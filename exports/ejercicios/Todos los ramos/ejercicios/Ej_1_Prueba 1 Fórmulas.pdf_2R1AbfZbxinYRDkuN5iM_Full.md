@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1 Fórmulas.pdf_2R1AbfZbxinYRDkuN5iM.pdf"
+sourceFile: "Prueba 1 Fórmulas.pdf_2R1AbfZbxinYRDkuN5iM.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Católica de Chile   EAA2210 Teoría Financiera Escuela de Administración   Profesor: David Buchuk 2024-S1  PRUEBA 1  Tiempo: 120 minutos Total puntos: ## Código de Honor:   Como miembro de la comunidad de la Pontificia Universidad Católica de Chile, me comprometo a respetar los principios y normativas que la rigen.   Asimismo, me comprometo a actuar con rectitud y honestidad en esta evaluación. Adicionalmente declaro estar en condiciones de salud adecuadas para rendir esta evaluación y que me presento a ésta bajo mi responsabilidad.   En caso de sentirme mal o tener alguna complicación, deberé informarlo inmediatamente al ayudante o profesor en sala. Nombre Alumno:   Firma:  Instrucciones:  •   Recuerde escribir el número de pregunta que está respondiendo en cada hoja de respuestas. •   Las preguntas que sean contestadas con lápiz grafito (a mina) no tendrán derecho a recorec- ción. • Conteste cada pregunta en hojas separadas para facilitar la corrección. • No se pueden usar computadores, celulares, o relojes inteligentes durante la evaluación. • No se pueden consultar apuntes durante la evaluación. • Sí se puede usar calculadora durante la evaluación. •   Los números en los enunciados de las preguntas están expresados usando coma como sepa- rador de miles y puntos para decimales. Ejemplo: dos mil es 2,000 y un medio es 0.5.
 

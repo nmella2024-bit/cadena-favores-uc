@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/I1 2018-1_4wT3KK331IQlBRgsA65F.pdf"
+sourceFile: "I1 2018-1_4wT3KK331IQlBRgsA65F.pdf"
+---
+
 Considere la sucesi´ on de t´ ermino general   a n , definida por:  a 1   = 2 ,   a n +1   =   1  3   −   a n  ,   para todo   n >   1 .  a ) Pruebe que la sucesi´ on   a n   es decreciente.  b ) Asumiendo que la sucesi´ on dada satisface, 2   ≥   a n   ≥   3   −  √ 5  2   ,   para todo   n   ∈   N .  Deduzca que es convergente y calcule su l´ ımite. 7. Determine el intervalo y el radio de convergencia de la serie de potencias,  ∞ ∑  n =0  ( − 3) n x n  √ n   + 1   .  8.   a ) Determine la representaci´ on en serie de potencias de  f   ( x ) =   1  1   −   2 x ,   g ( x ) =   1  1 +   x  .  b ) Sea   h ( x ) =   f   ( x )   −   g ( x ). Verifique que para todo   x   ∈  (  − 1  2   ,   1  2  )  se tiene que  h ( x ) =  ∞ ∑  n =0  a n x n .  donde   a n   = 2 n   −   ( − 1) n  c ) Pruebe que, para   x   ∈  (  − 1  2   ,   1  2  )  ∞ ∑  n =0  a n  n   + 1   x n +1   =   −   ln[(1 +   x ) √ 1   −   2 x ] .  TIEMPO: 120 MINUTOS. 2
 
 --- Page 3 ---

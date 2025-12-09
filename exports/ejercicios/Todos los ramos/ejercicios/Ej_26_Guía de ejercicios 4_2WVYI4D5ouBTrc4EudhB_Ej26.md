@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 26"
+topic: "General"
+number: "26"
+originalUrl: "exports/downloads/Todos los ramos/Guía de ejercicios 4_2WVYI4D5ouBTrc4EudhB.pdf"
+sourceFile: "Guía de ejercicios 4_2WVYI4D5ouBTrc4EudhB.pdf"
+---
+
 Considere un modelo combinado de elección de horario y modo (donde los individuos eligen  primero a qué hora viajar y luego en qué modo viajar) con dos alternativas horarias (punta   y  fuera de punta) y dos alternativas modales (auto y metro). Ambas decisiones son modeladas  mediante modelos Logit. El parámetro de escala para el modelo de elección de horario de viaje  es 0,05 y el parámetro de escala para el modelo de elección de modo d e viaje es 0,1. Los costos  de viaje son:  Punta   Fuera de Punta  Auto   40   20  Metro   30   30  De acuerdo al modelo, ¿qué proporción de los viajes se realizarán en período punta y en  período fuera de punta? ¿Qué proporción se realizará en auto y en metro?  R espuesta :  /   0,731 metro   Punta P   =   /   0, 269 metro   FdP P   =  0,622 FdP P   =   0, 443 metro P   =  26 . Considere un modelo combinado de elección de tasa de motorización ( p ), destino ( d ) y modo  ( m ), como el del Taller 3, con las siguientes car acterísticas:  -   La elección de tasa de motorización corresponde a un   modelo Logit Binomial con  parámetro de escala  γ   , con dos opciones: tener o no tener auto.  -   La elección de destino corresponde a un modelo Logit Multinomial con pará metro de  escala  β   , con cinco opciones macrozonales: centro, oriente, poniente, norte y sur.  -   La elección de modo corresponde a un modelo Logit Jerárquico, donde el bus y metro  están correlacionados, pero el auto y la caminata son in dependientes.   El   parámetro de  escala  λ   define la   elección   Multinomial   entre auto, caminata y transporte público ;  mientras que el parámetro de escala  α   define la elección Binomial entre bus y metro.  Cada al ternativa está caracterizada por una utilidad   pdm V   igual para todos los individuos.
 
 --- Page 9 ---

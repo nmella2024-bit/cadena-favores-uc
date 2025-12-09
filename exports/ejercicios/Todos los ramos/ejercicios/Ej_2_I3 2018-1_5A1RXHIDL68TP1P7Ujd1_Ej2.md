@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I3 2018-1_5A1RXHIDL68TP1P7Ujd1.pdf"
+sourceFile: "I3 2018-1_5A1RXHIDL68TP1P7Ujd1.pdf"
+---
+
 [25 puntos]   Considere que existen   M   grupos diferentes de personas que viajan en auto, denota- dos por   m   = 1 ,   2 , ..., M   , que usan de manera conjunta una cierta red de transporte. Cada grupo está representado por una función de demanda inversa   D m ( Y m ) , donde   Y m   es el número de viajes realizados por el grupo   m .   El costo generalizado de viaje que experimenta cada individuo del grupo   m   es constante y está dado por   c m . Suponga que cada viaje contamina el ambiente y que el costo total por contaminación esta dado por la función   E ( Y 1 , Y 2 , ..., Y M   ) . (a) [5 puntos] Plantee la función de bienestar social y explique cada término. (b) [5 puntos] Encuentre la tarifa para cada grupo,   τ m , que maximiza el bienestar social. (c) Suponga ahora que el planificador no puede diferenciar las tarifas y debe cobrar una tarifa común para todos los grupos, independiente de cuánto contaminan,   τ   .   Para encontrar la tarifa de segundo-mejor: i. [5 puntos] Plantee el problema de maximización y encuentre las condiciones de primer orden. ii. [5 puntos] Encuentre la regla de tarificación   τ   que maximiza el bienestar social. iii. [5 puntos] Interprete la regla de tarificación.

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/I1/ICS 3313-4 Interrogación 01 05.09.17 PAUTA_1SLzx8K0Hi3sBlxPocfXS1gPBPuMf5dBG_0NoVXuNTWOBwJ8VAaaXG.pdf"
+sourceFile: "ICS 3313-4 Interrogación 01 05.09.17 PAUTA_1SLzx8K0Hi3sBlxPocfXS1gPBPuMf5dBG_0NoVXuNTWOBwJ8VAaaXG.pdf"
+---
+
 Lo han contratado en un importante estudio de abogados como especialista de planificación estratégica. La empresa está enfocada únicamente en Financiamento y mercado de Capitales (área económica). Ellos le piden proponer la misión y visión de la empresa y dos alternativas de estrategia. Explique la relevancia de estas definiciones para esta empresa. (20 puntos)  a.   Misión:   Definición: razón de ser de la empresa  b.   Visión:   Definición: objetivo a largo plazo de la empresa que se obtendrá al seguir una estrategia seleccionada  Relevancia misión y visión : definen la base de la compañía, son el porqué y para qué existe dicha empresa. Definen a la organización y por cierto en base a ellas es que las organizaciones se desarrollan. Son parámetros fijos y funcionan como unificadores sobre todo lo que respecta a la organización.   (10 puntos)  c.   Estrategia:  i.   Definición: es el camino conceptual por el cual la empresa llegará desde el presente al futuro, desde la situación actual a la situación deseada.  ii.   Relevancia : alineación empresarial, camino a seguir, conceptualización para alcanzar el o los objetivos.   (10 puntos)  7.   Usted está en búsqueda de su primer trabajo y necesita prepararse para su primera entrevista. Realice un análisis FODA y muestre dos estrategias que se desprenden de este análisis que le servirán para esta reunión (explique claramente cómo las encontró). (20 puntos)  a.   F y D: deben estar claramente descritos como interno, es decir, características del alumno   (5 puntos)  b.   O y A: deben estar claramente descritos como externos, es decir, características del mercado   (5 puntos)  c.   Estrategia 1 y Estrategia 2: deben ser conceptuales y alineadas a un objetivo, y la explicación de cómo se les ocurrieron deberían venir explicadas de la técnica MAXI MAXI, MINI MAXI, MAXI MINI.   (10 puntos)
 
 --- Page 4 ---

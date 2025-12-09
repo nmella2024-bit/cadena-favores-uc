@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Vicho García.pdf_2SsMM6Kqw9RmCyMl8r4o.pdf"
+sourceFile: "Vicho García.pdf_2SsMM6Kqw9RmCyMl8r4o.pdf"
+---
+
 --- Page 1 ---
 1  Contabilidad I  Profesora:   Natalia Pierattini  Vicente García Casassus  Capítulo I   Pg. 2  Capítulo II   Pg. 8  Capítulo III   Pg. 13  Capítulo IV   Pg. 19  Capítulo V   Pg. 27  Capítulo VI   Pg. 33  Capítulo VII   Pg. 50  Capítulo VIII   Pg. 58  Capítulo IX   Pg. 62  Capítulo X   Pg. 66  Las letras en rojo representan   los cambios que está incorporando la NIIF.  Este material está basado en el libro   Contabilidad financiera para dirección de empresas ,  Julio Gálvez B.  Las letras ennegrecidas corresponden a conceptos nuevos.  Cuando estés en evaluación no mires el reloj, te   estresará y no podrás pensar claramente.  Contabilidad se estudia mucho mejor en aplicación, a veces es más fácil entender un  término en la práctica que en la teoría.
 

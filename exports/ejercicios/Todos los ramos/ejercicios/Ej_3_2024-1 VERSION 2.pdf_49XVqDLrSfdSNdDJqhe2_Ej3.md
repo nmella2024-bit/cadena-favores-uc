@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/2024-1 VERSION 2.pdf_49XVqDLrSfdSNdDJqhe2.pdf"
+sourceFile: "2024-1 VERSION 2.pdf_49XVqDLrSfdSNdDJqhe2.pdf"
+---
+
 a )   (8 ptos)   Determine los valores de m´ ınimo absoluto (m´ ınimo global) y m´ aximo absoluto (m´ aximo global) de  f   ( x ) =   x   + 1  x 2   + 3 en el intervalo [0 ,   2].  b )   (8 ptos)   Suponga   y ( x ) es una funci´ on derivable y que satisface la identidad 1  y   =   y   arcsin( x ) +   x   + 1 en un intervalo abierto alrededor de   x   = 0. Determine el valor de   y ′ (0).  Soluci´ on .  a ) Para determinar los valores extremos (m´ ınimo y m´ aximo absoluto) el   M´ etodo del intervalo cerrado . Aplicando regla del cociente tendremos que  f   ′ ( x ) =  ( x   + 1) ′ ( x 2   + 3)   −   ( x 2   + 3) ′ ( x   + 1)  ( x 2   + 3) 2   =   − ( x   + 3)( x   −   1)  ( x 2   + 3) 2  Dado que   f   est´ a definida sobre el intervalo [0 ,   2] podemos notar que   f   posee un ´ unico n´ umeros cr´ ıticos. De este modo, los valores extremos para   f   (por ser continua y derivable) se dan en los extremos del intervalo:  f   (0) =  1  3   valor de m´ ınimo absoluto  f   (1) =  2  4  =  1  2   valor de m´ aximo absoluto  f   (2) =  3  7  b ) Evaluando la ecuaci´ on en   x   = 0 tendremos que 1  y (0)  =   y (0) arcsin(0) + 0 + 1   ⇔   y (0) = 1 Ahora, derivando impl´ ıcitamente la ecuaci´ on tendremos  −   y ′  y 2   =   y ′   arcsin( x ) +   y  √ 1   −   x 2   + 1 que al ser evaluada en   x   = 0 nos da una ecuaci´ on para   y ′ (0):  −   y ′ (0)  y 2 (0)  =   y ′ (0) arcsin(0) +   y (0)  √ 1   −   0 2   + 1   ⇔   − y ′ (0) = 2 Por lo tanto,   y ′ (0) =   − 2.  Evaluaci´ on.  C1(a).   Asignar   (1 pto)   por determinar ( x   −   1) ′ .  C2(a).   Asignar   (1 pto)   por determinar ( x 2   + 3) ′ .  C3(a).   Asignar   (1 pto)   por determinar   f   ′ ( x ). Este puntaje se asigna´ a siempre y cuando se cumplen los criterios   Criterio C1(a)   y   C2(a) .
 
 --- Page 5 ---

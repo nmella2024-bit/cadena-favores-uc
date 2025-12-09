@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 14"
+topic: "General"
+number: "14"
+originalUrl: "exports/downloads/Todos los ramos/PROBLEMAS MOMENTUM LINEAL_2gFFp8LjLVgmVMfBRMvI.pdf"
+sourceFile: "PROBLEMAS MOMENTUM LINEAL_2gFFp8LjLVgmVMfBRMvI.pdf"
+---
+
 Problema de masa variable: Tirando una cuerda enrollada (P. 4.21, Kleppner and Kolenkow). Considere una cuerda masiva de densidad lineal de masa   λ   kg/m, la cual est´ a enrollada sobre una mesa horizontal. Uno de sus extremos es tirado verti- calmente con rapidez constante   v 0 .  a)   Encuentre la fuerza ejercida sobre el extremo de la cuerda como funci´ on de la altura   y .  b)   Compara la potencia entregada a la cuerda con la tasa de cambio de la energ´ ıa mec´ anica total de la cuerda.  Soluci´ on: a)   Este es un problema unidimensional. Tomaremos la direcci´ on positiva (para referir velocidad, moemntum, fuerza) a la direcci´ on vertical hacia arriba. El moemntum de la cuerda (del segmento de cuerda que est´ a levantado), digamos   P   ( t ), est´ a dado por la masa del segmento por su velocidad, i.e.,  P   ( t ) =   λ y v 0 ,   (61) en que hemos usado que la masa del segmento levantado es la densidad por el largo del segmento. De (61) tenemos que  dP dt   =   λ v 0  dy dt   =   λ v 2 0   .   (62) Por otra parte, las fuerzas que est´ an actuando sobre la cuerda son   F   (hacia arriba) y el peso del segmento   λ y g   (hacia abajo). Entonces, usando la ecuaci´ on de Newton, 20
 
 --- Page 21 ---

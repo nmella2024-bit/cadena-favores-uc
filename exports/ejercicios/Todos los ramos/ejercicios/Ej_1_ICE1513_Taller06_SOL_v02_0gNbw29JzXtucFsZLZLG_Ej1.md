@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/ICE1513_Taller06_SOL_v02_0gNbw29JzXtucFsZLZLG.pdf"
+sourceFile: "ICE1513_Taller06_SOL_v02_0gNbw29JzXtucFsZLZLG.pdf"
+---
+
 Se comienza por un   Diagrama de cuerpo libre   (DCL) de la part´ ıcula como muestra la Figura 4. Es importante notar que la tensi´ on que recibe la part´ ıcula por parte del resorte tiene relaci´ on con el estiramiento del mismo. Gracias a la 2 a   ley de Newton tenemos que: T k ^ e ^ r   W l   0  Δ l r  θ  Figura 4: Diagrama de cuerpo libre del p´ endulo circular junto a la geometr´ ıa del resorte. v0.2 (2018-09-16)   ICE1513 – Taller 06 (Tom´ as Zegard)   P´ agina 2 de 5
 
 --- Page 3 ---

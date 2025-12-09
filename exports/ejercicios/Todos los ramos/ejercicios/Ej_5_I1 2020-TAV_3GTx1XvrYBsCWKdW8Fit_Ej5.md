@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I1 2020-TAV_3GTx1XvrYBsCWKdW8Fit.pdf"
+sourceFile: "I1 2020-TAV_3GTx1XvrYBsCWKdW8Fit.pdf"
+---
+
 Sea   h   la función definida por   h ( x ) =   f   ( √ x   + 1) . Determine   h ′ (1)   si se sabe que   f   es derivable en   R   y que   f   ′ (2) = 1 .  Solución:  Observe que como   h   es una función derivable y por composición de funciones, obtenemos  h ′ ( x ) =   f   ′ ( √ x   + 1) .   1 2 √ x .  Luego   h ′ (1) =   f   ′ (2) . 1 2   =   1 2   .  Distribución de puntajes:  En cada inciso la distribución es (3 puntos) Por regla de la cadena (2 puntos) Por derivar la raíz (1 puntos) Por valor final

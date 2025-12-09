@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+sourceFile: "Examen.pdf_4KpB0ZxY0EfScD4GEbtk.pdf"
+---
+
 (14 puntos)  Suponga que existen sólo dos países, Singapur y Canadá. Ambos pueden producir  los únicos dos bienes que existen; cobre y autos. Para producir estos, sólo se  necesitan unidades de trabajo (trabajadores). Tanto Canadá como Singapur tienen  100 trabajadores cada uno.  En un día, cada trabajador en Canadá puede producir un máximo de 3 toneladas de  cobre o 6 autos; mientras que en Singapur un trabajador puede producir 12 autos o  2 toneladas de cobre.  a)   (2 puntos) Grafique las FPP de cada país  b)   (4 puntos) ¿Quién tiene ventajas absolutas en la producción de cada bien? ¿Y  ventajas comparativas? Indique cuál es   el costo de oportunidad de   cada  país   de producir   autos y cobre .     Ventajas absolutas: Canadá en un día puede producir 300 ton de cobre o 600 autos.  Singapur puede producir 200 y 1200 respectivamente. Canadá tiene ventajas absolutas en  la producción de cobre y Singapur en la producción de autos.     El costo de oportunidad de producir autos es de 2 ton de cobre para Canadá y de 0,5 ton  de cobre para Singapur. Luego Singapur tiene ventaja comparativa en la producción de  autos; y Canadá tiene ventaja comparativa en la producción de cobre (los costos de  oportunidad son 0,67 y 1,5 autos para Canadá y Singapur respectivamente).  200  1200  300  600  SINGAPUR  CANADÁ COBRE   COBRE  AUTOS   AUTOS  1  -   1/6  2   6
 
 --- Page 2 ---

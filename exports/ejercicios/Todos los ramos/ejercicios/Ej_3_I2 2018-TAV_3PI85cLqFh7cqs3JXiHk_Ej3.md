@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-TAV_3PI85cLqFh7cqs3JXiHk.pdf"
+sourceFile: "I2 2018-TAV_3PI85cLqFh7cqs3JXiHk.pdf"
+---
+
 2 puntos por parametrizar la curva incluido el intervalo en donde est´ a definida.  2 puntos por calcular   − →  F   ( γ ( t ))   ·   γ ′ ( t ).  2 puntos por calcular la integral de l´ ınea.
 
 --- Page 4 ---

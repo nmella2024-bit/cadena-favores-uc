@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_2Nwvcg9aGmVZXRDPdu0Q.pdf"
+sourceFile: "Prueba 1.pdf_2Nwvcg9aGmVZXRDPdu0Q.pdf"
+---
+
 (2.0 pts.)  a)   (1.0 pts.) La figura siguiente muestra el mapa de posicionamiento de dos dimensiones en el caso  infiniti G20. Responda ,   sólo en relación a   la figura que se presenta     (0.5 pts.) ¿Qué atributos valora el segmento 2? ¿Y cuál rechaza? Explique  Valora:   Espacioso  Rechaza: Deportivo     (0.5 pts.) ¿Qué atributos debiera mejorar el nuevo diseño de G20 para conquistar el  segmento3? Explique  Atractivo   (izquierda abajo)  b)   (1 pts.) Un estudio realizado por una Municipalidad en Santiago mide las evaluaciones que asig-  nan los vecinos a distintos atributos de servicio que tiene su barrio. Un análisis de factores se  muestra en las tablas 1 y 2 a continuación.     (0.5 pts.) ¿Es buena la solución de dos segmentos? Explique  Varianza Total: 54%, podría ser un poco mejor  Comunalidad Mínima: 25% definitivamente se puede mejorar  Número de Factores: 2 muy bien  Interpretación: Muy Bien.  Hay espacio para mejorar
 
 --- Page 7 ---

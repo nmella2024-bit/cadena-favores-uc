@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Interrogaciones Tomas Reyes/Finanzas 2023-1 Pauta Examen_13qarrryJaT3OVwyhZHbMCNMTwb4jjc5a_0L3vlbuDPeF1dUClYv9K.pdf"
+sourceFile: "Finanzas 2023-1 Pauta Examen_13qarrryJaT3OVwyhZHbMCNMTwb4jjc5a_0L3vlbuDPeF1dUClYv9K.pdf"
+---
+
 [ 20   pts.]  Ud. tiene   hoy   $10   millones ( MM )   y   debe   decidir   en qué invertirlos,   con el objetivo de  financiar   parte de sus estudios de postgrado   en 6 años más . Ud. sabe que el dólar vale hoy  $ 8 00 y que su birá   3 %   anual compuesto anual (ACA) . También sabe   que la UF vale hoy  $ 36. 000 y   que   subirá   4 %   ACA .   Suponga   que tiene disponibles las   siguientes alternativas de  inversión.  a)   [3   pts.]   Un depósito en pesos que   renta   un 9%   ACA  b)   [ 3   pts.]   Un depósito en dólares que   renta   un 5% ACA  c)   [ 4   pts.]   Un depósito en   UF que renta un   6% ACA  d)   [ 3   pts.]   Un depósito en pesos que   renta un   8 , 5% anual   compuesto mensual  e)   [ 4   pts.]   Un depósito en dólares que   renta un   4 , 5% anual compuesto trimestralmente  f)   [ 3   pts.]   Un depósito en   UF que renta un   6%   anual simple  Calcule para cada alternativa cuánto obtendría al final del año 6 si invierte   hoy los   $10MM .  a)  ( 2 p untos por plantear bien el problema, 1 punto por resultado correcto )  10   𝑀𝑀   ∗   ( 1 , 09 ) 6   =   $16 , 77100   𝑀𝑀   =   $16 . 771 . 001  b)  Transformamos los pesos a dólares:  ( 1 punto por convertir pesos a dólares, 1 punto por plantear bien el problema, 1 punto  por resultado   correcto )
 
 --- Page 2 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/I2 2016-2_0Y6XQu5Pqmc3kbzJuhYc.pdf"
+sourceFile: "I2 2016-2_0Y6XQu5Pqmc3kbzJuhYc.pdf"
+---
+
 1.   Motivación y sentido del trabajo  a.   (5 Puntos) En el capítulo 11 del texto guía se describieron distintos modelos  de motivación. El m odelo de McLelland, en particular, se basa en las necesidades  sociales de la persona que pueden ser tres: necesidad de logro, necesidad de  poder, necesidad de afiliación (también vimos esto en clases). Con respecto a los  trabajadores de Uber, ¿qué tipo de   necesida d es personales buscaría en los  conductores?¿Y para el caso de Lyft?, ¿para el caso del CEO de Lyft?.  Fundamente sus respuestas.  Respecto a distintos tipos de motivación de McLelland, hay personas con mayor  necesidad de logro, mayor necesidad de poder y mayor necesidad de afiliación.  En un conductor de Uber se buscaría necesidad de logro, porque busca ganar dinero  rápidamente. (1.6 7 pts)  En un conductor de Elif necesidad de afiliación porque cultura es distinta, donde se  promueve un ambiente de cooperación, con una relación mucho más cercana entre los  conductores y pasajeros, lo cual es mucho más adecuado al carpooling que propone  L yft. (1.67 pts)  En el caso del CEO, no puede ser una persona con necesidad de afiliación, ya que  como se dijo en clases estos son malos CEO’s, es decir se busca la necesidad de logro  para llevar adelante la compañí a y cumplir las metas propuestas para est a.  (1.67 pts)  Se espera que cada respuesta cuente con una correcta justificación, de no tener una  correcta justificación obtienen   0 puntos .  b.   (5 Puntos) En el texto de Doug Chung “How to really motivate salespeople”  (HBR, 2015) se dan una serie de reco mendaciones sobre cómo motivar a una  fuerza de ventas. Imagine que usted está a cargo de Uber Chile, y le piden  expandir y aumentar las ventas del país. Para esto, decide nombrar subgerentes  en todas las grandes ciudades de Chile. ¿Cómo estructuraría el es quema de  compensación de estos subgerentes? ¿En qué aspectos formales y sutiles se  basaría?  Texto de Max Chang, al final del texto hay algunos tips sobre cómo poder animar a  una fuerza laboral que tiene que ver con bonos, sincronía de bonos, comunicar algo  sencillo y comunicable, que sea justo  Esquema:
 
 --- Page 15 ---

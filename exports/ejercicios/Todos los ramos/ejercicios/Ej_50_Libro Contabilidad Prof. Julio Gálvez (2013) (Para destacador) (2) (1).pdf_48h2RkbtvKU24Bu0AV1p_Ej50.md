@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 50"
+topic: "General"
+number: "50"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 000   120.000   180.000   ?   (50.000)* (año 2000) Dividendos declarados   20.000   75.000   ?   40.000   ? y pagados (año 2000) Utilidad retenidas al 31/12/2000   ?   500.000   450.000   90.000   10.000  *   Pérdida neta.  8.   La Compañía Risen fue organizada como empresa el 1 ro  de enero de 1999.   Al término del año, la compañía aún no había contratado a un contador, pero un empleado que era "bueno para los números" preparó los informes que se presentan más adelante, los que, a juicio del empleado, serían los estados financieros de la empresa.  Se Pide:  Los estados financieros preparados por el empleado tienen algunos ítemes cuyos nombres y clasificación son incorrectos, por lo cual a usted se le pide preparar el Balance al 31/12/99 y el Estado de Resultados del año 1999 que contenga nombres adecuados para las distintas cuentas y las clasificaciones correctas (nota: los números están bien, excepto los totales.   Lo incorrecto de los totales se debe a errores de clasificación de algunas cuentas). Nota: Lo números que aparecen entre parénesis (……), corresponden a valores que se están   restando .
 
 --- Page 100 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I1-2016-2S_4UfQAszpXONhujN6IfTl.pdf"
+sourceFile: "I1-2016-2S_4UfQAszpXONhujN6IfTl.pdf"
+---
+
 En t´ erminos de la altura   h B   y la rapidez   v B   determinadas en las preguntas anteriores, ¿cu´ al es la distancia horizontal desde el punto de lanzamiento ( R ) a la cual el misil se estrella con el suelo? a)   R   =   v 2  B  2 g  [  1 +  √  1 +  4 gh B  v 2  B  ]  b)   R   =   v 2  B  g  [  1 +  √  1 +  4 gh B  v 2  B  ]  c)   R   =   v 2  B  g  [  1 +  √  1 +  2 gh B  v 2  B  ]  d)   R   =   v 2  B  2 g  [  1 +  √  1 +  8 gh B  v 2  B  ]
 
 --- Page 4 ---

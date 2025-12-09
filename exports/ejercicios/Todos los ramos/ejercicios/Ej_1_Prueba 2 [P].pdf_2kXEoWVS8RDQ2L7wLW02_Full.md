@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2 [P].pdf_2kXEoWVS8RDQ2L7wLW02.pdf"
+sourceFile: "Prueba 2 [P].pdf_2kXEoWVS8RDQ2L7wLW02.pdf"
+---
+
 --- Page 1 ---
 a  bi   1   b  y  Ff   a   vi   bi  r  1   5  HH  ja anticipa   ya aceptará en   tez   cualquier   oferta   tal   que  1   bi   Y   bi   Ea  Por   lo   tanto   ya   ofrece   de   esas   alternativas  la   q   maximizar   su   utilidad   es   dear  μ   Es  anticipa   ya   rechazará   cualquier oferta   menor   a  3  Por   lo tanto   y   ofrece   bi   1   b   tlf  Ya   acepta   bi   1   b   tlf   en   f   1  Eps   acuerdo   en   E   1   sobre   la   protesta   bi   1   b  tal  Ataran   En   b   Ii   y   Iii   como   algunos   pasos   son   iguales   al  inciso   a   pueden   no   repetirlo   si   indican   bien   q   x   paso   es   el  mismo   por   ejemplo   usando   las   indicaciones   de no   rojos
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_2U8trlr0auTWzgbTP7iR.pdf"
+sourceFile: "Prueba 2.pdf_2U8trlr0auTWzgbTP7iR.pdf"
+---
+
 [ 20 puntos ]   Eficiencia de Mercado  a)   (5 puntos) La administradora de fondos S&V le ha ganado históricamente al mercado consis- tentemente. Hasta ahora, ningún otro inversionista ha podido descifrar el secreto de S&V . Sin embargo, hace un año, S&V reveló su fórmula de inversión en una entrevista publicada en el diario Financiero. Desde ese entonces, S&V no ha logrado ganarle al mercado con esta fórmula. ¿Por qué? b)   (5 puntos) El siguiente gráfico muestra los retornos anormales de firmas que anuncian inversiones para reducir sus emisiones en sus procesos productivos. ¿Es esta evidencia consistente con la eficiencia de mercado, por qué si o no?  c)   (5 puntos) Considere un mercado de capitales eficiente. Suponga que usted ha observado que puede predecir las utilidades de las firmas chilenas usando el tipo de cambio.   ¿Podría usted predecir los cambios en los precios de las acciones de la firma usando el tipo de cambio? Explique por qué si o no. d)   (5 puntos) El 18 de agosto del año 2022, un inesperado fallo de la Corte Suprema obligó a las isapres a devolver millonarias sumas a sus afiliados.   Los inversionistas no deberían comprar las acciones de isapres luego del anuncio dado que esto causará retornos anormales negativos. Comente. 10
 
 --- Page 11 ---

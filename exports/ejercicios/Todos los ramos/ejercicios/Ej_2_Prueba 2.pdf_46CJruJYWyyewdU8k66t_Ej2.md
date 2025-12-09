@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_46CJruJYWyyewdU8k66t.pdf"
+sourceFile: "Prueba 2.pdf_46CJruJYWyyewdU8k66t.pdf"
+---
+
 (a)   T M S   =   K/L , por lo que reemplazando   K   =   Lw/r   en funci´ on de producci´ on y despejando   L   obtenemos   L ∗   =   q 2  A 2  √ r  √ w   , y as´ ı   K ∗   =   q 2  A 2  √ w  √ r   y   C ∗   = 2   q 2  A 2  √ wr . Reemplazando   w   =   r   = 1 y agregando costo fijo se llega al resultado. (b) La empresa produce si su excedente es mayor o igua que cero (es decir, si   p   es mayor o igual que el   CM e , considerando costos evitables).   Luego, la condici´ on para que no cierre es   CM g   ≥   CM e CM g   =   4 q A 2  CM e   =   2 q A 2   +   50  q  4 q A 2   ≥   2 q A 2   +   50  q  2 q 2  A 2   ≥   50  q   ≥   5 A  A 2 p  4   ≥   5 A P   ≥   20  A  3
 
 --- Page 4 ---

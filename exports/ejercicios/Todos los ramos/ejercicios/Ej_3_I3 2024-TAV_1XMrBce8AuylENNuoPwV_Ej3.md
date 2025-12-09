@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2024-TAV_1XMrBce8AuylENNuoPwV.pdf"
+sourceFile: "I3 2024-TAV_1XMrBce8AuylENNuoPwV.pdf"
+---
+
 Calcule las siguientes integrales  a )  ∫  x   arctan( x ) dx  b)  ∫   x   −   1 ( x   + 1)( x 2   + 1) dx  c)  ∫   1   −   x 3  √ 1   −   x 2   dx ,   hacer   x   = sen( t ) Soluci´ on. a) Por partes, tomando c´ omo  u   = arctan( x )   ⇒   du   =   1 1 +   x 2   . dv   =   xdx   ⇒   v   =   x 2  2 se tiene:   ∫  x   arctan( x ) dx   =   x 2  2  arctan( x )   −  ∫   x 2  2   ·   1 1 +   x 2   dx  ahora para la integral  ∫   x 2  1 +   x 2   dx   =  ∫   (  1   −   1 1 +   x 2  )  dx   =   x   −   arctan( x ) finalmente =   x 2  2  arctan( x )   −   1 2 ( x   −   arctan( x )) +   C.  b) Por fracciones parciales  x   −   1 ( x   + 1) ( x 2   + 1)  =   A x   + 1  +   Bx   +   C x 2   + 1  x   −   1 =   A   ( x 2   + 1 )   + ( Bx   +   C )( x   + 1) de donde obtenemos:   A   =   − 1;   B   = 1;   C   = 0 y por tanto queda  ∫   x   −   1 ( x   + 1) ( x 2   + 1) dx   =  ∫   [   − 1  x   + 1  +   x x 2   + 1  ]  dx  =   −   ln   | x   + 1 |   +  1 2  ln   ( x 2   + 1 )   +   C  c) Haciendo   x   = sen( t )   ⇒   dx   = cos( t ) dt , resulta  ∫   1   −   x 3  √ 1   −   x 2   dx   =  ∫   1   −   sen 3   t  √ 1   −   sen 2   t   cos( t ) dt  =  ∫   ( 1   −   sen 3 ( t ) )   dt   =  ∫  dt   −  ∫  sen 2 ( t ) sen( t ) dt  ahora sea: cos( t ) =   u   ⇒ −   sen( t ) dt   =   du , entonces =   t   −  ∫   ( 1   −   u 2 )   ( − du ) =   t   +   u   −   u 3  3  +   C  = arcsen( x ) +   √ 1   −   x 2   −   1 3  ( √ 1   −   x 2  ) 3  +   C
 
 --- Page 6 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Solucin11_3NVHxw3fy2WnER8SwuqO.pdf"
+sourceFile: "Solucin11_3NVHxw3fy2WnER8SwuqO.pdf"
+---
+
 (a) Determine una región cuya área sea igual al límite dado, identificándolo como una suma de Riemann:   l´ ım  n →∞  n ∑  k =1  √ n 2   +   kn n 2  (b) Determine una región cuya área sea igual al límite dado, identificándolo como una suma de Riemann:   l´ ım  n →∞  n ∑  k =1  ln( n   +   k )   −   ln( n )  n  (c) Calcule   l´ ım  n →∞  e   −   1  n  (  1 1 +   e − 1  n  +   1 1 +   2( e − 1)  n  +   1 1 +   3( e − 1)  n  +   · · ·   +  1  e  )  Solución:  (a)  l´ ım  n →∞  n ∑  k =1  √ n 2   +   kn n 2   =   l´ ım  n →∞  n ∑  k =1  √ n 2   +   kn n  1  n  =   l´ ım  n →∞  n ∑  k =1  √  1 +   k   1  n  1  n  =   l´ ım  n →∞  n ∑  k =1  √ √ √ √ 1 +   k   1  n ︸︷︷︸  ∆ x  ︸   ︷︷   ︸  f   ( x ∗  k   )  1  n ︸︷︷︸  ∆ x  Así, considerando   ∆ x   =   1  n   (note que el intervalo de intergración debe tener longitud 1) y Una opción,   [ a, b ] = [1 ,   2] ,   f   ( x ) =   √ x ,   x ∗  0   = 1 ,   x ∗  k   = 1 +   k ∆ x   = 1 +   k   1  n   ,   1   ≤   k   ≤   n ,  ( x ∗  n   = 2)  Otra opción,   f   ( x ) =   √ 1 +   x ,   [ a, b ] = [0 ,   1] ,   x ∗  0   = 0 ,   x ∗  k   = 0 +   k ∆ x   =   k   1  n   ,   1   ≤   k   ≤   n ,  ( x ∗  n   = 1)  Por lo tanto,
 
 --- Page 5 ---

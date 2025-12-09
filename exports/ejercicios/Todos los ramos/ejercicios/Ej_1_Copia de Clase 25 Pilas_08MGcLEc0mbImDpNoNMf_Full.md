@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Copia de Clase 25 Pilas_08MGcLEc0mbImDpNoNMf.pdf"
+sourceFile: "Copia de Clase 25 Pilas_08MGcLEc0mbImDpNoNMf.pdf"
+---
+
 --- Page 1 ---
 CLASE   25  PILAS  Loreto Valenzuela Roediger  lvalenzr@ing.puc.cl  IIQ2043  FISICOQUÍMICA  Departamento de Ingeniería Química y Bioprocesos
 

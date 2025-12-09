@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2010-1_2OfbKPz519puDJoYqfta.pdf"
+sourceFile: "I2 2010-1_2OfbKPz519puDJoYqfta.pdf"
+---
+
 Un pist´ on permite que aire se expanda desde una presi´ on inicial 6.0 MPa, a una presi´ on final 0.2 MPa. El volumen inical es 5 ⋅ 10 − 4   m 3 , y la temperatura inicial es 800 ∘ C. Considerando que en este caso el aire puede ser tratado como un gas ideal diat´ omico,  a ) Encuentre el calor transferido al gas y el cambio de entrop´ ıa, si el proceso es isot´ ermico y reversible.  b ) Encuentre el cambio de entrop´ ıa, suponiendo que el proceso de expansi´ on es adiab´ atico e irreversible.  Soluci´ on  a ) De la Ec. 1,  𝛿𝑄   =   𝑑𝑈   +   𝛿𝑊   =   𝑑𝑈   +   𝑃 𝑑𝑉  Integrando, Δ 𝑄   = Δ 𝑈   +  ∫   𝑉 𝑓  𝑉 𝑖  𝑃 𝑑𝑉  Como Δ 𝑈   =   𝑛𝑐 𝑣 Δ 𝑇   =   𝑛𝑐 𝑣   ( 𝑇 𝑓   −   𝑇 𝑖 ), y en proceso isot´ ermico   𝑇 𝑓   =   𝑇 𝑖 , resulta Δ 𝑈 =0. De la Ec. 3,   𝑃   =   𝑛𝑅𝑇 /𝑉   . En particular,   𝑇 𝑖   =   𝑃 𝑖 𝑉 𝑖 /𝑛𝑅 . Luego, Δ 𝑄   =  ∫   𝑉 𝑓  𝑉 𝑖  𝑃 𝑑𝑉   =   𝑛𝑅𝑇 𝑖  ∫   𝑉 𝑓  𝑉 𝑖  𝑑𝑉  𝑉   =   𝑃 𝑖 𝑉 𝑖   ln  (   𝑉 𝑓  𝑉 𝑖  )  De la Ec. 3, usando las condiciones iniciales, el n´ umero de moles de aire es  𝑛   =   𝑃 𝑖 𝑉 𝑖  𝑅𝑇 𝑖  =  6 . 0   ⋅   10 6   ×   5 . 0   ⋅   10 − 4  1073   ⋅   8 . 314   = 0 . 3363 Como el proceso es isot´ ermico, de la Ec. 3 se obtiene que  𝑉 𝑓   =   𝑃 𝑖  𝑃 𝑓  𝑉 𝑖   =  6 . 0   ⋅   10 6  0 . 2   ⋅   10 6   5   ⋅   10 − 4   = 0 . 015 m 3  Entonces, Δ 𝑄   = 6 . 0   ⋅   10 6   ×   5 . 0   ⋅   10 − 4   ln  (   0 . 015  5   ⋅   10 − 4  )  = 10 . 2 kJ El cambio de entrop´ ıa est´ a dado por  𝑑𝑆   =   𝛿𝑄  𝑇   (4) Integrando, Δ 𝑆   =  ∫   𝑓 𝑖  𝑑𝑄  𝑇  Como   𝑇   =   𝑇 1   =   𝑐𝑡𝑒 , Δ 𝑆   =  Δ 𝑄  𝑇 𝑖  =  10 . 2   ⋅   10 3  1073   = 9 . 5 J/K 6
 
 --- Page 7 ---

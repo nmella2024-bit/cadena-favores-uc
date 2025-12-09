@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I2 2013-2_0daM7HmG7vo6w4vlsJnw.pdf"
+sourceFile: "I2 2013-2_0daM7HmG7vo6w4vlsJnw.pdf"
+---
+
 a) Calcule el volumen limitado por las superficies.  x 2   +   y 2   =   a 2 ,   az   = 2 a 2   +   x 2   +   y 2 ,
 
 --- Page 4 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba_Parte2_2021S1_PAUTA.pdf_3pJgBXI6oNcaxRntws4O.pdf"
+sourceFile: "Prueba_Parte2_2021S1_PAUTA.pdf_3pJgBXI6oNcaxRntws4O.pdf"
+---
+
 1.   [ 30 puntos] Considere una econom´ ıa peque˜ na y abierta.   El tiempo es discreto y dura dos per´ ıodos. La econom´ ıa recibe las siguientes dotaciones. Una unidad de bienes No Transables en cada per´ ıodo e   y   unidades de un bien Transable internacionalmente en el per´ ıodo dos. Es decir, llamando   y j,i   a las dotaciones, donde   j   =   T, N   representa el tipo de bien, Transable y No Transable, respectivamente, e   i   : 1 ,   2 representa el per´ ıodo, se tiene que:  y N, 1   =   1 , y N, 2   =   1 , y T, 1   =   0 , y T, 2   =   y.  La utilidad de las familias est´ a dada por la siguiente funci´ on: 1 2  log   c N, 1   +  1 2  log   c T, 1   +  1 2  log   c N, 2   +  1 2  log   c T, 2 ,  donde   c T,i   es el consumo de bienes transables en el per´ ıodo   i   y   c N,i   es el consumo de bienes no transables en el per´ ıodo   i . Suponga, adem´ as, que no hay incertidumbre, que se cumple la ley de un solo precio para los bienes transables, que hay un mercado de deuda global donde se transan bonos denominados en unidades del bien Transable, que no hay deuda externa neta al inicio del per´ ıodo uno, que la tasa de inter´ es externa relevante para esta econom´ ıa es   r   =   r ∗   +   ρ , donde   r ∗   es la tasa mundial libre de riesgo y   ρ   un par´ ametro que representa el riesgo pa´ ıs, y que se cumple la condici´ on de No Juego de Ponzi. En este contexto las restricciones presupuestarias son:  c T, 1   +   p 1 c N, 1   =   p 1   +   d, c T, 2   +   p 2 c N, 2   + (1 +   r ∗   +   ρ )   d   =   p 2   +   y,  donde   d   es la deuda externa contratada el primer per´ ıodo y   p i   es el precio relativo de los No Transables en t´ erminos de los Transables (nota:   en algunas secciones usaron   p N   para denominar este precio). (a)   [5 puntos]   El comportamiento de las familias est´ a descrita por las restricciones pre- supuestarias y las siguientes ecuaciones que se derivan de las condiciones de primer orden:  c T, 2   = (1 +   r ∗   +   ρ )   c T, 1 ,  1
 
 --- Page 2 ---

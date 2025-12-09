@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 14"
+topic: "General"
+number: "14"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 3   Hay dos trabajadores   i   ∈ { 1 ,   2 }   (agentes) que trabajan para una empresa (el principal). El desempeño de cada agente al realizar la tarea está dado por  ˜ π i   = 2  (  e i   +  ˜ θ  )  ,  donde   e i   ∈ { 0 ,   1 }   representa el nivel de esfuerzo del agente   i , y   ˜ θ   es un choque agregado aleatorio que afecta ambos agentes de manera igual. Los ingresos totales de la empresa están dados por   ˜ π 1 + ˜ π 2 , por lo que es de interés a la empresa que ambos trabajadores se esfuercen. La función costo para el agente 1 está dada por  C 1 ( e ) =  {   1 ,   si   e   = 1 0 ,   si   e   = 0   ,  mientras que la función costo del agente 2 está dada por  C 2 ( e ) =  {   3 ,   si   e   = 1 0 ,   si   e   = 0   ,  por lo que es menos costoso al agente 1 esforzarse, y esto es de conocimiento común. El jefe no observa   ˜ θ   y tampoco   e i , pero sí observa el desempeño   ˜ π i   de cada empleado, la información que utiliza para determinar quién gana el torneo. Si ambos empleados obtienen la misma performance, se tira una moneda para determinar el ganador al azar (en este caso, cada trabajador gana el torneo con probabilidad   1 / 2 ). La persona que gana el torneo obtiene $ W   , y la persona que pierde obtiene $ L . Para los siguientes ítems, supón que   W   = 10   y   L   = 6   y supón que cada agente elige su nivel de esfuerzo simultáneamente. a) (10 puntos) Escriba la tabla de payoffs de los agentes (trabajadores) correspondientes a este juego.   Pauta:   En el cuadro 14.1 escribimos la tabla de pagos con los payoffs esperados de cada trabajador.  Trabajador 2 Trabajador 1   e   = 0   e   = 1  e   = 0   8,8   6,7  e   = 1   9,6   7,4 Table 14.1:   Payoffs esperados de los trabajadores 1 y 2 como función del par de estrategias que adoptan b) (10 puntos) Encuentre el nivel de esfuerzo que elegiría cada agente en equilibrio (puede utilizar la tabla de payoffs obtenida en el ítem anterior y subrayar las mejores respuestas).  Pauta:   Posibles respuestas:
 
 --- Page 137 ---

@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/capitulo 15.5_58zVgzoclQIGq8YPm2lU.pdf"
+sourceFile: "capitulo 15.5_58zVgzoclQIGq8YPm2lU.pdf"
+---
+
 --- Page 1 ---
 Page 1 capitulo 15.5
 

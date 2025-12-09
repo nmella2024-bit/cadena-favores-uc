@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2023-TAV_1njZlaOOvOcC7VP2i4zB.pdf"
+sourceFile: "I1 2023-TAV_1njZlaOOvOcC7VP2i4zB.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Cat´ olica de Chile Facultad de Matem´ aticas Departamento de Matem´ aticas Enero 2023  MAT1620   ?   C´ alculo II  Pauta Interrogaci´ on 1  1. Determine si cada una de las siguientes integrales es convergente o divergente. Eval´ ue las que sean convergentes.  a )  ∫   1 0  1 + 3 sin 4 (2 x )  √ x 3   dx  b )  ∫   ∞ −∞  6 x 3  ( x 4   + 1) 2   dx  Soluci´ on:  a ) Observemos que esta integral, es una integral impropia del tipo 2 y notemos que: 0   ≤   3 sin 4 (2 x )   ≤   3 ,  De este modo tenemos la siguiente cota para nuestra expresi´ on: 1 + 3 sin 4 (2 x )  √ x 3   >   1  √ x 3   .  La integral  ∫   1 0  dx  √ x 3   es una integral   p   del tipo 2 con   p   =  3 2   >   1, por lo que es una integral divergente. Luego por el criterio de comparaci´ on nuestra integral:  ∫   1 0  1 + 3 sin 4 (2 x )  √ x 3   dx   es divergente. 1
 

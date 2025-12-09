@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/I3 2023-2_3WVh1z8whkLZHUsUoLPn.pdf"
+sourceFile: "I3 2023-2_3WVh1z8whkLZHUsUoLPn.pdf"
+---
+
 Suponga que   A   es una matriz de 6   ×   6 con polinomio caracter´ ıstico  p A ( λ ) = (1 +   λ )(1   −   λ ) 2 (2   −   λ ) 3 .  (a) Explique por qu´ e no es posible encontrar tres vectores linealmente independientes  v 1 ,   v 2 ,   v 3   en   R 6   tales que   A v 1   =   v 1 , A v 2   =   v 2   y   A v 3   =   v 3 . (b) Si   A   fuera diagonalizable, ¿cu´ ales son las dimensiones de los espacios propios de los valores propios   λ   =   − 1,   λ   = 1 y   λ   = 2? Entregue una respuesta justificada.  Soluci´ on  (a) La multiplicidad algebraica de   λ   = 1 es 2. Si existieran tres vectores linealmente independientes   v 1 ,   v 2 ,   v 3   en   R 6   tales que   A v 1   =   v 1 , A v 2   =   v 2   y   A v 3   =   v 3 , el espacio propio del valor propio   λ   = 1 tendr´ ıa dimensi´ on al menos 3, lo cual contradecir´ ıa el hecho que la dimensi´ on del espacio propio es menor o igual a la multiplicidad algebraica. (b) Si   A   fuera diagonalizable, entonces la dimensi´ on del espacio propio debe coincidir con la multiplicidad algebraica para cada valor propio. Por lo tanto, dim   E ( − 1) = 1 ,   dim   E (1) = 2 ,   dim   E (2) = 3 .  Puntaje  •   1 punto si entrega un argumento coherente en el ´ ıtem (a).  •   2 puntos si el argumento entregado en el ´ ıtem (a) es correcto.  •   1 punto si indica las dimensiones de los espacios propios.  •   2 puntos por argumentar su respuesta del ´ ıtem (b) correctamente.
 
 --- Page 7 ---

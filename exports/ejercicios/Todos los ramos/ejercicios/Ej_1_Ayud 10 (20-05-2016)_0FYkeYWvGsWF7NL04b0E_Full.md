@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ayud 10 (20-05-2016)_0FYkeYWvGsWF7NL04b0E.pdf"
+sourceFile: "Ayud 10 (20-05-2016)_0FYkeYWvGsWF7NL04b0E.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Cat´ olica de Chile   Instituto de F´ ısica  FIS1523   ?   Termodin´ amica  X   Ayudante:   Sebasti´ an Urrutia Quiroga  X   Correo:   sgurruti@uc.cl  X   P´ agina Web:   www.sgurruti.cl/termo  Ayudant´ ıa   ?   Eficiencia T´ ermica  1. Considere el ciclo termodin´ amico que realiza una cierta cantidad de moles de aire, descrito en el gr´ afico   P   vs   V   que muestra la figura. Adicionalmente a los tramos a presi´ on y volumen constante, el ciclo puede completarse con la l´ ınea curva continua, que corresponde a un proceso isot´ ermico, o la segmentada, que corresponde a un proceso adiab´ atico. Asuma que el aire se puede modelar como un gas ideal diat´ omico.  a ) Encuentre el trabajo hecho por el gas en ambos casos (l´ ınea continua y l´ ınea segmentada)  b ) Determine la eficiencia del ciclo para ambos casos  Soluci´ on:  a ) El trabajo realizado por el gas en todo un ciclo corresponde a la suma del trabajo realizado en cada etapa:  a   →   b   : proceso isoc´ orico, por lo que  W ab   = 0 J  b   →   c   : proceso isot´ ermico, por lo que  W bc   =  ˆ   V c  V b  P dV   =  ˆ   V c  V b  nRT iso  V   dV   =   nRT iso   ln  ( V b  V c  )  =   P c V c   ln  ( V b  V c  )  = 8047 . 19 J donde   T iso   =   T b   =   T c   y   P c V c   =   P b V b   =   nRT iso   , pues el aire puede ser modelado como gas ideal.  Primer Semestre de 2016   1
 

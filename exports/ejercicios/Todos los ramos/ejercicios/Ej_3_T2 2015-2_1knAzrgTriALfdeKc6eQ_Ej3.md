@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/T2 2015-2_1knAzrgTriALfdeKc6eQ.pdf"
+sourceFile: "T2 2015-2_1knAzrgTriALfdeKc6eQ.pdf"
+---
+
 a)   i) Para ello, construimos la forma est´ andar del problema, considerando el reemplazo   x 1   =   − x 6   y  x 2   =   − x 7 .  F E )   m´ ın   − 8 x 6   −   4 x 7  s.a.   x 6   +   x 7   −   x 3   =   3  x 7   +   x 4   =   8  − x 6   +   x 7   −   x 5   =   5  x i   ≥   0   ∀ i   = 3 , . . . ,   7 Luego, notamos que el punto ( x 1 , x 2 ) = ( − 3 ,   0) representa en este problema el punto ( x 6 , x 7 ) = (3 ,   0), que s´ olo invalida la ´ ultima restricci´ on. Luego, no es necesario colocar las tres variables auxiliares de Fase I, si no que necesitar´ ıamos solamente 1:  F I )   m´ ın   t 3  s.a.   x 6   +   x 7   −   x 3   =   3  x 7   +   x 4   =   8  − x 6   +   x 7   −   x 5   +   t 3   =   5  x i   ≥   0   ∀ i   = 3 , . . . ,   7  t 3   ≥   0 Los valores de las variables son ( x 3 , x 4 , x 5 , x 6 , x 7 , t 3 ) = (0 ,   8 ,   0 ,   3 ,   0 ,   8). As´ ı, las variables b´ asicas son  x 6 , x 4   y   t 3 , mientras que las variables no b´ asicas son   x 7 , x 3   y   x 5 .  B   =     1   0   0 0   1   0  − 1   0   1      ⇒   B − 1   =     1   0   0 0   1   0 1   0   1      R   =     1   − 1   0 1   0   0 1   0   − 1     Para determinar si la base es ´ optima, utilizamos el criterio de optimalidad de Simplex. ¯ c T R   = ( 0   0   0 )   −   ( 0   0   1 )     1   0   1 0   1   0 1   0   1       1   − 1   0 1   0   0 1   0   − 1     = ( 0   0   0 )   −   ( 0   0   1 )     1   − 1   0 1   0   0 2   − 1   − 1    ︸   ︷︷   ︸  ¯ R  = (   − 2   1   1 )      ~ 0 T  El criterio de optimalidad nos dice que esta base no es ´ optima, y el de entrada nos dice que   x 7   es la variable que entra. Para el criterio de salida, calculamos  ¯ b :  4 Se espera que lo m´ as no lineal presente en el modelo equivalente que resulte sea una multiplicaci´ on de variables.
 
 --- Page 8 ---

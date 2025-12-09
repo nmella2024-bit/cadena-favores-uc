@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Kaplan, DeShon, _ Tetrick (2017) The Bigger Picture of Employee Well-Being.pdf_4EoNHtaXaYhPsBR6fLQI.pdf"
+sourceFile: "Kaplan, DeShon, _ Tetrick (2017) The Bigger Picture of Employee Well-Being.pdf_4EoNHtaXaYhPsBR6fLQI.pdf"
+---
+
 --- Page 1 ---
 The Bigger Picture of Employee Well-Being: Its Role for Individuals, Families and Societies  Seth Kaplan   Richard P. DeShon   Lois E. Tetrick  Department of Psychology   Department of Psychology   Department of Psychology  George Mason University   Michigan State University   George Mason University  skaplan1@gmu.edu   deshon@msu.edu   ltetrick@gmu.edu  Copyright 2017  Society for Human Resource Management and Society for Industrial and Organizational Psychology  The views expressed here are those of the authors and do not necessarily reflect the views of any agency of the U.S. government nor are they to be construed as legal advice.  SHRM-SIOP Science of HR Series
 

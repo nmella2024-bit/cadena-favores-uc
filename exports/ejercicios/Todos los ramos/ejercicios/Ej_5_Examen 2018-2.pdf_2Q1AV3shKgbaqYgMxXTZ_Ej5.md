@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2018-2.pdf_2Q1AV3shKgbaqYgMxXTZ.pdf"
+sourceFile: "Examen 2018-2.pdf_2Q1AV3shKgbaqYgMxXTZ.pdf"
+---
+
 25 puntos  Los siguientes son los balances (o estados de situación   financiera) y estados de resultados individuales de las  sociedades Madre S.A. y Cachorro S.A. al 31 de diciembre de 2017 (todas las cifras en millones de pesos o  MM$):  BALANCE MADRE S.A. (cifras en MM$ al 31 de diciembre de 2107)  ACTIVOS (MM$)   PASIVOS Y   PATRIMONIO (MM$)  Efectivo   77   Cuentas por Pagar   400  Cuentas por Cobrar   100   Cuenta por Pagar Empresa Relacionada   2.160  Dividendo por Cobrar   105  Cuenta por Cobrar Empresa Relacionada   1.296  Bonos   400  Intereses por Cobrar   50   Capital   2.635  Existencias   2.432   Utilidades Retenidas   1.685  Inversión en Empresa Relacionada   1.470   Resultado del

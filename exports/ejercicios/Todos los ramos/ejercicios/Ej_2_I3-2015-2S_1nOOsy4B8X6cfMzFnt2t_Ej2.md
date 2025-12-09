@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I3-2015-2S_1nOOsy4B8X6cfMzFnt2t.pdf"
+sourceFile: "I3-2015-2S_1nOOsy4B8X6cfMzFnt2t.pdf"
+---
+
 Calcular el momento de inercia del sistema barra+proyectil respecto de un eje perpendicular al plano de la hoja y pasando por el centro de masa despu´ es de la colisi´ on. a)   1 12  ( M   +   m ) L 2  b)  1 3  ( M   +   m ) L 2  c)   1 12  (   M   ( M   + 4 m )  M   +   m  )  L 2  d)   1 12  (   M   [( M   +   m ) 2   + 3 M m ] ( M   +   m ) 2  )  L 2

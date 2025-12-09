@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 1.pdf_1i6M5vL1iw2PHkBDeXoz.pdf"
+sourceFile: "Control 1.pdf_1i6M5vL1iw2PHkBDeXoz.pdf"
+---
+
 (50)  Considere una situaci´ on en la que hay un monopolista en un mercado con funci´ on de demanda inversa   P   ( Q ) = 10   −   Q . El costo marginal de producci´ on del mo- nopolista es   c   = 2.   El monopolista toma dos decisiones:   cu´ anto invertir en reducci´ on de costos   I , y cuanto vender   Q . Si el monopolista invierte   I   en re- ducci´ on de costos, su beneficio se reduce en   I   cantidad, y su costo marginal se reduce a (2   −   α √ I . Suponga que 0   < α <   2.  Letra A (15pts)  ¿Cu´ al es el nivel ´ optimo de inversi´ on y producci´ on del monopolista en funci´ on de   α ? Funci´ on Beneficio: Π = [10   −   q   −   (2   −   α √ I )] q   −   I  Entonces: max  I,q   [10   −   q   −   (2   −   α √ I )] q   −   I  CPO: [ I ] :   αq  2 √ I   −   1 = 0 [ q ] : 8   −   q   +   α √ I   −   q   = 0 Finalmente, despejando los ´ optimos  q monopolio   =   16 4   −   α 2  I ∗   = [   8 α  (4   −   α 2 )  ] 2  1
 
 --- Page 2 ---

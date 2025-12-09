@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 2014-2_2gcjWQQANs5r6i2mfbmX.pdf"
+sourceFile: "I1 2014-2_2gcjWQQANs5r6i2mfbmX.pdf"
+---
+
 --- Page 1 ---
 Pontificia Universidad Católica de Chile  Escuela de Ingeniería  Departamento de Ingeniería Industrial y de Sistemas  ICS 2523: Microeconomía Sección 01  Profesora: Sonia Vera O  Primera Prueba - 29 agosto de 2014  Usted dispone de 2 horas para resolver esta prueba.  1)   Responda   en   forma   clara,   concisa   y   justificadamente   si   las   siguientes afirmaciones son verdaderas, falsas o inciertas. La evaluación dependerá de la respuesta y de la correspondiente justificación. No se corregirán respuestas que no sean justificadas (1 punto cada una).  Ayuda para responder : Una afirmación puede estar compuesta de una o más sentencias. Una afirmación será verdadera si todas las sentencias que la componen son siempre ciertas; será falsa si al menos una sentencia de la afirmación es siempre falsa y será incierta si no se puede decir que la afirmación siempre será cierta o siempre falsa.  a)   La teoría del consumidor no da respuesta respecto al óptimo del individuo en la situación donde este consume dos bienes inferiores y ocurre un alza en el precio de uno de dichos bienes.  RESP: Falso. En este caso, un bien se tratará como inferior y el otro como normal y se aplica entonces la teoría del consumidor tal y como se vio en clases, con un efecto renta y otro sustitución. Se debe recordar que un bien   no   es   inferior   como   característica   intrínseca   del   bien,   sino   de acuerdo a la forma de relacionarse con otros bienes. En este caso uno de los bienes será en dicha relación más inferior que el otro.  b)   Una economía que produce dos bienes X e Y en términos reales siempre   se   encontrará   sobre   su   frontera   de   posibilidades   de producción (FPP) porque cualquier otro punto es ineficiente.  RESP: Falso. Por una parte la afirmación no es cierta porque hay puntos que no son viables, ya sean eficientes o ineficientes. Por otro lado, si sólo se consideran los puntos viables, no toda economía está en la misma FPP en todo momento, porque puede tener recursos no utilizados, como lo que ocurre en el caso de la existencia de desempleo
 

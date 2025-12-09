@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ex 2023-1_2a3Y95cuc4D2Dx16chNs.pdf"
+sourceFile: "Ex 2023-1_2a3Y95cuc4D2Dx16chNs.pdf"
+---
+
 --- Page 1 ---
 ★  ∫   1  𝑥   √ 𝑎 2   +   1  √ 𝑥  ∞  1  𝑑𝑥 ,   donde   𝑎   >   0  𝑥   >   0   𝑎 2   +   1  𝑥   >   𝑎 2   𝑎   >   0  √ 𝑎 2   +   1  √ 𝑥   >   √ 𝑎 2   =   𝑎   ( 2   𝑝𝑢𝑛𝑡𝑜𝑠 )  1  𝑥  1  𝑥   √ 𝑎 2   +   1  √ 𝑥   >   𝑎  𝑥   ( 2   puntos )  ∫   𝑎  𝑥   𝑑𝑥  ∞  1
 

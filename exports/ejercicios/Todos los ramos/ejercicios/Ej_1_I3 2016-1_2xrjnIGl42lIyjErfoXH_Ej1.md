@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+sourceFile: "I3 2016-1_2xrjnIGl42lIyjErfoXH.pdf"
+---
+
 2 puntos por calcular correctamente   ∂R/∂x .  2 puntos por calcular correctamente   ∂R/∂y .  1 punto por calcular correctamente   ∂R/∂x   en el punto   x   =   y   = 1.  1 punto por calcular correctamente   ∂R/∂y   en el punto   x   =   y   = 1.
 
 --- Page 2 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2014-2_3iT09Saek8nj2mfzWh87.pdf"
+sourceFile: "I2 2014-2_3iT09Saek8nj2mfzWh87.pdf"
+---
+
 (15 puntos)  (a) ( 8 puntos ) Considere un problema de minimizaci´ on definido sobre tres variables (llamaremos ( P   ) a este problema y   x 1 , x 2   y   x 3   las variables) y dos restricciones. El dual de ( P   ), al que llamaremos ( D ) (y cuyas variables denotaremos por   y 1   e   y 2 ), posee cuatro puntos extremos, y la informaci´ on relacionada a estos puntos extremos se entrega en la siguiente tabla (RD1,...,RD3 denotan las restricciones del dual):
 
 --- Page 6 ---

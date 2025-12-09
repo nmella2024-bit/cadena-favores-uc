@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 1.pdf_1SkHSe6NhMdkNcwlfIkh.pdf"
+sourceFile: "Prueba 1.pdf_1SkHSe6NhMdkNcwlfIkh.pdf"
+---
+
 ( 2 0 puntos)  Usted acaba de asumir como presidente del Banco Central del reino de Gondor . Producto de  la recuperación tras volver a la paz luego de años de guerra, la economía se encuentra en un  boom   de crecimiento, lo que ha generado ciertas preocupaciones, ya que la inflación se  encuentra por sobre la meta.  Luego de un cuidadoso estudio, u sted cuenta con la siguiente información:  -   El año   pasado , la brecha del producto ( ( 𝑦 𝑡 − 1 −   ȳ 𝑡 − 1 )  ȳ 𝑡 − 1  )   aumentó en un 1%.  -   La inflación del periodo es siempre igual a la inflación esperada.  -   El año pasado, la inflación fue de 6%, siendo que la meta es 3%.  -   El   producto tendencial crece al 4% anual en esta economía.  -   La demanda por dinero está dada por:  ln   ( 𝑀  𝑃   ) 𝑡  =   1 , 5   +   ln ( 𝑦 𝑡 )   −   0 , 5 𝑖 𝑡  -   El   cambio   en la brecha del producto depende de la tasa de interés real:  ∆   ( 𝑦 𝑡   −   ȳ 𝑡 )  ȳ 𝑡  =   −   1  2   ( 𝑟 𝑡   −   0 , 04 )  -   La ecuación de inflación es del tipo:  𝜋 𝑡   =   0 , 03   +   ( 𝑦 𝑡   −   ȳ 𝑡 )  ȳ 𝑡  Nota:   Tenga presente la diferencia entre la brecha y el cambio en la brecha.  a)   (4 puntos) ¿Cuál f ue la tasa de interés real r t - 1   de esta economía en el último año?  b)   (8 puntos) Suponga que su objetivo para este año es bajar la inflación a 4%, ¿qué tasa  de interés nominal i t   es compatible con la meta?  c)   (8 puntos) ¿Qué tasa de crecimiento del dinero M es compatible con llegar a la meta  del 3% en el periodo t+1,   habiendo cumplido el objetivo del año   t   (es decir ,   el objetivo  de tener una inflación de 4% en t) ?  Pau ta  a)   Sabemos que el delta de la brecha el año pasado fue 1%, por lo que reemplazamos  en:  ∆   ( 𝑦 𝑡 − 1   −   ȳ 𝑡 − 1 )  ȳ 𝑡 − 1  =   −   1  2   ( 𝑟 𝑡 − 1   −   0 , 04 )  0 , 01   =   −   1  2   ( 𝑟 𝑡 − 1   −   0 , 04 )  𝑟 𝑡 − 1   =   0 , 02  b)   Si la inflación fue 6%, reemplazamos en:  𝜋 𝑡 − 1   =   0 , 03   +   ( 𝑦 𝑡 − 1   −   ȳ 𝑡 − 1 )  ȳ 𝑡 − 1
 
 --- Page 7 ---

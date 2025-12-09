@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 06"
+topic: "General"
+number: "06"
+originalUrl: "exports/downloads/Todos los ramos/I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+sourceFile: "I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+---
+
 Criterio de Tresca y Von Mises  (10 pts.) Un cilindro de diámetro   d   (ver figura 6.1) hecho de acero AISI 1020 es sujeto a una fuerza axial de tracción P de 200 kN y a un momento torsor T de 1,5 kN-m.  Determine el factor de seguridad a la plastificación para un punto situado a distancia   c   del   eje   del   cilindro   si   el diámetro es   d =50 mm. Para esto, use los criterios de Máximo Normal, Tresca y Von Mises, con una tensión de fluencia igual a  260𝑀𝑃𝑎 . ¿Cuál de los criterios usaría para diseñar   si   su   objetivo   es   ser   lo   más conservador posible?  Figura 6.1  a)   Máximo normal.  b)   Tresca.  c)   Von Mises.  Notar que el momento torsor   T   aplicado produce las siguientes tensiones de corte en un punto a distancia  c   del eje del cilindro:  𝜏 𝑥𝑦   =   𝑇𝑐  𝐽   =   𝑇 ( 𝑑 / 2 )  𝜋 𝑑 4 / 32   =   16 𝑇  𝜋 𝑑 3   =   61 , 12 𝑀𝑃𝑎  En la expresión anterior,   c   es la posición del punto de observación de la tensión de corte con respecto al centro del cilindro,   d   es el diámetro del cilindro y   J   es una constante que depende de la forma del cilindro. El resto de las tensiones son despreciables frente a las tensiones   𝜎 𝑥   y   𝜏 𝑥𝑦 .  PAUTA  Tenemos que  𝜎 𝑥   =  𝑃 𝐴  =  4𝑃 𝜋𝑑 2   =   4 × 200𝑘𝑁 3.1416 × 2500𝑚𝑚 2   = 101,86𝑀𝑃𝑎  E ntonces   como   sabemos   que   𝜎 𝑦   =   0 ,   el   estado   de   tensiones   principales   queda   como:  𝜎 1 , 𝜎 2   =   𝜎 𝑥 +𝜎 𝑦  2   ± √( 𝜎 𝑥 +𝜎 𝑦  2   ) 2  + 𝜏 𝑥𝑦 2   =   2𝑃 𝜋𝑑 2   ± √(   2𝑃 𝜋𝑑 2 ) 2  + ( 16𝑇 𝜋𝑑 3 ) 2  .  Esto implica que la tensión de corte m áxima   que   determinada   solamente   por   𝜎 1   y   𝜎 2 .  c  2 pts  2 pts
 
 --- Page 5 ---

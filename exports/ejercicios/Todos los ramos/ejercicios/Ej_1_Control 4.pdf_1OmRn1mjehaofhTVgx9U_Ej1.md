@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 4.pdf_1OmRn1mjehaofhTVgx9U.pdf"
+sourceFile: "Control 4.pdf_1OmRn1mjehaofhTVgx9U.pdf"
+---
+
 (12 puntos) Considere una econom´ ıa con un consumidor cuya demanda es   D ( p ) = 20   −   4 p   y una firma cuyos costos marginales son   CM g ( q ) =   q   (la firma no tiene costos fijos). (a)   (2 puntos)   Encuentre el equilibrio competitivo.  Respuesta.   El inverso de la demanda es:  P   D ( q ) = 5   −   q/ 4 Igualamos oferta con demanda: 5   −   q/ 4 =   q  Por lo que:  q c   = 4   ;   p c   = 4 .  (b)   (2 puntos)   Suponga que la producci´ on del bien produce un costo externo   CE ( q ) = 2 q   +   q 2 / 2 (este es el costo externo total, no el marginal). Encuentre la cantidad eficiente que deber´ ıa ser producida.  Respuesta.   El costo externo marginal es:  CM gE ( q ) = 2 +   q  Por lo que el costo marginal total es:  CM gT   = 2 +   q   +   q.  Igualando el inverso de la demanda con el costo marginal total: 2 +   q   +   q   = 5   −   q  4 Con lo que obtenemos   q ∗  q ∗   =  4 3 1
 
 --- Page 2 ---

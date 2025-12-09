@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 6"
+topic: "General"
+number: "6"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2023-2_2tOp7ckEuhBpSxGhT5b3.pdf"
+sourceFile: "Examen 2023-2_2tOp7ckEuhBpSxGhT5b3.pdf"
+---
+
 Encuentre una base ortonormal para   R 3   a partir de los vectores  v 1   =      1 2 3      y   v 2   =      0 1 0     Soluci´ on   Usaremos el procedimiento de ortogonalizaci´ on de Gram-Schmidt. Sea   u 1   =   v 1 . Sea   u 2   =   v 2   −   proy u 1   ( v 2 ) =   v 2   −   u 1   ·   v 2  || u 1 || 2   u 1   =      0 1 0      −   2 14      1 2 3      =  1 7      − 1 5  − 3    . Una forma de buscar un tercer vector   u 3   ortogonal a   u 1   y   u 2   es resolviendo   u 1   ·   u 3   = 0 y   u 2   ·   u 3   = 0, o equivalentemente, resolver el sistema     1   2   3   0  − 1   5   − 3   0    . As´ ı:     1   2   3   0  − 1   5   − 3   0    ∼     1   0   3   0 0   1   0   0    por lo que   u 3   =    − 3 0 1      .   Ahora calculamos las normas de dichos vectores:  || u 1 ||   =   √ 1 + 4 + 9 =   √ 14 ,   || u 2 ||   =  1 7  √ 1 + 25 + 9 =  √ 35 7   ,   || u 3 ||   =   √ 9 + 0 + 1 =   √ 10 .  Normalizamos los vectores:  u 1  || u 1 ||   =   1  √ 14    1 2 3      ,   u 2  || u 2 ||   =   7  √ 35      − 1 / 7 5 / 7  − 3 / 7      =   1  √ 35      − 1 5  − 3      ,  u 3  || u 3 ||   =   1  √ 10    − 3 0 1      .  Una base ortonormal buscada es:     u 1  || u 1 || ,   u 2  || u 2 || ,   u 3  || u 3 ||   =    =      1  √ 14    1 2 3      ,   1  √ 35      − 1 5  − 3      ,   1  √ 10    − 3 0 1        Nota: Una base diferente se puede obtener fijando   v 2   en vez de   v 1 .  Puntaje  •   2 puntos si usa correctamente el procedimiento de Gram-Schmidt  •   2 puntos si encuentra correctamente un tercer vector ortogonal  •   2 puntos si determina una base ortonormal a partir de los vectores dados.
 
 --- Page 7 ---

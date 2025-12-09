@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+sourceFile: "I1 2017-2_104zT8SQS5BdtOw5yHWG.pdf"
+---
+
 --- Page 10 ---
 a)   Como el cambio de velocidad es instantáneo, el espaciamiento entre los vehículos se  mantiene, por lo tanto, la densidad también, entonces tenemos que   𝑘 𝑎  ′   =   𝑘 𝑎   y   𝑘 𝑏  ′   =   𝑘 𝑏 . Como  la densidad es aditiva, la densidad total para t<0 es igual a la densidad to tal para t>0.  + [2 puntos por decir que la densidad es igual]  + [2 puntos por justificación (en palabras o en un gráfico)]  Para el flujo, utilizamos la relación fundamental, en donde:  𝑞 𝑎  ′   =   𝑘 𝑎  ′   𝑣 𝑎  ′   ;   𝑞 𝑏  ′   =   𝑘 𝑏  ′   𝑣 𝑏  ′  𝑞 𝑎  ′   =   𝑘 𝑎   𝑝 𝑣 𝑎   ;   𝑞 𝑏  ′   =   𝑘 𝑏 𝑝 𝑣 𝑏  𝑞 𝑎  ′   =   𝑝 𝑞 𝑎   ;   𝑞 𝑏  ′   =   𝑝 𝑞 𝑏  Como el flujo también es aditivo, tenemos que el flujo total para t>0, denominado como   𝑞 ′   es  igual a   𝑝𝑞 , con   𝑞   el flujo total para t<0, en donde   𝑞 ′   <   𝑞   puesto que p<1.  + [2 puntos por utilizar la relaci ón fundamental]  + [2 pu ntos por obtener el flujo final]  b)   Por la relación fundamental sabemos que   𝑞 ( 𝑘 )   =   𝑘 𝑣 𝑠 ( 𝑘 )   y que el flujo máximo se obtiene  encontrando la densidad crítica y reemplazando en la función del flujo, para esto primero  derivamos el flujo   con respecto a la densidad e igualamos a cero para encontrar la densidad  crítica:  𝑞 ( 𝑘 )   =   60 𝑘   ( 1   −   𝑘  180 )  2  𝑑𝑞  𝑑𝑘   =   60   ( 1   −   𝑘  180 )  2  −   2  3   𝑘   ( 1   −   𝑘  180 )   =   0  60   ( 1   −   𝑘  180 )   =   2  3   𝑘  60   −   1  3   𝑘   =   2  3   𝑘  𝑘 𝑐   =   60  𝑞 𝑀𝐴𝑋   =   𝑞 ( 𝑘 𝑐   =   60 )   =   3600   ( 1   −   60  180 )  2  =   1600  + [2 puntos por encontrar la densidad crítica   al derivar el flujo]  + [2 puntos por encontrar el flujo máximo]  Ahora nos dicen que la velocidad es de 15 km/h, por lo que debemos encontrar la densidad a la  que ocurre esa velocidad:  15   =   60   ( 1   −   𝑘  180 )  2
 

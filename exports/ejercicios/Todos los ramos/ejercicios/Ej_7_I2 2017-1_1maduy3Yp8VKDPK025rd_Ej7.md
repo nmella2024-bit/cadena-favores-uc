@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 7"
+topic: "General"
+number: "7"
+originalUrl: "exports/downloads/Todos los ramos/I2 2017-1_1maduy3Yp8VKDPK025rd.pdf"
+sourceFile: "I2 2017-1_1maduy3Yp8VKDPK025rd.pdf"
+---
+
 El volumen de un tetraedro (pir´ amide de base triangular) con v´ ertices   0  → ,   v → 1 ,   v → 2   y   v → 3   es  1 6  del volumen del paralelep´ ıpedo definido por los vectores   v → 1 ,   v → 2 ,   v → 3 . Bas´ andose en lo anterior, encuentre una f´ ormula para el volumen del tetraedro que tiene por v´ ertices a los vectores   v → 1 ,   v → 2 ,   v → 3   y   v → 4 ,  Soluci´ on:  El tetraedro con v´ ertices   v → 1 ,   v → 2 ,   v → 3   y   v → 4   es el resultado de trasladar el tetraedro con v´ ertices  0  → ,   v → 2   −   v → 1 ,   v → 3   −   v → 1   y   v → 4   −   v → 1   seg´ un el vector   v → 1 , por lo que ambos tetraedros tienen el mismo volumen. As´ ı, llamando   w →   2 ,   w →   3   y   w →   4   respectivamente a los vectores   v → 2   −   v → 1 ,   v → 3   −   v → 1   y   v → 4   −   v → 1 , el volumen buscado es el de este ´ ultimo tetraedro, que por la informaci´ on dada al principio del enunciado es 1 / 6 del volumen del paralelep´ ıpedo definido por los vectores   w →   2 ,   w →   3   y   w →   4 . A su vez, el volumen de este paralelep´ ıpedo puede ser calculado como el valor absoluto de cualquiera de las siguientes expresiones:  [   w →   2   w →   3   w →   4  ]   = (   w →   2   ×   w →   3 )   ·   w →   4   = det   A,  donde   A   es la matriz de 3   ×   3 que tiene por columnas a los vectores   w →   2 ,   w →   3   y   w →   4 . As´ ı finalmente, el volumen buscado del tetraedro es el valor absoluto de cualquiera de las si- guientes expresiones: 1 6  [   w →   2   w →   3   w →   4  ]   =  1 6 (   w →   2   ×   w →   3 )   ·   w →   4   =  1 6  det   A,  Puntaje:  Por relacionar el volumen del tetraedro indicado con el del tetraedro de v´ ertices   0  → ,   v → 2   −   v → 1 ,  v → 3   −   v → 1   y   v → 4   −   v → 1 , 2 puntos. Por dar alguna f´ ormula correcta para el paralelep´ ıpedo que contiene a este ´ ultimo tetraedro, 2 puntos. Por concluir con la f´ ormula pedida, 2 puntos. A lo anterior se le suma el punto base.
 
 --- Page 13 ---

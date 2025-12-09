@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Presentación Clase 16.pdf_4qqO48QKdAhM7dTDK9mR.pdf"
+sourceFile: "Presentación Clase 16.pdf_4qqO48QKdAhM7dTDK9mR.pdf"
+---
+
 --- Page 1 ---
 (PUC)   Clase 16   Agosto 2022   1 / 10  Espacios nulos y espacios columna  Introducci´ on al ´ Algebra Lineal - MAT1279-1299  Facultad de Matem´ aticas, Pontificia Universidad Cat´ olica de Chile  Agosto 2022
 

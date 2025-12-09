@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1 2016-2_3OLOloCMq8DNLXDtYrlg.pdf"
+sourceFile: "I1 2016-2_3OLOloCMq8DNLXDtYrlg.pdf"
+---
+
 a) Demuestre que   C   =   {↑}   es funcionalmente completo, donde   ↑   es un conectivo binario definido por la siguiente tabla de verdad:  p   q   p   ↑   q  0   0   1 0   1   1 1   0   1 1   1   0 b) Sea   P   un conjunto de variables proposicionales y   ψ, ϕ 1 , . . . , ϕ n   ∈   L ( P   ). Demuestre que si   { ϕ 1 , . . . , ϕ n } | =   ψ , entonces:  ϕ 1   →   ( ϕ 2   →   ( . . .   ( ϕ n   →   ψ )   . . . )) es tautolog´ ıa.
 
 --- Page 6 ---

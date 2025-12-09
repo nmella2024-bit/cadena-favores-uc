@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I1_1_2016_1Ie6cscORXgB8XbR7VCU.pdf"
+sourceFile: "I1_1_2016_1Ie6cscORXgB8XbR7VCU.pdf"
+---
+
 (30 %)  a) N´ umero curioso (1 pto)  Un n´ umero curioso es un n´ umero (entero, positivo) que cumple que su ´ ultimo d´ ıgito es el mismo que el ´ ultimo d´ ıgito de su cuadrado. Por ejemplo: 5 es un n´ umero curioso, pues 5 2   = 2 5 , que termina con 5. 2
 
 --- Page 3 ---

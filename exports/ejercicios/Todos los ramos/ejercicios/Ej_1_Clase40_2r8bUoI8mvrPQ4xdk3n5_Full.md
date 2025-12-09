@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase40_2r8bUoI8mvrPQ4xdk3n5.pdf"
+sourceFile: "Clase40_2r8bUoI8mvrPQ4xdk3n5.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA  Primer Semestre 2022  MAT1203 - ´ ALGEBRA LINEAL  Clase 40: Descomposici´ on en valores singulares 1. Obtenga los valores singulares de las matrices  a )  [ − 5   0 0   0  ]  b )  [ √ 3   2 0   √ 3  ]  2. Encuentre una DVS para cada matriz  a )  [ − 2   0 0   − 1  ]  b )  [ 2   3 0   2  ]  c )     4   − 2 2   − 1 0   0     d   )     1   1 0   1  − 1   1     3. Encuentre la DVS de   A   =  [ 3   2   2 2   3   − 2  ]  . 4. Suponga que la siguiente factorizaci´ on es una DVS de una matriz   A , con las entradas en   U   y   V   redondeadas a dos decimales.  A   =     0 , 40   − 0 , 78   0 , 47 0 , 37   − 0 , 33   0 , 87 0 , 84   − 0 , 52   0 , 16       7 , 10   0   0 0   3 , 10   0 0   0   0       0 , 30   − 0 , 51   0 , 81 0 , 76   − 0 , 64   0 , 12 0 , 58   − 0 , 58   0 , 58     a ) ¿Cu´ al es el rango de   A ?  b ) Utilice esta descomposici´ on de   A , sin hacer c´ alculos, y escriba una base para Col( A ) y una base para Nul( A ). 1
 

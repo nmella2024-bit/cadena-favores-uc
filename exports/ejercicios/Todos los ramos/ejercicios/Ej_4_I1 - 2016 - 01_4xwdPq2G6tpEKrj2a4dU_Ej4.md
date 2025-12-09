@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I1 - 2016 - 01_4xwdPq2G6tpEKrj2a4dU.pdf"
+sourceFile: "I1 - 2016 - 01_4xwdPq2G6tpEKrj2a4dU.pdf"
+---
+
 El modelo Gamma es muy popular para representar comportamiento de variables aleatorias cuyo soporte son los   R + . Este modelo tiene la siguiente funci´ on de densidad  f X   ( x ) =   β α  Γ( α )   x α − 1   e − β x ,  con   x   ≥   0,   α >   0 y   β >   0. (a)   [2.0 Ptos.]   Muestre que su funci´ on generadora de momentos es:   M X   ( t ) =  (   β β − t  ) α  , para   t < β . (b)   [4.0 Ptos.]   Obtenga el coeficiente de asimetr´ ıa y comente.  Soluci´ on  (a) Tenemos que  M X   ( t ) =  ∫   ∞  0  e t x   β α  Γ( α )   x α − 1   e − β x   dx   [0.4 Ptos]  =  ∫   ∞  0  β α  Γ( α )   x α − 1   e − ( β − t )   x   dx   [0.4 Ptos]  =   β α  ( β   −   t ) α   ·   1 Γ( α )  ∫   ∞  0  y α − 1   e − y   dy,   y   = ( β   −   t )   x   [0.4 Ptos]  =   β α  ( β   −   t ) α   ·   1 Γ( α )   ·   Γ( α ) ,   t < β   [0.4 Ptos]  =  (   β β   −   t  ) α  [0.4 Ptos]  (b) Tenemos que  M   ( r )  X   ( t ) =   β α   ×   α   ×   ( α   + 1)   × · · · ×   ( α   +   r   −   1)   ×   ( β   −   t ) − ( α + r )   [0.9 Ptos]  Evaluando en cero se tiene que los primeros tres momentos te´ oricos son: E( X ) =   α β  ,   E( X 2 ) =   α   ( α   + 1)  β 2   ,   E( X 3 ) =   α   ( α   + 1) ( α   + 2)  β 3   [0.9 Ptos]  Luego  μ X   =   α β   y   σ X   =  √ α β   [0.2 Ptos]  Por otra parte  [0.5 Ptos]   θ X   =   E ( X 3 )   −   3   E ( X 2 )   μ X   + 3   E ( X )   μ 2  X   −   μ 3  X  σ 3  X  =   2   α/β 3  α 3 / 2 /β 3   =   2  √ α   [1.0 Ptos]  Como   θ X   >   0, tenemos que la distribuci´ on tiene asimetr´ ıa hacia la izquierda.   [0.5 Ptos] + 1 Punto Base  EYP1113 - Probabilidad y Estad´ ıstica Primer Semestre 2016  5   Profesores: Ricardo Aravena Cuevas Ricardo Olea Ortega
 
 --- Page 6 ---

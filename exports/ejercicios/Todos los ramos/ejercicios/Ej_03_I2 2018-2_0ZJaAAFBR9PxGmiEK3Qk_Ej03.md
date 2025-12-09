@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 03"
+topic: "General"
+number: "03"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-2_0ZJaAAFBR9PxGmiEK3Qk.pdf"
+sourceFile: "I2 2018-2_0ZJaAAFBR9PxGmiEK3Qk.pdf"
+---
+
 Con respecto al   c omportamiento   m ecánico   p lástico   de   un metal,   dibuje y explique   l as   siguiente   situaciones:  a)   Dislocación   de borde   y su movimiento   a escala atómica   (5pts.)  El movimiento es s imilar al movimiento de una   oruga. Los enlaces se rompen y forman nuevos enlaces con  los nuevos vecinos   como se puede apreciar en el siguiente esquema:  b)   ¿Qué tipo de tensión es la responsable de l movimiento   de la dislocación   de borde ?   Compare con el mecanismo  de deformación elás tica.   ( 3   pts   por explicar que el movimiento de las dislocación considerando la tensión de  corte y 2 pts por comparación .)  La deformación plástica consiste en migración de dislocaciones en ciertos planos cristalográficos (planos de  deslizamiento) cuando la tensión   aplicada excede el valor mínimo (limite de estricción).   Consideramos las  relaciones de tensión y deformación alrededor de una dislocación: el faltante plano cristalográfico resulta en  aumento de distancia entre planos 1 y 2 (r”>ro)   - > tracción, mientras   la distancia entre los planos 3 y 4 está  disminuida (r´<ro)   - > compresión. Como resultado, los enlaces 1 - 3 y 2 - 5 son inestables por lo que movimiento  de la dislocación y formación de enlaces 1 - 4 o 2 - 4 es posible. La tensión necesaria para mover la dislocac ión se  denomina por tau_crit. Para tau > tau_crit, la dislocacion se mueva hacia la izquierda; para   tau’ > tau_crit ,  hacia la derecha.  c)   ¿Por qué en un ensayo de tracción uniaxial el plano de falla   es inclinado?   (5pts.)  Porque existe una tensión de   corte en función de la tensión axial aplicada.   La relación entre tensión de corte,  tensión aplicada y orientación   de los planos cristalinos está dada por la ley de Schmid t.  Tensión cortante resulta en un sistema de deslizamiento.      cos cos appl r   =  A nivel de enlaces atómicos, en la deformación plástica se rompen los  enlaces y forman nuevos con sus nuevos “vecinos”, ya que los   planos  se deslizan uno en función de otro. En cambio en la deformación  elástica, los enlaces solamente se estiran.
 
 --- Page 3 ---

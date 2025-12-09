@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia7_Solucionario_4WajTecVbEV34zutlgqh.pdf"
+sourceFile: "Ayudantia7_Solucionario_4WajTecVbEV34zutlgqh.pdf"
+---
+
 En un dep´ osito en forma de cono invertido el agua sale de a raz´ on de 10000   cm 3  min   al mismo tiempo que se bombea agua al dep´ osito a raz´ on constante. El dep´ osito mide 6 m   de altura, y el di´ ametro en la parte superior es de 4 m . Si el nivel del agua se eleva a raz´ on de 20   cm min   cuando la altura del agua es de 2 m , calcule la raz´ on a la cual el agua est´ a siendo bombeada hacia el tanque.  Soluci´ on:   Considere  E ( t ): Cantidad de agua que ha   Entrado   al tanque hasta el instante   t .  S ( t ): Cantidad de agua que ha   Salido   del tanque hasta el instante   t .  V   ( t ): Cantidad o volumen de agua que hay en el tanque en el instante   t .  h ( t ): Altura del nivel de agua que est´ a en el tanque en el instante   t .  r ( t ): radio correspondiente del nivel de agua en el tanque en el instante   t . Note que  V   ( t ) =   E ( t )   −   S ( t ) o   E ( t ) =   V   ( t ) +   S ( t )  V   ( t ) =   π  3   ( r ( t )) 2   h ( t )  dh dt   = 20   cm min dS dt   = 10000   cm 3  min  As´ ı,  E ( t ) =   π  3  ( r ( t )) 2   h ( t ) +   S ( t ) Para calcular,   dE dt   se deriva la igualdad anterior pero, como no se conoce   dr dt   en el instante de inter´ es y, como   r ( t ) y   h ( t ) est´ a relacionados, se puedes escribir a   r ( t ) en t´ ermino de   h ( t ) ya que  r ( t ) 2   =   h ( t ) 6 lo cual indica que  r ( t ) =  2 6 h ( t ) =  1 3 h ( t ) Por lo tanto,  E ( t ) =   π  3  ( h ( t ) 3  ) 2  h ( t ) +   S ( t ) =   π  27  ( h ( t )) 3   +   S ( t ) derivando respecto de   t ,  dE dt   =   π  27 3 ( h ( t )) 2   dh dt   +   dS dt   =   π  9  ( h ( t )) 2   dh dt   +   dS dt  Todos los valores involucrados en el lado derecho est´ an dados para el instante de tiempo de inter´ es, entonces,  dE dt   =  ( π  9  (200) 2   20 + 10000  )   cm 3  min   =  ( 800000 π  9   + 10000  )   cm 3  min  Note que se utiliz´ o que   h ( t ) = 2 m   = 200 cm
 
 --- Page 3 ---

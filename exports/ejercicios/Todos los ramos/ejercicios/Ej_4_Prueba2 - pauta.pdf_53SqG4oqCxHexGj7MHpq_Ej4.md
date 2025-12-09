@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Prueba2 - pauta.pdf_53SqG4oqCxHexGj7MHpq.pdf"
+sourceFile: "Prueba2 - pauta.pdf_53SqG4oqCxHexGj7MHpq.pdf"
+---
+
 [10p] Coompetencia entre complementadores  Las empresas Aracne ( 𝐴 ) y Electra ( 𝐸 ) producen complementos perfectos. Dados precios  𝑝 𝐴   y   𝑝 𝐸   para los bienes de Aracne y Electra, la demanda de cada una de ellas es 1   −   𝑝 𝐴   −   𝑝 𝐸   .  Los costos fijos y variables de ambas empresas son iguales a cero. Las empresas eligen sus precios de manera simultánea y por única vez. (a) [2p] Encuentre las curvas de reacción de las empresas. Indique si los precios son complementos o sustitutos estratégicos y explique qué significa esto desde un punto de vista conceptual. (b) [3p] Encuentre el equilibrio de Nash de manera algebraica. Encuentre los beneficios de Aracne y Electra en equilibrio. Demuestre si el equilibrio es estable en el sentido de Cournot. Suponga ahora que la empresa Teseo ( 𝑇   ) entra al mercado y provee un bien que es un sustituto perfecto del de Electra. Los consumidores valoran los bienes de Electra y de Teseo de igual manera, por lo que al competir a la Bertrand estas empresas terminan fijando precios iguales a su costo marginal, que es cero. En consecuencia, la demanda de Aracne es ahora igual a 1   −   𝑝 𝐴 . (c) [1p] Encuentre el precio y beneficio de equilibrio de Aracne. (d) [2p] Compare el beneficio de Aracne en los puntos (b) y (c) y determine si la entrada de Teseo beneficia o perjudica a Aracne. ¿Por qué se da este resultado? (e) [2p] Compare el precio total que deben pagar los consumidores en los puntos (b) y (c) y determine si la entrada de Teseo beneficia o perjudica los consumidores. ¿Por qué se da este resultado? 4
 
 --- Page 5 ---

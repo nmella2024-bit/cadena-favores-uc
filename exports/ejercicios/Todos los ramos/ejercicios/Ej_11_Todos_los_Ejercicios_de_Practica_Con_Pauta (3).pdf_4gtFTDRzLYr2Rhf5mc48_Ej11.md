@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 11"
+topic: "General"
+number: "11"
+originalUrl: "exports/downloads/Todos los ramos/Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+sourceFile: "Todos_los_Ejercicios_de_Practica_Con_Pauta (3).pdf_4gtFTDRzLYr2Rhf5mc48.pdf"
+---
+
 5   Suponga que un banco está considerando otorgar préstamos a pequeñas empre- sas. Cada empresa puede ser de alto potencial ( H ) con probabilidad   1 3   o de bajo potencial ( L ) con probabilidad   2 3   , y estas probabilidades son de conocimiento común.   Sin embargo, solo la empresa conoce su propio potencial: el banco no. Supón que el banco elige una tasa de interés   r .   Si la empresa de alto potencial toma el préstamo, tiene un payoff en la fecha siguiente igual a   10   −   2 r , es decir, cuánto mayor la tasa de interés, menor su utilidad. Ya la empresa del tipo bajo sabe que no pagará su deuda, por lo que su payoff de aceptar el préstamo no depende de   r   y es simplemente igual a $10. Además, suponga que la empresa de alto potencial tiene una opción externa de   u H   = $8 , mientras que la empresa de bajo potencial tiene una opción externa de solo   u L   = $2 . El beneficio que el banco tiene si la empresa alta acepta su préstamo está dado por   5 r , mientras que la desutilidad que tiene en hacer un préstamo a una empresa del tipo bajo está dado por -$10. Suponga que el banco puede ofrecer una tasa de interés   r   ≥   0 , o simplemente no ofrecer ningún préstamo y obtener una opción externa de $0. Tras observar su tipo y la tasa de interés practicada por el banco   r   (si es que este decide hacer un préstamo), la empresa decide si acepta un préstamo del banco a esta tasa de interés o no.
 
 --- Page 109 ---

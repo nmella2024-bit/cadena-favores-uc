@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 31"
+topic: "General"
+number: "31"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 200  Total Activos   $ 449.000   Total Pasivos + Patrimonio   $   449.000 Notas: (1):   Correspondiente al valor del derecho de la empresa por usar el local durante el mes de febrero. El saldo de la cuenta “Resultados del Ejercicio” o valor del aumento del patrimonio de los dueños como resultado de la gestión de la empresa durante el mes de enero, se puede obtener de dos maneras.   En primer lugar construyendo el “Estado de Resultados” del mes de enero, lo que en este caso nos indica que dicho “Resultado del Ejercicio” fue una “Utilidad” de $31.200.   En segundo lugar, por diferencia entre el total de los activos al 31/1/04 ($449.000) y el total de los pasivos y patrimonio de la empresa (antes del resultado del ejercicio) al 31/1/04 ($167.800 + $250.000 = $417.800), lo que nos indica el aumento del patrimonio de los dueños como resultado de la gestión de la empresa durante enero, y que en este caso fue de $31.200 (que como se ha dicho se obtiene de: $449.000 - $417.800).   Este resultado, no puede ser distinto de aquel que obtuvimos del “Estado de Resultados”, por cuanto en ambos casos, tanto al hacerlo obteniendo la diferencia entre activos y pasivos + patrimonio (antes de resultado del ejercicio) al 31/1/04, como al hacerlo a través del Estado de Resultados y por lo tanto comparando los Ingresos con los Gastos del período, estamos haciendo lo mismo, es decir, obteniendo el aumento de patrimonio de los dueños como resultado de la gestión de la empresa durante el mes de enero de 2004.
 
 --- Page 66 ---

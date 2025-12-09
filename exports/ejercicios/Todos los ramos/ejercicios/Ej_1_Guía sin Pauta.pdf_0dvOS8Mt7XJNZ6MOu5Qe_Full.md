@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Guía sin Pauta.pdf_0dvOS8Mt7XJNZ6MOu5Qe.pdf"
+sourceFile: "Guía sin Pauta.pdf_0dvOS8Mt7XJNZ6MOu5Qe.pdf"
+---
+
 --- Page 1 ---
 Material de Estudio EAF2010  Uso exclusivo para el curso EAF2010 No distribuir. 14 de marzo de 2023
 

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 09"
+topic: "General"
+number: "09"
+originalUrl: "exports/downloads/Todos los ramos/I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+sourceFile: "I3 2019-1 Opcion1_18pI1PvkkoEmZsNGHBBY.pdf"
+---
+
 Detección de grietas  (20 pts.) Un equipo para levantar cargas utiliza una cadena constituida por eslabones de acero como los mostrados en la figura 9.1. Durante su uso, la cadena habitualmente roza y golpea otros componentes mecánicos. Para evitar una falla catastrófica debido a la fractura de un eslabón, se requiere implementar un sistema de inspección que permita anticipar la necesidad de reemplazar la cadena. El sistema de inspección se basa en medir el tamaño (profundidad) de los defectos superficiales presentes en los eslabones de la cadena.  Los eslabones están fabricados con acero de 11 mm de diámetro. La carga máxima que se aplica sobre la cadena es de 38,0 kN, y se supone que se distribuye en partes iguales sobre ambos lados rectos de cada eslabón.  Se requiere que el sistema sea capaz de detectar defectos que permitan anticipar la falla con un factor de seguridad contra la fractura de 2,0, es decir, que el factor de intensidad de tensiones no supere 1/2 del valor de la tenacidad a la fractura del material.  Suponga que solo debe verificarse la sección recta de los eslabones y que,   por tratarse de defectos superficiales en un  cilíndro, el factor geométrico   Y   es equivalente a 1,2.  Las propiedades del acero de la cadena:   Figura 9.1  R p   :   350 MPa  R uts   :   560 MPa  E   :   210 GPa  K Ic   :   27 MPa·√m  a)   (2 pts.) ¿Cuál es la orientación más desfavorable para los defectos?  Perpendicular   a la dimensión mayor de los eslabones.  b)   (18 pts.) Determine el tamaño mínimo de los defectos (en mm) que el sistema debe ser capaz de detectar.  Tensión longitudinal:  𝜎 =  𝑁 𝐴  =  19 𝑘𝑁 𝜋 4  𝑑 2   = 200 𝑀𝑃𝑎  Tamaño crítico de la grieta (grieta en la superficie:   𝑌 = 1,2 ) para la tensión de trabajo:  6 pts
 
 --- Page 11 ---

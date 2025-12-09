@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 07"
+topic: "General"
+number: "07"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-2_0ZJaAAFBR9PxGmiEK3Qk.pdf"
+sourceFile: "I2 2018-2_0ZJaAAFBR9PxGmiEK3Qk.pdf"
+---
+
 En el laboratorio de   DICTUC de la Universidad Católica de Chile ,   se realizó un ensayo en corte y compresión de  un muro fabricado de un material con módulo de elasticidad E=20GPa y razón de Poisson    =0,20, como muestra  esquemáticamente la figura 1. Para medir las deformaciones   en un punto en el centro sobre la superficie del muro  (punto P en la figura 1) se colocó una roseta de deformaciones   orientada   en 45° como se muestra en la figura 2. La  lectura de la roseta fue:   ( 30   pts.)  𝜀 𝑎   =   0 , 2   ∙   10 − 3  𝜀 𝑏   =   0 , 1   ∙   10 − 3  𝜀 𝑐   =   − 1   ∙   10 − 3  a)   Determine   las tensiones principales y la orientación de los ejes principales respecto a los ejes   𝒙   e   𝒚   en el punto  P. Dibuje el estado principal de tensiones en un elemento diferencial orientado según los ejes principales.  b)   Determine la tensión de corte máxima y la orientación en la que se produce respecto a los ejes   𝒙   e   𝒚   en el  punto P. Dibuje el estado de tensión de corte máxima en un elemento diferencial orientado según los ejes en  que se produce.  Para la roseta en 60º de la figura 2, se tienen las siguientes relaciones entre las deformaciones:  𝜀 𝑎   =   𝜀 𝑥   ( 1 p)   (1)  𝜀 𝑏   =   ( 𝜀 𝑥 + 𝜀 𝑦 )  2   +   ( 𝜀 𝑥 − 𝜀 𝑦 )  2   cos ( 90 )   +   𝛾 𝑥𝑦  2   sin ( 90 )   =   ( 𝜀 𝑥 + 𝜀 𝑦 )  2   +   1  2   𝛾 𝑥𝑦   ( 1 p)   (2)  𝜀 𝑐   =   𝜀 𝑦   ( 1 p)   (3)  Reemplazando (1) y (3) en (2) se obtiene:  𝜀 𝑏   =   𝜀 𝑎 + 𝜀 𝑐  2   +   𝛾 𝑥𝑦  2   (4)  Entonces, despejando:  𝛾 𝑥𝑦   =   2 𝜀 𝑏   −   𝜀 𝑎   −   𝜀 𝑐   (5)  P  Figura 1   Figura 2  𝑥  𝑦  P  𝑏  𝑐  𝑎  45 °  45 °
 
 --- Page 7 ---

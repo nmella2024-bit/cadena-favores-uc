@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2018-1_0VSzShpOR5kyzUwwK5lS.pdf"
+sourceFile: "I2 2018-1_0VSzShpOR5kyzUwwK5lS.pdf"
+---
+
 (16 puntos)  (a)   (6 puntos)   Considere el siguiente problema de optimizaci´ on:  P   )   Max 7 x 1   + 3 x 2  s.a:   x 1   + 4 x 2   ≤   8  x 1   + 2 x 2   ≥   6  x 1 , x 2   ≥   0 Mediante el uso del algoritmo de Simplex, y partiendo del punto   x 1   = 4 y   x 2   = 1, encuentre la soluci´ on ´ optima del problema   P   ). Indique claramente sus pasos en cada iteraci´ on del algoritmo de Simplex, e informe al final de su desarrollo cu´ al es el valor de las variables y de la funci´ on objetivo en el ´ optimo.  1 Cataldo, A., Ferrer, J., Rey, P., & Saur´ e, A. (2018). Design of a Single Window System for E-Government Servi- ces: The Chilean Case. Journal of Industrial and Management Optimization, 14(2), 561-582. http:// doi: 10.3934/ji- mo.2017060.
 
 --- Page 7 ---

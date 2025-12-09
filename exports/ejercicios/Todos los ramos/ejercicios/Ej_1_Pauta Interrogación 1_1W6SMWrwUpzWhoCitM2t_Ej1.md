@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Pauta Interrogación 1_1W6SMWrwUpzWhoCitM2t.pdf"
+sourceFile: "Pauta Interrogación 1_1W6SMWrwUpzWhoCitM2t.pdf"
+---
+
 (15 puntos)  1.1   (5 puntos) Elija un supuesto de la regresi´ on lineal, expl´ ıquelo y de un ejemplo en el que este supuesto no se cumpla. Se pueden escoger cualquiera de los siguientes supuestos: 1. Linealidad en los coeficientes. 2. Rango columna completo en la matriz de dise˜ no. 3. Exogeneidad estricta (en los errores). 4. Varianza de los errores esf´ erica. 5. Distribuci´ on normal en los errores. Para el caso de la pauta, se escoger´ a el supuesto de rango columna completo en la matriz de dise˜ no. Este supuesto indica que la matriz de dise˜ no, correspondiente a la matriz de variables independientes, posee rango completo, es decir, sea   X   la matriz de dise˜ no, con dimensi´ on ( n   ×   p ), el supuesto indica que Rango( X ) =   n , con   n   ≥   p . Un caso donde el supuesto no se cumpla, es cuando se tienen m´ as variables que observaciones en el modelo, por ejemplo, si se realiza un estudio en un curso de 5 personas, y se tienen los promedios de 7 materias distintas.  (3 puntos)   Por explicar correctamente el supuesto mencionado.  (2 puntos)   Por dar un ejemplo donde el supuesto no se cumpla.  1.2   (10 puntos) En la regresi´ on lineal de   y   sobre   X   (Cuando   X   contiene una constante) tenemos que: (1) se puede transformar   y   rest´ andole la media de   y , tambi´ en se puede transformar la matriz   X   rest´ andole a cada columna su media, y (2) la regresi´ on del   y   transformado sobre   X   transformado resulta en los mismos coeficientes de   X   que la regresi´ on original ( y   sobre   X ), excepto por la constante.   ( Hint:   en este caso, los resultados de estimar los coeficientes de la regresi´ on original de   y   sobre   X   con constante incluida son:  b   = ( XM   0 X ) − 1 X ′ M   0 y , con   M   0   como la definimos en clases). Indique: 1. ¿Se obtienen los mismos resultados si se transforma s´ olo   y ?
 
 --- Page 2 ---

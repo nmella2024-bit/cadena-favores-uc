@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2016-1_1vnTDlNJMUMShaUB1xpG.pdf"
+sourceFile: "Examen 2016-1_1vnTDlNJMUMShaUB1xpG.pdf"
+---
+
 (Continuación): f) Igual espacio (3 puntos): Igual tiempo (3 puntos):
 
 --- Page 11 ---

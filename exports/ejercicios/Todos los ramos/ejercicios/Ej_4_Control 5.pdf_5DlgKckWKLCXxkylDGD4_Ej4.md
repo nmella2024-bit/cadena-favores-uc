@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Control 5.pdf_5DlgKckWKLCXxkylDGD4.pdf"
+sourceFile: "Control 5.pdf_5DlgKckWKLCXxkylDGD4.pdf"
+---
+
 ( 20 puntos)  Una pregunta clave para Casper era si debería comenzar con la publicidad televisiva. Hasta entonces,  la empresa había confiado en los medios de comunicación "ganados" gratuitos y en algunos anuncios  de radio y exteriores para complementar su presencia en l a web.  Algunos en la empresa consideraron que estos medios eran demasiado "nicho" para respaldar una  fuerte presencia a nivel nacional. Otros sintieron que la televisión era un medio demasiado  "tradicional" para Casper, en desacuerdo con la imagen "inconf ormista" que Casper había cultivado  hasta ese momento.  De acuerdo a lo leído en el caso y sus conocimientos de marketing, nombre y explique 4 beneficios y  4 riesgos para Casper de comenzar con publicidad televisiva.  Pauta:  Pueden nombrar 4 de cada   uno (2,5 cada beneficio y 2,5 cada riesgo)  Beneficios:  •   Creatividad permitida: mezcla de vista y sonido  •   Alcance amplio: capaz de escalar; bueno para el mercado masivo.  •   Flexibilidad: puede comprar de forma regional; especialmente con estaciones de cable, p uede  acceder a audiencias específicas, por ejemplo, ESPN, National Geographic, MTV.  •   Alto Impacto / llama la atención al ser atractivo a los sentidos.  •   Puede llegar al segmento objetivo de los “big matress”.  Riesgos:  •   Alto   Costo: producción del anuncio; podría tener un CPM o CPA alto.  •   Puede generar confusión para llamar la atención.  •   Se puede evitar ver con las alternativa de la TV de grabar y luego eliminar.  •   Mala imagen: Los consumidores lo ven como irritación/interrupción.  •   Imagen similar a los “big Mattress”: ¡Se quieren desmarcar de ellos, no parecerse!  •   Bajo tiempo de exposición.  •   Poco selectivo.  •   No tiene permanencia en el tiempo.  •   La medición puede ser más difícil y costosa de realizar .
 
 --- Page 10 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2023-1_0wnw8PPYEptv07dbsglO.pdf"
+sourceFile: "I2 2023-1_0wnw8PPYEptv07dbsglO.pdf"
+---
+
 (a) Notemos primero que (1) es equivalente a  κ N   =   λ⃗ r   ( s ) .  Derivando esto obtenemos  κ ′ N   +   κ N ′   =   λ ′ ⃗ r   ( s ) +   λ⃗ r   ′   =   λ ′  λ  κ N   +   λ T .  Utilizando Frenet-Serret tenemos que  κ ′ N   +   κ ( − κ T   +   τ   B ) =   λ ′  λ  κ N   +   λ T .  Podemos reescribir esto como ( λ   +   κ 2 ) T ,   +   λ ′  λ  κ   −   κ ′    N   −   τ κ B   = 0 .  (b) De la parte anterior tenemos (tomado producto punto con   B ) que   τ κ   = 0. Como   κ ̸   = 0 entonces   τ   = 0 y la curva es plana. (c) Si en   s   = 0 se tiene que el vector tangente unitario es     1 √ 2   ,   0 ,   1 √ 2    y el vector normal unitario es (0 ,   1 ,   0), el vector binormal es    −   1 √ 2   ,   0 ,   1 √ 2    . Como este es constante para todo  s   (porque la curva es plana), tenemos que el plano osculador tiene este vector normal. Por otro lado, el vector normal al plano   x − z   = 4 es    −   1 √ 2   ,   0 ,   1 √ 2    , por lo tanto es paralelo al plano osculador. 2
 
 --- Page 3 ---

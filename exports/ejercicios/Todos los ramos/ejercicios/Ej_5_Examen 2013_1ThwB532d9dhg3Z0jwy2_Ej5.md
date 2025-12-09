@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2013_1ThwB532d9dhg3Z0jwy2.pdf"
+sourceFile: "Examen 2013_1ThwB532d9dhg3Z0jwy2.pdf"
+---
+
 (obligatoria)   Presentaciones. Contesta dos preguntas a   continuación (0.3  puntos cada una)  a) Contesta   una   de la s dos preguntas a continuación:  a1. Explica cuál es la relación entre el radio crítico de una burbuja y la tensión  superficial.  a2. Explica en términos fisicoquímicos, c ó mo funciona el método para   evitar que las  bebidas "exploten". ¿Qué factores de la mezcla afectan a este proceso?  b)   Contesta   una   de la s dos preguntas a continuación:  b1. Explica qu é   proceso   fisicoquímic o   ocurre durante la transformación de granos de  maíz a cabritas. Explica   por qué algunas cabritas no estallan y se queman.  b2. Explica qu é   procesos pueden ocurrir al aumentar la temperatura de un polímero   o  alimento . Menciona dos   ejemplos   donde esto ocurre a distintas temperaturas   y explica  por qué la diferencia.  c) Contesta   una   de la s dos preguntas a continuación:  c1. Explica desde el punto de vista fisicoquímico en qué consiste la enfermedad  descompresiva de los buzos y c ó mo se puede evitar. Muestra en un gráfico presión  (profundidad) versus concentración c ó mo   cambia la situación a distintas profundidades.  c2. Explica en términos fisicoquímicos cómo funcionan los anticongelantes. Muestra  gráficamente el rango de concentraciones en el que son efectivos y explica por qué.

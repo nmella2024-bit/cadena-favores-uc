@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 30"
+topic: "General"
+number: "30"
+originalUrl: "exports/downloads/Todos los ramos/Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+sourceFile: "Libro Contabilidad Prof. Julio Gálvez (2013) (Para destacador) (2) (1).pdf_48h2RkbtvKU24Bu0AV1p.pdf"
+---
+
 000 Deudores Incobrables   8.000  Resultado Operacional   80.500  Más:   Ingresos No Operacionales:   200 Intereses Ganados   150 Ingreso por Arriendos   50 Menos:   Gastos No Operacionales   (8.000) Gastos Financieros (Intereses)   (8.000) ________ =======  Resultado del Ejercicio (Utilidad o Ingreso Neto)   $   72.700
 
 --- Page 209 ---

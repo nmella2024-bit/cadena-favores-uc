@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I2 2020-2_3zrF6Z8PLl5yFibUqdn5.pdf"
+sourceFile: "I2 2020-2_3zrF6Z8PLl5yFibUqdn5.pdf"
+---
+
 Calcule la inversa de la matriz   A   tal que  A      1 0 0      =      1 1 1      ,   A      0 1 1      =      2 3 7      ,   A      2 1 3      =      6 9 19      .  Soluci´ on : Por la definici´ on de multiplicaci´ on de matrices se tiene que  A      1   0   2 0   1   1 0   1   3      =      1   2   6 1   3   9 1   7   19      .  Llamamos  B   =      1   0   2 0   1   1 0   1   3      ,   C   =      1   2   6 1   3   9 1   7   19      .  Entonces  | B |   =  ∣ ∣ ∣ ∣ ∣ ∣  1   2   6 1   3   9 1   7   19  ∣ ∣ ∣ ∣ ∣ ∣   =  ∣ ∣ ∣ ∣ ∣ ∣  1   2   6 1   3   9 0   4   10  ∣ ∣ ∣ ∣ ∣ ∣   =  ∣ ∣ ∣ ∣ ∣ ∣  1   2   6 0   1   3 0   4   10  ∣ ∣ ∣ ∣ ∣ ∣   =  ∣ ∣ ∣ ∣   1   3 4   10  ∣ ∣ ∣ ∣   =   − 2 y  | C |   =  ∣ ∣ ∣ ∣ ∣ ∣  1   0   2 0   1   1 0   1   3  ∣ ∣ ∣ ∣ ∣ ∣   =  ∣ ∣ ∣ ∣   1   1 1   3  ∣ ∣ ∣ ∣   = 2 por lo tanto tales matrices son invertibles. Esto implica que   A   es invertible y  A − 1   =   BC − 1 .  Calculamos la inversa de   C :      1   2   6   1   0   0 1   3   9   0   1   0 1   7   19   0   0   1      ∼      1   2   6   1   0   0 0   1   3   0   1   0 0   5   13   − 1   0   1      ∼      1   0   0   3   − 2   0 0   1   3   − 1   1   0 0   0   − 2   4   − 5   1     ∼      1   0   0   3   − 2   0 0   1   0   5   − 13 / 2   3 / 2  0   0   1   − 2   5 / 2   − 1 2      .  As´ ı  A − 1   =      1   0   2 0   1   1 0   1   3        3   − 2   0 5   − 13 / 2   3 / 2  − 2   5 / 2   − 1 / 2      =      − 1   3   − 1 3   − 4   1  − 1   1   0      .
 
 --- Page 3 ---

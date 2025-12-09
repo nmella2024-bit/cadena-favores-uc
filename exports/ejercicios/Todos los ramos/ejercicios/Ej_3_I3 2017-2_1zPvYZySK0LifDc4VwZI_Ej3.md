@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I3 2017-2_1zPvYZySK0LifDc4VwZI.pdf"
+sourceFile: "I3 2017-2_1zPvYZySK0LifDc4VwZI.pdf"
+---
+
 Sea   G   = ( V, E ) un grafo. a) Demuestre que o bien   G   es conexo, o bien lo es su complemento. b) Demuestre que si   G   es conexo, entonces los dos caminos m´ as largos en   G   comparten al menos un v´ ertice. c) Demuestre que si   | V   |   >   | E | , entonces   G   tiene una componente conexa que es un ´ arbol.  Soluci´ on  a) Nos enfocaremos en el caso cuando el grafo es disconexo ya que en otro caso la propiedad se cumple de manera trivial. Sea   G   un grafo disconexo, queremos mostrar que   ¯ G   es conexo. Sean   v   y   w   v´ ertices de   G . Si la arista   vw   no est´ a   G   entonces pertenece a  ¯ G . En otro caso, si   vw   pertenece a   G   entonces   v   y   w   pertenecen a la misma componente conexa en   G . Luego, como   G   es disconexo debe existir un v´ ertice   u   en otra componente conexa distinta tal que   uv   y   uw   no est´ an en   G . Luego   vuw   es un camino entre   v   y   w  en  ¯ G . Como   v   y   w   son arbitrarios, concluimos que  ¯ G   es conexo. b) Demostraremos por contradicci´ on.
 
 --- Page 5 ---

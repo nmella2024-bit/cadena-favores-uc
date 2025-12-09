@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/I2 2017-1_1HRV8yJcWyr9rEuW0p7D.pdf"
+sourceFile: "I2 2017-1_1HRV8yJcWyr9rEuW0p7D.pdf"
+---
+
 (10 puntos):   1 pto por asiento (son 8, el primero no se evalúa de nuevo),  excepto los últimos dos que valen dos puntos. S i tienen el número malo, el asiento  está malo.   Por asiento que no est é   en la pauta, - 0,5.  TRAMOS DE MORA   % PERDIDA ESTIMADA   DEUDA  31/dic/2016   PROVISION  De 0 a 30 días   5%   7.000.000   350.000  De 31 a 50 días   15%   -   -  De 51 a 70 días   30%   -   -  De 71 a 90 días   50%   2.600.000   1.300.000  De 91 a 150 días   65%   500.000   325.000  Más de 151 días   95%   1.400.000   1.330.000  11.500.000   3.305.000  Provisión Deudores Incobrables al 31 de diciembre de 2016   3.305.000  31/12/2016   -------------------------------------   --------------------------------------  Gasto Deudores Incobrables   3.305.000  Provisión Deudores Incobrables   3.305.000
 
 --- Page 7 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I2 2020-1_4IPe9DTsnCQsLkZj4eeY.pdf"
+sourceFile: "I2 2020-1_4IPe9DTsnCQsLkZj4eeY.pdf"
+---
+
 (20 puntos)  Considere el siguiente Problema de Flujo en redes a Costo M´ ınimo (PFCM) cuyos valores de costo por unidad de flujo y oferta neta est´ an detallados en cada arco y nodo del grafo, respectivamente. Lamentablemente, se han perdido 3 valores de costo en arcos los cuales est´ an identificados con el signo   ? . 1 2 3 4 5 6  -18  15  5  20  -12  -10  7   9  ?  ?  -3 3 6 2 2   ?  Suponga que usted conoce el siguiente vector de potenciales asociado a un ´ unico ´ arbol base factible:  π ′   = ( π 1 ,   π 2 ,   π 3 ,   π 4 ,   π 5 ,   π 6 ) = ( 2240 ,   2233 ,   2241 ,   2236 ,   2242 ,   2238 )  Respuesta:   Antes de responder, notar que se puede restar 2233 a cada componente de   π ′   y mantener su condici´ on de potencial. As´ ı, queda:  π ′   = ( 7 ,   0 ,   8 ,   3 ,   9 ,   5 )  (a)   (5p) ¿Es posible que esta soluci´ on base sea ´ optima? Justifique su respuesta.  Respuesta:   La diferencia de potenciales para el arco   ( 6 ,   3 )   es   π ′  3   −   π ′  6   =   3 y su costo es 2. As´ ı el costo reducido es   r 23   =   2   −   3   =   − 1. Esto implica que esta base no cumple condiciones de ´ optimalidad.  (b)   (5p) Obtenga los flujos sobre cada arco en dicha base asociada al vector   π ′ . Justifique su respuesta.  Respuesta:   Para identificar la base, se calculan los costos reducidos en cada arco con la informaci´ on disponible en la siguiente figura: 1 2 3 4 5 6  π ′   =   7  π ′   =   0  π ′   =   8  π ′   =   3  π ′   =   9  π ′   =   5 0   1  c 24   −   3  c 31   +   1 2 2 1 0  − 1   c 65   −   4
 
 --- Page 2 ---

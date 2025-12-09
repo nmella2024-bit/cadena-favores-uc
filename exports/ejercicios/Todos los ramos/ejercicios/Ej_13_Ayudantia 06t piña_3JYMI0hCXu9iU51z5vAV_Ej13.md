@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 13"
+topic: "General"
+number: "13"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+sourceFile: "Ayudantia 06t piña_3JYMI0hCXu9iU51z5vAV.pdf"
+---
+
 Determine si las siguientes series convergen o divergen.  a)   !   ! ! !  ! ! !   !  !  ! ! !  Solución :   Una de las primeras cosas que debemos hacer al enfrentarnos a una serie es  ver si su término general tiene límite cero. Veamos qué ocurre en este caso.  lim  ! → !   a !   =   lim  ! → !  n   n   +   2  n   +   3   !   =   lim  ! → !  n !   +   2n  n !   +   6n   +   9   =   1   ≠   0  Como el límite del término general es distinto de cero, entonces la serie no puede  converger. Por lo tanto la serie diverge.  b)   !  !  ! ! !   !" ! !  !   ! ! ! !  !  ! ! !  Solución :   Apliquemos el criterio del cociente:  L   =   lim  ! → !  a ! ! !  a !  =   lim  ! → !  1  3  ! ! ! ! !   2 ( n   +   1 )   −   5  ( n   +   1 )   ( n   +   1 ) !   −   5  1  3  ! ! !   2n   −   5  n   n !   −   5  L   =   lim  ! → !  3 ! ! ! n ( 2n   −   3 ) ( n !   −   5 )  3 !   n   +   1   2n   −   5   n   +   1   !   −   5   =   1  3   <   1  Luego, como el límite es menor que 1 la serie converge.  c)   !   !"# ( ! ! )  ( ! ! ! ) ( ! ! ! )  !  ! ! !  Solución :   Esta serie se puede escribir como:  n   cos ( n π )  ( n   +   1 ) ( n   +   2 )  !  ! ! !  =   − 1   ! n  ( n   +   1 ) ( n   +   2 )  !  ! ! !  Que es una serie alternante con   a !   =   !  ( ! ! ! ) ( ! ! ! ) .  Ahora bien, si utilizamos el criterio de Leibnitz, se tiene que
 
 --- Page 27 ---

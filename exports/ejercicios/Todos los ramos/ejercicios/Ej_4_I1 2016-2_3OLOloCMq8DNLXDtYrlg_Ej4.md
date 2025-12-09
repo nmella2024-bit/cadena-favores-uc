@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I1 2016-2_3OLOloCMq8DNLXDtYrlg.pdf"
+sourceFile: "I1 2016-2_3OLOloCMq8DNLXDtYrlg.pdf"
+---
+
 ¿Son v´ alidas las siguiente afirmaciones? Demuestre. a)   ∀ x ( P   ( x )   ∧   Q ( x ))   ≡ ∀ xP   ( x )   ∧ ∀ xQ ( x ) b)   ∃ x ( P   ( x )   ∧   Q ( x ))   ≡ ∃ xP   ( x )   ∧ ∃ xQ ( x ) c)   ∀ x ∃ y ( ϕ ( x, y ))   ≡ ∃ x ∀ y ( ϕ ( x, y ))  Soluci´ on  Por definici´ on de equivalencia l´ ogica,   ϕ   ≡   ψ   si para toda estructura   A , se tiene que   A      ϕ   ⇔  A      ψ . a) Por demostrar   ∀ x ( P   ( x )   ∧   Q ( x ))   ≡ ∀ xP   ( x )   ∧ ∀ xQ ( x ), es decir, para toda estructura   A  se tiene que   A      ∀ x ( P   ( x )   ∧   Q ( x ))   ⇔   A      ∀ xP   ( x )   ∧ ∀ xQ ( x )  •   ( ⇒ ) Suponiendo que   A      ∀ x ( P   ( x )   ∧   Q ( x )) es interpretada como verdadera, por definici´ on   P   ( a )   ∧   Q ( a ) es verdad para todo   a   ∈   Dom ( A ), luego (por sem´ antica del conectivo),   P   ( a ) y   Q ( a ) son verdad. Como   P   ( a ) y   Q ( a ) son verdad para todo elemento del dominio, por definici´ on de interpretaci´ on,   A      ∀ xP   ( x ) y   A      ∀ xQ ( x ), luego,   A      ∀ xP   ( x )   ∧ ∀ xQ ( x ).  •   ( ⇐ ) Suponiendo que   A      ∀ xP   ( x )   ∧ ∀ xQ ( x ) es interpretada como verdadera, por definici´ on,   A      ∀ xP   ( x ) y   A      ∀ xQ ( x ), entonces,   P   ( a ) y   Q ( a ) son verdad para todo   a   ∈   Dom ( A ). Por sem´ antica   P   ( a )   ∧   Q ( a ) es verdad para todo elemento  a   ∈   Dom ( A ), entonces por definici´ on,   A      ∀ x ( P   ( x )   ∧   Q ( x )).
 
 --- Page 8 ---

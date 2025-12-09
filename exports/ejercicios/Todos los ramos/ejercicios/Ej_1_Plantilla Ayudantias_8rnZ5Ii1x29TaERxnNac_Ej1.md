@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Plantilla Ayudantias_8rnZ5Ii1x29TaERxnNac.pdf"
+sourceFile: "Plantilla Ayudantias_8rnZ5Ii1x29TaERxnNac.pdf"
+---
+
 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut purus elit, vestibulum ut, placerat ac, adipiscing vitae, felis.   Curabitur dictum gravida mauris.   Nam arcu libero, nonummy eget, consectetuer id, vulputate a, magna. Donec vehicula augue eu neque. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut leo. Cras viverra metus rhoncus sem. Nulla et lectus vestibulum urna fringilla ultrices.  Figure 1: Figura problema 1 a) Morbi auctor lorem non justo. b) Vivamus viverra fermentum felis. c) Lorem ipsum dolor sit amet, consectetuer adipiscing elit.

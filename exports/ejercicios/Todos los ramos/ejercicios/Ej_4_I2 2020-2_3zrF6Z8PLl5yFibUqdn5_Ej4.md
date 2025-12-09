@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2020-2_3zrF6Z8PLl5yFibUqdn5.pdf"
+sourceFile: "I2 2020-2_3zrF6Z8PLl5yFibUqdn5.pdf"
+---
+
 Considere el espacio vectorial   P 3 ( R ) de polinomios con coeficientes reales de grado menor o igual a 3 y el conjunto  U   =   { p ( x )   ∈   P 3 ( R ) :   p (1)   −   2 p (0) = 0 } .  a) Demuestre que   U   es un subespacio de   P 3 ( R ). b) Determine una base para   U   e indique la dimensi´ on de   U   .  Soluci´ on : a) Primero vemos que   U   6   =   ∅   ya que contiene al polinomio nulo de   P 3 .   Sean   p, q   ∈   U   . Defina el polinomio   r ( x ) =   p ( x ) +   q ( x ) de   P 3 ( R ). Se tiene que  r (1)   −   2 r (0) = ( p (1) +   q (1))   −   2( p (0) +   q (0)) = ( p (1)   −   2 p (0)) + ( q (1)   −   2 q (0)) = 0 + 0 = 0 por lo que   r   ∈   U   . Por otro lado, si   α   ∈   R   entonces ( αp )(1)   −   2( αp )(0) =   α ( p (1) + 2 p (0)) =   α   ·   0 = 0 lo que implica que   αp   ∈   U   .   En conclusi´ on,   U   es un subespacio de   P 3 ( R ) ya que es cerrado las operaciones de suma y multiplicaci´ on escalar. b) Sea   p ( x ) =   ax 3   +   bx 2   +   cx   +   d ,   a, b, c, d   ∈   R .  p   ∈   U   ⇔   p (1)   −   2 p (0) = 0  ⇔   ( a   +   b   +   c   +   d )   −   2( d ) = 0  ⇔   a   +   b   +   c   =   d  ⇔   p ( x ) =   ax 3   +   bx 2   +   cx   + ( a   +   b   +   c )  ⇔   p ( x ) =   a ( x 3   + 1) +   b ( x 2   + 1) +   c ( x   + 1)  ⇔   p   ∈   Gen { x 3   + 1 , x 2   + 1 , x   + 1 }  en donde estos tres generadores de   U   son linealmente independientes ya que son de grado distinto. En conclusi´ on,   { x 3   + 1 , x 2   + 1 , x   + 1 }   es una base de   U   y la dimensi´ on de   U   es 3. Puntaje:  •   1 punto por justificar que   U   es no vac´ ıo.  •   1 punto por justificar que   U   es cerrado para la operaci´ on de multiplicaci´ on escalar.  •   1 punto por justificar que   U   es cerrado para operaci´ on de suma.  •   1 punto por encontrar un conjunto generador de   U   .  •   1 punto por justificar que dicho conjunto es LI y por lo tanto base.  •   1 punto por determinar la dimensi´ on de   U   .
 
 --- Page 6 ---

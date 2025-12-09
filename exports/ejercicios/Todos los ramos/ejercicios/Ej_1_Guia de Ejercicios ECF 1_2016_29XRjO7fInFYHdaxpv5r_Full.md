@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Guia de Ejercicios ECF 1_2016_29XRjO7fInFYHdaxpv5r.pdf"
+sourceFile: "Guia de Ejercicios ECF 1_2016_29XRjO7fInFYHdaxpv5r.pdf"
+---
+
 --- Page 1 ---
 Guía de Ejercicios Examen de Título Febrero 2016  1  MATEMÁTICA  Pregunta N°1  MAT1610-6-4  Considere la función   𝑓(𝑥) = −𝑥𝑒 − 𝑥 2 2   .  La función posee un máximo en:  a)   (1, −𝑒 − 1 2 )  b)   ( − 1 ,   − 𝑒 − 1  2 )  c)   (−1, 𝑒 − 1 2 )  d)   (1, 𝑒 − 1 2 )  Pregunta N°2  MAT1620-5-7  ¿Cuál de las siguientes series converge?  a)   ∑   𝑛 3 + 𝑛 2 + 𝑛  𝑛 4 + 𝑛 3 + 𝑛 2 + 𝑛  ∞  𝑛 = 1  b)   ∑   n 2  2 𝑛 3 + 1  ∞  𝑛 = 0  c)   ∑   3 n  𝑛 !  ∞  𝑛 = 0  d)   ∑   ln ( n )  𝑛 + 2  ∞  𝑛 = 1  Pregunta N°3  MAT1630-6-18  Sea   𝑓(𝑥, 𝑦) = 𝑥 𝑦 .  La derivada direccional en el punto   (1,2) , en la dirección   𝑢̂ = (1,1) , es:  a)   2  b)   0  c)   √2  d)   1
 

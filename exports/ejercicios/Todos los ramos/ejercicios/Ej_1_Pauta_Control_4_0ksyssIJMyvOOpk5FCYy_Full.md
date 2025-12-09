@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Pauta_Control_4_0ksyssIJMyvOOpk5FCYy.pdf"
+sourceFile: "Pauta_Control_4_0ksyssIJMyvOOpk5FCYy.pdf"
+---
+
 --- Page 1 ---
 DEPARTAMENTO DE INGENIERÍA INDUSTRIAL Y DE SISTEMAS  FACULTAD DE INGENIERÍA  PONTIFICIA UNIVERSIDAD CATÓLICA DE CHILE  ECONOMETRÍA APLICADA  Profesora: Javiera Vásquez  Pauta   Control Nº4  Jueves 12   de   octubre   de 2017  TIEMPO: 15 minutos  El siguiente mod elo fue estim ado con datos de 13 6   escuelas   de leyes de diferentes  universidades . El objetivo es medir como el ranking de la universidad afecta el salario  promedio   de   ingreso   al   mercado   laboral   de   sus   egresados   ( 𝑠𝑎𝑙𝑎𝑟𝑦 ).   La   variable  dependiente se define en logaritmo, es decir,   𝑙𝑠𝑎𝑙𝑎𝑟𝑦   =   ln ( 𝑠𝑎𝑙𝑎𝑟𝑦 ) .  En el modelo se utilizan las siguientes variables explicativas:  t op1 0 :   variable binaria que toma valor 1 si la escuela de derecho está en el en las  primeras 10 en el r anking, 0 en otro caso.  r 1 1_25 : variable binaria que toma valor 1 si la escuela de derecho está rankeada entre  la posición 11 y 25, 0 en otro caso.  r 2 6 _ 40 : variable binaria que toma valor 1 si la escuela de derecho está rankeada entre  la posición   26   y   40 , 0 en otro caso.  r 4 1 _ 60 : variable binaria que toma valor 1 si la escuela de derecho está rankeada entre  la posición   4 1 y   60 , 0 en otro caso.  l sat :   promedio en prueba de admisión obtenido por   los estudiantes que ingresan a la  escuela de derecho.  g pa :   promedio de notas obtenidos en la universidad  l libvol :   logaritmo del número de libros disponibles en la biblioteca   en l a universidad.  l cost :   logaritmo del costo de la carrera de leyes en la universidad  De esta forma, se estima el siguiente modelo:  lsalary   =   𝛽 0   +   𝛽 1   ∙   𝑡𝑜𝑝 10   +   𝛽 2   ∙   𝑟 11 _ 25   +   𝛽 3   ∙   𝑟 26 _ 40   +   𝛽 4   ∙   𝑟 41 _ 60   +   𝛽 5   ∙   𝑙𝑠𝑎𝑡   +   𝛽 6   ∙   𝑔𝑝𝑎   +   𝛽 7   ∙   𝑙𝑙𝑖𝑏𝑣𝑜𝑙  +   𝛽 8   ∙   𝑙 𝑐𝑜𝑠𝑡   +   𝑢
 

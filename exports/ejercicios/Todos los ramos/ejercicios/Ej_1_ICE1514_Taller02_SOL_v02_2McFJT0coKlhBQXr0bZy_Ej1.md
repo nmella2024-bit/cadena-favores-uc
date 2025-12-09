@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/ICE1514_Taller02_SOL_v02_2McFJT0coKlhBQXr0bZy.pdf"
+sourceFile: "ICE1514_Taller02_SOL_v02_2McFJT0coKlhBQXr0bZy.pdf"
+---
+
 Tomando el origen del sistema en Eugenio, como indica la Figura 2(a), se sabe del enunciado del problema que:  u   (0) =   u 0   =  { 0 0  }  ;   u   ( t ? ) =  { D H  }  ;   ˙ u   ( t ? ) =  { ? 0  }  Notar que para que golpee el vidrio de forma horizontal, la velocidad en “y” es cero, pero la velocidad en “x” es alg´ un valor (por ahora) desconocido. El vector de velocidad inicial se obtiene descomponiendo   v 0   =   ˙ u 0   en su magnitud por su director, como muestra la Figura 2(b):  v 0   =   v 0  { cos ( θ ) sin ( θ )  } H  D  x y   v 0  (a) v   cos( θ ) 0 v   sin( θ ) 0 v 0  θ   (b) 2H  θ  D 4H²+D² √   (c)  Figura 2: Problema de Eugenio tirando piedra a la ventana de Paula de manera que golpee el vidrio de forma horizontal: (a) descripci´ on del problema; (b) descomposici´ on de   v 0   en su magnitud y direcci´ on; y (c) obtenci´ on de sin ( θ ) y cos ( θ ) a partir de que tan ( θ ) = 2 H/D . Conocemos el vector de aceleraci´ on de la piedra, y luego integramos dos veces para obtener velocidad y aceleraci´ on:  ¨ u   ( t ) =  {   0  − g  }  ˙ u   ( t ) =  {   0  − g  }  t   +  { C 1 x  C 1 y  }  u   ( t ) =  {   0  − g  }   t 2  2  +  { C 1 x  C 1 y  }  t   +  { C 2 x  C 2 y  }  Usando las condiciones iniciales del problema (ya obtenidas), resulta:  ˙ u   ( t ) =  {   0  − g  }  t   +   v 0  { cos ( θ ) sin ( θ )  }  y   u   ( t ) =  {   0  − g  }   t 2  2  +   v 0  { cos ( θ ) sin ( θ )  }  t  v0.2 (2019-09-03)   ICE1514 – Taller 02 (Tom´ as Zegard)   P´ agina 2 de 5
 
 --- Page 3 ---

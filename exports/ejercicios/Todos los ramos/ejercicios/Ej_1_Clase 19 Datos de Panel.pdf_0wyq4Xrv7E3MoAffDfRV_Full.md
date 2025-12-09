@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Clase 19 Datos de Panel.pdf_0wyq4Xrv7E3MoAffDfRV.pdf"
+sourceFile: "Clase 19 Datos de Panel.pdf_0wyq4Xrv7E3MoAffDfRV.pdf"
+---
+
 --- Page 1 ---
 ˇˇ  Econometr´ ıa I - EAE- 250-A  Datos de Panel Ezequiel Garcia-Lembergman  Instituto de Econom´ ıa - Pontificia Universidad Cat ´ olica de Chile 2024
 

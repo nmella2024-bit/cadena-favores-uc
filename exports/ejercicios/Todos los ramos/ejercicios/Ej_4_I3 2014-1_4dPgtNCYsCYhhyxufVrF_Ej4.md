@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I3 2014-1_4dPgtNCYsCYhhyxufVrF.pdf"
+sourceFile: "I3 2014-1_4dPgtNCYsCYhhyxufVrF.pdf"
+---
+
 a ) Diagonalice la siguiente matriz   M   =  [   1   0   0 1   1   2 1   0   3  ]  y encuentre una matriz   N   tal que   N   3   =   M   . Soluci´ on: Los valores propios de la matriz son 1 y 3.  E 1   = Ker  [   0   0   0 1   0   2 1   0   2  ]  = Gen  {[   2 0  − 1  ]  ,  [   0 1 0  ]}  .  E 3   = Ker  [   − 2   0   0 1   − 2   2 1   0   0  ]  = Gen  {[   0 1 1  ]}  . Luego la diagonalizaci´ on est´ a dada por   M   =   P DP   − 1   con   P   =  [   2   0   0 0   1   1  − 1   0   1  ]  y  D   =  [   1   0   0 0   1   0 0   0   3  ]  . Si se considera a   R   =  [   1   0   0 0   1   0 0   0   3  √ 3  ]  se tiene que:  M   =   P DP   − 1   =   P R 3 P   − 1   =  (  P RP   − 1  ) 3  , luego basta tomar   N   =   P RP   − 1 .  b ) Sea   A   una matriz de 2   ×   2 de rango 1 tal que   A  [   1 2  ]  =  [   2 4  ]  . ¿ Es   A   diago- nalizable? Justifique. Soluci´ on: Del enunciado se tiene que   A  [   1 2  ]  = 2  [   1 2  ]  . Dado que   A   es de rango 1, entonces existe   u ̸   = ⃗   0 tal que   Au   = ⃗   0 = 0   ·   u . Como   u   y  [   1 2  ]  son vectores propios asociados a valores propios distintos, en- tonces son dos vectores linealmente independientes. Luego al existir una base de vectores propios de   A   se tiene que   A   es diagonaliz- able. (Tambi´ en basta con decir que como   A   tiene dos valores propios distintos, entonces es diagonalizable.) 6
 
 --- Page 7 ---

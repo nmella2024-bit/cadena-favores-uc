@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Ayudantía7_MAT1620_2023_2 (enunciado)_2anDFv0dGkukXN9Ri5uU.pdf"
+sourceFile: "Ayudantía7_MAT1620_2023_2 (enunciado)_2anDFv0dGkukXN9Ri5uU.pdf"
+---
+
 --- Page 1 ---
 PONTIFICIA UNIVERSIDAD CATOLICA DE CHILE FACULTAD DE MATEMATICAS DEPARTAMENTO DE MATEMATICA Segundo semestre 2023  Ayudantía 7- MAT1620  1. Determine si los siguientes límites existen. (a)   l´ ım  ( x,y ) → (0 , 0)  x 4   −   4 y 2  x 2   + 2 y 2   . (b)   l´ ım  ( x,y ) → (1 , 0)  xy   −   y  ( x   −   1) 2   +   y 2   . (c)   l´ ım  ( x,y ) → (0 , 0)  xy  √ x 2   +   y 2   . (d)   l´ ım  ( x,y ) → (0 , 0) ( x 2   +   y 2 ) ln( x 2   +   y 2 ) . 2. Determine el conjunto donde la función  f   ( x, y ) =              x 2 y 3  2 x 2   +   y 2   si   ( x, y ) ̸   = (0 ,   0) 1   si   ( x, y ) = (0 ,   0)  es continua. 3. Sea  f   ( x, y ) =              x 3 y   −   xy 3  x 2   +   y 2   si   ( x, y ) ̸   = (0 ,   0) 0   si   ( x, y ) = (0 ,   0)  Encuentre, en caso que existan,   f x (0 ,   0)   y   f y (0 ,   0) . 4. Calcule las primeras derivadas parciales de las siguientes funciones: a)   f   ( x, y ) =   y 5   −   3 xy . b)   f   ( x, y ) =   x y   . c)   f   ( x, y ) =   x 2 ye 3 xy . d)   f   ( x, y, z ) =   x 2 y   cos( z/x ) .
 

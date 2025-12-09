@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2016-2_0fu8gtSvzppIPemxaecz.pdf"
+sourceFile: "Examen 2016-2_0fu8gtSvzppIPemxaecz.pdf"
+---
+
 Considere el dispositivo cilindro-pist´ on-resorte de la figura. Inicialmente el sistema contiene 0 , 4 m 3   de refrige- rante R-134a a 0 , 8 MPa y 120   ◦ C. Se abre una v´ alvula que deja entrar refrigerante a 1 , 6 MPa y 140   ◦ C desde una l´ ınea de suministro. El proceso contin´ ua hasta que el volumen de refrigerante al interior del cilindro es de 0 , 8 m 3  y su temperatura es 130   ◦ C. Asuma que el proceso es cuasiest´ atico de modo que el resorte siempre mantiene al pist´ on en equilibrio. Desprecie la presi´ on atmosf´ erica y el peso del pist´ on. a) Muestre que el volumen y la presi´ on al interior del cilindro se relacionan por   P   =   αV   , donde   α   es una constante por determinar.   ( 0,5 pts. ) Ayuda: recuerde la definici´ on de presi´ on y escriba la condici´ on de equilibrio mec´ anico asumiendo que el resorte est´ a en su largo natural cuando el pist´ on se encuentra en el fondo del recipiente. b) Determine la constante   α   a partir de las condiciones iniciales. Calcule la presi´ on final del refrigerante. ( 1 pto. ) c) Calcule las masas inicial y final de refrigerante.   ( 1 pto. ) d) Demuestre que el trabajo realizado por el refrigerante al comprimir el resorte es  W   =  1 2  ( P 2   +   P 1 )( V 2   −   V 1 ) =  1 2  ( P 2   −   P 1 )( V 2   +   V 1 )   .   ( 0,5 pts. ) Eval´ ue esta expresi´ on num´ ericamente. e) Escriba las ecuaciones de balance de masa y de energ´ ıa para el proceso (transiente, por cierto) y calcule: 1) la masa de refrigerante que entr´ o al sistema,   ( 1 pto. ) 2) el calor transferido desde/hacia el entorno. Especifique la direcci´ on de transferencia.   ( 1 pto. ) f) Escriba la ecuaci´ on de balance de entrop´ ıa y determine la entrop´ ıa generada en el proceso si el entorno se encuentra a 20   ◦ C.   ( 1 pto. )
 
 --- Page 6 ---

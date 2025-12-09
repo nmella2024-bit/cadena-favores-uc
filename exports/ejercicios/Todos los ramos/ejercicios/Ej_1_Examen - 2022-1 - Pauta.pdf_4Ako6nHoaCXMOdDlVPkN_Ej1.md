@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Examen - 2022-1 - Pauta.pdf_4Ako6nHoaCXMOdDlVPkN.pdf"
+sourceFile: "Examen - 2022-1 - Pauta.pdf_4Ako6nHoaCXMOdDlVPkN.pdf"
+---
+
 Verdadero o Falso (30 puntos)  Responda VERDADERO o FALSO para las afirmaciones subrayadas. Debes justificar sus respuestas. 1. (6 puntos) Muchos economistas argumentan que la pandemia ha reducido el PIB potencial de la econom´ ıa. Si asi es, deber´ ıamos observar un aumento de la inflaci´ on, todo lo dem´ as constante. Verdadero. De acuerdo con el modelo IS-LM-PC, una reducci´ on del PIB potencial des- plaza la curva de Philips a la izquierda, generando un aumento de la inflaci´ on. 2. (6 puntos) De acuerdo con el modelo CIA, una mayor tasa de inter´ es nominal en estado estacionario lleva a una menor inversi´ on (en t´ erminos reales) en estado estacionario. Falso. El dinero es superneutral en este modelo, y luego la inversi´ on de estado estacionario (en t´ erminos reales) no es afectada por la tasa de inter´ es nominal de estado estacionario. 3. (6 puntos) En pa´ ıses con libre movilidad de capitales y tipo de cambio fijo, la pol´ ıtica monetaria es un instrumento importante para estabilizar fluctuaciones en el PIB, dado que el tipo de cambio no se ajusta. Falso. La trinidad imposible dice que un pa´ ıs con libre movilidad y tipo de cambio fijo no tiene control de su pol´ ıtica monetaria. 4. (6 puntos) Una condici´ on necesaria para que exista una relaci´ on positiva entre el PIB real y la inflaci´ on es que exista alg´ un tipo de rigidez nominal (es decir, rigideces de precio o de salarios). Falso. El modelo de Lucas genera esta relaci´ on solamente con rigideces de informaci´ on. 5. (6 puntos) Si el gobierno aumenta de manera permanente el gasto, deber´ ıamos esperar un aumento en la tasa de inter´ es real natural de la econom´ ıa. Verdadero. De acuerdo con el modelo IS-LM-PC, un aumento del gasto aumenta el PIB de equilibrio para una dada tasa de inter´ es real. Luego, ser´ a necesario aumento en la tasa de inter´ es real para lograr el mismo nivel PIB potencial (que no cambia cuando sube el gasto del gobierno). 2
 
 --- Page 2 ---

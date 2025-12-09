@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2023-TAV_3ZWVcwf15l2vZyMkM0tW.pdf"
+sourceFile: "I2 2023-TAV_3ZWVcwf15l2vZyMkM0tW.pdf"
+---
+
 1 punto por calcular   Q x   −   P y  1 punto por describir la regi´ on   D   como una regi´ on simple de tipo I. 2 puntos por usar el Teorema de Green para calcular el trabajo y obtener   W   =  Z   2  − 2  Z   √ 4 − x 2  0  (3 x 2   + 3 y 2 ) dydx . 2 puntos por calcular la integral doble usando coordenadas polares.
 
 --- Page 4 ---

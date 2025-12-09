@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/IIC1103_Ex Recup_3tjUcaFVI5EdVrK0DbNF.pdf"
+sourceFile: "IIC1103_Ex Recup_3tjUcaFVI5EdVrK0DbNF.pdf"
+---
+
 Para bajar el estr´ es luego de los ex´ amenes, una buena idea es invitar a tus compa˜ neros de curso a jugar naipes. Piensan en juntarse luego de esta prueba, y decides empezar a ejercitar tus habilidades con las cartas al mismo tiempo que practicas programaci´ on.  Parte a)  Una compa˜ nera encontr´ o una caja con cartas en el centro de alumnos, pero sospechas que pueden haber varias cartas perdidas en esa caja. Escribe una funci´ on   cartas perdidas   que reciba una lista de cartas y retorne una nueva lista con las cartas que faltan ordenadas seg´ un n´ umero y pinta. La lista de cartas est´ a en el formato [[ n 1 , p 1 ] ,   [ n 2 , p 2 ] , ... ] donde   n i   es el n´ umero de la carta   i   y   p i   es su pinta. La pinta puede ser   C   (corazones),   P   (picas),   D   (diamantes) o   T   (tr´ eboles). Considera que el orden de las pintas, de izquierda a derecha es corazones, picas, diamantes y tr´ eboles. No hay cartas repetidas. Un ejemplo de cartas ordenadas se muestra en la Figura 1. Los n´ umeros de las cartas van del 1 al 13. (El As se representa por 1 y las cartas literales (J,Q,R) por 11, 12 y 13.)  Parte b)  Otro compa˜ nero encontr´ o una gran pila de cartas que creen que podr´ ıa tener m´ as de un mazo, es decir, que podr´ ıa tener cartas repetidas (por ejemplo, m´ as de un As de corazones). Crea una funci´ on que reciba una lista de cartas, e imprima la cantidad de mazos completos y de mazos incompletos que tiene esa lista de cartas.  Figura 1: Conjunto de cartas ordenado seg´ un n´ umero y pinta, de izquierda a derecha

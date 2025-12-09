@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/I2 2016-2 (Enunciado)_2SARntdZymrFmTUO4sIR.pdf"
+sourceFile: "I2 2016-2 (Enunciado)_2SARntdZymrFmTUO4sIR.pdf"
+---
+
 ( 2 0   Puntos en total)  𝒂   𝒄 𝒂  ( 𝟏 ,   𝟐 )   𝟏𝟐𝟎   +   𝟎 ,   𝟐   ∙   𝒇 𝟏𝟐  ( 𝟏 ,   𝟑 )   𝟏𝟏𝟎   +   𝟎 ,   𝟐   ∙   𝒇 𝟏𝟑  ( 𝟐 ,   𝟒 )   𝟏𝟓𝟎   +   𝟎 ,   𝟑   ∙   𝒇 𝟐𝟒  ( 𝟐 ,   𝟓 )   𝟏𝟑𝟎   +   𝟎 ,   𝟐   ∙   𝒇 𝟐𝟓  ( 𝟑 ,   𝟐 )   𝟒𝟎   +   𝟎 ,   𝟏   ∙   𝒇 𝟑𝟐  ( 𝟑 ,   𝟒 )   𝟏𝟐𝟎   +   𝟎 ,   𝟐   ∙   𝒇 𝟑𝟒  ( 𝟑 ,   𝟓 )   𝟏𝟑𝟎   +   𝟎 ,   𝟑   ∙   𝒇 𝟑𝟓  ( 𝟓 ,   𝟒 )   𝟓𝟎   +   𝟎 ,   𝟏   ∙   𝒇 𝟓𝟒  𝒘   𝑻 𝒘  ( 𝟏 ,   𝟒 )   𝟔𝟎𝟎  ( 𝟏 ,   𝟓 )   𝟕𝟎𝟎  ( 𝟑 ,   𝟒 )   𝟓𝟎𝟎  Sobre   la red que se entrega, con las funciones de costo por arco que se indican, se desea asignar la  matriz de viajes que se indica.  a)   (8   puntos)   Considere la solución en la que 600 pasajeros viajan por la ruta 1 - 2 - 4, 700 por  la ruta 1 - 3 - 5, y 500 por 3 - 4. Identifi que en esta solución un usuario que no satisface las  condiciones de equilibrio enunciadas en el primer principio de Wardrop. Obtenga una  nueva solución realizando una reasignación del usuario antes identificado, y muestre que  esta nueva solución posee un m enor valor objetivo en el problema de optimización  equivalente dado por la transformada de Beckmann.  b)   (6   puntos)   Plantee el problema de optimización equivalente que permite encontrar una  asignación de equilibrio de usuarios para la red que se entrega.  c)   (6   puntos)   Proponga una red con funciones de costo adaptadas, tal que si asignáramos los  viajes en esta red con estos nuevos costos, se obtendría una asignación óptima para el  sistema.
 
 --- Page 4 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 5"
+topic: "General"
+number: "5"
+originalUrl: "exports/downloads/Todos los ramos/I1 2018-1_4wT3KK331IQlBRgsA65F.pdf"
+sourceFile: "I1 2018-1_4wT3KK331IQlBRgsA65F.pdf"
+---
+
 Comenzamos analizando la convergencia absoluta, notando que  ∑  n ≥ 0  ( √ n   + 1   −  √ n ) =   ∑  n ≥ 0  1  √ n   + 1 +   √ n  ,  la cual es divergente, ya que al compararla con la serie, divergente, de t´ ermino general  b n   =   1  √ n   se tiene que l´ ım  n →∞  1  √ n   + 1 +   √ n  1  √ n  = 1 .  Analizamos a continuaci´ on la respectiva serie alterntante, la cual satisface l´ ım  n →∞  1  √ n   + 1 +   √ n   = 0 .  y como   √ n   + 1 ,   √ n   son crecientes se tiene que   a n   =   1  √ n   + 1 +   √ n   es decreciente. Se concluye que la serie alternante es convergente y por la tanto la serie dada converge de manera condicional.  Asignaci´ on de puntaje:  Asignar 2,5 puntos por el an´ alisis de la convergencia en valor absoluta.  Asignar 2,5 puntos por analizar la convergencia de la respectiva serie alternante.  Asignar 1 punto por concluir de manera correcta la convergencia condicional. 6. Probaremos por inducci´ on que la sucesi´ on dada es decreciente. Es decir probaremos que para todo   n   ∈   N   se tiene que  a n +1   ≤   a n .  Para el caso base, se tiene que  a 2   = 1   <   3 =   a 1 .  La hip´ otesis de inducci´ on  a n   ≤   a n − 1  6
 
 --- Page 7 ---

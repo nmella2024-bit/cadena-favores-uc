@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/T2 2015-2_1knAzrgTriALfdeKc6eQ.pdf"
+sourceFile: "T2 2015-2_1knAzrgTriALfdeKc6eQ.pdf"
+---
+
 i)   Variables de Decisi´ on:  x it   :   1 si transmito el programa   i   entre   t   y   t   + 1 de lunes a viernes.  y it   :   1 si transmito el programa   i   entre   t   y   t   + 1 el s´ abado y domingo. Ambas, con   i   = 1 , . . . , M   , y con   t   = 0 , . . . ,   23.  Restricciones:  ( i )   Que se autofinancie. 5 ·  (   M ∑  i =1 21 ∑  t =0  x it ( I i   −   C i ) +  M ∑  i =1 23 ∑  t =22  x it ( IP i   −   C i )  )  +2 ·  (   M ∑  i =1 21 ∑  t =0  x it ( I i   −   C i ) +  M ∑  i =1 23 ∑  t =22  x it ( IP i   −   C i )  )  ≥   0 ( ii )   M´ ınimo cultural en el bloque prime (se define el conjunto   CU L   con los sub´ ındices de programas culturales). 5   ·   ∑  i ∈ CU L  ( x i, 22   +   x i, 23 ) + 2   ·   ∑  i ∈ CU L  ( y i, 22   +   y i, 23 )   ≥   3 ( iii )   M´ aximo farandulero (se define el conjunto   F AR   con los sub´ ındices de programas faranduleros). 5   ·  23 ∑  t =1  ∑  i ∈ F AR  x it   + 2   ·  23 ∑  t =1  ∑  ∈ F AR  y it   ≤   10 ( iv )   Factura nacional.   M ∑  i =1 23 ∑  t =0  x it CH i   +  M ∑  i =1 23 ∑  t =0  y it CH i   ≥   24 ( v )   M´ ınimo de entretenci´ on (se define el conjunto   EN T   con los sub´ ındices de programas de entreten- ci´ on).  ∑  i ∈ EN T  23 ∑  t =1  x it   ≥   2 , 4  ∑  i ∈ EN T  23 ∑  t =1  y it   ≥   2 , 4 ( vi )   No m´ as de una vez al d´ ıa.   23 ∑  t =1  x it   ≤   1   ∀ i   = 1 , . . . , M  23 ∑  t =1  y it   ≤   1   ∀ i   = 1 , . . . , M  ( vii )   Si va de lunes a viernes, no va el fin de semana.  23 ∑  t =1  x it   +   ∑  t  y it   ≤   1   ∀ i   = 1 , . . . , M  ´ o bien   x it   +   y it   ≤   1   ∀ i   = 1 , . . . , M   ∀ t   = 0 , . . . ,   23. ( viii )   Transmite las 24 horas.   23 ∑  t =1  M ∑  i =1  x it   = 24  23 ∑  t =1  M ∑  i =1  y it   = 24
 
 --- Page 15 ---

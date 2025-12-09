@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Prueba 2.pdf_3eCF2giBQjbCoB40bx7y.pdf"
+sourceFile: "Prueba 2.pdf_3eCF2giBQjbCoB40bx7y.pdf"
+---
+
 Lecturas (24 puntos)  a)   “Bankruptcy Rates among NFL Players with Short-Lived Income Spikes”  i.   (4 puntos) Discuta qué dicen los resultados del paper respecto a la validez empírica de la teoría del ciclo de vida.  ii.   (4 puntos) ¿Cómo cree Ud. que se pueden relacionar estos resultados con la justificación para la existencia de sistemas de pensiones obligatorios?  i. Jugadores de la NFL tienen ingresos muy altos durante poco tiempo, enfrentan riesgo de lesiones, e inevitablemente tendrán una caída abrupta de ingresos con muchos años de vida por delante, por lo que teoría del ciclo de vida sugiere que deberían tener ahorros significativos en su juventud. Aunque paper no puede ver ahorros, si puede ver tasas de bancarrota post retiro, y encuentra que esta son mucho más altas que lo que diría el modelo: jugadores consumen mucho más durante su juventud que lo que diría a primera vista la teoría del ciclo de vida. Bancarrotas ocurren rápido y no son menores para jugadores que ganaron más o jugaron más tiempo.  ii. Esto podría interpretarse como un ejemplo de poca capacidad de planificar financieramente para el futuro, aún en un caso en que es evidente que los altos ingresos actuales caerán drásticamente en el futuro. Ello puede deberse a diversas explicaciones, como “miopía” u otros fenómenos de economía del comportamiento. Este es el tipo de argumento que habitualmente se usa para justificar la necesidad de forzar a las personas a participar en un programa de pensiones que garantice los ingresos en la vejez.
 
 --- Page 13 ---

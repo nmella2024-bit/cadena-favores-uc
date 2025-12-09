@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/I1 - 2014 - 01_0Kpiso9hELvxgIZEQ1pA.pdf"
+sourceFile: "I1 - 2014 - 01_0Kpiso9hELvxgIZEQ1pA.pdf"
+---
+
 Cierta empresa alimenticia etiqueta sus productos utilizando c´ odigos. A cada producto le es asignado un c´ odigo de 8 caracteres, donde cada uno de los primeros 3 puede ser una de cuatro letras, A, B, C o D, sin repetirse, y los restantes 5 caracteres corresponden a 5 d´ ıgitos (entre 0 y 9), sin repetirse. Asumiendo que la empresa ha utilizado todas las etiquetas posibles, ¿cu´ al es la probabilidad de que, al escoger un producto al azar, su etiqueta comience con una consonante, y contenga exactamente 2 d´ ıgitos pares, uno al lado del otro? Nota: considere que el 0 es un n´ umero par.  Soluci´ on:   Sea el evento   A   : “se elige una etiqueta con las caracter´ ısticas pedidas”. Eligiendo los caracteres uno a uno, comenzando con las letras, los casos totales son: # S   =   4   ×   3   ×   2   ×   10   ×   9   ×   8   ×   7   ×   6 = 725 . 760 .   [0.6]  Para formar un c´ odigo con las caracter´ ısticas pedidas, separamos el proceso en etapas y luego multiplicamos las opciones: Se elige la consonante para el primer caracter   :   3   [0.6]  Se eligen la segunda y tercera letras   :   3   ×   2   [0.6]  Se eligen los dos d´ ıgitos pares que ir´ an juntos   :  (   5 2  )  [0.6]  Se decide cu´ al de los dos ir´ a primero   :   2   [0.6]  Se decide su ubicaci´ on en el c´ odigo   :   4   [0.6]  Se elige los 3 n´ umeros impares faltantes   :  (   5 3  )  [0.6]  Se ordenan los d´ ıgitos impares   :   3!   [0.6]  Luego, los casos favorables a   A   son: 3   ×   3   ×   2   ×  (   5 2  )  ×   2   ×   4   ×  (   5 3  )  ×   3! =   86 . 400 .   [0.6]  Luego, la probabilidad pedida es:  P   ( A )   =   86 . 400 725 . 760   [0.6]  =   0 . 119 .  [1.0] punto base  EYP1113 - Probabilidad y Estad´ ıstica Primer Semestre 2014  1   Profesores: Ana Mar´ ıa Araneda Ricardo Aravena Cuevas Ricardo Olea Ortega
 
 --- Page 2 ---

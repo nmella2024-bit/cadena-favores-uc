@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/Examen 2016-2_0fu8gtSvzppIPemxaecz.pdf"
+sourceFile: "Examen 2016-2_0fu8gtSvzppIPemxaecz.pdf"
+---
+
 Un ciclo ideal de Otto con aire como fluido de trabajo tiene una relaci´ on de compresi´ on de   r   ≡   V max /V min   = 8. Al comienzo de la compresi´ on el aire en el cilindro est´ a a 27   ◦ C. Si la cantidad de calor por unidad de masa transferido al aire es 750 kJ / kg, determine: a) la temperatura despu´ es de la compresi´ on,   ( 1 pto. ) b) la temperatura al final del proceso de adici´ on de calor   ( 1,5 pts. ) c) la temperatura despu´ es de la expansi´ on,   ( 1 pto. ) d) la cantidad de calor rechazado por unidad de masa,   ( 1 pto. ) e) la producci´ on neta de trabajo por unidad de masa,   ( 0,5 pts. ) f) la eficiencia t´ ermica del ciclo de Otto y la eficiencia t´ ermica del ciclo de Carnot equivalente.   ( 1 pto. ) Ayuda: considere al aire como un gas ideal con calores espec´ ıficos constantes ( q   =   C ∆ T   ) y recuerde que en un proceso adiab´ atico reversible las variables de estado de un gas ideal satisfacen   T V   γ − 1   = constante.
 
 --- Page 4 ---

@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 4"
+topic: "General"
+number: "4"
+originalUrl: "exports/downloads/Todos los ramos/Guia de Ejercicios ECF 1_2018_4wG4j01fHhkgmW3urTLu.pdf"
+sourceFile: "Guia de Ejercicios ECF 1_2018_4wG4j01fHhkgmW3urTLu.pdf"
+---
+
 MAT1640 - 3 - 2  No - lineal no - homogénea de segundo orden con coeficientes constantes si   𝑚   =   2 ,   𝑛   =   1 ,   𝑝   =   1 ,   𝑞   =  1 ,   𝑡   =   0  Pregunta N°5  MAT1203 - 4 - 1  𝑥   =  |  1   1   − 2  1   1   1  1   0   1  |  |  0   1   − 2  1   1   1  − 1   0   1  |  ,   𝑦   =  |  0   1   − 2  1   1   1  − 1   1   1  |  |  0   1   − 2  1   1   1  − 1   0   1  |  ,   𝑧   =  |  0   1   1  1   1   1  − 1   0   1  |  |  0   1   − 2  1   1   1  − 1   0   1  |  Pregunta N°6  ICS1113 - 3 - 1  𝑥 𝑖   +   1  𝑁   ∑   𝑥 𝑗  𝑗 ∈ 𝑉 ( 𝑖 )  ≤   1 ,   ∀ 𝑖   =   1 ,   …   ,   𝑁
 
 --- Page 30 ---

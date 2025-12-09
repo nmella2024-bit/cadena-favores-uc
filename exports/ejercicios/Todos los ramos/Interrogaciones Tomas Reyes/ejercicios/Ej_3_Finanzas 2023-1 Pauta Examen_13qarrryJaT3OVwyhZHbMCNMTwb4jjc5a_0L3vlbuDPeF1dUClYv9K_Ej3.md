@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/Interrogaciones Tomas Reyes/Finanzas 2023-1 Pauta Examen_13qarrryJaT3OVwyhZHbMCNMTwb4jjc5a_0L3vlbuDPeF1dUClYv9K.pdf"
+sourceFile: "Finanzas 2023-1 Pauta Examen_13qarrryJaT3OVwyhZHbMCNMTwb4jjc5a_0L3vlbuDPeF1dUClYv9K.pdf"
+---
+
 [ 20   pts.].  Considere que en un mercado existen solo 3 activos:   los   activo s   riesgosos   A   y   B ,   y un activo  libre de riesgo. El activo   A   retorna un 10% anual y su volatilidad es 3%   anual . El activo   B  retorna   un 16% anual y su volatilidad e s 9%   anual . Los retornos de los activos A y B son  independientes. Por otro lado, el activo libre de riesgo   retorna   un 4%   anual . Usted sabe que  el Sharpe Ratio   del portafolio de mercado es   2,4   y que se cumplen los supuestos de l CAPM.  a)   [ 10   pts.]   Determine   la composición, retorno y volatilidad del portafolio de mercado.  De la fórmula del Sharpe   R atio:  𝑆 𝑅 𝑝   =   𝐸 [ 𝑅 𝑝 ] − 𝑟 𝑓  𝑆𝐷 ( 𝑅 𝑝 )  Al reemplazar la fórmula con los datos   del enunciado  (2 pts   por reemplazar correctamente los valores en la fórmula del sharpe ratio)  2 , 4   =   𝑤 𝐴   ⋅   10%   +   ( 1   −   𝑤 𝐴 )   ⋅   16%   −   4%  √ 𝑤 𝐴  2   ⋅   0 , 03 2   +   ( 1   −   𝑤 𝐴 ) 2   ⋅   0 , 09 2  Despejando   𝑤 𝐴 ,   al resolver la ecuación cuadrática se pueden obtener los siguientes valores:  ( 1 ,5   pt   por determinar correctament e cualquiera de   los dos   valores de   𝒘 𝑨 , 1 ,5   pt por  𝒘 𝑩 )  𝑤 𝐴 1   =   0 , 8   →   𝑤 𝐵 1   =   0 , 2  𝑤 𝐴 2   =   0 , 836   →   𝑤 𝐵 2   =   0 , 164  Con lo anterior, el retorno del portafolio de mercado está dado por:  (2 pt por determinar el   retorno del   portafolio de mercado correctamente)  𝐸 [ 𝑅 𝑝 ]   =   𝑤 𝐴 1 𝑟 𝐴   +   𝑤 𝐵 1 𝑟 𝐵   =   0 , 112  𝐸 [ 𝑅 𝑝 ]   =   𝑤 𝐴 2 𝑟 𝐴   +   𝑤 𝐵 2 𝑟 𝐵   =   0 , 11  Para   ambas soluciones el retorno del portafolio de mercado es aproximadamente 11%  La volatilidad del portafolio de mercado está   dada   por:  ( 3   pt por det erminar la volatilidad del portafolio de mercado correctamente)
 
 --- Page 7 ---

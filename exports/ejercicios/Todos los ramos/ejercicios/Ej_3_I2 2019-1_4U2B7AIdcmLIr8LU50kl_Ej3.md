@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 3"
+topic: "General"
+number: "3"
+originalUrl: "exports/downloads/Todos los ramos/I2 2019-1_4U2B7AIdcmLIr8LU50kl.pdf"
+sourceFile: "I2 2019-1_4U2B7AIdcmLIr8LU50kl.pdf"
+---
+
 -   Subsidios   (10 puntos)  Considere un mercado en el que las curvas de oferta y demanda son como las que se indican a continuación:  ●   P= 200-3Q  ●   P= 150+Q  Si aplicamos un subsidio de $15 a la demanda:  a.   (2 puntos) Calcule el nuevo equilibrio  Q=65/4  PD=605/4  PO=665/4  b.   (2 puntos) Calcule el bienestar de consumidores y  EC = 396 aproximadamente  c.   (3 puntos) Calcule el gasto fiscal  GF = 243.75  d.   (3 puntos) Calcule la pérdida de bienestar  PIE = 28.125
 
 --- Page 10 ---

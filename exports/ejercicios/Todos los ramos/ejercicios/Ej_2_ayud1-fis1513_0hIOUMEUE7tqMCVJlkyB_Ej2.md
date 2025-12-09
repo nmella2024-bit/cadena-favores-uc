@@ -1,1 +1,9 @@
+---
+title: "Ejercicio 2"
+topic: "General"
+number: "2"
+originalUrl: "exports/downloads/Todos los ramos/ayud1-fis1513_0hIOUMEUE7tqMCVJlkyB.pdf"
+sourceFile: "ayud1-fis1513_0hIOUMEUE7tqMCVJlkyB.pdf"
+---
+
 Un auto el´ ectrico es sometido a pruebas de aceleraci´ on en una pista recta. El resultado de la curva   v − t   es modelado, en los primeros 10 segundos, mediante la funci´ on   v ( t ) =   At − Bt 2 + C √ t , donde   A   = 24 ms − 2 ,   B   = 1 ms − 3   y   C   = 5 ms − 3 / 2 . Determine el desplazamiento   s   como una funci´ on del tiempo en el intervalo 0 s   ≤   t   ≤   10 s y especifique su valor a   t   = 10 s.

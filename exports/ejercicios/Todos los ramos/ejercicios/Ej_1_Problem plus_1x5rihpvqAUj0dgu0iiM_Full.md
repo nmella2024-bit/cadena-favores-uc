@@ -1,3 +1,11 @@
+---
+title: "Documento Completo"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Problem plus_1x5rihpvqAUj0dgu0iiM.pdf"
+sourceFile: "Problem plus_1x5rihpvqAUj0dgu0iiM.pdf"
+---
+
 --- Page 1 ---
 Page 1 Problem plus
 

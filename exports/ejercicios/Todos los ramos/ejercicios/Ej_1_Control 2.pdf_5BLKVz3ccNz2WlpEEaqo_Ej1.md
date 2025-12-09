@@ -1,3 +1,11 @@
+---
+title: "Ejercicio 1"
+topic: "General"
+number: "1"
+originalUrl: "exports/downloads/Todos los ramos/Control 2.pdf_5BLKVz3ccNz2WlpEEaqo.pdf"
+sourceFile: "Control 2.pdf_5BLKVz3ccNz2WlpEEaqo.pdf"
+---
+
 (10 puntos)  Suponga que un individuo tiene una funci´ on del tipo Stone-Geary, es decir:   u   = ( x 1   −   γ 1 ) 0 , 5 ( x 2   −   γ 2 ) 0 , 5 . El individuo enfrenta precios dados de cada uno de los bienes iguales a ( p 1 , p 2 ). (a)   (1 punto)   Explique claramente qu´ e representan los par´ ametros   γ 1 , γ 2 . (b)   (3 puntos)   Derive las demandas compensadas para cada bien.   Explique cuida- dosamente sus pasos. (c)   (3 puntos)   Encuentre la funci´ on de gasto o de m´ ınimo costo para alcanzar un nivel de utilidad arbitrario de   u . Analice las propiedades de la funci´ on de gastos (1. creciente en precios y en   u , 2. homog´ enea de grado 1 en precio de los bienes, 3. c´ oncava (no estrictamente) en precios). (d)   (3 puntos)   A partir de la funci´ on de gasto, muestre cu´ ales ser´ an las demandas marshallianas asociadas a estos bienes (suponiendo que   m   ≥   p 1 γ 1   +   p 2 γ 2 ).  Respuesta.  (a) Los par´ ametros   γ 1 , γ 2   representan consumo de subsitencias porque es a medida de que   x 1   →   γ 1   y que   x 2   →   γ 2   las utilidades marginales de   x 1   y   x 2   tienden a infinito. Pueden tambi´ en argumentar por el lado de las TMSS y por la indefinici´ on de la funci´ on de utilidad. (b) Deben plantear el Lagrnageano y luego derivar las CPO: ( x 1   −   γ 1 ) − 0 , 5 ( x 2   −   γ 2 ) 0 , 5  ( x 1   −   γ 1 ) 0 , 5 ( x 2   −   γ 2 ) − 0 , 5   =  ( x 2   −   γ 2 ) ( x 1   −   γ 1 )  =   p 1  p 2  De all´ ı reemplazando en la ecuaci´ on de la restricci´ on se obtiene las demandas compensadas:  x H i   =   u  ( p j  p i  ) 1 / 2  +   γ i   i   6   =   j  1
 
 --- Page 2 ---
