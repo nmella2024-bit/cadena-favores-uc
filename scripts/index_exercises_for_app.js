@@ -50,8 +50,23 @@ const SYLLABUS = {
         "Conservación del Momento Lineal", "Dinámica de Rotación y Torque", "Gravitación Universal",
         "Oscilaciones y Ondas Mecánicas"
     ],
+    "Termodinámica": [
+        "Primera Ley y Energía", "Segunda Ley y Entropía", "Ciclos de Potencia",
+        "Propiedades de Sustancias Puras", "Fugacidad y Mezclas", "Equilibrio de Fases"
+    ],
+    "Finanzas": [
+        "Valor del Dinero en el Tiempo", "Tasas de Interés y UF", "Evaluación de Proyectos (VAN/TIR)",
+        "Bonos y Acciones", "Riesgo y Retorno"
+    ],
+    "Química General": [
+        "Estequiometría", "Enlace Químico", "Ácido-Base", "Termoquímica", "Polímeros y Materiales"
+    ],
+    "Electricidad y Magnetismo": [
+        "Ley de Coulomb y Campo Eléctrico", "Ley de Gauss", "Potencial Eléctrico",
+        "Circuitos DC y Ley de Ohm", "Campo Magnético", "Inducción Electromagnética"
+    ],
     "Todos los ramos": [
-        "Material General", "Pruebas Anteriores", "Guías de Ejercicios", "Ayudantías"
+        "Material General", "Pruebas Anteriores", "Guías de Ejercicios", "Ayudantías", "Otros Temas"
     ]
 };
 
@@ -117,7 +132,37 @@ const TOPIC_KEYWORDS = {
     "Conservación del Momento Lineal": ["momento", "momentum", "impulso", "choque", "colision", "elastico", "inelastico"],
     "Dinámica de Rotación y Torque": ["rotacion", "torque", "momento angular", "inercia rotacional", "rodadura"],
     "Gravitación Universal": ["gravitacion", "kepler", "orbita", "satelite", "fuerza gravitacional"],
-    "Oscilaciones y Ondas Mecánicas": ["oscilacion", "armonico", "simple", "pendulo", "resorte", "onda", "frecuencia", "periodo", "amplitud"]
+    "Oscilaciones y Ondas Mecánicas": ["oscilacion", "armonico", "simple", "pendulo", "resorte", "onda", "frecuencia", "periodo", "amplitud"],
+
+    // Termodinámica
+    "Primera Ley y Energía": ["primera ley", "energia interna", "calor", "trabajo", "sistema cerrado", "sistema abierto"],
+    "Segunda Ley y Entropía": ["segunda ley", "entropia", "irreversibilidad", "clausius", "kelvin-planck"],
+    "Ciclos de Potencia": ["ciclo", "rankine", "otto", "diesel", "refrigeracion", "carnot"],
+    "Propiedades de Sustancias Puras": ["tablas de vapor", "saturacion", "calidad", "diagrama de fase"],
+    "Fugacidad y Mezclas": ["fugacidad", "actividad", "potencial quimico", "mezcla ideal", "mezcla real"],
+    "Equilibrio de Fases": ["equilibrio liquido vapor", "elv", "raoult", "henry", "azeotropo"],
+
+    // Finanzas
+    "Valor del Dinero en el Tiempo": ["valor presente", "valor futuro", "anualidad", "perpetuidad"],
+    "Tasas de Interés y UF": ["tasa de interes", "interes compuesto", "uf", "nominal", "efectiva"],
+    "Evaluación de Proyectos (VAN/TIR)": ["van", "tir", "flujo de caja", "payback"],
+    "Bonos y Acciones": ["bono", "accion", "dividendo", "precio", "rendimiento"],
+    "Riesgo y Retorno": ["riesgo", "retorno", "capm", "beta", "diversificacion"],
+
+    // Química
+    "Estequiometría": ["mol", "reaccion", "balance", "reactivo limitante", "rendimiento"],
+    "Enlace Químico": ["enlace", "covalente", "ionico", "lewis", "geometria molecular"],
+    "Ácido-Base": ["ph", "poh", "acido", "base", "titulacion", "buffer"],
+    "Termoquímica": ["entalpia", "calor de reaccion", "ley de hess", "exotermico", "endotermico"],
+    "Polímeros y Materiales": ["polimero", "monomero", "plastico", "material", "cristal"],
+
+    // Electricidad
+    "Ley de Coulomb y Campo Eléctrico": ["coulomb", "campo electrico", "carga puntual"],
+    "Ley de Gauss": ["gauss", "flujo electrico", "superficie gaussiana"],
+    "Potencial Eléctrico": ["potencial", "voltaje", "diferencia de potencial"],
+    "Circuitos DC y Ley de Ohm": ["circuito", "resistencia", "corriente", "ohm", "kirchhoff"],
+    "Campo Magnético": ["campo magnetico", "fuerza magnetica", "biot-savart", "ampere"],
+    "Inducción Electromagnética": ["induccion", "faraday", "lenz", "fem"]
 };
 
 const determineBestMatch = (content, title) => {
@@ -190,10 +235,24 @@ const indexExercises = () => {
                 const content = fs.readFileSync(path.join(exercisesDir, file), 'utf-8');
                 const parts = file.replace('.md', '').split('_');
                 const number = parts[1];
+                // Try to get a meaningful title from the filename (parts[2] usually)
+                // Format seems to be: Ej_{number}_{title}_{id}_Full.md
+                let meaningfulTitle = parts[2] || "";
+
+                // If the title looks like an ID (alphanumeric only, long), ignore it or look elsewhere
+                if (meaningfulTitle.length > 15 && /^[a-zA-Z0-9]+$/.test(meaningfulTitle)) {
+                    meaningfulTitle = "";
+                }
+
                 const title = `Ejercicio ${number}`;
 
+                // Use the meaningful title for matching, but keep "Ejercicio X" as the display title if needed
+                // actually, let's use the meaningful title as the display title too if it's good
+                const displayTitle = meaningfulTitle && meaningfulTitle.length > 3 ? meaningfulTitle : `Ejercicio ${number}`;
+
                 // Determine best course and topic match
-                const match = determineBestMatch(content, title);
+                // Pass meaningfulTitle to help with classification
+                const match = determineBestMatch(content, displayTitle);
 
                 if (match && match.course !== "Todos los ramos") {
                     // Add to specific course
@@ -203,7 +262,7 @@ const indexExercises = () => {
                         number: number,
                         content: content,
                         filename: file,
-                        title: title,
+                        title: displayTitle,
                         topic: match.topic,
                         originalCourse: sourceFolder
                     });
@@ -222,7 +281,7 @@ const indexExercises = () => {
                     number: number,
                     content: content,
                     filename: file,
-                    title: title,
+                    title: displayTitle,
                     topic: genericTopic,
                     originalCourse: sourceFolder
                 });

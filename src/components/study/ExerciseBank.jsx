@@ -105,6 +105,56 @@ const SYLLABUS = {
             "Oscilaciones y Ondas Mecánicas"
         ]
     },
+    "Termodinámica": {
+        icon: <Atom className="w-6 h-6" />,
+        color: "text-orange-500",
+        bg: "bg-orange-100",
+        topics: [
+            "Primera Ley y Energía",
+            "Segunda Ley y Entropía",
+            "Ciclos de Potencia",
+            "Propiedades de Sustancias Puras",
+            "Fugacidad y Mezclas",
+            "Equilibrio de Fases"
+        ]
+    },
+    "Finanzas": {
+        icon: <Calculator className="w-6 h-6" />,
+        color: "text-green-500",
+        bg: "bg-green-100",
+        topics: [
+            "Valor del Dinero en el Tiempo",
+            "Tasas de Interés y UF",
+            "Evaluación de Proyectos (VAN/TIR)",
+            "Bonos y Acciones",
+            "Riesgo y Retorno"
+        ]
+    },
+    "Química General": {
+        icon: <Atom className="w-6 h-6" />,
+        color: "text-teal-500",
+        bg: "bg-teal-100",
+        topics: [
+            "Estequiometría",
+            "Enlace Químico",
+            "Ácido-Base",
+            "Termoquímica",
+            "Polímeros y Materiales"
+        ]
+    },
+    "Electricidad y Magnetismo": {
+        icon: <Atom className="w-6 h-6" />,
+        color: "text-yellow-500",
+        bg: "bg-yellow-100",
+        topics: [
+            "Ley de Coulomb y Campo Eléctrico",
+            "Ley de Gauss",
+            "Potencial Eléctrico",
+            "Circuitos DC y Ley de Ohm",
+            "Campo Magnético",
+            "Inducción Electromagnética"
+        ]
+    },
     "Todos los ramos": {
         icon: <Database className="w-6 h-6" />,
         color: "text-gray-500",
@@ -113,7 +163,8 @@ const SYLLABUS = {
             "Material General",
             "Pruebas Anteriores",
             "Guías de Ejercicios",
-            "Ayudantías"
+            "Ayudantías",
+            "Otros Temas"
         ]
     }
 };
@@ -412,7 +463,9 @@ const ExerciseBank = () => {
                                                 key={topic}
                                                 onClick={() => {
                                                     setSelectedTopic(topic);
-                                                    setViewMode('topic-choice');
+                                                    // Auto-expand if no strict matches found to show related immediately
+                                                    const hasStrict = extractedList.some(ex => ex.topic === topic);
+                                                    setViewMode(hasStrict ? 'topic-choice' : 'topic-choice-expanded');
                                                 }}
                                                 disabled={isGenerating}
                                                 className="w-full flex items-center justify-between p-3 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 group transition-colors text-left"

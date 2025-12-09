@@ -39,6 +39,10 @@ const courses = [
     "algebra lineal",
     "probabilidad y estadistica",
     "fisica: mecanica",
+    "termodinamica",
+    "finanzas",
+    "quimica general",
+    "electricidad y magnetismo",
     "todos los ramos"
 ];
 

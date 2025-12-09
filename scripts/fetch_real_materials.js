@@ -73,6 +73,7 @@ const main = async () => {
             if (d.ramo) uniqueCourses.add(d.ramo);
         });
         console.log('Available courses:', Array.from(uniqueCourses));
+        process.exit(0); // Exit early to just see courses
 
         let count = 0;
         for (const doc of querySnapshot.docs) {
